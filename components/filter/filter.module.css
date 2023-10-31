@@ -1,0 +1,128 @@
+.filterPopUp {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  top: -100%;
+}
+
+.filterPopUp.active {
+  top: 0;
+}
+
+.filterBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000055;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.active .filterBackground {
+  opacity: 1;
+}
+
+.wrapperFilter {
+  position: relative;
+  width: 40%;
+  border-radius: 10px 0 0 10px;
+  height: 100%;
+  background-color: #fff;
+  padding: 20px 40px 40px;
+  transform: translateX(100%);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.active .wrapperFilter {
+  transform: translateX(0%);
+}
+
+.closeFilter {
+  width: 30px;
+  height: 30px;
+  background-image: url(/images/close.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  margin: 0 0 0 auto;
+  position: sticky;
+  top: 0;
+  right: 0;
+}
+
+.filterGroups {
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px;
+  margin-top: 40px;
+}
+
+.filterGroup {
+  width: 100%;
+  position: relative;
+  display: block;
+  margin-bottom: 50px;
+}
+
+.labelFilter {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.labelText {
+  text-transform: uppercase;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 25px;
+  display: block;
+  font-weight: 700;
+}
+
+.labelTextRange {
+  margin-bottom: 25px;
+}
+
+.ubicationSelect {
+  width: 100%;
+  padding: 15px;
+  padding-right: 25px;
+  appearance: none;
+  background-color: transparent;
+  border: 0.5px solid #4d4d4d;
+  border-radius: 5px;
+  background-image: url(/images/arrow_select.png);
+  background-size: 15px;
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.rangeTrack {
+  height: 20px;
+  display: "flex";
+  width: calc(100% - 10px);
+  margin-left: 7.5px;
+}
+
+.filterGroupDrops {
+  display: flex;
+}
+
+.dropDownGrpup {
+  width: 48%;
+}

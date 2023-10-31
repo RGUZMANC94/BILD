@@ -1,0 +1,198 @@
+.typePopUp {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 0.15s, top 0s linear 1s;
+}
+
+.activePopUp.typePopUp {
+  top: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.bgTypePopUp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000055;
+}
+
+.activePopUp .wrapperTypePopUp {
+  transform: translateX(0%);
+}
+
+.wrapperTypePopUp {
+  width: 45%;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid #c3c3c3;
+  z-index: 11;
+  padding: 35px;
+  transform: translateX(100%);
+  transition: all 0.35s linear;
+}
+
+.closeDeleteControls {
+  width: 100%;
+}
+
+.arrowBack {
+  width: 25px;
+  height: 25px;
+  background-image: url(/images/arrowBack.svg);
+  cursor: pointer;
+}
+
+.deleteIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #4d4d4d4d;
+  position: relative;
+  cursor: pointer;
+}
+
+.deleteIcon:before {
+  content: "";
+  width: 60%;
+  height: 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(/images/delete.svg);
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+.formType {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.typeLabel {
+  width: 100%;
+  text-align: center;
+}
+
+.labelText {
+  color: #4d4d4d;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.inputTypeForm {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  border: 0.5px solid #4d4d4d;
+}
+.quantityLabel {
+  margin-top: 25px;
+}
+
+.quantityLabel .labelText {
+  color: #969696;
+}
+
+.inputQuantityForm {
+  width: 55px;
+  border-radius: 5px;
+  border: 0.5px solid #4d4d4d;
+}
+
+.inputsGroup {
+  margin-top: 50px;
+  width: 100%;
+  gap: 5%;
+  margin-bottom: 60px;
+}
+
+.imgType {
+  width: 50%;
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  border: 2px solid #94b4ff;
+  background-color: #fafafa;
+  overflow: hidden;
+  background-color: transparent;
+  background-image: url(/images/camera-icon.png);
+  background-size: 80px;
+}
+
+.manyTypeLabels {
+  margin-bottom: 25px;
+}
+
+.manyTypeLabels .inputTypeForm {
+  width: 70px;
+  height: 35px;
+}
+
+.manyTypeLabels:last-of-type {
+  margin-bottom: 0;
+}
+
+.labelImgType {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.labelGroup {
+  width: 48%;
+}
+
+.labelTextGroup {
+  color: #4d4d4d;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.targetInputGroup {
+  border-radius: 5px;
+  border: 0.5px solid #4d4d4d;
+  padding: 10px 10px;
+  width: 100%;
+  appearance: none;
+}
+
+.targetInputGroup::placeholder {
+  color: #c7c7c7;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  text-align: center;
+}
+
+.tl.targetInputGroup::placeholder {
+  text-align: left;
+}
+
+.buttonCreateType {
+  width: 48%;
+}
+
+.buttonsCreateType {
+  margin-top: 150px;
+}
+

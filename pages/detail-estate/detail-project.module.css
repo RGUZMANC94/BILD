@@ -1,0 +1,47 @@
+.excelsButtons {
+  width: 70%;
+  margin-top: 60px;
+  margin-left: auto;
+  gap: 4%;
+}
+
+.excelsButton {
+  width: 48%;
+}
+
+
+
+.formUnits {
+  gap: 0px;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
+}
+
+.activeFormUnits.formUnits {
+  opacity: 1;
+  visibility: visible;
+}
+
+.outerInput {
+  width: 20%;
+  margin: 10px;
+}
+
+.inputFormUnit {
+  border-radius: 3px;
+  border: 1px solid #7c7c7c;
+  text-align: center;
+  padding: 10px 0;
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.submitUnit {
+  width: 40px;
+  height: 40px;
+  background-image: url(/images/key.png);
+  cursor: pointer;
+}

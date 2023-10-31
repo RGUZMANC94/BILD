@@ -1,0 +1,224 @@
+.main-contain-contact {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-contacto {
+  width: 90%;
+  height: 59px;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 50px;
+  justify-content: end;
+  background-image: url(/images/crear-contacto.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 66px 59px;
+}
+
+.contact-top {
+  width: 90%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 35px;
+  margin-top: 40px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4d4d4d;
+  text-transform: uppercase;
+}
+
+.nombre {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.mail {
+  width: 40%;
+}
+
+.numero {
+  width: 20%;
+  text-align: right;
+}
+
+.listas {
+  width: 90%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 35px;
+  margin-top: 40px;
+}
+
+.reciente {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 35px;
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4d4d4d;
+  text-transform: uppercase;
+}
+
+.list-name {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.contact img {
+  margin-right: 20px;
+}
+
+.list-number img {
+  margin-left: 20px !important;
+}
+.list-mail {
+  width: 40%;
+  padding-top: 20px;
+}
+
+.list-mail ul li {
+  margin: 0 0 47px 0;
+}
+
+.list-number {
+  width: 20%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+.number {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.number img {
+  margin-left: 20px;
+}
+
+.list-contact {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.reciente-col {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.badge.red {
+  background-color: #ff5567;
+  border-radius: 50%;
+  left: -3px;
+  position: absolute;
+  top: -5px;
+  color: #fff;
+  padding: 4px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+}
+
+.iconos-movil {
+  display: none;
+}
+@media only screen and (max-width: 1200px) {
+  .nombre,
+  .mail,
+  .numero {
+    width: 33%;
+  }
+  .reciente {
+    font-size: 14px;
+  }
+
+  .list-mail,
+  .list-number {
+    width: 30%;
+  }
+  .contact,
+  .reciente-col,
+  .number {
+    width: 33%;
+  }
+
+  .contact-top {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .crear-contacto,
+  .contact-top,
+  .reciente {
+    display: none;
+  }
+  .reciente-col,
+  .number {
+    display: none;
+  }
+
+  .iconos-movil {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .phone-movil {
+    width: 50%;
+  }
+  .wa-movil {
+    width: 50%;
+  }
+
+  .contact {
+    width: 70%;
+  }
+}

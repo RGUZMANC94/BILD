@@ -1,0 +1,287 @@
+[
+  {
+    "id": 1,
+    "name": "Fontana Campestres",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 1,
+        "typeName": "Tipo 1",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 4,
+            "beds": 2
+          },
+          {
+            "unitId": 2,
+            "price": 185000000,
+            "baths": 2,
+            "beds": 2
+          },
+          {
+            "unitId": 3,
+            "price": 200000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      },
+      {
+        "typeId": 2,
+        "projectId": 1,
+        "typeName": "Tipo 2",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      },
+      {
+        "typeId": 3,
+        "projectId": 1,
+        "typeName": "Tipo 3",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      },
+      {
+        "typeId": 4,
+        "projectId": 1,
+        "typeName": "Tipo 4",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "La Florida",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 2,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Forteza I",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 3,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Campo Alegre",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 4,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "La Florida II",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 5,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Forteza II",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 6,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Fontana Campestres",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 7,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "La Florida",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 8,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Fontana Campestres",
+    "minPrice": "120",
+    "maxPrice": "160",
+    "imgProject": "/images/fontana-desktop.png",
+    "minBeds": "3",
+    "maxBeds": "4",
+    "minBaths": "3",
+    "maxBaths": "4",
+    "types": [
+      {
+        "typeId": 1,
+        "projectId": 9,
+        "typeName": "",
+        "units": [
+          {
+            "unitId": 1,
+            "price": 135000000,
+            "baths": 2,
+            "beds": 6
+          }
+        ]
+      }
+    ]
+  }
+]

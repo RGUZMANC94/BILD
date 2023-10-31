@@ -1,0 +1,478 @@
+.wrap-crear {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #4d4d4d;
+  box-shadow: 2px 2px 6px #c7c7c7;
+  border-radius: 15px;
+  margin-top: -15%;
+}
+
+.creacion-oportunidad {
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  position: absolute;
+  z-index: 3;
+  background-position: top center;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crear {
+  width: 100% !important;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-around;
+  align-items: start !important;
+  padding: 15px;
+  background: none !important;
+  z-index: 11 !important;
+  position: relative !important;
+  box-shadow: none !important;
+  top: 0 !important;
+  margin-bottom: 40px !important;
+}
+
+.crear-tipo {
+  display: flex;
+  flex-direction: column;
+  width: calc(95% - 20px);
+  min-height: 100px;
+  height: auto;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: start;
+  background-color: #fff;
+  box-shadow: 2px 2px 6px #c7c7c7;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: left;
+  padding: 25px 30px 30px;
+}
+
+.tipo-unit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  background-color: #fff;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.creacion-title {
+  margin-bottom: 10px;
+}
+.tipo-unit.informacion {
+  width: calc(80% - 20px);
+  min-height: 100px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: start;
+  background-color: #fff;
+  box-shadow: none;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: left;
+  padding: 20px;
+}
+
+.tipos {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  columns: #4d4d4d;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.img-tipo {
+  width: 40%;
+  height: 144px;
+  overflow: hidden;
+  margin-right: 1vh;
+  border-radius: 10px;
+}
+
+.img-tipo img {
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.tipo-info {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.contacto {
+  display: flex;
+  flex-direction: row;
+  width: calc(95% - 20px);
+  height: auto;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+.conecta {
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tipo-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4d4d4d;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.message {
+  width: 50%;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px #c7c7c7 !important;
+  font-size: 18px;
+  color: #4d4d4d;
+  font-weight: 300;
+  padding: 10px;
+  background-color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+  justify-content: space-evenly;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.showMiniPop {
+  opacity: 1;
+  visibility: visible;
+}
+
+.valor {
+  font-size: 14px;
+  color: #4d4d4d;
+  font-weight: 200;
+  margin-top: 20px;
+}
+
+.detalles {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  font-size: 14px;
+  color: #4d4d4d;
+  font-weight: 200;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.detalles span {
+  margin: 0 10px 0 10px;
+}
+
+.left-side {
+  width: 60%;
+  height: auto;
+  margin-left: 30px;
+  margin-bottom: 50px;
+}
+
+.crear-tipo {
+  width: 100% !important;
+}
+
+.right-side {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.conecta {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crear-contacto {
+  width: 50% !important;
+  margin: 30px 20px 0 !important;
+  text-align: center;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.contacto-existente {
+  width: 70%;
+  height: 50px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  border: 1px solid #2467ff;
+  text-transform: uppercase;
+  margin-top: 30px;
+  padding: 10px 30px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #2467ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.contacto-existente {
+  width: 50%;
+  margin: 0 20px;
+}
+
+.contact {
+  width: 70% !important;
+  margin-top: 30px;
+  display: flex;
+  justify-content: start !important;
+  align-items: start !important;
+}
+
+.user-evento {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lista-evento {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.lista-evento span {
+  color: #777777;
+  font-size: 12px !important;
+}
+
+
+.crear-cotizacion {
+  width: 50%;
+  height: 50px;
+  color: #2467ff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(0deg, #2467ff, #00bdff) border-box;
+  border-radius: 1em;
+  border: 2px solid transparent;
+}
+.img-tipo {
+  width: 40%;
+  height: 144px;
+  overflow: hidden;
+  margin-right: 1vh;
+  border-radius: 10px;
+}
+
+.img-tipo img {
+  overflow: hidden;
+  object-fit: contain;
+  border-radius: 10px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 959px) {
+  #banner-oportunidad {
+    width: 100% !important;
+    height: 250px !important;
+  }
+
+  .wrap-crear {
+    width: 100% !important;
+    flex-direction: column !important;
+    background: none !important;
+    box-shadow: none !important;
+    top: 220px !important;
+  }
+  .crear {
+    width: 100% !important;
+    flex-direction: column !important;
+    background: none !important;
+    box-shadow: none !important;
+    top: 0px !important;
+  }
+
+  .left-side {
+    width: 100% !important;
+    margin-left: 0px !important;
+  }
+
+  .crear-tipo {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-height: 100px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    justify-content: space-between !important;
+    align-items: start !important;
+    background-color: #fff !important;
+    box-shadow: 2px 2px 6px #c7c7c7 !important;
+    border-radius: 15px !important;
+    margin-top: 40px !important;
+    text-align: left !important;
+    padding: 20px !important;
+  }
+
+  .creacion-oportunidad {
+    width: 100% !important;
+    height: 50px !important;
+    margin: 0 auto !important;
+    background: none !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    position: absolute !important;
+    z-index: 3 !important;
+    background-position: top center !important;
+    text-transform: uppercase !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 50px !important;
+  }
+
+  .conecta {
+    flex-direction: column-reverse !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+
+  button.contacto-existente,
+  button.evento,
+  button.crear-cotizacion {
+    width: 90% !important;
+  }
+
+  .img-tipo {
+    width: 30%;
+    height: 120px !important;
+    overflow: hidden;
+    margin-right: 1vh;
+  }
+
+  .img-tipo img {
+    object-fit: cover;
+  }
+
+  .creacion-oportunidad {
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    background: none !important;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    z-index: 3;
+    background-position: top center;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .right-side {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .contacto {
+    width: 100% !important;
+    margin: 0 auto !important;
+    position: absolute !important;
+    bottom: -140px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .message {
+    width: 70%;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px #c7c7c7 !important;
+    font-size: 18px;
+    color: #4d4d4d;
+    font-weight: 300;
+    padding: 10px;
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 300px;
+    justify-content: space-evenly;
+    position: relative;
+    top: 200px;
+  }
+}

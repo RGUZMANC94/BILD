@@ -1,0 +1,153 @@
+.crear {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  color: #4d4d4d;
+  box-shadow: 2px 2px 6px #c7c7c7;
+  border-radius: 15px;
+  position: relative;
+  z-index: 10;
+  margin-top: -17%;
+}
+
+.crear-tipo {
+  display: flex;
+  flex-direction: column;
+  width: calc(95% - 20px);
+  min-height: 100px;
+  height: auto;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: start;
+  background-color: #fff;
+  box-shadow: 2px 2px 6px #c7c7c7;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: left;
+  padding: 25px 30px 30px;
+}
+
+.tipo-unit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  background-color: #fff;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.creacion-title {
+  margin-bottom: 10px;
+}
+.tipo-unit.informacion {
+  width: calc(80% - 20px);
+  min-height: 100px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: start;
+  background-color: #fff;
+  box-shadow: none;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: left;
+  padding: 20px;
+}
+
+.tipos {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  columns: #4d4d4d;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.img-tipo {
+  width: 40%;
+  height: 144px;
+  overflow: hidden;
+  margin-right: 1vh;
+  border-radius: 10px;
+}
+
+.img-tipo img {
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.tipo-info {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.tipo-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4d4d4d;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.add {
+  width: 10%;
+  height: 40px;
+  background-image: url(/images/add-tipo.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.valor {
+  font-size: 14px;
+  color: #4d4d4d;
+  font-weight: 200;
+  margin-top: 20px;
+}
+
+.detalles {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  font-size: 14px;
+  color: #4d4d4d;
+  font-weight: 200;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.contacto {
+  display: flex;
+  flex-direction: row;
+  width: calc(95% - 20px);
+  height: auto;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+.conecta {
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

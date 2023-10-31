@@ -1,0 +1,144 @@
+.generar-cotizacion {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  padding: 30px;
+  margin: 30px;
+  border: 1px solid #cecccc;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: black !important;
+  text-align: left;
+}
+
+.seleccion {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: start;
+  margin-top: 20px;
+}
+
+.elegir-seleccion {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.proyect-form input,
+.subject_input {
+  width: 90%;
+  background-color: #d9d9d915;
+}
+
+.separacion {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+}
+
+.inputQuote {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #c7c7c7ce;
+  background-color: #d9d9d915;
+}
+
+.cotizacion-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.lado-a {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  text-align: left;
+}
+.lado-b {
+  width: 60%;
+}
+
+.lado-c {
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.lado-d {
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.lado-c img,
+.lado-d img {
+  margin-right: 10px;
+}
+
+.title-saldo {
+  color: #9a9a9a;
+}
+
+.lado-b .subject_input {
+  width: 100%;
+}
+
+.cotizacion-form label input {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  text-align: left;
+}
+
+.checked {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.cuotas {
+  width: 25px;
+  height: 25px;
+}
+
+.text {
+  padding-bottom: 20px;
+}
+
+.title-separacion {
+  width: 100%;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.lado-e {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  margin-top: 20px;
+}

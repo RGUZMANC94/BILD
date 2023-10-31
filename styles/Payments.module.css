@@ -1,0 +1,138 @@
+.top-content {
+  width: 100%;
+  height: auto;
+  text-transform: uppercase;
+  color: #4d4d4d;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 50px;
+  padding-top: 200px;
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.icon {
+  width: 35%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 30px;
+}
+
+.pagos-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pagos-box {
+  width: 29%;
+  height: auto;
+  min-height: 230px;
+  border: 1px solid #c7c7c7;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px #c7c7c7;
+  display: flex;
+  padding: 30px;
+}
+
+.left-box {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-box {
+  width: 10%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+}
+
+.box-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #4d4d4d;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 20px;
+  line-height: 50px;
+}
+
+.box-subtitle {
+  font-size: 18px;
+  color: #4d4d4d;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 20px;
+  line-height: 50px;
+}
+
+.arrow {
+  border: solid #4d4d4d;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 12px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 25px;
+  height: 25px;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  width: 25px;
+  height: 25px;
+}
+
+@media only screen and (max-width: 768px) {
+  .pagos-box {
+    width: 90%;
+    height: auto;
+    min-height: 100px;
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px #c7c7c7;
+    display: flex;
+    padding: 30px;
+    margin: 30px 0;
+    text-align: center;
+  }
+
+  .left-box {
+    width: 100%;
+    align-items: center;
+  }
+
+  .right-box {
+    display: none;
+  }
+
+  .box-title {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  .box-subtitle {
+    text-align: center;
+  }
+}

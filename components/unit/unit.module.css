@@ -1,0 +1,16 @@
+.inputToEditValue {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 400;
+  font-size: 18px;
+  border-radius: 3px;
+  border: 1px solid #7c7c7c;
+  color: #000;
+  transition-timing-function: all 0.5s ease-in-out;
+}
+
+.inputToEditValue:disabled {
+  background-color: transparent;
+  border: 1px solid #7c7c7c00;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "bild",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@reduxjs/toolkit": "^1.9.7",
+    "chart.js": "^4.4.0",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.4.19",
+    "jquery": "^3.7.1",
+    "next": "13.4.19",
+    "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "18.2.0",
+    "react-range": "^1.8.14",
+    "react-redux": "^8.1.3"
+  }
+}
