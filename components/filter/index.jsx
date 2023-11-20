@@ -124,7 +124,7 @@ const Filter = ({ show, setShowFilter }) => {
                               : rangeSlider.type === "floor"
                               ? floorValues
                               : sizeValues,
-                          colors: ["#ccc", "#548BF4", "#ccc"],
+                          colors: ["#ccc", "#FF5567", "#ccc"],
                           min: rangeSlider.min,
                           max: rangeSlider.max,
                           rtl: false,
@@ -144,11 +144,10 @@ const Filter = ({ show, setShowFilter }) => {
                       height: "15px",
                       width: "15px",
                       borderRadius: "50%",
-                      backgroundColor: "#2467ff",
+                      backgroundColor: "#FF5567",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      boxShadow: "0px 2px 6px #AAA",
                     }}
                   />
                 )}

@@ -11,28 +11,18 @@ const Header = () => {
   return (
     <>
       <header className={styles.siteHeader}>
-        <div className={`${styles.containerHeader} container`}>
-          <div id="logo">
+        <div className={`${styles.containerHeader}`}>
+          <div className={styles.logo}>
             {pathname !== "/" && (
               <Link href="/">
-                <img src="/images/logo-desktop.png" alt="Logo BILD" />
+                <img src="/images/logo-white.png" alt="Logo BILD" />
               </Link>
             )}
             {pathname === "/" && (
-              <img src="/images/logo-desktop.png" alt="Logo BILD" />
+              <img src="/images/logo-white.png" alt="Logo BILD" />
             )}
           </div>
-          <div className={styles.search}>
-            <input
-              className={styles.searchInput}
-              type="text"
-              placeholder="Buscar Proyecto"
-            />
-            <div
-              className={`${styles.glass} bg-ct`}
-              onClick={() => setShowFilter(true)}
-            ></div>
-          </div>
+
           <div className={`${styles["menu-top"]} `}>
             <div className={styles.menuPpal}>
               <Link
@@ -71,6 +61,12 @@ const Header = () => {
                 </div>
                 Perfil
               </a>
+              <div className={styles.search}>
+                <div
+                  className={`${styles.glass} bg-ct`}
+                  onClick={() => setShowFilter(true)}
+                ></div>
+              </div>
             </div>
           </div>
         </div>

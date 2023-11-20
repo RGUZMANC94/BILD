@@ -1,27 +1,26 @@
-import { useSortable } from "@dnd-kit/sortable";
+// import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useDispatch } from "react-redux";
 import { changeTypeSelected } from "../../redux/typeSelectedSlice";
 import { openPopUp } from "../../redux/popUpOportunity";
 
 const TypeCard = ({ type, setCreateOportunity, index }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: type.id });
+  // const { attributes, listeners, setNodeRef, transform, transition } =
+  //   useSortable({ id: type.id });
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
+  // const style = {
+  //   transform: CSS.Transform.toString(transform),
+  //   transition,
+  // };
   const dispatch = useDispatch();
   return (
     <li
       id={type.id}
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
+      // ref={setNodeRef}
+      // style={style}
+      // {...attributes}
+      // {...listeners}
       className={`itemDrag ${index === 0 ? "active" : ""}`}
-      draggable="true"
       onPointerUp={(e) => {
         const itemsDrag = document.querySelectorAll(".itemDrag");
         itemsDrag.forEach((item) => {

@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.contacto-dos{
+.contacto-dos {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -58,6 +58,7 @@
   box-sizing: border-box;
   color: #c7c7c7ce;
   font-size: 12px;
+  background-color: #21221d;
 }
 
 .name-field {
@@ -131,6 +132,7 @@
   color: #c7c7c7ce;
   display: block;
   position: relative;
+  background-color: #21221d;
 }
 
 .label {

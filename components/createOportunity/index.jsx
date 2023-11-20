@@ -26,7 +26,7 @@ const CreateOportunity = ({ created }) => {
           showPopUp ? styles.openCreateOportunity : ""
         }`}
       >
-        <header>
+        <header className={styles.headerMainContainer}>
           <div className={styles["banner"]}>
             <div className={styles["banner-oportunidad"]}>
               <div className={styles["creacion-oportunidad"]}>

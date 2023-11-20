@@ -1,17 +1,6 @@
 /* @charset "utf-8"; */
 /* @import url("https://fonts.googleapis.com/css?family=family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
 
-/* body {
-  color: #4d4d4d;
-  font-size: 16px;
-  font-family: "Lexend", sans-serif;
-  font-weight: normal;
-  background-color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-} */
-
 #main-container {
   width: 100%;
   margin: 0 auto;
@@ -21,21 +10,21 @@
 .siteHeader {
   width: 100%;
   margin: 0 auto;
-  height: 113px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-shadow: -3px 0px 8px #dddddd;
+  box-shadow: -3px 0px 8px #1C1C1C;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 8;
-  background-color: #fff;
-  padding: 0 30px;
+  background-color: #1C1C1C;
+  padding: 0 0 0 30px;
 }
 
 .containerHeader {
+  margin: 0 auto;
   width: 100%;
   height: auto;
   display: flex;
@@ -44,23 +33,21 @@
   align-items: center;
 }
 
-#logo {
+.logo {
   width: 200px;
   height: 70px;
   display: flex;
   align-items: center;
 }
 
-#logo img {
-  width: 151px;
-  height: 67px;
+.logo img {
+  width: 100px;
 }
 
 .search {
-  width: 30%;
-  height: 50px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
+  width: 73px;
+  height: 73px;
+  background-color: #FF5567;
   font-size: 18px;
   font-weight: 500;
   color: #a3a3a3;
@@ -72,6 +59,7 @@
   justify-content: center;
   align-items: center;
   outline: none;
+  margin-left: 10px;
 }
 
 .searchInput {
@@ -85,7 +73,7 @@
 }
 
 .glass {
-  background-image: url("/images/search.svg");
+  background-image: url("/images/search-white.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -96,29 +84,36 @@
 }
 
 .menu-top {
-  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-top: 15px;
+}
+
+.menuPpal{
+  display: flex;
 }
 
 .menuPpal a {
   color: #777;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
   font-size: 12px;
   font-weight: 300;
   text-align: center;
   text-decoration: none;
-  padding: 5px 10px 20px;
-  border-bottom: 3px solid #fff;
+  padding: 0 10px 0;
   transition: all 0.15s ease-in-out;
 }
 
 .menuPpal a .imageMenu {
-  width: 100%;
+  width: 33px;
   height: 33px;
+  display: block;
+  margin: 0 auto;
   overflow: hidden;
 }
 

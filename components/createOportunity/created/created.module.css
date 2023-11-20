@@ -6,11 +6,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: #21221d;
   color: #4d4d4d;
-  box-shadow: 2px 2px 6px #c7c7c7;
+  box-shadow: 2px 2px 6px #131312;
   border-radius: 15px;
-  margin-top: -15%;
+  margin-top: 10vh;
 }
 
 .creacion-oportunidad {
@@ -57,8 +57,8 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: start;
-  background-color: #fff;
-  box-shadow: 2px 2px 6px #c7c7c7;
+  background-color: #21221d;
+  box-shadow: 2px 2px 6px #161615;
   border-radius: 15px;
   margin-top: 40px;
   text-align: left;
@@ -71,7 +71,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: start;
-  background-color: #fff;
+  background-color: #21221d;
   text-align: left;
   margin-top: 10px;
 }
@@ -295,7 +295,6 @@ button.contacto-existente {
   color: #777777;
   font-size: 12px !important;
 }
-
 
 .crear-cotizacion {
   width: 50%;
