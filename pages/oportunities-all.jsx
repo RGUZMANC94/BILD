@@ -1,4 +1,5 @@
 import OportunitiesAll from "../components/oportunitiesAll";
+import OportunitiesPending from "../components/oportunitiesPending";
 import Button from "../components/button";
 import { openPopUp } from "../redux/popUpOportunity";
 import styles from "../styles/Oportunities-All.module.css";
@@ -53,7 +54,8 @@ const OportunitiesAllFilter = () => {
 
            
 
-                {showSection === "all" && <OportunitiesAll />}
+            {showSection === "all" && <OportunitiesAll />}
+            {showSection === "pending" && <OportunitiesPending />}
                 
            
             

@@ -1,10 +1,6 @@
 import React from 'react';
-import CreateOportunity from "../../components/createOportunity";
-import Button from "../../components/button";
 import { openPopUp } from "../../redux/popUpOportunity";
 import styles from "./oportunities-all.module.css";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 
 const oportunitiesAll = () => {
   return (
