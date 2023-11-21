@@ -43,12 +43,15 @@ const Header = () => {
                 </div>
                 Contactos
               </Link>
-              <a href="#">
+              <Link
+                href={pathname === "/dashboard" ? "" : "/dashboard"}
+                className={pathname === "/dashboard" ? styles.active : ""}
+              >
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/icon-menu3.png" />
                 </div>
                 Dashboard
-              </a>
+              </Link>
               <a href="#">
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/icon-menu4.png" />
