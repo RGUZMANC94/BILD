@@ -105,12 +105,16 @@ nav,
 section {
   display: block;
 }
-input, select, textarea, button{
+input,
+select,
+textarea,
+button {
   outline: none;
   resize: none;
 }
 body {
   line-height: 1;
+  background-color: #343434;
 }
 ol,
 ul {
