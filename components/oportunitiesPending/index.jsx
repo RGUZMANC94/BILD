@@ -1,5 +1,6 @@
 import React from 'react';
 import PendingCalendar from "../../components/pendingCalendar";
+import PendingList from "../../components/pendingList";
 import { openPopUp } from "../../redux/popUpOportunity";
 import styles from "./oportunities-pending.module.css";
 import { useDispatch } from "react-redux";
@@ -46,7 +47,7 @@ const oportunitiesPending = () => {
       </div>
 
         {showVisualization === "calendar" && <PendingCalendar />}
-        {showVisualization === "list" && <PendingCalendar />}
+        {showVisualization === "list" && <PendingList />}
     </>
   );
 };
