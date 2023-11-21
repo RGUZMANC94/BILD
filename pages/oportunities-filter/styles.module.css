@@ -74,6 +74,33 @@
   background: #2467FF;  
 }
 
+.filter_container{
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+
+.label_filter{
+  margin: 20px 0 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 20px;
+}
+
+.filter_input {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 285px;
+  height: auto;
+  box-sizing: border-box;
+  color: #c7c7c7;
+  appearance: none;
+  margin: 0 20px;
+}
+
 .oportunidades {
   width: 100%;
   height: auto;

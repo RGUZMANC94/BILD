@@ -53,6 +53,22 @@ const OportunitiesFilter = () => {
                 </div>
             </div>
 
+            <div className={styles["filter_container"]}>
+              
+                <label htmlFor="subject"></label>
+                <select
+                  placeholder="Subject line"
+                  name="subject"
+                  className={styles["filter_input"]}
+                >
+                  <option disabled defaultValue={0} hidden selected></option>
+                  <option>Opción 1</option>
+                  <option>Opción 2</option>
+                  <option>Opción 3</option>
+                </select>
+                <span className={styles["label_filter"]}>Ordenar por:</span>
+            </div>
+
             <div className={styles["oportunidades"]}>
           <div className={styles["tipo"]}>
             <div className={`${styles["tipo-unit"]} ${styles.active}`}>
