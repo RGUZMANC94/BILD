@@ -1,6 +1,7 @@
 import React from 'react';
 import { openPopUp } from "../../redux/popUpOportunity";
 import styles from "./oportunities-all.module.css";
+import OportunitiesCard from "../../components/oportunitiesCard";
 
 const oportunitiesAll = () => {
   return (
@@ -24,6 +25,10 @@ const oportunitiesAll = () => {
 
           <div className={styles["oportunidades"]}>
         <div className={styles["tipo"]}>
+
+          
+          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+
           <div className={`${styles["tipo-unit"]} ${styles.active}`}>
             <div className={styles["img-tipo"]}>
               <img src="/images/tipo-1.png" />
