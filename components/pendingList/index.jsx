@@ -10,14 +10,116 @@ const pendingList = () => {
                 <div className={styles["list-day-container"]}>
 
                   <div className={styles["list-day-title"]}>LUNES</div>
-                  <div className={styles["list-card-container"]}>
+                  <div className={styles["list-card-section"]}>
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
 
-                    
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
 
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
                   </div>
-                  
+
 
                 </div>
+
+                <div className={styles["list-day-container"]}>
+
+                  <div className={styles["list-day-title"]}>Martes</div>
+                  <div className={styles["list-card-section"]}>
+
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div className={styles["list-day-container"]}>
+
+                  <div className={styles["list-day-title"]}>Miercoles</div>
+                  <div className={styles["list-card-section"]}>
+
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div className={styles["list-day-container"]}>
+
+                  <div className={styles["list-day-title"]}>Jueves</div>
+                  <div className={styles["list-card-section"]}>
+
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div className={styles["list-day-container"]}>
+
+                  <div className={styles["list-day-title"]}>Viernes</div>
+                  <div className={styles["list-card-section"]}>
+
+                    <div className={styles["list-card-container"]}>
+                      <input
+                        className={styles["list-card-input"]}
+                        type="checkbox"
+                        name="calendar-ckechbox"
+                      />{" "}
+                      <div className={styles["list-card-text-hour"]}>10:00 am</div>
+                      <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
+                    </div>
+
+                  </div>
+
+                </div>        
         
       </div>
     </>

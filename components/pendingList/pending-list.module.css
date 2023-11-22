@@ -22,13 +22,15 @@
 
 .list-container{
   display: flex;
-  max-width: 1600px;
-  margin: 100px 85px;
-  overflow-y: auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 50px 70px 0px 70px;
+  gap: 70px;
 }
 
 .list-day-container{
-  width: 100%;
+  max-width: 1600px;
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -37,9 +39,10 @@
 .list-day-title{
   width: 100%;
   height: fit-content;
-  padding-bottom: 38px;
+  padding-bottom: 30px;
   display: flex;
   text-align: start;
+  text-transform: uppercase;
 
   flex-shrink: 0;
   color: #FFF;
@@ -50,55 +53,57 @@
   letter-spacing: 1.26px;
 }
 
-.calendar-card-container{
-  height: fit-content;
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
-
-  padding: 10px;
-
-  border-radius: 7px;
-  border: 0.5px solid #CCC;
-  /*background: #FFF;*/
-  /*box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.12);*/
-
-}
-
-.calendar-card-text-container{
-  width:max-content;
+.list-card-section{
+  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  gap: 20px;
 }
 
-.calendar-card-text-hour{
-  padding-bottom: 3px;
+.list-card-container{
+  width: 100%;
   height: fit-content;
-  color: #FFF;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 9px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+
+  padding: 10px 0px;
+
 }
 
-.calendar-card-text-message{
-  color: #FFF;
-  height: fit-content;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 9px;
-}
-
-.calendar-card-input{
+.list-card-input{
   width: 15px;
   height: 15px;
-  margin-right: 8px;
+  margin-right: 18px;
   flex-shrink: 0;
   border: 1px solid #4D4D4D;
+}
 
-  /*background: #FFF;*/
+.list-card-text-hour{
+  width: 102px;
+  color: #FFF;
+  margin-right: 13px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 0.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+
+.list-card-text-message{
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 0.5;
+  white-space: nowrap;
 }
 
 .back {
