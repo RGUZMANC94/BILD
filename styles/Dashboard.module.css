@@ -43,7 +43,7 @@
 .welcome {
   font-size: 20px;
   font-weight: 700;
-  color: #4d4d4d;
+  color: #fff;
   text-align: center;
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@
 .welcome-tit {
   font-size: 20px;
   font-weight: 700;
-  color: #4d4d4d;
+  color: #fff;
   text-align: center;
   margin-bottom: 10px;
   width: 100%;
@@ -73,7 +73,7 @@
 .profile {
   font-size: 18px;
   font-weight: 200;
-  color: #4d4d4d;
+  color: #fff;
   text-align: center;
   width: 100%;
   display: flex;
@@ -117,7 +117,7 @@
 
 .download {
   width: 60%;
-  background-color: #2467ff;
+  background-color: #fff;
   color: #fff;
   font-size: 16px;
   font-weight: 300;
@@ -138,7 +138,7 @@
 }
 
 .start {
-  background-color: #fff;
+  background-color: #565555;
   padding: 15px;
   color: #c7c7c7;
   border: 1px solid #cccccc;
@@ -182,7 +182,7 @@
 }
 
 .pop-text {
-  color: #4d4d4d;
+  color: #fff;
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -238,7 +238,7 @@
 }
 .text-cat {
   font-size: 18px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 400;
 }
 
@@ -263,7 +263,7 @@
 .pop2-text {
   font-size: 20px;
   font-weight: 700;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
 }
 
@@ -337,6 +337,19 @@
 
 .wrapChart {
   width: 32.3333%;
+}
+
+.outerChart{
+  width: 30%;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px;
+  padding: 20px 10px;
+}
+
+.titleChart{
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 990px) {

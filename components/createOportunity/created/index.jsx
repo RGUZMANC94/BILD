@@ -37,9 +37,9 @@ const OportunityCreated = () => {
                   $120 millones - 160 millones
                 </span>
                 <div className={styles["detalles"]}>
-                  <img src="/images/cama.png" width="22" height="20" />
+                  <img src="/images/cards/bath.png"  />
                   <span>3-4</span>
-                  <img src="/images/ducha.png" width="7" height="11" />
+                  <img src="/images/cards/bed.png"  />
                   <span>2-3</span>
                 </div>
               </div>

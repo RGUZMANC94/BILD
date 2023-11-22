@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   text-transform: uppercase;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
@@ -21,7 +21,7 @@
   width: 30%;
   height: 50px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #565555;
 }
 
 .icon {
@@ -102,7 +102,7 @@
   width: 100%;
   font-size: 18px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
   margin-top: 15px;
 }
@@ -111,11 +111,12 @@
   margin: 10px 0;
   font-size: 18px !important;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
 }
 
 .greybox {
-  background-color: #f3f3f3;
+  background: #2e2e2c;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 30px;
@@ -148,14 +149,14 @@
   width: 30%;
   font-size: 16px;
   font-weight: 400;
-  color: #4d4d4d;
+  color: #fff;
 }
 
 .aceptada {
   width: 50%;
   font-size: 16px;
   font-weight: 700;
-  color: #4d4d4d;
+  color: #fff;
   display: flex;
   align-items: center;
 }
@@ -166,26 +167,26 @@
   width: 25%;
   font-size: 16px;
   font-weight: 400;
-  color: #4d4d4d;
+  color: #fff;
 }
 .empty {
   width: 25%;
   font-size: 16px;
   font-weight: 400;
-  color: #4d4d4d;
+  color: #fff;
 }
 
 .estado {
   font-size: 16px;
   font-weight: 700;
-  color: #2467ff;
+  color: #fff;
 }
 
 .blue-point {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #2467ff;
+  background-color: #fff;
   position: absolute;
   top: 25px;
   left: -60px;
@@ -204,7 +205,7 @@
 .seguimiento {
   width: 40%;
   height: 50px;
-  background-color: #2467ff;
+  background-color: rgba(60, 64, 67, 0.35);
   color: #fff;
   font-size: 18px;
   font-family: "Lexend", sans-serif;
@@ -220,7 +221,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  border: 2px solid transparent;
+  border: 2px solid #fff;
   margin-top: 30px;
 }
 
@@ -273,14 +274,14 @@
 
 .popup h2 {
   margin-top: 0;
-  color: #4d4d4d;
+  color: #fff;
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  color: #4d4d4d;
+  color: #fff;
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -298,7 +299,7 @@
   color: #333;
 }
 .popup .close:hover {
-  color: #2467ff;
+  color: #fff;
 }
 .popup .content {
   overflow: auto;
@@ -327,7 +328,7 @@ button.confirmar {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: #2467ff;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,7 +347,7 @@ button.confirmar {
 button.cancelar {
   width: 40%;
   height: 50px;
-  color: #2467ff;
+  color: #fff;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -368,7 +369,7 @@ button.cancelar {
 .transferir {
   width: 40%;
   height: 50px;
-  color: #2467ff;
+  color: #fff;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -381,8 +382,7 @@ button.cancelar {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(0deg, #2467ff, #00bdff) border-box;
+  background-color: #2467ff;
   border-radius: 10px;
   border: 2px solid transparent;
 }
@@ -511,7 +511,7 @@ button.cancelar {
     display: flex;
     align-items: center;
     font-size: 18px;
-    color: #4d4d4d;
+    color: #fff;
     text-align: center;
     text-transform: uppercase;
   }
@@ -662,7 +662,7 @@ button.cancelar {
   }
 
   .pop-text {
-    color: #4d4d4d;
+    color: #fff;
     font-size: 18px;
     font-weight: 400;
     text-align: center;

@@ -15,7 +15,7 @@
   width: 100%;
   height: 50px;
   margin: 0 auto;
-  background-color: #f9f9f9;
+  background-color: #d9d9d91a;
   border-radius: 10px;
   border: 1px solid #d9d9d9;
   text-transform: uppercase;
@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   outline: none;
+  border: 1px solid #fff;
 }
 
 .buscar {
@@ -38,7 +39,8 @@
   background-position: left;
   font-size: 18px;
   font-weight: 500;
-  color: #a3a3a3;
+  
+  color: #fff;
   margin: 30px;
 }
 
@@ -48,7 +50,7 @@
   padding: 60px 40px 50px;
   border-bottom: 1px solid #d9d9d9;
   font-size: 18px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 500;
   text-transform: uppercase;
   display: flex;
@@ -78,16 +80,16 @@
 }
 
 .accordion-content {
-  background-color: #ffffff;
-  margin-left: 20px;
+  background-color: #d9d9d91a;
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: #fff;
 }
 
 .accordion-btn {
   position: relative;
-  background-color: #fff;
+  background-color: #21221D;
   border: none;
   padding: 15px 20px;
   text-align: left;
@@ -97,6 +99,7 @@
   list-style: none;
   display: flex;
   align-items: center;
+  color: #fff;
 }
 
 .accordion-btn::-webkit-details-marker {
@@ -113,7 +116,7 @@
   width: 55px;
   height: 55px;
   text-align: center;
-  color: #4d4d4d;
+  color: #fff;
   transform: translate(0%, -50%) rotate(90deg);
   box-sizing: border-box;
   display: flex;

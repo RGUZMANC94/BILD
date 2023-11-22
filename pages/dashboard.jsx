@@ -3,7 +3,7 @@ import styles from "../styles/Dashboard.module.css";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import { useEffect, useRef, useState } from "react";
 import CategoriesPopUp from "../components/categoriesPopUp";
-import { createChart, ColorType, CrosshairMode } from "lightweight-charts";
+import { createChart, ColorType } from "lightweight-charts";
 Chart.register(CategoryScale);
 const Dashboard = () => {
   const data = [
@@ -20,16 +20,26 @@ const Dashboard = () => {
     areaBottomColor: "transparent",
   };
 
-  // const {
-  //   data,
-  //   colors: {
-  //     backgroundColor = "white",
-  //     lineColor = "#2962FF",
-  //     textColor = "black",
-  //     areaTopColor = "#2962FF",
-  //     areaBottomColor = "rgba(41, 98, 255, 0.28)",
-  //   } = {},
-  // } = props;
+  const dataCharts = [
+    {
+      data: [
+        { time: "2022-12-18", value: 5 },
+        { time: "2023-01-19", value: 5 },
+        { time: "2023-02-19", value: 8 },
+        { time: "2023-03-19", value: 8 },
+      ],
+    },
+    {
+      data: [
+        { time: "2022-12-18", value: 5 },
+        { time: "2023-01-19", value: 5 },
+        { time: "2023-02-19", value: 8 },
+        { time: "2023-03-19", value: 8 },
+      ],
+    },
+  ];
+
+  // const chartBars = createChart()
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,7 +52,7 @@ const Dashboard = () => {
         textColor: colors.textColor,
       },
       width: chartContainerRef.current.clientWidth,
-      height: chartContainerRef.current.clientWidth,
+      height: (chartContainerRef.current.clientWidth * 9) / 16,
       autoSize: true,
       leftPriceScale: {
         visible: true,
@@ -182,33 +192,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className={styles.allChartsContainer}>
-          <div className={styles["wrapChart"]}>
-            <div
-              className={`${styles["viewsThrough"]} ${styles["outerChart"]}`}
-            >
-              <h4 className={styles["titleChart"]}>Vistas por medio</h4>
-              <div ref={chartContainerRef} />
-            </div>
-            <Line
-              data={chartData}
-              options={{
-                scales: {
-                  y: {
-                    type: "linear",
-                    grace: "0",
-                  },
-                },
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Visitas por medio",
-                  },
-                  legend: {
-                    display: false,
-                  },
-                },
-              }}
-            ></Line>
+          <div
+            className={`${styles["viewsThrough"]} ${styles["outerChart"]} ${styles["wrapChart"]}`}
+          >
+            <h4 className={styles["titleChart"]}>Vistas por medio</h4>
+            <div ref={chartContainerRef} />
           </div>
           <div className={styles["wrapChart"]}>
             <Bar

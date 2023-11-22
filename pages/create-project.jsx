@@ -3,6 +3,7 @@ import styles from "../styles/Create-project.module.css";
 import { useDispatch } from "react-redux";
 import { addNewProject } from "../redux/projectSlice";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const CreateProject = () => {
   const dispatch = useDispatch();
@@ -374,7 +375,9 @@ const CreateProject = () => {
                 </div>
                 <div className={styles["contacto"]}>
                   <div className={styles["botones"]}>
-                    <button className={styles["cancelar"]}>cancelar</button>
+                    <Link href="/" className={styles["cancelar"]}>
+                      <button className={styles["inner-cancelar"]}>cancelar</button>
+                    </Link>
                     <button className={styles["crear"]} href="#popproyecto">
                       Crear Proyecto
                     </button>
@@ -403,6 +406,7 @@ const CreateProject = () => {
               <div className={styles["contacto"]}>
                 <div className={styles["popbutton"]}>
                   <button className={styles["crearpop"]}>GUARDAR</button>
+
                   <button className={styles["cancelarpop"]}>cancelar</button>
                 </div>
               </div>

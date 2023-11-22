@@ -2,13 +2,19 @@ import React, { useEffect } from "react";
 import styles from "./layout.module.css";
 import Header from "../header";
 import { useRouter } from "next/router";
-import { Lexend } from "next/font/google";
+import { Lexend, Quicksand } from "next/font/google";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/userSlice";
 import { getSessionToken } from "../../utils/getSessionToken";
 
 const lexend = Lexend({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal"],
+  subsets: ["latin"],
+});
+
+const quicksand = Quicksand({
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal"],
   subsets: ["latin"],
 });
@@ -39,7 +45,7 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <main className={lexend.className}>
+    <main className={quicksand.className}>
       {pathname !== "/login" && <Header />}
 
       {children}

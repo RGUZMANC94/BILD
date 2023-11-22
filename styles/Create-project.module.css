@@ -47,14 +47,15 @@
 .proyect-form input,
 .subject_input {
   padding: 15px;
-  border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: 10px;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  color: #c7c7c7;
+  color: #fff;
   appearance: none;
+  background-color: #565555;
+  border: 0.7px solid #fff;
 }
 .proyect-form textarea {
   padding: 15px;
@@ -65,6 +66,8 @@
   height: 250px;
   box-sizing: border-box;
   color: #c7c7c7;
+  border: 0.7px solid #fff;
+  background: #565555;
 }
 
 .submit.action-button {
@@ -116,16 +119,17 @@
   flex-direction: column;
   text-align: left;
   font-size: 16px;
-  color: #4d4d4d;
+  color: #ffffff;
   font-weight: 400;
   padding: 20px 0;
   text-transform: uppercase;
 }
 
-span.label {
+.label {
   margin: 20px 0 20px;
   display: flex;
   align-items: center;
+  color: #fff;
 }
 
 .file {
@@ -139,8 +143,8 @@ span.label {
   width: 50%;
   height: auto;
   padding: 20px;
-  background-color: #d9d9d9;
-  color: #fff;
+  color: #2466ff;
+  border: 1px solid #2466ff;
   border-radius: 10px;
   text-transform: uppercase;
   font-size: 16px;
@@ -166,8 +170,7 @@ span.label {
 .main-image {
   width: auto;
   aspect-ratio: 16/6;
-  background-color: #fafafa;
-  border: 2px solid #94b4ff;
+
   border-radius: 10px;
   background-image: url(/images/camera-icon.png);
   background-repeat: no-repeat;
@@ -178,6 +181,9 @@ span.label {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid #94b4ff;
+  background-color: #fafafa0d;
 }
 
 .images {
@@ -217,9 +223,9 @@ span.label {
 .proyect-img {
   width: 45%;
   aspect-ratio: 16/9;
-  background-color: #fafafa;
-  border: 2px solid #94b4ff;
   border-radius: 10px;
+  border: 2px solid #94b4ff;
+  background: #fafafa0d;
   background-image: url(/images/camera-icon.png);
   background-repeat: no-repeat;
   background-position: center center;
@@ -293,7 +299,7 @@ span.label {
 .blue-border {
   width: 100%;
   height: 200px;
-  border: 1px dashed #2466ff62;
+  border: 1px dashed #fff;
   border-radius: 10px;
   padding: 30px 50px;
   text-align: center;
@@ -324,8 +330,9 @@ span.label {
   height: auto;
   padding: 10px;
   border: 1px solid #2467ff;
+  background-color: #2467ff;
   border-radius: 5px;
-  color: #2467ff;
+  color: #ffffff;
   font-size: 14px;
   letter-spacing: 1px;
   text-decoration: none;
@@ -368,23 +375,28 @@ span.label {
 .cancelar {
   width: 45%;
   height: 50px;
-  color: #2467ff;
-  font-size: 12px;
-  font-weight: 500;
+  
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 30px;
   padding: 10px 30px;
-  text-align: center;
+  
   cursor: pointer;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(0deg, #2467ff, #00bdff) border-box;
+  background: #343434;
   border-radius: 1em;
-  border: 2px solid transparent;
+  border: 1px solid #fff;
+}
+
+.inner-cancelar{
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .crear {
@@ -409,7 +421,8 @@ span.label {
 }
 
 .text-origen {
-  text-transform: uppercase !important;
+  text-transform: uppercase;
+  color: #fff;
 }
 
 .elegir-origen {
@@ -455,7 +468,7 @@ span.label {
 
 .popup h2 {
   margin-top: 0;
-  color: #4d4d4d;
+  color: #fff;
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
@@ -478,10 +491,10 @@ span.label {
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  color: #4d4d4d;
+  color: #fff;
 }
 .popup .close:hover {
-  color: #2467ff;
+  color: #fff;
 }
 .popup .content {
   overflow: auto;
@@ -534,7 +547,7 @@ span.label {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: #2467ff;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -542,7 +555,7 @@ span.label {
 .cancelarpop {
   width: 45%;
   height: 50px;
-  color: #2467ff;
+  color: #fff;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -618,7 +631,7 @@ span.label {
 }
 
 .inputAssignProject {
-  background-color: transparent;
+  background-color: #565555;
   border: 0.5px solid #ccc;
   border-radius: 10px;
   width: 100%;
@@ -662,7 +675,7 @@ span.label {
 .contactName {
   text-transform: uppercase;
   font-weight: 300;
-  color: #4d4d4d;
+  color: #fff;
 }
 
 .popSuccessProjectCreated {
@@ -685,7 +698,7 @@ span.label {
   transition: top 0s linear.0s, opacity 0.5s ease-in-out;
 }
 
-.bgPopUp{
+.bgPopUp {
   position: absolute;
   top: 0;
   left: 0;

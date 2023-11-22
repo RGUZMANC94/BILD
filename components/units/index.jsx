@@ -3,6 +3,7 @@ import Button from "../button";
 import styles from "./Units.module.css";
 import { useSelector } from "react-redux";
 import Unit from "../unit";
+import Link from "next/link";
 
 const Units = ({ setCreateOportunity, units }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
@@ -64,8 +65,8 @@ const Units = ({ setCreateOportunity, units }) => {
         <div className={`${styles.excelsButtons} flex j-e a-c`}>
           <Button
             inheritClass={styles.excelsButton}
-            className={`gradient`}
-            buttonType={"gradient"}
+            className={`primary`}
+            buttonType={"primary"}
             label="Subir excel"
             iconImage={false}
           />

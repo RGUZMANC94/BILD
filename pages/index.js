@@ -69,7 +69,7 @@ const Home = () => {
                       <>
                         <img
                           alt=""
-                          src="/images/cama.png"
+                          src="/images/cards/bed.png"
                           width="22"
                           height="20"
                         />
@@ -82,7 +82,7 @@ const Home = () => {
                       <>
                         <img
                           alt=""
-                          src="/images/ducha.png"
+                          src="/images/cards/bath.png"
                           width="7"
                           height="11"
                         />

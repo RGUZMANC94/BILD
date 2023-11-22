@@ -1,5 +1,5 @@
 .siteButton {
-  border: 1px solid #2467ff;
+  border: 1px solid #fff;
   border-radius: 5px;
   padding: 10px 20px;
   display: flex;
@@ -8,9 +8,13 @@
   gap: 10px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out, border 0.25s ease-in 0s;
   overflow: hidden;
   position: relative;
+}
+
+.siteButton:hover{
+  transition: all 0.25s ease-in-out, border 0.25s ease-in-out 0.1s;
 }
 
 .siteButton span {
@@ -27,7 +31,7 @@
   left: 0;
   width: 120%;
   height: 100%;
-  transform: translateY(100%);
+  transform: translateY(-100%);
   transition: all 0.25s ease-in-out;
 }
 
@@ -37,15 +41,23 @@
 
 .primary:before {
   background-color: #2467ff;
+  transform: translateY(0%);
 }
 
 .primary {
-  color: #2467ff;
+  color: #fff;
+  background-color: rgba(60, 64, 67, 0.35);
+  border-color: #2467ff;
   max-width: 350px;
 }
 
 .primary:hover {
   color: #fff;
+  border-color: #fff;
+}
+
+.primary:hover:before{
+  transform: translateY(-100%);
 }
 
 .align-end {
@@ -57,21 +69,23 @@
 }
 
 .secondary {
-  background-color: #2467ff;
+  background-color: rgba(60, 64, 67, 0.35);
+  border-color: #fff;
   color: #fff;
 }
 
 .secondary:hover {
-  color: #2467ff;
+  color: #fff;
+  border-color: #2467ff;
 }
 
 .secondary:before {
-  background-color: #fff;
+  background-color: #2467ff;
   transform: translateY(-100%);
 }
 
 .gradient {
-  color: #2467ff;
+  color: #fff;
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
@@ -83,7 +97,6 @@
   border-radius: 7px;
   border: 2px solid transparent;
 }
-
 
 .buttonsFilter {
   max-width: 100%;

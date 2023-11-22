@@ -1,14 +1,12 @@
 .wrap-crear {
-  width: 70%;
+  width: 85%;
   height: auto;
-  margin: 0 auto;
-  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #21221d;
-  color: #4d4d4d;
-  box-shadow: 2px 2px 6px #131312;
+  background-color: transparent;
+  color: #fff;
+  /* box-shadow: 2px 2px 6px #131312; */
   border-radius: 15px;
   margin-top: 10vh;
 }
@@ -32,20 +30,21 @@
 }
 
 .crear {
-  width: 100% !important;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   display: flex;
-  flex-direction: row !important;
+  flex-direction: row;
   justify-content: space-around;
-  align-items: start !important;
+  align-items: start;
   padding: 15px;
-  background: none !important;
-  z-index: 11 !important;
-  position: relative !important;
-  box-shadow: none !important;
-  top: 0 !important;
-  margin-bottom: 40px !important;
+  background: none;
+  z-index: 11;
+  position: relative;
+  box-shadow: none;
+  top: 0;
+  gap: 7vw;
+  margin-bottom: 40px;
 }
 
 .crear-tipo {
@@ -58,9 +57,7 @@
   justify-content: space-between;
   align-items: start;
   background-color: #21221d;
-  box-shadow: 2px 2px 6px #161615;
   border-radius: 15px;
-  margin-top: 40px;
   text-align: left;
   padding: 25px 30px 30px;
 }
@@ -88,7 +85,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: start;
-  background-color: #fff;
+  background-color: #565555;
   box-shadow: none;
   border-radius: 15px;
   margin-top: 40px;
@@ -150,9 +147,9 @@
 }
 
 .tipo-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -163,10 +160,10 @@
   border-radius: 10px;
   box-shadow: 2px 2px 6px #c7c7c7 !important;
   font-size: 18px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 300;
   padding: 10px;
-  background-color: #fff;
+  background-color: #565555;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -177,6 +174,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s ease-in-out;
+  display: none;
 }
 
 .showMiniPop {
@@ -186,7 +184,7 @@
 
 .valor {
   font-size: 14px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 200;
   margin-top: 20px;
 }
@@ -197,10 +195,15 @@
   justify-content: start;
   align-items: start;
   font-size: 14px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 200;
   text-align: left;
   margin-top: 10px;
+}
+
+.detalles img {
+  width: 20px;
+  height: 20px;
 }
 
 .detalles span {
@@ -210,22 +213,29 @@
 .left-side {
   width: 60%;
   height: auto;
-  margin-left: 30px;
-  margin-bottom: 50px;
+  border-radius: 28px;
+  background: #21221d;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  padding: 15px 15px 40px;
 }
 
 .crear-tipo {
-  width: 100% !important;
+  width: 100%;
 }
 
 .right-side {
-  width: 40%;
+  width: 45%;
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 10px;
+  background-color: #21221D;
+  border-radius: 35px;
+  min-height: 65vh;
 }
 
 .conecta {
@@ -251,7 +261,7 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
-  border-radius: 10px;
+  border-radius: 7px;
   border: 1px solid #2467ff;
   text-transform: uppercase;
   margin-top: 30px;
@@ -265,7 +275,7 @@
   justify-content: center;
 }
 
-button.contacto-existente {
+.contacto-existente {
   width: 50%;
   margin: 0 20px;
 }
@@ -299,7 +309,7 @@ button.contacto-existente {
 .crear-cotizacion {
   width: 50%;
   height: 50px;
-  color: #2467ff;
+  color: #fff;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -311,10 +321,9 @@ button.contacto-existente {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
-  border: 2px solid transparent;
+  border: 2px solid #fff;
+  background-color: #414343;
 }
 .img-tipo {
   width: 40%;
@@ -460,10 +469,10 @@ button.contacto-existente {
     border-radius: 10px;
     box-shadow: 2px 2px 6px #c7c7c7 !important;
     font-size: 18px;
-    color: #4d4d4d;
+    color: #fff;
     font-weight: 300;
     padding: 10px;
-    background-color: #fff;
+    background-color: #565555;
     margin: 0 auto;
     text-align: center;
     display: flex;

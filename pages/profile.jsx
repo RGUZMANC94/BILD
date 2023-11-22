@@ -6,22 +6,22 @@ const Documentation = () => {
     <div className={styles["doc-perfil"]}>
       <div className={styles["editar-perfil"]}>
         <div className={styles["perfil-img"]}>
-          <img src="/images/perfil-img.jpeg" />
+          <img src="/images/henry.png" />
         </div>
         <span className={styles["name-perfil"]}>Henry Cavill</span>
         <div className={styles["id-perfil"]}>
-          <img src="/images/id-img.png" />
+          <img src="/images/id.png" />
           13.932.102. Bogotá D.C
         </div>
         <div className={styles["perfil-icons"]}>
           <div className={styles["perfil-icon"]}>
-            <img src="/images/blue-phone.png" />
+            <img src="/images/phone-profile.png" />
           </div>
           <div className={styles["perfil-icon"]}>
-            <img src="/images/blue-mail.png" />
+            <img src="/images/mail-profile.png" />
           </div>
           <div className={styles["perfil-icon"]}>
-            <img src="/images/blue-wa.png" />
+            <img src="/images/whats-profile.png" />
           </div>
         </div>
       </div>
