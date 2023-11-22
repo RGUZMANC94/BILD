@@ -64,6 +64,7 @@
   font-weight: 500;
   line-height: 0.45; 
   text-transform: uppercase;
+  cursor: pointer;
 
 }
 .top-content-bar{
