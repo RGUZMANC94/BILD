@@ -9,8 +9,10 @@ const OportunitiesCard = ({
 }) => {
   return (
     <>        
-          <div className={`${styles["card-unit"]} ${styles.active}`}>
+        <div className={`${styles["card-unit"]} ${styles.active}`}>
 
+          <div className={styles["card-info-container"]}>
+            
             <div className={styles["img-card"]}>
               <img 
                 className={styles["image-card-circle"]}
@@ -26,8 +28,17 @@ const OportunitiesCard = ({
             </div>
 
             <div className={styles["card-right-arrow-icon"]}></div>
+            
+          </div>
 
-          </div>      
+          <div className={styles["card-progress-bar-container"]}>
+
+            <div className={styles["card-progress-bar-frost-icon"]}></div>
+            <div className={styles["card-progress-bar"]}></div>
+
+          </div>
+
+        </div>      
     </>
   );
 };

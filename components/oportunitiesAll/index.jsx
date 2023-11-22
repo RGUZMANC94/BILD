@@ -24,47 +24,14 @@ const oportunitiesAll = () => {
           </div>
 
           <div className={styles["oportunidades"]}>
-        <div className={styles["tipo"]}>
+        <div className={styles["card-container"]}>
 
           
           <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-
-          <div className={`${styles["tipo-unit"]} ${styles.active}`}>
-            <div className={styles["img-tipo"]}>
-              <img src="/images/tipo-1.png" />
-              <div className={styles["zoom"]}></div>
-            </div>
-            <div className={styles["tipo-info"]}>
-              <span className={styles["tipo-title"]}>Fontana Campestre</span>
-              <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-              <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
-            </div>
-            <div className={styles["back"]}></div>
-          </div>
-          <div className={styles["tipo-unit"]}>
-            <div className={styles["img-tipo"]}>
-              <img src="/images/tipo-1.png" />
-              <div className={styles["zoom"]}></div>
-            </div>
-            <div className={styles["tipo-info"]}>
-              <span className={styles["tipo-title"]}>Fontana Campestre</span>
-              <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-              <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
-            </div>
-            <div className={styles["back"]}></div>
-          </div>
-          <div className={styles["tipo-unit"]}>
-            <div className={styles["img-tipo"]}>
-              <img src="/images/tipo-1.png" />
-              <div className={styles["zoom"]}></div>
-            </div>
-            <div className={styles["tipo-info"]}>
-              <span className={styles["tipo-title"]}>Fontana Campestre</span>
-              <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-              <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
-            </div>
-            <div className={styles["back"]}></div>
-          </div>
+          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          
         </div>
         
 

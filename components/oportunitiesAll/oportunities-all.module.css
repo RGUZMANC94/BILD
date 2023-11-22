@@ -69,13 +69,14 @@
   flex-wrap: wrap;
 }
 
-.tipo {
+.card-container {
   width: calc(50% - 50px);
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  gap: 48px;
 }
 
 .tipo-title {
