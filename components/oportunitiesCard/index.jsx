@@ -1,27 +1,34 @@
 import React from 'react';
 import styles from "./oportunities-card.module.css";
 
+
 const OportunitiesCard = ({
+  state,
   name,
+  location,
   image,
   type,
-  followingDate
+  followingDate,
+  hot
 }) => {
+  
+  
   return (
     <>        
-        <div className={`${styles["card-unit"]} ${styles.active}`}>
+        <div className={`${styles["card-unit"]} ${styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]}`}>
 
           <div className={styles["card-info-container"]}>
             
             <div className={styles["img-card"]}>
               <img 
                 className={styles["image-card-circle"]}
-                src="/images/tipo-1.png"/>
+                src={image}/>
             </div>
 
             <div className={styles["card-info"]}>
 
               <span className={styles["card-title"]}>{name}</span>
+              <span className={styles["card-location"]}>{location}</span>
               <span className={styles["card-sub"]}>{type}</span>
               <div className={styles["card-detalles"]}>Seguimiento: {followingDate}</div>
 
@@ -34,7 +41,7 @@ const OportunitiesCard = ({
           <div className={styles["card-progress-bar-container"]}>
 
             <div className={styles["card-progress-bar-frost-icon"]}></div>
-            <div className={styles["card-progress-bar"]}></div>
+            <div className={styles[`${hot ? 'card-progress-bar-cold' : 'card-progress-bar-hot'}`]}></div>
 
           </div>
 

@@ -1,9 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 import { openPopUp } from "../../redux/popUpOportunity";
 import styles from "./oportunities-all.module.css";
 import OportunitiesCard from "../../components/oportunitiesCard";
 
 const oportunitiesAll = () => {
+
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleItemClick = (index) => {
+    setSelectedItem(index);
+  };
+
+
   return (
     <>
        <div className={styles["filter_container"]}>
@@ -25,13 +34,10 @@ const oportunitiesAll = () => {
 
           <div className={styles["oportunidades"]}>
         <div className={styles["card-container"]}>
+          <OportunitiesCard hot={true}  state={false} image={"/images/tipo-1.png"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={false} state={true}  image={"/images/tipo-1.png"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={true} state={true}  image={"/images/tipo-1.png"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
 
-          
-          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-          <OportunitiesCard name={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-          
         </div>
         
 

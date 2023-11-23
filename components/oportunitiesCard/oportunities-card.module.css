@@ -1,11 +1,4 @@
 
-.card-title {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.38889; 
-}
-
 .card-unit {
   width: 100%;
   min-height: 100px;
@@ -36,31 +29,48 @@
   display: flex;
   margin-top: 25px;
   position: relative;
-  background-color: #4d4d4d;
+  background-color: #FFF;
   flex-direction: column;
   justify-content: center;
+  border-radius: 10px;
 }
 
-.card-progress-bar {
+.card-progress-bar-cold {
   width: 40%;
-  height: 7px;
+  height: 9px;
   display: flex;
   background-color:  #2467FF;
+}
+
+.card-progress-bar-hot {
+  width: 40%;
+  height: 9px;
+  display: flex;
+  background-color:  #F2CC3B;
 }
 
 .card-progress-bar-frost-icon {
   width: 23px;
   height: 23px;
-  left: 40%;
+  left: calc(40% - 2%);
   position: absolute;
   background-size: 23px 23px;
   margin: 0;
   background-image: url(/images/cold-icon.svg);
 }
 
-.card-unit.active {
+/*.card-unit.active {
+  border: 1px solid #FF5567;
+}*/
+
+.card-state-disabled{
+  border: 1px solid #ff556600;
+}
+
+.card-state-active{
   border: 1px solid #FF5567;
 }
+
 
 .card-info {
   width: 70%;
@@ -71,10 +81,25 @@
 }
 
 .card-title {
+  
+}
+
+.card-title {
   font-size: 18px;
-  font-weight: 500;
   color: #FFF;
-  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.38889; 
+  margin-bottom: 10px;
+}
+
+.card-location {
+  font-size: 18px;
+  color: #FFF;
+  font-style: normal;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.38889; 
 }
 
 .card-sub {
@@ -83,28 +108,32 @@
   color: #FFF;
   text-transform: uppercase;
   width: 100%;
-  margin-top: 15px;
+  margin: 10px 0px;
 }
 
 .card-detalles {
   display: flex;
+  color: #FFF;
   flex-direction: row;
   justify-content: start;
   align-items: start;
-  font-size: 14px;
-  color: #FFF;
-  font-weight: 200;
-  text-align: left;
-  margin-top: 10px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.78611;
 }
 
 .card-sub {
   font-size: 12px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #FFF;
   text-transform: uppercase;
   width: 100%;
   margin-top: 15px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.78611;
 }
 
 .card-back {
