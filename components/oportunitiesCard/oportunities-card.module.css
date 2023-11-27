@@ -40,6 +40,7 @@
   height: 9px;
   display: flex;
   background-color:  #2467FF;
+  border-radius: 10px;
 }
 
 .card-progress-bar-hot {
@@ -47,6 +48,15 @@
   height: 9px;
   display: flex;
   background-color:  #F2CC3B;
+  border-radius: 10px;
+}
+
+.card-progress-bar-warm {
+  width: 40%;
+  height: 9px;
+  display: flex;
+  background-color:  #7FE698;
+  border-radius: 10px;
 }
 
 .card-progress-bar-frost-icon {
@@ -59,6 +69,25 @@
   background-image: url(/images/cold-icon.svg);
 }
 
+.card-progress-bar-hot-icon {
+  width: 23px;
+  height: 23px;
+  left: calc(40% - 2%);
+  position: absolute;
+  background-size: 23px 23px;
+  margin: 0;
+  background-image: url(/images/yellow_state.svg);
+}
+
+.card-progress-bar-warm-icon {
+  width: 23px;
+  height: 23px;
+  left: calc(40% - 2%);
+  position: absolute;
+  background-size: 23px 23px;
+  margin: 0;
+  background-image: url(/images/green_state.svg);
+}
 /*.card-unit.active {
   border: 1px solid #FF5567;
 }*/

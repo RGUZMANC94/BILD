@@ -39,9 +39,26 @@ const OportunitiesCard = ({
           </div>
 
           <div className={styles["card-progress-bar-container"]}>
+            {hot === "cold" &&  
+              <>
+                <div className={styles["card-progress-bar-frost-icon"]}></div>
+                <div className={styles["card-progress-bar-cold"]}></div>
+              </>
+            }
 
-            <div className={styles["card-progress-bar-frost-icon"]}></div>
-            <div className={styles[`${hot ? 'card-progress-bar-cold' : 'card-progress-bar-hot'}`]}></div>
+            {hot === "hot" &&  
+              <>
+                <div className={styles["card-progress-bar-hot-icon"]}></div>
+                <div className={styles["card-progress-bar-hot"]}></div>
+              </>
+            }
+
+            {hot === "warm" &&  
+              <>
+                <div className={styles["card-progress-bar-warm-icon"]}></div>
+                <div className={styles["card-progress-bar-warm"]}></div>
+              </>
+            }         
 
           </div>
 
