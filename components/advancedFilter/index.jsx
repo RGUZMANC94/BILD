@@ -4,29 +4,31 @@ import { Range, getTrackBackground } from "react-range";
 import Button from "../button";
 
 const advancedFilter = ({ show, setShowFilter }) => {
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  /*const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };*/
+
   const [priceValues, setPriceValues] = useState([0, 3000000000]);
-  const [floorValues, setFloorValues] = useState([1, 21]);
-  const [sizeValues, setSizeValues] = useState([45, 1200]);
+  const [stateValues, setStateValues] = useState([1, 100]);
+ 
 
   const rangeSliders = [
+    {
+      type: "state",
+      min: 1,
+      max: 100,
+      step: 1,
+    },
     {
       type: "price",
       min: 0,
       max: 3000000000,
       step: 5000000,
     },
-    {
-      type: "floor",
-      min: 1,
-      max: 21,
-      step: 1,
-    },
-    {
-      type: "size",
-      min: 45,
-      max: 1200,
-      step: 50,
-    },
+    
   ];
 
   return (
@@ -78,8 +80,32 @@ const advancedFilter = ({ show, setShowFilter }) => {
           <div
             className={styles["filterGroup"]}
           >
+            <div className={styles["advancedCheckContainer"]}>
+              
+
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  className={styles.checkboxInput}
+                />
+                <label htmlFor="checkbox" className={styles.checkboxLabel}></label>
+                <div className={styles.checkboxText}>Abiertas</div>
+
+                <input
+                  type="checkbox"
+                  id="checkbox2"
+                  className={styles.checkboxInput}
+                />
+                <label htmlFor="checkbox2" className={styles.checkboxLabel}></label>
+                <div className={styles.checkboxText}>Cerradas</div>
+            </div>
+          </div>
+
+          <div
+            className={styles["filterGroup"]}
+          >
             
-            <label htmlFor={styles.advancedlabelFilter}>
+            <label className={styles.advancedLabelFilter}>
                 <span className={styles.advancedLabelText}>PROYECTO:</span>
                 <select
                   value={"default"}
@@ -96,15 +122,95 @@ const advancedFilter = ({ show, setShowFilter }) => {
 
           </div>
 
+          <div
+            className={styles["filterGroup"]}
+          >
+            <div className={styles["advancedCheckContainer"]}>
+              
+
+                <input
+                  type="checkbox"
+                  id="checkbox3"
+                  className={styles.checkboxInput}
+                />
+                <label htmlFor="checkbox3" className={styles.checkboxLabel}></label>
+                <div className={styles.checkboxText}>Creación</div>
+
+                <input
+                  type="checkbox"
+                  id="checkbox4"
+                  className={styles.checkboxInput}
+                />
+                <label htmlFor="checkbox4" className={styles.checkboxLabel}></label>
+                <div className={styles.checkboxText}>Cerradas</div>
+            </div>
+          </div>
+
+          <div
+            className={styles["filterGroup"]}
+          >
+            <div className={styles["advancedRangeInput"]}>
+              <div className={styles["advancedRangeText"]}>FECHA EN QUE FUE AGREGADO:</div>
+              <input
+                  type="checkbox"
+                  id="checkbox5"
+                  onChange={() => {
+                    setIsChecked(!isChecked);
+                  }}
+                  className={styles.checkboxInput}
+                />
+                <label htmlFor="checkbox5" className={styles.checkboxLabelSquare}></label>
+                <div className={styles.checkboxText}>Cerradas</div>
+            </div>
+          </div>  
+
+          <div
+            className={styles["filterGroup"]}
+          >
+            
+            {isChecked ? 
+
+                <div className={styles["dualRange"]}>
+                  <div className={styles.advancedDate}>
+                    <input
+                      className={styles.advancedDateInputDual}
+                      type="date" 
+                      id="startDate" 
+                      name="trip-start" 
+                    />
+                  </div>
+
+                  <div className={styles.advancedDate}>
+                    <input
+                      className={styles.advancedDateInputDual}
+                      type="date" 
+                      id="endDate" 
+                      name="trip-start" 
+                    />
+                  </div>
+              </div>
+
+            : 
+            
+              <div className={styles.advancedDate}>
+                <input
+                  className={styles.advancedDateInput}
+                  type="date" 
+                  id="singleDate" 
+                  name="trip-start" 
+                />
+              </div>
+            }
+          </div>
+
           {rangeSliders.map((rangeSlider, i) => (
             <div
               key={i}
               className={`${styles.filterGroup} ${styles.filterGroupPrice}`}
             >
               <span className={`${styles.labelText} ${styles.labelTextRange}`}>
-                {rangeSlider.type === "price" && "Precio"}
-                {rangeSlider.type === "floor" && "Piso"}
-                {rangeSlider.type === "size" && "Área"}:
+                {rangeSlider.type === "state" && "ESTADO DE LA OPORTUNIDAD:"}
+                {rangeSlider.type === "price" && "PRECIO"}:
               </span>
               <Range
                 step={rangeSlider.step}
@@ -113,9 +219,7 @@ const advancedFilter = ({ show, setShowFilter }) => {
                 values={
                   rangeSlider.type === "price"
                     ? priceValues
-                    : rangeSlider.type === "floor"
-                    ? floorValues
-                    : sizeValues
+                    : stateValues
                 }
                 onChange={(values) => {
                   switch (rangeSlider.type) {
@@ -123,11 +227,8 @@ const advancedFilter = ({ show, setShowFilter }) => {
                       setPriceValues(values);
                       break;
 
-                    case "floor":
-                      setFloorValues(values);
-                      break;
-                    case "size":
-                      setSizeValues(values);
+                    case "state":
+                      setStateValues(values);
                       break;
                   }
                 }}
@@ -150,9 +251,7 @@ const advancedFilter = ({ show, setShowFilter }) => {
                           values:
                             rangeSlider.type === "price"
                               ? priceValues
-                              : rangeSlider.type === "floor"
-                              ? floorValues
-                              : sizeValues,
+                              : stateValues,
                           colors: ["#ccc", "#FF5567", "#ccc"],
                           min: rangeSlider.min,
                           max: rangeSlider.max,
@@ -184,66 +283,36 @@ const advancedFilter = ({ show, setShowFilter }) => {
 
               <div className={`${styles.labelsRangeSlider} flex j-sb a-c`}>
                 <div className={`${styles.minLabel}`}>
+
                   {rangeSlider.type === "price" &&
                     `$${priceValues[0]
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`}
-                  {rangeSlider.type === "floor" && floorValues[0]}
-                  {rangeSlider.type === "size" && sizeValues[0]}
+                  {rangeSlider.type === "state" && 
+                  
+                      <div className={styles["rangeStateColdIcon"]}></div>
+                  }
+
                 </div>
                 <div className={`${styles.maxLabel}`}>
+
                   {rangeSlider.type === "price" &&
                     `$${priceValues[1]
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`}
-                  {rangeSlider.type === "floor" && floorValues[1]}
-                  {rangeSlider.type === "size" && sizeValues[1]}
+                  {rangeSlider.type === "state" && 
+                  
+                    <div className={styles["rangeStateHotIcon"]}></div>
+                  }
+
                 </div>
               </div>
             </div>
           ))}
 
-          <div
-            className={`${styles.filterGroup} ${styles.filterGroupDrops} flex j-sb a-s`}
-          >
-            <div className={`${styles.dropDownGrpup}`}>
-              <label htmlFor={styles.labelFilter}>
-                <span className={styles.labelText}>HABITACIONES:</span>
-                <select
-                  value={"default"}
-                  defaultValue={"default"}
-                  className={styles.ubicationSelect}
-                >
-                  <option value={"default"} selected>
-                    3+
-                  </option>
-                  <option value={1}>4+</option>
-                  <option value={2}>5+</option>
-                  <option value={3}>6</option>
-                </select>
-              </label>
-            </div>
-            <div className={`${styles.dropDownGrpup}`}>
-              <label htmlFor={styles.labelFilter}>
-                <span className={styles.labelText}>BAÑOS:</span>
-                <select
-                  defaultValue={"default"}
-                  value={"default"}
-                  defaultValue={"default"}
-                  className={styles.ubicationSelect}
-                >
-                  <option value={"default"} selected>
-                    1+
-                  </option>
-                  <option value={1}>2+</option>
-                  <option value={2}>3+</option>
-                  <option value={2}>4+</option>
-                </select>
-              </label>
-            </div>
-          </div>
+          
 
-          <div className={`${styles.buttonsFilter} flex j-c a-c column`}>
+          <div className={`${styles.advancedButtonsFilter} flex j-c a-c column`}>
             <Button
               buttonType="secondary"
               label="Buscar"
