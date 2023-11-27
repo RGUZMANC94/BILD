@@ -434,3 +434,23 @@
 
   margin-top: 70px;
 }
+
+.dropdownContainer {
+  position: relative;
+  
+  transition: all 0.5s ease-in-out;
+}
+
+.dropdownContent {
+  display: none;
+  height: 0%;
+}
+
+.dropdownContent.show {
+  display: flex;
+
+  width: 100%;
+  height: fit-content;
+  flex-direction: column;
+  flex-wrap: nowrap;  
+}

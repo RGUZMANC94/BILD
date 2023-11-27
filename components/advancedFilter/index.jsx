@@ -7,9 +7,7 @@ const advancedFilter = ({ show, setShowFilter }) => {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  /*const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };*/
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const [priceValues, setPriceValues] = useState([0, 3000000000]);
   const [stateValues, setStateValues] = useState([1, 100]);
@@ -52,14 +50,19 @@ const advancedFilter = ({ show, setShowFilter }) => {
           <div
             className={styles["filterGroup"]}
           >
-            <div className={styles["topClearText"]}>Limpiar</div>
+            <div 
+              className={styles["topClearText"]}>Limpiar</div>
 
           </div>
+
+          <div className={styles.dropdownContainer}>
+      
+    </div>
           
           <div
             className={styles["filterGroup"]}
           >
-              <div className={styles.advancedSearch}>
+ <div className={styles.advancedSearch}>
               <input
                 className={styles.advancedSearchInput}
                 type="text"
@@ -74,9 +77,17 @@ const advancedFilter = ({ show, setShowFilter }) => {
 
           <div className={styles["advancedDropdownTop"]}>
             <div className={styles["advancedDropdownText"]}>TIPO DE OPORTUNIDAD:</div>
-            <div className={styles["advancedIconSelect"]}></div>
+            <div 
+            className={styles["advancedIconSelect"]}
+            onClick={() => {
+              setShowDropdown(!showDropdown)}}
+            ></div>
           </div>
 
+          <div className={styles["dropdownContainer"]}>
+          <div className={`${styles.dropdownContent} ${showDropdown ? styles.show : ''}`}>
+
+          
           <div
             className={styles["filterGroup"]}
           >
@@ -309,6 +320,9 @@ const advancedFilter = ({ show, setShowFilter }) => {
               </div>
             </div>
           ))}
+          </div>
+          </div>
+
 
           
 
