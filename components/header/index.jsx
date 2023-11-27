@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const Header = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [showAdvancedFilter, setShowAdvancedFilter] = useState(true);
+  const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
   const router = useRouter();
   const { pathname } = router;
   return (
@@ -69,14 +69,7 @@ const Header = () => {
                   onClick={() => setShowFilter(true)}
                 ></div>
               </div>
-
-              <div className={styles.search}>
-                <div
-                  className={`${styles.glass} bg-ct`}
-                  onClick={() => setShowAdvancedFilter(true)}
-                ></div>
-              </div>
-
+              
             </div>
           </div>
         </div>

@@ -279,7 +279,10 @@ li.pendiente-list {
 }
 
 .pendientes-bottom {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -304,6 +307,37 @@ li.pendiente-list {
   border-radius: 1em;
   border: 2px solid transparent;
   margin: 0 auto;
+}
+
+
+.card-progress-bar-container {
+  width: 80%;
+  height: auto;
+  display: flex;
+  margin-top: 25px;
+  position: relative;
+  background-color: #FFF;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card-progress-bar-cold {
+  width: 40%;
+  height: 9px;
+  display: flex;
+  background-color:  #2467FF;
+  border-radius: 10px;
+}
+
+.card-progress-bar-frost-icon {
+  width: 23px;
+  height: 23px;
+  left: calc(40% - 2%);
+  position: absolute;
+  background-size: 23px 23px;
+  margin: 0;
+  background-image: url(/images/cold-icon.svg);
 }
 
 @media only screen and (max-width: 1200px) {

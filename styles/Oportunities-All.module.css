@@ -412,6 +412,15 @@ li.pendiente-list {
 }
 
 @media only screen and (max-width: 1200px) {
+  .main{
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .all_card-container{
+    width: 100%;
+  }
+
   .img-tipo {
     margin-right: 10px;
   }

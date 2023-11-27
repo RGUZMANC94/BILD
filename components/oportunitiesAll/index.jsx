@@ -34,9 +34,9 @@ const oportunitiesAll = () => {
 
           <div className={styles["oportunidades"]}>
         <div className={styles["card-container"]}>
-          <OportunitiesCard hot={"cold"}  state={false} image={"/images/tipo-1.png"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-          <OportunitiesCard hot={"hot"} state={true}  image={"/images/tipo-1.png"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
-          <OportunitiesCard hot={"warm"} state={true}  image={"/images/tipo-1.png"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={"cold"}  state={false} image={"/images/perfil-img.jpeg"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={"hot"} state={true}  image={"/images/perfil-img.jpeg"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={"warm"} state={true}  image={"/images/perfil-img.jpeg"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
 
         </div>
         
@@ -102,6 +102,11 @@ const oportunitiesAll = () => {
               >
                 Ver Oportunidad
               </button>
+          <div className={styles["card-progress-bar-container"]}>
+            
+                <div className={styles["card-progress-bar-frost-icon"]}></div>
+                <div className={styles["card-progress-bar-cold"]}></div>
+          </div> 
             </div>
           </div>
         </div>
