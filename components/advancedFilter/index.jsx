@@ -46,7 +46,55 @@ const advancedFilter = ({ show, setShowFilter }) => {
         ></div>
 
         <div className={styles.filterGroups}>
+
+          <div
+            className={styles["filterGroup"]}
+          >
+            <div className={styles["topClearText"]}>Limpiar</div>
+
+          </div>
           
+          <div
+            className={styles["filterGroup"]}
+          >
+              <div className={styles.advancedSearch}>
+              <input
+                className={styles.advancedSearchInput}
+                type="text"
+                placeholder="Buscar Proyecto"
+              />
+              <div
+                className={`${styles.glass} bg-ct`}
+                onClick={() => setShowFilter(true)}
+              ></div>
+            </div>
+          </div>
+
+          <div className={styles["advancedDropdownTop"]}>
+            <div className={styles["advancedDropdownText"]}>TIPO DE OPORTUNIDAD:</div>
+            <div className={styles["advancedIconSelect"]}></div>
+          </div>
+
+          <div
+            className={styles["filterGroup"]}
+          >
+            
+            <label htmlFor={styles.advancedlabelFilter}>
+                <span className={styles.advancedLabelText}>PROYECTO:</span>
+                <select
+                  value={"default"}
+                  defaultValue={"default"}
+                  className={styles["advancedProjectSelect"]}
+                >
+                  <option value={"default"} selected>
+                    Projecto 1
+                  </option>
+                  <option value={1}>Projecto 2</option>
+                  <option value={2}>Projecto 3</option>
+                </select>
+              </label>
+
+          </div>
 
           {rangeSliders.map((rangeSlider, i) => (
             <div
@@ -198,7 +246,7 @@ const advancedFilter = ({ show, setShowFilter }) => {
           <div className={`${styles.buttonsFilter} flex j-c a-c column`}>
             <Button
               buttonType="secondary"
-              label="Filtrar"
+              label="Buscar"
               className="buttonsFilter"
             />
             <Button

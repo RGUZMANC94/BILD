@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const Header = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
+  const [showAdvancedFilter, setShowAdvancedFilter] = useState(true);
   const router = useRouter();
   const { pathname } = router;
   return (
