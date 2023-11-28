@@ -411,111 +411,17 @@ li.pendiente-list {
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 1200px) {
-  .main{
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-
-  .all_card-container{
-    width: 100%;
-  }
-
-  .img-tipo {
-    margin-right: 10px;
-  }
-
-  .box-dotted {
-    left: -47px;
-  }
-  .blue-point {
-    left: -55px;
-  }
-
-  .blue-point-plus {
-    left: -10px;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  .box-dotted {
-    left: -42px;
-  }
-  .blue-point {
-    left: -50px;
-  }
-
-  .blue-point-plus {
-    left: -5px;
-  }
-
-  .tipo-unit {
-    width: 90%;
-    padding: 10px 0 0 !important;
-  }
-
-  .icon {
-    width: 25%;
-  }
-
-  button.ver-oportunidad {
-    width: 60%;
-  }
-
-  .pendientes {
-    width: 90%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .main {
+@media only screen and (max-width: 1024px) {
+  /*.main {
     padding: 0px;
     top: 0px;
-  }
-  .tipo-unit {
-    width: calc(80% - 20px);
-    min-height: 100px;
-    height: auto;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: start;
-    background-color: #fff;
-    box-shadow: 2px 2px 6px #c7c7c7;
-    border-radius: 15px;
-    margin-top: 40px;
-    text-align: left;
-    padding-bottom: 25px;
-    position: relative;
-  }
+  }*/
 
-  .back {
-    position: absolute;
-    right: -10px;
-  }
+  .main {
 
-  #top-content {
-    top: -10px;
-    width: 100%;
-    height: auto;
-    background-color: white;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 2px 2px 6px #c7c7c7;
-    padding: 20px;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
   }
-  .icon {
-    display: none;
-  }
-
-  .zoom {
-    z-index: 7;
-  }
-
-  .img-tipo {
-    width: auto;
-    margin-right: 30px;
-  }
+  
 }

@@ -65,7 +65,7 @@ const oportunitiesAll = () => {
                       name="cb-terminosservicio"
                       required
                     />{" "}
-                    <span>05/01/22</span>
+                    <span className={styles["pendiente-date"]}>05/01/22</span>
                   </label>
                   <ul>
                     <li className={styles["pendiente-list"]}>
@@ -85,7 +85,7 @@ const oportunitiesAll = () => {
               </div>
 
               <div className={styles["box"]}>
-                <span>05/01/22</span>
+                <span className={styles["pendiente-date"]}>05/01/22</span>
                 <ul>
                   <li className={styles["pendiente-list"]}>
                     Creación del Contacto
@@ -96,10 +96,12 @@ const oportunitiesAll = () => {
               </div>
             </div>
             <div className={styles["pendientes-bottom"]}>
+              
               <button
                 className={styles["ver-oportunidad"]}
                 onClick={() => dispatch(openPopUp(true))}
               >
+                <div className={styles["pendientes-bottom-icon"]}/>
                 Ver Oportunidad
               </button>
           <div className={styles["card-progress-bar-container"]}>

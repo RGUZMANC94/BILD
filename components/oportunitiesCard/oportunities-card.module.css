@@ -194,48 +194,16 @@
 
 
 
-@media only screen and (max-width: 1200px) {
-  .img-card {
-    margin-right: 10px;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-
-  .card-unit {
-    width: 90%;
-    padding: 10px 0 0 !important;
-  }
-
-}
-
 @media only screen and (max-width: 768px) {
 
-  .card-unit {
-    width: calc(80% - 20px);
-    min-height: 100px;
-    height: auto;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: start;
-    background-color: #fff;
-    box-shadow: 2px 2px 6px #c7c7c7;
-    border-radius: 15px;
-    margin-top: 40px;
-    text-align: left;
-    padding-bottom: px;
-    position: relative;
-  }
-
-  .card-back {
-    position: absolute;
-    right: -10px;
-  }
-
   .img-card {
-    width: auto;
-    margin-right: 30px;
+    margin: 0px 15px;
   }
+
+  .img-card img {
+    width: 50px;
+    height: 50px;
+  }
+    
+  
 }
