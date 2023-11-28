@@ -67,7 +67,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         <div className={styles["lado-c"]}>
           <span className={styles["title-separacion"]}>Cuota Inicial</span>
           <br />
-          <span className={styles["title-separacion"]}>
+          <span className={`full-width ${styles["title-separacion"]}`}>
             (Incluye separación)
           </span>
         </div>
@@ -116,13 +116,14 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         </div>
       </div>
 
-      <label>
+      <label className="flex j-c a-c">
         <input
           className={`${styles.inputQuote} ${styles["cuotas"]}`}
           type="checkbox"
           name="cb-terminosservicio"
           required
         />
+        <div className={styles["checkboxMask"]}></div>
         Ver detalle de cuotas
       </label>
       <br />
@@ -145,15 +146,16 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         </div>
       </div>
       <div className={styles["checked"]}>
-        <label>
+        <label className="flex j-c a-c">
           <input
             className={`${styles.inputQuote} ${styles["cuotas"]}`}
             type="checkbox"
             name="cb-terminosservicio"
             required
           />
+          <div className={styles["checkboxMask"]}></div>
           Enviar link de pago
-          <img src="/images/link-pago.png" />
+          <img src="/images/link-pago.png" className={styles.arrowImage} />
         </label>
       </div>
       <div className={styles["cotizacion-form"]}>

@@ -7,6 +7,7 @@ const CreateStep = ({
   setShowPopUpCreateContact,
   isConnected,
   setIsCreated,
+  recentContacts,
 }) => {
   return (
     <div className={styles["crear"]}>
@@ -27,9 +28,9 @@ const CreateStep = ({
               $120 millones - 160 millones
             </span>
             <div className={styles["detalles"]}>
-              <img src="/images/cama.png" width="22" height="20" />
+              <img src="/images/cards/bed.svg"  />
               <span>3-4</span>
-              <img src="/images/ducha.png" width="7" height="11" />
+              <img src="/images/cards/bath.svg"  />
               <span>2-3</span>
             </div>
           </div>
@@ -40,6 +41,7 @@ const CreateStep = ({
         <PropertyConnected setIsCreated={setIsCreated} />
       ) : (
         <ConectProperty
+          recentContacts={recentContacts}
           setShowPopUpAddContact={setShowPopUpAddContact}
           setShowPopUpCreateContact={setShowPopUpCreateContact}
         />

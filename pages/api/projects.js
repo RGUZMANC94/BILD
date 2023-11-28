@@ -1,103 +1,20 @@
-export default function handler(req, res) {
-  res.status(200).json([
-    {
-      id: 1,
-      name: "Fontana Campestres",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 2,
-      name: "La Florida",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 3,
-      name: "Forteza I",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 4,
-      name: "Campo Alegre",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 5,
-      name: "La Florida II",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 6,
-      name: "Forteza II",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 7,
-      name: "Fontana Campestres",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 8,
-      name: "La Florida",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-    {
-      id: 9,
-      name: "Fontana Campestres",
-      minPrice: "120",
-      maxPrice: "160",
-      imgProject: "/images/fontana-desktop.png",
-      minBeds: "3",
-      maxBeds: "4",
-      minBaths: "3",
-      maxBaths: "4",
-    },
-  ]);
+export default async function handler(req, res) {
+  try {
+    
+    const response = await fetch(
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectOverview?username=${req.body.id}`
+    );
+    if (!response.ok) {
+      throw new Error("Bad response from server");
+    }
+    const projects = await response.json();
+    console.log(projects);
+
+    if (projects) {
+      res.status(200).json(projects);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: "Login failed" });
+  }
 }

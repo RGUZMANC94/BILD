@@ -3,9 +3,9 @@ import styles from "./created.module.css";
 import EventsOportunity from "../eventsOportunity";
 import GenerateQuote from "../generateQuote";
 
-const OportunityCreated = () => {
+const OportunityCreated = ({ showPopEvents, setShowPopEvents, generateQuote, setGenerateQuote}) => {
   const [showCreatedPop, setShowCreatedPop] = useState(false);
-  const [generateQuote, setGenerateQuote] = useState(false);
+  
 
   useEffect(() => {
     setShowCreatedPop(true);
@@ -37,9 +37,9 @@ const OportunityCreated = () => {
                   $120 millones - 160 millones
                 </span>
                 <div className={styles["detalles"]}>
-                  <img src="/images/cards/bath.png"  />
+                  <img src="/images/cards/bath.png" />
                   <span>3-4</span>
-                  <img src="/images/cards/bed.png"  />
+                  <img src="/images/cards/bed.png" />
                   <span>2-3</span>
                 </div>
               </div>
@@ -66,7 +66,10 @@ const OportunityCreated = () => {
           {generateQuote ? (
             <GenerateQuote setGenerateQuote={setGenerateQuote} />
           ) : (
-            <EventsOportunity />
+            <EventsOportunity
+              showPopEvents={showPopEvents}
+              setShowPopEvents={setShowPopEvents}
+            />
           )}
         </div>
       </div>

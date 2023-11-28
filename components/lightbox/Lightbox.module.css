@@ -1,0 +1,42 @@
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-lightbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000d8;
+}
+
+.wrapper-lightbox {
+  width: 85%;
+  height: 85%;
+  z-index: 1;
+}
+
+.inner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.close-lightbox {
+  position: absolute;
+  z-index: 2;
+  top: 25px;
+  right: 25px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-image: url(/images/close-white.svg);
+}

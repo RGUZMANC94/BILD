@@ -1,38 +1,18 @@
-export default function handler(req, res) {
-
-  const users = [
-    {
-      id: 13896475,
-      name: "Jhon Doe",
-      email_address: "jhon@jhon.com",
-      user_rol: "adviser",
-      status: "authorized",
-      password: 1234567,
-    },
-    {
-      id: 1567859,
-      name: "Cristhian",
-      email_address: "cristhian@paperplane.co",
-      user_rol: "admin",
-      status: "authorized",
-      password: 1234567,
-    },
-  ];
-
-  let userToLog;
-
-  userToLog =
-    users.find((user) => user.name === req.body.name) ||
-    users.find((user) => user.id === Number(req.body.token));
-
-  if (req.body.token) {
-    res.status(200).json(userToLog);
-    return;
-  }
-
-  if (userToLog) {
-    if (userToLog.password === Number(req.body.password)) {
-      res.status(200).json(userToLog);
+export default async function handler(req, res) {
+  try {
+    const response = await fetch(
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/login?username=${req.body.name}&password=0f64c95acb3a7fb93ee845d2d3d26c8e391d373e`
+    );
+    if (!response.ok) {
+      throw new Error("Bad response from server");
     }
+    const user = await response.json();
+
+    if (user) {
+      res.status(200).json(user);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: "Login failed" });
   }
 }

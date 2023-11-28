@@ -115,10 +115,9 @@ const CreateProject = () => {
     }, 300);
   };
 
-  const createProject = (e) => {
+  const createProject = async (e) => {
     e.preventDefault();
 
-    console.log(mainImage.current.style.backgroundImage);
     const newProjectInfo = {
       id: Date.now(),
       name: inputProjectName.current.value,
@@ -129,6 +128,18 @@ const CreateProject = () => {
               .replace(/['"]+/g, "")
           : "",
     };
+
+    const form = new FormData(document.getElementById("IDForm"));
+
+    const projectCreated = await fetch("/api/createProject", {
+      method: "put",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: form,
+    });
+
+    console.log(projectCreated);
 
     dispatch(addNewProject(newProjectInfo));
     document
@@ -142,7 +153,11 @@ const CreateProject = () => {
   return (
     <>
       <section className={styles["main"]}>
-        <form className={styles.createProjectForm} onSubmit={createProject}>
+        <form
+          className={styles.createProjectForm}
+          onSubmit={createProject}
+          id="IDForm"
+        >
           <div className={styles["proyect-left"]}>
             <div className={styles["image-movil"]}>
               <span className={styles["label"]}>Imagen del Proyecto:</span>
@@ -222,7 +237,7 @@ const CreateProject = () => {
           <div className={styles["proyect-right"]}>
             <div className={styles["file"]}>
               <a button className={styles["descargar"]} href="#">
-                <img src="/images/download.png" />
+                <img src="/images/download.svg" />
                 Descargar Excel Base
               </a>
             </div>
@@ -244,6 +259,7 @@ const CreateProject = () => {
                     hidden
                     onChange={readURL}
                     accept="image/*"
+                    name="mainImage"
                   />
 
                   <div
@@ -276,6 +292,7 @@ const CreateProject = () => {
                       hidden
                       onChange={readURL}
                       accept="image/*"
+                      name="firstImage"
                     />
                     <div
                       className={`${styles.imageSelected}`}
@@ -298,6 +315,7 @@ const CreateProject = () => {
                       hidden
                       onChange={readURL}
                       accept="image/*"
+                      name="secondImage"
                     />
                     <div
                       className={`${styles.imageSelected}`}
@@ -338,6 +356,7 @@ const CreateProject = () => {
                   ref={inputXlsx}
                   onChange={changeXlsx}
                   accept=".xlsx, .xls, .csv"
+                  name="excel"
                 />
               </label>
             </div>
@@ -376,7 +395,9 @@ const CreateProject = () => {
                 <div className={styles["contacto"]}>
                   <div className={styles["botones"]}>
                     <Link href="/" className={styles["cancelar"]}>
-                      <button className={styles["inner-cancelar"]}>cancelar</button>
+                      <button className={styles["inner-cancelar"]}>
+                        cancelar
+                      </button>
                     </Link>
                     <button className={styles["crear"]} href="#popproyecto">
                       Crear Proyecto

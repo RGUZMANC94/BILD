@@ -1,10 +1,11 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
+import SideInfoProfile from "../../components/sideInfoProfile";
 
-const ContactProfile = () => {
+const ProfileEnlace = () => {
   return (
     <div className={styles["perfil"]}>
-      <div className={styles["editar-perfil"]}>
+      {/* <div className={styles["editar-perfil"]}>
         <div className={styles["editar"]}>Editar</div>
         <div className={styles["perfil-img"]}>
           <img src="/images/henry.png" />
@@ -100,23 +101,9 @@ const ContactProfile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <SideInfoProfile />
       <div className={styles["pendientes"]}>
-        <div className={styles["flag"]}>Pendientes</div>
-        <div className={styles["listado"]}>
-          <label className={styles["penlist"]}>
-            <input className={styles["check"]} type="checkbox" required />
-            Enviar Brochure del proyecto Fontana Campestre
-          </label>
-          <label className={styles["penlist"]}>
-            <input className={styles["check"]} type="checkbox" required />
-            Enviar cotización del proyecto La Florida
-          </label>
-          <label className={styles["penlist"]}>
-            <input className={styles["check"]} type="checkbox" required />
-            Enviar cotización a Zeta Bosio de Campo Alegre
-          </label>
-        </div>
         <div className={styles["opc-pendiente"]}>
           <Link href="/oportunities/0" className={styles["opcion"]}>
             <img src="/images/key-white.png" />
@@ -138,9 +125,24 @@ const ContactProfile = () => {
             <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
           </Link>
         </div>
+        <div className={styles["flag"]}>Pendientes</div>
+        <div className={styles["listado"]}>
+          <label className={styles["penlist"]}>
+            <input className={styles["check"]} type="checkbox" required />
+            Enviar Brochure del proyecto Fontana Campestre
+          </label>
+          <label className={styles["penlist"]}>
+            <input className={styles["check"]} type="checkbox" required />
+            Enviar cotización del proyecto La Florida
+          </label>
+          <label className={styles["penlist"]}>
+            <input className={styles["check"]} type="checkbox" required />
+            Enviar cotización a Zeta Bosio de Campo Alegre
+          </label>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ContactProfile;
+export default ProfileEnlace;

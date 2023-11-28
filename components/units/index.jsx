@@ -7,11 +7,11 @@ import Link from "next/link";
 
 const Units = ({ setCreateOportunity, units }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
-  const { user_rol } = useSelector((state) => state.user);
+  const { user_rol } = useSelector((state) => state.userState);
 
   return (
     <div className="caracteristicas">
-      {user_rol === "admin" && (
+      {user_rol === "ADMIN" && (
         <Button
           className={"align-end"}
           buttonType={"primary"}
@@ -61,7 +61,7 @@ const Units = ({ setCreateOportunity, units }) => {
         <button className={`${styles.submitUnit} bg-ct`}></button>
       </form>
 
-      {user_rol === "admin" && (
+      {user_rol === "ADMIN" && (
         <div className={`${styles.excelsButtons} flex j-e a-c`}>
           <Button
             inheritClass={styles.excelsButton}

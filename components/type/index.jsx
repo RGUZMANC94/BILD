@@ -5,17 +5,11 @@ import { changeTypeSelected } from "../../redux/typeSelectedSlice";
 import { openPopUp } from "../../redux/popUpOportunity";
 
 const TypeCard = ({ type, setCreateOportunity, index }) => {
-  // const { attributes, listeners, setNodeRef, transform, transition } =
-  //   useSortable({ id: type.id });
-
-  // const style = {
-  //   transform: CSS.Transform.toString(transform),
-  //   transition,
-  // };
   const dispatch = useDispatch();
+  const USDollar = new Intl.NumberFormat("en-US");
   return (
     <li
-      id={type.id}
+      id={type.nuimb}
       // ref={setNodeRef}
       // style={style}
       // {...attributes}
@@ -39,13 +33,13 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
           <img src={"/images/tipo-1.png"} />
         </div>
         <div className="tipo-info">
-          <span className="tipo-title">{type.typeName}</span>
-          <span className="valor">$120 millones - 160 millones</span>
+          <span className="tipo-title">Tipo {type.type}</span>
+          <span className="valor">$ {USDollar.format(type.propertyPrice)}</span>
           <div className="detalles">
-            <img src="/images/cards/bed.png"  />
-            <span>3-4</span>
-            <img src="/images/cards/bath.png"  />
-            <span>2-3</span>
+            <img src="/images/cards/bed.png" />
+            <span>{type.bedrooms}</span>
+            <img src="/images/cards/bath.png" />
+            <span>{type.baths}</span>
           </div>
         </div>
         <div

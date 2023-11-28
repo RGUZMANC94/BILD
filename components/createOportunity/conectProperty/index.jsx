@@ -1,6 +1,10 @@
 import styles from "./conect-property.module.css";
 
-const ConectProperty = ({ setShowPopUpCreateContact, setShowPopUpAddContact }) => {
+const ConectProperty = ({
+  setShowPopUpCreateContact,
+  setShowPopUpAddContact,
+  recentContacts,
+}) => {
   return (
     <div className={styles["contacto"]}>
       <div className={styles["conecta"]}>
@@ -22,15 +26,16 @@ const ConectProperty = ({ setShowPopUpCreateContact, setShowPopUpAddContact }) =
       </div>
       <div className={styles["recientes"]}>
         <span className={styles["conecta-contacto"]}>CONTACTOS RECIENTES:</span>
-        <div className={styles["contact"]}>
-          <img src="/images/Ellipse 81.png" /> Gustavo Cerati
-        </div>
-        <div className={styles["contact"]}>
-          <img src="/images/Ellipse 82.png" /> Whitney Houston
-        </div>
-        <div className={styles["contact"]}>
-          <img src="/images/Ellipse 84.png" /> Amy Winehouse
-        </div>
+        {recentContacts && (
+          <div
+            className={styles["contact"]}
+            key={recentContacts.ContactId}
+            data-email={recentContacts.email}
+            data-phone-number={recentContacts.phoneNumber}
+          >
+            <img src="/images/Ellipse 81.png" /> {recentContacts.contactName}
+          </div>
+        )}
       </div>
     </div>
   );

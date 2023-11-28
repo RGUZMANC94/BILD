@@ -12,10 +12,18 @@ const Home = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { user_rol } = useSelector((state) => state.user);
-  const { projectsList } = useSelector((state) => state.projects);
+  const { user_rol, id } = useSelector((state) => state.userState);
+  const { projectsList } = useSelector((state) => state.projectState);
   const getProjects = async () => {
-    const response = await fetch("/api/projects");
+    const response = await fetch("/api/projects", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
     const responseProjects = await response.json();
     dispatch(setProjects(responseProjects));
   };
@@ -33,7 +41,7 @@ const Home = () => {
   return (
     <section className={styles["main"]}>
       <div className={styles["main-container"]}>
-        {user_rol === "admin" && (
+        {user_rol === "ADMIN" && (
           <Button
             className={"align-end"}
             buttonType={"primary"}
@@ -44,8 +52,8 @@ const Home = () => {
 
         <div className={styles["containerEstates"]}>
           {projectsList.map((project) => (
-            <div key={project.id} className={styles["proyectos"]}>
-              <Link href={`/detail-estate/${project.id}`}>
+            <div key={project.projectId} className={styles["proyectos"]}>
+              <Link href={`/detail-estate/${project.projectId}`}>
                 <div className={styles["img-proyect"]}>
                   <img
                     alt=""
@@ -57,15 +65,17 @@ const Home = () => {
                   />
                 </div>
                 <div className={styles["proyect-info"]}>
-                  <p className={styles["proyect-title"]}>{project.name}</p>
-                  {project.minPrice && project.maxPrice && (
-                    <p className={styles["valor"]}>
-                      ${project.minPrice} millones - {project.maxPrice} millones
-                    </p>
-                  )}
+                  <p className={styles["proyect-title"]}>
+                    {project.projectName}
+                  </p>
+                  <p className={styles["valor"]}>
+                    {project.minPrice &&
+                      project.maxPrice &&
+                      `${project.minPrice} millones - {project.maxPrice} millones`}
+                  </p>
 
                   <div className={styles["detalles"]}>
-                    {project.minBeds && project.maxBeds && (
+                    {project.minBed && project.maxBed && (
                       <>
                         <img
                           alt=""
@@ -74,11 +84,11 @@ const Home = () => {
                           height="20"
                         />
                         <p>
-                          {project.minBeds}-{project.maxBeds}
+                          {project.minBed}-{project.maxBed}
                         </p>
                       </>
                     )}
-                    {project.minBaths && project.maxBaths && (
+                    {project.minBath && project.maxBath && (
                       <>
                         <img
                           alt=""
@@ -87,9 +97,18 @@ const Home = () => {
                           height="11"
                         />
                         <p>
-                          {project.minBaths}-{project.maxBaths}
+                          {project.minBath}-{project.maxBath}
                         </p>
                       </>
+                    )}
+                    {user_rol === "ADMIN" && (
+                      <Link
+                        href={{
+                          pathname: `/create-project`,
+                          query: { project: project.projectId },
+                        }}
+                        className={`bg-ct ${styles.editProject}`}
+                      ></Link>
                     )}
                   </div>
                 </div>

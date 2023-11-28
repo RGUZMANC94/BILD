@@ -11,7 +11,7 @@
   left: 0;
   opacity: 0;
   padding: 0;
-  z-index: 2;
+  z-index: 51;
   transition: all 0.5s ease-in-out, top 0s ease 0.5s;
 }
 
@@ -32,18 +32,17 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  background-image: url(/images/close.svg);
+  background-image: url(/images/close-white.svg);
 }
 
 .banner {
   width: 100%;
   height: 100vh;
-  background-image: url(/images/bogota-linda.jpg);
-  background-repeat: no-repeat;
   margin: 0 auto;
   background-size: cover;
   position: relative;
   z-index: 3;
+  background-color: #000000bf;
 }
 
 .descripcion {
@@ -52,7 +51,7 @@
   right: 0;
   display: flex;
   flex-direction: column;
-  background-color: #565555;
+  background-color: #21221d;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   position: absolute;
@@ -80,13 +79,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: 20px 0px;
 }
 
 .text-origen {
   margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .elegir-origen {
@@ -102,6 +102,8 @@
   height: auto;
   box-sizing: border-box;
   color: #c7c7c7ce;
+  background-color: #21221d;
+  appearance: none;
   font-size: 12px;
 }
 
@@ -146,6 +148,7 @@
 
 .name-field .label {
   margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .message_input {
@@ -157,6 +160,7 @@
   height: 150px;
   box-sizing: border-box;
   color: #c7c7c7ce;
+  background-color: #21221d;
 }
 
 .labelNode {

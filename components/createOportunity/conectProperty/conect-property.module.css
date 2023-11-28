@@ -1,11 +1,11 @@
 .contacto {
   display: flex;
   flex-direction: row;
-  width: calc(95% - 20px);
+  width: 100%;
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 50px;
   font-size: 14px;
 }
@@ -27,8 +27,8 @@
   justify-content: center;
 }
 
-button.crear-contacto {
-  width: 70%;
+.crear-contacto {
+  width: 60%;
   height: 50px;
   color: #fff;
   font-size: 12px;
@@ -37,12 +37,11 @@ button.crear-contacto {
   border-radius: 10px;
   border: 1px solid #fff;
   text-transform: uppercase;
-  margin-top: 50px;
-  padding: 10px 30px;
+  padding: 10px 0px;
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: #565555;
+  background-color: #56555500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,8 +53,8 @@ i.fa-solid.fa-plus {
   font-weight: 200;
 }
 
-button.contacto-existente {
-  width: 70%;
+.contacto-existente {
+  width: 60%;
   height: 50px;
   color: #fff;
   font-size: 12px;
@@ -65,7 +64,7 @@ button.contacto-existente {
   border: 1px solid #2467ff;
   text-transform: uppercase;
   margin-top: 30px;
-  padding: 10px 30px;
+  padding: 10px 0px;
   text-align: center;
   cursor: pointer;
   text-decoration: none;
@@ -83,6 +82,8 @@ i.fa-solid.fa-user {
 
 .conecta-contacto {
   margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 500;
 }
 .contact {
   display: flex;
@@ -92,7 +93,7 @@ i.fa-solid.fa-user {
   font-size: 12px;
   font-weight: 300;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   text-align: left;
 }
 

@@ -8,7 +8,7 @@
   width: 100%;
   height: auto;
   position: relative;
-  padding: 150px 0 50px;
+  padding: 110px 0 50px;
   z-index: 2;
 }
 
@@ -20,7 +20,7 @@
   position: relative;
   width: 100%;
   gap: 30px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .proyectos {
@@ -65,14 +65,19 @@
   font-weight: 500;
   color: #fff;
   text-transform: uppercase;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .valor {
   font-size: 14px;
   color: #fff;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
+  min-height: 20px;
 }
 
 .detalles {
@@ -86,6 +91,18 @@
   text-align: left;
   margin-top: 10px;
   gap: 10px;
+  position: relative;
+  min-height: 30px;
+}
+
+.editProject {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55px;
+  height: 30px;
+  cursor: pointer;
+  background-image: url(/images/edit.svg);
 }
 
 .detalles img {

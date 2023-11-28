@@ -54,7 +54,7 @@
   box-sizing: border-box;
   color: #fff;
   appearance: none;
-  background-color: #565555;
+  background-color: transparent;
   border: 0.7px solid #fff;
 }
 .proyect-form textarea {
@@ -67,7 +67,7 @@
   box-sizing: border-box;
   color: #c7c7c7;
   border: 0.7px solid #fff;
-  background: #565555;
+  background: transparent;
 }
 
 .submit.action-button {
@@ -121,7 +121,7 @@
   font-size: 16px;
   color: #ffffff;
   font-weight: 400;
-  padding: 20px 0;
+  padding: 20px 0 0;
   text-transform: uppercase;
 }
 
@@ -143,8 +143,9 @@
   width: 50%;
   height: auto;
   padding: 20px;
-  color: #2466ff;
-  border: 1px solid #2466ff;
+  color: #343434;
+  border: 1px solid #343434;
+  background-color: #d9d9d9;
   border-radius: 10px;
   text-transform: uppercase;
   font-size: 16px;
@@ -375,12 +376,12 @@
 .cancelar {
   width: 45%;
   height: 50px;
-  
+
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 30px;
   padding: 10px 30px;
-  
+
   cursor: pointer;
   text-decoration: none;
   display: flex;
@@ -391,7 +392,7 @@
   border: 1px solid #fff;
 }
 
-.inner-cancelar{
+.inner-cancelar {
   color: #fff;
   font-size: 12px;
   font-weight: 500;
@@ -631,7 +632,7 @@
 }
 
 .inputAssignProject {
-  background-color: #565555;
+  background-color: transparent;
   border: 0.5px solid #ccc;
   border-radius: 10px;
   width: 100%;

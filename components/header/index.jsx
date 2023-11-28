@@ -57,6 +57,7 @@ const Header = () => {
                   <img alt="" src="/images/header/key.png" />
                 </div>
                 Oportunidades
+                <div className={styles.smallNumber}>5</div>
               </a>
               <Link
                 href={pathname === "/profile" ? "" : "/profile"}
@@ -67,11 +68,11 @@ const Header = () => {
                 </div>
                 Perfil
               </Link>
-              <div className={styles.search}>
-                <div
-                  className={`${styles.glass} bg-ct`}
-                  onClick={() => setShowFilter(true)}
-                ></div>
+              <div
+                className={styles.search}
+                onClick={() => setShowFilter(true)}
+              >
+                <div className={`${styles.glass} bg-ct`}></div>
               </div>
             </div>
           </div>

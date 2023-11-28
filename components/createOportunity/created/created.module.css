@@ -8,7 +8,6 @@
   color: #fff;
   /* box-shadow: 2px 2px 6px #131312; */
   border-radius: 15px;
-  margin-top: 10vh;
 }
 
 .creacion-oportunidad {
@@ -36,15 +35,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: start;
-  padding: 15px;
+  align-items: flex-start;
   background: none;
   z-index: 11;
   position: relative;
   box-shadow: none;
   top: 0;
   gap: 7vw;
-  margin-bottom: 40px;
 }
 
 .crear-tipo {
@@ -55,19 +52,19 @@
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   background-color: #21221d;
   border-radius: 15px;
   text-align: left;
-  padding: 25px 30px 30px;
+  padding: 0px;
 }
 
 .tipo-unit {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: #21221d;
   text-align: left;
   margin-top: 10px;
@@ -84,7 +81,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: start;
+  align-items: flex-start;
   background-color: #565555;
   box-shadow: none;
   border-radius: 15px;
@@ -102,6 +99,10 @@
   columns: #4d4d4d;
   text-align: left;
   margin-bottom: 20px;
+}
+
+.tipos span {
+  margin-bottom: 10px;
 }
 
 .img-tipo {
@@ -128,11 +129,11 @@
 .contacto {
   display: flex;
   flex-direction: row;
-  width: calc(95% - 20px);
+  width: 100%;
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 50px;
   font-size: 14px;
 }
@@ -192,8 +193,8 @@
 .detalles {
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-end;
   font-size: 14px;
   color: #fff;
   font-weight: 200;
@@ -204,6 +205,10 @@
 .detalles img {
   width: 20px;
   height: 20px;
+}
+
+.detalles img:last-of-type{
+  margin-left: 15px;
 }
 
 .detalles span {
@@ -218,7 +223,7 @@
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  padding: 15px 15px 40px;
+  padding: 25px 35px 40px;
 }
 
 .crear-tipo {
@@ -233,25 +238,25 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 10px;
-  background-color: #21221D;
+  background-color: #21221d;
   border-radius: 35px;
   min-height: 65vh;
 }
 
 .conecta {
-  width: 100% !important;
+  width: 100%;
   display: flex;
-  flex-direction: row !important;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
 .crear-contacto {
-  width: 50% !important;
-  margin: 30px 20px 0 !important;
+  width: 50%;
+  margin: 30px 20px 0;
   text-align: center;
-  align-items: center !important;
-  justify-content: center !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .contacto-existente {
@@ -276,8 +281,8 @@
 }
 
 .contacto-existente {
-  width: 50%;
-  margin: 0 20px;
+  width: 48%;
+  margin: 0 0;
 }
 
 .contact {
@@ -307,7 +312,7 @@
 }
 
 .crear-cotizacion {
-  width: 50%;
+  width: 48%;
   height: 50px;
   color: #fff;
   font-size: 12px;
@@ -321,9 +326,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1em;
-  border: 2px solid #fff;
-  background-color: #414343;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #41434300;
 }
 .img-tipo {
   width: 40%;

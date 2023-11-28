@@ -31,7 +31,9 @@
 
 .inputFormUnit {
   border-radius: 3px;
-  border: 1px solid #7c7c7c;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
   text-align: center;
   padding: 10px 0;
   width: 100px;
@@ -46,7 +48,7 @@
   cursor: pointer;
 }
 
-.removeEditUnit{
+.removeEditUnit {
   position: absolute;
   top: 50%;
   left: 25px;

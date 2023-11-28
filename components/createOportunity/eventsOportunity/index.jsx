@@ -2,8 +2,7 @@ import { useState } from "react";
 import styles from "./events.module.css";
 import AddEvents from "../addEvents";
 
-const EventsOportunity = () => {
-  const [showPopEvents, setShowPopEvents] = useState(false);
+const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
   return (
     <>
       <button
@@ -26,7 +25,6 @@ const EventsOportunity = () => {
           </ul>
         </div>
       </div>
-      {showPopEvents && <AddEvents setShowPopEvents={setShowPopEvents} />}
     </>
   );
 };
