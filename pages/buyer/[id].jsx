@@ -1,29 +1,30 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
+import SideInfoProfile from "../../components/sideInfoProfile";
 
-const ContactProfile = () => {
+const ProfileEnlace = () => {
   return (
     <div className={styles["perfil"]}>
-      <div className={styles["editar-perfil"]}>
+      {/* <div className={styles["editar-perfil"]}>
         <div className={styles["editar"]}>Editar</div>
         <div className={styles["perfil-img"]}>
-          <img src="/images/perfil-img.jpeg" />
+          <img src="/images/henry.png" />
         </div>
         <span className={styles["name-perfil"]}>Henry Cavill</span>
         <span className={styles["sub-name"]}>Comprador</span>
         <div className={styles["id-perfil"]}>
-          <img src="/images/id-img.png" />
+          <img src="/images/id.png" />
           13.932.102. Bogotá D.C
         </div>
         <div className={styles["perfil-icons"]}>
           <div className={styles["perfil-icon"]}>
-            <img src="/images/blue-phone.png" />
+            <img src="/images/phone-profile.png" />
           </div>
           <div className={styles["perfil-icon"]}>
-            <img src="/images/blue-mail.png" />
+            <img src="/images/mail-profile.png" />
           </div>
           <div className={styles["perfil-icon"]}>
-            <img src="/images/blue-wa.png" />
+            <img src="/images/whats-profile.png" />
           </div>
         </div>
         <div className={styles["pendientes-movil"]}>
@@ -100,8 +101,30 @@ const ContactProfile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <SideInfoProfile />
       <div className={styles["pendientes"]}>
+        <div className={styles["opc-pendiente"]}>
+          <Link href="/oportunities/0" className={styles["opcion"]}>
+            <img src="/images/key-white.png" />
+            <span className={`${styles.badge} ${styles.red}`}>2</span>
+            Oportunidades
+          </Link>
+          <Link href="/quotes" className={styles["opcion"]}>
+            <img src="/images/cotizaciones-white.png" />
+            <span className={`${styles.badge} ${styles.red}`}>5</span>
+            Cotizaciones
+          </Link>
+          <Link href="/documentation" className={styles["opcion"]}>
+            <img src="/images/docs-white.png" />
+            <span className={`${styles.badge} ${styles.red}`}>3</span>
+            Documentación
+          </Link>
+          <Link href="/payments" className={styles["opcion"]}>
+            <img src="/images/payments-white.png" />
+            <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
+          </Link>
+        </div>
         <div className={styles["flag"]}>Pendientes</div>
         <div className={styles["listado"]}>
           <label className={styles["penlist"]}>
@@ -117,30 +140,9 @@ const ContactProfile = () => {
             Enviar cotización a Zeta Bosio de Campo Alegre
           </label>
         </div>
-        <div className={styles["opc-pendiente"]}>
-          <Link href="/oportunities/0" className={styles["opcion"]}>
-            <img src="/images/oportunidades-icon.png" />
-            <span className={`${styles.badge} ${styles.red}`}>2</span>
-            Oportunidades
-          </Link>
-          <Link href="/quotes" className={styles["opcion"]}>
-            <img src="/images/cotizaciones-icon.png" />
-            <span className={`${styles.badge} ${styles.red}`}>5</span>
-            Cotizaciones
-          </Link>
-          <Link href="/documentation" className={styles["opcion"]}>
-            <img src="/images/documentacion-icon.png" />
-            <span className={`${styles.badge} ${styles.red}`}>3</span>
-            Documentación
-          </Link>
-          <Link href="/payments" className={styles["opcion"]}>
-            <img src="/images/pagos-icon.png" />
-            <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
-          </Link>
-        </div>
       </div>
     </div>
   );
 };
 
-export default ContactProfile;
+export default ProfileEnlace;

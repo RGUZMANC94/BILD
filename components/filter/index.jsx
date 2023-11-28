@@ -2,11 +2,21 @@ import React, { useState } from "react";
 import styles from "./filter.module.css";
 import { Range, getTrackBackground } from "react-range";
 import Button from "../button";
+import { useSelector } from "react-redux";
 
 const Filter = ({ show, setShowFilter }) => {
+  const { projectsList } = useSelector((state) => state.projectState);
+
+  const minSize = Math.min(...projectsList.map((project) => project.minSize));
+  const maxSize = Math.max(...projectsList.map((project) => project.maxSize));
+
   const [priceValues, setPriceValues] = useState([0, 3000000000]);
   const [floorValues, setFloorValues] = useState([1, 21]);
   const [sizeValues, setSizeValues] = useState([45, 1200]);
+
+  if (!projectsList.length) {
+    return <></>;
+  }
 
   const rangeSliders = [
     {
@@ -25,7 +35,7 @@ const Filter = ({ show, setShowFilter }) => {
       type: "size",
       min: 45,
       max: 1200,
-      step: 50,
+      step: 5,
     },
   ];
 
@@ -124,7 +134,7 @@ const Filter = ({ show, setShowFilter }) => {
                               : rangeSlider.type === "floor"
                               ? floorValues
                               : sizeValues,
-                          colors: ["#ccc", "#FF5567", "#ccc"],
+                          colors: ["#fff", "#FF5567", "#fff"],
                           min: rangeSlider.min,
                           max: rangeSlider.max,
                           rtl: false,
@@ -200,7 +210,6 @@ const Filter = ({ show, setShowFilter }) => {
                 <select
                   defaultValue={"default"}
                   value={"default"}
-                  defaultValue={"default"}
                   className={styles.ubicationSelect}
                 >
                   <option value={"default"} selected>

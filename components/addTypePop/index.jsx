@@ -1,8 +1,51 @@
-import React from "react";
+import { useState, useRef } from "react";
 import Button from "../button";
 import styles from "./Add-type-pop.module.css";
 
 const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
+  const [typeName, setTypeName] = useState("");
+  const [typeSize, setTypeSize] = useState("");
+  const [typeBaths, setTypeBaths] = useState("");
+  const [typeBeds, setTypeBeds] = useState("");
+  const [typeGarage, setTypeGarage] = useState("");
+  const [typePrice, setTypePrice] = useState("");
+  const [typesStatus, setTypesStatus] = useState("");
+  const [typesAdvisor, setTypesAdvisor] = useState("");
+  const mainImageType = useRef(null);
+
+  const createType = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      type_name: typeName,
+      type_size: typeSize,
+      type_bathrooms: typeBaths,
+      type_beds: typeBeds,
+      type_garages: typeGarage,
+      type_price: typePrice,
+      type_status: typesStatus,
+      type_advisor: typesAdvisor,
+      // image: URL.createObjectURL(
+      //   mainImageType.current.style.backgroundImage !== ""
+      //     ? mainImageType.current.style.backgroundImage
+      //         .match(/url\(([^)]+)\)/i)[1]
+      //         .replace(/['"]+/g, "")
+      //     : ""
+      // ),
+    };
+
+    const typeCreated = await fetch("/api/createType", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+
+    console.log(typeCreated);
+    setShowPopUpType(false);
+  };
+
   return (
     <div
       className={`${styles.typePopUp} ${
@@ -22,7 +65,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
           <div className={`${styles.deleteIcon} bg-ct`}></div>
         </div>
 
-        <form className={styles.formType}>
+        <form className={styles.formType} onSubmit={createType}>
           <label className={`${styles.typeLabel} flex wrap j-s a-c`}>
             <span className={styles.labelText}>Nombre</span>
             <input type="text" className={styles.inputTypeForm} />
@@ -101,7 +144,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
 
           <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
             <Button
-              buttonType={"gradient"}
+              buttonType={"primary"}
               iconImage={false}
               label={"CANCELAR"}
               inheritClass={styles.buttonCreateType}

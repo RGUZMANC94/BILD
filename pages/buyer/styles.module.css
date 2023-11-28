@@ -1,5 +1,5 @@
 .search {
-  background-color: #fff;
+  background-color: #565555;
 }
 
 .perfil {
@@ -14,12 +14,15 @@
 .editar-perfil {
   width: calc(30% - 25px);
   height: auto;
-  border-radius: 20px;
-  border: 1px solid #b8b8b8;
+  border-radius: 35px;
+  background: #2e2e2c;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(7.5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   margin-top: 20px;
   padding-bottom: 60px;
 }
@@ -34,28 +37,31 @@
 .editar {
   font-size: 18px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-align: right;
-  border-bottom: 2px solid #7c7c7c;
+  border-bottom: 2px solid #fff;
   margin: 25px 25px 0 0;
   display: flex;
-  justify-content: end;
-  align-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .perfil-img {
   border-radius: 50%;
-  width: 121px;
-  height: 121px;
+  width: 120px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 35px;
 }
 
+.perfil-img img {
+  width: 100%;
+}
+
 .name-perfil {
   font-size: 20px;
   font-weight: 500;
-  columns: #4d4d4d;
+  color: #fff;
   text-align: center;
   margin-bottom: 20px;
   margin: 0 auto;
@@ -63,7 +69,7 @@
 .sub-name {
   font-size: 18px;
   font-weight: 300;
-  columns: #4d4d4d;
+  color: #fff;
   text-align: center;
   margin-bottom: 30px;
   margin: 0 auto;
@@ -76,7 +82,7 @@
   margin-top: 50px;
   font-size: 18px;
   font-weight: 200;
-  color: #4d4d4d;
+  color: #fff;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -86,6 +92,7 @@
 
 .id-perfil img {
   margin-right: 20px;
+  width: 40px;
 }
 
 .perfil-icons {
@@ -112,14 +119,15 @@
 .info-perfil {
   font-size: 18px;
   font-weight: 600;
-  color: #4d4d4d;
-  text-align: center;
-  margin: 0 auto;
+  text-align: left;
+  color: #fff;
+  align-self: flex-start;
+  margin-left: 10%;
 }
 
 .sub-title {
   font-size: 18px;
-  color: #4d4d4d;
+  color: #fff;
   margin: 50px 0 0px;
 }
 
@@ -129,7 +137,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -138,47 +146,43 @@
   height: auto;
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-button.campo {
+.campo {
   width: auto;
   min-width: 100px;
-  height: 6vh;
   margin: 30px 10px 0;
-  border: 1px solid #2467ff;
-  border-radius: 5px;
-  color: #2467ff;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  color: #fff;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: transparent;
+  padding: 10px 20px;
+  transition: all 0.25s ease-in-out;
 }
 
 .campo:hover {
-  background-color: #2467ff;
+  background-color: #fff;
+  border-color: #fff;
   color: #fff;
 }
 
 .flag {
-  width: 185px;
-  height: 55px;
-  background-color: #2467ff;
   color: #fff;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 22px;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   padding-top: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  left: 0;
-  position: relative;
   margin-top: 100px;
+  margin-left: 70px;
+  font-weight: 700;
 }
 
 .check {
@@ -206,17 +210,18 @@ button.campo {
   display: flex;
   flex-direction: column;
   margin-left: 70px;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-bottom: 100px;
 }
 
 .penlist {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   font-weight: 300;
   font-size: 16px;
   margin-bottom: 40px;
+  color: #fff;
 }
 
 .opc-pendiente {
@@ -235,9 +240,6 @@ button.campo {
   min-width: 180px;
   height: auto;
   position: relative;
-  background-color: white;
-  box-shadow: 2px 2px 6px #c7c7c7;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -245,9 +247,15 @@ button.campo {
   padding: 20px;
   font-size: 16px;
   font-weight: 400;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
   flex-wrap: wrap;
+  border-radius: 20px;
+  background: #565555;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(7.5px);
+  color: #fff;
 }
 
 .opcion img {
@@ -370,7 +378,7 @@ button.campo {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     margin-top: 0px;
     padding-bottom: 60px;
   }
@@ -411,15 +419,15 @@ button.campo {
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     text-align: left;
   }
 
   .flag {
     width: auto;
     height: auto;
-    background-color: #2467ff;
+    background-color: #fff;
     color: #fff;
     font-size: 18px;
     font-weight: 400;
@@ -438,7 +446,7 @@ button.campo {
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     top: 80px;
@@ -455,11 +463,11 @@ button.campo {
     border-radius: 40px;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     font-size: 16px;
     font-weight: 400;
-    color: #4d4d4d;
+    color: #fff;
     text-transform: uppercase;
   }
 
@@ -474,7 +482,7 @@ button.campo {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: start;
+    align-items: flex-start;
     text-align: left;
     margin: 0 auto;
     position: relative;
@@ -484,12 +492,12 @@ button.campo {
   .campos {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
   }
   button.campo {
     width: 40%;
-    background-color: #2467ff;
+    background-color: #fff;
     color: white;
     border-radius: 15px;
   }
@@ -500,7 +508,7 @@ button.campo {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
   }
 }

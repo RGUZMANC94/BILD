@@ -22,12 +22,12 @@
   width: 100%;
   height: auto;
   text-transform: uppercase;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 50px;
 }
@@ -45,14 +45,14 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .tipo-title {
   font-size: 18px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
 }
 
@@ -64,17 +64,19 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
-  background-color: #fff;
-  box-shadow: 2px 2px 6px #c7c7c7;
-  border-radius: 15px;
+  align-items: flex-start;
   margin-top: 40px;
   text-align: left;
   padding: 20px;
+  border-radius: 24px;
+  background: #2e2e2c;
+  border: 1px solid #ff556600;
+  box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .tipo-unit.active {
-  background-color: #f9f9f9;
+  border: 1px solid #ff5567;
 }
 
 .tipo-info {
@@ -88,14 +90,14 @@
 .tipo-title {
   font-size: 18px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
 }
 
 .tipo-sub {
   font-size: 12px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
   width: 100%;
   margin-top: 15px;
@@ -104,10 +106,10 @@
 .detalles {
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   font-size: 14px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 200;
   text-align: left;
   margin-top: 10px;
@@ -116,14 +118,14 @@
 .icon {
   width: 35%;
   height: auto;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 i.fa-solid.fa-angle-left {
   left: 0;
   font-size: 30px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .top-content.title {
@@ -136,7 +138,7 @@ i.fa-solid.fa-angle-left {
 .tipo-sub {
   font-size: 12px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
   width: 100%;
   margin-top: 15px;
@@ -162,9 +164,9 @@ i.fa-solid.fa-angle-left {
 .zoom {
   background-image: url(/images/zoom.png);
   background-repeat: no-repeat;
-  background-color: #2467ff;
+  background-color: #ff5567;
   background-position: center;
-  background-size: auto;
+  background-size: 50%;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   right: 0;
@@ -217,39 +219,55 @@ i.fa-solid.fa-angle-left {
 }
 
 .greybox {
-  background-color: #f3f3f3;
-  border-radius: 20px;
+  border-radius: 10px;
+  background: #2e2e2c;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 20px;
   margin-left: 20px;
   margin-bottom: 30px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   position: relative;
+  color: #fff;
 }
 
 .info {
   width: 70%;
 }
 
-li.pendiente-list {
-  font-size: 14px !important;
-  font-weight: 400;
-  color: #4d4d4d;
+.info label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.info li {
+  font-size: 16px;
+  color: #fff;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.pendiente-list {
+  font-size: 16px;
+  color: #fff;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .box li.pendiente-list {
   font-size: 14px !important;
   font-weight: 200;
-  color: #4d4d4d;
+  color: #fff;
 }
 
 .ulNode li {
   margin: 10px 0;
   font-size: 14px !important;
   font-weight: 200;
-  color: #4d4d4d;
+  color: #fff;
 }
 
 .time {
@@ -290,7 +308,7 @@ li.pendiente-list {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #2467ff;
+  background-color: #fff;
   position: absolute;
   top: 0px;
   left: -63px;
@@ -301,7 +319,7 @@ li.pendiente-list {
   height: 25px;
   border-radius: 50%;
   background-color: #d1f6da;
-  color: #2467ff;
+  color: #fff;
   font-size: 14px;
   font-weight: 300;
   position: absolute;
@@ -320,7 +338,7 @@ li.pendiente-list {
 .ver-oportunidad {
   width: 40%;
   height: 50px;
-  color: #2467ff;
+  color: #fff;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -333,11 +351,10 @@ li.pendiente-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
   border: 2px solid transparent;
   margin: 0 auto;
+  background-color: #2467ff;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -399,9 +416,9 @@ li.pendiente-list {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: start;
-    background-color: #fff;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #565555;
     box-shadow: 2px 2px 6px #c7c7c7;
     border-radius: 15px;
     margin-top: 40px;

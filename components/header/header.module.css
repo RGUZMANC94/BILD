@@ -14,12 +14,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-shadow: -3px 0px 8px #1C1C1C;
+  box-shadow: -3px 0px 8px #1c1c1c;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 8;
-  background-color: #1C1C1C;
+  background-color: #1c1c1c;
   padding: 0 0 0 30px;
 }
 
@@ -41,13 +41,13 @@
 }
 
 .logo img {
-  width: 100px;
+  width: 75px;
 }
 
 .search {
   width: 73px;
   height: 73px;
-  background-color: #FF5567;
+  background-color: #ff5567;
   font-size: 18px;
   font-weight: 500;
   color: #a3a3a3;
@@ -60,6 +60,7 @@
   align-items: center;
   outline: none;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .searchInput {
@@ -90,7 +91,7 @@
   align-items: center;
 }
 
-.menuPpal{
+.menuPpal {
   display: flex;
 }
 
@@ -106,6 +107,7 @@
   text-align: center;
   text-decoration: none;
   padding: 0 10px 0;
+  position: relative;
   transition: all 0.15s ease-in-out;
 }
 
@@ -113,22 +115,38 @@
   width: 33px;
   height: 33px;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 5px;
   overflow: hidden;
 }
 
 .menuPpal a:hover,
 .menuPpal a.active {
-  color: #2467ff;
+  color: #fff;
   border-bottom: 3px solid #2467ff;
 }
 
 .menuPpal a > div img {
   transition: all 0.15s linear;
+  width: 100%;
 }
 .menuPpal a:hover > div img,
 .menuPpal a.active > div img {
-  margin-top: -36px;
+  margin-top: -33px;
+}
+
+.smallNumber {
+  background-color: #ff5567;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 768px) {
@@ -146,7 +164,7 @@
     flex-direction: row;
     justify-content: space-between;
     box-shadow: none;
-    background-color: #fff;
+    background-color: #565555;
     z-index: 9;
     position: fixed;
   }
@@ -174,7 +192,7 @@
     width: 60%;
     height: 60px;
     margin: 0;
-    background-color: #fff;
+    background-color: #565555;
     font-size: 12px;
     outline: none;
   }
@@ -199,7 +217,7 @@
     margin-top: 15px;
     position: fixed;
     bottom: 0;
-    background-color: #fff;
+    background-color: #565555;
     padding-top: 20px;
     box-shadow: 0px -3px 8px #dddddd;
     border-top-left-radius: 15px;
@@ -215,7 +233,7 @@
     text-decoration: none;
     padding: 5px 10px 20px;
     border-bottom: 3px solid #fff;
-    background-color: #fff;
+    background-color: #565555;
   }
 
   .menuPpal a div.imageMenu {
@@ -224,7 +242,7 @@
   }
 
   .menuPpal a:hover {
-    color: #2467ff;
+    color: #fff;
     border-bottom: 3px solid #2467ff;
   }
 
@@ -272,7 +290,7 @@
     margin-top: 15px;
     position: fixed;
     bottom: 0;
-    background-color: #fff;
+    background-color: #565555;
     padding-top: 20px;
     box-shadow: 0px -3px 8px #dddddd;
     border-top-left-radius: 15px;

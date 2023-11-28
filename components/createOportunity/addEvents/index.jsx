@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./add-events.module.css";
+import Button from "../../button";
 
 const AddEvents = ({ setShowPopEvents }) => {
   const [show, setShow] = useState(false);
@@ -59,7 +60,11 @@ const AddEvents = ({ setShowPopEvents }) => {
               <br />
             </div>
             <div className={styles["boton"]}>
-              <button className={styles["contacto-existente"]}>Guardar</button>
+              <Button
+                buttonType="primary"
+                label="guardar"
+                className="buttonsFilter"
+              />
             </div>
           </div>
         </div>

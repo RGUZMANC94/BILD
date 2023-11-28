@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import { useParams } from "next/navigation";
 import CreateOportunity from "../../components/createOportunity";
 import TypesSide from "../../components/typesSide";
 import InfoProject from "../../components/infoProject";
@@ -8,86 +8,105 @@ import { getSessionToken } from "../../utils/getSessionToken";
 import { useRouter } from "next/router";
 import { getLocalData } from "../api/detailProject";
 import { useSelector } from "react-redux";
+import LightBox from "../../components/lightbox";
+import Link from "next/link";
 
-
-const DetailState = ({ projectSelected }) => {
+const DetailState = ({ types }) => {
+  const { id } = useSelector((state) => state.userState);
+  const [lightboxImage, setLightboxImage] = useState("");
   const [viewEstate, setViewEstate] = useState("units");
   const [showPopUpType, setShowPopUpType] = useState(false);
   const [createOportunity, setCreateOportunity] = useState(false);
-  // const [detailProject, setDetailProject] = useState();
+  const [recentContacts, setRecentsContacts] = useState({});
   const router = useRouter();
   const containerEstate = useRef(null);
 
-  const { openPopUpOportunity } = useSelector((state) => state.popUpOportunity);
-
-  // const getDetailProject = async () => {
-  //   const response = await fetch("/api/detailProject.js", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       identificator: 1,
-  //     }),
-  //   });
-
-  //   const projectDetail = await response.json();
-  //   setDetailProject(projectDetail);
-  // };
+  const { openPopUpOportunity } = useSelector(
+    (state) => state.popUpOportunityState
+  );
+  const { projectsList } = useSelector((state) => state.projectState);
+  const projectSelected = projectsList.filter(
+    (project) => router.query.id === project.projectId
+  )[0];
 
   useEffect(() => {
     if (!getSessionToken()) {
       router.push("/login");
       return;
     }
-    // getDetailProject();
+    getRecentsContacts();
   }, []);
+
+  const getRecentsContacts = async () => {
+    const response = await fetch(`/api/recentsContacts`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    const recentsContacts = await response.json();
+    console.log(recentsContacts);
+    setRecentsContacts(recentsContacts);
+  };
 
   return (
     <>
+      <div className="top-content">
+        <ul>
+          <li>
+            <Link href="/" className="back-arrow bg-ct"></Link>
+          </li>
+          <li>
+            <a href="#">
+              <i className="fa-solid fa-angle-left"></i>
+            </a>
+          </li>
+          <li
+            className={`itemTopContent ${
+              viewEstate === "units" ? "active" : ""
+            }`}
+            onClick={() => {
+              setViewEstate("units");
+            }}
+          >
+            <button className="buttonTopDetailState">Unidades</button>
+          </li>
+          <li
+            className={`itemTopContent ${
+              viewEstate === "info" ? "active" : ""
+            }`}
+            onClick={() => {
+              setViewEstate("info");
+            }}
+          >
+            <button className="buttonTopDetailState">Información</button>
+          </li>
+        </ul>
+      </div>
       <section className="main">
         <div className="container">
-          <div className="top-content">
-            <ul>
-              <li>
-                <a href="#">
-                  <i className="fa-solid fa-angle-left"></i>
-                </a>
-              </li>
-              <li
-                className={`itemTopContent ${
-                  viewEstate === "units" ? "active" : ""
-                }`}
-                onClick={() => {
-                  setViewEstate("units");
-                }}
-              >
-                <button className="buttonTopDetailState">Unidades</button>
-              </li>
-              <li
-                className={`itemTopContent ${
-                  viewEstate === "info" ? "active" : ""
-                }`}
-                onClick={() => {
-                  setViewEstate("info");
-                }}
-              >
-                <button className="buttonTopDetailState">Información</button>
-              </li>
-            </ul>
-          </div>
-
           <div className={`containerEstate`} ref={containerEstate}>
             <TypesSide
-              types={projectSelected.types}
+              types={types}
               viewEstate={viewEstate}
               setShowPopUpType={setShowPopUpType}
               setCreateOportunity={setCreateOportunity}
             />
-            <InfoProject viewEstate={viewEstate} />
+            <InfoProject
+              viewEstate={viewEstate}
+              info={projectSelected}
+              setLightboxImage={setLightboxImage}
+              projectId={router.query.id}
+            />
           </div>
         </div>
       </section>
+
+      {lightboxImage !== "" && (
+        <LightBox image={lightboxImage} setLightboxImage={setLightboxImage} />
+      )}
 
       <AddTypePop
         setShowPopUpType={setShowPopUpType}
@@ -95,24 +114,22 @@ const DetailState = ({ projectSelected }) => {
       />
 
       {openPopUpOportunity && (
-        <CreateOportunity
-          created={false}
-        />
+        <CreateOportunity created={false} recentContacts={recentContacts} />
       )}
     </>
   );
 };
 
 export const getServerSideProps = async (context) => {
-  const responseDetailProject = await getLocalData();
-
-  const projectSelected = responseDetailProject.find(
-    (project) => project.id === Number(context.params.id)
+  const response = await fetch(
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD`
   );
+
+  const types = await response.json();
 
   return {
     props: {
-      projectSelected,
+      types,
     },
   };
 };

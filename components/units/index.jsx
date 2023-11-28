@@ -3,14 +3,15 @@ import Button from "../button";
 import styles from "./Units.module.css";
 import { useSelector } from "react-redux";
 import Unit from "../unit";
+import Link from "next/link";
 
 const Units = ({ setCreateOportunity, units }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
-  const { user_rol } = useSelector((state) => state.user);
+  const { user_rol } = useSelector((state) => state.userState);
 
   return (
     <div className="caracteristicas">
-      {user_rol === "admin" && (
+      {user_rol === "ADMIN" && (
         <Button
           className={"align-end"}
           buttonType={"primary"}
@@ -60,12 +61,12 @@ const Units = ({ setCreateOportunity, units }) => {
         <button className={`${styles.submitUnit} bg-ct`}></button>
       </form>
 
-      {user_rol === "admin" && (
+      {user_rol === "ADMIN" && (
         <div className={`${styles.excelsButtons} flex j-e a-c`}>
           <Button
             inheritClass={styles.excelsButton}
-            className={`gradient`}
-            buttonType={"gradient"}
+            className={`primary`}
+            buttonType={"primary"}
             label="Subir excel"
             iconImage={false}
           />

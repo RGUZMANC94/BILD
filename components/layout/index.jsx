@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import styles from "./layout.module.css";
 import Header from "../header";
 import { useRouter } from "next/router";
-import { Lexend } from "next/font/google";
-import { useDispatch } from "react-redux";
+import { Lexend, Quicksand } from "next/font/google";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/userSlice";
 import { getSessionToken } from "../../utils/getSessionToken";
 
@@ -13,10 +13,17 @@ const lexend = Lexend({
   subsets: ["latin"],
 });
 
+const quicksand = Quicksand({
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal"],
+  subsets: ["latin"],
+});
+
 const Layout = ({ children }) => {
   const router = useRouter();
   const { pathname } = router;
   const dispatch = useDispatch();
+  const {id} = useSelector((state) => state.userState);
 
   const getUserLogged = async (token) => {
     const response = await fetch("/api/login", {
@@ -32,14 +39,14 @@ const Layout = ({ children }) => {
     dispatch(setUser(loginData));
   };
 
-  useEffect(() => {
-    if (getSessionToken()) {
-      getUserLogged(getSessionToken());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (id) {
+  //     getUserLogged(getSessionToken());
+  //   }
+  // }, []);
 
   return (
-    <main className={lexend.className}>
+    <main className={quicksand.className}>
       {pathname !== "/login" && <Header />}
 
       {children}

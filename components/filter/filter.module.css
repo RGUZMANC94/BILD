@@ -8,10 +8,12 @@
   justify-content: flex-end;
   align-items: center;
   top: -100%;
+  transition: top .0s ease-in-out .5s;
 }
 
 .filterPopUp.active {
   top: 0;
+  transition: top .0s ease-in-out;
 }
 
 .filterBackground {
@@ -33,16 +35,15 @@
 .wrapperFilter {
   position: relative;
   width: 40%;
-  border-radius: 10px 0 0 10px;
   height: 100%;
   background-color: #21221dbc;
-  padding: 20px 40px 40px;
+  padding: 25px 40px 25px;
   transform: translateX(100%);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   overflow-y: auto;
   border-radius: 35px 0px 0px 35px;
   border: 1px solid #c7c7c7;
@@ -56,7 +57,7 @@
 .closeFilter {
   width: 30px;
   height: 30px;
-  background-image: url(/images/close.png);
+  background-image: url(/images/close-white.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -64,14 +65,15 @@
   margin: 0 0 0 auto;
   position: sticky;
   top: 0;
-  right: 0;
+  right: -20px;
+  position: relative;
 }
 
 .filterGroups {
   width: 100%;
   position: relative;
   margin-bottom: 25px;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 .filterGroup {
@@ -106,11 +108,11 @@
   padding: 15px;
   padding-right: 25px;
   appearance: none;
-  background-color: transparent;
-  border: 0.5px solid #4d4d4d;
+  background-color: rgba(60, 64, 67, 0);
+  border: 0.5px solid #fff;
   border-radius: 5px;
-  background-image: url(/images/arrow_select.png);
-  background-size: 15px;
+  background-image: url(/images/arrow-select-white.svg);
+  background-size: 20px;
   background-position: 98% 50%;
   background-repeat: no-repeat;
   display: block;

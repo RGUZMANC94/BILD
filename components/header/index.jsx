@@ -32,7 +32,7 @@ const Header = () => {
                 className={pathname === "/" ? styles.active : ""}
               >
                 <div className={styles.imageMenu}>
-                  <img alt="" src="/images/icon-menu1.png" />
+                  <img alt="" src="/images/header/building.png" />
                 </div>
                 Inmuebles
               </Link>
@@ -41,33 +41,40 @@ const Header = () => {
                 className={pathname === "/contacts" ? styles.active : ""}
               >
                 <div className={styles.imageMenu}>
-                  <img alt="" src="/images/icon-menu2.png" />
+                  <img alt="" src="/images/header/phone.png" />
                 </div>
                 Contactos
               </Link>
-              <a href="#">
+              <Link
+                href={pathname === "/dashboard" ? "" : "/dashboard"}
+                className={pathname === "/dashboard" ? styles.active : ""}
+              >
                 <div className={styles.imageMenu}>
-                  <img alt="" src="/images/icon-menu3.png" />
+                  <img alt="" src="/images/header/dashboard.png" />
                 </div>
                 Dashboard
-              </a>
+              </Link>
               <a href="#">
                 <div className={styles.imageMenu}>
-                  <img alt="" src="/images/icon-menu4.png" />
+                  <img alt="" src="/images/header/key.png" />
                 </div>
                 Oportunidades
+                <div className={styles.smallNumber}>5</div>
               </a>
-              <a href="#">
+              <Link
+                href={pathname === "/profile" ? "" : "/profile"}
+                className={pathname === "/profile" ? styles.active : ""}
+              >
                 <div className={styles.imageMenu}>
-                  <img alt="" src="/images/icon-menu5.png" />
+                  <img alt="" src="/images/header/person.png" />
                 </div>
                 Perfil
-              </a>
-              <div className={styles.search}>
-                <div
-                  className={`${styles.glass} bg-ct`}
-                  onClick={() => setShowFilter(true)}
-                ></div>
+              </Link>
+              <div
+                className={styles.search}
+                onClick={() => setShowFilter(true)}
+              >
+                <div className={`${styles.glass} bg-ct`}></div>
               </div>
               
             </div>

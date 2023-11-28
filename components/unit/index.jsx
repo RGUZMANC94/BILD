@@ -1,11 +1,15 @@
 import { useState } from "react";
 import styles from "./unit.module.css";
+import { useDispatch } from "react-redux";
+import { openPopUp } from "../../redux/popUpOportunity";
 const Unit = ({ unit, setCreateOportunity }) => {
   const [isHidden, setIsHidden] = useState(true);
+  const dispatch = useDispatch();
+
   return (
     <div className="info-tabla">
       <div
-        className="edit-unit bg-ct"
+        className={`edit-unit ${styles.editUnit} bg-ct`}
         onClick={(e) => {
           const parentNode = e.target.parentNode;
           if (isHidden) {
@@ -22,7 +26,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
         <input
           type="text"
           className={styles.inputToEditValue}
-          value={unit.unitId}
+          value={unit.id}
           disabled={isHidden}
         />
       </div>
@@ -54,7 +58,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
       </div>
       <div
         className="llave-tabla"
-        onClick={() => setCreateOportunity(true)}
+        onClick={() => dispatch(openPopUp(true))}
       ></div>
     </div>
   );

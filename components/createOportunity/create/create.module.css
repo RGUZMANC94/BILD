@@ -5,13 +5,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
+  padding: 15px 15px 25px;
   background-color: #21221D;
-  color: #4d4d4d;
-  border-radius: 15px;
+  color: #fff;
+  border-radius: 15px ;
   position: relative;
   z-index: 10;
-  margin-top: 10vh;
 }
 
 .crear-tipo {
@@ -22,12 +21,11 @@
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   background-color: #21221D;
   border-radius: 15px;
-  margin-top: 40px;
   text-align: left;
-  padding: 25px 30px 30px;
+  padding: 10px 15px 30px;
 }
 
 .tipo-unit {
@@ -35,7 +33,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   background-color: #21221D;
   text-align: left;
   margin-top: 10px;
@@ -52,8 +50,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: start;
-  background-color: #fff;
+  align-items: flex-start;
+  background-color: #565555;
   box-shadow: none;
   border-radius: 15px;
   margin-top: 40px;
@@ -72,8 +70,12 @@
   margin-bottom: 20px;
 }
 
+.tipos span {
+  margin-bottom: 10px;
+}
+
 .img-tipo {
-  width: 40%;
+  width: 30%;
   height: 144px;
   overflow: hidden;
   margin-right: 1vh;
@@ -83,6 +85,7 @@
 .img-tipo img {
   overflow: hidden;
   object-fit: contain;
+  width: 100%;
 }
 
 .tipo-info {
@@ -94,9 +97,9 @@
 }
 
 .tipo-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: #4d4d4d;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -112,7 +115,7 @@
 
 .valor {
   font-size: 14px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 200;
   margin-top: 20px;
 }
@@ -120,10 +123,11 @@
 .detalles {
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: center;
   font-size: 14px;
-  color: #4d4d4d;
+  gap: 10px;
+  color: #fff;
   font-weight: 200;
   text-align: left;
   margin-top: 10px;
@@ -136,7 +140,7 @@
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 50px;
   font-size: 14px;
 }

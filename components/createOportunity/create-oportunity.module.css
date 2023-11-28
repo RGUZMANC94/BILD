@@ -5,18 +5,14 @@
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: #fff;
+  background-color: #565555;
   overflow-y: auto;
   opacity: 0;
   top: -100%;
-  background-image: url(/images/bogota-linda.jpg);
+  background-image: url(/images/default-popup.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
   transition: all 0.5s ease-in-out, top 0s linear 0.5s;
 }
 
@@ -28,11 +24,15 @@
   width: 100%;
   height: 100%;
   backdrop-filter: blur(5px);
+  background-color: rgba(33, 34, 29, 0.6);
 }
 
 .headerMainContainer {
   align-self: start;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .openCreateOportunity {
@@ -62,7 +62,7 @@
   width: 100%;
   height: 50px;
   margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(33, 34, 29, 0.3);
   color: #fff;
   font-size: 20px;
   font-weight: 600;
@@ -74,6 +74,22 @@
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.prevStep {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffffcc;
+  background-image: url(/images/arrowBack.svg);
+  background-size: 40%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+  top: 5px;
+  left: 5px;
+  z-index: 4;
 }
 
 .closePopUp {
@@ -94,16 +110,16 @@
 
 .main {
   width: 100%;
-  height: auto;
+  min-height: calc(100% - 50px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 0 50px 50px;
   position: relative;
   z-index: 7;
+  padding: 30px 0;
 }
 
 .crear {
@@ -113,14 +129,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
-  background-color: #21221D;
-  color: #4d4d4d;
+  padding: 15px 15px 25px;
+  background-color: #21221d;
+  color: #fff;
   box-shadow: 2px 2px 6px #c7c7c7;
   border-radius: 15px;
   position: relative;
   z-index: 10;
-  /* margin-top: -17%; */
 }
 
 .crear-tipo {
@@ -131,8 +146,8 @@
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
-  background-color: #fff;
+  align-items: flex-start;
+  background-color: #565555;
   box-shadow: 2px 2px 6px #c7c7c7;
   border-radius: 15px;
   margin-top: 40px;
@@ -145,8 +160,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
-  background-color: #fff;
+  align-items: flex-start;
+  background-color: #565555;
   text-align: left;
   margin-top: 10px;
 }
@@ -162,8 +177,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: start;
-  background-color: #fff;
+  align-items: flex-start;
+  background-color: #565555;
   box-shadow: none;
   border-radius: 15px;
   margin-top: 40px;
@@ -206,7 +221,7 @@
 .tipo-title {
   font-size: 15px;
   font-weight: 500;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -222,7 +237,7 @@
 
 .valor {
   font-size: 14px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 200;
   margin-top: 20px;
 }
@@ -230,10 +245,10 @@
 .detalles {
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   font-size: 14px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 200;
   text-align: left;
   margin-top: 10px;
@@ -246,7 +261,7 @@
   height: auto;
   margin: 0 auto;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 50px;
   font-size: 14px;
 }
@@ -271,7 +286,7 @@
 button.crear-contacto {
   width: 70%;
   height: 50px;
-  color: #2467ff;
+  color: #fff;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -283,7 +298,7 @@ button.crear-contacto {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: #fff;
+  background-color: #565555;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -310,7 +325,7 @@ button.contacto-existente {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: #2467ff;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -382,7 +397,7 @@ i.fa-solid.fa-user {
   height: 100%;
   position: absolute;
   z-index: 1;
-  background-color: #fff;
+  background-color: #565555;
 }
 
 .popup-agregar {
@@ -488,10 +503,10 @@ a.submit.action-button {
 .foto {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   font-size: 18px;
-  color: #4d4d4d;
+  color: #fff;
   text-transform: uppercase;
   margin: 50px 0;
 }
@@ -550,8 +565,8 @@ a.submit.action-button {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .agregar-contacto {
@@ -561,7 +576,7 @@ a.submit.action-button {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   margin-left: 30px;
 }
 
@@ -570,7 +585,7 @@ a.submit.action-button {
   height: auto;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -580,7 +595,7 @@ a.submit.action-button {
   width: 90%;
   height: auto;
   margin: 0 auto;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 50px;
   font-size: 14px;
@@ -607,8 +622,8 @@ a.submit.action-button {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: 20px 0px;
 }
 .clear {
@@ -652,7 +667,7 @@ select.subject_input {
   flex-direction: column;
   text-align: left;
   font-size: 16px;
-  color: #4d4d4d;
+  color: #fff;
   font-weight: 400;
   padding: 20px 0;
   text-transform: uppercase;
