@@ -116,3 +116,12 @@
 .primary:hover .iconImage {
   background-image: url(/images/plus-light.png);
 }
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .align-end{
+    margin: auto;
+  }
+}

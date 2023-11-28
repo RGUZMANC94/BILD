@@ -43,7 +43,7 @@ const Home = () => {
       <div className={styles["main-container"]}>
         {user_rol === "ADMIN" && (
           <Button
-            className={"align-end"}
+            classNameInherit={"align-end"}
             buttonType={"primary"}
             label="Crear Proyecto"
             link={"/create-project"}
@@ -52,8 +52,8 @@ const Home = () => {
 
         <div className={styles["containerEstates"]}>
           {projectsList.map((project) => (
-            <div key={project.projectId} className={styles["proyectos"]}>
-              <Link href={`/detail-estate/${project.projectId}`}>
+            
+              <Link key={project.projectId} className={styles["proyectos"]} href={`/detail-estate/${project.projectId}`}>
                 <div className={styles["img-proyect"]}>
                   <img
                     alt=""
@@ -113,7 +113,6 @@ const Home = () => {
                   </div>
                 </div>
               </Link>
-            </div>
           ))}
         </div>
       </div>
