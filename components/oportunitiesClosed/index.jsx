@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
 import { openPopUp } from "../../redux/popUpOportunity";
 import styles from "./oportunities-closed.module.css";
+import OportunitiesCard from "../../components/oportunitiesCard";
 
 const OportunitiesClosed = () => {
   return (
@@ -21,43 +23,11 @@ const OportunitiesClosed = () => {
           </div>
 
           <div className={styles["oportunidades"]}>
-        <div className={styles["tipo"]}>
-          <div className={`${styles["tipo-unit"]} ${styles.active}`}>
-            <div className={styles["img-tipo"]}>
-              <img src="/images/tipo-1.png" />
-              <div className={styles["zoom"]}></div>
-            </div>
-            <div className={styles["tipo-info"]}>
-              <span className={styles["tipo-title"]}>Fontana Campestre</span>
-              <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-              <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
-            </div>
-            <div className={styles["back"]}></div>
-          </div>
-          <div className={styles["tipo-unit"]}>
-            <div className={styles["img-tipo"]}>
-              <img src="/images/tipo-1.png" />
-              <div className={styles["zoom"]}></div>
-            </div>
-            <div className={styles["tipo-info"]}>
-              <span className={styles["tipo-title"]}>Fontana Campestre</span>
-              <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-              <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
-            </div>
-            <div className={styles["back"]}></div>
-          </div>
-          <div className={styles["tipo-unit"]}>
-            <div className={styles["img-tipo"]}>
-              <img src="/images/tipo-1.png" />
-              <div className={styles["zoom"]}></div>
-            </div>
-            <div className={styles["tipo-info"]}>
-              <span className={styles["tipo-title"]}>Fontana Campestre</span>
-              <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-              <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
-            </div>
-            <div className={styles["back"]}></div>
-          </div>
+        <div className={styles["card-container"]}>
+          <OportunitiesCard hot={"cold"}  state={false} image={"/images/perfil-img.jpeg"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={"hot"} state={true}  image={"/images/perfil-img.jpeg"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+          <OportunitiesCard hot={"warm"} state={true}  image={"/images/perfil-img.jpeg"} name={"Fontana Campestre"} location={"Fontana Campestre"} type={"TIPO 1 - 302"} followingDate={"23/05/23"}></OportunitiesCard>
+
         </div>
         
 
@@ -85,7 +55,7 @@ const OportunitiesClosed = () => {
                       name="cb-terminosservicio"
                       required
                     />{" "}
-                    <span>05/01/22</span>
+                    <span className={styles["pendiente-date"]}>05/01/22</span>
                   </label>
                   <ul>
                     <li className={styles["pendiente-list"]}>
@@ -105,7 +75,7 @@ const OportunitiesClosed = () => {
               </div>
 
               <div className={styles["box"]}>
-                <span>05/01/22</span>
+                <span className={styles["pendiente-date"]}>05/01/22</span>
                 <ul>
                   <li className={styles["pendiente-list"]}>
                     Creación del Contacto
@@ -116,12 +86,19 @@ const OportunitiesClosed = () => {
               </div>
             </div>
             <div className={styles["pendientes-bottom"]}>
+              
               <button
                 className={styles["ver-oportunidad"]}
                 onClick={() => dispatch(openPopUp(true))}
               >
+                <div className={styles["pendientes-bottom-icon"]}/>
                 Ver Oportunidad
               </button>
+          <div className={styles["card-progress-bar-container"]}>
+            
+                <div className={styles["card-progress-bar-frost-icon"]}></div>
+                <div className={styles["card-progress-bar-cold"]}></div>
+          </div> 
             </div>
           </div>
         </div>

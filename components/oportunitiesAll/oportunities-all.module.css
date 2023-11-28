@@ -374,6 +374,24 @@ li.pendiente-list {
   background-image: url(/images/cold-icon.svg);
 }
 
+.checkboxInput {
+  display: none;
+}
+
+.checkboxLabelSquare {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.checkboxInput:checked + .checkboxLabelSquare  {
+  background-color: white;
+}
+
+
 @media only screen and (max-width: 1024px) {
   
   .card-container{

@@ -59,12 +59,13 @@ const oportunitiesAll = () => {
               <div className={styles["greybox"]}>
                 <div className={styles["info"]}>
                   <label>
-                    <input
-                      className={styles.input}
-                      type="checkbox"
-                      name="cb-terminosservicio"
-                      required
-                    />{" "}
+                      <input
+                        type="checkbox"
+                        id="checkbox1"
+                        
+                        className={styles.checkboxInput}
+                      /> 
+                      <label htmlFor="checkbox1" className={styles.checkboxLabelSquare}></label>
                     <span className={styles["pendiente-date"]}>05/01/22</span>
                   </label>
                   <ul>

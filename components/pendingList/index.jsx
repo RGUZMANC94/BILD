@@ -13,30 +13,36 @@ const pendingList = () => {
                   <div className={styles["list-card-section"]}>
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox1"
+                        
+                        className={styles.checkboxInput}
+                      /> 
+                      <label htmlFor="checkbox1" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>
 
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox2"
+                        
+                        className={styles.checkboxInput}
+                      />
+                      <label htmlFor="checkbox2" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>
 
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox3"
+                        
+                        className={styles.checkboxInput}
+                      />
+                      <label htmlFor="checkbox3" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>
@@ -52,10 +58,12 @@ const pendingList = () => {
 
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox4"
+                        
+                        className={styles.checkboxInput}
+                      />
+                      <label htmlFor="checkbox4" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>
@@ -71,10 +79,12 @@ const pendingList = () => {
 
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox5"
+                        
+                        className={styles.checkboxInput}
+                      />
+                      <label htmlFor="checkbox5" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>
@@ -90,10 +100,12 @@ const pendingList = () => {
 
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox6"
+                        
+                        className={styles.checkboxInput}
+                      />
+                      <label htmlFor="checkbox6" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>
@@ -109,10 +121,12 @@ const pendingList = () => {
 
                     <div className={styles["list-card-container"]}>
                       <input
-                        className={styles["list-card-input"]}
                         type="checkbox"
-                        name="calendar-ckechbox"
-                      />{" "}
+                        id="checkbox7"
+                        
+                        className={styles.checkboxInput}
+                      />
+                      <label htmlFor="checkbox7" className={styles.checkboxLabelSquare}></label>
                       <div className={styles["list-card-text-hour"]}>10:00 am</div>
                       <div className={styles["list-card-text-message"]}>Llamar Andrea Echeverri</div>
                     </div>

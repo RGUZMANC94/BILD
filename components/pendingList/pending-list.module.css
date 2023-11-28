@@ -304,6 +304,24 @@ li.pendiente-list {
   margin: 0 auto;
 }
 
+.checkboxInput {
+  display: none;
+}
+
+.checkboxLabelSquare {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.checkboxInput:checked + .checkboxLabelSquare  {
+  background-color: white;
+}
+
+
 @media only screen and (max-width: 1200px) {
   .img-tipo {
     margin-right: 10px;
