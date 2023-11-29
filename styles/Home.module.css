@@ -124,23 +124,24 @@
     gap:0px;
   }
   .proyectos{
+    height: 100px;
     flex-direction: row;
     flex-wrap: nowrap;
     width: 90%;
     justify-content: flex-start;
     margin-top: 10px;
+    border-radius: 10px;
   }
   .img-proyect{
     max-width: 20% ; 
-    max-height: 20% ;
-    aspect-ratio: 1/1 !important;
+    height: auto;
+    aspect-ratio: 1/1;
     margin: 10px;
   }
 
   .img-proyect img{
-    width: 100% !important;
-    height: 100% !important;
-    aspect-ratio: 1/1 !important;
+    height: 100% ;
+    aspect-ratio: 1/1 ;
     object-fit: cover;
   }
 
@@ -148,11 +149,34 @@
     width: fill-available;
   }
   .editProject{
-    width: 50px;
-    height: 50px;
-    top: -280%;
-    /*right: -75%;*/
+    width: 30px;
+    height: 30px;
+    top: -200%;
+    right: -3%;
+    background-size: cover;
+    border-radius: 8px;
   }
+
+  .proyect-title{
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .valor {
+    margin: 0;
+    font-size: 10px;
+    font-weight: 300;
+  }
+
+  .detalles {
+    font-size: 11px;
+    font-weight: 300;
+  }
+
+  .detalles img{
+    width: 11px;
+    height: 10px;
+  }
+
 }
 
 /*@media only screen and (max-width: 480px) {

@@ -117,6 +117,9 @@
   background-repeat: no-repeat;
   display: block;
   color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .rangeTrack {
@@ -136,4 +139,56 @@
 
 .labelsRangeSlider{
   color: #fff;
+}
+
+.filter-buttons-bottom{
+  width: 100%;
+}
+
+.maxLabel{
+  color: #FFF;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.12;
+}
+
+.minLabel{
+  color: #FFF;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.12;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapperFilter{
+    width: 100%;
+    border-radius: 0px;
+    border: none;
+  }
+  .filter-buttons-bottom{
+    width: 100%;
+  }
+
+  .labelText {
+    font-size: 11px;
+    font-weight: 400;
+  }
+
+  .maxLabel{
+    font-size: 8px;
+    font-weight: 300;
+  }
+
+  .minLabel{
+    font-size: 8px;
+    font-weight: 300;
+  }
+
+  .ubicationSelect{
+    font-size: 11px;
+    font-weight: 400;
+  }
+  
 }
