@@ -6,7 +6,9 @@ const Contacts = () => {
   const recentContacts = [1, 2, 3];
   return (
     <section className={styles["main-contain-contact"]}>
-      <Link className={styles["crear-contacto"]} href="/create-contact"></Link>
+      <div className={styles["crear-contacto-container"]}>
+        <Link className={styles["crear-contacto"]} href="/create-contact"></Link>
+      </div>
       <div className={styles["contact-top"]}>
         <div className={styles["nombre"]}>Nombre</div>
         <div className={styles["mail"]}>Correo Electrónico</div>
@@ -35,7 +37,7 @@ const Contacts = () => {
                     <img src="/images/blue-phone-movil.png" />
                   </div>
                   <div className={styles["wa-movil"]}>
-                    <img src="/images/whatsapp-green.png" />
+                    <img src="/images/whatsapp-contacts.png" />
                   </div>
                 </div>
               </div>
@@ -64,7 +66,7 @@ const Contacts = () => {
                     <img src="/images/blue-phone-movil.png" />
                   </div>
                   <div className={styles["wa-movil"]}>
-                    <img src="/images/whatsapp-green.png" />
+                    <img src="/images/whatsapp-contacts.png" />
                   </div>
                 </div>
               </div>

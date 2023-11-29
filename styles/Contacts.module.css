@@ -5,19 +5,29 @@
   top: 120px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
+
+
 .crear-contacto {
-  width: 90%;
-  height: 59px;
-  margin: 0 auto;
+  width: 64px;
+  height: 60px;
   display: flex;
-  margin-top: 50px;
   justify-content: flex-end;
   background-image: url(/images/crear-contacto.png);
   background-repeat: no-repeat;
-  background-position: right;
-  background-size: 66px 59px;
+  background-position: center;
+  background-size: contain;
+}
+
+.crear-contacto-container{
+  margin-top: 50px;
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
 }
 
 .contact-top {
@@ -170,11 +180,12 @@
   display: none;
 }
 @media only screen and (max-width: 1200px) {
-  .nombre,
-  .mail,
-  .numero {
-    width: 33%;
+
+  .wa-movil img{
+    width: 50px;
+    height: 50px;
   }
+
   .reciente {
     font-size: 14px;
   }
@@ -195,7 +206,17 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .crear-contacto,
+  .crear-contacto-container{
+    position: absolute;
+    bottom: 48%;
+  }
+
+  .crear-contacto{
+    width: 48px;
+    height: 48px;
+    background-image: url(/images/create-contect-movile.png);
+  }
+
   .contact-top,
   .reciente {
     display: none;
