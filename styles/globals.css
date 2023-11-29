@@ -180,7 +180,7 @@ li {
   justify-content: flex-start;
   align-items: flex-start;
   max-height: calc(100vh - 350px);
-  padding: 10px 20px 0 0px;
+  /*padding: 10px 20px 0 0px;*/
   margin-bottom: 20px;
 }
 
@@ -222,7 +222,7 @@ li {
 }
 
 .tipo-unit.informacion {
-  width: auto;
+  width: 480px;
   height: auto;
   display: initial;
   background: rgba(33, 34, 29, 0.35);
@@ -230,17 +230,17 @@ li {
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   text-align: left;
-  padding: 30px 70px 30px 20px;
+  padding: 40px 30px;
   flex-wrap: wrap;
 }
 
 .img-tipo {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
 }
 .img-tipo img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -257,10 +257,11 @@ li {
 }
 
 .tipo-title {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
+  line-height: 1.38;
 }
 
 .llave {
@@ -274,10 +275,12 @@ li {
 }
 
 .valor {
-  font-size: 14px;
+  padding-top: 33px;
+  font-size: 16px;
   color: #fff;
-  font-weight: 200;
+  font-weight: 400;
   margin-top: 20px;
+  line-height: 2;
 }
 
 .arrowDrop {
@@ -291,9 +294,10 @@ li {
   align-items: center;
   font-size: 14px;
   color: #fff;
-  font-weight: 200;
+  font-weight: 400;
   text-align: left;
   margin-top: 10px;
+  line-height: 2.29;
 }
 
 .detalles img {
@@ -355,7 +359,7 @@ li {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  left: 25px;
+  left: 2px;
   margin-top: -12.5px;
   background-image: url(/images/edit.svg);
   z-index: 1;
@@ -429,15 +433,15 @@ i.fa-solid.fa-plus {
   color: #ffffff;
   font-size: 16px;
   font-weight: 300;
-  margin-top: 25px;
+  margin-top: 22px;
 }
 
 .zoom-img {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
+  top: 2px;
+  right: 2px;
+  width: 37px;
+  height: 37px;
   background-color: #ff5567;
   background-image: url("/images/search-white.png");
   background-size: 60%;
@@ -596,22 +600,29 @@ input[type="number"] {
 
   .unidades {
     width: 100%;
+    min-width: 267px;
     height: auto;
     display: flex;
     flex-direction: column;
+    background: rgba(33, 34, 29, 0.35);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 30px;
   }
 
   .tipo {
     width: 100%;
+    margin: 0;
   }
 
   .tipo-unit {
     width: 100%;
-    padding: 20px 10px 10px;
+    min-width: 320px;
     background-color: #565555;
     box-shadow: none;
     border-radius: 0px;
-    margin-top: 40px;
     text-align: left;
     flex-wrap: wrap;
     border-bottom: 5px solid #f5f5f5;
@@ -622,17 +633,22 @@ input[type="number"] {
     height: 80px;
   }
   .img-tipo img {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     margin-right: 20px;
     position: relative;
     z-index: 1;
   }
   .tipo-title {
+    display: none;
     font-size: 12px;
   }
   .valor {
+    margin: 0;
     font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.6
   }
   .detalle {
     font-size: 10px;
@@ -649,12 +665,13 @@ input[type="number"] {
   }
 
   .zoom-img {
-    width: 22px;
-    height: 22px;
-    background-image: url(/images/zoom-img.png);
-    background-position: top right;
-    background-repeat: repeat;
-    position: relative;
+    width: 28px;
+    height: 28px;
+    top:4%;
+    right: 4%;
+    background-repeat: no-repeat;
+    position: absolute;
+    border-radius: 5px;
     z-index: 2;
   }
 
@@ -745,16 +762,49 @@ input[type="number"] {
     width: 100%;
     border-bottom: none;
     justify-content: space-evenly;
-    padding: 0px;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
   }
 
   .img-tipo.informacion {
-    width: 80px;
-    height: 80px;
+    width: 45px;
+    height: 45px;
     margin-right: 20px;
   }
 
   .img-box {
+    min-width: 267px;
+    border-radius: 15px;
+    width: 100%;
+  }
+
+  .editProject {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    top: 14px;
+    right: 10px;
+  }
+  .gallery-image {
+    gap:13px;
+    padding: 0;
+  }
+
+  .buttonTopDetailState{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.81;
+  }
+
+  .back-arrow {
+    height: 22px;
+    width: 20px;
+  }
+
+  .unidadesSide.active {
     width: 100%;
   }
 }

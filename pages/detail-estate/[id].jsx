@@ -51,6 +51,23 @@ const DetailState = ({ types }) => {
     setRecentsContacts(recentsContacts);
   };
 
+  const [windowWidth, setWindowWidth] = useState(null);
+  const [displayText, setDisplayText] = useState('');
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <div className="top-content">
@@ -81,7 +98,8 @@ const DetailState = ({ types }) => {
               setViewEstate("info");
             }}
           >
-            <button className="buttonTopDetailState">Información</button>
+            {windowWidth && windowWidth < 768 ? <button className="buttonTopDetailState">Info</button> : <button className="buttonTopDetailState">Información</button>}
+            
           </li>
         </ul>
       </div>
