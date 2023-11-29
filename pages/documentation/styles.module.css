@@ -1,0 +1,275 @@
+.doc-perfil {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1600px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 200px;
+}
+
+.editar-perfil {
+  width: calc(30% - 20px);
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-radius: 35px;
+  background: #2e2e2c;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(7.5px);
+}
+
+.perfil-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.perfil-img {
+  border-radius: 50%;
+  width: 120px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.perfil-img img {
+  width: 100%;
+}
+
+.id-perfil img {
+  margin-right: 20px;
+  width: 40px;
+}
+
+.name-perfil {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto 20px;
+}
+.sub-name {
+  font-size: 18px;
+  font-weight: 300;
+  columns: #4d4d4d;
+  text-align: center;
+  margin-bottom: 30px;
+  margin: 0 auto;
+  line-height: 50px;
+}
+
+.id-perfil {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  font-size: 18px;
+  font-weight: 200;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.documentacion-requerida {
+  width: calc(70% - 25px);
+  border-radius: 20px;
+  border: 1px solid #b8b8b8;
+  height: auto;
+  margin-top: 20px;
+}
+
+.doc-top {
+  width: 95%;
+  border-bottom: 1px solid #4d4d4d;
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 auto;
+  margin-bottom: 55px;
+}
+
+.doc-title {
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.doc-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.archivo {
+  width: 40%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px 0 50px;
+}
+
+.doc-list {
+  width: 60%;
+}
+
+.load {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  padding: 75px 20px 40px;
+  border: 2px dashed #2467ff;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #c7c7c7;
+  text-align: center;
+  line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.load img {
+  margin-bottom: 30px;
+}
+
+button.upload-file {
+  width: 50%;
+  height: auto;
+  font-size: 14px;
+  padding: 10px 20px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid #2467ff;
+  border-radius: 5px;
+  background-color: #565555;
+  font-family: "Lexend", sans-serif;
+  margin-top: 30px;
+}
+
+.top-cedula {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #4d4d4d;
+  padding: 0 20px 20px;
+  margin-bottom: 10px;
+}
+
+.certificado {
+  width: 90%;
+  border-bottom: 1px solid #4d4d4d;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.title-cert {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.title-cert::before {
+  content: url(/images/check-circle-blue.png);
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.cert-pdf {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 35px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+.title-pdf {
+  width: 80%;
+}
+.icons-pdf {
+  width: 15%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons {
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.cancelar {
+  width: 45%;
+  height: 50px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  padding: 10px 30px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(0deg, #2467ff, #00bdff) border-box;
+  border-radius: 1em;
+  border: 2px solid transparent;
+}
+
+.guardar {
+  width: 45%;
+  height: 50px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  border: 1px solid #2467ff;
+  text-transform: uppercase;
+  margin-top: 30px;
+  padding: 10px 30px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

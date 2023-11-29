@@ -39,6 +39,24 @@ const Dashboard = () => {
     },
   ];
 
+  // const volumeSeries = chart.addHistogramSeries({
+  //   color: "#C2D5FF",
+  //   priceFormat: {
+  //     type: "volume",
+  //   },
+  //   priceScaleId: "",
+  // });
+
+  // volumeSeries.setData([
+  //   { time: "2018-10-19", value: 19103293.0, color: "rgba(0, 150, 136, 0.8)" },
+  //   { time: "2018-10-22", value: 21737523.0, color: "rgba(0, 150, 136, 0.8)" },
+  //   { time: "2018-10-23", value: 29328713.0, color: "rgba(0, 150, 136, 0.8)" },
+  //   { time: "2018-10-24", value: 37435638.0, color: "rgba(0, 150, 136, 0.8)" },
+  //   { time: "2018-10-25", value: 25269995.0, color: "rgba(255,82,82, 0.8)" },
+  //   { time: "2018-10-26", value: 24973311.0, color: "rgba(255,82,82, 0.8)" },
+  //   { time: "2018-10-29", value: 22103692.0, color: "rgba(0, 150, 136, 0.8)" },
+  // ]);
+
   // const chartBars = createChart()
 
   useEffect(() => {

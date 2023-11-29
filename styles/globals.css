@@ -24,6 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: 50px;
 }
 
 .main {
@@ -272,6 +273,11 @@ li {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.llave:hover {
+  background-image: url(/images/key-dark.svg);
 }
 
 .valor {
@@ -349,7 +355,7 @@ li {
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-  margin: 20px 0 0 0;
+  margin: 20px 0 20px 0;
   position: relative;
 }
 
@@ -392,6 +398,11 @@ li {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.llave-tabla:hover {
+  background-image: url(/images/key-dark.svg);
 }
 
 button.agregar {
@@ -574,6 +585,235 @@ input[type="number"] {
   top: 0;
 }
 
+#logo {
+  width: 50%;
+}
+
+.menu-top {
+  width: 50%;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+/* .top-content {
+  width: 95%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  font-family: "Lexend", sans-serif;
+  text-align: left;
+  justify-content: start;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+  position: relative;
+  top: 30px;
+  margin: 0 auto;
+} */
+
+.top-content ul li button {
+  float: left;
+  width: auto;
+  height: auto;
+  margin-right: 100px;
+  text-transform: uppercase;
+  color: #c7c7c7;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.top-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.top-content ul li,
+li {
+  color: #c7c7c7;
+}
+
+.top-content ul li,
+li {
+  color: #c7c7c7;
+}
+
+li.active button {
+  color: #4d4d4d;
+  border-bottom: 3px solid #2467ff;
+}
+.main-contain-gerente {
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+  position: relative;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nombre,
+.mail,
+.reciente-col,
+.contact {
+  width: 30%;
+  color: #fff;
+}
+
+.user-data {
+  width: 20%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  color: #fff;
+}
+
+.number,
+.rol-data {
+  width: 20%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.iconos-movil{
+  display: none;
+}
+
+.listas {
+  width: 90%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
+  margin-top: 20px;
+}
+
+.list-contact {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.contact-top {
+  width: 90%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 35px;
+  margin-top: 40px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.crear-usuario {
+  width: 90%;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 50px;
+  justify-content: end;
+  background-image: url(/images/add.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 60px 60px;
+}
+.list-name {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 990px) {
+  .menu-top {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mail,
+  .rol-data,
+  .number {
+    display: none;
+  }
+
+  .main-contain-gerente {
+    width: 100%;
+    top: 80px;
+  }
+
+  .crear-usuario {
+    width: 100%;
+    position: fixed;
+    bottom: 140px;
+    z-index: 10;
+    right: 90px;
+  }
+
+  .top-content ul li button {
+    float: left;
+    width: auto;
+    height: auto;
+    margin-right: 50px;
+    text-transform: uppercase;
+    color: #c7c7c7;
+    font-weight: 300;
+    font-size: 12px;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .contact {
+    width: 90%;
+    font-size: 16px;
+    font-weight: 200;
+  }
+
+  .iconos-movil {
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .list-name {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .crear-usuario {
+    width: 100%;
+    position: fixed;
+    bottom: 140px;
+    z-index: 10;
+    right: 60px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .main {
     width: 100%;
@@ -593,7 +833,7 @@ input[type="number"] {
     font-size: 16px;
   }
 
-  .top-content ul li a {
+  .top-content ul li button {
     margin-right: 30px;
     font-size: 16px;
   }

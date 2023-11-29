@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 
 const Oprtunities = () => {
   const dispatch = useDispatch();
-  const { openPopUpOportunity } = useSelector((state) => state.popUpOportunity);
+  const { openPopUpOportunity } = useSelector(
+    (state) => state.popUpOportunityState
+  );
   return (
     <>
       <section className={styles["main"]}>
@@ -57,6 +59,7 @@ const Oprtunities = () => {
             </div>
           </div>
           <div className={styles["wrap-right"]}>
+            
             <div className={styles["right"]}>
               <div className={styles["line"]}>
                 <img src="/images/Ellipse 81.png" />
@@ -119,6 +122,7 @@ const Oprtunities = () => {
                 </button>
               </div>
             </div>
+
           </div>
         </div>
       </section>
