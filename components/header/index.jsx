@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import styles from "./header.module.css";
 import Filter from "../filter";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showFilter, setShowFilter] = useState(false);
   const router = useRouter();
   const { pathname } = router;
+  const { user_rol } = useSelector((state) => state.userState);
   return (
     <>
       <header className={styles.siteHeader}>
@@ -64,9 +66,16 @@ const Header = () => {
                 className={pathname === "/profile" ? styles.active : ""}
               >
                 <div className={styles.imageMenu}>
-                  <img alt="" src="/images/header/person.png" />
+                  <img
+                    alt=""
+                    src={
+                      user_rol === "ADMIN"
+                        ? "/images/header/settings.svg"
+                        : "/images/header/person.png"
+                    }
+                  />
                 </div>
-                Perfil
+                {user_rol === "ADMIN" ? "Ajustes" : "Perfil"}
               </Link>
               <div
                 className={styles.search}

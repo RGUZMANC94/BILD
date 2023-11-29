@@ -311,23 +311,25 @@ i.fa-solid.fa-angle-left {
   background-color: #fff;
   position: absolute;
   top: 0px;
-  left: -63px;
+  left: calc(-5% - 42.5px);
 }
 
 .blue-point-plus {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: #d1f6da;
+  background-color: #ff5567;
   color: #fff;
   font-size: 14px;
   font-weight: 300;
   position: absolute;
-  top: 0px;
+  top: 0;
   left: -10px;
   text-align: center;
   margin: 0 auto;
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pendientes-bottom {

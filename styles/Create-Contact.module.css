@@ -1,26 +1,66 @@
 .wrap-datos {
-  width: 90%;
-  max-width: 1600px;
-  height: auto;
-  margin: 0 auto;
-  display: flex;
-  padding-top: 150px;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.wrap-datos > div{
+  height: 100%;
+  padding-top: 73px;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  background-image: url(/images/close-white.svg);
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  z-index: 3;
 }
 
 .sub-title {
   font-size: 18px;
   color: #fff;
   margin: 50px 0 0px;
+  font-weight: 700;
 }
 
 .datos-left {
-  width: 50%;
-  height: auto;
+  width: 48%;
+  padding-top: 30px;
 }
 
 .datos-right {
-  width: 50%;
+  padding-top: 30px;
+  width: 48%;
   height: auto;
+  position: relative;
+}
+
+.datos-right:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 73px);
+  background-image: url(/images/default-contact.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.datos-right:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 73px);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+  background-color: #21221d9a;
 }
 
 .msform {
@@ -40,23 +80,29 @@
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  z-index: 2;
 }
 
 .top-name span {
+  padding-bottom: 5px;
   border-bottom: 4px solid #2467ff;
 }
 
 .msform input,
 .msform textarea {
   padding: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   border-radius: 10px;
   margin-bottom: 30px;
   width: 100%;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  color: #fff;
   background-color: #343434;
   font-weight: 300;
+}
+
+.msform input::placeholder {
+  color: #fff;
 }
 
 .foto {
@@ -68,10 +114,21 @@
   color: #fff;
   text-transform: uppercase;
   margin: 20px 0px 50px 0;
+  font-weight: 500;
+}
+
+.outerImg {
+  background-color: #ff5567;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .foto img {
-  margin: 0 20px 10px 0;
+  width: 100%;
 }
 .msform .action-button {
   width: 100%;
@@ -136,10 +193,9 @@
 
 .campo {
   width: auto;
-  min-width: 100px;
-  height: 6vh;
-  margin: 30px 20px 0;
-  border: 1px solid #4d4d4d;
+  padding: 7px 15px;
+  margin: 30px 20px 0 0;
+  border: 1px solid #fff;
   border-radius: 5px;
   color: #fff;
   font-size: 16px;
@@ -148,9 +204,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #565555;
+  background-color: transparent;
   cursor: pointer;
-  transition: all .25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .campo:hover {
@@ -160,7 +216,7 @@
 }
 
 .informacion-datos {
-  width: 80% !important;
+  width: 80%;
   height: auto;
   display: flex;
   flex-direction: row;
@@ -168,6 +224,8 @@
   flex-wrap: wrap;
   align-items: center;
   margin: 0 auto;
+  z-index: 2;
+  position: relative;
 }
 
 .datos {

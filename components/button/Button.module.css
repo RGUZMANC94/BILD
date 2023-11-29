@@ -13,7 +13,7 @@
   position: relative;
 }
 
-.siteButton:hover{
+.siteButton:hover {
   transition: all 0.25s ease-in-out, border 0.25s ease-in-out 0.1s;
 }
 
@@ -56,7 +56,7 @@
   border-color: #fff;
 }
 
-.primary:hover:before{
+.primary:hover:before {
   transform: translateY(-100%);
 }
 
@@ -109,7 +109,7 @@
   width: 20px;
   height: 20px;
   mix-blend-mode: normal;
-  background-image: url(/images/plus.svg);
+  background-image: url(/images/plus-light.png);
   transition: all 0.25s ease-in-out;
 }
 
