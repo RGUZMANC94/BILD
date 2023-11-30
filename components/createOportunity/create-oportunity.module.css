@@ -683,3 +683,21 @@ select.subject_input {
   align-items: center;
   margin: 0 auto;
 }
+
+@media only screen and (max-width: 768px) { 
+  .main {
+    
+    align-content: flex-start;
+  }
+
+  .crear {
+    background: none;
+  }
+
+  .creacion-oportunidad{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.66
+  }
+}
