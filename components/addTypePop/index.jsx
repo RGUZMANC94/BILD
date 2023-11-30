@@ -1,16 +1,16 @@
-import { useState, useRef } from "react";
-import Button from "../button";
-import styles from "./Add-type-pop.module.css";
+import { useState, useRef } from 'react';
+import Button from '../button';
+import styles from './Add-type-pop.module.css';
 
 const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
-  const [typeName, setTypeName] = useState("");
-  const [typeSize, setTypeSize] = useState("");
-  const [typeBaths, setTypeBaths] = useState("");
-  const [typeBeds, setTypeBeds] = useState("");
-  const [typeGarage, setTypeGarage] = useState("");
-  const [typePrice, setTypePrice] = useState("");
-  const [typesStatus, setTypesStatus] = useState("");
-  const [typesAdvisor, setTypesAdvisor] = useState("");
+  const [typeName, setTypeName] = useState('');
+  const [typeSize, setTypeSize] = useState('');
+  const [typeBaths, setTypeBaths] = useState('');
+  const [typeBeds, setTypeBeds] = useState('');
+  const [typeGarage, setTypeGarage] = useState('');
+  const [typePrice, setTypePrice] = useState('');
+  const [typesStatus, setTypesStatus] = useState('');
+  const [typesAdvisor, setTypesAdvisor] = useState('');
   const mainImageType = useRef(null);
 
   const createType = async (e) => {
@@ -34,10 +34,10 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
       // ),
     };
 
-    const typeCreated = await fetch("/api/createType", {
-      method: "post",
+    const typeCreated = await fetch('/api/createType', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: data,
     });
@@ -49,7 +49,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
   return (
     <div
       className={`${styles.typePopUp} ${
-        showPopUpType ? styles.activePopUp : ""
+        showPopUpType ? styles.activePopUp : ''
       } flex j-e a-s`}
     >
       <div
@@ -144,15 +144,15 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
 
           <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
             <Button
-              buttonType={"primary"}
+              buttonType={'primary'}
               iconImage={false}
-              label={"CANCELAR"}
+              label={'CANCELAR'}
               inheritClass={styles.buttonCreateType}
             />
             <Button
-              buttonType={"secondary"}
+              buttonType={'secondary'}
               iconImage={false}
-              label={"Guardar"}
+              label={'Guardar'}
               inheritClass={styles.buttonCreateType}
             />
           </div>

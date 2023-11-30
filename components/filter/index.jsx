@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styles from "./filter.module.css";
-import { Range, getTrackBackground } from "react-range";
-import Button from "../button";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import styles from './filter.module.css';
+import { Range, getTrackBackground } from 'react-range';
+import Button from '../button';
+import { useSelector } from 'react-redux';
 
 const Filter = ({ show, setShowFilter }) => {
   const { projectsList } = useSelector((state) => state.projectState);
@@ -20,19 +20,19 @@ const Filter = ({ show, setShowFilter }) => {
 
   const rangeSliders = [
     {
-      type: "price",
+      type: 'price',
       min: 0,
       max: 3000000000,
       step: 5000000,
     },
     {
-      type: "floor",
+      type: 'floor',
       min: 1,
       max: 21,
       step: 1,
     },
     {
-      type: "size",
+      type: 'size',
       min: 45,
       max: 1200,
       step: 5,
@@ -40,7 +40,7 @@ const Filter = ({ show, setShowFilter }) => {
   ];
 
   return (
-    <div className={`${styles.filterPopUp} ${show ? styles.active : ""}`}>
+    <div className={`${styles.filterPopUp} ${show ? styles.active : ''}`}>
       <div
         className={styles.filterBackground}
         onClick={() => {
@@ -83,31 +83,31 @@ const Filter = ({ show, setShowFilter }) => {
               className={`${styles.filterGroup} ${styles.filterGroupPrice}`}
             >
               <span className={`${styles.labelText} ${styles.labelTextRange}`}>
-                {rangeSlider.type === "price" && "Precio"}
-                {rangeSlider.type === "floor" && "Piso"}
-                {rangeSlider.type === "size" && "Área"}:
+                {rangeSlider.type === 'price' && 'Precio'}
+                {rangeSlider.type === 'floor' && 'Piso'}
+                {rangeSlider.type === 'size' && 'Área'}:
               </span>
               <Range
                 step={rangeSlider.step}
                 min={rangeSlider.min}
                 max={rangeSlider.max}
                 values={
-                  rangeSlider.type === "price"
+                  rangeSlider.type === 'price'
                     ? priceValues
-                    : rangeSlider.type === "floor"
+                    : rangeSlider.type === 'floor'
                     ? floorValues
                     : sizeValues
                 }
                 onChange={(values) => {
                   switch (rangeSlider.type) {
-                    case "price":
+                    case 'price':
                       setPriceValues(values);
                       break;
 
-                    case "floor":
+                    case 'floor':
                       setFloorValues(values);
                       break;
-                    case "size":
+                    case 'size':
                       setSizeValues(values);
                       break;
                   }
@@ -124,22 +124,22 @@ const Filter = ({ show, setShowFilter }) => {
                     <div
                       ref={props.ref}
                       style={{
-                        height: "5px",
-                        width: "100%",
-                        borderRadius: "4px",
+                        height: '5px',
+                        width: '100%',
+                        borderRadius: '4px',
                         background: getTrackBackground({
                           values:
-                            rangeSlider.type === "price"
+                            rangeSlider.type === 'price'
                               ? priceValues
-                              : rangeSlider.type === "floor"
+                              : rangeSlider.type === 'floor'
                               ? floorValues
                               : sizeValues,
-                          colors: ["#fff", "#FF5567", "#fff"],
+                          colors: ['#fff', '#FF5567', '#fff'],
                           min: rangeSlider.min,
                           max: rangeSlider.max,
                           rtl: false,
                         }),
-                        alignSelf: "center",
+                        alignSelf: 'center',
                       }}
                     >
                       {children}
@@ -151,13 +151,13 @@ const Filter = ({ show, setShowFilter }) => {
                     {...props}
                     style={{
                       ...props.style,
-                      height: "15px",
-                      width: "15px",
-                      borderRadius: "50%",
-                      backgroundColor: "#FF5567",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
+                      height: '15px',
+                      width: '15px',
+                      borderRadius: '50%',
+                      backgroundColor: '#FF5567',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
                     }}
                   />
                 )}
@@ -165,20 +165,20 @@ const Filter = ({ show, setShowFilter }) => {
 
               <div className={`${styles.labelsRangeSlider} flex j-sb a-c`}>
                 <div className={`${styles.minLabel}`}>
-                  {rangeSlider.type === "price" &&
+                  {rangeSlider.type === 'price' &&
                     `$${priceValues[0]
                       .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`}
-                  {rangeSlider.type === "floor" && floorValues[0]}
-                  {rangeSlider.type === "size" && sizeValues[0]}
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`}
+                  {rangeSlider.type === 'floor' && floorValues[0]}
+                  {rangeSlider.type === 'size' && sizeValues[0]}
                 </div>
                 <div className={`${styles.maxLabel}`}>
-                  {rangeSlider.type === "price" &&
+                  {rangeSlider.type === 'price' &&
                     `$${priceValues[1]
                       .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`}
-                  {rangeSlider.type === "floor" && floorValues[1]}
-                  {rangeSlider.type === "size" && sizeValues[1]}
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`}
+                  {rangeSlider.type === 'floor' && floorValues[1]}
+                  {rangeSlider.type === 'size' && sizeValues[1]}
                 </div>
               </div>
             </div>
@@ -191,11 +191,11 @@ const Filter = ({ show, setShowFilter }) => {
               <label htmlFor={styles.labelFilter}>
                 <span className={styles.labelText}>HABITACIONES:</span>
                 <select
-                  value={"default"}
-                  defaultValue={"default"}
+                  value={'default'}
+                  defaultValue={'default'}
                   className={styles.ubicationSelect}
                 >
-                  <option value={"default"} selected>
+                  <option value={'default'} selected>
                     3+
                   </option>
                   <option value={1}>4+</option>
@@ -208,11 +208,11 @@ const Filter = ({ show, setShowFilter }) => {
               <label htmlFor={styles.labelFilter}>
                 <span className={styles.labelText}>BAÑOS:</span>
                 <select
-                  defaultValue={"default"}
-                  value={"default"}
+                  defaultValue={'default'}
+                  value={'default'}
                   className={styles.ubicationSelect}
                 >
-                  <option value={"default"} selected>
+                  <option value={'default'} selected>
                     1+
                   </option>
                   <option value={1}>2+</option>
@@ -233,7 +233,7 @@ const Filter = ({ show, setShowFilter }) => {
               buttonType="primary"
               label="Borrar"
               classNameInherit="buttonsFilter"
-              className={styles["filter-buttons-bottom"]}
+              className={styles['filter-buttons-bottom']}
             />
           </div>
         </div>

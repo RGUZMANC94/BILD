@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
-import styles from "../styles/Create-project.module.css";
-import { useDispatch } from "react-redux";
-import { addNewProject } from "../redux/projectSlice";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import React, { useRef, useState } from 'react';
+import styles from '../styles/Create-project.module.css';
+import { useDispatch } from 'react-redux';
+import { addNewProject } from '../redux/projectSlice';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const CreateProject = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const CreateProject = () => {
   const inputProjectStage = useRef(null);
   const inputProjectDescription = useRef(null);
 
-  const [xlsxFileName, setXlsxFileName] = useState("");
+  const [xlsxFileName, setXlsxFileName] = useState('');
 
   const searchContact = (e) => {
     console.log(e.target.value);
@@ -32,7 +32,7 @@ const CreateProject = () => {
   const changeXlsx = (event) => {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      if (event.target.files[0].name.split(".")[1] !== "xlsx") {
+      if (event.target.files[0].name.split('.')[1] !== 'xlsx') {
         return;
       }
       reader.onload = (e) => {
@@ -48,17 +48,17 @@ const CreateProject = () => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        if (event.target.id === "mainImgProject") {
+        if (event.target.id === 'mainImgProject') {
           mainImage.current.style.backgroundImage = `url(${e.target.result})`;
           mainImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
         }
-        if (event.target.id === "firstImgProject") {
+        if (event.target.id === 'firstImgProject') {
           firstImage.current.style.backgroundImage = `url(${e.target.result})`;
           firstImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
         }
-        if (event.target.id === "secondImgProject") {
+        if (event.target.id === 'secondImgProject') {
           secondImage.current.style.backgroundImage = `url(${e.target.result})`;
           secondImage.current.parentNode.parentNode.classList.add(
             styles.active
@@ -76,12 +76,12 @@ const CreateProject = () => {
     const imageSelected = parentDeleteIcon.querySelector(
       `.${styles.imageSelected}`
     );
-    const inputSelected = parentDeleteIcon.querySelector(`input`);
+    const inputSelected = parentDeleteIcon.querySelector('input');
 
     if (parentDeleteIcon) {
-      imageSelected.style.backgroundImage = "none";
+      imageSelected.style.backgroundImage = 'none';
       parentDeleteIcon.classList.remove(styles.active);
-      inputSelected.value = "";
+      inputSelected.value = '';
     }
   };
 
@@ -93,9 +93,9 @@ const CreateProject = () => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     const { name } = file;
-    const ext = name.split(".")[1];
+    const ext = name.split('.')[1];
 
-    if (ext !== "xlsx") {
+    if (ext !== 'xlsx') {
       return;
     }
 
@@ -110,8 +110,8 @@ const CreateProject = () => {
   const deleteXlsx = () => {
     featuredProject.current.classList.remove(styles.showXlsx);
     setTimeout(() => {
-      setXlsxFileName("");
-      inputXlsx.current.value = "";
+      setXlsxFileName('');
+      inputXlsx.current.value = '';
     }, 300);
   };
 
@@ -122,19 +122,19 @@ const CreateProject = () => {
       id: Date.now(),
       name: inputProjectName.current.value,
       imgProject:
-        mainImage.current.style.backgroundImage !== ""
+        mainImage.current.style.backgroundImage !== ''
           ? mainImage.current.style.backgroundImage
               .match(/url\(([^)]+)\)/i)[1]
-              .replace(/['"]+/g, "")
-          : "",
+              .replace(/['"]+/g, '')
+          : '',
     };
 
-    const form = new FormData(document.getElementById("IDForm"));
+    const form = new FormData(document.getElementById('IDForm'));
 
-    const projectCreated = await fetch("/api/createProject", {
-      method: "put",
+    const projectCreated = await fetch('/api/createProject', {
+      method: 'put',
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
       body: form,
     });
@@ -146,27 +146,27 @@ const CreateProject = () => {
       .querySelector(`.${styles.popSuccessProjectCreated}`)
       .classList.add(styles.activePopUp);
     setTimeout(() => {
-      router.push("/");
+      router.push('/');
     }, 3000);
   };
 
   return (
     <>
-      <section className={styles["main"]}>
+      <section className={styles.main}>
         <form
           className={styles.createProjectForm}
           onSubmit={createProject}
           id="IDForm"
         >
-          <div className={styles["proyect-left"]}>
-            <div className={styles["image-movil"]}>
-              <span className={styles["label"]}>Imagen del Proyecto:</span>
-              <div className={styles["main-image"]}></div>
+          <div className={styles['proyect-left']}>
+            <div className={styles['image-movil']}>
+              <span className={styles.label}>Imagen del Proyecto:</span>
+              <div className={styles['main-image']}></div>
             </div>
-            <div className={styles["proyect-form"]}>
+            <div className={styles['proyect-form']}>
               <fieldset>
-                <div className={styles["name-field"]}>
-                  <span className={styles["label"]}>Nombre del Proyecto</span>
+                <div className={styles['name-field']}>
+                  <span className={styles.label}>Nombre del Proyecto</span>
                   <input
                     type="text"
                     name="fname"
@@ -174,8 +174,8 @@ const CreateProject = () => {
                     ref={inputProjectName}
                   />
                 </div>
-                <div className={styles["name-field"]}>
-                  <span className={styles["label"]}>Ciudad</span>
+                <div className={styles['name-field']}>
+                  <span className={styles.label}>Ciudad</span>
                   <input
                     type="text"
                     name="lname"
@@ -183,8 +183,8 @@ const CreateProject = () => {
                     ref={inputProjectCity}
                   />
                 </div>
-                <div className={styles["name-field"]}>
-                  <span className={styles["label"]}>Ubicación</span>
+                <div className={styles['name-field']}>
+                  <span className={styles.label}>Ubicación</span>
                   <input
                     type="text"
                     name="document"
@@ -192,13 +192,13 @@ const CreateProject = () => {
                     ref={inputProjectLocation}
                   />
                 </div>
-                <div className={styles["name-field"]}>
-                  <span className={styles["label"]}>Tipo de INmueble</span>
+                <div className={styles['name-field']}>
+                  <span className={styles.label}>Tipo de INmueble</span>
                   <label htmlFor="subject"></label>
                   <select
                     placeholder="Subject line"
                     name="subject"
-                    className={styles["subject_input"]}
+                    className={styles.subject_input}
                     required
                     ref={inputProjectType}
                   >
@@ -208,8 +208,8 @@ const CreateProject = () => {
                     <option>Opción 3</option>
                   </select>
                 </div>
-                <div className={styles["name-field"]}>
-                  <span className={styles["label"]}>Etapas</span>
+                <div className={styles['name-field']}>
+                  <span className={styles.label}>Etapas</span>
                   <input
                     type="text"
                     name="phone"
@@ -217,14 +217,14 @@ const CreateProject = () => {
                     ref={inputProjectStage}
                   />
                 </div>
-                <div className={styles["name-field"]}>
-                  <span className={styles["label"]}>
+                <div className={styles['name-field']}>
+                  <span className={styles.label}>
                     Descripción del Proyecto
                   </span>
                   <textarea
                     name="message"
                     placeholder=""
-                    className={["message_input"]}
+                    className={['message_input']}
                     cols="30"
                     rows="5"
                     required
@@ -234,24 +234,24 @@ const CreateProject = () => {
               </fieldset>
             </div>
           </div>
-          <div className={styles["proyect-right"]}>
-            <div className={styles["file"]}>
-              <a button className={styles["descargar"]} href="#">
+          <div className={styles['proyect-right']}>
+            <div className={styles.file}>
+              <a button className={styles.descargar} href="#">
                 <img src="/images/download.svg" />
                 Descargar Excel Base
               </a>
             </div>
 
-            <div className={styles["image"]}>
-              <span className={styles["label"]}>IMAGEN DEL PROYECTO:</span>
-              <div className={styles["main-image"]}>
+            <div className={styles.image}>
+              <span className={styles.label}>IMAGEN DEL PROYECTO:</span>
+              <div className={styles['main-image']}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}
                 ></div>
                 <label
                   htmlFor="mainImgProject"
-                  className={styles["labelInputImage"]}
+                  className={styles.labelInputImage}
                 >
                   <input
                     id="mainImgProject"
@@ -269,22 +269,22 @@ const CreateProject = () => {
                 </label>
               </div>
             </div>
-            <div className={styles["/images"]}>
-              <div className={styles["img-title"]}>
-                <span className={styles["label"]}>
-                  Imágenes del Proyecto:{" "}
-                  <i className={styles["fa-solid fa-plus"]}></i>
+            <div className={styles['/images']}>
+              <div className={styles['img-title']}>
+                <span className={styles.label}>
+                  Imágenes del Proyecto:{' '}
+                  <i className={styles['fa-solid fa-plus']}></i>
                 </span>
               </div>
-              <div className={styles["more-images"]}>
-                <div className={styles["proyect-img"]}>
+              <div className={styles['more-images']}>
+                <div className={styles['proyect-img']}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
                     onClick={deleteImage}
                   ></div>
                   <label
                     htmlFor="firstImgProject"
-                    className={styles["labelInputImage"]}
+                    className={styles.labelInputImage}
                   >
                     <input
                       id="firstImgProject"
@@ -300,14 +300,14 @@ const CreateProject = () => {
                     ></div>
                   </label>
                 </div>
-                <div className={styles["proyect-img"]}>
+                <div className={styles['proyect-img']}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
                     onClick={deleteImage}
                   ></div>
                   <label
                     htmlFor="secondImgProject"
-                    className={styles["labelInputImage"]}
+                    className={styles.labelInputImage}
                   >
                     <input
                       id="secondImgProject"
@@ -325,19 +325,19 @@ const CreateProject = () => {
                 </div>
               </div>
             </div>
-            <div className={styles["file-movil"]}>
-              <a button className={styles["subir"]} href="#popup1">
+            <div className={styles['file-movil']}>
+              <a button className={styles.subir} href="#popup1">
                 SUBIR EXCEL de INVENTARIO
               </a>
-              <a button className={styles["descargar"]} href="#">
+              <a button className={styles.descargar} href="#">
                 <img src="/images/download.png" />
                 Descargar Excel Base
               </a>
             </div>
-            <div className={styles["upload"]}>
+            <div className={styles.upload}>
               <div
                 ref={dragZone}
-                className={styles["blue-border"]}
+                className={styles['blue-border']}
                 onDrop={dropHandler}
                 onDragOver={dragHandler}
                 onDragEnter={dragHandler}
@@ -348,7 +348,7 @@ const CreateProject = () => {
                 </span>
                 <input type="file" hidden ref={xlsxInput} />
               </div>
-              <label className={styles["subir"]}>
+              <label className={styles.subir}>
                 SUBIR EXCEL de INVENTARIO
                 <input
                   type="file"
@@ -362,7 +362,7 @@ const CreateProject = () => {
             </div>
 
             <div className={`${styles.projectDocument}`} ref={featuredProject}>
-              <p className={styles["text-origen"]}>DOCUMENTO proyecto:</p>
+              <p className={styles['text-origen']}>DOCUMENTO proyecto:</p>
               <div className={`${styles.projectUploaded} flex j-sb a-c`}>
                 <div className={`${styles.backroundSide} flex j-s a-c`}>
                   <div className={`${styles.xlsxIcon} bg-ct`}></div>
@@ -375,9 +375,9 @@ const CreateProject = () => {
               </div>
             </div>
 
-            <div className={styles["origen"]}>
-              <p className={styles["text-origen"]}>Asignar proyecto:</p>
-              <div className={styles["elegir-origen"]}>
+            <div className={styles.origen}>
+              <p className={styles['text-origen']}>Asignar proyecto:</p>
+              <div className={styles['elegir-origen']}>
                 <div className={styles.dropDownAssignProject}>
                   <input
                     type="text"
@@ -392,14 +392,14 @@ const CreateProject = () => {
                     </div>
                   </div>
                 </div>
-                <div className={styles["contacto"]}>
-                  <div className={styles["botones"]}>
-                    <Link href="/" className={styles["cancelar"]}>
-                      <button className={styles["inner-cancelar"]}>
+                <div className={styles.contacto}>
+                  <div className={styles.botones}>
+                    <Link href="/" className={styles.cancelar}>
+                      <button className={styles['inner-cancelar']}>
                         cancelar
                       </button>
                     </Link>
-                    <button className={styles["crear"]} href="#popproyecto">
+                    <button className={styles.crear} href="#popproyecto">
                       Crear Proyecto
                     </button>
                   </div>
@@ -409,26 +409,26 @@ const CreateProject = () => {
           </div>
         </form>
       </section>
-      <div className={`${styles["overlay"]} ${styles.popup1}`}>
-        <div className={styles["popup"]}>
+      <div className={`${styles.overlay} ${styles.popup1}`}>
+        <div className={styles.popup}>
           <hr />
-          <a className={styles["close"]} href="#">
+          <a className={styles.close} href="#">
             &times;
           </a>
-          <div className={styles["content"]}>
-            <div className={styles["icon-box"]}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
               <img src="/images/upload-icon.png" />
-              <span className={styles["pop-text"]}>
+              <span className={styles['pop-text']}>
                 Haga click para subir o arrastra acá el archivo a compartir
               </span>
-              <a className={styles["subir"]} href="#">
+              <a className={styles.subir} href="#">
                 SUBIR ARCHIVO
               </a>
-              <div className={styles["contacto"]}>
-                <div className={styles["popbutton"]}>
-                  <button className={styles["crearpop"]}>GUARDAR</button>
+              <div className={styles.contacto}>
+                <div className={styles.popbutton}>
+                  <button className={styles.crearpop}>GUARDAR</button>
 
-                  <button className={styles["cancelarpop"]}>cancelar</button>
+                  <button className={styles.cancelarpop}>cancelar</button>
                 </div>
               </div>
             </div>
@@ -436,12 +436,12 @@ const CreateProject = () => {
         </div>
       </div>
       <div className={`${styles.popSuccessProjectCreated}`}>
-        <div className={styles["bgPopUp"]}></div>
-        <div className={styles["popup2"]}>
-          <div className={styles["content"]}>
-            <div className={styles["icon-box"]}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
-              <span className={styles["pop-text"]}>
+              <span className={styles['pop-text']}>
                 ¡Tú proyecto ha sido creado con éxito!
               </span>
             </div>

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:fix": "next lint --fix",
+    "lint:all": "npm run lint:fix && npm run prettier:silent",
+    "prettier": "prettier --write .",
+    "prettier:silent": "prettier --write . --loglevel silent"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.8",

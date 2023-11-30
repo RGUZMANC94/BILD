@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import styles from "./add-contact.module.css";
+import { useEffect, useState } from 'react';
+import styles from './add-contact.module.css';
 const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
   const [isShow, setIsShow] = useState(false);
   useEffect(() => {
@@ -8,10 +8,10 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
 
   return (
     <div
-      className={`${isShow ? styles.active : ""}  ${styles["popup-agregar"]}`}
+      className={`${isShow ? styles.active : ''}  ${styles['popup-agregar']}`}
     >
       <div
-        className={styles["popup-background-agregar"]}
+        className={styles['popup-background-agregar']}
         onClick={() => {
           setIsShow(false);
           setTimeout(() => {
@@ -19,10 +19,10 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
           }, 500);
         }}
       ></div>
-      <div className={styles["popup-window"]}>
-        <div className={styles["top-name"]}>Agregar Contacto</div>
+      <div className={styles['popup-window']}>
+        <div className={styles['top-name']}>Agregar Contacto</div>
         <div
-          className={styles["cerrar-agregar"]}
+          className={styles['cerrar-agregar']}
           onClick={() => {
             setIsShow(false);
             setTimeout(() => {
@@ -30,14 +30,14 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
             }, 500);
           }}
         >
-          <a className={styles["close"]} href="#">
+          <a className={styles.close} href="#">
             &times;
           </a>
         </div>
-        <div className={styles["agregar-wrapper"]}>
-          <div className={styles["search-wrapper"]}>
+        <div className={styles['agregar-wrapper']}>
+          <div className={styles['search-wrapper']}>
             <input
-              className={styles["search-input"]}
+              className={styles['search-input']}
               type="text"
               placeholder="Buscar Nombre"
             />
@@ -50,7 +50,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              className={styles["feather feather-search"]}
+              className={styles['feather feather-search']}
               viewBox="0 0 24 24"
             >
               <defs></defs>
@@ -58,9 +58,9 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
               <path d="M21 21l-4.35-4.35"></path>
             </svg>
           </div>
-          <div className={styles["agregar-contacto"]}>
+          <div className={styles['agregar-contacto']}>
             <div
-              className={styles["contact"]}
+              className={styles.contact}
               onClick={() => {
                 setIsConnected(true);
                 setIsShow(false);
@@ -71,37 +71,37 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
             >
               <img src="/images/Ellipse 81.png" /> Gustavo Cerati
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 82.png" /> Whitney Houston
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 84.png" /> Amy Winehouse
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 81.png" /> Gustavo Cerati
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 82.png" /> Whitney Houston
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 84.png" /> Amy Winehouse
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 81.png" /> Gustavo Cerati
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 82.png" /> Whitney Houston
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 84.png" /> Amy Winehouse
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 81.png" /> Gustavo Cerati
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 82.png" /> Whitney Houston
             </div>
-            <div className={styles["contact"]}>
+            <div className={styles.contact}>
               <img src="/images/Ellipse 84.png" /> Amy Winehouse
             </div>
           </div>

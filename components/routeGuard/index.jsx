@@ -1,17 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { unprotectedRoutes } from "./constants";
-import Layout from "../layout";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { unprotectedRoutes } from './constants';
+import Layout from '../layout';
+import { useRouter } from 'next/router';
 
-const isBrowser = () => typeof window !== "undefined";
+const isBrowser = () => typeof window !== 'undefined';
 
 const RouteGuard = ({ children }) => {
   const { email_address, name, user_rol } = useSelector((state) => state.userState);
   const router = useRouter();
   const { pathname } = router;
 
-  const isAuthenticated = name !== "" || email_address !== "";
+  const isAuthenticated = name !== '' || email_address !== '';
 
   if (
     isBrowser() &&

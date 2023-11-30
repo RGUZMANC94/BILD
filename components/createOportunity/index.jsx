@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import styles from "./create-oportunity.module.css";
-import CreateContact from "../createContact";
-import AddContact from "../addContact";
-import CreateStep from "./create";
-import OportunityCreated from "./created";
-import { useDispatch, useSelector } from "react-redux";
-import { closePopUp } from "../../redux/popUpOportunity";
-import AddEvents from "./addEvents";
-import recentsContacts from "../../pages/api/recentsContacts";
+import React, { useEffect, useState } from 'react';
+import styles from './create-oportunity.module.css';
+import CreateContact from '../createContact';
+import AddContact from '../addContact';
+import CreateStep from './create';
+import OportunityCreated from './created';
+import { useDispatch, useSelector } from 'react-redux';
+import { closePopUp } from '../../redux/popUpOportunity';
+import AddEvents from './addEvents';
+import recentsContacts from '../../pages/api/recentsContacts';
 
 const CreateOportunity = ({ created, recentContacts }) => {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -41,26 +41,26 @@ const CreateOportunity = ({ created, recentContacts }) => {
   return (
     <>
       <div
-        className={`${styles["main-container"]} ${
-          showPopUp ? styles.openCreateOportunity : ""
+        className={`${styles['main-container']} ${
+          showPopUp ? styles.openCreateOportunity : ''
         }`}
       >
         <header className={styles.headerMainContainer}>
-          <div className={styles["banner"]}>
-            <div className={styles["banner-oportunidad"]}>
+          <div className={styles.banner}>
+            <div className={styles['banner-oportunidad']}>
               {(isConnected || isCreated) && (
                 <div
-                  className={styles["prevStep"]}
+                  className={styles.prevStep}
                   onClick={() => {
                     returnPrevStep();
                   }}
                 ></div>
               )}
 
-              <div className={styles["creacion-oportunidad"]}>
+              <div className={styles['creacion-oportunidad']}>
                 {isCreated
-                  ? `Oportunidades de John Lennon`
-                  : "Crear Oportunidad"}
+                  ? 'Oportunidades de John Lennon'
+                  : 'Crear Oportunidad'}
               </div>
               <div
                 className={`${styles.closePopUp} bg-ct`}
@@ -75,7 +75,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
           </div>
         </header>
 
-        <section className={styles["main"]}>
+        <section className={styles.main}>
           {isCreated ? (
             <OportunityCreated
               showPopEvents={showPopEvents}
@@ -95,7 +95,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
           )}
         </section>
 
-        <div className={styles["menu-footer"]}></div>
+        <div className={styles['menu-footer']}></div>
       </div>
 
       {showPopUpCreateContact && (

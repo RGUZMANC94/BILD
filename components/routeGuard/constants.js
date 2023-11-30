@@ -1,5 +1,5 @@
 export const unprotectedRoutes = {
-  loginPage: "/login",
+  loginPage: '/login',
 };
 
 

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import styles from "./unit.module.css";
-import { useDispatch } from "react-redux";
-import { openPopUp } from "../../redux/popUpOportunity";
+import { useState } from 'react';
+import styles from './unit.module.css';
+import { useDispatch } from 'react-redux';
+import { openPopUp } from '../../redux/popUpOportunity';
 const Unit = ({ unit, setCreateOportunity }) => {
   const [isHidden, setIsHidden] = useState(true);
   const dispatch = useDispatch();
@@ -13,12 +13,12 @@ const Unit = ({ unit, setCreateOportunity }) => {
         onClick={(e) => {
           const parentNode = e.target.parentNode;
           if (isHidden) {
-            parentNode.classList.add("editValues");
+            parentNode.classList.add('editValues');
             setIsHidden(false);
             return;
           }
 
-          parentNode.classList.remove("editValues");
+          parentNode.classList.remove('editValues');
           setIsHidden(true);
         }}
       ></div>
@@ -52,7 +52,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
           className={styles.inputToEditValue}
           value={`$ ${unit.price
             .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`}
+            .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`}
           disabled={isHidden}
         />
       </div>

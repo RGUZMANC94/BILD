@@ -1,19 +1,19 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
   const images = [
-    "/images/galeria-tipo/galeria-tipo-01.jpg",
-    "/images/galeria-tipo/galeria-tipo-02.jpg",
-    "/images/galeria-tipo/galeria-tipo-03.jpg",
-    "/images/galeria-tipo/galeria-tipo-04.jpg",
-    "/images/galeria-tipo/galeria-tipo-05.jpg",
-    "/images/galeria-tipo/galeria-tipo-06.jpg",
+    '/images/galeria-tipo/galeria-tipo-01.jpg',
+    '/images/galeria-tipo/galeria-tipo-02.jpg',
+    '/images/galeria-tipo/galeria-tipo-03.jpg',
+    '/images/galeria-tipo/galeria-tipo-04.jpg',
+    '/images/galeria-tipo/galeria-tipo-05.jpg',
+    '/images/galeria-tipo/galeria-tipo-06.jpg',
   ];
 
   return (
     <>
-      <div className={`infoContainer ${viewEstate === "info" ? "active" : ""}`}>
+      <div className={`infoContainer ${viewEstate === 'info' ? 'active' : ''}`}>
         <div className="unidades">
           <div className="tipo">
             <div className="tipo-unit informacion">
@@ -25,7 +25,7 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
                 <div className="tipo-info">
                   <span className="tipo-title">{info.projectName}</span>
                   <span className="valor">
-                    {info.price && "$ 120 millones - $ 160 millones"}
+                    {info.price && '$ 120 millones - $ 160 millones'}
                   </span>
                   <div className="detalles">
                     <img src="/images/cards/bed.svg" />
@@ -46,10 +46,10 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
           </div>
           <Link
             href={{
-              pathname: `/create-project`,
+              pathname: '/create-project',
               query: { project: projectId },
             }}
-            className={`bg-ct editProject`}
+            className={'bg-ct editProject'}
           ></Link>
         </div>
         <div className="galeria-tipo">

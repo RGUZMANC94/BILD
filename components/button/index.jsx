@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Button.module.css";
-import Link from "next/link";
+import React from 'react';
+import styles from './Button.module.css';
+import Link from 'next/link';
 
 const Button = ({
   inheritClass,
@@ -18,7 +18,7 @@ const Button = ({
           href={link}
           className={`${styles[buttonType]} ${styles.siteButton} ${
             styles[classNameInherit]
-          } ${inheritClass ?? ""}`}
+          } ${inheritClass ?? ''}`}
         >
           {iconImage ? (
             <span
@@ -26,7 +26,7 @@ const Button = ({
               style={{ backgroundImage: `url(${iconImage})` }}
             ></span>
           ) : (
-            ""
+            ''
           )}
           <span>{label}</span>
         </Link>
@@ -34,16 +34,16 @@ const Button = ({
       {!link && (
         <button
           onClick={(e) => {
-            clickFunction ? clickFunction() : "";
+            clickFunction ? clickFunction() : '';
           }}
           className={`${styles[buttonType]} ${styles.siteButton} ${
             styles[classNameInherit]
-          } ${inheritClass ?? ""}`}
+          } ${inheritClass ?? ''}`}
         >
           {iconImage ? (
             <span className={`${styles.iconImage} bg-ct`}></span>
           ) : (
-            ""
+            ''
           )}
           <span>{label}</span>
         </button>

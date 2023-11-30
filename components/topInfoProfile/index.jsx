@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const TopInfoProfile = () => {
   return <div>TopInfoProfile</div>;
