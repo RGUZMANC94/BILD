@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Button = ({
   inheritClass,
-  className,
+  classNameInherit,
   buttonType,
   iconImage,
   label,
@@ -17,7 +17,7 @@ const Button = ({
         <Link
           href={link}
           className={`${styles[buttonType]} ${styles.siteButton} ${
-            styles[className]
+            styles[classNameInherit]
           } ${inheritClass ?? ""}`}
         >
           {iconImage ? (
@@ -37,7 +37,7 @@ const Button = ({
             clickFunction ? clickFunction() : "";
           }}
           className={`${styles[buttonType]} ${styles.siteButton} ${
-            styles[className]
+            styles[classNameInherit]
           } ${inheritClass ?? ""}`}
         >
           {iconImage ? (

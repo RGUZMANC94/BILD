@@ -227,12 +227,13 @@ const Filter = ({ show, setShowFilter }) => {
             <Button
               buttonType="secondary"
               label="Filtrar"
-              className="buttonsFilter"
+              classNameInherit="buttonsFilter"
             />
             <Button
               buttonType="primary"
               label="Borrar"
-              className="buttonsFilter"
+              classNameInherit="buttonsFilter"
+              className={styles["filter-buttons-bottom"]}
             />
           </div>
         </div>
