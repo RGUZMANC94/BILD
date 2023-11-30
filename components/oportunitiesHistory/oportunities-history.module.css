@@ -1,0 +1,408 @@
+.search {
+  background-color: white;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 150px;
+  padding: 0 50px 50px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 50px;
+}
+
+.filter_container{
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+
+.label_filter{
+  margin: 20px 0 20px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 22px;
+}
+
+.filter_input {
+  padding: 15px;
+  border: 1px solid #4D4D4D;
+  border-radius: 10px;
+  width: 285px;
+  height: 45px;
+  box-sizing: border-box;
+  appearance: none;
+  margin: 0 20px;
+  padding: 0;
+
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  /*line-height: 0.5;*/
+  letter-spacing: 1.26px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  background-image: url(/images/arrow_filter.svg);
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+}
+
+.oportunidades {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  width: calc(50% - 50px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 48px;
+}
+
+
+.icon {
+  width: 35%;
+  height: auto;
+  justify-content: start;
+}
+
+i.fa-solid.fa-angle-left {
+  left: 0;
+  font-size: 30px;
+  display: flex;
+  align-items: start;
+}
+
+.top-content.title {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tipo-sub {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.38;
+  color: #FFF;
+  text-transform: uppercase;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.back {
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+}
+
+.img-tipo {
+  position: relative;
+}
+
+.img-tipo img {
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+.zoom {
+  background-image: url(/images/zoom.png);
+  background-repeat: no-repeat;
+  background-color: #2467ff;
+  background-position: center;
+  background-size: auto;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  right: 0;
+  position: absolute;
+  top: 0;
+  padding: 4px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.wrap-right {
+  width: 50%;
+  height: auto;
+}
+
+.right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-top: 50px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.line {
+  width: 64px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ver-line {
+  border-right: 2px solid #FFF;
+  height: 100%;
+  min-height: 80px;
+}
+
+.pendientes {
+  width: 70%;
+  height: auto;
+}
+
+.pendiente-top {
+  width: 100%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.greybox {
+  border-radius: 10px;
+  background: #2E2E2C;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  position: relative;
+  color: #FFF;
+}
+
+.info {
+  width: 70%;
+}
+.info label{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pendiente-date {
+  font-size: 10px;
+  font-weight: 300;
+  color: #FFF;
+}
+
+li.pendiente-list {
+  font-size: 16px !important;
+  color: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height:  1.87;
+}
+
+.box li.pendiente-list {
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.ulNode li {
+  margin: 10px 0;
+  font-size: 14px !important;
+  font-weight: 200;
+  color: #FFF;
+}
+
+.time {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 300;
+  color: #FFF;
+}
+
+.hour{
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.81;
+}
+
+.box {
+  padding: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.box-dotted {
+  min-height: 5px;
+  height: auto;
+  padding: 5px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  width: 113%;
+  position: relative;
+  left: -55px;
+  border-top: 2px dashed #FFF;
+  border-bottom: 2px dashed #FFF;
+}
+
+.blue-point {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FFF;
+  position: absolute;
+  top: 0px;
+  left: -63px;
+}
+
+.blue-point-plus {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #FF5567;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 300;
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.pendientes-bottom {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pendientes-bottom-icon{
+  width: 20px;
+  height: 20px;
+  background-image: url(/images/plus_icon_white.svg);
+  background-size: 20px 20px;
+}
+
+.ver-oportunidad {
+  width: 50%;
+  height: fit-content;
+  color: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: 1.12px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  padding: 20px 30px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #2467FF;
+  border: 2px solid transparent;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+
+.card-progress-bar-container {
+  width: 80%;
+  height: auto;
+  display: flex;
+  margin-top: 25px;
+  position: relative;
+  background-color: #FFF;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card-progress-bar-cold {
+  width: 40%;
+  height: 9px;
+  display: flex;
+  background-color:  #2467FF;
+  border-radius: 10px;
+}
+
+.card-progress-bar-frost-icon {
+  width: 23px;
+  height: 23px;
+  left: calc(40% - 2%);
+  position: absolute;
+  background-size: 23px 23px;
+  margin: 0;
+  background-image: url(/images/cold-icon.svg);
+}
+
+.checkboxInput {
+  display: none;
+}
+
+.checkboxLabelSquare {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.checkboxInput:checked + .checkboxLabelSquare  {
+  background-color: white;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  
+  .card-container{
+    width: 100%;
+  }
+
+  .wrap-right {
+    width: 100%;
+  }
+
+  .ver-oportunidad {
+    width: 80%;
+  }
+}
