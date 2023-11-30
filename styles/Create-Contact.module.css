@@ -41,7 +41,7 @@
 }
 
 .datos-right:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@
   background-position: center center;
 }
 .datos-right:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

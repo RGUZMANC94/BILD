@@ -102,8 +102,7 @@ const DetailState = ({ types }) => {
                 }`}
                 onClick={() => {
                   setViewEstate('units');
-                }}
-              >
+                }}>
                 <button className="buttonTopDetailState">Unidades</button>
               </li>
               <li
@@ -112,8 +111,7 @@ const DetailState = ({ types }) => {
                 }`}
                 onClick={() => {
                   setViewEstate('info');
-                }}
-              >
+                }}>
                 <button className="buttonTopDetailState">Información</button>
               </li>
             </>

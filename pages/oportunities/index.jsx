@@ -20,19 +20,16 @@ const OportunitiesAllFilter = () => {
           <div className={styles['top-content-container']}>
             <button
               className={styles['top-content-buttons']}
-              onClick={() => setShowSection('all')}
-            >
+              onClick={() => setShowSection('all')}>
               TODAS
             </button>
             <div
-              className={`${styles['top-content-bar']} ${styles.active}`}
-            ></div>
+              className={`${styles['top-content-bar']} ${styles.active}`}></div>
           </div>
           <div className={styles['top-content-container']}>
             <button
               className={styles['top-content-buttons']}
-              onClick={() => setShowSection('pending')}
-            >
+              onClick={() => setShowSection('pending')}>
               PENDIENTES
             </button>
             <div className={styles['top-content-bar']}></div>
@@ -40,8 +37,7 @@ const OportunitiesAllFilter = () => {
           <div className={styles['top-content-container']}>
             <button
               className={styles['top-content-buttons']}
-              onClick={() => setShowSection('closed')}
-            >
+              onClick={() => setShowSection('closed')}>
               CERRADAS
             </button>
             <div className={styles['top-content-bar']}></div>
@@ -52,8 +48,7 @@ const OportunitiesAllFilter = () => {
             <select
               placeholder="Subject line"
               name="subject"
-              className={styles.filter_input}
-            >
+              className={styles.filter_input}>
               <option disabled defaultValue={0} hidden selected></option>
               <option>MAS CALIENTE</option>
               <option>MAS FRÍA</option>

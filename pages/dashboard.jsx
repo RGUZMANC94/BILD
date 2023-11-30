@@ -181,14 +181,12 @@ const Dashboard = () => {
         </div>
         <div className={styles.allChartsContainer}>
           <div
-            className={`${styles.viewsThrough} ${styles.outerChart} ${styles.wrapChart}`}
-          >
+            className={`${styles.viewsThrough} ${styles.outerChart} ${styles.wrapChart}`}>
             <h4 className={styles.titleChart}>Vistas por medio</h4>
             <div ref={chartContainerRef} />
           </div>
           <div
-            className={`${styles.viewsThrough} ${styles.outerChart} ${styles.wrapChart}`}
-          >
+            className={`${styles.viewsThrough} ${styles.outerChart} ${styles.wrapChart}`}>
             <h4 className={styles.titleChart}>Vistas por medio</h4>
             <div ref={chartVolumesRef} />
           </div>

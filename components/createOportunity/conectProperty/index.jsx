@@ -13,14 +13,12 @@ const ConectProperty = ({
         </span>
         <button
           className={styles['crear-contacto']}
-          onClick={() => setShowPopUpCreateContact(true)}
-        >
+          onClick={() => setShowPopUpCreateContact(true)}>
           Crear un contacto
         </button>
         <button
           className={styles['contacto-existente']}
-          onClick={() => setShowPopUpAddContact(true)}
-        >
+          onClick={() => setShowPopUpAddContact(true)}>
           Contacto Existente
         </button>
       </div>
@@ -31,8 +29,7 @@ const ConectProperty = ({
             className={styles.contact}
             key={recentContacts.ContactId}
             data-email={recentContacts.email}
-            data-phone-number={recentContacts.phoneNumber}
-          >
+            data-phone-number={recentContacts.phoneNumber}>
             <img src="/images/Ellipse 81.png" /> {recentContacts.contactName}
           </div>
         )}

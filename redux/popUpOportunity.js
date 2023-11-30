@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   openPopUpOportunity: false,
 };
 
 export const popUpOportunity = createSlice({
-  name: "popUpOportunity",
+  name: 'popUpOportunity',
   initialState,
   reducers: {
     openPopUp: (state, action) => {

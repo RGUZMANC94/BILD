@@ -115,7 +115,7 @@
   margin-left: 10px;
 }
 
-.lado-d fieldset{
+.lado-d fieldset {
   width: 100%;
 }
 
@@ -161,7 +161,7 @@
   background-color: #2467ff;
 }
 
-.arrowImage{
+.arrowImage {
   margin-left: 10px;
 }
 
@@ -186,11 +186,11 @@
   margin-top: 20px;
 }
 
-.outerRange{
+.outerRange {
   width: 100%;
 }
 
-.labelRangePercenth{
+.labelRangePercenth {
   width: 50px;
   border: 1px solid #fff;
   padding: 10px 0;

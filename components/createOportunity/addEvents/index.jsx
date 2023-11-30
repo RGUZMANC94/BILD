@@ -22,8 +22,7 @@ const AddEvents = ({ setShowPopEvents }) => {
             setTimeout(() => {
               setShowPopEvents(false);
             }, 500);
-          }}
-        ></div>
+          }}></div>
         <div className={styles['left-side-event']}>
           <span className={styles['title-descripcion']}>Descripción</span>
           <div className={styles.questions}>
@@ -39,8 +38,7 @@ const AddEvents = ({ setShowPopEvents }) => {
                 placeholder="Subject line"
                 name="subject"
                 className={styles.subject_input}
-                required
-              >
+                required>
                 <option disabled hidden selected>
                   OTRO
                 </option>
@@ -54,8 +52,7 @@ const AddEvents = ({ setShowPopEvents }) => {
                   name="message"
                   placeholder=""
                   className={styles.message_input}
-                  required
-                ></textarea>
+                  required></textarea>
                 <label className={styles.labelNode}>
                   <input type="checkbox" name="cb-terminosservicio" required />{' '}
                   Agendar seguimiento futuro

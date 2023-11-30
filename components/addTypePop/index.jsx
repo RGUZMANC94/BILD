@@ -50,18 +50,15 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
     <div
       className={`${styles.typePopUp} ${
         showPopUpType ? styles.activePopUp : ''
-      } flex j-e a-s`}
-    >
+      } flex j-e a-s`}>
       <div
         className={`${styles.bgTypePopUp}`}
-        onClick={() => setShowPopUpType(false)}
-      ></div>
+        onClick={() => setShowPopUpType(false)}></div>
       <div className={`${styles.wrapperTypePopUp}`}>
         <div className={`${styles.closeDeleteControls} flex j-sb a-c`}>
           <div
             className={`${styles.arrowBack} bg-ct`}
-            onClick={() => setShowPopUpType(false)}
-          ></div>
+            onClick={() => setShowPopUpType(false)}></div>
           <div className={`${styles.deleteIcon} bg-ct`}></div>
         </div>
 
@@ -79,26 +76,22 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
             </div>
             <div className={`${styles.typeFeatures}`}>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Área Mt2</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Baños</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Cuartos</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Garajes</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
@@ -121,8 +114,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
               <select
                 name=""
                 id=""
-                className={`${styles.targetInputGroup} t-c ${styles.statusType}`}
-              >
+                className={`${styles.targetInputGroup} t-c ${styles.statusType}`}>
                 <option value="0" selected>
                   Disponible
                 </option>

@@ -28,9 +28,7 @@ const CreateStep = ({
               <span>TIPO 1 - 102, 103</span>
               <span>TIPO 2 - 303, 305</span>
             </div>
-            <span className={styles.valor}>
-              $120 millones - 160 millones
-            </span>
+            <span className={styles.valor}>$120 millones - 160 millones</span>
             <div className={styles.detalles}>
               <img src="/images/cards/bed.svg" />
               <span>3-4</span>
@@ -45,8 +43,7 @@ const CreateStep = ({
               setTimeout(() => {
                 dispatch(closePopUp(false));
               }, 500);
-            }}
-          ></div>
+            }}></div>
         </div>
       </div>
       {isConnected ? (

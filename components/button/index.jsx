@@ -18,13 +18,11 @@ const Button = ({
           href={link}
           className={`${styles[buttonType]} ${styles.siteButton} ${
             styles[classNameInherit]
-          } ${inheritClass ?? ''}`}
-        >
+          } ${inheritClass ?? ''}`}>
           {iconImage ? (
             <span
               className={`${styles.iconImage} bg-ct`}
-              style={{ backgroundImage: `url(${iconImage})` }}
-            ></span>
+              style={{ backgroundImage: `url(${iconImage})` }}></span>
           ) : (
             ''
           )}
@@ -38,8 +36,7 @@ const Button = ({
           }}
           className={`${styles[buttonType]} ${styles.siteButton} ${
             styles[classNameInherit]
-          } ${inheritClass ?? ''}`}
-        >
+          } ${inheritClass ?? ''}`}>
           {iconImage ? (
             <span className={`${styles.iconImage} bg-ct`}></span>
           ) : (

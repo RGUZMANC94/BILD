@@ -20,7 +20,7 @@
 
 /*calendar*/
 
-.list-container{
+.list-container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -29,14 +29,14 @@
   gap: 70px;
 }
 
-.list-day-container{
+.list-day-container {
   max-width: 1600px;
   display: flex;
   flex-direction: column;
   height: fit-content;
 }
 
-.list-day-title{
+.list-day-title {
   width: 100%;
   height: fit-content;
   padding-bottom: 30px;
@@ -45,15 +45,15 @@
   text-transform: uppercase;
 
   flex-shrink: 0;
-  color: #FFF;
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height:  0.5;
+  line-height: 0.5;
   letter-spacing: 1.26px;
 }
 
-.list-card-section{
+.list-card-section {
   width: 100%;
   height: fit-content;
   display: flex;
@@ -63,7 +63,7 @@
   gap: 20px;
 }
 
-.list-card-container{
+.list-card-container {
   width: 100%;
   height: fit-content;
   display: flex;
@@ -73,20 +73,19 @@
   flex-wrap: nowrap;
 
   padding: 10px 0px;
-
 }
 
-.list-card-input{
+.list-card-input {
   width: 15px;
   height: 15px;
   margin-right: 18px;
   flex-shrink: 0;
-  border: 1px solid #4D4D4D;
+  border: 1px solid #4d4d4d;
 }
 
-.list-card-text-hour{
+.list-card-text-hour {
   width: 102px;
-  color: #FFF;
+  color: #fff;
   margin-right: 13px;
   font-size: 18px;
   font-style: normal;
@@ -96,9 +95,8 @@
   white-space: nowrap;
 }
 
-
-.list-card-text-message{
-  color: #FFF;
+.list-card-text-message {
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
@@ -297,7 +295,8 @@ li.pendiente-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
   border: 2px solid transparent;
@@ -317,10 +316,9 @@ li.pendiente-list {
   margin-right: 12px;
 }
 
-.checkboxInput:checked + .checkboxLabelSquare  {
+.checkboxInput:checked + .checkboxLabelSquare {
   background-color: white;
 }
-
 
 @media only screen and (max-width: 1200px) {
   .img-tipo {

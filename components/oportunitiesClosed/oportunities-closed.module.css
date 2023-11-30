@@ -18,16 +18,15 @@
   margin-bottom: 50px;
 }
 
-.filter_container{
+.filter_container {
   display: flex;
   width: 100%;
   flex-direction: row-reverse;
 }
 
-
-.label_filter{
+.label_filter {
   margin: 20px 0 20px;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -36,7 +35,7 @@
 
 .filter_input {
   padding: 15px;
-  border: 1px solid #4D4D4D;
+  border: 1px solid #4d4d4d;
   border-radius: 10px;
   width: 285px;
   height: 45px;
@@ -78,7 +77,6 @@
   gap: 48px;
 }
 
-
 .icon {
   width: 35%;
   height: auto;
@@ -104,7 +102,7 @@ i.fa-solid.fa-angle-left {
   font-style: normal;
   font-weight: 500;
   line-height: 1.38;
-  color: #FFF;
+  color: #fff;
   text-transform: uppercase;
   width: 100%;
   margin-top: 15px;
@@ -168,7 +166,7 @@ i.fa-solid.fa-angle-left {
 }
 
 .ver-line {
-  border-right: 2px solid #FFF;
+  border-right: 2px solid #fff;
   height: 100%;
   min-height: 80px;
 }
@@ -186,7 +184,7 @@ i.fa-solid.fa-angle-left {
 
 .greybox {
   border-radius: 10px;
-  background: #2E2E2C;
+  background: #2e2e2c;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 20px;
   margin-left: 20px;
@@ -196,13 +194,13 @@ i.fa-solid.fa-angle-left {
   justify-content: flex-start;
   align-items: start;
   position: relative;
-  color: #FFF;
+  color: #fff;
 }
 
 .info {
   width: 70%;
 }
-.info label{
+.info label {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -211,16 +209,16 @@ i.fa-solid.fa-angle-left {
 .pendiente-date {
   font-size: 10px;
   font-weight: 300;
-  color: #FFF;
+  color: #fff;
 }
 
 li.pendiente-list {
   font-size: 16px !important;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height:  1.87;
+  line-height: 1.87;
 }
 
 .box li.pendiente-list {
@@ -234,7 +232,7 @@ li.pendiente-list {
   margin: 10px 0;
   font-size: 14px !important;
   font-weight: 200;
-  color: #FFF;
+  color: #fff;
 }
 
 .time {
@@ -245,10 +243,10 @@ li.pendiente-list {
   align-items: center;
   font-size: 10px;
   font-weight: 300;
-  color: #FFF;
+  color: #fff;
 }
 
-.hour{
+.hour {
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -273,15 +271,15 @@ li.pendiente-list {
   width: 113%;
   position: relative;
   left: -55px;
-  border-top: 2px dashed #FFF;
-  border-bottom: 2px dashed #FFF;
+  border-top: 2px dashed #fff;
+  border-bottom: 2px dashed #fff;
 }
 
 .blue-point {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #FFF;
+  background-color: #fff;
   position: absolute;
   top: 0px;
   left: -63px;
@@ -291,8 +289,8 @@ li.pendiente-list {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: #FF5567;
-  color: #FFF;
+  background-color: #ff5567;
+  color: #fff;
   font-size: 14px;
   font-weight: 300;
   position: absolute;
@@ -311,7 +309,7 @@ li.pendiente-list {
   width: 100%;
 }
 
-.pendientes-bottom-icon{
+.pendientes-bottom-icon {
   width: 20px;
   height: 20px;
   background-image: url(/images/plus_icon_white.svg);
@@ -321,7 +319,7 @@ li.pendiente-list {
 .ver-oportunidad {
   width: 50%;
   height: fit-content;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
@@ -337,12 +335,11 @@ li.pendiente-list {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background: #2467FF;
+  background: #2467ff;
   border: 2px solid transparent;
   margin: 0 auto;
   gap: 15px;
 }
-
 
 .card-progress-bar-container {
   width: 80%;
@@ -350,7 +347,7 @@ li.pendiente-list {
   display: flex;
   margin-top: 25px;
   position: relative;
-  background-color: #FFF;
+  background-color: #fff;
   flex-direction: column;
   justify-content: center;
   border-radius: 10px;
@@ -360,7 +357,7 @@ li.pendiente-list {
   width: 40%;
   height: 9px;
   display: flex;
-  background-color:  #2467FF;
+  background-color: #2467ff;
   border-radius: 10px;
 }
 
@@ -375,8 +372,7 @@ li.pendiente-list {
 }
 
 @media only screen and (max-width: 1024px) {
-  
-  .card-container{
+  .card-container {
     width: 100%;
   }
 

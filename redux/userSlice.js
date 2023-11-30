@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  id: "",
-  name: "",
-  email_address: "",
-  user_rol: "",
-  last_name: "",
+  id: '',
+  name: '',
+  email_address: '',
+  user_rol: '',
+  last_name: '',
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -21,11 +21,11 @@ export const userSlice = createSlice({
       state.last_name = last_name;
     },
     unsetUser: (state, action) => {
-      state.id = "";
-      state.name = "";
-      state.email_address = "";
-      state.user_rol = "";
-      state.last_name = "";
+      state.id = '';
+      state.name = '';
+      state.email_address = '';
+      state.user_rol = '';
+      state.last_name = '';
     },
   },
 });

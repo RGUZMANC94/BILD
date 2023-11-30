@@ -65,15 +65,13 @@ const LogInComponent = () => {
             event.preventDefault();
             logInFn(event);
             return false;
-          }}
-        >
+          }}>
           <div className={styles['user-box']}>
             <label
               htmlFor="text"
               onClick={() => {
                 console.log('first');
-              }}
-            >
+              }}>
               Usuario
             </label>
             <input

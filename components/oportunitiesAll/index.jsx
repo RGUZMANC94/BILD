@@ -55,8 +55,7 @@ const OportunitiesAll = () => {
               name={oportunity.name}
               location={oportunity.location}
               type={oportunity.type}
-              followingDate={oportunity.followingDate}
-            ></OportunitiesCard>
+              followingDate={oportunity.followingDate}></OportunitiesCard>
           ))}
         </div>
       </div>

@@ -36,14 +36,12 @@ const Units = ({ setCreateOportunity, units }) => {
       <form
         className={`${styles.formUnits} ${
           showFormUnits ? styles.activeFormUnits : ''
-        } flex j-c a-c`}
-      >
+        } flex j-c a-c`}>
         <div
           className={`${styles.removeEditUnit} bg-ct`}
           onClick={() => {
             setShowFormUnits(false);
-          }}
-        ></div>
+          }}></div>
 
         <div className={`${styles.outerInput}`}>
           <input type="number" className={styles.inputFormUnit} />

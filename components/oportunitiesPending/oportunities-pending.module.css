@@ -19,7 +19,7 @@
 }
 
 /*weekly*/
-.weekly-container{
+.weekly-container {
   width: 100%;
 
   display: flex;
@@ -27,22 +27,21 @@
   align-items: flex-start;
 }
 
-.weekly-title{
+.weekly-title {
   height: auto;
   width: fit-content;
   padding: 50px 0px 90px 70px;
 
-  color: #FFF;
+  color: #fff;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 0.45; 
-
+  line-height: 0.45;
 }
 
 /*button bar*/
 
-.pending-buttonsBar{
+.pending-buttonsBar {
   width: 100%;
   height: auto;
 
@@ -59,7 +58,7 @@
   margin-left: 70px;
   margin-bottom: 50px;
 }
-.pending-container{
+.pending-container {
   justify-content: center;
   align-content: center;
   flex-direction: column;
@@ -67,31 +66,29 @@
   margin: 0px 0px;
 }
 
-.pending-container-button{
+.pending-container-button {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: auto;
 }
 
-.pending-buttons{
-
-  color: #FFF;
+.pending-buttons {
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.3889;
   cursor: pointer;
 }
-.pending-bar{
+.pending-bar {
   width: 100%;
   padding: 0px 25%;
   height: 5px;
   border-radius: 7px;
   margin-top: 5px;
-  background: #2467FF;  
+  background: #2467ff;
 }
-
 
 .icon-calendar {
   width: 25px;
@@ -296,7 +293,8 @@ li.pendiente-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
   border: 2px solid transparent;

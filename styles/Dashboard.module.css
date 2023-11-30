@@ -211,7 +211,7 @@
   width: 100%;
   box-sizing: border-box;
   color: #c7c7c7ce;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
@@ -283,8 +283,10 @@
   font-size: 18px;
   appearance: none;
   background-image: url(/images/arrow-select.png);
-  background-position: calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    100% 0;
   background-repeat: no-repeat;
   text-transform: uppercase;
 }
@@ -295,7 +297,7 @@
 
 .subject_input {
   position: absolute;
-  content: "";
+  content: '';
   top: 14px;
   right: 30px;
   width: 0;
@@ -305,7 +307,7 @@
 }
 
 .subject_input:before {
-  content: "";
+  content: '';
   position: absolute;
   right: 5px;
   top: 7px;
@@ -339,14 +341,14 @@
   width: 32.3333%;
 }
 
-.outerChart{
+.outerChart {
   width: 30%;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   border-radius: 5px;
   padding: 20px 10px;
 }
 
-.titleChart{
+.titleChart {
   text-align: center;
   color: #fff;
   margin-bottom: 20px;

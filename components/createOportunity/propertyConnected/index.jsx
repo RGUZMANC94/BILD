@@ -22,8 +22,7 @@ const PropertyConnected = ({ setIsCreated }) => {
             placeholder="Subject line"
             name="subject"
             className={styles.subject_input}
-            required
-          >
+            required>
             <option disabled hidden selected>
               OTRO
             </option>
@@ -37,16 +36,14 @@ const PropertyConnected = ({ setIsCreated }) => {
               name="message"
               placeholder=""
               className={styles.message_input}
-              required
-            ></textarea>
+              required></textarea>
           </div>
           <div className={styles.boton}>
             <button
               className={styles['contacto-existente']}
               onClick={() => {
                 setIsCreated(true);
-              }}
-            >
+              }}>
               Crear oportunidad
             </button>
           </div>

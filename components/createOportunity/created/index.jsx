@@ -60,8 +60,7 @@ const OportunityCreated = ({
                   className={styles['crear-cotizacion']}
                   onClick={() => {
                     setGenerateQuote(true);
-                  }}
-                >
+                  }}>
                   Crear cotización
                 </button>
               </div>
@@ -82,8 +81,7 @@ const OportunityCreated = ({
       <div
         className={`${styles.message} ${
           showCreatedPop ? styles.showMiniPop : ''
-        }`}
-      >
+        }`}>
         <img src="/images/check.png" />
         <span>Tu oportunidad se creo satisfactoriamente</span>
       </div>

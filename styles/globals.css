@@ -48,7 +48,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   text-align: left;
   justify-content: flex-start;
   text-transform: uppercase;
@@ -239,7 +239,8 @@ li {
   height: auto;
   display: initial;
   background: rgba(33, 34, 29, 0.35);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0px 0px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   text-align: left;
@@ -466,7 +467,7 @@ i.fa-solid.fa-plus {
   width: 37px;
   height: 37px;
   background-color: #ff5567;
-  background-image: url("/images/search-white.png");
+  background-image: url('/images/search-white.png');
   background-size: 60%;
   border-radius: 10px;
 }
@@ -503,7 +504,9 @@ i.fa-solid.fa-plus {
   bottom: 5px;
   left: 20px;
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .transparent-box {
@@ -547,7 +550,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -653,7 +656,7 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.top-content ul li{
+.top-content ul li {
   text-align: left;
 }
 .top-content ul li,
@@ -705,7 +708,7 @@ li.active button {
   color: #fff;
 }
 
-.number img{
+.number img {
   margin-left: 20px;
 }
 
@@ -854,7 +857,7 @@ li.active button {
     z-index: 2;
   }
 
-  .outerTypes{
+  .outerTypes {
     width: 76%;
   }
 
@@ -874,7 +877,8 @@ li.active button {
     display: flex;
     flex-direction: column;
     background: rgba(33, 34, 29, 0.35);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
       0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     padding: 15px;
@@ -890,8 +894,10 @@ li.active button {
     width: 100%;
     min-width: 320px;
     border-radius: 15px;
-    background: #2E2E2C;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #2e2e2c;
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(2.5px);
     text-align: left;
     flex-wrap: wrap;
@@ -924,7 +930,7 @@ li.active button {
   }
 
   .tipo-info {
-    margin-left: 0 ;
+    margin-left: 0;
     padding: 0px;
   }
 

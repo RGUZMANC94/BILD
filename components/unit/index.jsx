@@ -20,8 +20,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
 
           parentNode.classList.remove('editValues');
           setIsHidden(true);
-        }}
-      ></div>
+        }}></div>
       <div className="detalle-tabla">
         <input
           type="text"
@@ -58,8 +57,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
       </div>
       <div
         className="llave-tabla"
-        onClick={() => dispatch(openPopUp(true))}
-      ></div>
+        onClick={() => dispatch(openPopUp(true))}></div>
     </div>
   );
 };

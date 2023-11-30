@@ -8,8 +8,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
 
   return (
     <div
-      className={`${isShow ? styles.active : ''}  ${styles['popup-agregar']}`}
-    >
+      className={`${isShow ? styles.active : ''}  ${styles['popup-agregar']}`}>
       <div
         className={styles['popup-background-agregar']}
         onClick={() => {
@@ -17,8 +16,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
           setTimeout(() => {
             setShowPopUpAddContact(false);
           }, 500);
-        }}
-      ></div>
+        }}></div>
       <div className={styles['popup-window']}>
         <div className={styles['top-name']}>Agregar Contacto</div>
         <div
@@ -28,8 +26,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
             setTimeout(() => {
               setShowPopUpAddContact(false);
             }, 500);
-          }}
-        >
+          }}>
           <a className={styles.close} href="#">
             &times;
           </a>
@@ -51,8 +48,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
               stroke-linejoin="round"
               stroke-width="2"
               className={styles['feather feather-search']}
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <defs></defs>
               <circle cx="11" cy="11" r="8"></circle>
               <path d="M21 21l-4.35-4.35"></path>
@@ -67,8 +63,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
                 setTimeout(() => {
                   setShowPopUpAddContact(false);
                 }, 500);
-              }}
-            >
+              }}>
               <img src="/images/Ellipse 81.png" /> Gustavo Cerati
             </div>
             <div className={styles.contact}>

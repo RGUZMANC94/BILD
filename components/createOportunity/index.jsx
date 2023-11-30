@@ -43,8 +43,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
       <div
         className={`${styles['main-container']} ${
           showPopUp ? styles.openCreateOportunity : ''
-        }`}
-      >
+        }`}>
         <header className={styles.headerMainContainer}>
           <div className={styles.banner}>
             <div className={styles['banner-oportunidad']}>
@@ -53,8 +52,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
                   className={styles.prevStep}
                   onClick={() => {
                     returnPrevStep();
-                  }}
-                ></div>
+                  }}></div>
               )}
 
               <div className={styles['creacion-oportunidad']}>
@@ -69,8 +67,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
                   setTimeout(() => {
                     dispatch(closePopUp(false));
                   }, 500);
-                }}
-              ></div>
+                }}></div>
             </div>
           </div>
         </header>

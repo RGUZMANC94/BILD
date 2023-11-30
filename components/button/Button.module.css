@@ -8,13 +8,17 @@
   gap: 10px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.25s ease-in-out, border 0.25s ease-in 0s;
+  transition:
+    all 0.25s ease-in-out,
+    border 0.25s ease-in 0s;
   overflow: hidden;
   position: relative;
 }
 
 .siteButton:hover {
-  transition: all 0.25s ease-in-out, border 0.25s ease-in-out 0.1s;
+  transition:
+    all 0.25s ease-in-out,
+    border 0.25s ease-in-out 0.1s;
 }
 
 .siteButton span {
@@ -25,7 +29,7 @@
 }
 
 .siteButton:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -92,7 +96,8 @@
   padding: 10px 0px;
   text-align: center;
   cursor: pointer;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 7px;
   border: 2px solid transparent;

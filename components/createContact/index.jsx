@@ -15,8 +15,7 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
           setTimeout(() => {
             setShowPopUpCreateContact(false);
           }, 500);
-        }}
-      ></div>
+        }}></div>
       <div className={styles['popup-window']}>
         <div className={styles['top-name']}>Creacion de Contacto</div>
         <div
@@ -26,8 +25,7 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
             setTimeout(() => {
               setShowPopUpCreateContact(false);
             }, 500);
-          }}
-        >
+          }}>
           <span className={styles.close} href="#">
             &times;
           </span>
@@ -57,8 +55,7 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
                 setTimeout(() => {
                   setShowPopUpCreateContact(false);
                 }, 500);
-              }}
-            >
+              }}>
               Guardar
             </button>
           </fieldset>

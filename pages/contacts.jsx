@@ -9,8 +9,7 @@ const Contacts = () => {
       <div className="container">
         <Link
           className={styles['crear-contacto']}
-          href="/create-contact"
-        ></Link>
+          href="/create-contact"></Link>
         <div className={styles['contact-top']}>
           <div className={styles.nombre}>Nombre</div>
           <div className={styles.mail}>Correo Electrónico</div>

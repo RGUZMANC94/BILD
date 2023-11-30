@@ -155,7 +155,7 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 768px) {
   .crear {
     width: 100%;
     background: none;
@@ -165,7 +165,7 @@
     padding: 20px;
   }
 
-  .tipo-title{
+  .tipo-title {
     font-size: 11px;
   }
 
@@ -176,7 +176,7 @@
     line-height: 1.45;
   }
 
-  .img-tipo img{
+  .img-tipo img {
     width: auto;
   }
 

@@ -7,7 +7,9 @@ import { useRouter } from 'next/router';
 const isBrowser = () => typeof window !== 'undefined';
 
 const RouteGuard = ({ children }) => {
-  const { email_address, name, user_rol } = useSelector((state) => state.userState);
+  const { email_address, name, user_rol } = useSelector(
+    (state) => state.userState
+  );
   const router = useRouter();
   const { pathname } = router;
 

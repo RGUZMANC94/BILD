@@ -45,27 +45,23 @@ const Filter = ({ show, setShowFilter }) => {
         className={styles.filterBackground}
         onClick={() => {
           setShowFilter(false);
-        }}
-      ></div>
+        }}></div>
       <div className={styles.wrapperFilter}>
         <div
           className={`${styles.closeFilter} bg-ct`}
           onClick={() => {
             setShowFilter(false);
-          }}
-        ></div>
+          }}></div>
 
         <div className={styles.filterGroups}>
           <div
-            className={`${styles.filterGroup} ${styles.filterGroupUbication}`}
-          >
+            className={`${styles.filterGroup} ${styles.filterGroupUbication}`}>
             <label htmlFor={styles.labelFilter}>
               <span className={styles.labelText}>Ubicación:</span>
               <select
                 value={0}
                 defaultValue={0}
-                className={styles.ubicationSelect}
-              >
+                className={styles.ubicationSelect}>
                 <option value={0} disabled hidden selected></option>
                 <option value={0}>Fontana Campestre</option>
                 <option value={1}>La florida</option>
@@ -80,8 +76,7 @@ const Filter = ({ show, setShowFilter }) => {
           {rangeSliders.map((rangeSlider, i) => (
             <div
               key={i}
-              className={`${styles.filterGroup} ${styles.filterGroupPrice}`}
-            >
+              className={`${styles.filterGroup} ${styles.filterGroupPrice}`}>
               <span className={`${styles.labelText} ${styles.labelTextRange}`}>
                 {rangeSlider.type === 'price' && 'Precio'}
                 {rangeSlider.type === 'floor' && 'Piso'}
@@ -95,8 +90,8 @@ const Filter = ({ show, setShowFilter }) => {
                   rangeSlider.type === 'price'
                     ? priceValues
                     : rangeSlider.type === 'floor'
-                    ? floorValues
-                    : sizeValues
+                      ? floorValues
+                      : sizeValues
                 }
                 onChange={(values) => {
                   switch (rangeSlider.type) {
@@ -119,8 +114,7 @@ const Filter = ({ show, setShowFilter }) => {
                     onTouchStart={props.onTouchStart}
                     style={{
                       ...props.style,
-                    }}
-                  >
+                    }}>
                     <div
                       ref={props.ref}
                       style={{
@@ -132,16 +126,15 @@ const Filter = ({ show, setShowFilter }) => {
                             rangeSlider.type === 'price'
                               ? priceValues
                               : rangeSlider.type === 'floor'
-                              ? floorValues
-                              : sizeValues,
+                                ? floorValues
+                                : sizeValues,
                           colors: ['#fff', '#FF5567', '#fff'],
                           min: rangeSlider.min,
                           max: rangeSlider.max,
                           rtl: false,
                         }),
                         alignSelf: 'center',
-                      }}
-                    >
+                      }}>
                       {children}
                     </div>
                   </div>
@@ -185,16 +178,14 @@ const Filter = ({ show, setShowFilter }) => {
           ))}
 
           <div
-            className={`${styles.filterGroup} ${styles.filterGroupDrops} flex j-sb a-s`}
-          >
+            className={`${styles.filterGroup} ${styles.filterGroupDrops} flex j-sb a-s`}>
             <div className={`${styles.dropDownGrpup}`}>
               <label htmlFor={styles.labelFilter}>
                 <span className={styles.labelText}>HABITACIONES:</span>
                 <select
                   value={'default'}
                   defaultValue={'default'}
-                  className={styles.ubicationSelect}
-                >
+                  className={styles.ubicationSelect}>
                   <option value={'default'} selected>
                     3+
                   </option>
@@ -210,8 +201,7 @@ const Filter = ({ show, setShowFilter }) => {
                 <select
                   defaultValue={'default'}
                   value={'default'}
-                  className={styles.ubicationSelect}
-                >
+                  className={styles.ubicationSelect}>
                   <option value={'default'} selected>
                     1+
                   </option>

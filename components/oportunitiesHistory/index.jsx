@@ -72,8 +72,7 @@ const OportunitiesHistory = () => {
                 />
                 <label
                   htmlFor="checkbox1"
-                  className={styles.checkboxLabelSquare}
-                ></label>
+                  className={styles.checkboxLabelSquare}></label>
                 <span className={styles['pendiente-date']}>05/01/22</span>
               </label>
               <ul>
@@ -92,24 +91,19 @@ const OportunitiesHistory = () => {
           <div
             className={`${styles['box-dotted']} ${
               showAllEvents ? styles.active : ''
-            } relative`}
-          >
+            } relative`}>
             <div
               className={styles['blue-point-plus']}
-              onClick={() => setShowAllEvents(true)}
-            >
+              onClick={() => setShowAllEvents(true)}>
               {allEvents.length - 2}+
             </div>
             <div className={styles.innerDottedContainer}>
               {allEvents.reverse().map((eventItem, i) => (
                 <div
                   className={
-                    eventItem.status === 'pending'
-                      ? styles.greybox
-                      : styles.box
+                    eventItem.status === 'pending' ? styles.greybox : styles.box
                   }
-                  key={eventItem.id}
-                >
+                  key={eventItem.id}>
                   <div className={styles.info}>
                     <label>
                       {eventItem.status === 'pending' && (
@@ -163,8 +157,7 @@ const OportunitiesHistory = () => {
             buttonType={'primary'}
             classNameInherit={'align-center'}
             iconImage={'/images/plus_icon_white.svg'}
-            label={'Ver oportunidad'}
-          ></Button>
+            label={'Ver oportunidad'}></Button>
           <div className={styles['card-progress-bar-container']}>
             <div className={styles['card-progress-bar-frost-icon']}></div>
             <div className={styles['card-progress-bar-cold']}></div>

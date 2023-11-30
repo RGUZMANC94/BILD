@@ -17,8 +17,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
               placeholder="Subject line"
               name="subject"
               className={styles.subject_input}
-              required
-            >
+              required>
               <option disabled hidden selected>
                 2
               </option>
@@ -37,8 +36,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
               placeholder="Subject line"
               name="subject"
               className={styles.subject_input}
-              required
-            >
+              required>
               <option disabled hidden selected>
                 2
               </option>
@@ -104,8 +102,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
                 height: '36px',
                 display: 'flex',
                 width: 'calc(100% - 80px)',
-              }}
-            >
+              }}>
               <div
                 ref={props.ref}
                 style={{
@@ -119,8 +116,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
                     // rtl,
                   }),
                   alignSelf: 'center',
-                }}
-              >
+                }}>
                 {children}
               </div>
             </div>
@@ -137,9 +133,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}
-            >
-            </div>
+              }}></div>
           )}
         />
         <div className={styles.labelRangePercenth}>{`${values}%`}</div>
@@ -166,8 +160,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             placeholder="Subject line"
             name="subject"
             className={styles.subject_input}
-            required
-          >
+            required>
             <option disabled hidden selected>
               2
             </option>
@@ -236,8 +229,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             className={styles['title-separacion']}
             onClick={() => {
               setGenerateQuote(false);
-            }}
-          >
+            }}>
             WHATSAPP
           </span>
         </div>

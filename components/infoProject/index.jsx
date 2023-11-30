@@ -49,8 +49,7 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
               pathname: '/create-project',
               query: { project: projectId },
             }}
-            className={'bg-ct editProject'}
-          ></Link>
+            className={'bg-ct editProject'}></Link>
         </div>
         <div className="galeria-tipo">
           <div className="gallery-image">
@@ -58,8 +57,7 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
               <div
                 key={img}
                 className="img-box"
-                onClick={() => setLightboxImage(img)}
-              >
+                onClick={() => setLightboxImage(img)}>
                 <img src={img} alt="" />
                 <div className="transparent-box"></div>
               </div>

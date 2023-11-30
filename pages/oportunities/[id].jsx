@@ -33,9 +33,7 @@ const Oprtunities = () => {
                     Fontana Campestre
                   </span>
                   <span className={styles['tipo-sub']}>TIPO 1 - 302</span>
-                  <div className={styles.detalles}>
-                    Seguimiento: 23/05/23
-                  </div>
+                  <div className={styles.detalles}>Seguimiento: 23/05/23</div>
                 </div>
                 <div className={styles.progressBar}>
                   <div className={styles.innerProgressBar}>
@@ -54,9 +52,7 @@ const Oprtunities = () => {
                     Fontana Campestre
                   </span>
                   <span className={styles['tipo-sub']}>TIPO 1 - 302</span>
-                  <div className={styles.detalles}>
-                    Seguimiento: 23/05/23
-                  </div>
+                  <div className={styles.detalles}>Seguimiento: 23/05/23</div>
                 </div>
                 <div className={styles.progressBar}>
                   <div className={styles.innerProgressBar}>
@@ -75,9 +71,7 @@ const Oprtunities = () => {
                     Fontana Campestre
                   </span>
                   <span className={styles['tipo-sub']}>TIPO 1 - 302</span>
-                  <div className={styles.detalles}>
-                    Seguimiento: 23/05/23
-                  </div>
+                  <div className={styles.detalles}>Seguimiento: 23/05/23</div>
                 </div>
                 <div className={styles.progressBar}>
                   <div className={styles.innerProgressBar}>

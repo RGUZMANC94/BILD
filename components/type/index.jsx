@@ -24,8 +24,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
         });
         itemsDrag[index].classList.add('active');
         dispatch(changeTypeSelected(index));
-      }}
-    >
+      }}>
       <div className="draggable bg-ct" draggable={true}></div>
       <div className="maskDraggable"></div>
       <div className="tipo-unit">
@@ -46,8 +45,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
           className="llave"
           onClick={() => {
             dispatch(openPopUp(true));
-          }}
-        ></div>
+          }}></div>
         <div className="caracteristicas-top-movil">
           <div className="caracteristicas-top">
             <div className="top-tabla">ID</div>
@@ -64,8 +62,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -75,8 +72,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -86,8 +82,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -97,8 +92,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -110,8 +104,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
               className="llave-tabla"
               onClick={() => {
                 dispatch(openPopUp(true));
-              }}
-            ></div>
+              }}></div>
           </div>
         </div>
       </div>

@@ -21,7 +21,8 @@
   padding-top: 20px;
   border-radius: 35px;
   background: #2e2e2c;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7.5px);
 }
@@ -163,7 +164,7 @@ button.upload-file {
   border: 1px solid #2467ff;
   border-radius: 5px;
   background-color: #565555;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   margin-top: 30px;
 }
 
@@ -253,7 +254,8 @@ button.upload-file {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
   border: 2px solid transparent;

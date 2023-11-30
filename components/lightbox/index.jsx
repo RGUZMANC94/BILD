@@ -22,8 +22,7 @@ const LightBox = ({ image, setLightboxImage }) => {
           setTimeout(() => {
             setLightboxImage('');
           }, 550);
-        }}
-      ></div>
+        }}></div>
       <div
         className={`bg-ct ${styles['close-lightbox']}`}
         onClick={() => {
@@ -31,8 +30,7 @@ const LightBox = ({ image, setLightboxImage }) => {
           setTimeout(() => {
             setLightboxImage('');
           }, 550);
-        }}
-      ></div>
+        }}></div>
       <div className={styles['wrapper-lightbox']}>
         <div className={`bg-cv ${styles['inner-image']}`} style={style}></div>
       </div>

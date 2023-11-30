@@ -102,25 +102,25 @@ i.fa-solid.fa-user {
 }
 
 @media only screen and (max-width: 768px) {
-  .contacto{
+  .contacto {
     flex-direction: column;
     align-items: center;
   }
 
-  .conecta{
+  .conecta {
     width: 90%;
     margin-bottom: 25px;
   }
-  
-  .recientes{
+
+  .recientes {
     width: 90%;
   }
 
-  .crear-contacto{
+  .crear-contacto {
     width: 80%;
   }
 
-  .contacto-existente{
+  .contacto-existente {
     width: 80%;
   }
 }

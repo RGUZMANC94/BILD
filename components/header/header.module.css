@@ -74,7 +74,7 @@
 }
 
 .glass {
-  background-image: url("/images/search-white.png");
+  background-image: url('/images/search-white.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -201,7 +201,7 @@
     width: 100%;
     display: block;
     padding: 0px;
-    background: transparent url("/images/search.svg") no-repeat 13px;
+    background: transparent url('/images/search.svg') no-repeat 13px;
     border: none;
     background-position: right;
   }

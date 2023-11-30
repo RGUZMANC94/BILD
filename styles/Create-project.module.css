@@ -76,7 +76,7 @@
   position: relative;
   display: flex;
   font-size: 16px;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   font-weight: 300;
   justify-content: center;
   align-items: center;
@@ -99,7 +99,9 @@
 }
 .proyect-form .action-button:hover,
 .proyect-form .action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #2467ff;
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 3px #2467ff;
 }
 .fs-title {
   font-size: 15px;
@@ -569,7 +571,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 5px;
   border: 2px solid transparent;
@@ -690,13 +693,17 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
-  transition: top 0s linear 0.5s, opacity 0.5s ease-in-out;
+  transition:
+    top 0s linear 0.5s,
+    opacity 0.5s ease-in-out;
 }
 
 .popSuccessProjectCreated.activePopUp {
   top: 0;
   opacity: 1;
-  transition: top 0s linear.0s, opacity 0.5s ease-in-out;
+  transition:
+    top 0s linear.0s,
+    opacity 0.5s ease-in-out;
 }
 
 .bgPopUp {

@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   const router = useRouter();
   const { pathname } = router;
   const dispatch = useDispatch();
-  const {id} = useSelector((state) => state.userState);
+  const { id } = useSelector((state) => state.userState);
 
   const getUserLogged = async (token) => {
     const response = await fetch('/api/login', {

@@ -10,8 +10,7 @@ const BuyerProfile = () => {
       <div className={styles.pendientes}>
         <Link
           href="/contacts"
-          className={`${styles.closeContact} bg-ct`}
-        ></Link>
+          className={`${styles.closeContact} bg-ct`}></Link>
         <RightSideProfile typeViewer={'buyer'} />
       </div>
     </div>

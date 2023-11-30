@@ -20,21 +20,21 @@
 
 /*calendar*/
 
-.calendar-container{
+.calendar-container {
   display: flex;
   max-width: 1600px;
   /*margin: 0px 85px;*/
   margin: auto;
 }
 
-.calendar-day-container{
+.calendar-day-container {
   display: flex;
   flex-direction: column;
   height: fit-content;
   width: 20%;
 }
 
-.calendar-day-title{
+.calendar-day-title {
   width: 100%;
   height: fit-content;
   padding-bottom: 38px;
@@ -43,15 +43,15 @@
   align-items: center;
   /*background: #2E2E2C;*/
 
-  color: #FFF;
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 0.5; 
+  line-height: 0.5;
   letter-spacing: 1.26px;
 }
 
-.calendar-day-content{
+.calendar-day-content {
   width: 100%;
   height: 261px;
 
@@ -62,14 +62,14 @@
   overflow-y: auto;
 
   border-radius: 5px;
-  border-top: 5px solid #C7C7C7;
-  border-right: 2.5px solid #C7C7C7;
-  border-bottom: 5px solid #C7C7C7;
-  border-left: 2.5px solid #C7C7C7;
-  background: #2E2E2C;
+  border-top: 5px solid #c7c7c7;
+  border-right: 2.5px solid #c7c7c7;
+  border-bottom: 5px solid #c7c7c7;
+  border-left: 2.5px solid #c7c7c7;
+  background: #2e2e2c;
 }
 
-.calendar-card-container{
+.calendar-card-container {
   height: fit-content;
   display: flex;
   flex-direction: row;
@@ -78,23 +78,22 @@
   padding: 10px;
 
   border-radius: 7px;
-  border: 0.5px solid #CCC;
+  border: 0.5px solid #ccc;
   /*background: #FFF;*/
   /*box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.12);*/
-
 }
 
-.calendar-card-text-container{
-  width:max-content;
+.calendar-card-text-container {
+  width: max-content;
   height: fit-content;
   display: flex;
   flex-direction: column;
 }
 
-.calendar-card-text-hour{
+.calendar-card-text-hour {
   padding-bottom: 3px;
   height: fit-content;
-  color: #FFF;
+  color: #fff;
   font-size: 10px;
   font-style: normal;
   font-weight: 300;
@@ -102,8 +101,8 @@
   text-transform: uppercase;
 }
 
-.calendar-card-text-message{
-  color: #FFF;
+.calendar-card-text-message {
+  color: #fff;
   height: fit-content;
   font-size: 12px;
   font-style: normal;
@@ -111,12 +110,12 @@
   line-height: 1.25;
 }
 
-.calendar-card-input{
+.calendar-card-input {
   width: 15px;
   height: 15px;
   margin-right: 8px;
   flex-shrink: 0;
-  border: 1px solid #4D4D4D;
+  border: 1px solid #4d4d4d;
 
   /*background: #FFF;*/
 }
@@ -312,7 +311,8 @@ li.pendiente-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
   border: 2px solid transparent;

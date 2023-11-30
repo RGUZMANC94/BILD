@@ -16,7 +16,8 @@
   height: auto;
   border-radius: 35px;
   background: #2e2e2c;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7.5px);
   display: flex;
@@ -273,7 +274,8 @@
   flex-wrap: wrap;
   border-radius: 20px;
   background: #565555;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7.5px);
   color: #fff;
@@ -297,8 +299,11 @@
   -webkit-animation: not-blink 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395)
     infinite;
   animation: not-blink 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 
 .badge {
@@ -561,8 +566,11 @@ button.campo:hover {
   -webkit-animation: not-blink 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395)
     infinite;
   animation: not-blink 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 
 span.badge {
@@ -664,7 +672,7 @@ h3.user {
   position: relative;
 }
 
-.switch input[type="checkbox"] {
+.switch input[type='checkbox'] {
   visibility: hidden;
 }
 
@@ -678,7 +686,7 @@ h3.user {
 }
 
 .switch label:after {
-  content: "";
+  content: '';
   width: 28px;
   height: 28px;
   border-radius: 5px;

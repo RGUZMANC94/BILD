@@ -30,11 +30,8 @@ const CreateContact = () => {
                 Tomar Foto
               </div>
               <Link
-                href={`/detail-estate/${
-                  projectsList[0].projectId
-                }?contactId=${77}`}
-                className={styles['crear-contacto']}
-              >
+                href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+                className={styles['crear-contacto']}>
                 <i className="fa-solid fa-plus"></i>Crear oportunidad
               </Link>
               <button className={styles['contacto-existente']}>Guardar</button>
@@ -51,36 +48,31 @@ const CreateContact = () => {
               <button
                 type="button"
                 onclick="cambiarColor(this.parentNode)"
-                className={styles.campo}
-              >
+                className={styles.campo}>
                 Casado
               </button>
               <button
                 type="button"
                 onclick="cambiarColor(this.parentNode)"
-                className={styles.campo}
-              >
+                className={styles.campo}>
                 Soltero
               </button>
               <button
                 type="button"
                 onclick="cambiarColor(this.parentNode)"
-                className={styles.campo}
-              >
+                className={styles.campo}>
                 Con Hijos
               </button>
               <button
                 type="button"
                 onclick="cambiarColor(this.parentNode)"
-                className={styles.campo}
-              >
+                className={styles.campo}>
                 Sin Hijos
               </button>
               <button
                 type="button"
                 onclick="cambiarColor(this.parentNode)"
-                className={styles.campo}
-              >
+                className={styles.campo}>
                 Separado
               </button>
             </div>
@@ -92,15 +84,13 @@ const CreateContact = () => {
                 <button
                   type="button"
                   onclick="cambiarColor(this.parentNode)"
-                  className={styles.campo}
-                >
+                  className={styles.campo}>
                   Inversionista
                 </button>
                 <button
                   type="button"
                   onclick="cambiarColor(this.parentNode)"
-                  className={styles.campo}
-                >
+                  className={styles.campo}>
                   Familiar
                 </button>
               </div>

@@ -9,8 +9,7 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
         className={styles.evento}
         onClick={() => {
           setShowPopEvents(true);
-        }}
-      >
+        }}>
         Agregar evento
       </button>
       <div className={styles.contact}>

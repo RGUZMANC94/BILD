@@ -156,8 +156,7 @@ const CreateProject = () => {
         <form
           className={styles.createProjectForm}
           onSubmit={createProject}
-          id="IDForm"
-        >
+          id="IDForm">
           <div className={styles['proyect-left']}>
             <div className={styles['image-movil']}>
               <span className={styles.label}>Imagen del Proyecto:</span>
@@ -200,8 +199,7 @@ const CreateProject = () => {
                     name="subject"
                     className={styles.subject_input}
                     required
-                    ref={inputProjectType}
-                  >
+                    ref={inputProjectType}>
                     <option disabled defaultValue={0} hidden selected></option>
                     <option>Opción 1</option>
                     <option>Opción 2</option>
@@ -218,9 +216,7 @@ const CreateProject = () => {
                   />
                 </div>
                 <div className={styles['name-field']}>
-                  <span className={styles.label}>
-                    Descripción del Proyecto
-                  </span>
+                  <span className={styles.label}>Descripción del Proyecto</span>
                   <textarea
                     name="message"
                     placeholder=""
@@ -228,8 +224,7 @@ const CreateProject = () => {
                     cols="30"
                     rows="5"
                     required
-                    ref={inputProjectDescription}
-                  ></textarea>
+                    ref={inputProjectDescription}></textarea>
                 </div>
               </fieldset>
             </div>
@@ -247,12 +242,10 @@ const CreateProject = () => {
               <div className={styles['main-image']}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
-                  onClick={deleteImage}
-                ></div>
+                  onClick={deleteImage}></div>
                 <label
                   htmlFor="mainImgProject"
-                  className={styles.labelInputImage}
-                >
+                  className={styles.labelInputImage}>
                   <input
                     id="mainImgProject"
                     type="file"
@@ -264,8 +257,7 @@ const CreateProject = () => {
 
                   <div
                     className={`${styles.imageSelected}`}
-                    ref={mainImage}
-                  ></div>
+                    ref={mainImage}></div>
                 </label>
               </div>
             </div>
@@ -280,12 +272,10 @@ const CreateProject = () => {
                 <div className={styles['proyect-img']}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
-                    onClick={deleteImage}
-                  ></div>
+                    onClick={deleteImage}></div>
                   <label
                     htmlFor="firstImgProject"
-                    className={styles.labelInputImage}
-                  >
+                    className={styles.labelInputImage}>
                     <input
                       id="firstImgProject"
                       type="file"
@@ -296,19 +286,16 @@ const CreateProject = () => {
                     />
                     <div
                       className={`${styles.imageSelected}`}
-                      ref={firstImage}
-                    ></div>
+                      ref={firstImage}></div>
                   </label>
                 </div>
                 <div className={styles['proyect-img']}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
-                    onClick={deleteImage}
-                  ></div>
+                    onClick={deleteImage}></div>
                   <label
                     htmlFor="secondImgProject"
-                    className={styles.labelInputImage}
-                  >
+                    className={styles.labelInputImage}>
                     <input
                       id="secondImgProject"
                       type="file"
@@ -319,8 +306,7 @@ const CreateProject = () => {
                     />
                     <div
                       className={`${styles.imageSelected}`}
-                      ref={secondImage}
-                    ></div>
+                      ref={secondImage}></div>
                   </label>
                 </div>
               </div>
@@ -340,8 +326,7 @@ const CreateProject = () => {
                 className={styles['blue-border']}
                 onDrop={dropHandler}
                 onDragOver={dragHandler}
-                onDragEnter={dragHandler}
-              >
+                onDragEnter={dragHandler}>
                 <img src="/images/upload-icon.png" />
                 <span>
                   Haga click para subir o arrastra acá el archivo a compartir
@@ -370,8 +355,7 @@ const CreateProject = () => {
                 </div>
                 <div
                   className={`${styles.deleteXlsxUploaded} bg-ct`}
-                  onClick={deleteXlsx}
-                ></div>
+                  onClick={deleteXlsx}></div>
               </div>
             </div>
 

@@ -31,8 +31,7 @@ const Header = () => {
             <div className={styles.menuPpal}>
               <Link
                 href={pathname === '/' ? '' : '/'}
-                className={pathname === '/' ? styles.active : ''}
-              >
+                className={pathname === '/' ? styles.active : ''}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/building.png" />
                 </div>
@@ -40,8 +39,7 @@ const Header = () => {
               </Link>
               <Link
                 href={pathname === '/contacts' ? '' : '/contacts'}
-                className={pathname === '/contacts' ? styles.active : ''}
-              >
+                className={pathname === '/contacts' ? styles.active : ''}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/phone.png" />
                 </div>
@@ -49,8 +47,7 @@ const Header = () => {
               </Link>
               <Link
                 href={pathname === '/dashboard' ? '' : '/dashboard'}
-                className={pathname === '/dashboard' ? styles.active : ''}
-              >
+                className={pathname === '/dashboard' ? styles.active : ''}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/dashboard.png" />
                 </div>
@@ -58,8 +55,7 @@ const Header = () => {
               </Link>
               <Link
                 href={pathname === '/oportunities' ? '' : '/oportunities'}
-                className={pathname === '/oportunities' ? styles.active : ''}
-              >
+                className={pathname === '/oportunities' ? styles.active : ''}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/key.png" />
                 </div>
@@ -68,8 +64,7 @@ const Header = () => {
               </Link>
               <Link
                 href={pathname === '/profile' ? '' : '/profile'}
-                className={pathname === '/profile' ? styles.active : ''}
-              >
+                className={pathname === '/profile' ? styles.active : ''}>
                 <div className={styles.imageMenu}>
                   <img
                     alt=""
@@ -84,8 +79,7 @@ const Header = () => {
               </Link>
               <div
                 className={styles.search}
-                onClick={() => setShowFilter(true)}
-              >
+                onClick={() => setShowFilter(true)}>
                 <div className={`${styles.glass} bg-ct`}></div>
               </div>
             </div>
