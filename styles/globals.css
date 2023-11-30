@@ -190,7 +190,7 @@ li {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  max-height: calc(100vh - 350px);
+  /* max-height: calc(100vh - 350px); */
   /*padding: 10px 20px 0 0px;*/
   margin-bottom: 20px;
 }
@@ -198,8 +198,10 @@ li {
 .caracteristicas {
   width: calc(50% - 50px);
   height: auto;
-  display: flex;
-  flex-direction: column;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
 }
 
 .caracteristicas-top-movil {
@@ -291,11 +293,11 @@ li {
 }
 
 .valor {
-  padding-top: 33px;
+  /* padding-top: 33px; */
   font-size: 16px;
   color: #fff;
   font-weight: 400;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   line-height: 2;
 }
 
