@@ -35,6 +35,7 @@ const Home = () => {
       getProjects();
       return;
     }
+    getProjects();
     // if (projectsList.length === 0) {
     // }
   }, []);
