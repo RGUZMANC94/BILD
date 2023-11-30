@@ -63,7 +63,7 @@ const Home = () => {
                   src={
                     project.imgProject !== '' && project.imgProject
                       ? project.imgProject
-                      : '/images/default-2.jpg'
+                      : '/images/defatult-2.jpg'
                   }
                 />
               </div>
