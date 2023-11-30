@@ -11,7 +11,7 @@ import Link from "next/link";
 const Home = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  
+
   const USDollar = new Intl.NumberFormat("en-US");
   const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -73,7 +73,9 @@ const Home = () => {
                 <p className={styles["valor"]}>
                   {project.minPrice &&
                     project.maxPrice &&
-                    `${USDollar.format(project.minPrice)}  - ${USDollar.format(project.maxPrice)} `}
+                    `${USDollar.format(project.minPrice)}  - ${USDollar.format(
+                      project.maxPrice
+                    )} `}
                 </p>
 
                 <div className={styles["detalles"]}>

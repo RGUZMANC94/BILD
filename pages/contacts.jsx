@@ -39,7 +39,7 @@ const Contacts = () => {
                       <img src="/images/blue-phone-movil.png" />
                     </div>
                     <div className={styles["wa-movil"]}>
-                      <img src="/images/whatsapp-green.png" />
+                      <img src="/images/whatsapp-contacts.png" />
                     </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ const Contacts = () => {
                       <img src="/images/blue-phone-movil.png" />
                     </div>
                     <div className={styles["wa-movil"]}>
-                      <img src="/images/whatsapp-green.png" />
+                      <img src="/images/whatsapp-contacts.png" />
                     </div>
                   </div>
                 </div>
