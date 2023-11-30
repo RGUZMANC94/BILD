@@ -31,11 +31,11 @@ const Home = () => {
   useEffect(() => {
     if (!getSessionToken()) {
       router.push("/login");
+      getProjects();
       return;
     }
-    if (projectsList.length === 0) {
-      getProjects();
-    }
+    // if (projectsList.length === 0) {
+    // }
   }, []);
 
   return (
