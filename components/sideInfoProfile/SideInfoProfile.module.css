@@ -88,7 +88,7 @@
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .id-perfil img {
@@ -154,7 +154,7 @@
 .campo {
   width: auto;
   min-width: 100px;
-  margin: 30px 10px 0;
+  margin: 30px 10px 0 0;
   border: 1px solid #fff;
   border-radius: 30px;
   color: #fff;
@@ -342,7 +342,7 @@
   flex-direction: column;
 }
 
-.editar {
+/* .editar {
   font-size: 18px;
   font-weight: 500;
   color: #4d4d4d;
@@ -352,7 +352,7 @@
   display: flex;
   justify-content: end;
   align-items: end;
-}
+} */
 
 .perfil-img {
   border-radius: 50%;
@@ -379,19 +379,6 @@
   margin-bottom: 30px;
   margin: 0 auto;
   line-height: 50px;
-}
-
-.id-perfil {
-  width: 100%;
-  height: auto;
-  font-size: 18px;
-  font-weight: 200;
-  color: #fff;
-  margin: 0 auto;
-  margin-top: 50px;
-  text-align: left;
-  display: flex;
-  align-items: start;
 }
 
 .perfil-icon {
@@ -427,17 +414,6 @@
   margin-right: 20px;
 }
 
-.perfil-icons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: start;
-  width: 80%;
-  height: auto;
-  margin: 0 auto;
-  margin-bottom: 30px;
-}
-
 .edit {
   margin-left: 30px;
 }
@@ -447,65 +423,6 @@
   font-weight: 200;
   color: #2467ff;
   text-align: left;
-}
-
-.informacion-perfil {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0 auto;
-}
-.info-perfil {
-  font-size: 18px;
-  font-weight: 600;
-  color: #4d4d4d;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.sub-title {
-  font-size: 18px;
-  color: #4d4d4d;
-  margin: 50px 0 0px;
-}
-
-.campos-informacion {
-  width: 70%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: center;
-}
-
-.campos {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: start;
-}
-
-button.campo {
-  width: auto;
-  min-width: 100px;
-  height: 6vh;
-  margin: 30px 10px 0;
-  border: 1px solid #2467ff;
-  border-radius: 5px;
-  color: #2467ff;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
 }
 
 button.campo:hover {
@@ -546,17 +463,6 @@ button.campo:hover {
   font-weight: 300;
 }
 
-.opc-pendiente {
-  width: 90%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-  top: 450px;
-  margin: 0 auto;
-}
 
 .opcion {
   width: 22%;
@@ -992,16 +898,6 @@ h3.user {
     align-items: flex-start;
     margin-top: 0px;
     padding-bottom: 60px;
-  }
-
-  .listado {
-    position: relative;
-    top: 50px;
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
   }
 
   .perfil-icon img {

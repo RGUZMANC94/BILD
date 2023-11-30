@@ -1,7 +1,9 @@
 import Link from "next/link";
 import styles from "../styles/Create-Contact.module.css";
+import { useSelector } from "react-redux";
 
 const CreateContact = () => {
+  const { projectsList } = useSelector((state) => state.projectState);
   return (
     <section className={styles["wrap-datos"]}>
       <div className="container flex j-sb a-s wrap relative">
@@ -27,9 +29,14 @@ const CreateContact = () => {
                 </div>
                 Tomar Foto
               </div>
-              <button className={styles["crear-contacto"]}>
+              <Link
+                href={`/detail-estate/${
+                  projectsList[0].projectId
+                }?contactId=${77}`}
+                className={styles["crear-contacto"]}
+              >
                 <i className="fa-solid fa-plus"></i>Crear oportunidad
-              </button>
+              </Link>
               <button className={styles["contacto-existente"]}>Guardar</button>
             </fieldset>
           </form>
@@ -97,10 +104,10 @@ const CreateContact = () => {
                   Familiar
                 </button>
               </div>
-              <button className={styles["crear-contacto"]}>
+              {/* <button className={styles["crear-contacto"]}>
                 <i className="fa-solid fa-plus"></i>Crear oportunidad
               </button>
-              <button className={styles["contacto-existente"]}>Guardar</button>
+              <button className={styles["contacto-existente"]}>Guardar</button> */}
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ const TypesSide = ({
   types,
   setCreateOportunity,
 }) => {
-  const { typeSelected } = useSelector((state) => state.typeState);
+  // const { typeSelected } = useSelector((state) => state.typeState);
   const units = [
     {
       id: 0,

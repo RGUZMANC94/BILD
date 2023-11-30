@@ -64,22 +64,25 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: flex-start;
   margin-top: 40px;
   text-align: left;
   padding: 20px;
-  border-radius: 24px;
+  border-radius: 16px;
   background: #2e2e2c;
   border: 1px solid #ff556600;
   box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  position: relative;
 }
 
 .tipo-unit.active {
-  border: 1px solid #ff5567;
+  /* border: 1px solid #ff5567; */
 }
 
 .tipo-info {
+  margin-left: 20px;
   width: 70%;
   height: auto;
   display: flex;
@@ -88,14 +91,14 @@
 }
 
 .tipo-title {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
   color: #fff;
   text-transform: uppercase;
 }
 
 .tipo-sub {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: #fff;
   text-transform: uppercase;
@@ -121,11 +124,33 @@
   justify-content: flex-start;
 }
 
-i.fa-solid.fa-angle-left {
-  left: 0;
-  font-size: 30px;
-  display: flex;
-  align-items: flex-start;
+.progressBar {
+  width: 100%;
+  height: 7px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 35px 0 15px;
+}
+
+.innerProgressBar {
+  width: 25%;
+  background-color: #3eaaf7;
+  border-radius: 10px;
+  height: 100%;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+}
+
+.iceCreamBar {
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  margin-top: -12.5px;
+  right: -12.5px;
+  border-radius: 50%;
+  background-image: url(/images/ice.svg);
 }
 
 .top-content.title {
@@ -145,9 +170,21 @@ i.fa-solid.fa-angle-left {
 }
 
 .back {
-  width: 40px;
-  height: 40px;
-  background-size: 40px 40px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(/images/back.svg);
+  transform: rotateY(180deg);
+  transition: all .5s ease-in-out;
+}
+
+.active .back{
+  transform: rotateY(0deg);
 }
 
 .img-tipo {
@@ -202,7 +239,7 @@ i.fa-solid.fa-angle-left {
 }
 
 .ver-line {
-  border-right: 2px solid #4d4d4d;
+  border-right: 1px solid #fff;
   height: 100%;
   min-height: 80px;
 }
@@ -297,11 +334,11 @@ i.fa-solid.fa-angle-left {
   padding: 5px;
   margin-left: 20px;
   margin-bottom: 30px;
-  width: 113%;
+  width: 100%;
   position: relative;
-  left: -55px;
-  border-top: 2px dashed #2467ff;
-  border-bottom: 2px dashed #2467ff;
+  left: -0;
+  border-top: 2px dashed #fff;
+  border-bottom: 2px dashed #fff;
 }
 
 .blue-point {
@@ -323,8 +360,8 @@ i.fa-solid.fa-angle-left {
   font-size: 14px;
   font-weight: 300;
   position: absolute;
-  top: 0;
-  left: -10px;
+  top: -7px;
+  left: -12.5px;
   text-align: center;
   margin: 0 auto;
   display: flex;

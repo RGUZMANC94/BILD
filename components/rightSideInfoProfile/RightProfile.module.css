@@ -181,7 +181,7 @@
   text-align: left;
   padding-top: 20px;
   margin-top: 50px;
-  margin-left: 70px;
+  margin-left: 5%;
   font-weight: 700;
 }
 
@@ -230,7 +230,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  margin-left: 70px;
+  margin-left: 5%;
   margin-top: 50px;
   margin-bottom: 100px;
 }
@@ -520,23 +520,6 @@ button.campo:hover {
   color: #fff;
 }
 
-.flag {
-  width: 185px;
-  height: 55px;
-  background-color: #2467ff;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  text-transform: uppercase;
-  text-align: center;
-  padding-top: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  left: 0px;
-  top: 40px;
-  position: relative;
-}
-
 .check {
   width: 25px;
   height: 25px;
@@ -555,17 +538,6 @@ button.campo:hover {
   font-weight: 300;
 }
 
-.listado {
-  width: 80%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
-  position: relative;
-  top: 80px;
-  padding-bottom: 40px;
-}
-
 .penlist {
   display: flex;
   justify-content: start;
@@ -573,42 +545,6 @@ button.campo:hover {
   font-weight: 200;
   font-size: 16px;
   margin-bottom: 40px;
-}
-
-.opc-pendiente {
-  width: 90%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-  top: 450px;
-  margin: 0 auto;
-}
-
-.opcion {
-  width: 22%;
-  min-width: 180px;
-  height: auto;
-  position: relative;
-  background-color: white;
-  box-shadow: 2px 2px 6px #c7c7c7;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #4d4d4d;
-  text-transform: uppercase;
-  flex-wrap: wrap;
-}
-
-.opcion img {
-  padding-bottom: 15px;
 }
 
 .badge.red {
@@ -761,7 +697,6 @@ h3.user {
 .switch .look:checked + label {
   background-color: #2dd65752;
 }
-
 
 .switch .look:checked + label:after {
   left: 28px;
