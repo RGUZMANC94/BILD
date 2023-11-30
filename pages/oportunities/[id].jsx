@@ -31,17 +31,10 @@ const Oprtunities = () => {
                 <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
                 <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
               </div>
-              <div className={styles["back"]}></div>
-            </div>
-            <div className={styles["tipo-unit"]}>
-              <div className={styles["img-tipo"]}>
-                <img src="/images/tipo-1.png" />
-                <div className={styles["zoom"]}></div>
-              </div>
-              <div className={styles["tipo-info"]}>
-                <span className={styles["tipo-title"]}>Fontana Campestre</span>
-                <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
-                <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
+              <div className={styles.progressBar}>
+                <div className={styles.innerProgressBar}>
+                  <div className={`${styles.iceCreamBar} bg-ct`}></div>
+                </div>
               </div>
               <div className={styles["back"]}></div>
             </div>
@@ -54,12 +47,33 @@ const Oprtunities = () => {
                 <span className={styles["tipo-title"]}>Fontana Campestre</span>
                 <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
                 <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
+              </div>
+              <div className={styles.progressBar}>
+                <div className={styles.innerProgressBar}>
+                  <div className={`${styles.iceCreamBar} bg-ct`}></div>
+                </div>
+              </div>
+              <div className={styles["back"]}></div>
+            </div>
+            <div className={styles["tipo-unit"]}>
+              <div className={styles["img-tipo"]}>
+                <img src="/images/tipo-1.png" />
+                <div className={styles["zoom"]}></div>
+              </div>
+              <div className={styles["tipo-info"]}>
+                <span className={styles["tipo-title"]}>Fontana Campestre</span>
+                <span className={styles["tipo-sub"]}>TIPO 1 - 302</span>
+                <div className={styles["detalles"]}>Seguimiento: 23/05/23</div>
+              </div>
+              <div className={styles.progressBar}>
+                <div className={styles.innerProgressBar}>
+                  <div className={`${styles.iceCreamBar} bg-ct`}></div>
+                </div>
               </div>
               <div className={styles["back"]}></div>
             </div>
           </div>
           <div className={styles["wrap-right"]}>
-            
             <div className={styles["right"]}>
               <div className={styles["line"]}>
                 <img src="/images/Ellipse 81.png" />
@@ -122,7 +136,6 @@ const Oprtunities = () => {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </section>

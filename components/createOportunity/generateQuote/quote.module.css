@@ -185,3 +185,14 @@
   align-items: flex-start;
   margin-top: 20px;
 }
+
+.labelRangePercenth{
+  width: 50px;
+  border: 1px solid #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 5px;
+}
