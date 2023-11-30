@@ -44,7 +44,7 @@
 .submitUnit {
   width: 40px;
   height: 40px;
-  background-image: url(/images/key.png);
+  background-image: url(/images/key.svg);
   cursor: pointer;
 }
 

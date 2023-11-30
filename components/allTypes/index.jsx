@@ -6,8 +6,6 @@ import Sortable from "sortablejs";
 
 const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
   const { user_rol } = useSelector((state) => state.userState);
-  const [getTypes, setGetTypes] = useState([]);
-  console.log(types);
   useEffect(() => {
     const sortable = new Sortable(document.getElementById("sortable"), {
       handle: ".draggable",
@@ -15,9 +13,6 @@ const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
       onChange: (e) => {
         console.log(e);
       },
-      // onMove: (e) => {
-      //   console.log(e);
-      // },
       onEnd: (e) => {
         console.log(e.oldIndex);
       },
@@ -42,7 +37,7 @@ const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
       </ul>
       {user_rol === "ADMIN" && (
         <Button
-          className={"align-center"}
+          classNameInherit={"align-center"}
           buttonType={"primary"}
           label="Agregar Tipo"
           iconImage={"/images/plus.svg"}

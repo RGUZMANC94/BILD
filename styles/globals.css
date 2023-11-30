@@ -627,13 +627,14 @@ input[type="number"] {
   float: left;
   width: auto;
   height: auto;
-  margin-right: 100px;
+  margin-right: 50px;
   text-transform: uppercase;
   color: #c7c7c7;
   font-weight: 500;
   font-size: 20px;
   text-align: left;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* .top-content ul {
@@ -644,11 +645,17 @@ input[type="number"] {
   flex-direction: row;
 } */
 
-.top-content ul li,
-li {
-  color: #c7c7c7;
+.top-content ul li:first-of-type {
+  background-image: url(/images/back.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  cursor: pointer;
 }
 
+.top-content ul li{
+  text-align: left;
+}
 .top-content ul li,
 li {
   color: #c7c7c7;
@@ -674,6 +681,7 @@ li.active button {
 .contact {
   width: 30%;
   color: #fff;
+  gap: 10px;
 }
 
 .user-data {
@@ -681,7 +689,7 @@ li.active button {
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   color: #fff;
 }
@@ -697,12 +705,16 @@ li.active button {
   color: #fff;
 }
 
+.number img{
+  margin-left: 20px;
+}
+
 .iconos-movil {
   display: none;
 }
 
 .listas {
-  width: 90%;
+  width: 100%;
   height: auto;
   display: flex;
   margin: 0 auto;
@@ -722,7 +734,7 @@ li.active button {
   margin-bottom: 30px;
 }
 .contact-top {
-  width: 90%;
+  width: 100%;
   height: auto;
   display: flex;
   margin: 0 auto;
@@ -900,7 +912,7 @@ li.active button {
     font-size: 10px;
     font-style: normal;
     font-weight: 300;
-    line-height: 1.6
+    line-height: 1.6;
   }
   .detalle {
     font-size: 10px;
@@ -919,7 +931,7 @@ li.active button {
   .zoom-img {
     width: 28px;
     height: 28px;
-    top:4%;
+    top: 4%;
     right: 4%;
     background-repeat: no-repeat;
     position: absolute;
@@ -1040,11 +1052,11 @@ li.active button {
     right: 10px;
   }
   .gallery-image {
-    gap:13px;
+    gap: 13px;
     padding: 0;
   }
 
-  .buttonTopDetailState{
+  .buttonTopDetailState {
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

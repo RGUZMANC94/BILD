@@ -14,8 +14,9 @@
   top: 150px;
   padding: 0 50px 50px;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   margin-bottom: 50px;
+  padding-top: 120px;
 }
 
 .top-content {
@@ -30,25 +31,28 @@
   justify-content: start;
   align-items: center;
   margin-bottom: 50px;
+  z-index: 10;
 }
 
-.top-content-buttonsBar{
+.top-content-buttonsBar {
   width: 100%;
-  height: auto;
-  gap: 40px;
   text-transform: uppercase;
   color: #4d4d4d;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  margin-top: 70px;
-  margin-left: 70px;
-  margin-bottom: 50px;
+  position: fixed;
+  top: 73px;
+  padding: 15px 0;
+  background-color: rgba(33, 34, 29, 0.7);
+  z-index: 2;
 }
-.top-content-container{
+
+.top-content-buttonsBar > div {
+  gap: 40px;
+}
+
+.top-content-container {
   justify-content: center;
   align-content: center;
   flex-direction: column;
@@ -56,49 +60,48 @@
   margin: 0px 0px;
 }
 
-.top-content-buttons{
-
-  color: #FFF;
+.top-content-buttons {
+  color: #fff;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 0.45; 
+  line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
-
 }
-.top-content-bar{
+.top-content-bar.active {
   width: 100%;
   padding: 0px 25%;
   height: 5px;
   border-radius: 7px;
   margin-top: 5px;
-  background: #2467FF;  
+  background: #2467ff;
 }
 
-.filter_container{
+.filter_container {
   display: flex;
   width: 100%;
   flex-direction: row-reverse;
 }
 
-
-.label_filter{
+.label_filter {
   margin: 20px 0 20px;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   margin: 0 20px;
+  color: #fff;
 }
 
 .filter_input {
   padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 285px;
   height: auto;
   box-sizing: border-box;
-  color: #c7c7c7;
+  color: #fff;
+  background-color: rgba(33, 34, 29, 0.7);
   appearance: none;
   margin: 0 20px;
 }
@@ -418,10 +421,8 @@ li.pendiente-list {
   }*/
 
   .main {
-
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
   }
-  
 }

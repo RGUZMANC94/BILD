@@ -48,7 +48,7 @@
 .arrowBack {
   width: 25px;
   height: 25px;
-  background-image: url(/images/arrowBack.svg);
+  background-image: url(/images/back.svg);
   cursor: pointer;
 }
 

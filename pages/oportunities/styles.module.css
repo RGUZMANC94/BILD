@@ -19,17 +19,16 @@
 }
 
 .top-content {
-  width: 100%;
-  height: auto;
-  text-transform: uppercase;
   color: #fff;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 50px;
+  background-color: rgba(33, 34, 29, 0.3);
+  padding: 10px 0;
+  width: 100%;
+  position: fixed;
+  top: 73px;
+  text-transform: uppercase;
 }
 
 .oportunidades {
@@ -38,6 +37,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.title {
+  width: calc(100% - 40px);
 }
 
 .tipo {
@@ -57,7 +61,7 @@
 }
 
 .tipo-unit {
-  width: calc(80% - 20px);
+  width: calc(100% - 20px);
   min-height: 100px;
   height: auto;
   margin: 0 auto;
@@ -153,11 +157,10 @@
   background-image: url(/images/ice.svg);
 }
 
-.top-content.title {
-  width: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.top-content .icon {
+  background-image: url(/images/back.svg);
+  width: 40px;
+  height: 40px;
 }
 
 .tipo-sub {

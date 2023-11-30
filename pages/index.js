@@ -11,7 +11,8 @@ import Link from "next/link";
 const Home = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-
+  
+  const USDollar = new Intl.NumberFormat("en-US");
   const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const getProjects = async () => {
@@ -52,67 +53,68 @@ const Home = () => {
 
         <div className={styles["containerEstates"]}>
           {projectsList.map((project) => (
-            
-              <Link key={project.projectId} className={styles["proyectos"]} href={`/detail-estate/${project.projectId}`}>
-                <div className={styles["img-proyect"]}>
-                  <img
-                    alt=""
-                    src={
-                      project.imgProject !== "" && project.imgProject
-                        ? project.imgProject
-                        : "/images/default-1.jpg"
-                    }
-                  />
-                </div>
-                <div className={styles["proyect-info"]}>
-                  <p className={styles["proyect-title"]}>
-                    {project.projectName}
-                  </p>
-                  <p className={styles["valor"]}>
-                    {project.minPrice &&
-                      project.maxPrice &&
-                      `${project.minPrice} millones - {project.maxPrice} millones`}
-                  </p>
+            <Link
+              key={project.projectId}
+              className={styles["proyectos"]}
+              href={`/detail-estate/${project.projectId}`}
+            >
+              <div className={styles["img-proyect"]}>
+                <img
+                  alt=""
+                  src={
+                    project.imgProject !== "" && project.imgProject
+                      ? project.imgProject
+                      : "/images/default-1.jpg"
+                  }
+                />
+              </div>
+              <div className={styles["proyect-info"]}>
+                <p className={styles["proyect-title"]}>{project.projectName}</p>
+                <p className={styles["valor"]}>
+                  {project.minPrice &&
+                    project.maxPrice &&
+                    `${USDollar.format(project.minPrice)}  - ${USDollar.format(project.maxPrice)} `}
+                </p>
 
-                  <div className={styles["detalles"]}>
-                    {project.minBed && project.maxBed && (
-                      <>
-                        <img
-                          alt=""
-                          src="/images/cards/bed.png"
-                          width="22"
-                          height="20"
-                        />
-                        <p>
-                          {project.minBed}-{project.maxBed}
-                        </p>
-                      </>
-                    )}
-                    {project.minBath && project.maxBath && (
-                      <>
-                        <img
-                          alt=""
-                          src="/images/cards/bath.png"
-                          width="7"
-                          height="11"
-                        />
-                        <p>
-                          {project.minBath}-{project.maxBath}
-                        </p>
-                      </>
-                    )}
-                    {user_rol === "ADMIN" && (
-                      <Link
-                        href={{
-                          pathname: `/create-project`,
-                          query: { project: project.projectId },
-                        }}
-                        className={`bg-ct ${styles.editProject}`}
-                      ></Link>
-                    )}
-                  </div>
+                <div className={styles["detalles"]}>
+                  {project.minBed && project.maxBed && (
+                    <>
+                      <img
+                        alt=""
+                        src="/images/cards/bed.png"
+                        width="22"
+                        height="20"
+                      />
+                      <p>
+                        {project.minBed}-{project.maxBed}
+                      </p>
+                    </>
+                  )}
+                  {project.minBath && project.maxBath && (
+                    <>
+                      <img
+                        alt=""
+                        src="/images/cards/bath.png"
+                        width="7"
+                        height="11"
+                      />
+                      <p>
+                        {project.minBath}-{project.maxBath}
+                      </p>
+                    </>
+                  )}
+                  {user_rol === "ADMIN" && (
+                    <Link
+                      href={{
+                        pathname: `/create-project`,
+                        query: { project: project.projectId },
+                      }}
+                      className={`bg-ct ${styles.editProject}`}
+                    ></Link>
+                  )}
                 </div>
-              </Link>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

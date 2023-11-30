@@ -56,13 +56,16 @@ const Header = () => {
                 </div>
                 Dashboard
               </Link>
-              <a href="#">
+              <Link
+                href={pathname === "/oportunities" ? "" : "/oportunities"}
+                className={pathname === "/oportunities" ? styles.active : ""}
+              >
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/key.png" />
                 </div>
                 Oportunidades
                 <div className={styles.smallNumber}>5</div>
-              </a>
+              </Link>
               <Link
                 href={pathname === "/profile" ? "" : "/profile"}
                 className={pathname === "/profile" ? styles.active : ""}
@@ -85,15 +88,15 @@ const Header = () => {
               >
                 <div className={`${styles.glass} bg-ct`}></div>
               </div>
-              
             </div>
           </div>
         </div>
       </header>
       <Filter show={showFilter} setShowFilter={setShowFilter} />
-      <AdvancedFilter show={showAdvancedFilter} setShowFilter={setShowAdvancedFilter} />
- 
-
+      <AdvancedFilter
+        show={showAdvancedFilter}
+        setShowFilter={setShowAdvancedFilter}
+      />
     </>
   );
 };

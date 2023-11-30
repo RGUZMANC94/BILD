@@ -13,7 +13,7 @@ const Units = ({ setCreateOportunity, units }) => {
     <div className="caracteristicas">
       {user_rol === "ADMIN" && (
         <Button
-          className={"align-end"}
+          classNameInherit={"align-end"}
           buttonType={"primary"}
           label="Agregar Unidad"
           iconImage={"/images/plus.svg"}

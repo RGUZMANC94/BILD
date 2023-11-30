@@ -186,6 +186,10 @@
   margin-top: 20px;
 }
 
+.outerRange{
+  width: 100%;
+}
+
 .labelRangePercenth{
   width: 50px;
   border: 1px solid #fff;

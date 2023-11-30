@@ -5,9 +5,10 @@
   overflow-y: auto;
 }
 
-.wrap-datos > div{
+.wrap-datos > div {
   height: 100%;
   padding-top: 73px;
+  align-items: stretch;
 }
 
 .close {
@@ -40,24 +41,24 @@
 }
 
 .datos-right:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100vh - 73px);
+  height: 100%;
   background-image: url(/images/default-contact.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .datos-right:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100vh - 73px);
+  height: 100%;
   backdrop-filter: blur(5px);
   z-index: 1;
   background-color: #21221d9a;
@@ -161,7 +162,6 @@
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,11 +233,16 @@
   height: auto;
   display: flex;
   flex-flow: row;
-
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+@media only screen and (min-width: 2000px) {
+  .wrap-datos {
+    height: auto;
+  }
 }
 
 @media only screen and (max-width: 890px) {

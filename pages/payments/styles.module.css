@@ -1,20 +1,26 @@
+
+
 .top-content {
-  width: 100%;
-  height: auto;
-  text-transform: uppercase;
   color: #fff;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 50px;
-  width: 90%;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding-top: 200px;
+  background-color: rgba(33, 34, 29, 0.3);
+  padding: 10px 0;
+  width: 100%;
+  position: fixed;
+  top: 73px;
+  text-transform: uppercase;
+}
+
+.top-content .icon {
+  background-image: url(/images/back.svg);
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  width: calc(100% - 40px);
 }
 
 .search {
@@ -56,12 +62,13 @@
 }
 
 .wrap-detalle {
-  width: 80%;
+  width: 100%;
   height: auto;
   border: 1px solid #d9d9d9;
   border-radius: 20px;
-  padding: 40px 40px 100px;
-  margin-top: 100px;
+  padding: 20px 40px 40px;
+  margin-top: 25vh;
+  margin-bottom: 50px;
 }
 
 .right {
@@ -73,7 +80,7 @@
 }
 
 .line {
-  width: 10%;
+  width: 65px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -88,7 +95,7 @@
 }
 
 .pendientes {
-  width: 85%;
+  width: calc(100% - 70px);
   height: auto;
 }
 
@@ -109,7 +116,7 @@
 
 .ul li {
   margin: 10px 0;
-  font-size: 18px !important;
+  font-size: 18px;
   font-weight: 500;
   color: #fff;
 }
@@ -189,7 +196,7 @@
   background-color: #fff;
   position: absolute;
   top: 25px;
-  left: -60px;
+  left: -42px;
 }
 
 .grey-point {
@@ -199,7 +206,7 @@
   background-color: #c7c7c7;
   position: absolute;
   top: 25px;
-  left: -60px;
+  left: -42px;
 }
 
 .seguimiento {
