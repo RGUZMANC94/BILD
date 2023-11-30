@@ -29,6 +29,8 @@ const DetailState = ({ types }) => {
     (project) => router.query.id === project.projectId
   )[0];
 
+  const conectContact = router.query.contactId;
+
   useEffect(() => {
     if (!getSessionToken()) {
       router.push("/login");
@@ -72,35 +74,50 @@ const DetailState = ({ types }) => {
     <>
       <div className="top-content">
         <ul>
-          <li>
-            <Link href="/" className="back-arrow bg-ct"></Link>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fa-solid fa-angle-left"></i>
-            </a>
-          </li>
-          <li
-            className={`itemTopContent ${
-              viewEstate === "units" ? "active" : ""
-            }`}
-            onClick={() => {
-              setViewEstate("units");
-            }}
-          >
-            <button className="buttonTopDetailState">Unidades</button>
-          </li>
-          <li
-            className={`itemTopContent ${
-              viewEstate === "info" ? "active" : ""
-            }`}
-            onClick={() => {
-              setViewEstate("info");
-            }}
-          >
-            {windowWidth && windowWidth < 768 ? <button className="buttonTopDetailState">Info</button> : <button className="buttonTopDetailState">Información</button>}
-            
-          </li>
+          {conectContact && (
+            <li className="flex j-s a-c">
+              <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{" "}
+              <select className={"selectFilterProject"}>
+                {projectsList.map((project) => (
+                  <option key={project.projectId} value={project.projectId}>
+                    {project.projectName}
+                  </option>
+                ))}
+              </select>
+            </li>
+          )}
+          {!conectContact && (
+            <>
+              <li>
+                <Link href="/" className="back-arrow bg-ct"></Link>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fa-solid fa-angle-left"></i>
+                </a>
+              </li>
+              <li
+                className={`itemTopContent ${
+                  viewEstate === "units" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setViewEstate("units");
+                }}
+              >
+                <button className="buttonTopDetailState">Unidades</button>
+              </li>
+              <li
+                className={`itemTopContent ${
+                  viewEstate === "info" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setViewEstate("info");
+                }}
+              >
+                <button className="buttonTopDetailState">Información</button>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <section className="main">

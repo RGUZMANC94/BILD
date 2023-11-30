@@ -3,9 +3,13 @@ import styles from "./created.module.css";
 import EventsOportunity from "../eventsOportunity";
 import GenerateQuote from "../generateQuote";
 
-const OportunityCreated = ({ showPopEvents, setShowPopEvents, generateQuote, setGenerateQuote}) => {
+const OportunityCreated = ({
+  showPopEvents,
+  setShowPopEvents,
+  generateQuote,
+  setGenerateQuote,
+}) => {
   const [showCreatedPop, setShowCreatedPop] = useState(false);
-  
 
   useEffect(() => {
     setShowCreatedPop(true);
@@ -46,21 +50,23 @@ const OportunityCreated = ({ showPopEvents, setShowPopEvents, generateQuote, set
               <div className={styles["add"]}></div>
             </div>
           </div>
-          <div className={styles["contacto"]}>
-            <div className={styles["conecta"]}>
-              <button className={styles["contacto-existente"]}>
-                Eliminar Oportunidad
-              </button>
-              <button
-                className={styles["crear-cotizacion"]}
-                onClick={() => {
-                  setGenerateQuote(true);
-                }}
-              >
-                Crear cotización
-              </button>
+          {!generateQuote && (
+            <div className={styles["contacto"]}>
+              <div className={styles["conecta"]}>
+                <button className={styles["contacto-existente"]}>
+                  Eliminar Oportunidad
+                </button>
+                <button
+                  className={styles["crear-cotizacion"]}
+                  onClick={() => {
+                    setGenerateQuote(true);
+                  }}
+                >
+                  Crear cotización
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className={styles["right-side"]}>
           {generateQuote ? (

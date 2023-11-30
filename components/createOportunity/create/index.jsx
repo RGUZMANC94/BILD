@@ -1,6 +1,8 @@
 import PropertyConnected from "../propertyConnected";
 import ConectProperty from "../conectProperty";
 import styles from "./create.module.css";
+import { useDispatch } from "react-redux";
+import { closePopUp } from "../../../redux/popUpOportunity";
 
 const CreateStep = ({
   setShowPopUpAddContact,
@@ -8,7 +10,9 @@ const CreateStep = ({
   isConnected,
   setIsCreated,
   recentContacts,
+  setShowPopUp,
 }) => {
+  const dispatch = useDispatch();
   return (
     <div className={styles["crear"]}>
       <div className={styles["crear-tipo"]}>
@@ -28,13 +32,21 @@ const CreateStep = ({
               $120 millones - 160 millones
             </span>
             <div className={styles["detalles"]}>
-              <img src="/images/cards/bed.svg"  />
+              <img src="/images/cards/bed.svg" />
               <span>3-4</span>
-              <img src="/images/cards/bath.svg"  />
+              <img src="/images/cards/bath.svg" />
               <span>2-3</span>
             </div>
           </div>
-          <div className={styles["add"]}></div>
+          <div
+            className={styles["add"]}
+            onClick={() => {
+              setShowPopUp(false);
+              setTimeout(() => {
+                dispatch(closePopUp(false));
+              }, 500);
+            }}
+          ></div>
         </div>
       </div>
       {isConnected ? (

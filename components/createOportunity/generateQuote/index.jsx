@@ -1,6 +1,9 @@
+import { Range, getTrackBackground } from "react-range";
 import styles from "./quote.module.css";
+import { useState } from "react";
 
 const GenerateQuote = ({ setGenerateQuote }) => {
+  const [values, setValues] = useState([50]);
   return (
     <div className={styles["generar-cotizacion"]}>
       <span className={styles["title"]}>GENERAR COTIZACIÓN</span>
@@ -71,6 +74,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             (Incluye separación)
           </span>
         </div>
+
         <div className={styles["lado-d"]}>
           <fieldset>
             <input
@@ -81,6 +85,64 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             />
           </fieldset>
         </div>
+      </div>
+
+      <div className={`flex j-sb a-c ${styles.outerRange}`}>
+        <Range
+          values={values}
+          step={5}
+          min={0}
+          max={100}
+          // rtl={rtl}
+          onChange={(values) => setValues(values)}
+          renderTrack={({ props, children }) => (
+            <div
+              onMouseDown={props.onMouseDown}
+              onTouchStart={props.onTouchStart}
+              style={{
+                ...props.style,
+                height: "36px",
+                display: "flex",
+                width: "calc(100% - 80px)",
+              }}
+            >
+              <div
+                ref={props.ref}
+                style={{
+                  height: "12px",
+                  width: "100%",
+                  background: getTrackBackground({
+                    values,
+                    colors: ["#D9D9D9", "#D9D9D9"],
+                    min: 0,
+                    max: 100,
+                    // rtl,
+                  }),
+                  alignSelf: "center",
+                }}
+              >
+                {children}
+              </div>
+            </div>
+          )}
+          renderThumb={({ props, isDragged }) => (
+            <div
+              {...props}
+              style={{
+                ...props.style,
+                height: "35px",
+                width: "56px",
+                borderRadius: "3px",
+                backgroundColor: "#2467FF",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+            </div>
+          )}
+        />
+        <div className={styles["labelRangePercenth"]}>{`${values}%`}</div>
       </div>
       <div className={styles["cotizacion-form"]}>
         <div className={styles["lado-a"]}>
