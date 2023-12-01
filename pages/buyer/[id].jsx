@@ -1,18 +1,17 @@
-import Link from "next/link";
-import styles from "./styles.module.css";
-import SideInfoProfile from "../../components/sideInfoProfile";
-import RightSideProfile from "../../components/rightSideInfoProfile";
+import Link from 'next/link';
+import styles from './styles.module.css';
+import SideInfoProfile from '../../components/sideInfoProfile';
+import RightSideProfile from '../../components/rightSideInfoProfile';
 
 const BuyerProfile = () => {
   return (
-    <div className={styles["perfil"]}>
-      <SideInfoProfile typeViewer={"buyer"} />
-      <div className={styles["pendientes"]}>
+    <div className={styles.perfil}>
+      <SideInfoProfile typeViewer={'buyer'} />
+      <div className={styles.pendientes}>
         <Link
           href="/contacts"
-          className={`${styles.closeContact} bg-ct`}
-        ></Link>
-        <RightSideProfile typeViewer={"buyer"} />
+          className={`${styles.closeContact} bg-ct`}></Link>
+        <RightSideProfile typeViewer={'buyer'} />
       </div>
     </div>
   );

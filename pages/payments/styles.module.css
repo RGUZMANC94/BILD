@@ -1,5 +1,3 @@
-
-
 .top-content {
   color: #fff;
   font-weight: 500;
@@ -215,7 +213,7 @@
   background-color: rgba(60, 64, 67, 0.35);
   color: #fff;
   font-size: 18px;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   letter-spacing: 1px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -367,7 +365,8 @@ button.cancelar {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 10px;
   border: 2px solid transparent;

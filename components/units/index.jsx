@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Button from "../button";
-import styles from "./Units.module.css";
-import { useSelector } from "react-redux";
-import Unit from "../unit";
-import Link from "next/link";
+import React, { useState } from 'react';
+import Button from '../button';
+import styles from './Units.module.css';
+import { useSelector } from 'react-redux';
+import Unit from '../unit';
+import Link from 'next/link';
 
 const Units = ({ setCreateOportunity, units }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
@@ -11,12 +11,12 @@ const Units = ({ setCreateOportunity, units }) => {
 
   return (
     <div className="caracteristicas">
-      {user_rol === "ADMIN" && (
+      {user_rol === 'ADMIN' && (
         <Button
-          classNameInherit={"align-end"}
-          buttonType={"primary"}
+          classNameInherit={'align-end'}
+          buttonType={'primary'}
           label="Agregar Unidad"
-          iconImage={"/images/plus.svg"}
+          iconImage={'/images/plus.svg'}
           clickFunction={() => {
             setShowFormUnits(true);
           }}
@@ -35,15 +35,13 @@ const Units = ({ setCreateOportunity, units }) => {
 
       <form
         className={`${styles.formUnits} ${
-          showFormUnits ? styles.activeFormUnits : ""
-        } flex j-c a-c`}
-      >
+          showFormUnits ? styles.activeFormUnits : ''
+        } flex j-c a-c`}>
         <div
           className={`${styles.removeEditUnit} bg-ct`}
           onClick={() => {
             setShowFormUnits(false);
-          }}
-        ></div>
+          }}></div>
 
         <div className={`${styles.outerInput}`}>
           <input type="number" className={styles.inputFormUnit} />
@@ -61,18 +59,18 @@ const Units = ({ setCreateOportunity, units }) => {
         <button className={`${styles.submitUnit} bg-ct`}></button>
       </form>
 
-      {user_rol === "ADMIN" && (
+      {user_rol === 'ADMIN' && (
         <div className={`${styles.excelsButtons} flex j-e a-c`}>
           <Button
             inheritClass={styles.excelsButton}
-            className={`primary`}
-            buttonType={"primary"}
+            className={'primary'}
+            buttonType={'primary'}
             label="Subir excel"
             iconImage={false}
           />
           <Button
             inheritClass={styles.excelsButton}
-            buttonType={"secondary"}
+            buttonType={'secondary'}
             label="Descargar excel"
             iconImage={false}
           />

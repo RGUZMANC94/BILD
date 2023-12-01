@@ -1,12 +1,12 @@
 // import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { useDispatch } from "react-redux";
-import { changeTypeSelected } from "../../redux/typeSelectedSlice";
-import { openPopUp } from "../../redux/popUpOportunity";
+import { CSS } from '@dnd-kit/utilities';
+import { useDispatch } from 'react-redux';
+import { changeTypeSelected } from '../../redux/typeSelectedSlice';
+import { openPopUp } from '../../redux/popUpOportunity';
 
 const TypeCard = ({ type, setCreateOportunity, index }) => {
   const dispatch = useDispatch();
-  const USDollar = new Intl.NumberFormat("en-US");
+  const USDollar = new Intl.NumberFormat('en-US');
   return (
     <li
       id={type.nuimb}
@@ -14,23 +14,22 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
       // style={style}
       // {...attributes}
       // {...listeners}
-      className={`itemDrag ${index === 0 ? "active" : ""}`}
+      className={`itemDrag ${index === 0 ? 'active' : ''}`}
       onPointerUp={(e) => {
-        const itemsDrag = document.querySelectorAll(".itemDrag");
+        const itemsDrag = document.querySelectorAll('.itemDrag');
         itemsDrag.forEach((item) => {
-          if (item.classList.contains("active")) {
-            item.classList.remove("active");
+          if (item.classList.contains('active')) {
+            item.classList.remove('active');
           }
         });
-        itemsDrag[index].classList.add("active");
+        itemsDrag[index].classList.add('active');
         dispatch(changeTypeSelected(index));
-      }}
-    >
+      }}>
       <div className="draggable bg-ct" draggable={true}></div>
       <div className="maskDraggable"></div>
       <div className="tipo-unit">
         <div className="img-tipo">
-          <img src={"/images/tipo-1.png"} />
+          <img src={'/images/tipo-1.png'} />
         </div>
         <div className="tipo-info">
           <span className="tipo-title">Tipo {type.type}</span>
@@ -46,8 +45,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
           className="llave"
           onClick={() => {
             dispatch(openPopUp(true));
-          }}
-        ></div>
+          }}></div>
         <div className="caracteristicas-top-movil">
           <div className="caracteristicas-top">
             <div className="top-tabla">ID</div>
@@ -64,8 +62,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -75,8 +72,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -86,8 +82,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -97,8 +92,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="detalle-tabla">$ 140 M</div>
             <div
               className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}
-            ></div>
+              onClick={() => setCreateOportunity(true)}></div>
           </div>
 
           <div className="info-tabla">
@@ -110,8 +104,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
               className="llave-tabla"
               onClick={() => {
                 dispatch(openPopUp(true));
-              }}
-            ></div>
+              }}></div>
           </div>
         </div>
       </div>

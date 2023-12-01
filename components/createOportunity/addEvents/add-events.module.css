@@ -12,13 +12,17 @@
   opacity: 0;
   padding: 0;
   z-index: 51;
-  transition: all 0.5s ease-in-out, top 0s ease 0.5s;
+  transition:
+    all 0.5s ease-in-out,
+    top 0s ease 0.5s;
 }
 
 .active.main {
   top: 0;
   opacity: 1;
-  transition: all 0.5s ease-in-out, top 0s ease 0s;
+  transition:
+    all 0.5s ease-in-out,
+    top 0s ease 0s;
 }
 
 .search {
@@ -58,7 +62,7 @@
   z-index: 5;
   padding: 60px 40px 40px;
   color: #fff;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
 }
 
 .title-descripcion {
@@ -184,7 +188,7 @@
     z-index: 5;
     padding: 40px;
     color: #fff;
-    font-family: "Lexend", sans-serif;
+    font-family: 'Lexend', sans-serif;
     top: 80px;
     border-radius: 15px;
   }

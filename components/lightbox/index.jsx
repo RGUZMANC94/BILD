@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import styles from "./Lightbox.module.css";
+import React, { useEffect, useState } from 'react';
+import styles from './Lightbox.module.css';
 
 const LightBox = ({ image, setLightboxImage }) => {
   const [animate, setAnimate] = useState(false);
   const style = {
-    backgroundImage: `${image ? `url(${image})` : "none"}`,
+    backgroundImage: `${image ? `url(${image})` : 'none'}`,
   };
 
   useEffect(() => {
@@ -14,27 +14,25 @@ const LightBox = ({ image, setLightboxImage }) => {
   }, []);
 
   return (
-    <div className={`${styles["lightbox"]} ${animate ? "fade" : ""} unFade`}>
+    <div className={`${styles.lightbox} ${animate ? 'fade' : ''} unFade`}>
       <div
-        className={styles["background-lightbox"]}
+        className={styles['background-lightbox']}
         onClick={() => {
           setAnimate(false);
           setTimeout(() => {
-            setLightboxImage("");
+            setLightboxImage('');
           }, 550);
-        }}
-      ></div>
+        }}></div>
       <div
-        className={`bg-ct ${styles["close-lightbox"]}`}
+        className={`bg-ct ${styles['close-lightbox']}`}
         onClick={() => {
           setAnimate(false);
           setTimeout(() => {
-            setLightboxImage("");
+            setLightboxImage('');
           }, 550);
-        }}
-      ></div>
-      <div className={styles["wrapper-lightbox"]}>
-        <div className={`bg-cv ${styles["inner-image"]}`} style={style}></div>
+        }}></div>
+      <div className={styles['wrapper-lightbox']}>
+        <div className={`bg-cv ${styles['inner-image']}`} style={style}></div>
       </div>
     </div>
   );

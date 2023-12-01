@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   typeSelected: 0,
 };
 
 export const typeSelectedSlice = createSlice({
-  name: "typeSelected",
+  name: 'typeSelected',
   initialState,
   reducers: {
     changeTypeSelected: (state, action) => {

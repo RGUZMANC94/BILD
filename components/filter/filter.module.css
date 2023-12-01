@@ -8,12 +8,12 @@
   justify-content: flex-end;
   align-items: center;
   top: -100%;
-  transition: top .0s ease-in-out .5s;
+  transition: top 0s ease-in-out 0.5s;
 }
 
 .filterPopUp.active {
   top: 0;
-  transition: top .0s ease-in-out;
+  transition: top 0s ease-in-out;
 }
 
 .filterBackground {
@@ -124,7 +124,7 @@
 
 .rangeTrack {
   height: 20px;
-  display: "flex";
+  display: 'flex';
   width: calc(100% - 10px);
   margin-left: 7.5px;
 }
@@ -137,24 +137,24 @@
   width: 48%;
 }
 
-.labelsRangeSlider{
+.labelsRangeSlider {
   color: #fff;
 }
 
-.filter-buttons-bottom{
+.filter-buttons-bottom {
   width: 100%;
 }
 
-.maxLabel{
-  color: #FFF;
+.maxLabel {
+  color: #fff;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 2.12;
 }
 
-.minLabel{
-  color: #FFF;
+.minLabel {
+  color: #fff;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -162,12 +162,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .wrapperFilter{
+  .wrapperFilter {
     width: 100%;
     border-radius: 0px;
     border: none;
   }
-  .filter-buttons-bottom{
+  .filter-buttons-bottom {
     width: 100%;
   }
 
@@ -176,19 +176,18 @@
     font-weight: 400;
   }
 
-  .maxLabel{
+  .maxLabel {
     font-size: 8px;
     font-weight: 300;
   }
 
-  .minLabel{
+  .minLabel {
     font-size: 8px;
     font-weight: 300;
   }
 
-  .ubicationSelect{
+  .ubicationSelect {
     font-size: 11px;
     font-weight: 400;
   }
-  
 }

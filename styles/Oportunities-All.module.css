@@ -11,12 +11,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 150px;
   padding: 0 50px 50px;
   position: relative;
   z-index: 1;
   margin-bottom: 50px;
-  padding-top: 120px;
+  padding-top: 200px;
 }
 
 .top-content {
@@ -413,7 +412,8 @@ li.pendiente-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, white) padding-box,
+  background:
+    linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
   border-radius: 1em;
   border: 2px solid transparent;

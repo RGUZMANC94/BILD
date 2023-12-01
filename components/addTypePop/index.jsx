@@ -1,16 +1,16 @@
-import { useState, useRef } from "react";
-import Button from "../button";
-import styles from "./Add-type-pop.module.css";
+import { useState, useRef } from 'react';
+import Button from '../button';
+import styles from './Add-type-pop.module.css';
 
 const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
-  const [typeName, setTypeName] = useState("");
-  const [typeSize, setTypeSize] = useState("");
-  const [typeBaths, setTypeBaths] = useState("");
-  const [typeBeds, setTypeBeds] = useState("");
-  const [typeGarage, setTypeGarage] = useState("");
-  const [typePrice, setTypePrice] = useState("");
-  const [typesStatus, setTypesStatus] = useState("");
-  const [typesAdvisor, setTypesAdvisor] = useState("");
+  const [typeName, setTypeName] = useState('');
+  const [typeSize, setTypeSize] = useState('');
+  const [typeBaths, setTypeBaths] = useState('');
+  const [typeBeds, setTypeBeds] = useState('');
+  const [typeGarage, setTypeGarage] = useState('');
+  const [typePrice, setTypePrice] = useState('');
+  const [typesStatus, setTypesStatus] = useState('');
+  const [typesAdvisor, setTypesAdvisor] = useState('');
   const mainImageType = useRef(null);
 
   const createType = async (e) => {
@@ -34,10 +34,10 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
       // ),
     };
 
-    const typeCreated = await fetch("/api/createType", {
-      method: "post",
+    const typeCreated = await fetch('/api/createType', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: data,
     });
@@ -49,19 +49,16 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
   return (
     <div
       className={`${styles.typePopUp} ${
-        showPopUpType ? styles.activePopUp : ""
-      } flex j-e a-s`}
-    >
+        showPopUpType ? styles.activePopUp : ''
+      } flex j-e a-s`}>
       <div
         className={`${styles.bgTypePopUp}`}
-        onClick={() => setShowPopUpType(false)}
-      ></div>
+        onClick={() => setShowPopUpType(false)}></div>
       <div className={`${styles.wrapperTypePopUp}`}>
         <div className={`${styles.closeDeleteControls} flex j-sb a-c`}>
           <div
             className={`${styles.arrowBack} bg-ct`}
-            onClick={() => setShowPopUpType(false)}
-          ></div>
+            onClick={() => setShowPopUpType(false)}></div>
           <div className={`${styles.deleteIcon} bg-ct`}></div>
         </div>
 
@@ -79,26 +76,22 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
             </div>
             <div className={`${styles.typeFeatures}`}>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Área Mt2</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Baños</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Cuartos</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
               <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}
-              >
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelText}>Garajes</span>
                 <input type="number" className={styles.inputTypeForm} />
               </label>
@@ -121,8 +114,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
               <select
                 name=""
                 id=""
-                className={`${styles.targetInputGroup} t-c ${styles.statusType}`}
-              >
+                className={`${styles.targetInputGroup} t-c ${styles.statusType}`}>
                 <option value="0" selected>
                   Disponible
                 </option>
@@ -144,15 +136,15 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
 
           <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
             <Button
-              buttonType={"primary"}
+              buttonType={'primary'}
               iconImage={false}
-              label={"CANCELAR"}
+              label={'CANCELAR'}
               inheritClass={styles.buttonCreateType}
             />
             <Button
-              buttonType={"secondary"}
+              buttonType={'secondary'}
               iconImage={false}
-              label={"Guardar"}
+              label={'Guardar'}
               inheritClass={styles.buttonCreateType}
             />
           </div>

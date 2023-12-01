@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
-import Button from "../components/button";
-import { useSelector } from "react-redux";
-import { getSessionToken } from "../utils/getSessionToken";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { setProjects } from "../redux/projectSlice";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import styles from '../styles/Home.module.css';
+import Button from '../components/button';
+import { useSelector } from 'react-redux';
+import { getSessionToken } from '../utils/getSessionToken';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { setProjects } from '../redux/projectSlice';
+import Link from 'next/link';
 
 const Home = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const USDollar = new Intl.NumberFormat("en-US");
+  const USDollar = new Intl.NumberFormat('en-US');
   const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const getProjects = async () => {
-    const response = await fetch("/api/projects", {
-      method: "POST",
+    const response = await fetch('/api/projects', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         id,
@@ -31,46 +31,46 @@ const Home = () => {
 
   useEffect(() => {
     if (!getSessionToken()) {
-      router.push("/login");
+      router.push('/login');
       getProjects();
       return;
     }
+    getProjects();
     // if (projectsList.length === 0) {
     // }
   }, []);
 
   return (
-    <section className={styles["main"]}>
-      <div className={styles["main-container"]}>
-        {user_rol === "ADMIN" && (
+    <section className={styles.main}>
+      <div className={styles['main-container']}>
+        {user_rol === 'ADMIN' && (
           <Button
-            classNameInherit={"align-end"}
-            buttonType={"primary"}
+            classNameInherit={'align-end'}
+            buttonType={'primary'}
             label="Crear Proyecto"
-            link={"/create-project"}
+            link={'/create-project'}
           />
         )}
 
-        <div className={styles["containerEstates"]}>
+        <div className={styles.containerEstates}>
           {projectsList.map((project) => (
             <Link
               key={project.projectId}
-              className={styles["proyectos"]}
-              href={`/detail-estate/${project.projectId}`}
-            >
-              <div className={styles["img-proyect"]}>
+              className={styles.proyectos}
+              href={`/detail-estate/${project.projectId}`}>
+              <div className={styles['img-proyect']}>
                 <img
                   alt=""
                   src={
-                    project.imgProject !== "" && project.imgProject
+                    project.imgProject !== '' && project.imgProject
                       ? project.imgProject
-                      : "/images/default-1.jpg"
+                      : '/images/defatult-2.jpg'
                   }
                 />
               </div>
-              <div className={styles["proyect-info"]}>
-                <p className={styles["proyect-title"]}>{project.projectName}</p>
-                <p className={styles["valor"]}>
+              <div className={styles['proyect-info']}>
+                <p className={styles['proyect-title']}>{project.projectName}</p>
+                <p className={styles.valor}>
                   {project.minPrice &&
                     project.maxPrice &&
                     `${USDollar.format(project.minPrice)}  - ${USDollar.format(
@@ -78,7 +78,7 @@ const Home = () => {
                     )} `}
                 </p>
 
-                <div className={styles["detalles"]}>
+                <div className={styles.detalles}>
                   {project.minBed && project.maxBed && (
                     <>
                       <img
@@ -105,14 +105,13 @@ const Home = () => {
                       </p>
                     </>
                   )}
-                  {user_rol === "ADMIN" && (
+                  {user_rol === 'ADMIN' && (
                     <Link
                       href={{
-                        pathname: `/create-project`,
+                        pathname: '/create-project',
                         query: { project: project.projectId },
                       }}
-                      className={`bg-ct ${styles.editProject}`}
-                    ></Link>
+                      className={`bg-ct ${styles.editProject}`}></Link>
                   )}
                 </div>
               </div>

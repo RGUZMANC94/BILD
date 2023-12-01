@@ -26,7 +26,7 @@
   border: none;
   font-size: 20px;
   font-weight: 500;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   text-align: left;
   color: #fff;
   border-bottom-right-radius: 10px;
@@ -40,7 +40,7 @@
   border: none;
   font-size: 20px;
   font-weight: 500;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   text-align: left;
   color: #fff;
   padding: 20px;
@@ -72,9 +72,9 @@
   outline: none;
 }
 
-.errorMessage{
+.errorMessage {
   text-align: left;
-  color: #FF5567;
+  color: #ff5567;
   align-self: flex-start;
   font-size: 18px;
   margin-bottom: 5px;

@@ -49,7 +49,8 @@
   min-height: 230px;
   border-radius: 28px;
   background: #21221d;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0px 0px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
   display: flex;

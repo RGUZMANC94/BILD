@@ -1,5 +1,5 @@
 export const getSessionToken = () => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     return sessionStorage.token;
   }
 

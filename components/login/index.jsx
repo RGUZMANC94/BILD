@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import styles from "./login.module.css";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/userSlice";
+import React, { useRef, useState } from 'react';
+import styles from './login.module.css';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/userSlice';
 
 const LogInComponent = () => {
   const dispatch = useDispatch();
@@ -20,17 +20,17 @@ const LogInComponent = () => {
     if (
       !userNameValueInput ||
       !passwordValueInput ||
-      !userNameValueInput === "" ||
-      !passwordValueInput === ""
+      !userNameValueInput === '' ||
+      !passwordValueInput === ''
     ) {
-      alert("llena todos los datos");
+      alert('llena todos los datos');
       return;
     }
 
-    const response = await fetch("/api/login", {
-      method: "POST",
+    const response = await fetch('/api/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: userNameValueInput,
@@ -45,8 +45,8 @@ const LogInComponent = () => {
       return;
     }
     dispatch(setUser(loginData));
-    sessionStorage.setItem("token", loginData.id);
-    router.push("/");
+    sessionStorage.setItem('token', loginData.id);
+    router.push('/');
   };
 
   const logInFn = async (e) => {
@@ -65,33 +65,31 @@ const LogInComponent = () => {
             event.preventDefault();
             logInFn(event);
             return false;
-          }}
-        >
-          <div className={styles["user-box"]}>
+          }}>
+          <div className={styles['user-box']}>
             <label
               htmlFor="text"
               onClick={() => {
-                console.log("first");
-              }}
-            >
+                console.log('first');
+              }}>
               Usuario
             </label>
             <input
               ref={username}
-              className={styles["input-form"]}
+              className={styles['input-form']}
               type="text"
               id="text"
               name="text"
               placeholder="mail@address.com"
             />
           </div>
-          <div className={styles["user-box"]}>
+          <div className={styles['user-box']}>
             <label htmlFor="psw">
               <b>Password</b>
             </label>
             <input
               ref={password}
-              className={styles["input-password"]}
+              className={styles['input-password']}
               type="password"
               placeholder="**********"
               name="psw"
@@ -99,12 +97,12 @@ const LogInComponent = () => {
               required
             />
           </div>
-          <div className={styles["login-button"]}>
+          <div className={styles['login-button']}>
             <button className={styles.login} type="submit">
               INGRESO
             </button>
             <div className={styles.arrow}>
-              <i className={styles["fa-solid fa-chevron-right"]}></i>
+              <i className={styles['fa-solid fa-chevron-right']}></i>
             </div>
           </div>
         </form>

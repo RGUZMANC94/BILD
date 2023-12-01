@@ -8,8 +8,6 @@
   align-items: center;
 }
 
-
-
 .crear-contacto {
   width: 64px;
   height: 60px;
@@ -24,7 +22,7 @@
   margin-left: auto;
 }
 
-.crear-contacto-container{
+.crear-contacto-container {
   margin-top: 50px;
   width: 90%;
   height: fit-content;
@@ -80,10 +78,10 @@
   margin-top: 40px;
 }
 
-.listas:first-of-type{
+.listas:first-of-type {
   padding-bottom: 0;
 }
-.listas:last-of-type{
+.listas:last-of-type {
   margin-top: 0;
 }
 
@@ -193,8 +191,7 @@
   display: none;
 }
 @media only screen and (max-width: 1200px) {
-
-  .wa-movil img{
+  .wa-movil img {
     width: 50px;
     height: 50px;
   }
@@ -219,12 +216,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .crear-contacto-container{
+  .crear-contacto-container {
     position: absolute;
     bottom: 48%;
   }
 
-  .crear-contacto{
+  .crear-contacto {
     width: 48px;
     height: 48px;
     background-image: url(/images/create-contect-movile.png);

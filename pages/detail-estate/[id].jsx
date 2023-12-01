@@ -1,20 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "next/navigation";
-import CreateOportunity from "../../components/createOportunity";
-import TypesSide from "../../components/typesSide";
-import InfoProject from "../../components/infoProject";
-import AddTypePop from "../../components/addTypePop";
-import { getSessionToken } from "../../utils/getSessionToken";
-import { useRouter } from "next/router";
-import { getLocalData } from "../api/detailProject";
-import { useSelector } from "react-redux";
-import LightBox from "../../components/lightbox";
-import Link from "next/link";
+import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'next/navigation';
+import CreateOportunity from '../../components/createOportunity';
+import TypesSide from '../../components/typesSide';
+import InfoProject from '../../components/infoProject';
+import AddTypePop from '../../components/addTypePop';
+import { getSessionToken } from '../../utils/getSessionToken';
+import { useRouter } from 'next/router';
+import { getLocalData } from '../api/detailProject';
+import { useSelector } from 'react-redux';
+import LightBox from '../../components/lightbox';
+import Link from 'next/link';
 
 const DetailState = ({ types }) => {
   const { id } = useSelector((state) => state.userState);
-  const [lightboxImage, setLightboxImage] = useState("");
-  const [viewEstate, setViewEstate] = useState("units");
+  const [lightboxImage, setLightboxImage] = useState('');
+  const [viewEstate, setViewEstate] = useState('units');
   const [showPopUpType, setShowPopUpType] = useState(false);
   const [createOportunity, setCreateOportunity] = useState(false);
   const [recentContacts, setRecentsContacts] = useState({});
@@ -33,17 +33,17 @@ const DetailState = ({ types }) => {
 
   useEffect(() => {
     if (!getSessionToken()) {
-      router.push("/login");
+      router.push('/login');
       return;
     }
     getRecentsContacts();
   }, []);
 
   const getRecentsContacts = async () => {
-    const response = await fetch(`/api/recentsContacts`, {
-      method: "post",
+    const response = await fetch('/api/recentsContacts', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ id }),
     });
@@ -76,8 +76,8 @@ const DetailState = ({ types }) => {
         <ul>
           {conectContact && (
             <li className="flex j-s a-c">
-              <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{" "}
-              <select className={"selectFilterProject"}>
+              <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
+              <select className={'selectFilterProject'}>
                 {projectsList.map((project) => (
                   <option key={project.projectId} value={project.projectId}>
                     {project.projectName}
@@ -98,22 +98,20 @@ const DetailState = ({ types }) => {
               </li>
               <li
                 className={`itemTopContent ${
-                  viewEstate === "units" ? "active" : ""
+                  viewEstate === 'units' ? 'active' : ''
                 }`}
                 onClick={() => {
-                  setViewEstate("units");
-                }}
-              >
+                  setViewEstate('units');
+                }}>
                 <button className="buttonTopDetailState">Unidades</button>
               </li>
               <li
                 className={`itemTopContent ${
-                  viewEstate === "info" ? "active" : ""
+                  viewEstate === 'info' ? 'active' : ''
                 }`}
                 onClick={() => {
-                  setViewEstate("info");
-                }}
-              >
+                  setViewEstate('info');
+                }}>
                 <button className="buttonTopDetailState">Información</button>
               </li>
             </>
@@ -122,7 +120,7 @@ const DetailState = ({ types }) => {
       </div>
       <section className="main">
         <div className="container">
-          <div className={`containerEstate`} ref={containerEstate}>
+          <div className={'containerEstate'} ref={containerEstate}>
             <TypesSide
               types={types}
               viewEstate={viewEstate}
@@ -139,7 +137,7 @@ const DetailState = ({ types }) => {
         </div>
       </section>
 
-      {lightboxImage !== "" && (
+      {lightboxImage !== '' && (
         <LightBox image={lightboxImage} setLightboxImage={setLightboxImage} />
       )}
 

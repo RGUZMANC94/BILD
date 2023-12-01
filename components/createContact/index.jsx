@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import styles from "./create-contact.module.css";
+import { useEffect, useState } from 'react';
+import styles from './create-contact.module.css';
 
 const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
   const [isShow, setIsShow] = useState(false);
@@ -7,32 +7,30 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
     setIsShow(true);
   }, []);
   return (
-    <div className={`${isShow ? styles.active : ""} ${styles["popup-tipos"]}`}>
+    <div className={`${isShow ? styles.active : ''} ${styles['popup-tipos']}`}>
       <div
-        className={styles["popup-background"]}
+        className={styles['popup-background']}
         onClick={() => {
           setIsShow(false);
           setTimeout(() => {
             setShowPopUpCreateContact(false);
           }, 500);
-        }}
-      ></div>
-      <div className={styles["popup-window"]}>
-        <div className={styles["top-name"]}>Creacion de Contacto</div>
+        }}></div>
+      <div className={styles['popup-window']}>
+        <div className={styles['top-name']}>Creacion de Contacto</div>
         <div
-          className={styles["cerrar"]}
+          className={styles.cerrar}
           onClick={() => {
             setIsShow(false);
             setTimeout(() => {
               setShowPopUpCreateContact(false);
             }, 500);
-          }}
-        >
-          <span className={styles["close"]} href="#">
+          }}>
+          <span className={styles.close} href="#">
             &times;
           </span>
         </div>
-        <form className={styles["msform"]}>
+        <form className={styles.msform}>
           <fieldset>
             <input type="text" name="fname" placeholder="Nombre" />
             <input type="text" name="lname" placeholder="Apellidos" />
@@ -43,12 +41,12 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
             />
             <input type="text" name="email" placeholder="Email" />
             <input type="text" name="phone" placeholder="Celular" />
-            <div className={styles["foto"]}>
+            <div className={styles.foto}>
               <img src="/images/tomar-foto.png" />
               Tomar Foto
             </div>
             <button
-              className={styles["action-button"]}
+              className={styles['action-button']}
               target="_top"
               onClick={(e) => {
                 e.preventDefault();
@@ -57,8 +55,7 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
                 setTimeout(() => {
                   setShowPopUpCreateContact(false);
                 }, 500);
-              }}
-            >
+              }}>
               Guardar
             </button>
           </fieldset>

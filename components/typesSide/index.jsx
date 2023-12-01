@@ -1,6 +1,6 @@
-import AllTypes from "../allTypes";
-import Units from "../units";
-import { useSelector } from "react-redux";
+import AllTypes from '../allTypes';
+import Units from '../units';
+import { useSelector } from 'react-redux';
 
 const TypesSide = ({
   viewEstate,
@@ -18,7 +18,7 @@ const TypesSide = ({
     },
     {
       id: 1,
-      beds: "3 + Studio",
+      beds: '3 + Studio',
       baths: 3,
       price: 140000000,
     },
@@ -48,13 +48,15 @@ const TypesSide = ({
     },
   ];
   return (
-    <div className={`unidadesSide ${viewEstate === "units" ? "active" : ""}`}>
+    <div className={`unidadesSide ${viewEstate === 'units' ? 'active' : ''}`}>
       <AllTypes
         types={types}
         setShowPopUpType={setShowPopUpType}
         setCreateOportunity={setCreateOportunity}
       />
-      <Units setCreateOportunity={setCreateOportunity} units={units} />
+      <div className="outerUnits">
+        <Units setCreateOportunity={setCreateOportunity} units={units} />
+      </div>
     </div>
   );
 };

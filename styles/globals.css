@@ -1,4 +1,4 @@
-/* Inmuebles */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 *::-webkit-scrollbar {
   background-color: #c7c7c7;
@@ -25,6 +25,8 @@
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 50px;
+  max-height: 75vh;
+  overflow-y: auto;
 }
 
 .main {
@@ -48,7 +50,6 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  font-family: "Lexend", sans-serif;
   text-align: left;
   justify-content: flex-start;
   text-transform: uppercase;
@@ -117,7 +118,7 @@ li {
   width: 50%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
   transform: translateX(-100%);
   opacity: 0;
@@ -164,7 +165,7 @@ li {
   height: 50px;
   background-color: #2467ff;
   border-radius: 5px;
-  background-size: 60%;
+  background-size: 60% !important;
   background-image: url(/images/edit-icon.svg);
 }
 
@@ -195,13 +196,17 @@ li {
   margin-bottom: 20px;
 }
 
-.caracteristicas {
+.outerUnits {
   width: calc(50% - 50px);
+}
+
+.caracteristicas {
+  width: 100%;
   height: auto;
-  max-height: 80vh;
   overflow-y: auto;
   position: sticky;
   top: 0;
+  left: 0;
 }
 
 .caracteristicas-top-movil {
@@ -239,7 +244,8 @@ li {
   height: auto;
   display: initial;
   background: rgba(33, 34, 29, 0.35);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0px 0px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   text-align: left;
@@ -388,7 +394,6 @@ li {
   width: 35px;
   height: 35px;
   margin-top: -17.5px;
-  left: 20px;
   background-image: url(/images/check-circle.png);
 }
 
@@ -466,8 +471,8 @@ i.fa-solid.fa-plus {
   width: 37px;
   height: 37px;
   background-color: #ff5567;
-  background-image: url("/images/search-white.png");
-  background-size: 60%;
+  background-image: url('/images/search-white.png');
+  background-size: 60% !important;
   border-radius: 10px;
 }
 
@@ -503,7 +508,9 @@ i.fa-solid.fa-plus {
   bottom: 5px;
   left: 20px;
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .transparent-box {
@@ -547,7 +554,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -646,14 +653,14 @@ input[type="number"] {
 } */
 
 .top-content ul li:first-of-type {
-  background-image: url(/images/back.svg);
+  /* background-image: url(/images/back.svg); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center;
   cursor: pointer;
 }
 
-.top-content ul li{
+.top-content ul li {
   text-align: left;
 }
 .top-content ul li,
@@ -705,7 +712,7 @@ li.active button {
   color: #fff;
 }
 
-.number img{
+.number img {
   margin-left: 20px;
 }
 
@@ -767,6 +774,98 @@ li.active button {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.react-datepicker__header.react-datepicker__header {
+  background-color: #1c1c1c;
+  color: #fff;
+  border: none;
+}
+.react-datepicker__current-month.react-datepicker__current-month,
+.react-datepicker-time__header.react-datepicker-time__header,
+.react-datepicker-year-header.react-datepicker-year-header {
+  color: #fff;
+  margin: 0px 0 20px;
+}
+
+.react-datepicker.react-datepicker {
+  border: none;
+  padding: 20px;
+  background-color: #1c1c1c;
+}
+
+.react-datepicker.react-datepicker {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.react-datepicker__navigation.react-datepicker__navigation {
+  top: 25px;
+}
+
+.react-datepicker__day-name.react-datepicker__day-name,
+.react-datepicker__day.react-datepicker__day,
+.react-datepicker__time-name.react-datepicker__time-name {
+  color: #fff;
+  border: 1px solid #ffffff6d;
+  border-radius: 15px 15px 0 0;
+  margin: 0;
+  padding: 2.5px 0;
+  width: 35px;
+}
+.react-datepicker__month.react-datepicker__month,
+.react-datepicker__month-container.react-datepicker__month-container {
+  background-color: #1c1c1c;
+}
+
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle::before {
+  border-bottom-color: #1c1c1c !important;
+}
+
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle::before,
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle::after {
+  border-bottom-color: #1c1c1c !important;
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover,
+.react-datepicker__year-text:hover {
+  border-radius: 0.3rem;
+  background-color: #39cdff1a !important;
+}
+
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-selecting-range:hover,
+.react-datepicker__day--in-range:hover,
+.react-datepicker__month-text--selected:hover,
+.react-datepicker__month-text--in-selecting-range:hover,
+.react-datepicker__month-text--in-range:hover,
+.react-datepicker__quarter-text--selected:hover,
+.react-datepicker__quarter-text--in-selecting-range:hover,
+.react-datepicker__quarter-text--in-range:hover,
+.react-datepicker__year-text--selected:hover,
+.react-datepicker__year-text--in-selecting-range:hover,
+.react-datepicker__year-text--in-range:hover {
+  background-color: #39cdff1a;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+  background-color: #39cdff1a !important;
+  color: #2467ff !important;
 }
 
 @media only screen and (max-width: 990px) {
@@ -860,7 +959,7 @@ li.active button {
     z-index: 2;
   }
 
-  .outerTypes{
+  .outerTypes {
     width: 76%;
   }
 
@@ -880,7 +979,8 @@ li.active button {
     display: flex;
     flex-direction: column;
     background: rgba(33, 34, 29, 0.35);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
       0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     padding: 15px;
@@ -896,8 +996,10 @@ li.active button {
     width: 100%;
     min-width: 320px;
     border-radius: 15px;
-    background: #2E2E2C;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #2e2e2c;
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(2.5px);
     text-align: left;
     flex-wrap: wrap;
@@ -930,7 +1032,7 @@ li.active button {
   }
 
   .tipo-info {
-    margin-left: 0 ;
+    margin-left: 0;
     padding: 0px;
   }
 

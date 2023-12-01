@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import Button from "../button";
-import TypeCard from "../type";
-import { useSelector } from "react-redux";
-import Sortable from "sortablejs";
+import { useEffect, useState } from 'react';
+import Button from '../button';
+import TypeCard from '../type';
+import { useSelector } from 'react-redux';
+import Sortable from 'sortablejs';
 
 const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
   const { user_rol } = useSelector((state) => state.userState);
   useEffect(() => {
-    const sortable = new Sortable(document.getElementById("sortable"), {
-      handle: ".draggable",
-      draggable: ".itemDrag",
+    const sortable = new Sortable(document.getElementById('sortable'), {
+      handle: '.draggable',
+      draggable: '.itemDrag',
       onChange: (e) => {
         console.log(e);
       },
@@ -35,12 +35,12 @@ const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
           />
         ))}
       </ul>
-      {user_rol === "ADMIN" && (
+      {user_rol === 'ADMIN' && (
         <Button
-          classNameInherit={"align-center"}
-          buttonType={"primary"}
+          classNameInherit={'align-center'}
+          buttonType={'primary'}
           label="Agregar Tipo"
-          iconImage={"/images/plus.svg"}
+          iconImage={'/images/plus.svg'}
           clickFunction={() => setShowPopUpType(true)}
         />
       )}
