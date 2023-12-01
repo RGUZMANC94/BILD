@@ -10,9 +10,9 @@ const OportunitiesPending = () => {
   const [showVisualization, setVisualization] = useState('calendar');
   return (
     <>
-      <div className={styles['weekly-container']}>
+      {/* <div className={styles['weekly-container']}>
         <div className={styles['weekly-title']}>ESTA SEMANA</div>
-      </div>
+      </div> */}
       <PendingList />
     </>
   );

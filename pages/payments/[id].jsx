@@ -6,7 +6,7 @@ const PaymentDetail = () => {
     <>
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
-          <Link href={'/contacts'} className={`bg-ct ${styles.icon}`}></Link>
+          <Link href={'/payments'} className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>Pagos </div>
         </div>
       </div>

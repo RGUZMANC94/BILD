@@ -6,7 +6,7 @@ const Quotes = () => {
     <>
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
-          <Link href={'/contacts'} className={`bg-ct ${styles.icon}`}></Link>
+          <Link href={'/buyer/1'} className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>Cotizaciones de John Lennon </div>
         </div>
       </div>
