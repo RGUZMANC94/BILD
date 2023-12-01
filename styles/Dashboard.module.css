@@ -432,7 +432,7 @@
   color: #000;
 }
 
-.large-cell-table{
+.large-cell-table {
   width: 100%;
   margin-top: 10px;
 }
@@ -444,7 +444,6 @@
   align-items: center;
   text-align: center;
   padding: 10px 0;
-  
 }
 
 @media only screen and (max-width: 990px) {

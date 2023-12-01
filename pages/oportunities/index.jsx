@@ -84,7 +84,7 @@ const OportunitiesAllFilter = () => {
               <option>MAS CALIENTE</option>
               <option>MAS FRÍA</option>
               <option selected>MAS RECIENTE</option>
-              <option >MENOS RECIENTE</option>
+              <option>MENOS RECIENTE</option>
             </select>
             <span className={styles.label_filter}>Ordenar por:</span>
           </div>
