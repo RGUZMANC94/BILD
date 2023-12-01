@@ -54,7 +54,9 @@ const TypesSide = ({
         setShowPopUpType={setShowPopUpType}
         setCreateOportunity={setCreateOportunity}
       />
-      <Units setCreateOportunity={setCreateOportunity} units={units} />
+      <div className="outerUnits">
+        <Units setCreateOportunity={setCreateOportunity} units={units} />
+      </div>
     </div>
   );
 };

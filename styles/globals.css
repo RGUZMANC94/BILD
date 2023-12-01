@@ -25,6 +25,8 @@
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 50px;
+  max-height: 75vh;
+  overflow-y: auto;
 }
 
 .main {
@@ -116,7 +118,7 @@ li {
   width: 50%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
   transform: translateX(-100%);
   opacity: 0;
@@ -163,7 +165,7 @@ li {
   height: 50px;
   background-color: #2467ff;
   border-radius: 5px;
-  background-size: 60%;
+  background-size: 60% !important;
   background-image: url(/images/edit-icon.svg);
 }
 
@@ -194,13 +196,17 @@ li {
   margin-bottom: 20px;
 }
 
-.caracteristicas {
+.outerUnits {
   width: calc(50% - 50px);
+}
+
+.caracteristicas {
+  width: 100%;
   height: auto;
-  max-height: 80vh;
   overflow-y: auto;
   position: sticky;
   top: 0;
+  left: 0;
 }
 
 .caracteristicas-top-movil {
@@ -467,7 +473,7 @@ i.fa-solid.fa-plus {
   height: 37px;
   background-color: #ff5567;
   background-image: url('/images/search-white.png');
-  background-size: 60%;
+  background-size: 60% !important;
   border-radius: 10px;
 }
 
@@ -648,7 +654,7 @@ input[type='number'] {
 } */
 
 .top-content ul li:first-of-type {
-  background-image: url(/images/back.svg);
+  /* background-image: url(/images/back.svg); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center;

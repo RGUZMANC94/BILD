@@ -80,7 +80,6 @@ const OportunitiesAllFilter = () => {
               placeholder="Subject line"
               name="subject"
               className={styles.filter_input}>
-              {/* <option disabled defaultValue={0} hidden selected>SELECCIONAR</option> */}
               <option>MAS CALIENTE</option>
               <option>MAS FRÍA</option>
               <option selected>MAS RECIENTE</option>
@@ -99,7 +98,7 @@ const OportunitiesAllFilter = () => {
       </section>
 
       {openPopUpOportunity && (
-        <CreateOportunity created={false} recentContacts={recentContacts} />
+        <CreateOportunity created={true} recentContacts={recentContacts} />
       )}
     </>
   );
