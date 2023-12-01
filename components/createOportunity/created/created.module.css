@@ -345,7 +345,81 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 959px) {
+.add {
+  width: 10%;
+  height: 40px;
+  background-image: url(/images/add-tipo.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) { 
+  .crear{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 0px;
+
+    gap: 0px;
+  }
+  
+  .tipo-title{
+    font-size: 11px;
+  }
+
+  .tipos {
+    margin-bottom: 0px;
+
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .valor{
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6
+  } 
+
+  .left-side{
+    width: 100%;
+  }
+
+  .right-side{
+    width: 100%;
+    background: none;
+    margin-top: 0px;
+  }
+
+  .img-tipo {  
+    margin-right: 0px;
+  }
+
+  .img-tipo img{
+    width: auto;
+  }
+
+  .add {
+    background-position: center;
+  }
+
+  .conecta{
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contacto-existente{
+    width: 90%;
+  }
+
+  .crear-cotizacion{
+    width: 90%;
+  }
+}
+
+/*@media only screen and (max-width: 959px) {
   #banner-oportunidad {
     width: 100% !important;
     height: 250px !important;
@@ -488,4 +562,4 @@
     position: relative;
     top: 200px;
   }
-}
+}*/
