@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-history.module.css';
-import { event } from 'jquery';
 import Button from '../button';
+import { useDispatch } from 'react-redux';
 
 const OportunitiesHistory = () => {
+  const dispatch = useDispatch();
   const [selectedItem, setSelectedItem] = useState(null);
   const [showAllEvents, setShowAllEvents] = useState(false);
   const [allEvents, setAllEvents] = useState([
@@ -152,12 +153,13 @@ const OportunitiesHistory = () => {
           </div>
         </div>
         <div className={styles['pendientes-bottom']}>
-          <Button
-            clickFunction={openPopUp}
-            buttonType={'primary'}
-            classNameInherit={'align-center'}
-            iconImage={'/images/plus_icon_white.svg'}
-            label={'Ver oportunidad'}></Button>
+          <div onClick={() => dispatch(openPopUp(true))}>
+            <Button
+              buttonType={'primary'}
+              classNameInherit={'align-center'}
+              iconImage={'/images/plus_icon_white.svg'}
+              label={'Ver oportunidad'}></Button>
+          </div>
           <div className={styles['card-progress-bar-container']}>
             <div className={styles['card-progress-bar-frost-icon']}></div>
             <div className={styles['card-progress-bar-cold']}></div>
