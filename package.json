@@ -20,6 +20,7 @@
     "jquery": "^3.7.1",
     "lightweight-charts": "^4.1.1",
     "next": "13.4.19",
+    "nextjs-tui-date-picker": "^2.2.0",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-datepicker": "^4.24.0",
