@@ -250,6 +250,10 @@
     flex-direction: column;
   }
 
+  .close{
+    right: 5px;
+  }
+
   .datos-left {
     width: 100%;
   }
