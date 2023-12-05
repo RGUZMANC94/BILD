@@ -708,9 +708,19 @@ select.subject_input {
   }
 
   .creacion-oportunidad {
-    font-size: 18px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 600;
     line-height: 0.66;
+  }
+
+  .closePopUp {
+    background-image: url(/images/close-oportunity-icon.svg);
+    background-color: unset;
+  }
+
+  .prevStep {
+    background-image: url(/images/back-oportunity-icon.svg);
+    background-color: unset;
   }
 }

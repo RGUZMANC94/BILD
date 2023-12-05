@@ -175,3 +175,27 @@
 .foto img {
   margin: 0 20px 10px 0;
 }
+
+@media only screen and (max-width: 768px) { 
+
+  .popup-window {
+    width: 100%;
+  }
+
+  .msform {
+    margin: 0px auto;
+  }
+
+  .foto {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .foto img{
+    width: 38px;
+    height: 31px;
+    margin-bottom: 0px;
+  }
+}

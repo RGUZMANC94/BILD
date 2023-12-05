@@ -183,13 +183,14 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #565555;
+    background-color: #21221d;
     position: absolute;
     z-index: 5;
     padding: 40px;
     color: #fff;
     font-family: 'Lexend', sans-serif;
     top: 80px;
+    border-radius: 15px;
   }
 
   .top-title {
@@ -211,9 +212,11 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
-  .banner {
-    display: none;
+@media only screen and (max-width: 480px) {
+
+  .descripcion {
+    top: 50px;
+    border-radius: 0px;
   }
   .descripcion {
     width: 100%;

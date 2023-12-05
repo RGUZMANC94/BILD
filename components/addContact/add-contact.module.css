@@ -156,3 +156,13 @@
 .contact img {
   margin-right: 1vh;
 }
+
+@media only screen and (max-width: 768px) { 
+  .popup-window {
+    width: 100%;
+  }
+
+  .search-wrapper{
+    margin-top: 27px;
+  }
+}

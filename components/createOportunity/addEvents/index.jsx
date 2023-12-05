@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import styles from './add-events.module.css';
-import Button from '../../button';
-import DatePicker from 'react-datepicker';
+import { useEffect, useState } from "react";
+import styles from "./add-events.module.css";
+import Button from "../../button";
+//import DatePicker from "react-datepicker";
 
 const AddEvents = ({ setShowPopEvents }) => {
   const [show, setShow] = useState(false);

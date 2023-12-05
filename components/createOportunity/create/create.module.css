@@ -170,13 +170,18 @@
   }
 
   .tipos {
+    margin-bottom: 0px;
     font-size: 11px;
     font-style: normal;
     font-weight: 500;
     line-height: 1.45;
   }
 
-  .img-tipo img {
+  .img-tipo {  
+    margin-right: 0px;
+  }
+
+  .img-tipo img{
     width: auto;
   }
 

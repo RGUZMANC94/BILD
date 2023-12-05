@@ -179,7 +179,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
           required
         />
         <div className={styles.checkboxMask}></div>
-        Ver detalle de cuotas
+        <span className={styles['see-detalles']}>Ver detalle de cuotas</span>
+        
       </label>
       <br />
       <div className={styles['cotizacion-form']}>
@@ -209,7 +210,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             required
           />
           <div className={styles.checkboxMask}></div>
-          Enviar link de pago
+          <span className={styles['see-detalles']}>Enviar link de pago</span>
+          
           <img src="/images/link-pago.png" className={styles.arrowImage} />
         </label>
       </div>
