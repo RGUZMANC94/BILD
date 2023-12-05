@@ -15,6 +15,7 @@ const Home = () => {
   const USDollar = new Intl.NumberFormat('en-US');
   const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
+  const [pageProjects, setPageProjects] = useState(1);
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
       method: 'POST',
@@ -23,6 +24,7 @@ const Home = () => {
       },
       body: JSON.stringify({
         id,
+        page: pageProjects,
       }),
     });
     const responseProjects = await response.json();
@@ -53,70 +55,73 @@ const Home = () => {
         )}
 
         <div className={styles.containerEstates}>
-          {projectsList.map((project) => (
-            <Link
-              key={project.projectId}
-              className={styles.proyectos}
-              href={`/detail-estate/${project.projectId}`}>
-              <div className={styles['img-proyect']}>
-                <img
-                  alt=""
-                  src={
-                    project.imgProject !== '' && project.imgProject
-                      ? project.imgProject
-                      : '/images/defatult-2.jpg'
-                  }
-                />
-              </div>
-              <div className={styles['proyect-info']}>
-                <p className={styles['proyect-title']}>{project.projectName}</p>
-                <p className={styles.valor}>
-                  {project.minPrice &&
-                    project.maxPrice &&
-                    `${USDollar.format(project.minPrice)}  - ${USDollar.format(
-                      project.maxPrice
-                    )} `}
-                </p>
-
-                <div className={styles.detalles}>
-                  {project.minBed && project.maxBed && (
-                    <>
-                      <img
-                        alt=""
-                        src="/images/cards/bed.png"
-                        width="22"
-                        height="20"
-                      />
-                      <p>
-                        {project.minBed}-{project.maxBed}
-                      </p>
-                    </>
-                  )}
-                  {project.minBath && project.maxBath && (
-                    <>
-                      <img
-                        alt=""
-                        src="/images/cards/bath.png"
-                        width="7"
-                        height="11"
-                      />
-                      <p>
-                        {project.minBath}-{project.maxBath}
-                      </p>
-                    </>
-                  )}
-                  {user_rol === 'ADMIN' && (
-                    <Link
-                      href={{
-                        pathname: '/create-project',
-                        query: { project: project.projectId },
-                      }}
-                      className={`bg-ct ${styles.editProject}`}></Link>
-                  )}
+          {projectsList.length &&
+            projectsList.map((project) => (
+              <Link
+                key={project.projectId}
+                className={styles.proyectos}
+                href={`/detail-estate/${project.projectId}`}>
+                <div className={styles['img-proyect']}>
+                  <img
+                    alt=""
+                    src={
+                      project.imgProject !== '' && project.imgProject
+                        ? project.imgProject
+                        : '/images/defatult-2.jpg'
+                    }
+                  />
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className={styles['proyect-info']}>
+                  <p className={styles['proyect-title']}>
+                    {project.projectName}
+                  </p>
+                  <p className={styles.valor}>
+                    {project.minPrice &&
+                      project.maxPrice &&
+                      `${USDollar.format(
+                        project.minPrice
+                      )}  - ${USDollar.format(project.maxPrice)} `}
+                  </p>
+
+                  <div className={styles.detalles}>
+                    {project.minBed && project.maxBed && (
+                      <>
+                        <img
+                          alt=""
+                          src="/images/cards/bed.png"
+                          width="22"
+                          height="20"
+                        />
+                        <p>
+                          {project.minBed}-{project.maxBed}
+                        </p>
+                      </>
+                    )}
+                    {project.minBath && project.maxBath && (
+                      <>
+                        <img
+                          alt=""
+                          src="/images/cards/bath.png"
+                          width="7"
+                          height="11"
+                        />
+                        <p>
+                          {project.minBath}-{project.maxBath}
+                        </p>
+                      </>
+                    )}
+                    {user_rol === 'ADMIN' && (
+                      <Link
+                        href={{
+                          pathname: '/create-project',
+                          query: { project: project.projectId },
+                        }}
+                        className={`bg-ct ${styles.editProject}`}></Link>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
     </section>
