@@ -7,8 +7,14 @@ import { useSelector } from 'react-redux';
 const Filter = ({ show, setShowFilter }) => {
   const { projectsList } = useSelector((state) => state.projectState);
 
-  const minSize = Math.min(...projectsList.map((project) => project.minSize));
-  const maxSize = Math.max(...projectsList.map((project) => project.maxSize));
+  const minSize =
+    projectsList.length > 0
+      ? Math.min(...projectsList.map((project) => project.minSize))
+      : 45;
+  const maxSize =
+    projectsList.length > 0
+      ? Math.max(...projectsList.map((project) => project.maxSize))
+      : 1200;
 
   const [priceValues, setPriceValues] = useState([0, 3000000000]);
   const [floorValues, setFloorValues] = useState([1, 21]);
