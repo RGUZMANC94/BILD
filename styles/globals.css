@@ -210,7 +210,7 @@ li {
 }
 
 .caracteristicas-top-movil {
-  display: none;
+  display: none; 
 }
 
 .tipo-unit {
@@ -895,6 +895,10 @@ li.active button {
     right: 90px;
   }
 
+  .infoContainer {
+    padding-right: 0px;
+  }
+
   .top-content ul li button {
     float: left;
     width: auto;
@@ -1061,12 +1065,12 @@ li.active button {
     display: none;
   }
 
-  .caracteristicas-top-movil {
+  /*.caracteristicas-top-movil {
     display: flex;
     width: 100%;
     height: auto;
     flex-direction: column;
-  }
+  }*/
 
   .more-info {
     display: block;
@@ -1186,6 +1190,19 @@ li.active button {
   .unidadesSide.active {
     width: 100%;
   }
-}
+
+  .itemDrag:hover .tipo-unit,
+  .itemDrag.active .tipo-unit {
+    left: 0;
+  }
+
+
+  .itemDrag.active .caracteristicas-top-movil {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+  }
 
 /* Inmuebel detail */

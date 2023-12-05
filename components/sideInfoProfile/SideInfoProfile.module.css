@@ -692,16 +692,19 @@ h3.user {
     align-items: start;
     margin-top: 0px;
     padding-bottom: 60px;
+    margin-bottom: 100px;
   }
 
   .listado {
     position: relative;
-    top: 80px;
+    /*top: 80px;*/
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    
+    padding: 15px 23px;
   }
 
   .id-perfil {
@@ -781,7 +784,7 @@ h3.user {
     text-align: left;
     margin: 0 auto;
     position: relative;
-    top: 110px;
+    /*top: 110px;*/
   }
 
   .campos {
@@ -895,7 +898,7 @@ h3.user {
   }
 
   .editar-perfil {
-    width: calc(100% - 25px);
+    width: 100%;
     height: auto;
     border-radius: 0px;
     border: none;
@@ -904,8 +907,12 @@ h3.user {
     justify-content: center;
     align-items: flex-start;
     margin-top: 0px;
-    padding-bottom: 60px;
+    padding: 13px;
   }
+
+  .perfil-icon{
+    margin-top: 0px;
+  } 
 
   .perfil-icon img {
     width: 100%;
@@ -941,7 +948,7 @@ h3.user {
   .flag {
     width: auto;
     height: auto;
-    background-color: #fff;
+    background-color: unset;
     color: #fff;
     font-size: 18px;
     font-weight: 400;
@@ -963,18 +970,19 @@ h3.user {
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    top: 80px;
+    top: 0px;
     margin: 0 auto;
+    margin-bottom: 40px;
   }
 
   .opcion {
     width: 100%;
     height: auto;
     position: relative;
-    padding: 5px 30px;
-    background-color: white;
-    box-shadow: 0px 9px 9px #c7c7c7e0;
-    border-radius: 40px;
+    padding: 5px 15px;
+    border-radius: 35px;
+    background: #565555;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -983,11 +991,14 @@ h3.user {
     font-weight: 400;
     color: #fff;
     text-transform: uppercase;
+    margin-bottom: 20px;
   }
 
   .opcion img {
     margin: 0 15px;
-    width: 25px;
+    align-items: center;
+    width: 18px;
+    padding: 8px 0;
   }
 
   .informacion-perfil {
@@ -1000,7 +1011,8 @@ h3.user {
     text-align: left;
     margin: 0 auto;
     position: relative;
-    top: 110px;
+    top: 0px;
+    align-items: center;
   }
 
   .campos {
@@ -1011,7 +1023,7 @@ h3.user {
   }
   button.campo {
     width: 40%;
-    background-color: #fff;
+    background-color: transparent;
     color: white;
     border-radius: 15px;
   }
@@ -1024,5 +1036,25 @@ h3.user {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
+    
+    padding: 15px 23px;
+  }
+
+  .editar{
+    margin: 0;
+  }
+
+  .sub-title {
+    margin-top: 10px;
+  }
+
+  .info-perfil {
+    margin-left: 0;
+    align-self: auto;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.33;
   }
 }

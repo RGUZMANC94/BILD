@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   padding: 15px 15px 25px;
-  background-color: #21221d;
+  background-color: #343434;
   color: #fff;
   border-radius: 15px;
   position: relative;
@@ -22,7 +22,7 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #21221d;
+  background-color: #343434;
   border-radius: 15px;
   text-align: left;
   padding: 10px 15px 30px;
@@ -34,7 +34,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #21221d;
+  background-color: #343434;
   text-align: left;
   margin-top: 10px;
 }
@@ -107,7 +107,7 @@
 .add {
   width: 10%;
   height: 40px;
-  background-image: url(/images/add-tipo.png);
+  background-image: url(/images/add-icon-pink.svg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
@@ -162,7 +162,10 @@
   }
 
   .crear-tipo {
-    padding: 20px;
+    width: 100%;
+    padding: 18px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(2.5px);
   }
 
   .tipo-title {
@@ -176,6 +179,9 @@
     font-weight: 500;
     line-height: 1.45;
   }
+  .tipos span {
+    margin-bottom: 0;
+  }
 
   .img-tipo {
     margin-right: 0px;
@@ -187,5 +193,18 @@
 
   .add {
     background-position: center;
+    height: 38px;
+  }
+
+  .valor {
+    font-size: 10px;
+    font-style: normal;
+    line-height: 1.6;
+  }
+
+  .detalles {
+    font-size: 11px;
+    font-style: normal;
+    line-height: 1.6;
   }
 }

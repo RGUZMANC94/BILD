@@ -42,7 +42,7 @@ const CreateContact = ({ setShowPopUpCreateContact, setIsConnected }) => {
             <input type="text" name="email" placeholder="Email" />
             <input type="text" name="phone" placeholder="Celular" />
             <div className={styles.foto}>
-              <img src="/images/tomar-foto.png" />
+              <img src="/images/camera_white_icon.svg" />
               Tomar Foto
             </div>
             <button
