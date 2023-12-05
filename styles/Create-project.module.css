@@ -185,7 +185,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   /*background-color: #fafafa0d;*/
 }
 
@@ -227,7 +227,7 @@
   width: 45%;
   aspect-ratio: 16/9;
   border-radius: 10px;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   /*background: #fafafa0d;*/
   background-image: url(/images/camera_white_icon.svg);
   background-repeat: no-repeat;
@@ -754,13 +754,13 @@
     height: 200px;
     background-size: 42px 35px;
     border-radius: 5px;
-    border: 1px solid #FFF;
+    border: 1px solid #fff;
   }
 
   .proyect-img {
     background-size: 42px 35px;
     border-radius: 5px;
-    border: 1px solid #FFF;
+    border: 1px solid #fff;
   }
 
   span.label {

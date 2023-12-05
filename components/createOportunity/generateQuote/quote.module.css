@@ -202,8 +202,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-
-
   .generar-cotizacion {
     margin: 60px 30px 30px 30px;
     padding: 0;
@@ -215,7 +213,7 @@
     line-height: 1.1;
   }
 
-  .title{
+  .title {
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
@@ -228,7 +226,7 @@
     font-weight: 400;
     line-height: 1.1;
   }
-  
+
   .inputQuote {
     margin-bottom: 0px;
     font-size: 10px;
@@ -237,7 +235,7 @@
     line-height: 1.1;
   }
 
-  .see-detalles{
+  .see-detalles {
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -246,19 +244,19 @@
   .proyect-form input,
   .subject_input {
     font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.1;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
   }
-  .lado-a{
+  .lado-a {
     margin-right: 12px;
   }
 
   .lado-b {
     font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.1;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
   }
 
   .lado-c {
@@ -267,9 +265,9 @@
 
   .lado-d {
     font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.1;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
   }
 
   .title-saldo {

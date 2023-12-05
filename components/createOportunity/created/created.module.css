@@ -356,16 +356,16 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 768px) { 
-  .crear{
+@media only screen and (max-width: 768px) {
+  .crear {
     flex-direction: column;
     flex-wrap: nowrap;
     border-radius: 0px;
 
     gap: 0px;
   }
-  
-  .tipo-title{
+
+  .tipo-title {
     font-size: 11px;
   }
 
@@ -378,27 +378,27 @@
     line-height: 1.45;
   }
 
-  .valor{
+  .valor {
     font-style: normal;
     font-weight: 500;
-    line-height: 1.6
-  } 
+    line-height: 1.6;
+  }
 
-  .left-side{
+  .left-side {
     width: 100%;
   }
 
-  .right-side{
+  .right-side {
     width: 100%;
     background: none;
     margin-top: 0px;
   }
 
-  .img-tipo {  
+  .img-tipo {
     margin-right: 0px;
   }
 
-  .img-tipo img{
+  .img-tipo img {
     width: auto;
   }
 
@@ -406,16 +406,16 @@
     background-position: center;
   }
 
-  .conecta{
+  .conecta {
     flex-direction: column;
     gap: 8px;
   }
 
-  .contacto-existente{
+  .contacto-existente {
     width: 90%;
   }
 
-  .crear-cotizacion{
+  .crear-cotizacion {
     width: 90%;
   }
 }
