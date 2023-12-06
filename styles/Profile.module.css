@@ -383,8 +383,9 @@
     margin-bottom: 200px;
   }
 
-  #perfil {
+  .perfil {
     flex-direction: column;
+    margin-top: 90px;
   }
 
   .editar-perfil {

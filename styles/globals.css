@@ -906,7 +906,7 @@ li.active button {
 
 @media only screen and (max-width: 768px) {
   .main {
-    width: 108%;
+    width: 100%;
   }
 
   .top-content {
@@ -986,7 +986,7 @@ li.active button {
 
 @media only screen and (max-width: 768px) {
   .main {
-    width: 100%;
+    width: 108%;
     height: auto;
     display: flex;
     flex-direction: column;
