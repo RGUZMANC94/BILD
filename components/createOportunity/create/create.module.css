@@ -80,12 +80,14 @@
   overflow: hidden;
   margin-right: 1vh;
   border-radius: 10px;
+  position: relative;
 }
 
 .img-tipo img {
   overflow: hidden;
   object-fit: contain;
   width: 100%;
+  position: relative;
 }
 
 .tipo-info {
@@ -155,6 +157,15 @@
   align-items: center;
 }
 
+.img-tipo-glass {
+  position: absolute;
+  height: 37px;
+  width: 37px;
+  background-image: url(/images/tipo-glass-pink.svg);
+  top: 2px;
+  right: 2px;
+  z-index: 2;
+}
 @media only screen and (max-width: 768px) {
   .crear {
     width: 100%;
@@ -206,5 +217,11 @@
     font-size: 11px;
     font-style: normal;
     line-height: 1.6;
+  }
+
+  .img-tipo-glass{
+    width: 32px;
+    height: 32px;
+    background-size: contain;
   }
 }

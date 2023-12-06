@@ -46,7 +46,7 @@
 }
 .top-content {
   position: fixed;
-  top: 78px;
+  top: 70px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -256,11 +256,23 @@ li {
 .img-tipo {
   width: 125px;
   height: 125px;
+  position: relative;
 }
 .img-tipo img {
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 10px;
+}
+
+.img-tipo-glass {
+  position: absolute;
+  height: 37px;
+  width: 37px;
+  background-image: url(/images/tipo-glass-pink.svg);
+  top: 2px;
+  right: 2px;
+  z-index: 2;
 }
 
 .tipo-info {
@@ -559,8 +571,8 @@ input[type='number'] {
 }
 
 .draggable {
-  width: 25px;
-  height: 25px;
+  min-width: 25px;
+  min-height: 25px;
   cursor: pointer;
   background-image: url(/images/drag.svg);
   z-index: 3;
@@ -868,6 +880,23 @@ li.active button {
   color: #2467ff !important;
 }
 
+.tipo-icons {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+
+.tipo-arrow {
+  width: 30px;
+  height: 30px;
+  background-image: url(/images/arrow-tipo-down.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 @media only screen and (max-width: 990px) {
   .menu-top {
     width: 100%;
@@ -876,6 +905,14 @@ li.active button {
 }
 
 @media only screen and (max-width: 768px) {
+  .main {
+    width: 108%;
+  }
+
+  .top-content {
+    width: 108%;
+  }
+
   .mail,
   .rol-data,
   .number {
@@ -1041,9 +1078,9 @@ li.active button {
   }
 
   .llave {
-    width: 20px;
-    height: 20px;
-    background-size: 20px 20px;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
   }
 
   .zoom-img {
@@ -1191,6 +1228,10 @@ li.active button {
     width: 100%;
   }
 
+  .itemDrag {
+    margin-bottom: 20px;
+  }
+
   .itemDrag:hover .tipo-unit,
   .itemDrag.active .tipo-unit {
     left: 0;
@@ -1203,6 +1244,47 @@ li.active button {
     height: auto;
     flex-direction: column;
   }
+
+  .img-tipo-glass{
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+  }
+
+  .itemDrag.active .tipo-title {
+    margin-top: 13px;
+    margin-left: 10px;
+  }
+
+  .itemDrag.active .valor{
+      display: none;
+  }
+
+  .itemDrag.active .detalles {
+    display: none;
+  }
+
+  .itemDrag.active .img-tipo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .itemDrag.active .img-tipo-glass {
+    width: 18px;
+    height: 18px;
+  }
+
+  .itemDrag.active  .tipo-icons {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  }
+
+  @media only screen and (max-width: 480px) {
+    .itemDrag {
+      gap: 10px;
+    }
   }
 
 /* Inmuebel detail */

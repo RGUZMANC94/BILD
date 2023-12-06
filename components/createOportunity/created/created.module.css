@@ -332,11 +332,12 @@
   background-color: #41434300;
 }
 .img-tipo {
-  width: 40%;
+  width: 30%;
   height: 144px;
   overflow: hidden;
   margin-right: 1vh;
   border-radius: 10px;
+  position: relative;
 }
 
 .img-tipo img {
@@ -344,6 +345,7 @@
   object-fit: contain;
   border-radius: 10px;
   width: 100%;
+  position: relative;
 }
 
 .add {
@@ -356,7 +358,22 @@
   cursor: pointer;
 }
 
+.img-tipo-glass {
+  position: absolute;
+  height: 37px;
+  width: 37px;
+  background-image: url(/images/tipo-glass-pink.svg);
+  top: 2px;
+  right: 2px;
+  z-index: 2;
+}
+
 @media only screen and (max-width: 768px) {
+  .wrap-crear {
+    width: 100%;
+    padding: 15px 15px 25px;
+  }
+  
   .crear {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -438,6 +455,12 @@
 
   .crear-cotizacion {
     width: 90%;
+  }
+
+  .img-tipo-glass{
+    width: 32px;
+    height: 32px;
+    background-size: contain;
   }
 }
 

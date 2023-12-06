@@ -192,8 +192,8 @@
 }
 
 .checkMask {
-  width: 25px;
-  height: 25px;
+  min-width: 25px;
+  min-height: 25px;
   border: 1px solid #fff;
   margin-right: 10px;
 }
@@ -414,9 +414,12 @@
 }
 
 .id-perfil img,
-.perfil-icon img,
 .perfil-edit img {
   margin-right: 20px;
+}
+
+.perfil-icon img {
+  margin: auto;
 }
 
 .edit {
@@ -521,6 +524,13 @@ span.badge {
   display: none;
 }
 
+.flag {
+  display: none;
+}
+
+.listado {
+  display: none;
+}
 @media only screen and (max-width: 1300px) {
   .opc-pendiente {
     width: 100%;
@@ -651,6 +661,7 @@ h3.user {
 }
 
 @media only screen and (max-width: 993px) {
+  .close
   .id-perfil {
     flex-direction: column;
     line-height: 30px;
@@ -658,6 +669,7 @@ h3.user {
   .id-perfil img {
     margin-right: 0px;
   }
+  
 }
 
 @media only screen and (max-width: 768px) {
@@ -915,7 +927,7 @@ h3.user {
   } 
 
   .perfil-icon img {
-    width: 100%;
+    width: 60px;
   }
 
   .id-perfil {
@@ -946,6 +958,7 @@ h3.user {
   }
 
   .flag {
+    display: block;
     width: auto;
     height: auto;
     background-color: unset;
