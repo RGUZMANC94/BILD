@@ -96,7 +96,7 @@
 }
 
 .menuPpal a {
-  color: #FFF;
+  color: #fff;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -266,12 +266,11 @@
   }
 }
 
-@media only screen and (max-width: 375px) { 
+@media only screen and (max-width: 375px) {
   .menuPpal {
     width: 100%;
     gap: unset;
   }
-
 }
 
 /*@media only screen and (max-width: 1380px) {

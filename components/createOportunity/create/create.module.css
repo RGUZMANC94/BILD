@@ -175,7 +175,9 @@
   .crear-tipo {
     width: 100%;
     padding: 18px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(2.5px);
   }
 
@@ -219,7 +221,7 @@
     line-height: 1.6;
   }
 
-  .img-tipo-glass{
+  .img-tipo-glass {
     width: 32px;
     height: 32px;
     background-size: contain;

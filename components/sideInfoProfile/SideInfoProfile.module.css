@@ -661,15 +661,13 @@ h3.user {
 }
 
 @media only screen and (max-width: 993px) {
-  .close
-  .id-perfil {
+  .close .id-perfil {
     flex-direction: column;
     line-height: 30px;
   }
   .id-perfil img {
     margin-right: 0px;
   }
-  
 }
 
 @media only screen and (max-width: 768px) {
@@ -715,7 +713,7 @@ h3.user {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    
+
     padding: 15px 23px;
   }
 
@@ -922,9 +920,9 @@ h3.user {
     padding: 13px;
   }
 
-  .perfil-icon{
+  .perfil-icon {
     margin-top: 0px;
-  } 
+  }
 
   .perfil-icon img {
     width: 60px;
@@ -1049,11 +1047,11 @@ h3.user {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    
+
     padding: 15px 23px;
   }
 
-  .editar{
+  .editar {
     margin: 0;
   }
 
