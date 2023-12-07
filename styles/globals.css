@@ -180,6 +180,10 @@ li {
   appearance: none;
 }
 
+.selectFilterFlex {
+  display: flex;
+}
+
 .outerTypes {
   width: calc(50% - 50px);
 }
@@ -1277,7 +1281,25 @@ li.active button {
     flex-direction: row;
     gap: 20px;
   }
+
+  .selectFilterProject {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .selectFilterFlex {
+    width: 90%;
+    flex-direction: column;
+    margin: 0 auto;
+  }
 }
+
+  .selectFilterFlex p{
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  
 
 @media only screen and (max-width: 480px) {
   .itemDrag {

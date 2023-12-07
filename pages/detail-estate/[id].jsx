@@ -75,7 +75,7 @@ const DetailState = ({ types }) => {
       <div className="top-content">
         <ul>
           {conectContact && (
-            <li className="flex j-s a-c">
+            <li className="selectFilterFlex j-s a-c">
               <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
               <select className={'selectFilterProject'}>
                 {projectsList.map((project) => (
