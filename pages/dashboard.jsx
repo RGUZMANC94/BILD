@@ -184,10 +184,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className={styles['download-report-desk']}>
-              <Button 
-                buttonType={'primary'} 
-                label={'Descargar Reporte'} 
-              />
+              <Button buttonType={'primary'} label={'Descargar Reporte'} />
             </div>
           </div>
         </div>
@@ -317,13 +314,12 @@ const Dashboard = () => {
           <div className={styles.wrapChart}></div>
         </div>
         <div className={styles['download-report-movil']}>
-          <Button 
-            buttonType={'primary'} 
-            label={'Descargar Reporte'} 
+          <Button
+            buttonType={'primary'}
+            label={'Descargar Reporte'}
             className={styles['download-report-movil-button']}
           />
         </div>
-        
       </div>
       <CategoriesPopUp />
     </>

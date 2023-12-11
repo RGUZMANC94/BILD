@@ -441,7 +441,7 @@ li.pendiente-list {
     flex-wrap: nowrap;
     align-items: center;
     padding: 90px 15px 100px;
-  } 
+  }
 
   .main > div {
     width: auto;
@@ -454,7 +454,7 @@ li.pendiente-list {
     top: 70px;
   }
 
-  .top-content-buttonsBar > div{
+  .top-content-buttonsBar > div {
     margin: 0px;
     width: 100%;
     flex-direction: column;
@@ -495,7 +495,6 @@ li.pendiente-list {
     font-weight: 400;
     line-height: 1;
   }
-
 }
 
 @media only screen and (max-width: 768px) {
@@ -504,14 +503,14 @@ li.pendiente-list {
   }
 }
 
-@media only screen and (max-width: 568px) { 
+@media only screen and (max-width: 568px) {
   .main {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
     padding: 90px 5px 100px;
   }
-  
+
   .top-content-buttons {
     font-size: 12px;
     font-style: normal;

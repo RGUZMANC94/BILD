@@ -188,12 +188,11 @@
 }
 
 @media only screen and (max-width: 1024px) {
-
   .card-unit {
     padding: 20px;
   }
 
-  .card-info{
+  .card-info {
     padding: 0px;
     margin: 0px;
   }
@@ -218,7 +217,6 @@
   .card-progress-bar-container {
     margin-top: 10px;
   }
-
 }
 
 @media only screen and (max-width: 768px) {

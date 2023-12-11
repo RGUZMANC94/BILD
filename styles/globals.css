@@ -1241,10 +1241,9 @@ li.active button {
     left: 0;
   }
 
-  .itemDrag.active .tipo-arrow{
+  .itemDrag.active .tipo-arrow {
     background-image: url(/images/arrow-tipo-down.svg);
   }
-
 
   .itemDrag.active .caracteristicas-top-movil {
     display: flex;
@@ -1299,12 +1298,10 @@ li.active button {
   }
 }
 
-  .selectFilterFlex p{
-    font-size: 16px;
-    font-weight: 600;
-  }
-  
-  
+.selectFilterFlex p {
+  font-size: 16px;
+  font-weight: 600;
+}
 
 @media only screen and (max-width: 480px) {
   .itemDrag {

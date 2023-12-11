@@ -446,7 +446,7 @@
   padding: 10px 0;
 }
 
-.download-report-desk{
+.download-report-desk {
   display: flex;
   width: fit-content;
 }
@@ -471,7 +471,7 @@
     flex-direction: column;
   }
 
-  .download-report-desk{
+  .download-report-desk {
     display: none;
   }
 
@@ -558,7 +558,7 @@
   .welcome-text {
     padding-left: 0;
   }
-  
+
   .welcome-tit {
     justify-content: center;
   }

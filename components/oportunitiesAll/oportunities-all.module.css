@@ -155,7 +155,7 @@ i.fa-solid.fa-angle-left {
 
   .card-container {
     width: 80%;
-    margin: auto
+    margin: auto;
   }
 
   .wrap-right {
@@ -167,7 +167,7 @@ i.fa-solid.fa-angle-left {
   }
 }
 
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 768px) {
   .card-container {
     width: 90%;
     margin: auto;

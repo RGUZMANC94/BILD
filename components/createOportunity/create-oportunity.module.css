@@ -17,9 +17,8 @@
   transition:
     all 0.5s ease-in-out,
     top 0s linear 0.5s;
-    backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   background-color: rgba(33, 34, 29, 0.6);
-
 }
 
 .headerMainContainer {
@@ -118,7 +117,7 @@
   position: relative;
   z-index: 7;
   padding: 30px 0;
-  background: rgba(33, 34, 29, 0.60);
+  background: rgba(33, 34, 29, 0.6);
   backdrop-filter: blur(13.5px);
 }
 
