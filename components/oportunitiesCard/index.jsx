@@ -9,6 +9,7 @@ const OportunitiesCard = ({
   type,
   followingDate,
   hot,
+  historyComponent: HistoryComponent
 }) => {
   return (
     <>
@@ -55,6 +56,10 @@ const OportunitiesCard = ({
             </>
           )}
         </div>
+        <div className={styles['card-history-container']}>
+          <HistoryComponent/>
+        </div>
+        
       </div>
     </>
   );

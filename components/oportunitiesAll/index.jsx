@@ -47,15 +47,19 @@ const OportunitiesAll = () => {
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
           {oportunities.map((oportunity, i) => (
-            <OportunitiesCard
+            <div 
               key={i}
-              hot={oportunity.hot}
-              state={oportunity.state}
-              image={oportunity.image}
-              name={oportunity.name}
-              location={oportunity.location}
-              type={oportunity.type}
-              followingDate={oportunity.followingDate}></OportunitiesCard>
+              onClick={() => handleItemClick(i)} >
+                <OportunitiesCard 
+                  hot={oportunity.hot}
+                  state={selectedItem === i ? true : false}
+                  image={oportunity.image}
+                  name={oportunity.name}
+                  location={oportunity.location}
+                  type={oportunity.type}
+                  followingDate={oportunity.followingDate}
+                  historyComponent={OportunitiesHistory}/> 
+            </div>
           ))}
         </div>
       </div>
