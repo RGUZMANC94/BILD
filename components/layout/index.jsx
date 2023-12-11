@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
   // }, []);
 
   return (
-    <main className={quicksand.className}>
+    <main className={`${quicksand.className}  ${styles.layoutMovil}`}>
       {pathname !== '/login' && <Header />}
 
       {children}

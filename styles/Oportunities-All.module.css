@@ -436,6 +436,7 @@ li.pendiente-list {
   }*/
 
   .main {
+    width: 100%;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;

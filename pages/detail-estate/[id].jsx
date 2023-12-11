@@ -54,7 +54,7 @@ const DetailState = ({ types }) => {
   };
 
   const [windowWidth, setWindowWidth] = useState(null);
-  const [displayText, setDisplayText] = useState('');
+  const [infoText, setinfoText] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,6 +69,14 @@ const DetailState = ({ types }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (windowWidth && windowWidth < 768) {
+      setinfoText('Info');
+    } else {
+      setinfoText('Información');
+    }
+  }, [windowWidth]);
 
   return (
     <>
@@ -112,7 +120,7 @@ const DetailState = ({ types }) => {
                 onClick={() => {
                   setViewEstate('info');
                 }}>
-                <button className="buttonTopDetailState">Información</button>
+                <button className="buttonTopDetailState">{infoText}</button>
               </li>
             </>
           )}

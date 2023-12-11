@@ -191,6 +191,7 @@
     font-family: 'Lexend', sans-serif;
     top: 80px;
     border-radius: 15px;
+    overflow: auto;
   }
 
   .top-title {

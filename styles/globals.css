@@ -895,7 +895,7 @@ li.active button {
 .tipo-arrow {
   width: 30px;
   height: 30px;
-  background-image: url(/images/arrow-tipo-down.svg);
+  background-image: url(/images/arrow-tipo-up.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -914,7 +914,7 @@ li.active button {
   }
 
   .top-content {
-    width: 108%;
+    width: 100%;
   }
 
   .mail,
@@ -990,7 +990,7 @@ li.active button {
 
 @media only screen and (max-width: 768px) {
   .main {
-    width: 108%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -1241,6 +1241,11 @@ li.active button {
     left: 0;
   }
 
+  .itemDrag.active .tipo-arrow{
+    background-image: url(/images/arrow-tipo-down.svg);
+  }
+
+
   .itemDrag.active .caracteristicas-top-movil {
     display: flex;
     width: 100%;
@@ -1304,6 +1309,12 @@ li.active button {
 @media only screen and (max-width: 480px) {
   .itemDrag {
     gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .itemDrag {
+    gap: 5px;
   }
 }
 
