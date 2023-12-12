@@ -75,20 +75,21 @@ const OportunitiesAllFilter = () => {
                 }`}></div>
             </div>
           </div>
-
-          <div className={styles.filter_container}>
-            <label htmlFor="subject"></label>
-            <select
-              placeholder="Subject line"
-              name="subject"
-              className={styles.filter_input}>
-              <option>MAS CALIENTE</option>
-              <option>MAS FRÍA</option>
-              <option selected>MAS RECIENTE</option>
-              <option>MENOS RECIENTE</option>
-            </select>
-            <span className={styles.label_filter}>Ordenar por:</span>
-          </div>
+          {showSection === 'all' && (
+            <div className={styles.filter_container}>
+              <label htmlFor="subject"></label>
+              <select
+                placeholder="Subject line"
+                name="subject"
+                className={styles.filter_input}>
+                <option>MAS CALIENTE</option>
+                <option>MAS FRÍA</option>
+                <option selected>MAS RECIENTE</option>
+                <option>MENOS RECIENTE</option>
+              </select>
+              <span className={styles.label_filter}>Ordenar por:</span>
+            </div>
+          )}
         </div>
       </div>
       <section className={styles.main}>

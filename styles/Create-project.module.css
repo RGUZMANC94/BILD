@@ -715,6 +715,12 @@
   background-color: #00000055;
 }
 
+@media only screen and (max-width: 1380px) {
+  .createProjectForm {
+    margin-bottom: 80px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .main {
     background-color: #343434;

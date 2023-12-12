@@ -112,8 +112,20 @@
   background-color: rgba(33, 34, 29, 0.7);
   appearance: none;
   margin: 0 20px;
+  background-image: url(/images/oportunities-card-down-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 8px;
+  background-position-x: 95%;
+  background-position-y: 50%;
 }
 
+.filter_input:active {
+  background-image: url(/images/oportunities-card-up-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 8px;
+  background-position-x: 95%;
+  background-position-y: 50%;
+}
 .oportunities-components-container {
   width: 90%;
   max-width: 1600px;
@@ -444,7 +456,7 @@ li.pendiente-list {
   }
 
   .main > div {
-    width: auto;
+    width: 100%;
   }
 
   .top-content-buttonsBar {
