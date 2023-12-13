@@ -49,19 +49,6 @@ const OportunitiesClosed = () => {
   ];
   return (
     <>
-      {/* <div className={styles.filter_container}>
-        <label htmlFor="subject"></label>
-        <select
-          placeholder="Subject line"
-          name="subject"
-          className={styles.filter_input}>
-          <option disabled defaultValue={1} hidden selected></option>
-          <option>MAS RECIENTE</option>
-          <option>MENOS RECIENTE</option>
-        </select>
-        <span className={styles.label_filter}>Ordenar por:</span>
-      </div> */}
-
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
           {oportunities.map((oportunity, i) => (
@@ -84,10 +71,6 @@ const OportunitiesClosed = () => {
               />
             </div>
           ))}
-        </div>
-
-        <div className={styles['wrap-right']}>
-          <OportunitiesHistory></OportunitiesHistory>
         </div>
       </div>
     </>

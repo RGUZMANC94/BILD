@@ -16,7 +16,7 @@
 .crear-tipo {
   display: flex;
   flex-direction: column;
-  width: calc(95% - 20px);
+  width: 100%;
   min-height: 100px;
   height: auto;
   margin: 0 auto;
@@ -34,7 +34,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #343434;
+  background-color: transparent;
   text-align: left;
   margin-top: 10px;
 }

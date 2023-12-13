@@ -205,7 +205,7 @@
   }
 
   .card-state-active .card-info-container,
-  .card-state-active .card-progress-bar-container {
+  .card-state-active .card-bar-container {
     display: none;
   }
 

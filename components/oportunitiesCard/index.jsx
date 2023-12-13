@@ -11,7 +11,6 @@ const OportunitiesCard = ({
   image,
   type,
   followingDate,
-  hot,
   historyComponent: HistoryComponent,
   temperature,
   progress,

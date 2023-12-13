@@ -9,7 +9,7 @@ const OportunitiesAll = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
-    setSelectedItem(index);
+    selectedItem === index ? setSelectedItem(-1) : setSelectedItem(index);
   };
 
   const oportunities = [

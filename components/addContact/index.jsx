@@ -43,7 +43,7 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
               width="20"
               height="20"
               fill="none"
-              stroke="currentColor"
+              stroke="#fff"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
