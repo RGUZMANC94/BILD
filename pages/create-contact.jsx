@@ -1,14 +1,53 @@
+import React from 'react';
 import Link from 'next/link';
+import { useState } from 'react';
 import styles from '../styles/Create-Contact.module.css';
 import { useSelector } from 'react-redux';
 
 const CreateContact = () => {
   const { projectsList } = useSelector((state) => state.projectState);
+  const [selectedPage, setSelectedItem] = useState('contact');
+
   return (
     <section className={styles['wrap-datos']}>
       <div className="container flex j-sb a-s wrap relative">
         <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
-        <div className={styles['datos-left']}>
+        <div className={styles['top-content']}>
+          <div className={styles['top-content-buttonsBar']}>
+            <div className="container flex j-s a-c">
+              <div className={styles['top-buttons-container']}>
+                <div className={styles['top-content-container']}>
+                  <button
+                    className={styles['top-content-buttons']}
+                    onClick={() => setSelectedItem('contact')}>
+                    Datos de Contacto
+                  </button>
+                  <div
+                    className={`${styles['top-content-bar']} ${
+                      selectedPage === 'contact' && styles.active
+                    }`}></div>
+                </div>
+                <div className={styles['top-content-container']}>
+                  <button
+                    className={styles['top-content-buttons']}
+                    onClick={() => setSelectedItem('additional')}>
+                    Información Adicional
+                  </button>
+                  <div
+                    className={`${styles['top-content-bar']} ${
+                      selectedPage === 'additional' && styles.active
+                    }`}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${styles['datos-left']} ${
+            styles[
+              `${selectedPage === 'contact' ? 'page-active' : 'page-disabled'}`
+            ]
+          }`}>
           <div className={styles['top-name']}>
             <span>Datos de Contacto</span>{' '}
           </div>
@@ -38,7 +77,17 @@ const CreateContact = () => {
             </fieldset>
           </form>
         </div>
-        <div className={styles['datos-right']}>
+        <div
+          className={`${styles['datos-right']} 
+            ${
+              styles[
+                `${
+                  selectedPage === 'additional'
+                    ? 'page-active'
+                    : 'page-disabled'
+                }`
+              ]
+            }`}>
           <div className={`relative ${styles['top-name']}`}>
             <span>Información Adicional</span>{' '}
           </div>

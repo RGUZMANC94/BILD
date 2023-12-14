@@ -446,6 +446,19 @@
   padding: 10px 0;
 }
 
+.download-report-desk {
+  display: flex;
+  width: fit-content;
+}
+
+.download-report-movil {
+  display: none;
+}
+
+.download-report-movil-button {
+  width: 100% !important;
+}
+
 @media only screen and (max-width: 990px) {
   .menu-top {
     width: 100% !important;
@@ -458,7 +471,18 @@
     flex-direction: column;
   }
 
-  .welcome,
+  .download-report-desk {
+    display: none;
+  }
+
+  .download-report-movil {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+  }
+
   .download,
   .calendar {
     display: none;
@@ -497,5 +521,49 @@
   }
   .buscar {
     font-size: 11px;
+  }
+
+  .allChartsContainer {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .outerChart {
+    width: 100%;
+    margin-bottom: 17px;
+  }
+
+  .wrap-dashboard {
+    padding-top: 150px;
+    padding-bottom: 100px;
+  }
+
+  .welcome {
+    width: 100%;
+  }
+
+  .perfil-img {
+    flex-direction: column;
+    margin: 20px auto;
+  }
+
+  .perfil-img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .welcome-text {
+    padding-left: 0;
+  }
+
+  .welcome-tit {
+    justify-content: center;
+  }
+
+  .profile {
+    justify-content: center;
   }
 }

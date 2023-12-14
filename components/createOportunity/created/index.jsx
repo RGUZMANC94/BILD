@@ -31,6 +31,7 @@ const OportunityCreated = ({
                 <a href="#">
                   <img src="/images/crear-tipo.png" />
                 </a>
+                <div className={styles['img-tipo-glass']}></div>
               </div>
               <div className={styles['tipo-info']}>
                 <div className={styles.tipos}>

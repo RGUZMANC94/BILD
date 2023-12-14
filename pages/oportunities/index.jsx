@@ -40,53 +40,56 @@ const OportunitiesAllFilter = () => {
     <>
       <div className={styles['top-content-buttonsBar']}>
         <div className="container flex j-s a-c">
-          <div className={styles['top-content-container']}>
-            <button
-              className={styles['top-content-buttons']}
-              onClick={() => setShowSection('all')}>
-              TODAS
-            </button>
-            <div
-              className={`${styles['top-content-bar']} ${
-                showSection === 'all' && styles.active
-              }`}></div>
+          <div className={styles['top-buttons-container']}>
+            <div className={styles['top-content-container']}>
+              <button
+                className={styles['top-content-buttons']}
+                onClick={() => setShowSection('all')}>
+                TODAS
+              </button>
+              <div
+                className={`${styles['top-content-bar']} ${
+                  showSection === 'all' && styles.active
+                }`}></div>
+            </div>
+            <div className={styles['top-content-container']}>
+              <button
+                className={styles['top-content-buttons']}
+                onClick={() => setShowSection('pending')}>
+                PENDIENTES
+              </button>
+              <div
+                className={`${styles['top-content-bar']} ${
+                  showSection === 'pending' && styles.active
+                }`}></div>
+            </div>
+            <div className={styles['top-content-container']}>
+              <button
+                className={styles['top-content-buttons']}
+                onClick={() => setShowSection('closed')}>
+                CERRADAS
+              </button>
+              <div
+                className={`${styles['top-content-bar']} ${
+                  showSection === 'closed' && styles.active
+                }`}></div>
+            </div>
           </div>
-          <div className={styles['top-content-container']}>
-            <button
-              className={styles['top-content-buttons']}
-              onClick={() => setShowSection('pending')}>
-              PENDIENTES
-            </button>
-            <div
-              className={`${styles['top-content-bar']} ${
-                showSection === 'pending' && styles.active
-              }`}></div>
-          </div>
-          <div className={styles['top-content-container']}>
-            <button
-              className={styles['top-content-buttons']}
-              onClick={() => setShowSection('closed')}>
-              CERRADAS
-            </button>
-            <div
-              className={`${styles['top-content-bar']} ${
-                showSection === 'closed' && styles.active
-              }`}></div>
-          </div>
-
-          <div className={styles.filter_container}>
-            <label htmlFor="subject"></label>
-            <select
-              placeholder="Subject line"
-              name="subject"
-              className={styles.filter_input}>
-              <option>MAS CALIENTE</option>
-              <option>MAS FRÍA</option>
-              <option selected>MAS RECIENTE</option>
-              <option>MENOS RECIENTE</option>
-            </select>
-            <span className={styles.label_filter}>Ordenar por:</span>
-          </div>
+          {showSection === 'all' && (
+            <div className={styles.filter_container}>
+              <label htmlFor="subject"></label>
+              <select
+                placeholder="Subject line"
+                name="subject"
+                className={styles.filter_input}>
+                <option>MAS CALIENTE</option>
+                <option>MAS FRÍA</option>
+                <option selected>MAS RECIENTE</option>
+                <option>MENOS RECIENTE</option>
+              </select>
+              <span className={styles.label_filter}>Ordenar por:</span>
+            </div>
+          )}
         </div>
       </div>
       <section className={styles.main}>

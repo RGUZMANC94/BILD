@@ -9,36 +9,51 @@ const OportunitiesAll = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
-    setSelectedItem(index);
+    selectedItem === index ? setSelectedItem(-1) : setSelectedItem(index);
   };
 
   const oportunities = [
     {
-      hot: 'cold',
       state: false,
       image: '/images/perfil-img.jpeg',
       name: 'Fontana Campestre',
       location: 'Fontana Campestre',
       type: 'TIPO 1 - 302',
       followingDate: '23/05/23',
+      temperature: 'cold',
+      progress: 0.4,
     },
     {
-      hot: 'cold',
       state: false,
       image: '/images/perfil-img.jpeg',
       name: 'Fontana Campestre',
       location: 'Fontana Campestre',
       type: 'TIPO 1 - 302',
       followingDate: '23/05/23',
+      temperature: 'warm',
+      progress: 0.6,
     },
     {
-      hot: 'hot',
       state: true,
       image: '/images/perfil-img.jpeg',
       name: 'Fontana Campestre',
       location: 'Fontana Campestre',
       type: 'TIPO 1 - 302',
       followingDate: '23/05/23',
+      temperature: 'hot',
+      progress: 0.8,
+    },
+
+    {
+      closed: true,
+      estimatedProgress: 0.85,
+      image: '/images/perfil-img.jpeg',
+      name: 'Fontana Campestre',
+      location: 'Fontana Campestre',
+      type: 'TIPO 1 - 302',
+      followingDate: '23/05/23',
+      temperature: 'hot',
+      progress: 0.35,
     },
   ];
 
@@ -47,15 +62,24 @@ const OportunitiesAll = () => {
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
           {oportunities.map((oportunity, i) => (
-            <OportunitiesCard
+            <div
+              className={styles['card-unit-list']}
               key={i}
-              hot={oportunity.hot}
-              state={oportunity.state}
-              image={oportunity.image}
-              name={oportunity.name}
-              location={oportunity.location}
-              type={oportunity.type}
-              followingDate={oportunity.followingDate}></OportunitiesCard>
+              onClick={() => handleItemClick(i)}>
+              <OportunitiesCard
+                closed={oportunity.image}
+                estimatedProgress={oportunity.estimatedProgress}
+                state={selectedItem === i}
+                image={oportunity.image}
+                name={oportunity.name}
+                location={oportunity.location}
+                type={oportunity.type}
+                followingDate={oportunity.followingDate}
+                historyComponent={OportunitiesHistory}
+                progress={oportunity.progress}
+                temperature={oportunity.temperature}
+              />
+            </div>
           ))}
         </div>
       </div>

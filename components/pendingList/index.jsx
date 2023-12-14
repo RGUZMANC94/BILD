@@ -19,7 +19,10 @@ const pendingList = () => {
                 className={styles.checkboxLabelSquare}></label>
               <div className={styles['list-card-text-hour']}>10:00 am</div>
               <div className={styles['list-card-text-message']}>
-                Llamar Andrea Echeverri
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quibusdam recusandae esse harum consequuntur. Perferendis labore
+                cumque quae distinctio placeat quia sapiente ipsam eius, eveniet
+                a quam voluptates sequi rerum reprehenderit!
               </div>
             </div>
 
@@ -49,7 +52,9 @@ const pendingList = () => {
                 className={styles.checkboxLabelSquare}></label>
               <div className={styles['list-card-text-hour']}>10:00 am</div>
               <div className={styles['list-card-text-message']}>
-                Llamar Andrea Echeverri
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
+                illum ipsam odio quod cum hic labore. Eos dolorum ad nam eaque
+                corporis deleniti ex atque, sint culpa, deserunt modi aliquam.
               </div>
             </div>
           </div>

@@ -30,6 +30,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
       <div className="tipo-unit">
         <div className="img-tipo">
           <img src={'/images/tipo-1.png'} />
+          <div className="img-tipo-glass"></div>
         </div>
         <div className="tipo-info">
           <span className="tipo-title">Tipo {type.type}</span>
@@ -41,11 +42,15 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <span>{type.baths}</span>
           </div>
         </div>
-        <div
-          className="llave"
-          onClick={() => {
-            dispatch(openPopUp(true));
-          }}></div>
+        <div className="tipo-icons">
+          <div
+            className="llave"
+            onClick={() => {
+              dispatch(openPopUp(true));
+            }}></div>
+          <div className="tipo-arrow"></div>
+        </div>
+
         <div className="caracteristicas-top-movil">
           <div className="caracteristicas-top">
             <div className="top-tabla">ID</div>

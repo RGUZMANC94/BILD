@@ -89,42 +89,24 @@ const SideInfoProfile = ({ typeViewer }) => {
             </div>
           </div>
           <div className={styles['pendientes-movil']}>
-            <div className={styles.flag}>Pendientes:</div>
-            <div className={styles.listado}>
-              <label className={styles.penlist}>
-                <input className={styles.check} type="checkbox" required />
-                <div className={styles.checkMask}></div>
-                Enviar Brochure del proyecto Fontana Campestre
-              </label>
-              <label className={styles.penlist}>
-                <input className={styles.check} type="checkbox" required />
-                <div className={styles.checkMask}></div>
-                Enviar cotización del proyecto La Florida
-              </label>
-              <label className={styles.penlist}>
-                <input className={styles.check} type="checkbox" required />
-                <div className={styles.checkMask}></div>
-                Enviar cotización a Zeta Bosio de Campo Alegre
-              </label>
-            </div>
             <div className={styles['opc-pendiente']}>
               <div className={styles.opcion}>
-                <img src="/images/oportunidades-icon.png" />
+                <img src="/images/key-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>2</span>
                 Oportunidades
               </div>
               <div className={styles.opcion}>
-                <img src="/images/cotizaciones-icon.png" />
+                <img src="/images/cotizaciones-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>5</span>
                 Cotizaciones
               </div>
               <div className={styles.opcion}>
-                <img src="/images/documentacion-icon.png" />
+                <img src="/images/docs-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>3</span>
                 Documentación
               </div>
               <div className={styles.opcion}>
-                <img src="/images/pagos-icon.png" />
+                <img src="/images/payments-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
               </div>
             </div>
@@ -161,6 +143,24 @@ const SideInfoProfile = ({ typeViewer }) => {
                 </button>
               </div>
             </div>
+          </div>
+          <div className={styles.flag}>Pendientes:</div>
+          <div className={styles.listado}>
+            <label className={styles.penlist}>
+              <input className={styles.check} type="checkbox" required />
+              <div className={styles.checkMask}></div>
+              Enviar Brochure del proyecto Fontana Campestre
+            </label>
+            <label className={styles.penlist}>
+              <input className={styles.check} type="checkbox" required />
+              <div className={styles.checkMask}></div>
+              Enviar cotización del proyecto La Florida
+            </label>
+            <label className={styles.penlist}>
+              <input className={styles.check} type="checkbox" required />
+              <div className={styles.checkMask}></div>
+              Enviar cotización a Zeta Bosio de Campo Alegre
+            </label>
           </div>
         </>
       )}

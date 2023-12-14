@@ -446,6 +446,10 @@ li.pendiente-list {
     width: 100%;
   }
 
+  .right {
+    padding-top: 0px;
+  }
+
   .wrap-right {
     width: 100%;
   }

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styles from './filter.module.css';
 import { Range, getTrackBackground } from 'react-range';
 import Button from '../button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProjects } from '../../redux/projectSlice';
 
 const Filter = ({ show, setShowFilter }) => {
   const { projectsList } = useSelector((state) => state.projectState);
@@ -15,10 +16,54 @@ const Filter = ({ show, setShowFilter }) => {
     projectsList.length > 0
       ? Math.max(...projectsList.map((project) => project.maxSize))
       : 1200;
-
-  const [priceValues, setPriceValues] = useState([0, 3000000000]);
+  const minPrice =
+    projectsList.length > 0
+      ? Math.min(...projectsList.map((project) => project.minPrice))
+      : 45;
+  const maxPrice =
+    projectsList.length > 0
+      ? Math.max(...projectsList.map((project) => project.maxPrice))
+      : 1200;
+  
+  const [priceValues, setPriceValues] = useState([minPrice, maxPrice]);
   const [floorValues, setFloorValues] = useState([1, 21]);
-  const [sizeValues, setSizeValues] = useState([45, 1200]);
+  const [sizeValues, setSizeValues] = useState([minSize, maxSize]);
+  const [locationSelected, setLocationSelected] = useState("");
+  const [bedSelected, setBedSelected] = useState("");
+  const [bathSelected, setBathSelected] = useState("");
+
+
+  const dispatch = useDispatch();
+
+  const filterProjects = async () => {
+    try {
+      const response = await fetch('/api/filterProjects',{
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          minPrice: priceValues[0],
+          maxPrice: priceValues[1],
+          minFloor: floorValues[0],
+          maxFloor: floorValues[1],
+          minSize: sizeValues[0],
+          maxSize: sizeValues[1],
+          locationSelected,
+          bedSelected,
+          bathSelected
+        })
+      });
+      if(!response.ok){
+        throw new Error("Bad response from server");        
+      }
+      const leakedProjects = await response.json();
+      dispatch(setProjects(leakedProjects))
+    } catch (error) {
+      console.log('%cerror index.jsx line:28 ', 'color: red; display: block; width: 100%;', error);
+    }
+    
+  }
 
   if (!projectsList.length) {
     return <></>;
@@ -27,8 +72,8 @@ const Filter = ({ show, setShowFilter }) => {
   const rangeSliders = [
     {
       type: 'price',
-      min: 0,
-      max: 3000000000,
+      min: minPrice,
+      max: maxPrice,
       step: 5000000,
     },
     {
@@ -39,8 +84,8 @@ const Filter = ({ show, setShowFilter }) => {
     },
     {
       type: 'size',
-      min: 45,
-      max: 1200,
+      min: minSize,
+      max: maxSize,
       step: 5,
     },
   ];
@@ -65,6 +110,9 @@ const Filter = ({ show, setShowFilter }) => {
             <label htmlFor={styles.labelFilter}>
               <span className={styles.labelText}>Ubicación:</span>
               <select
+                onChange={(e) => {
+                  setLocationSelected(e.target.value);
+                }}
                 value={0}
                 defaultValue={0}
                 className={styles.ubicationSelect}>
@@ -191,6 +239,9 @@ const Filter = ({ show, setShowFilter }) => {
                 <select
                   value={'default'}
                   defaultValue={'default'}
+                  onChange={(e) => {
+                    setBedSelected(e.target.value)
+                  }}
                   className={styles.ubicationSelect}>
                   <option value={'default'} selected>
                     3+
@@ -207,6 +258,9 @@ const Filter = ({ show, setShowFilter }) => {
                 <select
                   defaultValue={'default'}
                   value={'default'}
+                  onChange={(e) => {
+                    setBathSelected(e.target.value)
+                  }}
                   className={styles.ubicationSelect}>
                   <option value={'default'} selected>
                     1+
@@ -224,6 +278,7 @@ const Filter = ({ show, setShowFilter }) => {
               buttonType="secondary"
               label="Filtrar"
               classNameInherit="buttonsFilter"
+              clickFunction={filterProjects}
             />
             <Button
               buttonType="primary"

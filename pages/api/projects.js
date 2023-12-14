@@ -1,6 +1,5 @@
 export default async function handler(req, res) {
   try {
-    console.log(req.body.page);
     const response = await fetch(
       `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectOverview?username=${req.body.id}&page=${req.body.page}`
     );
@@ -8,7 +7,6 @@ export default async function handler(req, res) {
       throw new Error('Bad response from server');
     }
     const projects = await response.json();
-    console.log(projects);
 
     if (projects) {
       res.status(200).json(projects);

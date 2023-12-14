@@ -175,7 +175,7 @@
   aspect-ratio: 16/6;
 
   border-radius: 10px;
-  background-image: url(/images/camera-icon.png);
+  background-image: url(/images/camera_white_icon.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: auto;
@@ -185,8 +185,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  border: 2px solid #94b4ff;
-  background-color: #fafafa0d;
+  border: 2px solid #fff;
+  /*background-color: #fafafa0d;*/
 }
 
 .images {
@@ -227,9 +227,9 @@
   width: 45%;
   aspect-ratio: 16/9;
   border-radius: 10px;
-  border: 2px solid #94b4ff;
-  background: #fafafa0d;
-  background-image: url(/images/camera-icon.png);
+  border: 2px solid #fff;
+  /*background: #fafafa0d;*/
+  background-image: url(/images/camera_white_icon.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: auto;
@@ -248,7 +248,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-color: #fafafa;
+  /*background-color: #fafafa;*/
   opacity: 0;
   cursor: default;
   visibility: hidden;
@@ -715,7 +715,17 @@
   background-color: #00000055;
 }
 
+@media only screen and (max-width: 1380px) {
+  .createProjectForm {
+    margin-bottom: 80px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
+  .main {
+    background-color: #343434;
+  }
+
   .image,
   .file {
     display: none;
@@ -723,7 +733,7 @@
 
   section.main {
     flex-direction: column;
-    padding: 0 30px 50px;
+    padding: 127px 30px 50px;
   }
 
   .proyect-form {
@@ -746,13 +756,26 @@
   }
 
   .main-image {
-    width: 70%;
+    width: 100%;
     height: 200px;
-    box-shadow: -9px 8px 8px #dddddd;
+    background-size: 42px 35px;
+    border-radius: 5px;
+    border: 1px solid #fff;
   }
+
+  .proyect-img {
+    background-size: 42px 35px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+  }
+
   span.label {
     text-transform: uppercase;
     margin: 0 0 20px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.45;
   }
 
   .proyect-form input,

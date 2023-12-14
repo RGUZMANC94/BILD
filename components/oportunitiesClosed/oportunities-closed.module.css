@@ -16,6 +16,7 @@
   position: relative;
   z-index: 2;
   margin-bottom: 50px;
+  gap: 50px;
 }
 
 .filter_container {
@@ -60,17 +61,15 @@
 }
 
 .oportunidades {
-  width: 100%;
+  width: 48%;
   height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 
 .card-container {
-  width: calc(48% - 50px);
+  width: calc(100% - 50px);
   height: auto;
   display: flex;
   flex-direction: column;
@@ -149,241 +148,32 @@ i.fa-solid.fa-angle-left {
   height: auto;
 }
 
-.right {
+.card-unit-list {
   width: 100%;
-  height: 100%;
-  display: flex;
-  padding-top: 50px;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-
-.line {
-  width: 64px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.ver-line {
-  border-right: 2px solid #fff;
-  height: 100%;
-  min-height: 80px;
-}
-
-.pendientes {
-  width: 70%;
-  height: auto;
-}
-
-.pendiente-top {
-  width: 100%;
-  margin-left: 20px;
-  margin-bottom: 30px;
-}
-
-.greybox {
-  border-radius: 10px;
-  background: #2e2e2c;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: start;
-  position: relative;
-  color: #fff;
-}
-
-.info {
-  width: 70%;
-}
-.info label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.pendiente-date {
-  font-size: 10px;
-  font-weight: 300;
-  color: #fff;
-}
-
-li.pendiente-list {
-  font-size: 16px !important;
-  color: #fff;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.87;
-}
-
-.box li.pendiente-list {
-  font-size: 16px !important;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 30px;
-}
-
-.ulNode li {
-  margin: 10px 0;
-  font-size: 14px !important;
-  font-weight: 200;
-  color: #fff;
-}
-
-.time {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
-  font-weight: 300;
-  color: #fff;
-}
-
-.hour {
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.81;
-}
-
-.box {
-  padding: 20px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 100%;
-  height: auto;
-  position: relative;
-}
-
-.box-dotted {
-  min-height: 5px;
-  height: auto;
-  padding: 5px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 113%;
-  position: relative;
-  left: -55px;
-  border-top: 2px dashed #fff;
-  border-bottom: 2px dashed #fff;
-}
-
-.blue-point {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: absolute;
-  top: 0px;
-  left: -63px;
-}
-
-.blue-point-plus {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #ff5567;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 300;
-  position: absolute;
-  top: -8px;
-  left: -10px;
-  text-align: center;
-  margin: 0 auto;
-  padding: 5px;
-}
-
-.pendientes-bottom {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  width: 100%;
-  margin: 40px 0;
-}
-
-.pendientes-bottom-icon {
-  width: 20px;
-  height: 20px;
-  background-image: url(/images/plus_icon_white.svg);
-  background-size: 20px 20px;
-}
-
-.ver-oportunidad {
-  width: 50%;
-  height: fit-content;
-  color: #fff;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 100;
-  line-height: 1;
-  letter-spacing: 1.12px;
-  text-transform: uppercase;
-  margin-top: 30px;
-  padding: 20px 30px;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: #2467ff;
-  border: 2px solid transparent;
-  margin: 0 auto 20px;
-  gap: 15px;
-}
-
-.card-progress-bar-container {
-  width: 80%;
-  height: auto;
-  display: flex;
-  margin-top: 25px;
-  position: relative;
-  background-color: #fff;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 10px;
-}
-
-.card-progress-bar-cold {
-  width: 40%;
-  height: 9px;
-  display: flex;
-  background-color: #2467ff;
-  border-radius: 10px;
-}
-
-.card-progress-bar-frost-icon {
-  width: 23px;
-  height: 23px;
-  left: calc(40% - 2%);
-  position: absolute;
-  background-size: 23px 23px;
-  margin: 0;
-  background-image: url(/images/cold-icon.svg);
 }
 
 @media only screen and (max-width: 1024px) {
-  .card-container {
+  .oportunidades {
     width: 100%;
+  }
+
+  .card-container {
+    width: 80%;
+    margin: auto;
   }
 
   .wrap-right {
-    width: 100%;
+    display: none;
   }
 
-  .ver-oportunidad {
-    width: 80%;
+  .card-container {
+    gap: 37px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card-container {
+    width: 90%;
+    margin: auto;
   }
 }

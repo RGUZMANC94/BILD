@@ -54,7 +54,7 @@ const DetailState = ({ types }) => {
   };
 
   const [windowWidth, setWindowWidth] = useState(null);
-  const [displayText, setDisplayText] = useState('');
+  const [infoText, setinfoText] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -70,12 +70,20 @@ const DetailState = ({ types }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (windowWidth && windowWidth < 768) {
+      setinfoText('Info');
+    } else {
+      setinfoText('Información');
+    }
+  }, [windowWidth]);
+
   return (
     <>
       <div className="top-content">
         <ul>
           {conectContact && (
-            <li className="flex j-s a-c">
+            <li className="selectFilterFlex j-s a-c">
               <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
               <select className={'selectFilterProject'}>
                 {projectsList.map((project) => (
@@ -112,7 +120,7 @@ const DetailState = ({ types }) => {
                 onClick={() => {
                   setViewEstate('info');
                 }}>
-                <button className="buttonTopDetailState">Información</button>
+                <button className="buttonTopDetailState">{infoText}</button>
               </li>
             </>
           )}

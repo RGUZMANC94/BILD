@@ -1,14 +1,19 @@
 import React from 'react';
 import styles from './oportunities-card.module.css';
+import OportunitiesBar from '../../components/oportunitiesBar';
 
 const OportunitiesCard = ({
+  closed,
+  estimatedProgress,
   state,
   name,
   location,
   image,
   type,
   followingDate,
-  hot,
+  historyComponent: HistoryComponent,
+  temperature,
+  progress,
 }) => {
   return (
     <>
@@ -16,6 +21,7 @@ const OportunitiesCard = ({
         className={`${styles['card-unit']} ${
           styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]
         }`}>
+        <div className={styles['card-right-arrow-icon']}></div>
         <div className={styles['card-info-container']}>
           <div className={styles['img-card']}>
             <img className={styles['image-card-circle']} src={image} />
@@ -29,31 +35,18 @@ const OportunitiesCard = ({
               Seguimiento: {followingDate}
             </div>
           </div>
-
-          <div className={styles['card-right-arrow-icon']}></div>
         </div>
 
-        <div className={styles['card-progress-bar-container']}>
-          {hot === 'cold' && (
-            <>
-              <div className={styles['card-progress-bar-frost-icon']}></div>
-              <div className={styles['card-progress-bar-cold']}></div>
-            </>
-          )}
-
-          {hot === 'hot' && (
-            <>
-              <div className={styles['card-progress-bar-hot-icon']}></div>
-              <div className={styles['card-progress-bar-hot']}></div>
-            </>
-          )}
-
-          {hot === 'warm' && (
-            <>
-              <div className={styles['card-progress-bar-warm-icon']}></div>
-              <div className={styles['card-progress-bar-warm']}></div>
-            </>
-          )}
+        <div className={styles['card-bar-container']}>
+          <OportunitiesBar
+            closed={closed}
+            estimatedProgress={estimatedProgress}
+            temperature={temperature}
+            progress={progress}
+          />
+        </div>
+        <div className={styles['card-history-container']}>
+          <HistoryComponent />
         </div>
       </div>
     </>

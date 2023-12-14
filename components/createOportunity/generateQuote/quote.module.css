@@ -261,6 +261,7 @@
 
   .lado-c {
     margin-right: 12px;
+    flex-wrap: nowrap;
   }
 
   .lado-d {

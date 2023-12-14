@@ -22,6 +22,7 @@ const CreateStep = ({
         <div className={styles['tipo-unit']}>
           <div className={styles['img-tipo']}>
             <img src="/images/crear-tipo.png" />
+            <div className={styles['img-tipo-glass']}></div>
           </div>
           <div className={styles['tipo-info']}>
             <div className={styles.tipos}>

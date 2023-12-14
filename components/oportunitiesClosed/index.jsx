@@ -6,51 +6,71 @@ import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../oportunitiesHistory';
 
 const OportunitiesClosed = () => {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleItemClick = (index) => {
+    setSelectedItem(index);
+  };
+
+  const oportunities = [
+    {
+      closed: true,
+      estimatedProgress: 0.55,
+      image: '/images/perfil-img.jpeg',
+      name: 'Fontana Campestre',
+      location: 'Fontana Campestre',
+      type: 'TIPO 1 - 302',
+      followingDate: '23/05/23',
+      temperature: 'cold',
+      progress: 0.4,
+    },
+    {
+      closed: true,
+      estimatedProgress: 0.7,
+      image: '/images/perfil-img.jpeg',
+      name: 'Fontana Campestre',
+      location: 'Fontana Campestre',
+      type: 'TIPO 1 - 302',
+      followingDate: '23/05/23',
+      temperature: 'warm',
+      progress: 0.6,
+    },
+    {
+      closed: true,
+      estimatedProgress: 0.9,
+      image: '/images/perfil-img.jpeg',
+      name: 'Fontana Campestre',
+      location: 'Fontana Campestre',
+      type: 'TIPO 1 - 302',
+      followingDate: '23/05/23',
+      temperature: 'hot',
+      progress: 0.8,
+    },
+  ];
   return (
     <>
-      {/* <div className={styles.filter_container}>
-        <label htmlFor="subject"></label>
-        <select
-          placeholder="Subject line"
-          name="subject"
-          className={styles.filter_input}>
-          <option disabled defaultValue={1} hidden selected></option>
-          <option>MAS RECIENTE</option>
-          <option>MENOS RECIENTE</option>
-        </select>
-        <span className={styles.label_filter}>Ordenar por:</span>
-      </div> */}
-
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-          <OportunitiesCard
-            hot={'cold'}
-            state={false}
-            image={'/images/perfil-img.jpeg'}
-            name={'Fontana Campestre'}
-            location={'Fontana Campestre'}
-            type={'TIPO 1 - 302'}
-            followingDate={'23/05/23'}></OportunitiesCard>
-          <OportunitiesCard
-            hot={'hot'}
-            state={true}
-            image={'/images/perfil-img.jpeg'}
-            name={'Fontana Campestre'}
-            location={'Fontana Campestre'}
-            type={'TIPO 1 - 302'}
-            followingDate={'23/05/23'}></OportunitiesCard>
-          <OportunitiesCard
-            hot={'warm'}
-            state={true}
-            image={'/images/perfil-img.jpeg'}
-            name={'Fontana Campestre'}
-            location={'Fontana Campestre'}
-            type={'TIPO 1 - 302'}
-            followingDate={'23/05/23'}></OportunitiesCard>
-        </div>
-
-        <div className={styles['wrap-right']}>
-          <OportunitiesHistory></OportunitiesHistory>
+          {oportunities.map((oportunity, i) => (
+            <div
+              className={styles['card-unit-list']}
+              key={i}
+              onClick={() => handleItemClick(i)}>
+              <OportunitiesCard
+                closed={oportunity.image}
+                estimatedProgress={oportunity.estimatedProgress}
+                state={selectedItem === i}
+                image={oportunity.image}
+                name={oportunity.name}
+                location={oportunity.location}
+                type={oportunity.type}
+                followingDate={oportunity.followingDate}
+                historyComponent={OportunitiesHistory}
+                progress={oportunity.progress}
+                temperature={oportunity.temperature}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </>

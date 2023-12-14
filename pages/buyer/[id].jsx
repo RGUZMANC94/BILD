@@ -6,6 +6,9 @@ import RightSideProfile from '../../components/rightSideInfoProfile';
 const BuyerProfile = () => {
   return (
     <div className={styles.perfil}>
+      <Link
+        href="/contacts"
+        className={`${styles.closeContactSide} bg-ct`}></Link>
       <SideInfoProfile typeViewer={'buyer'} />
       <div className={styles.pendientes}>
         <Link

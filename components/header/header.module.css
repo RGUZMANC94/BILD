@@ -96,7 +96,7 @@
 }
 
 .menuPpal a {
-  color: #777;
+  color: #fff;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -131,7 +131,7 @@
 }
 .menuPpal a:hover > div img,
 .menuPpal a.active > div img {
-  margin-top: -33px;
+  margin-top: -34px;
 }
 
 .smallNumber {
@@ -263,6 +263,13 @@
 
   .smallNumber {
     right: 0px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .menuPpal {
+    width: 100%;
+    gap: unset;
   }
 }
 
