@@ -37,7 +37,10 @@ const CreateProject = () => {
       }
       reader.onload = (e) => {
         setXlsxFileName(event.target.files[0].name);
-        featuredProject.current.classList.add(styles.showXlsx);
+        if(featuredProject.current){
+          featuredProject.current.classList.add(styles.showXlsx);
+        }
+        
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -115,7 +118,7 @@ const CreateProject = () => {
     }, 300);
   };
 
-  const createProject = async (e) => {
+  const createProjectForm = async (e) => {
     e.preventDefault();
 
     const newProjectInfo = {
@@ -131,8 +134,9 @@ const CreateProject = () => {
 
     const form = new FormData(document.getElementById('IDForm'));
 
+
     const projectCreated = await fetch('/api/createProject', {
-      method: 'put',
+      method: 'post',
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -147,7 +151,7 @@ const CreateProject = () => {
       .classList.add(styles.activePopUp);
     setTimeout(() => {
       router.push('/');
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -155,7 +159,7 @@ const CreateProject = () => {
       <section className={styles.main}>
         <form
           className={styles.createProjectForm}
-          onSubmit={createProject}
+          onSubmit={createProjectForm}
           id="IDForm">
           <div className={styles['proyect-left']}>
             <div className={styles['image-movil']}>
@@ -220,9 +224,7 @@ const CreateProject = () => {
                   <textarea
                     name="message"
                     placeholder=""
-                    className={['message_input']}
-                    cols="30"
-                    rows="5"
+                    className={styles['message_input']}
                     required
                     ref={inputProjectDescription}></textarea>
                 </div>
@@ -231,7 +233,7 @@ const CreateProject = () => {
           </div>
           <div className={styles['proyect-right']}>
             <div className={styles.file}>
-              <a button className={styles.descargar} href="#">
+              <a  className={styles.descargar} href="#">
                 <img src="/images/download.svg" />
                 Descargar Excel Base
               </a>
@@ -312,10 +314,10 @@ const CreateProject = () => {
               </div>
             </div>
             <div className={styles['file-movil']}>
-              <a button className={styles.subir} href="#popup1">
+              <a  className={styles.subir} href="#popup1">
                 SUBIR EXCEL de INVENTARIO
               </a>
-              <a button className={styles.descargar} href="#">
+              <a  className={styles.descargar} href="#">
                 <img src="/images/download.png" />
                 Descargar Excel Base
               </a>
