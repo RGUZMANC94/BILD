@@ -51,13 +51,12 @@
   font-weight: 300;
 }
 
-
-@media only screen and (max-width: 768px) { 
-  .lista-evento{
+@media only screen and (max-width: 768px) {
+  .lista-evento {
     margin-top: 0px;
   }
 
   .lista-evento span {
-    color: #FFF;
+    color: #fff;
   }
 }
