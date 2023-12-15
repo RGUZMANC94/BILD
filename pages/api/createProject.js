@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     const response = await fetch(
       'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/CreateProject',
       {
-        method: 'put',
+        method: 'post',
         headers: {
           'Content-Type': 'multipart/form-data',
         },
