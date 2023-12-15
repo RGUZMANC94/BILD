@@ -5,7 +5,7 @@ import styles from './oportunities-contact.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
 
-const OportunitiesContact = ({userId}) => {
+const OportunitiesContact = ({ userId }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {

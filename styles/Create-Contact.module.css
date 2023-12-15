@@ -306,7 +306,7 @@
   background: #2467ff;
 }
 
-.buttons-right{
+.buttons-right {
   display: none;
 }
 
@@ -412,8 +412,6 @@
   .crear-contacto {
     margin-top: 125px;
   }
-
-
 }
 
 @media only screen and (max-width: 480px) {

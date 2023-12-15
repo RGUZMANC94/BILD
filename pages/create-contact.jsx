@@ -153,7 +153,9 @@ const CreateContact = () => {
                   className={styles['crear-contacto']}>
                   <i className="fa-solid fa-plus"></i>Crear oportunidad
                 </Link>
-                <button className={styles['contacto-existente']}>Guardar</button>
+                <button className={styles['contacto-existente']}>
+                  Guardar
+                </button>
               </div>
             </div>
           </div>

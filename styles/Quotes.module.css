@@ -270,7 +270,6 @@
   .accordion-btn {
     padding-right: 55px;
     font-weight: 500;
-    
   }
 
   .accordion-btn::before {
@@ -283,5 +282,4 @@
     right: 0;
     left: unset;
   }
-
 }

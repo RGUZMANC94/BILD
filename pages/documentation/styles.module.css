@@ -310,20 +310,19 @@ button.upload-file {
 }
 
 @media only screen and (max-width: 1024px) {
-
   .editar-perfil {
     display: none;
   }
 
-  .documentacion-requerida{
+  .documentacion-requerida {
     width: 100%;
   }
 
   .doc-list {
     width: 90%;
   }
-  
-  .doc-top{
+
+  .doc-top {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
