@@ -36,6 +36,7 @@ const Documentation = () => {
 
         <div className={styles['documentacion-requerida']}>
           <div className={styles['doc-top']}>
+            <span className={styles['doc-title-movil']}>Henry Cavill</span>
             <span className={styles['doc-title']}>DOCUMENTACIÓN REQUERIDA</span>
           </div>
           <div className={styles['doc-wrap']}>

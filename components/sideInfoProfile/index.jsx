@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './SideInfoProfile.module.css';
 import capitalizeFLetter from '../../utils/capitalizeFirstLetter';
+import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 const SideInfoProfile = ({ typeViewer }) => {
@@ -90,25 +91,25 @@ const SideInfoProfile = ({ typeViewer }) => {
           </div>
           <div className={styles['pendientes-movil']}>
             <div className={styles['opc-pendiente']}>
-              <div className={styles.opcion}>
+              <Link href="/oportunities/0" className={styles.opcion}>
                 <img src="/images/key-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>2</span>
                 Oportunidades
-              </div>
-              <div className={styles.opcion}>
+              </Link>
+              <Link href="/quotes" className={styles.opcion}>
                 <img src="/images/cotizaciones-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>5</span>
                 Cotizaciones
-              </div>
-              <div className={styles.opcion}>
+              </Link>
+              <Link href="/documentation/1" className={styles.opcion}>
                 <img src="/images/docs-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>3</span>
                 Documentación
-              </div>
-              <div className={styles.opcion}>
+              </Link>
+              <Link href="/payments" className={styles.opcion}>
                 <img src="/images/payments-white.png" />
                 <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
-              </div>
+              </Link>
             </div>
           </div>
           <div className={styles['informacion-perfil']}>

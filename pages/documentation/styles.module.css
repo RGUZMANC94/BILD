@@ -304,3 +304,49 @@ button.upload-file {
 .title {
   width: calc(100% - 40px);
 }
+
+.doc-title-movil {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .editar-perfil {
+    display: none;
+  }
+
+  .documentacion-requerida{
+    width: 100%;
+  }
+
+  .doc-list {
+    width: 90%;
+  }
+  
+  .doc-top{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .doc-title-movil {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0.78;
+    font-weight: 700;
+  }
+
+  .doc-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .archivo {
+    display: none;
+  }
+}

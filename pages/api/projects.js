@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   try {
     console.log(req.body.page);
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectOverview?username=${req.body.id}&page=${req.body.page}`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectOverview?username=${req.body.id}&page=${req.body.page}&rows=2`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');

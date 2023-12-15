@@ -1004,6 +1004,11 @@ li.active button {
     z-index: 2;
   }
 
+  .containerEstate {
+    max-height: unset;
+    padding-bottom: 180px;
+  }
+
   .outerTypes {
     width: 76%;
   }

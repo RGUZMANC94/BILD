@@ -87,7 +87,7 @@
 }
 
 .ver-line {
-  border-right: 2px solid #2467ff;
+  border-right: 2px solid #fff;
   height: 100%;
   min-height: 80px;
 }
@@ -449,10 +449,23 @@ button.cancelar {
     top: 50px !important;
   }
 
+  .top-content {
+    position: relative;
+    margin-top: 0px;
+    padding-top: 0px;
+
+  }
+
   .blue-point,
   .grey-point {
     left: -35px;
   }
+
+  .right {
+    margin-top: 110px;
+    padding-top: 0px;
+  }
+  
 
   .wrap-info-movil {
     width: 90%;
@@ -496,9 +509,9 @@ button.cancelar {
     box-shadow: -3px 0px 8px #dddddd;
   }
 
-  .title {
+  /*.title {
     display: none;
-  }
+  }*/
 
   .separador {
     display: none;
@@ -510,8 +523,12 @@ button.cancelar {
   }
 
   .icon {
-    display: none;
+    width: 20px;
+    height: 20px;
   }
+  /*.icon {
+    display: none;
+  }*/
 
   .title-movil {
     display: flex;

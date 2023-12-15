@@ -306,6 +306,10 @@
   background: #2467ff;
 }
 
+.buttons-right{
+  display: none;
+}
+
 @media only screen and (min-width: 2000px) {
   .wrap-datos {
     height: auto;
@@ -320,6 +324,10 @@
   }
 
   .page-disabled {
+    display: none;
+  }
+
+  .datos-left.page-active .crear-contacto {
     display: none;
   }
 
@@ -340,6 +348,13 @@
     flex-direction: column;
   }
 
+  .buttons-right {
+    width: 100%;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: column;
+  }
+
   .datos-left {
     width: 90%;
     margin: 0px auto 110px auto;
@@ -347,7 +362,7 @@
   }
   .datos-right {
     width: 100%;
-    margin-top: 0px;
+    margin: 0px auto 110px auto;
     padding: 0px;
   }
 
@@ -365,14 +380,40 @@
 
   .sub-title {
     margin-top: 0px;
+    margin-bottom: 21px;
   }
   .datos {
     margin-bottom: 30px;
+    grid-row-gap: 20px;
+    grid-column-gap: 8px;
   }
 
   .contacto-existente {
     margin-top: 8px;
   }
+
+  .msform input,
+  .msform textarea {
+    margin-bottom: 24px;
+  }
+
+  .foto {
+    margin: 18px 0px 42px 0px;
+  }
+
+  .outerImg {
+    padding: 1px;
+  }
+
+  .campo {
+    margin: 0px;
+  }
+
+  .crear-contacto {
+    margin-top: 125px;
+  }
+
+
 }
 
 @media only screen and (max-width: 480px) {

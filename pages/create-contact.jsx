@@ -145,8 +145,16 @@ const CreateContact = () => {
               </div>
               {/* <button className={styles["crear-contacto"]}>
                 <i className="fa-solid fa-plus"></i>Crear oportunidad
-              </button>
+                </button>
               <button className={styles["contacto-existente"]}>Guardar</button> */}
+              <div className={styles['buttons-right']}>
+                <Link
+                  href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+                  className={styles['crear-contacto']}>
+                  <i className="fa-solid fa-plus"></i>Crear oportunidad
+                </Link>
+                <button className={styles['contacto-existente']}>Guardar</button>
+              </div>
             </div>
           </div>
         </div>
