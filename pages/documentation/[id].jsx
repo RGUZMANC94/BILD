@@ -57,7 +57,7 @@ const Documentation = () => {
               <div className={styles['top-cedula']}>
                 <span className={styles['ced-text']}>Fotocopia Cédula</span>
                 <div className={styles['ced-icon']}>
-                  <img src="/images/paper-clip.png" />
+                  <img src="/images/paper-clip-b.png" />
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ const Documentation = () => {
                   Certificado de ingresos y retenciones
                 </span>
                 <div className={styles['ced-icon']}>
-                  <img src="/images/paper-clip.png" />
+                  <img src="/images/paper-clip-b.png" />
                 </div>
               </div>
             </div>

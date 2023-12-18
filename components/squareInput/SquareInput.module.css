@@ -1,0 +1,19 @@
+.checkboxWrapper {
+  display: inline-block;
+  width: 20px; /* Ancho deseado para el checkbox */
+  height: 20px; /* Alto deseado para el checkbox */
+  border: 1px solid white;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.checkboxChecked {
+  background-image: url(/images/white-rectangle.svg);
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.checkboxInput {
+  display: none;
+}

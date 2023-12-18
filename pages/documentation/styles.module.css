@@ -195,7 +195,7 @@ button.upload-file {
 }
 
 .title-cert::before {
-  content: url(/images/check-circle-blue.png);
+  content: url(/images/check-mark-documentation.png);
   margin-right: 10px;
   margin-top: 10px;
 }
@@ -310,6 +310,11 @@ button.upload-file {
 }
 
 @media only screen and (max-width: 1024px) {
+  .doc-perfil {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+
   .editar-perfil {
     display: none;
   }
@@ -347,5 +352,17 @@ button.upload-file {
 
   .archivo {
     display: none;
+  }
+
+  .top-cedula {
+    width: 100%;
+  }
+
+  .certificado {
+    width: 100%;
+  }
+
+  .buttons {
+    width: 90%;
   }
 }

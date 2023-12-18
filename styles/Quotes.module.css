@@ -179,6 +179,8 @@
   width: calc(100% - 40px);
 }
 
+
+
 @keyframes heightUp {
   0% {
     max-height: 0;
@@ -194,6 +196,11 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.name-field img {
+  height: auto;
+  margin: 0px 10px 0px 20px;
+}
 .fecha-field {
   width: 30%;
 }
@@ -202,20 +209,117 @@
   width: 10%;
 }
 .icons {
-  width: 10%;
+  width: 20%;
   display: flex;
   flex-direction: row;
 }
 
 .upload {
   width: 50%;
+  align-items: center;
+}
+
+.upload img {
+  width: 25px;
+  height: 25px;
+  margin: 0% 40%;
 }
 
 .delete {
   width: 50%;
 }
 
+.delete img {
+  width: 25px;
+  height: 25px;
+  margin: 0% 40%;
+}
+
+.movil-info {
+  display: none;
+}
+
+.title-movil {
+  display: none;
+  cursor: pointer;
+}
+
+.submenu {
+  display: none;
+}
+
+
+.sub-close {
+  height: 20px;
+  width: 20px;
+  background-image: url(/images/close-white.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.sub-text {
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45;
+  margin-left: 15px;
+}
+
+.sub-icons {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.sub-upload {
+  margin-right: 14px;
+}
+
+.sub-upload img{
+  height: 20px;
+  width: 20px;
+}
+
+.sub-delete img{
+  height: 20px;
+  width: 20px;
+}
+
+
 @media only screen and (max-width: 959px) {
+
+  .submenu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: rgba(34, 34, 34, 0.95);
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    bottom: 93px;
+  }
+
+  .listas-cotizaciones {
+    padding-bottom: 140px;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .title-movil {
+    width: calc(100% - 40px);
+    display: inline;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.33;
+  }
+
   .buscador-contactos {
     display: none;
   }
@@ -231,32 +335,75 @@
 
   .file {
     width: 100%;
+    min-height: 90px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     line-height: 30px;
+    position: relative;
   }
 
+  .checkbox-container {
+    top: 40%;
+    position: absolute;
+    right: 15px;
+  }
+
+  .name-field img {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    content: url(/images/pdf-movil.png);
+  }
+
+  .fecha-field ,
+  .size-field {
+    display: none;
+  }
+  .movil-info {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 60px;
+    gap: 5px;
+  }
+
+  .size-field-movil,
+  .fecha-field-movil {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .separator-movil {
+    color: #fff;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .name-field span{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+    text-transform: uppercase;
+  }
+  
   .name-field {
     width: 100%;
-  }
-  .fecha-field {
-    width: 60%;
-    position: relative;
-    left: 75px;
-  }
-
-  .size-field {
-    width: 30%;
-    position: relative;
-    left: 75px;
+    margin-left: 60px;
   }
 
   .icons {
-    width: 30%;
-    position: relative;
-    left: 75px;
+    display: none;
   }
 
   .upload {
@@ -269,11 +416,11 @@
 
   .accordion-btn {
     padding-right: 55px;
+    font-size: 14px;
     font-weight: 500;
   }
 
   .accordion-btn::before {
-    content: url(/images/pdf-movil.png);
     margin-right: 10px;
     right: 0;
   }
