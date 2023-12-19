@@ -21,6 +21,11 @@
   width: calc(100% - 40px);
 }
 
+.title-movil,
+.sub-title-movil {
+  display: none;
+}
+
 .right-box .icon {
   width: 100%;
   height: 100%;
@@ -145,6 +150,27 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .title {
+    display: none;
+  }
+
+  .title-movil {
+    display: block;
+    width: calc(100% - 40px);
+  }
+  .sub-title-movil {
+    display: block;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.78;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
   .pagos-section > div {
     flex-direction: column;
     gap: 15px;

@@ -8,11 +8,13 @@ const Payments = () => {
         <div className="container flex j-s a-c">
           <Link href={'/buyer/1'} className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>Pagos John Lennon </div>
+          <div className={styles['title-movil']}>Pagos</div>
         </div>
       </div>
 
       <div className={styles['pagos-section']}>
         <div className="container flex j-c a-s">
+          <div className={styles['sub-title-movil']}>John Lennon </div>
           <Link href="/payments/1" className={`wrap ${styles['pagos-box']}`}>
             <div className={styles['left-box']}>
               <span className={styles['box-title']}>Fontana Campestre</span>

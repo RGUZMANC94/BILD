@@ -37,10 +37,9 @@ const CreateProject = () => {
       }
       reader.onload = (e) => {
         setXlsxFileName(event.target.files[0].name);
-        if(featuredProject.current){
+        if (featuredProject.current) {
           featuredProject.current.classList.add(styles.showXlsx);
         }
-        
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -134,7 +133,6 @@ const CreateProject = () => {
 
     const form = new FormData(document.getElementById('IDForm'));
 
-
     const projectCreated = await fetch('/api/createProject', {
       method: 'post',
       headers: {
@@ -224,7 +222,7 @@ const CreateProject = () => {
                   <textarea
                     name="message"
                     placeholder=""
-                    className={styles['message_input']}
+                    className={styles.message_input}
                     required
                     ref={inputProjectDescription}></textarea>
                 </div>
@@ -233,7 +231,7 @@ const CreateProject = () => {
           </div>
           <div className={styles['proyect-right']}>
             <div className={styles.file}>
-              <a  className={styles.descargar} href="#">
+              <a className={styles.descargar} href="#">
                 <img src="/images/download.svg" />
                 Descargar Excel Base
               </a>
@@ -314,10 +312,10 @@ const CreateProject = () => {
               </div>
             </div>
             <div className={styles['file-movil']}>
-              <a  className={styles.subir} href="#popup1">
+              <a className={styles.subir} href="#popup1">
                 SUBIR EXCEL de INVENTARIO
               </a>
-              <a  className={styles.descargar} href="#">
+              <a className={styles.descargar} href="#">
                 <img src="/images/download.png" />
                 Descargar Excel Base
               </a>

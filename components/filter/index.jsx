@@ -24,21 +24,20 @@ const Filter = ({ show, setShowFilter }) => {
     projectsList.length > 0
       ? Math.max(...projectsList.map((project) => project.maxPrice))
       : 1200;
-  
+
   const [priceValues, setPriceValues] = useState([minPrice, maxPrice]);
   const [floorValues, setFloorValues] = useState([1, 21]);
   const [sizeValues, setSizeValues] = useState([minSize, maxSize]);
-  const [locationSelected, setLocationSelected] = useState("");
-  const [bedSelected, setBedSelected] = useState("");
-  const [bathSelected, setBathSelected] = useState("");
-
+  const [locationSelected, setLocationSelected] = useState('');
+  const [bedSelected, setBedSelected] = useState('');
+  const [bathSelected, setBathSelected] = useState('');
 
   const dispatch = useDispatch();
 
   const filterProjects = async () => {
     try {
-      const response = await fetch('/api/filterProjects',{
-        method: "POST",
+      const response = await fetch('/api/filterProjects', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -51,19 +50,22 @@ const Filter = ({ show, setShowFilter }) => {
           maxSize: sizeValues[1],
           locationSelected,
           bedSelected,
-          bathSelected
-        })
+          bathSelected,
+        }),
       });
-      if(!response.ok){
-        throw new Error("Bad response from server");        
+      if (!response.ok) {
+        throw new Error('Bad response from server');
       }
       const leakedProjects = await response.json();
-      dispatch(setProjects(leakedProjects))
+      dispatch(setProjects(leakedProjects));
     } catch (error) {
-      console.log('%cerror index.jsx line:28 ', 'color: red; display: block; width: 100%;', error);
+      console.log(
+        '%cerror index.jsx line:28 ',
+        'color: red; display: block; width: 100%;',
+        error
+      );
     }
-    
-  }
+  };
 
   if (!projectsList.length) {
     return <></>;
@@ -240,7 +242,7 @@ const Filter = ({ show, setShowFilter }) => {
                   value={'default'}
                   defaultValue={'default'}
                   onChange={(e) => {
-                    setBedSelected(e.target.value)
+                    setBedSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
                   <option value={'default'} selected>
@@ -259,7 +261,7 @@ const Filter = ({ show, setShowFilter }) => {
                   defaultValue={'default'}
                   value={'default'}
                   onChange={(e) => {
-                    setBathSelected(e.target.value)
+                    setBathSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
                   <option value={'default'} selected>

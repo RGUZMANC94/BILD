@@ -257,9 +257,11 @@
   }
   .phone-movil {
     width: 50%;
+    text-align: center;
   }
   .wa-movil {
     width: 50%;
+    text-align: center;
   }
 
   .contact {

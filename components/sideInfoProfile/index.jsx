@@ -18,39 +18,61 @@ const SideInfoProfile = ({ typeViewer }) => {
         {capitalizeFLetter(typeViewer)}
       </span>
       {(typeViewer === 'adviser' || typeViewer === 'admin') && (
-        <div className={styles['perfil-icons']}>
-          <div className={styles['id-perfil']}>
-            <img src="/images/document-blue.png" />
-            13.932.102. Bogotá D.C
-          </div>
-          <div className={styles['perfil-edit']}>
-            <div className={styles['perfil-left']}>
-              <img src="/images/mail-blue.png" />
-              <a href="mailto:henrycavill@gmail.com">henrycavil@gmail.com</a>
+        <div className={styles['perfil-icons-admin']}>
+          <div className={styles['admin-section-container']}>
+            <div className={styles['admin-img-container']}>
+              <img src="/images/id-profile.svg" />
             </div>
-            <div className={styles['perfil-right']}>
-              <img className={styles.edit} src="/images/small-edit.png" />
+            <div className={styles['admin-text-container']}>
+              13.932.102. Bogotá D.C
             </div>
           </div>
-          <div className={styles['perfil-edit']}>
-            <div className={styles['perfil-left']}>
-              <img src="/images/phone-blue.png" />
-              314 786 0473
+
+          <div className={styles['admin-section-container']}>
+            <div className={styles['admin-img-container']}>
+              <img src="/images/email-profile.svg" />
             </div>
-            <div className={styles['perfil-right']}>
-              <img className={styles.edit} src="/images/small-edit.png" />
+            <div className={styles['admin-text-container']}>
+              johnlennon@gmail.com
+            </div>
+            <div className={styles['admin-edit-container']}>
+              <img src="/images/edit-profile.svg" />
             </div>
           </div>
-          <div className={styles['perfil-icon']}>
-            <img src="/images/contacts-blue.png" />
-            103 contactos
+
+          <div className={styles['admin-section-container']}>
+            <div className={styles['admin-img-container']}>
+              <img src="/images/phone-profile.svg" />
+            </div>
+            <div className={styles['admin-text-container']}>329 043 0000</div>
+            <div className={styles['admin-edit-container']}>
+              <img src="/images/edit-profile.svg" />
+            </div>
           </div>
-          <div className={styles['perfil-icon']}>
-            <img src="/images/contacts-blue.png" />
-            10 contactos recientes
+
+          <div className={styles['admin-section-container']}>
+            <div className={styles['admin-img-container']}>
+              <img src="/images/contacts-profile.svg" />
+            </div>
+            <div className={styles['admin-text-container']}>103 contactos</div>
           </div>
-          <div className={styles['perfil-icon']}>
-            <img src="/images/proyects-blue.png" />5 proyectos activos
+
+          <div className={styles['admin-section-container']}>
+            <div className={styles['admin-img-container']}>
+              <img src="/images/contacts-profile.svg" />
+            </div>
+            <div className={styles['admin-text-container']}>
+              10 contactos recientes
+            </div>
+          </div>
+
+          <div className={styles['admin-section-container']}>
+            <div className={styles['admin-img-container']}>
+              <img src="/images/projects-profile.svg" />
+            </div>
+            <div className={styles['admin-text-container']}>
+              5 proyectos activos
+            </div>
           </div>
         </div>
       )}

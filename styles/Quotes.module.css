@@ -179,8 +179,6 @@
   width: calc(100% - 40px);
 }
 
-
-
 @keyframes heightUp {
   0% {
     max-height: 0;
@@ -248,7 +246,6 @@
   display: none;
 }
 
-
 .sub-close {
   height: 20px;
   width: 20px;
@@ -279,19 +276,17 @@
   margin-right: 14px;
 }
 
-.sub-upload img{
+.sub-upload img {
   height: 20px;
   width: 20px;
 }
 
-.sub-delete img{
+.sub-delete img {
   height: 20px;
   width: 20px;
 }
-
 
 @media only screen and (max-width: 959px) {
-
   .submenu {
     display: flex;
     flex-direction: row;
@@ -359,7 +354,7 @@
     content: url(/images/pdf-movil.png);
   }
 
-  .fecha-field ,
+  .fecha-field,
   .size-field {
     display: none;
   }
@@ -389,14 +384,14 @@
     line-height: 1.6;
   }
 
-  .name-field span{
+  .name-field span {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.33;
     text-transform: uppercase;
   }
-  
+
   .name-field {
     width: 100%;
     margin-left: 60px;
