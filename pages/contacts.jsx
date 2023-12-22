@@ -1,9 +1,39 @@
 import Link from 'next/link';
 import styles from '../styles/Contacts.module.css';
+import recentsContacts from './api/recentsContacts';
+import { useRouter } from 'next/router';
+import { getSessionToken } from '../utils/getSessionToken';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Contacts = () => {
-  const contacts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const recentContacts = [1, 2, 3];
+  const router = useRouter();
+  const [recentContacts, setRecentsContacts] = useState([]);
+  const { id } = useSelector((state) => state.userState);
+
+  const getRecentsContacts = async () => {
+    const response = await fetch('/api/recentsContacts', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    const recentsContacts = await response.json();
+    console.log('dentrod e contactos:', recentsContacts);
+    setRecentsContacts(recentsContacts);
+  };
+
+  useEffect(() => {
+    if (!getSessionToken()) {
+      router.push('/login');
+      getRecentsContacts();
+      return;
+    }
+    getRecentsContacts();
+  }, []);
+
   return (
     <section className={styles['main-contain-contact']}>
       <div className="container">
@@ -16,21 +46,22 @@ const Contacts = () => {
           <div className={styles.numero}>Número de contacto</div>
         </div>
         <div className={styles.listas}>
-          <div className={styles.reciente}>Creados Recientemente (2)</div>
-          {recentContacts.map((recent, i) => (
+          <div className={styles.reciente}>
+            Creados Recientemente (
+            {recentContacts.length >= 3 ? '3' : recentContacts.length})
+          </div>
+          {recentContacts.slice(0, 3).map((recent, i) => (
             <div className={styles['list-name']} key={i}>
               <Link href={`/buyer/${i}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
                     <img src="/images/Ellipse 81.png" />
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
-                    Gustavo Cerati
+                    {`${recent.name} ${recent.lastname}`}
                   </div>
-                  <div className={styles['reciente-col']}>
-                    gustavo.cerati@gmail.com
-                  </div>
+                  <div className={styles['reciente-col']}>{recent.email}</div>
                   <div className={styles.number}>
-                    +57 3015928421
+                    {`+57 ${recent.phoneNumber}`}
                     <img src="/images/whastapp-blue.png" />
                   </div>
                   <div className={styles['iconos-movil']}>
@@ -47,19 +78,20 @@ const Contacts = () => {
           ))}
         </div>
         <div className={styles.listas}>
-          <div className={styles.reciente}>Contactos (52)</div>
-          {contacts.map((contact, i) => (
+          <div className={styles.reciente}>
+            Contactos ({recentContacts.length})
+          </div>
+          {recentContacts.map((contact, i) => (
             <div className={styles['list-name']} key={i}>
               <Link href={`/buyer/${i}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
-                    <img src="/images/Ellipse 81.png" /> Gustavo Cerati
+                    <img src="/images/Ellipse 81.png" />
+                    {`${contact.name} ${contact.lastname}`}
                   </div>
-                  <div className={styles['reciente-col']}>
-                    gustavo.cerati@gmail.com
-                  </div>
+                  <div className={styles['reciente-col']}>{contact.email}</div>
                   <div className={styles.number}>
-                    +57 3015928421
+                    {`+57 ${contact.phoneNumber}`}
                     <img src="/images/whastapp-blue.png" />
                   </div>
                   <div className={styles['iconos-movil']}>

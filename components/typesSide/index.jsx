@@ -6,47 +6,15 @@ const TypesSide = ({
   viewEstate,
   setShowPopUpType,
   types,
+  units,
   setCreateOportunity,
 }) => {
-  // const { typeSelected } = useSelector((state) => state.typeState);
-  const units = [
-    {
-      id: 0,
-      beds: 3,
-      baths: 2,
-      price: 135000000,
-    },
-    {
-      id: 1,
-      beds: '3 + Studio',
-      baths: 3,
-      price: 140000000,
-    },
-    {
-      id: 2,
-      beds: 3,
-      baths: 3,
-      price: 140000000,
-    },
-    {
-      id: 3,
-      beds: 4,
-      baths: 2,
-      price: 120000000,
-    },
-    {
-      id: 4,
-      beds: 3,
-      baths: 2,
-      price: 220000000,
-    },
-    {
-      id: 5,
-      beds: 3,
-      baths: 2,
-      price: 135000000,
-    },
-  ];
+  // const unitsFiltered = units;
+  const { typeSelected } = useSelector((state) => state.typeState);
+  console.log('Tipos dentro de typeSide:', types);
+  const unitsFiltered = units.filter(
+    (unit) => unit.type === types[typeSelected].Tipo
+  );
   return (
     <div className={`unidadesSide ${viewEstate === 'units' ? 'active' : ''}`}>
       <AllTypes
@@ -55,7 +23,10 @@ const TypesSide = ({
         setCreateOportunity={setCreateOportunity}
       />
       <div className="outerUnits">
-        <Units setCreateOportunity={setCreateOportunity} units={units} />
+        <Units
+          setCreateOportunity={setCreateOportunity}
+          units={unitsFiltered}
+        />
       </div>
     </div>
   );

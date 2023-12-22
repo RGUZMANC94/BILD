@@ -32,7 +32,6 @@ const OportunitiesAllFilter = () => {
     });
 
     const recentsContacts = await response.json();
-    console.log(recentsContacts);
     setRecentsContacts(recentsContacts);
   };
 

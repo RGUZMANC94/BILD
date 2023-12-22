@@ -25,7 +25,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
         <input
           type="text"
           className={styles.inputToEditValue}
-          value={unit.id}
+          value={unit.idProperty}
           disabled={isHidden}
         />
       </div>
@@ -33,7 +33,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
         <input
           type="text"
           className={styles.inputToEditValue}
-          value={unit.beds}
+          value={unit.bedrooms}
           disabled={isHidden}
         />
       </div>
@@ -45,11 +45,12 @@ const Unit = ({ unit, setCreateOportunity }) => {
           disabled={isHidden}
         />
       </div>
+      {unit.type}
       <div className="detalle-tabla">
         <input
           type="text"
           className={styles.inputToEditValue}
-          value={`$ ${unit.price
+          value={`$ ${unit.propertyPrice
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`}
           disabled={isHidden}

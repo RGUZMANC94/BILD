@@ -24,6 +24,8 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
         });
         itemsDrag[index].classList.add('active');
         dispatch(changeTypeSelected(index));
+        console.log('Tipo seleccionado: ', type.Tipo);
+        console.log('Index: ', index);
       }}>
       <div className="draggable bg-ct" draggable={true}></div>
       <div className="maskDraggable"></div>
@@ -33,13 +35,17 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
           <div className="img-tipo-glass"></div>
         </div>
         <div className="tipo-info">
-          <span className="tipo-title">Tipo {type.type}</span>
+          <span className="tipo-title">Tipo {type.Tipo}</span>
           <span className="valor">$ {USDollar.format(type.propertyPrice)}</span>
           <div className="detalles">
             <img src="/images/cards/bed.png" />
-            <span>{type.bedrooms}</span>
+            <span>
+              {type['Habitaciones desde']}-{type['Habitaciones hasta']}
+            </span>
             <img src="/images/cards/bath.png" />
-            <span>{type.baths}</span>
+            <span>
+              {type['Baños desde']}-{type['Baños hasta']}
+            </span>
           </div>
         </div>
         <div className="tipo-icons">

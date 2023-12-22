@@ -141,13 +141,13 @@ const SideInfoProfile = ({ typeViewer }) => {
               <div className={styles.campos}>
                 <button
                   type="button"
-                  onclick="cambiarColor(this.parentNode)"
+                  onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
                   Con Hijos
                 </button>
                 <button
                   type="button"
-                  onclick="cambiarColor(this.parentNode)"
+                  onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
                   Separado
                 </button>
@@ -160,7 +160,7 @@ const SideInfoProfile = ({ typeViewer }) => {
               <div className={styles.campos}>
                 <button
                   type="button"
-                  onclick="cambiarColor(this.parentNode)"
+                  onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
                   Inversionista
                 </button>

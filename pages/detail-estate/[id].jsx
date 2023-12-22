@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
 import Link from 'next/link';
 
-const DetailState = ({ types }) => {
+const DetailState = ({ units, types }) => {
   const { id } = useSelector((state) => state.userState);
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
@@ -49,7 +49,6 @@ const DetailState = ({ types }) => {
     });
 
     const recentsContacts = await response.json();
-    console.log(recentsContacts);
     setRecentsContacts(recentsContacts);
   };
 
@@ -131,6 +130,7 @@ const DetailState = ({ types }) => {
           <div className={'containerEstate'} ref={containerEstate}>
             <TypesSide
               types={types}
+              units={units}
               viewEstate={viewEstate}
               setShowPopUpType={setShowPopUpType}
               setCreateOportunity={setCreateOportunity}
@@ -161,15 +161,26 @@ const DetailState = ({ types }) => {
   );
 };
 
+// Trae TODAS la unidades dado un id de pryecto
 export const getServerSideProps = async (context) => {
   const response = await fetch(
-    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD`
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD&type=`
   );
 
-  const types = await response.json();
+  const units = await response.json();
+
+  const resp = await fetch(
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPropertyTypes?username=FDBILD&projectId=${context.params.id}`
+  );
+
+  const types = await resp.json();
+
+  console.log('Unidades: ', units);
+  console.log('Tipos: ', types);
 
   return {
     props: {
+      units,
       types,
     },
   };

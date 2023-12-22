@@ -96,31 +96,31 @@ const CreateContact = () => {
             <div className={styles.datos}>
               <button
                 type="button"
-                onclick="cambiarColor(this.parentNode)"
+                onClick="cambiarColor(this.parentNode)"
                 className={styles.campo}>
                 Casado
               </button>
               <button
                 type="button"
-                onclick="cambiarColor(this.parentNode)"
+                onClick="cambiarColor(this.parentNode)"
                 className={styles.campo}>
                 Soltero
               </button>
               <button
                 type="button"
-                onclick="cambiarColor(this.parentNode)"
+                onClick="cambiarColor(this.parentNode)"
                 className={styles.campo}>
                 Con Hijos
               </button>
               <button
                 type="button"
-                onclick="cambiarColor(this.parentNode)"
+                onClick="cambiarColor(this.parentNode)"
                 className={styles.campo}>
                 Sin Hijos
               </button>
               <button
                 type="button"
-                onclick="cambiarColor(this.parentNode)"
+                onClick="cambiarColor(this.parentNode)"
                 className={styles.campo}>
                 Separado
               </button>
@@ -132,13 +132,13 @@ const CreateContact = () => {
               <div className={styles.datos}>
                 <button
                   type="button"
-                  onclick="cambiarColor(this.parentNode)"
+                  onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
                   Inversionista
                 </button>
                 <button
                   type="button"
-                  onclick="cambiarColor(this.parentNode)"
+                  onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
                   Familiar
                 </button>
