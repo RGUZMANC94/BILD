@@ -5,7 +5,7 @@ import styles from './oportunities-all.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
 
-const OportunitiesAll = () => {
+const OportunitiesAll = ({ oppList }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
@@ -61,7 +61,7 @@ const OportunitiesAll = () => {
     <>
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-          {oportunities.map((oportunity, i) => (
+          {oppList.map((oportunity, i) => (
             <div
               className={styles['card-unit-list']}
               key={i}
@@ -70,14 +70,14 @@ const OportunitiesAll = () => {
                 closed={oportunity.image}
                 estimatedProgress={oportunity.estimatedProgress}
                 state={selectedItem === i}
-                image={oportunity.image}
-                name={oportunity.name}
-                location={oportunity.location}
-                type={oportunity.type}
-                followingDate={oportunity.followingDate}
+                image={'/images/perfil-img.jpeg'}
+                name={oportunity.nameCustomer}
+                location={oportunity.nameProject}
+                type={`Tipo ${oportunity.propertyType} - ${oportunity.idProperty}`}
+                followingDate={oportunity.createdDate}
                 historyComponent={OportunitiesHistory}
-                progress={oportunity.progress}
-                temperature={oportunity.temperature}
+                progress={0.25}
+                temperature={'cold'} // hot warm cold
               />
             </div>
           ))}

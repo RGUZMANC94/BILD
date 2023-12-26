@@ -2,17 +2,20 @@ import OportunitiesAll from '../../components/oportunitiesAll';
 import OportunitiesPending from '../../components/oportunitiesPending';
 import OportunitiesClosed from '../../components/oportunitiesClosed';
 import styles from '../../styles/Oportunities-All.module.css';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CreateOportunity from '../../components/createOportunity';
+import { getSessionToken } from '../../utils/getSessionToken';
+import opportunities from '../api/opportunities';
 
 const OportunitiesAllFilter = () => {
+  const router = useRouter();
   const { id } = useSelector((state) => state.userState);
   const [showBar, setShowBar] = useState(false);
-
   const [showSection, setShowSection] = useState('all');
-
-  const [recentContacts, setRecentsContacts] = useState({});
+  const [allOpportunities, setAllOpportunities] = useState([]);
+  const [recentContacts, setRecentsContacts] = useState([]);
 
   const toggleShowBar = () => {
     setShowBar(!showBar);
@@ -21,6 +24,24 @@ const OportunitiesAllFilter = () => {
   const { openPopUpOportunity } = useSelector(
     (state) => state.popUpOportunityState
   );
+
+  const getAllOpportunities = async () => {
+    const response = await fetch('/api/opportunities', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idProject: '',
+        idClient: '',
+      }),
+    });
+
+    const opportunitiesResponse = await response.json();
+    console.log('dentro de opotunidades:', opportunitiesResponse);
+    setAllOpportunities(opportunitiesResponse);
+  };
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
@@ -32,8 +53,19 @@ const OportunitiesAllFilter = () => {
     });
 
     const recentsContacts = await response.json();
+    console.log('Contactos en oportunidades:', recentsContacts);
     setRecentsContacts(recentsContacts);
   };
+
+  useEffect(() => {
+    if (!getSessionToken()) {
+      router.push('/login');
+      getRecentsContacts();
+      return;
+    }
+    getAllOpportunities();
+    getRecentsContacts();
+  }, []);
 
   return (
     <>
@@ -93,9 +125,15 @@ const OportunitiesAllFilter = () => {
       </div>
       <section className={styles.main}>
         <div className="container flex j-sb a-s wrap">
-          {showSection === 'all' && <OportunitiesAll />}
-          {showSection === 'pending' && <OportunitiesPending />}
-          {showSection === 'closed' && <OportunitiesClosed />}
+          {showSection === 'all' && (
+            <OportunitiesAll oppList={allOpportunities} />
+          )}
+          {showSection === 'pending' && (
+            <OportunitiesPending oppList={allOpportunities} />
+          )}
+          {showSection === 'closed' && (
+            <OportunitiesClosed oppList={allOpportunities} />
+          )}
         </div>
       </section>
 

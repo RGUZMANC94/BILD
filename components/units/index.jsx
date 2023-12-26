@@ -8,6 +8,7 @@ import Link from 'next/link';
 const Units = ({ setCreateOportunity, units }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
   const { user_rol } = useSelector((state) => state.userState);
+  console.log('units', units);
 
   return (
     <div className="caracteristicas">

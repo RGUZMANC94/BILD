@@ -35,16 +35,19 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
           <div className="img-tipo-glass"></div>
         </div>
         <div className="tipo-info">
-          <span className="tipo-title">Tipo {type.Tipo}</span>
-          <span className="valor">$ {USDollar.format(type.propertyPrice)}</span>
+          <span className="tipo-title">Tipo {type.Type}</span>
+          <span className="valor">
+            $ {USDollar.format(type.minPrice)} -{' '}
+            {USDollar.format(type.maxPrice)}
+          </span>
           <div className="detalles">
             <img src="/images/cards/bed.png" />
             <span>
-              {type['Habitaciones desde']}-{type['Habitaciones hasta']}
+              {type.minBed}-{type.maxBed}
             </span>
             <img src="/images/cards/bath.png" />
             <span>
-              {type['Baños desde']}-{type['Baños hasta']}
+              {type.minBath}-{type.maxBath}
             </span>
           </div>
         </div>
