@@ -14,7 +14,7 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
       // style={style}
       // {...attributes}
       // {...listeners}
-      className={`itemDrag ${index === 0 ? 'active' : ''}`}
+      className={`itemDrag ${index === -1 ? 'active' : ''}`}
       onPointerUp={(e) => {
         const itemsDrag = document.querySelectorAll('.itemDrag');
         itemsDrag.forEach((item) => {
@@ -52,11 +52,12 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
           </div>
         </div>
         <div className="tipo-icons">
-          <div
+          {/* <div
             className="llave"
             onClick={() => {
               dispatch(openPopUp(true));
-            }}></div>
+            }}></div>*/}
+          <div className="llave"></div>
           <div className="tipo-arrow"></div>
         </div>
 

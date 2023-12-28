@@ -302,17 +302,17 @@ li {
 .llave {
   width: 40px;
   height: 40px;
-  background-image: url(/images/key.svg);
+  /*background-image: url(/images/key.svg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out; Scope*/
 }
 
-.llave:hover {
+/*.llave:hover {
   background-image: url(/images/key-dark.svg);
-}
+} Scope*/
 
 .valor {
   /* padding-top: 33px; */

@@ -167,6 +167,7 @@
   justify-content: center;
   margin: 0 auto;
   margin-top: 50px;
+  display: none; /*Scope*/
 }
 
 .contacto-existente {
@@ -188,7 +189,8 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 30px;
+  /*margin-top: 30px; Scope*/
+  margin-top: 50px;
 }
 
 .campo {
@@ -389,7 +391,8 @@
   }
 
   .contacto-existente {
-    margin-top: 8px;
+    /*margin-top: 8px; Scope*/
+    margin-top: 125px;
   }
 
   .msform input,

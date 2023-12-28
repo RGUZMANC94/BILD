@@ -2,14 +2,22 @@ import React from 'react';
 import styles from './RightProfile.module.css';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
-const RightSideProfile = ({ typeViewer }) => {
+const RightSideProfile = ({ contactInfo, typeViewer }) => {
   const { user_rol } = useSelector((state) => state.userState);
+  const [clientId, setClientId] = useState('');
+
+  useEffect(() => {
+    if (contactInfo) {
+      setClientId(contactInfo.idCli);
+    }
+  }, [contactInfo]);
   return (
     <>
       {typeViewer === 'buyer' && (
         <div className={styles['opc-pendiente']}>
-          <Link href="/oportunities/0" className={styles.opcion}>
+          <Link href={`/oportunities/${clientId}`} className={styles.opcion}>
             <img src="/images/key-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>2</span>
             Oportunidades

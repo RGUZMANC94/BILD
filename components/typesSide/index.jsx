@@ -2,6 +2,8 @@ import AllTypes from '../allTypes';
 import Units from '../units';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { changeTypeSelected } from '../../redux/typeSelectedSlice';
+import { useDispatch } from 'react-redux';
 
 const TypesSide = ({
   viewEstate,
@@ -10,12 +12,16 @@ const TypesSide = ({
   units,
   setCreateOportunity,
 }) => {
-  // const unitsFiltered = units;
+  const dispatch = useDispatch();
   const [selectedType, setSelectedType] = useState([]);
+  const [flagType, setFlagType] = useState(false);
   const { typeSelected } = useSelector((state) => state.typeState);
 
   useEffect(() => {
-    if (types[typeSelected]) {
+    if (!flagType) {
+      setFlagType(true);
+      dispatch(changeTypeSelected(-1));
+    } else if (types[typeSelected]) {
       setSelectedType(
         units.filter((unit) => unit.type === types[typeSelected].Type)
       );
@@ -29,7 +35,12 @@ const TypesSide = ({
         setCreateOportunity={setCreateOportunity}
       />
       <div className="outerUnits">
-        <Units setCreateOportunity={setCreateOportunity} units={selectedType} />
+        {typeSelected !== -1 && (
+          <Units
+            setCreateOportunity={setCreateOportunity}
+            units={selectedType}
+          />
+        )}
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 const Contacts = () => {
   const router = useRouter();
   const [recentContacts, setRecentsContacts] = useState([]);
+  const [sortedontacts, setSortedContacts] = useState([]);
   const { id } = useSelector((state) => state.userState);
 
   const getRecentsContacts = async () => {
@@ -20,9 +21,12 @@ const Contacts = () => {
       body: JSON.stringify({ id }),
     });
 
-    const recentsContacts = await response.json();
+    const recentsContactsres = await response.json();
     console.log('dentrod e contactos:', recentsContacts);
-    setRecentsContacts(recentsContacts);
+    setRecentsContacts(recentsContactsres);
+    setSortedContacts(
+      recentsContactsres.sort((a, b) => a.name.localeCompare(b.name))
+    );
   };
 
   useEffect(() => {
@@ -81,9 +85,9 @@ const Contacts = () => {
           <div className={styles.reciente}>
             Contactos ({recentContacts.length})
           </div>
-          {recentContacts.map((contact, i) => (
+          {sortedontacts.map((contact, i) => (
             <div className={styles['list-name']} key={i}>
-              <Link href={`/buyer/${i}`}>
+              <Link href={`/buyer/${contact.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
                     <img src="/images/Ellipse 81.png" />
