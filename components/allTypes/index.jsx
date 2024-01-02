@@ -4,7 +4,7 @@ import TypeCard from '../type';
 import { useSelector } from 'react-redux';
 import Sortable from 'sortablejs';
 
-const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
+const AllTypes = ({ units, setShowPopUpType, types, setCreateOportunity }) => {
   const { user_rol } = useSelector((state) => state.userState);
   useEffect(() => {
     const sortable = new Sortable(document.getElementById('sortable'), {
@@ -32,6 +32,7 @@ const AllTypes = ({ setShowPopUpType, types, setCreateOportunity }) => {
             key={type.nuimb}
             index={index}
             type={type}
+            units={units.filter((unit) => unit.type === type.Type)}
           />
         ))}
       </ul>

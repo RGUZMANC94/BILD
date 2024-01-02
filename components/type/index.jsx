@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux';
 import { changeTypeSelected } from '../../redux/typeSelectedSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
 
-const TypeCard = ({ type, setCreateOportunity, index }) => {
+const TypeCard = ({ units, type, setCreateOportunity, index }) => {
   const dispatch = useDispatch();
   const USDollar = new Intl.NumberFormat('en-US');
+  console.log('unidades Mobile: ', units);
   return (
     <li
       id={type.nuimb}
@@ -69,58 +70,18 @@ const TypeCard = ({ type, setCreateOportunity, index }) => {
             <div className="top-tabla">Precio</div>
             <div className="top-tabla"></div>
           </div>
-
-          <div className="info-tabla">
-            <div className="detalle-tabla">202</div>
-            <div className="detalle-tabla">3</div>
-            <div className="detalle-tabla">2</div>
-            <div className="detalle-tabla">$ 140 M</div>
-            <div
-              className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}></div>
-          </div>
-
-          <div className="info-tabla">
-            <div className="detalle-tabla">202</div>
-            <div className="detalle-tabla">3</div>
-            <div className="detalle-tabla">2</div>
-            <div className="detalle-tabla">$ 140 M</div>
-            <div
-              className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}></div>
-          </div>
-
-          <div className="info-tabla">
-            <div className="detalle-tabla">202</div>
-            <div className="detalle-tabla">3</div>
-            <div className="detalle-tabla">2</div>
-            <div className="detalle-tabla">$ 140 M</div>
-            <div
-              className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}></div>
-          </div>
-
-          <div className="info-tabla">
-            <div className="detalle-tabla">202</div>
-            <div className="detalle-tabla">3</div>
-            <div className="detalle-tabla">2</div>
-            <div className="detalle-tabla">$ 140 M</div>
-            <div
-              className="llave-tabla"
-              onClick={() => setCreateOportunity(true)}></div>
-          </div>
-
-          <div className="info-tabla">
-            <div className="detalle-tabla">202</div>
-            <div className="detalle-tabla">3</div>
-            <div className="detalle-tabla">2</div>
-            <div className="detalle-tabla">$ 140 M</div>
-            <div
-              className="llave-tabla"
-              onClick={() => {
-                dispatch(openPopUp(true));
-              }}></div>
-          </div>
+          D
+          {units.map((unit, i) => (
+            <div className="info-tabla" key={i}>
+              <div className="detalle-tabla">{unit.idProperty}</div>
+              <div className="detalle-tabla">{unit.bedrooms}</div>
+              <div className="detalle-tabla">{unit.baths}</div>
+              <div className="detalle-tabla">{`$${unit.propertyPrice}`}</div>
+              <div
+                className="llave-tabla"
+                onClick={() => setCreateOportunity(true)}></div>
+            </div>
+          ))}
         </div>
       </div>
     </li>

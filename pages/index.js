@@ -84,7 +84,7 @@ const Home = () => {
                   </p>
 
                   <div className={styles.detalles}>
-                    {project.minBed && project.maxBed && (
+                    {project.minBed !== 0 && project.maxBed !== 0 && (
                       <>
                         <img
                           alt=""
@@ -92,12 +92,10 @@ const Home = () => {
                           width="22"
                           height="20"
                         />
-                        <p>
-                          {project.minBed}-{project.maxBed}
-                        </p>
+                        <p>{`${project.minBed}-${project.maxBed}`}</p>
                       </>
                     )}
-                    {project.minBath && project.maxBath && (
+                    {project.minBath !== 0 && project.maxBath !== 0 && (
                       <>
                         <img
                           alt=""
@@ -105,9 +103,7 @@ const Home = () => {
                           width="7"
                           height="11"
                         />
-                        <p>
-                          {project.minBath}-{project.maxBath}
-                        </p>
+                        <p>{`${project.minBath}-${project.maxBath}`}</p>
                       </>
                     )}
                     {user_rol === 'ADMIN' && (

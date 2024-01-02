@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectOverview?username=${req.body.id}&page=${req.body.page}&rows=8`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectOverview?username=${req.body.id}&page=${req.body.page}&rows=50`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
@@ -13,6 +13,6 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error(error);
-    res.status(400).json({ error: 'Login failed' });
+    res.status(400).json({ error: 'Projects not found' });
   }
 }

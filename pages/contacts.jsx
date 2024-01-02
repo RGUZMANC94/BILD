@@ -56,7 +56,7 @@ const Contacts = () => {
           </div>
           {recentContacts.slice(0, 3).map((recent, i) => (
             <div className={styles['list-name']} key={i}>
-              <Link href={`/buyer/${i}`}>
+              <Link href={`/buyer/${recent.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
                     <img src="/images/Ellipse 81.png" />

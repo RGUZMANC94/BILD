@@ -33,6 +33,7 @@ const TypesSide = ({
         types={types}
         setShowPopUpType={setShowPopUpType}
         setCreateOportunity={setCreateOportunity}
+        units={units}
       />
       <div className="outerUnits">
         {typeSelected !== -1 && (

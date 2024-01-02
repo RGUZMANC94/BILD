@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from '../styles/Create-project.module.css';
 import { useDispatch } from 'react-redux';
 import { addNewProject } from '../redux/projectSlice';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
 const CreateProject = () => {
@@ -24,10 +25,6 @@ const CreateProject = () => {
   const inputProjectDescription = useRef(null);
 
   const [xlsxFileName, setXlsxFileName] = useState('');
-
-  const searchContact = (e) => {
-    console.log(e.target.value);
-  };
 
   const changeXlsx = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -132,8 +129,9 @@ const CreateProject = () => {
     };
 
     const form = new FormData(document.getElementById('IDForm'));
+    console.log(form);
 
-    const projectCreated = await fetch('/api/createProject', {
+    /* const projectCreated = await fetch('/api/createProject', {
       method: 'post',
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -141,9 +139,81 @@ const CreateProject = () => {
       body: form,
     });
 
-    console.log(projectCreated);
-
     dispatch(addNewProject(newProjectInfo));
+    document
+      .querySelector(`.${styles.popSuccessProjectCreated}`)
+      .classList.add(styles.activePopUp);
+    setTimeout(() => {
+      router.push('/');
+    }, 2000);*/
+  };
+
+  const [datos, setDatos] = useState({
+    projectName: '',
+    projectType: 'E',
+    location: '',
+    neighborhoodId: '5',
+    startDate: Date.now().toString(),
+    pool: '',
+    TurkishBath: '',
+    sauna: '',
+    bbq: '',
+  });
+
+  const { id } = useSelector((state) => state.userState);
+
+  const projectName = useRef('');
+  const projectType = useRef('');
+  const location = useRef('');
+  const proneighborhoodIdjectType = useRef('');
+  const startDate = useRef(Date.now());
+  const pool = useRef('');
+  const TurkishBath = useRef('');
+  const sauna = useRef('');
+  const bbq = useRef('');
+
+  const handleChange = (e) => {
+    setDatos({ ...datos, [e.target.name]: e.target.value });
+  };
+
+  const searchContact = (e) => {
+    console.log(e.target.value);
+  };
+
+  const sendFormInfo = async (e) => {
+    e.preventDefault();
+
+    console.log(
+      JSON.stringify({
+        id,
+        datos,
+      })
+    );
+
+    const projectCreated = await fetch('/api/createProject', {
+      method: 'post',
+      headers: {
+        // 'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        datos,
+      }),
+    });
+
+    /* const newProjectInfo = {
+      id: Date.now(),
+      name: inputProjectName.current.value,
+      imgProject:
+        mainImage.current.style.backgroundImage !== ''
+          ? mainImage.current.style.backgroundImage
+              .match(/url\(([^)]+)\)/i)[1]
+              .replace(/['"]+/g, '')
+          : '',
+    };
+
+    dispatch(addNewProject(newProjectInfo));*/
     document
       .querySelector(`.${styles.popSuccessProjectCreated}`)
       .classList.add(styles.activePopUp);
@@ -157,7 +227,7 @@ const CreateProject = () => {
       <section className={styles.main}>
         <form
           className={styles.createProjectForm}
-          onSubmit={createProjectForm}
+          onSubmit={sendFormInfo}
           id="IDForm">
           <div className={styles['proyect-left']}>
             <div className={styles['image-movil']}>
@@ -170,18 +240,20 @@ const CreateProject = () => {
                   <span className={styles.label}>Nombre del Proyecto</span>
                   <input
                     type="text"
-                    name="fname"
+                    name="projectName"
+                    value={datos.projectName}
+                    onChange={handleChange}
                     required
-                    ref={inputProjectName}
                   />
                 </div>
                 <div className={styles['name-field']}>
                   <span className={styles.label}>Ciudad</span>
                   <input
                     type="text"
-                    name="lname"
+                    name="location"
+                    value={datos.location}
+                    onChange={handleChange}
                     required
-                    ref={inputProjectCity}
                   />
                 </div>
                 <div className={styles['name-field']}>
@@ -383,7 +455,7 @@ const CreateProject = () => {
                         cancelar
                       </button>
                     </Link>
-                    <button className={styles.crear} href="#popproyecto">
+                    <button className={styles.crear} /* href="#popproyecto"*/>
                       Crear Proyecto
                     </button>
                   </div>

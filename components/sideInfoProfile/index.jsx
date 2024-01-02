@@ -20,7 +20,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
           <span className={styles['name-perfil']}>
             {typeViewer === 'buyer'
               ? `${contactInfo.name} ${contactInfo.lastname}`
-              : 'Henry Cavill'}
+              : `${contactInfo.name} ${contactInfo.lastname}`}
           </span>
           <span className={styles['sub-name']}>
             {capitalizeFLetter(typeViewer)}
@@ -41,7 +41,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                   <img src="/images/email-profile.svg" />
                 </div>
                 <div className={styles['admin-text-container']}>
-                  johnlennon@gmail.com
+                  {contactInfo.email}
                 </div>
                 <div className={styles['admin-edit-container']}>
                   <img src="/images/edit-profile.svg" />
