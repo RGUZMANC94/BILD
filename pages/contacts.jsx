@@ -59,7 +59,15 @@ const Contacts = () => {
               <Link href={`/buyer/${recent.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
-                    <img src="/images/Ellipse 81.png" />
+                    <div className={styles['contact-img-container']}>
+                      <img
+                        src={
+                          recent.image[0] !== '' && recent.image[0]
+                            ? `${recent.image[0].url}`
+                            : '/images/tipo-1.png'
+                        }
+                      />
+                    </div>
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
                     {`${recent.name} ${recent.lastname}`}
                   </div>
@@ -90,7 +98,16 @@ const Contacts = () => {
               <Link href={`/buyer/${contact.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
-                    <img src="/images/Ellipse 81.png" />
+                    <div className={styles['contact-img-container']}>
+                      <img
+                        src={
+                          contact.image[0] !== '' && contact.image[0]
+                            ? `${contact.image[0].url}`
+                            : '/images/tipo-1.png'
+                        }
+                      />
+                    </div>
+                    <span className={`${styles.badge} ${styles.red}`}>1</span>
                     {`${contact.name} ${contact.lastname}`}
                   </div>
                   <div className={styles['reciente-col']}>{contact.email}</div>

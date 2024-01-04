@@ -2,10 +2,9 @@ import React from 'react';
 import styles from './SideInfoProfile.module.css';
 import capitalizeFLetter from '../../utils/capitalizeFirstLetter';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 
 const SideInfoProfile = ({ contactInfo, typeViewer }) => {
-  const { user_rol } = useSelector((state) => state.userState);
+  console.log('Informacion del contactIndo: ', contactInfo);
   return (
     <>
       {contactInfo && (
@@ -15,12 +14,19 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
           )}
 
           <div className={styles['perfil-img']}>
-            <img src="/images/henry.png" />
+            <img
+              alt=""
+              src={
+                typeViewer === 'buyer'
+                  ? contactInfo.image[0] !== '' && contactInfo.image[0]
+                    ? `${contactInfo.image[0].url}`
+                    : '/images/henry.png'
+                  : '/images/henry.png'
+              }
+            />
           </div>
           <span className={styles['name-perfil']}>
-            {typeViewer === 'buyer'
-              ? `${contactInfo.name} ${contactInfo.lastname}`
-              : `${contactInfo.name} ${contactInfo.lastname}`}
+            {`${contactInfo.name} ${contactInfo.lastname}`}
           </span>
           <span className={styles['sub-name']}>
             {capitalizeFLetter(typeViewer)}

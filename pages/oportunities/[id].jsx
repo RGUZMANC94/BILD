@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
 
-const Oprtunities = () => {
+const Oportunities = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
@@ -51,7 +51,9 @@ const Oprtunities = () => {
     <>
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
-          <Link href={'/buyer/1'} className={`bg-ct ${styles.icon}`}></Link>
+          <Link
+            href={`/buyer/${router.query.id}`}
+            className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>Oportunidades de John Lennon </div>
         </div>
       </div>
@@ -65,4 +67,4 @@ const Oprtunities = () => {
   );
 };
 
-export default Oprtunities;
+export default Oportunities;

@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
 const CreateProject = () => {
+  const d = new Date();
+  console.log('Fecha: ', d);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -153,7 +155,7 @@ const CreateProject = () => {
     projectType: 'E',
     location: '',
     neighborhoodId: '5',
-    startDate: Date.now().toString(),
+    startDate: '',
     pool: '',
     TurkishBath: '',
     sauna: '',
@@ -183,13 +185,17 @@ const CreateProject = () => {
   const sendFormInfo = async (e) => {
     e.preventDefault();
 
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      startDate: Date().toString(),
+    }));
+
     console.log(
       JSON.stringify({
         id,
         datos,
       })
     );
-
     const projectCreated = await fetch('/api/createProject', {
       method: 'post',
       headers: {
@@ -202,18 +208,6 @@ const CreateProject = () => {
       }),
     });
 
-    /* const newProjectInfo = {
-      id: Date.now(),
-      name: inputProjectName.current.value,
-      imgProject:
-        mainImage.current.style.backgroundImage !== ''
-          ? mainImage.current.style.backgroundImage
-              .match(/url\(([^)]+)\)/i)[1]
-              .replace(/['"]+/g, '')
-          : '',
-    };
-
-    dispatch(addNewProject(newProjectInfo));*/
     document
       .querySelector(`.${styles.popSuccessProjectCreated}`)
       .classList.add(styles.activePopUp);

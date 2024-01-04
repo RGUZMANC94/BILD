@@ -126,13 +126,19 @@ const OportunitiesAllFilter = () => {
       <section className={styles.main}>
         <div className="container flex j-sb a-s wrap">
           {showSection === 'all' && (
-            <OportunitiesAll oppList={allOpportunities} />
+            <OportunitiesAll
+              oppList={allOpportunities}
+              contacts={recentContacts}
+            />
           )}
           {showSection === 'pending' && (
             <OportunitiesPending oppList={allOpportunities} />
           )}
           {showSection === 'closed' && (
-            <OportunitiesClosed oppList={allOpportunities} />
+            <OportunitiesClosed
+              oppList={allOpportunities}
+              contacts={recentContacts}
+            />
           )}
         </div>
       </section>

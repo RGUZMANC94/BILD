@@ -5,12 +5,22 @@ import styles from './oportunities-all.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
 
-const OportunitiesAll = ({ oppList }) => {
+const OportunitiesAll = ({ oppList, contacts }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
     selectedItem === index ? setSelectedItem(-1) : setSelectedItem(index);
   };
+
+  function ClientById(array, clientId) {
+    console.log('Clientes:', array);
+    console.log('Clientes:', clientId);
+    console.log(
+      'Cliente encontrado:',
+      array.find((elem) => elem.idCli === clientId)
+    );
+    return array.find((elem) => elem.idCli === clientId);
+  }
 
   const oportunities = [
     {
@@ -70,7 +80,15 @@ const OportunitiesAll = ({ oppList }) => {
                 closed={oportunity.image}
                 estimatedProgress={oportunity.estimatedProgress}
                 state={selectedItem === i}
-                image={'/images/perfil-img.jpeg'}
+                image={
+                  ClientById(contacts, oportunity.idClient) &&
+                  (ClientById(contacts, oportunity.idClient).image[0] &&
+                  ClientById(contacts, oportunity.idClient).image[0] !== ''
+                    ? `${
+                        ClientById(contacts, oportunity.idClient).image[0].url
+                      }`
+                    : '/images/defatult-2.jpg')
+                }
                 name={oportunity.nameCustomer}
                 location={oportunity.nameProject}
                 type={`Tipo ${oportunity.propertyType} - ${oportunity.idProperty}`}

@@ -65,8 +65,8 @@ const Home = () => {
                   <img
                     alt=""
                     src={
-                      project.imgProject !== '' && project.imgProject
-                        ? project.imgProject
+                      project.image[0] !== '' && project.image[0]
+                        ? `${project.image[0].url}`
                         : '/images/defatult-2.jpg'
                     }
                   />

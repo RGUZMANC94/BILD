@@ -7,7 +7,6 @@ import { openPopUp } from '../../redux/popUpOportunity';
 const TypeCard = ({ units, type, setCreateOportunity, index }) => {
   const dispatch = useDispatch();
   const USDollar = new Intl.NumberFormat('en-US');
-  console.log('unidades Mobile: ', units);
   return (
     <li
       id={type.nuimb}
@@ -28,11 +27,18 @@ const TypeCard = ({ units, type, setCreateOportunity, index }) => {
         console.log('Tipo seleccionado: ', type.Tipo);
         console.log('Index: ', index);
       }}>
+      {console.log(type.image[0])}
       <div className="draggable bg-ct" draggable={true}></div>
       <div className="maskDraggable"></div>
       <div className="tipo-unit">
         <div className="img-tipo">
-          <img src={'/images/tipo-1.png'} />
+          <img
+            src={
+              type.image[0] !== '' && type.image[0]
+                ? `${type.image[0].url}`
+                : '/images/tipo-1.png'
+            }
+          />
           <div className="img-tipo-glass"></div>
         </div>
         <div className="tipo-info">
