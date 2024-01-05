@@ -5,6 +5,7 @@ import { addNewProject } from '../redux/projectSlice';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import ImageDummy from '../public/images/tipo-1.png';
 
 const CreateProject = () => {
   const d = new Date();
@@ -164,16 +165,6 @@ const CreateProject = () => {
 
   const { id } = useSelector((state) => state.userState);
 
-  const projectName = useRef('');
-  const projectType = useRef('');
-  const location = useRef('');
-  const proneighborhoodIdjectType = useRef('');
-  const startDate = useRef(Date.now());
-  const pool = useRef('');
-  const TurkishBath = useRef('');
-  const sauna = useRef('');
-  const bbq = useRef('');
-
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
@@ -196,25 +187,76 @@ const CreateProject = () => {
         datos,
       })
     );
-    const projectCreated = await fetch('/api/createProject', {
-      method: 'post',
-      headers: {
-        // 'Content-Type': 'multipart/form-data',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id,
-        datos,
-      }),
-    });
 
-    document
+    try {
+      /* const projectCreated = await fetch('/api/createProject', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          datos,
+        }),
+      });
+
+      console.log('projectCreated: ', projectCreated);
+  
+      if (!projectCreated.ok) {
+        throw new Error('Failed to create project');
+      }
+  
+      const responseData = await projectCreated.json();
+      // Manejar la respuesta exitosa
+      console.log('Proyecto creado:', responseData);
+
+      if(projectCreated.ok) {*/
+
+      const formData = new FormData();
+      formData.append('type', 'PRY');
+      formData.append('subType', 'IMGPR');
+      formData.append('idObject', '85051');
+      formData.append('file', selectedFile);
+
+      try {
+        const response = await fetch(
+          'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
+          {
+            method: 'POST',
+            body: formData,
+          }
+        );
+
+        if (response.ok) {
+          console.log('Imagen subida correctamente');
+        } else {
+          console.error('Error al subir la imagen');
+        }
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    } catch (error) {
+      console.error('Error al crear el proyecto:', error);
+    }
+
+    /* document
       .querySelector(`.${styles.popSuccessProjectCreated}`)
       .classList.add(styles.activePopUp);
     setTimeout(() => {
       router.push('/');
-    }, 2000);
+    }, 2000);*/
   };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  function handleBloth(e) {
+    handleFileChange(e);
+    readURL(e);
+  }
 
   return (
     <>
@@ -316,7 +358,7 @@ const CreateProject = () => {
                     id="mainImgProject"
                     type="file"
                     hidden
-                    onChange={readURL}
+                    onChange={handleBloth}
                     accept="image/*"
                     name="mainImage"
                   />
@@ -452,6 +494,9 @@ const CreateProject = () => {
                     <button className={styles.crear} /* href="#popproyecto"*/>
                       Crear Proyecto
                     </button>
+                    {console.log('image: ', ImageDummy)}
+                    <img src={ImageDummy.src} alt="" />
+                    {}
                   </div>
                 </div>
               </div>
