@@ -27,7 +27,7 @@ const TypeCard = ({ units, type, setCreateOportunity, index }) => {
         console.log('Tipo seleccionado: ', type.Tipo);
         console.log('Index: ', index);
       }}>
-      {console.log(type.image[0])}
+      {/* console.log(type.image[0])*/}
       <div className="draggable bg-ct" draggable={true}></div>
       <div className="maskDraggable"></div>
       <div className="tipo-unit">
@@ -42,7 +42,7 @@ const TypeCard = ({ units, type, setCreateOportunity, index }) => {
           <div className="img-tipo-glass"></div>
         </div>
         <div className="tipo-info">
-          <span className="tipo-title">Tipo {type.Type}</span>
+          <span className="tipo-title">Tipo {type.type}</span>
           <span className="valor">
             $ {USDollar.format(type.minPrice)} -{' '}
             {USDollar.format(type.maxPrice)}

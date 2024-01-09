@@ -23,7 +23,7 @@ const TypesSide = ({
       dispatch(changeTypeSelected(-1));
     } else if (types[typeSelected]) {
       setSelectedType(
-        units.filter((unit) => unit.type === types[typeSelected].Type)
+        units.filter((unit) => unit.type === types[typeSelected].idType)
       );
     }
   }, [typeSelected, types]);

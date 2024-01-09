@@ -70,10 +70,16 @@ const OportunitiesContact = ({ oppList }) => {
                 closed={oportunity.image}
                 estimatedProgress={oportunity.estimatedProgress}
                 state={selectedItem === i}
-                image={'/images/perfil-img.jpeg'}
+                image={
+                  oportunity.propertyType.image &&
+                  (oportunity.propertyType.image[0] &&
+                  oportunity.propertyType.image[0] !== ''
+                    ? `${oportunity.propertyType.image[0].url}`
+                    : '/images/perfil-img.jpeg')
+                }
                 name={oportunity.nameCustomer}
                 location={oportunity.nameProject}
-                type={`Tipo ${oportunity.propertyType} - ${oportunity.idProperty}`}
+                type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
                 followingDate={oportunity.createdDate}
                 historyComponent={OportunitiesHistory}
                 progress={0.25}

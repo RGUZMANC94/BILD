@@ -10,11 +10,12 @@ export default async function handler(req, res) {
           // 'Content-Type': 'multipart/form-data',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(req.body.form),
+        body: JSON.stringify(req.body.datos),
         // body:  req.body.datos,
       }
     );
     if (!response.ok) {
+      console.log('Error: ', response);
       throw new Error('Bad response from server: Create Project');
     }
     const projectCreated = await response.json();

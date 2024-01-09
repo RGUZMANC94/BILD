@@ -21,6 +21,8 @@ const AllTypes = ({ units, setShowPopUpType, types, setCreateOportunity }) => {
       },
     });
   }, []);
+  console.log('Tipos Dentro de tipo', types);
+  console.log('unidaees Dentro de tipo', units);
 
   return (
     <div className="outerTypes">
@@ -32,7 +34,7 @@ const AllTypes = ({ units, setShowPopUpType, types, setCreateOportunity }) => {
             key={type.nuimb}
             index={index}
             type={type}
-            units={units.filter((unit) => unit.type === type.Type)}
+            units={units.filter((unit) => unit.type === type.idType)}
           />
         ))}
       </ul>

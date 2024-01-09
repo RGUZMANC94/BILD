@@ -81,17 +81,15 @@ const OportunitiesAll = ({ oppList, contacts }) => {
                 estimatedProgress={oportunity.estimatedProgress}
                 state={selectedItem === i}
                 image={
-                  ClientById(contacts, oportunity.idClient) &&
-                  (ClientById(contacts, oportunity.idClient).image[0] &&
-                  ClientById(contacts, oportunity.idClient).image[0] !== ''
-                    ? `${
-                        ClientById(contacts, oportunity.idClient).image[0].url
-                      }`
+                  oportunity.idClient.image &&
+                  (oportunity.idClient.image[0] &&
+                  oportunity.idClient.image[0] !== ''
+                    ? `${oportunity.idClient.image[0].url}`
                     : '/images/defatult-2.jpg')
                 }
                 name={oportunity.nameCustomer}
                 location={oportunity.nameProject}
-                type={`Tipo ${oportunity.propertyType} - ${oportunity.idProperty}`}
+                type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
                 followingDate={oportunity.createdDate}
                 historyComponent={OportunitiesHistory}
                 progress={0.25}

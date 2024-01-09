@@ -161,6 +161,9 @@ const CreateProject = () => {
     TurkishBath: '',
     sauna: '',
     bbq: '',
+    gym: '',
+    coworking: 'X',
+    laundry: '',
   });
 
   const { id } = useSelector((state) => state.userState);
@@ -178,7 +181,7 @@ const CreateProject = () => {
 
     setDatos((prevDatos) => ({
       ...prevDatos,
-      startDate: Date().toString(),
+      startDate: formatDate(dateValue),
     }));
 
     console.log(
@@ -189,7 +192,7 @@ const CreateProject = () => {
     );
 
     try {
-      /* const projectCreated = await fetch('/api/createProject', {
+      const projectCreated = await fetch('/api/createProject', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -201,50 +204,50 @@ const CreateProject = () => {
       });
 
       console.log('projectCreated: ', projectCreated);
-  
+
       if (!projectCreated.ok) {
         throw new Error('Failed to create project');
       }
-  
+
       const responseData = await projectCreated.json();
-      // Manejar la respuesta exitosa
+
       console.log('Proyecto creado:', responseData);
 
-      if(projectCreated.ok) {*/
+      if (projectCreated.ok) {
+        const formData = new FormData();
+        formData.append('type', 'PRY');
+        formData.append('subType', 'IMGPR');
+        formData.append('idObject', responseData.projectId);
+        formData.append('file', selectedFile);
 
-      const formData = new FormData();
-      formData.append('type', 'PRY');
-      formData.append('subType', 'IMGPR');
-      formData.append('idObject', '85051');
-      formData.append('file', selectedFile);
+        try {
+          const response = await fetch(
+            'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
+            {
+              method: 'POST',
+              body: formData,
+            }
+          );
 
-      try {
-        const response = await fetch(
-          'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
-          {
-            method: 'POST',
-            body: formData,
+          if (response.ok) {
+            console.log('Imagen subida correctamente');
+          } else {
+            console.error('Error al subir la imagen');
           }
-        );
-
-        if (response.ok) {
-          console.log('Imagen subida correctamente');
-        } else {
-          console.error('Error al subir la imagen');
+        } catch (error) {
+          console.error('Error al realizar la solicitud:', error);
         }
-      } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
       }
+
+      document
+        .querySelector(`.${styles.popSuccessProjectCreated}`)
+        .classList.add(styles.activePopUp);
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
     } catch (error) {
       console.error('Error al crear el proyecto:', error);
     }
-
-    /* document
-      .querySelector(`.${styles.popSuccessProjectCreated}`)
-      .classList.add(styles.activePopUp);
-    setTimeout(() => {
-      router.push('/');
-    }, 2000);*/
   };
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -257,6 +260,19 @@ const CreateProject = () => {
     handleFileChange(e);
     readURL(e);
   }
+
+  const [dateValue, setDateValue] = useState('');
+
+  const handleDateChange = (event) => {
+    setDateValue(event.target.value);
+  };
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
 
   return (
     <>
@@ -286,8 +302,8 @@ const CreateProject = () => {
                   <span className={styles.label}>Ciudad</span>
                   <input
                     type="text"
-                    name="location"
-                    value={datos.location}
+                    name="neighborhoodId"
+                    value={datos.neighborhoodId}
                     onChange={handleChange}
                     required
                   />
@@ -296,42 +312,54 @@ const CreateProject = () => {
                   <span className={styles.label}>Ubicación</span>
                   <input
                     type="text"
-                    name="document"
+                    name="location"
+                    value={datos.location}
+                    onChange={handleChange}
                     required
-                    ref={inputProjectLocation}
                   />
                 </div>
                 <div className={styles['name-field']}>
-                  <span className={styles.label}>Tipo de INmueble</span>
+                  <span className={styles.label}>Tipo de Inmueble</span>
                   <label htmlFor="subject"></label>
                   <select
-                    placeholder="Subject line"
-                    name="subject"
+                    type="text"
+                    name="projectType"
+                    value={datos.projectType}
+                    onChange={handleChange}
                     className={styles.subject_input}
-                    required
-                    ref={inputProjectType}>
+                    required>
                     <option disabled defaultValue={0} hidden selected></option>
-                    <option>Opción 1</option>
-                    <option>Opción 2</option>
-                    <option>Opción 3</option>
+                    <option value="C">Casa</option>
+                    <option value="A">Apartamento</option>
+                    <option value="EC">Establecimiento comercial</option>
                   </select>
                 </div>
                 <div className={styles['name-field']}>
+                  <span className={styles.label}>Fecha de inicio</span>
+                  <input
+                    type="date"
+                    value={dateValue}
+                    required
+                    onChange={handleDateChange}
+                  />
+                </div>
+
+                {/* <div className={styles['name-field']}>
                   <span className={styles.label}>Etapas</span>
                   <input
                     type="text"
                     name="phone"
-                    required
+                    //required
                     ref={inputProjectStage}
-                  />
-                </div>
+                    />
+                </div>*/}
                 <div className={styles['name-field']}>
                   <span className={styles.label}>Descripción del Proyecto</span>
                   <textarea
                     name="message"
                     placeholder=""
                     className={styles.message_input}
-                    required
+                    // required
                     ref={inputProjectDescription}></textarea>
                 </div>
               </fieldset>
@@ -494,9 +522,6 @@ const CreateProject = () => {
                     <button className={styles.crear} /* href="#popproyecto"*/>
                       Crear Proyecto
                     </button>
-                    {console.log('image: ', ImageDummy)}
-                    <img src={ImageDummy.src} alt="" />
-                    {}
                   </div>
                 </div>
               </div>
