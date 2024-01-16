@@ -4,6 +4,7 @@ import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
 import InfoProject from '../../components/infoProject';
 import AddTypePop from '../../components/addTypePop';
+import AddUnitPop from '../../components/addUnitPop';
 import { getSessionToken } from '../../utils/getSessionToken';
 import { useRouter } from 'next/router';
 import { getLocalData } from '../api/detailProject';
@@ -16,6 +17,7 @@ const DetailState = ({ units, types }) => {
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
   const [showPopUpType, setShowPopUpType] = useState(false);
+  const [showPopUpUnit, setShowPopUpUnit] = useState(false);
   const [createOportunity, setCreateOportunity] = useState(false);
   const [recentContacts, setRecentsContacts] = useState({});
   const router = useRouter();
@@ -133,6 +135,7 @@ const DetailState = ({ units, types }) => {
               units={units}
               viewEstate={viewEstate}
               setShowPopUpType={setShowPopUpType}
+              setShowPopUpUnit={setShowPopUpUnit}
               setCreateOportunity={setCreateOportunity}
             />
             <InfoProject
@@ -152,6 +155,11 @@ const DetailState = ({ units, types }) => {
       <AddTypePop
         setShowPopUpType={setShowPopUpType}
         showPopUpType={showPopUpType}
+      />
+
+      <AddUnitPop
+        setShowPopUpUnit={setShowPopUpUnit}
+        showPopUpUnit={showPopUpUnit}
       />
 
       {openPopUpOportunity && (

@@ -1,156 +1,310 @@
 import { useState, useRef } from 'react';
 import Button from '../button';
 import styles from './Add-type-pop.module.css';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
-  const [typeName, setTypeName] = useState('');
-  const [typeSize, setTypeSize] = useState('');
-  const [typeBaths, setTypeBaths] = useState('');
-  const [typeBeds, setTypeBeds] = useState('');
-  const [typeGarage, setTypeGarage] = useState('');
-  const [typePrice, setTypePrice] = useState('');
-  const [typesStatus, setTypesStatus] = useState('');
-  const [typesAdvisor, setTypesAdvisor] = useState('');
-  const mainImageType = useRef(null);
+  const router = useRouter();
+  const mainImage = useRef(null);
+  const firstImage = useRef(null);
+  const secondImage = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const { id } = useSelector((state) => state.userState);
 
-  const createType = async (e) => {
+  const [datos, setDatos] = useState({
+    projectId: router.query.id,
+    typeDescription: '',
+    minSize: '',
+    maxSize: '',
+    minBed: '',
+    maxBed: '',
+    minBath: '',
+    maxBath: '',
+  });
+
+  const handleChange = (e) => {
+    setDatos({ ...datos, [e.target.name]: e.target.value });
+  };
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  function handleBloth(e) {
+    handleFileChange(e);
+    readURL(e);
+  }
+
+  const readURL = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        if (event.target.id === 'mainImgProject') {
+          mainImage.current.style.backgroundImage = `url(${e.target.result})`;
+          mainImage.current.parentNode.parentNode.classList.add(styles.active);
+          return;
+        }
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
+
+  const deleteImage = (e) => {
+    const deleteIconSelected = e.target;
+    const parentDeleteIcon = deleteIconSelected.parentNode;
+    const imageSelected = parentDeleteIcon.querySelector(
+      `.${styles.imageSelected}`
+    );
+    const inputSelected = parentDeleteIcon.querySelector('input');
+
+    if (parentDeleteIcon) {
+      imageSelected.style.backgroundImage = 'none';
+      parentDeleteIcon.classList.remove(styles.active);
+      inputSelected.value = '';
+    }
+  };
+
+  const sendFormInfo = async (e) => {
     e.preventDefault();
 
-    const data = {
-      type_name: typeName,
-      type_size: typeSize,
-      type_bathrooms: typeBaths,
-      type_beds: typeBeds,
-      type_garages: typeGarage,
-      type_price: typePrice,
-      type_status: typesStatus,
-      type_advisor: typesAdvisor,
-      // image: URL.createObjectURL(
-      //   mainImageType.current.style.backgroundImage !== ""
-      //     ? mainImageType.current.style.backgroundImage
-      //         .match(/url\(([^)]+)\)/i)[1]
-      //         .replace(/['"]+/g, "")
-      //     : ""
-      // ),
-    };
+    console.log(
+      JSON.stringify({
+        id,
+        datos,
+      })
+    );
 
-    const typeCreated = await fetch('/api/createType', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: data,
-    });
+    try {
+      const typeCreated = await fetch('/api/createType', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          datos,
+        }),
+      });
 
-    console.log(typeCreated);
-    setShowPopUpType(false);
+      console.log('Tipo creado: ', typeCreated);
+
+      if (!typeCreated.ok) {
+        throw new Error('Failed to create project');
+      }
+
+      const responseData = await typeCreated.json();
+
+      console.log('Proyecto creado:', responseData);
+
+      if (typeCreated.ok) {
+        const formData = new FormData();
+        formData.append('type', 'TIPOM');
+        formData.append('subType', 'IMGPR');
+        formData.append('idObject', responseData.idType);
+        formData.append('file', selectedFile);
+
+        try {
+          const response = await fetch(
+            'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
+            {
+              method: 'POST',
+              body: formData,
+            }
+          );
+
+          if (response.ok) {
+            console.log('Imagen subida correctamente');
+          } else {
+            console.error('Error al subir la imagen');
+          }
+        } catch (error) {
+          console.error('Error al realizar la solicitud:', error);
+        }
+      }
+
+      document
+        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        // router.push(`/detail-estate/${router.query.id}`);
+        window.location.reload();
+        setShowPopUpType(false);
+      }, 2000);
+    } catch (error) {
+      console.error('Error al crear el proyecto:', error);
+    }
   };
 
   return (
-    <div
-      className={`${styles.typePopUp} ${
-        showPopUpType ? styles.activePopUp : ''
-      } flex j-e a-s`}>
+    <>
       <div
-        className={`${styles.bgTypePopUp}`}
-        onClick={() => setShowPopUpType(false)}></div>
-      <div className={`${styles.wrapperTypePopUp}`}>
-        <div className={`${styles.closeDeleteControls} flex j-sb a-c`}>
-          <div
-            className={`${styles.arrowBack} bg-ct`}
-            onClick={() => setShowPopUpType(false)}></div>
-          <div className={`${styles.deleteIcon} bg-ct`}></div>
-        </div>
-
-        <form className={styles.formType} onSubmit={createType}>
-          <label className={`${styles.typeLabel} flex wrap j-s a-c`}>
-            <span className={styles.labelText}>Nombre</span>
-            <input type="text" className={styles.inputTypeForm} />
-          </label>
-
-          <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-            <div className={`${styles.imgType} bg-ct`}>
-              <label htmlFor="imgType" className={`${styles.labelImgType}`}>
-                <input type="file" name="imgType" id="imgType" hidden />
-              </label>
-            </div>
-            <div className={`${styles.typeFeatures}`}>
-              <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelText}>Área Mt2</span>
-                <input type="number" className={styles.inputTypeForm} />
-              </label>
-              <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelText}>Baños</span>
-                <input type="number" className={styles.inputTypeForm} />
-              </label>
-              <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelText}>Cuartos</span>
-                <input type="number" className={styles.inputTypeForm} />
-              </label>
-              <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelText}>Garajes</span>
-                <input type="number" className={styles.inputTypeForm} />
-              </label>
-            </div>
+        className={`${styles.typePopUp} ${
+          showPopUpType ? styles.activePopUp : ''
+        } flex j-e a-s`}>
+        <div
+          className={`${styles.bgTypePopUp}`}
+          onClick={() => setShowPopUpType(false)}></div>
+        <div className={`${styles.wrapperTypePopUp}`}>
+          <div className={`${styles.closeDeleteControls} flex j-sb a-c`}>
+            <div
+              className={`${styles.arrowBack} bg-ct`}
+              onClick={() => setShowPopUpType(false)}></div>
+            <div className={`${styles.deleteIcon} bg-ct`}></div>
           </div>
 
-          <div className={`${styles.inputsGroup} flex j-sb a-s`}>
-            <label htmlFor="" className={`${styles.labelGroup}`}>
-              <p className={`${styles.labelTextGroup}`}>PRECIO:</p>
+          <form className={styles.formType} onSubmit={sendFormInfo}>
+            <label className={`${styles.typeLabel} flex wrap j-s a-c`}>
+              <span className={styles.labelText}>Nombre</span>
               <input
-                type="number"
-                name=""
-                id=""
-                placeholder="$ 000.000.000"
-                className={`${styles.targetInputGroup} t-c ${styles.inputPriceType}`}
+                type="text"
+                name="typeDescription"
+                value={datos.typeDescription}
+                className={styles.inputTypeForm}
+                onChange={handleChange}
+                required
               />
             </label>
-            <label htmlFor="" className={`${styles.labelGroup}`}>
-              <p className={`${styles.labelTextGroup} `}>DISPONIBILIDAD:</p>
-              <select
-                name=""
-                id=""
-                className={`${styles.targetInputGroup} t-c ${styles.statusType}`}>
-                <option value="0" selected>
-                  Disponible
-                </option>
-                <option value="1"></option>
-                <option value="2"></option>
-                <option value="3"></option>
-              </select>
+            {/* image*/}
+            <span className={styles.label}>IMAGEN DEL PROYECTO:</span>
+            <div className={`${styles.inputsGroup} flex j-sb a-st`}>
+              <div className={styles.image}>
+                <div className={styles['main-image']}>
+                  <div
+                    className={`bg-ct ${styles.deleteIcon}`}
+                    onClick={deleteImage}></div>
+                  <label
+                    htmlFor="mainImgProject"
+                    className={styles.labelInputImage}>
+                    <input
+                      id="mainImgProject"
+                      type="file"
+                      hidden
+                      onChange={handleBloth}
+                      accept="image/*"
+                      name="mainImage"
+                    />
+                    <div
+                      className={`${styles.imageSelected}`}
+                      ref={mainImage}></div>
+                  </label>
+                </div>
+              </div>
+              <div className={`${styles.typeFeatures}`}>
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>Área Mt2</span>
+                  <input
+                    type="text"
+                    name="minSize"
+                    value={datos.minSize}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <span className={styles.labelInputText}>-</span>
+
+                  <input
+                    type="text"
+                    name="maxSize"
+                    value={datos.maxSize}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>Baños</span>
+                  <input
+                    type="text"
+                    name="minBath"
+                    value={datos.minBath}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <span className={styles.labelInputText}>-</span>
+
+                  <input
+                    type="text"
+                    name="maxBath"
+                    value={datos.maxBath}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>Cuartos</span>
+                  <input
+                    type="text"
+                    name="minBed"
+                    value={datos.minBed}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <span className={styles.labelInputText}>-</span>
+
+                  <input
+                    type="text"
+                    name="maxBed"
+                    value={datos.maxBed}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+              </div>
+            </div>
+
+            <label htmlFor="" className={styles.compeleteLabel}>
+              <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
+              <input
+                placeholder="SELECCIONA LOS ASESORES"
+                type="text"
+                className={`${styles.targetInputGroup} ${styles.tl}`}
+              />
             </label>
-          </div>
 
-          <label htmlFor="" className={styles.compeleteLabel}>
-            <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
-            <input
-              placeholder="SELECCIONA LOS ASESORES"
-              type="text"
-              className={`${styles.targetInputGroup} ${styles.tl}`}
-            />
-          </label>
-
-          <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
-            <Button
-              buttonType={'primary'}
-              iconImage={false}
-              label={'CANCELAR'}
-              inheritClass={styles.buttonCreateType}
-            />
-            <Button
-              buttonType={'secondary'}
-              iconImage={false}
-              label={'Guardar'}
-              inheritClass={styles.buttonCreateType}
-            />
-          </div>
-        </form>
+            <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
+              <Button
+                buttonType={'primary'}
+                iconImage={false}
+                label={'CANCELAR'}
+                inheritClass={styles.buttonCreateType}
+              />
+              <Button
+                buttonType={'secondary'}
+                iconImage={false}
+                label={'Guardar'}
+                inheritClass={styles.buttonCreateType}
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+      <div className={`${styles.popSuccessTypeCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                ¡Tú tipo ha sido creado con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

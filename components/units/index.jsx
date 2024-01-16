@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Unit from '../unit';
 import Link from 'next/link';
 
-const Units = ({ setCreateOportunity, units }) => {
+const Units = ({ setCreateOportunity, setShowPopUpUnit, units }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
   const { user_rol } = useSelector((state) => state.userState);
   console.log('units', units);
@@ -19,7 +19,8 @@ const Units = ({ setCreateOportunity, units }) => {
           label="Agregar Unidad"
           iconImage={'/images/plus.svg'}
           clickFunction={() => {
-            setShowFormUnits(true);
+            setShowPopUpUnit(true);
+            // setShowFormUnits(true);
           }}
         />
       )}

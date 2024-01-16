@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   typeSelected: 0,
+  typeSelectedName: '', // Nuevo atributo
 };
 
 export const typeSelectedSlice = createSlice({
@@ -11,8 +12,12 @@ export const typeSelectedSlice = createSlice({
     changeTypeSelected: (state, action) => {
       state.typeSelected = action.payload;
     },
+    changeTypeSelectedName: (state, action) => {
+      state.typeSelectedName = action.payload;
+    },
   },
 });
 
-export const { changeTypeSelected } = typeSelectedSlice.actions;
+export const { changeTypeSelected, changeTypeSelectedName } =
+  typeSelectedSlice.actions;
 export default typeSelectedSlice.reducer;

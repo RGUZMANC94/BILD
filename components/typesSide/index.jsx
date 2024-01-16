@@ -3,11 +3,13 @@ import Units from '../units';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { changeTypeSelected } from '../../redux/typeSelectedSlice';
+import { changeTypeSelectedName } from '../../redux/typeSelectedSlice';
 import { useDispatch } from 'react-redux';
 
 const TypesSide = ({
   viewEstate,
   setShowPopUpType,
+  setShowPopUpUnit,
   types,
   units,
   setCreateOportunity,
@@ -25,6 +27,7 @@ const TypesSide = ({
       setSelectedType(
         units.filter((unit) => unit.type === types[typeSelected].idType)
       );
+      dispatch(changeTypeSelectedName(types[typeSelected].idType));
     }
   }, [typeSelected, types]);
   return (
@@ -39,6 +42,7 @@ const TypesSide = ({
         {typeSelected !== -1 && (
           <Units
             setCreateOportunity={setCreateOportunity}
+            setShowPopUpUnit={setShowPopUpUnit}
             units={selectedType}
           />
         )}
