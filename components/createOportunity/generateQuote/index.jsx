@@ -1,94 +1,172 @@
 import { Range, getTrackBackground } from 'react-range';
+import { useState, useEffect } from 'react';
 import styles from './quote.module.css';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Button from '../../button';
+import SquareInput from '../../squareInput';
 
 const GenerateQuote = ({ setGenerateQuote }) => {
-  const [values, setValues] = useState([50]);
+  const { id } = useSelector((state) => state.userState);
+  const [values, setValues] = useState([30]);
+  const { projectsList } = useSelector((state) => state.projectState);
+  const { unitSelected } = useSelector((state) => state.unitState);
+  const { contactSelected } = useSelector(
+    (state) => state.contactOpportunityState
+  );
+  const { opportunitySelected } = useSelector(
+    (state) => state.opportunityState
+  );
+  const [popQuotes, setPopQuotes] = useState(false);
+  const [sentLink, setSentLink] = useState(false);
+  const [initialQuote, setInitialQuote] = useState(0);
+  const [balanceInitialQuote, setBalanceInitialQuote] = useState(0);
+  const [monthlyQuote, setMonthlyQuote] = useState(0);
+  const [unitBalance, setUnitBalance] = useState(0);
+  const [separation, setSeparation] = useState(0);
+  const [downPayment, setDownPayment] = useState(0);
+  const [fees, setFees] = useState(0);
+  const [feesArray, setFeesArray] = useState([]);
+  const [datos, setDatos] = useState({});
+
+  useEffect(() => {
+    setInitialQuote((unitSelected.propertyPrice * values[0]) / 100);
+  }, [values]);
+
+  console.log(initialQuote, separation, downPayment);
+  useEffect(() => {
+    const total = initialQuote - (Number(separation) + Number(downPayment));
+    setBalanceInitialQuote(total);
+  }, [initialQuote, separation, downPayment]);
+
+  useEffect(() => {
+    setUnitBalance(unitSelected.propertyPrice - initialQuote);
+  }, [initialQuote]);
+
+  useEffect(() => {
+    setMonthlyQuote(balanceInitialQuote / Number(fees));
+  }, [fees, initialQuote, separation, downPayment]);
+
+  function formatMoney(num) {
+    return num.toLocaleString('es-CO', { currency: 'COP', style: 'currency' });
+  }
+
+  const handlePopQuotes = () => {
+    setPopQuotes(!popQuotes);
+    if (popQuotes) {
+      setFeesArray([]); // Reinicia el array de precios cuando se cierran los campos dinámicos
+    }
+  };
+
+  const handleFeeChange = (e, index) => {
+    const newFeesArray = [...feesArray];
+    newFeesArray[index] = e.target.value;
+    setFeesArray(newFeesArray);
+  };
+
+  const renderDynamicInputs = () => {
+    const inputs = [];
+    for (let i = 0; i < fees; i++) {
+      inputs.push(
+        <div key={i} className={styles['cotizacion-form']}>
+          <span className={styles.labelSide}>{`Cuota ${i + 1}`}</span>
+          <input
+            className={styles.inputQuote}
+            type="number"
+            value={feesArray[i] || ''}
+            onChange={(e) => handleFeeChange(e, i)}
+            placeholder={`Cuota ${i + 1}`}
+            required
+          />
+        </div>
+      );
+    }
+    return inputs;
+  };
+
+  const handleSentLink = () => {
+    setSentLink(!sentLink);
+  };
+
+  const sendFormInfo = async (e) => {
+    e.preventDefault();
+
+    if (!popQuotes) {
+      setDatos((prevDatos) => ({
+        ...prevDatos,
+        idSaleOp: opportunitySelected,
+        totalValue: `${unitSelected.propertyPrice}.0`,
+        percentageToPay: `${values[0]}`,
+        numberDues: fees,
+        separationValue: `${Number(separation) + Number(downPayment)}.0`,
+        paymentStartDate: '2024-12-30',
+      }));
+    } else {
+      const formattedPayments = feesArray.map((paymentValue) => ({
+        paymentValue: `${paymentValue}.0`,
+      }));
+
+      setDatos((prevDatos) => ({
+        ...prevDatos,
+        idSaleOp: opportunitySelected,
+        totalValue: `${unitSelected.propertyPrice}.0`,
+        percentageToPay: values[0],
+        numberDues: fees,
+        separationValue: `${Number(separation) + Number(downPayment)}.0`,
+        paymentStartDate: '2024-12-30',
+        payments: [...formattedPayments],
+      }));
+    }
+
+    console.log(
+      JSON.stringify({
+        id,
+        datos,
+      })
+    );
+
+    try {
+      const quoteCreated = await fetch('/api/createQuote', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          datos,
+        }),
+      });
+
+      if (quoteCreated.ok) {
+        const responseData = await quoteCreated.json();
+        console.log('respuesta de la cotizacion', responseData);
+      } /* else {
+        console.error('Error en la respuesta del servidor (Creacion de oportunidad):', error);
+      }*/
+    } catch (error) {
+      console.error('Error al crear la cotizacion:', error);
+    }
+  };
+
   return (
-    <div className={styles['generar-cotizacion']}>
+    <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
       <span className={styles.title}>GENERAR COTIZACIÓN</span>
       <div className={styles.seleccion}>
         <div className={styles.origen}>
-          <span className={styles['text-origen']}>Tipo:</span>
-          <div className={styles['elegir-seleccion']}>
-            <span className={styles.label}></span>
-            <label for="subject"></label>
-            <select
-              placeholder="Subject line"
-              name="subject"
-              className={styles.subject_input}
-              required>
-              <option disabled hidden selected>
-                2
-              </option>
-              <option>Opción 1</option>
-              <option>Opción 2</option>
-              <option>Opción 3</option>
-            </select>
-          </div>
+          <span className={styles.labelSimple}>Tipo:</span>
+          <span className={styles.labelFocus}>{unitSelected.type}</span>
         </div>
         <div className={styles.origen}>
-          <span className={styles['text-origen']}>Apto:</span>
-          <div className={styles['elegir-seleccion']}>
-            <span className={styles.label}></span>
-            <label for="subject"></label>
-            <select
-              placeholder="Subject line"
-              name="subject"
-              className={styles.subject_input}
-              required>
-              <option disabled hidden selected>
-                2
-              </option>
-              <option>Opción 1</option>
-              <option>Opción 2</option>
-              <option>Opción 3</option>
-            </select>
-          </div>
+          <span className={styles.labelSimple}>Apto:</span>
+          <span className={styles.labelFocus}>{unitSelected.type}</span>
         </div>
       </div>
-      <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-a']}>
-          <div className={styles.separacion}>
-            <span className={styles['title-separacion']}>Separación</span>
-          </div>
-        </div>
-        <div className={styles['lado-b']}>
-          <fieldset>
-            <input
-              className={styles.inputQuote}
-              type="text"
-              name="separacion"
-              placeholder="3'000.000"
-            />
-          </fieldset>
-        </div>
-      </div>
-      <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-c']}>
-          <span className={styles['title-separacion']}>Cuota Inicial</span>
-          <br />
-          <span className={`full-width ${styles['title-separacion']}`}>
-            (Incluye separación)
-          </span>
-        </div>
 
-        <div className={styles['lado-d']}>
-          <fieldset>
-            <input
-              className={styles.inputQuote}
-              type="text"
-              name="separacion"
-              placeholder="3'000.000"
-            />
-          </fieldset>
-        </div>
-      </div>
+      <span className={styles.labelSubtitle}>Porcentaje de Cuota Inicial</span>
 
       <div className={`flex j-sb a-c ${styles.outerRange}`}>
         <Range
           values={values}
-          step={5}
+          step={1}
           min={0}
           max={100}
           // rtl={rtl}
@@ -138,104 +216,142 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         />
         <div className={styles.labelRangePercenth}>{`${values}%`}</div>
       </div>
-      <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-a']}>
-          <span className={styles['title-separacion']}>
-            Saldo cuota inicial
-          </span>
-        </div>
-        <div className={styles['lado-b']}>
-          <span className={styles['title-saldo']}>37&apos;000.000</span>
-        </div>
-      </div>
-      <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-a']}>
-          <span className={styles['title-separacion']}>
-            Número cuotas mensuales
-          </span>
-          <br />
-        </div>
-        <div className={styles['lado-b']}>
-          <select
-            placeholder="Subject line"
-            name="subject"
-            className={styles.subject_input}
-            required>
-            <option disabled hidden selected>
-              2
-            </option>
-            <option>Opción 1</option>
-            <option>Opción 2</option>
-            <option>Opción 3</option>
-          </select>
-        </div>
-      </div>
 
-      <label className="flex j-c a-c">
+      <div className={styles.infoSection}>
+        <span className={styles.labelSimple}>Total Cuota Inicial</span>
+        <span className={styles.labelFocus}>{formatMoney(initialQuote)}</span>
+      </div>
+      <div className={styles['cotizacion-form']}>
+        <span className={styles.labelSide}>Separación</span>
+
         <input
-          className={`${styles.inputQuote} ${styles.cuotas}`}
-          type="checkbox"
-          name="cb-terminosservicio"
+          className={styles.inputQuote}
+          type="text"
+          name="separation"
+          value={separation}
+          onChange={(e) => setSeparation(e.target.value)}
+          placeholder="0'000.000"
           required
         />
-        <div className={styles.checkboxMask}></div>
-        <span className={styles['see-detalles']}>Ver detalle de cuotas</span>
-      </label>
-      <br />
-      <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-c']}>
-          <span className={styles['title-separacion']}>
-            Valor cuota mensual
-          </span>
-        </div>
-        <div className={styles['lado-d']}>
-          <span className={styles['title-saldo']}>9&apos;375.000</span>
-        </div>
       </div>
       <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-c']}>
-          <span className={styles['title-separacion']}>Saldo apartamento</span>
-        </div>
-        <div className={styles['lado-d']}>
-          <span className={styles['title-saldo']}>94&apos;375.000</span>
-        </div>
-      </div>
-      <div className={styles.checked}>
-        <label className="flex j-c a-c">
-          <input
-            className={`${styles.inputQuote} ${styles.cuotas}`}
-            type="checkbox"
-            name="cb-terminosservicio"
-            required
-          />
-          <div className={styles.checkboxMask}></div>
-          <span className={styles['see-detalles']}>Enviar link de pago</span>
+        <span className={styles.labelSide}>Abono Inicial</span>
 
-          <img src="/images/link-pago.png" className={styles.arrowImage} />
-        </label>
+        <input
+          className={styles.inputQuote}
+          type="text"
+          name="downPayment"
+          value={downPayment}
+          onChange={(e) => setDownPayment(e.target.value)}
+          placeholder="0'000.000"
+          required
+        />
+      </div>
+
+      <div className={styles.infoSection}>
+        <span className={styles.labelSimple}>Saldo Cuota Inicial</span>
+        <span className={styles.labelFocus}>
+          {formatMoney(balanceInitialQuote)}
+        </span>
+      </div>
+
+      <div className={styles['cotizacion-form']}>
+        <span className={styles.labelSide}>No. Cuotas Mensuales</span>
+
+        <select
+          type="text"
+          name="fees"
+          value={fees}
+          onChange={(e) => setFees(e.target.value)}
+          className={styles.subject_input}
+          required>
+          <option disabled defaultValue={0} hidden selected></option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>13</option>
+          <option>14</option>
+          <option>16</option>
+          <option>18</option>
+          <option>20</option>
+          <option>24</option>
+        </select>
+      </div>
+
+      <div className={styles.squareInputContainer}>
+        <SquareInput onChangeFunct={handlePopQuotes} />
+
+        <span className={styles.labelQuotesSelect}>
+          Ver detalle de cuotas {`${popQuotes}`}{' '}
+        </span>
+      </div>
+      {console.log(feesArray)}
+      {popQuotes && renderDynamicInputs()}
+
+      {!popQuotes && (
+        <div className={styles.infoSection}>
+          <span className={styles.labelSimple}>Valor Cuota Mensual</span>
+          <span className={styles.labelFocus}>{formatMoney(monthlyQuote)}</span>
+        </div>
+      )}
+
+      <div className={styles.infoSection}>
+        <span className={styles.labelSimple}>Saldo Apartamento</span>
+        <span className={styles.labelFocus}>{formatMoney(unitBalance)}</span>
+      </div>
+
+      <div className={styles.squareInputContainer}>
+        <SquareInput onChangeFunct={handleSentLink} />
+        <span className={styles.labelQuotesSelectNoLine}>
+          Enviar link de pago {`${sentLink}`}{' '}
+        </span>
+        <img src="/images/link-pago.png" className={styles.arrowImage} />
       </div>
       <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-e']}>
-          <span className={styles['title-separacion']}>COMPARTIR</span>
+        <span className={styles.labelFocus}>COMPARTIR:</span>
+
+        <div className={styles.iconContainer}>
+          <div className={styles.iconSubContainer}>
+            <img src="/images/mail.png" />
+            <span className={styles.labelSimple}>MAIL</span>
+          </div>
+
+          <div className={styles.iconSubContainer}>
+            <img src="/images/whatsapp.png" />
+            <span
+              className={styles.labelSimple}
+              onClick={() => {
+                setGenerateQuote(false);
+              }}>
+              WHATSAPP
+            </span>
+          </div>
         </div>
       </div>
-      <div className={styles['cotizacion-form']}>
-        <div className={styles['lado-c']}>
-          <img src="/images/mail.png" />
-          <span className={styles['title-separacion']}>MAIL</span>
-        </div>
-        <div className={styles['lado-d']}>
-          <img src="/images/whatsapp.png" />
-          <span
-            className={styles['title-separacion']}
-            onClick={() => {
-              setGenerateQuote(false);
-            }}>
-            WHATSAPP
-          </span>
-        </div>
+
+      <div className={`${styles.buttonsSection} flex j-sb a-s`}>
+        <Button
+          buttonType={'primary'}
+          iconImage={false}
+          label={'CANCELAR'}
+          inheritClass={styles.buttonCreateOpportunity}
+        />
+        <Button
+          buttonType={'secondary'}
+          iconImage={false}
+          label={'Guardar'}
+          inheritClass={styles.buttonCreateOpportunity}
+        />
       </div>
-    </div>
+    </form>
   );
 };
 

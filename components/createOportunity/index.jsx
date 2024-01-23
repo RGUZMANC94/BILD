@@ -17,6 +17,8 @@ const CreateOportunity = ({ created, recentContacts }) => {
   const [isCreated, setIsCreated] = useState(created);
   const [showPopEvents, setShowPopEvents] = useState(false);
   const [generateQuote, setGenerateQuote] = useState(false);
+  const [contactSelected, setContactSelected] = useState({});
+  const { unitSelected } = useSelector((state) => state.unitState);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -75,10 +77,16 @@ const CreateOportunity = ({ created, recentContacts }) => {
         <section className={styles.main}>
           {isCreated ? (
             <OportunityCreated
+              setShowPopUp={setShowPopUp}
+              setShowPopUpAddContact={setShowPopUpAddContact}
+              isConnected={isConnected}
+              setIsConnected={setIsConnected}
               showPopEvents={showPopEvents}
               setShowPopEvents={setShowPopEvents}
               generateQuote={generateQuote}
               setGenerateQuote={setGenerateQuote}
+              setIsCreated={setIsCreated}
+              unit={unitSelected}
             />
           ) : (
             <CreateStep
@@ -86,8 +94,10 @@ const CreateOportunity = ({ created, recentContacts }) => {
               setShowPopUpAddContact={setShowPopUpAddContact}
               setShowPopUpCreateContact={setShowPopUpCreateContact}
               isConnected={isConnected}
+              setIsConnected={setIsConnected}
               setIsCreated={setIsCreated}
               recentContacts={recentContacts}
+              unit={unitSelected}
             />
           )}
         </section>
@@ -95,17 +105,19 @@ const CreateOportunity = ({ created, recentContacts }) => {
         <div className={styles['menu-footer']}></div>
       </div>
 
-      {showPopUpCreateContact && (
+      {/* showPopUpCreateContact && (
         <CreateContact
           setIsConnected={setIsConnected}
           setShowPopUpCreateContact={setShowPopUpCreateContact}
+          recentContacts={recentContacts}
         />
-      )}
+      )*/}
 
       {showPopUpAddContact && (
         <AddContact
           setIsConnected={setIsConnected}
           setShowPopUpAddContact={setShowPopUpAddContact}
+          recentContacts={recentContacts}
         />
       )}
 

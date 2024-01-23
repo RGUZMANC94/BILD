@@ -7,6 +7,7 @@ const SquareInput = ({ onChangeFunct }) => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+    onChangeFunct();
   };
 
   return (

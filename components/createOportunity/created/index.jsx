@@ -2,14 +2,24 @@ import { useEffect, useState } from 'react';
 import styles from './created.module.css';
 import EventsOportunity from '../eventsOportunity';
 import GenerateQuote from '../generateQuote';
+import { useSelector } from 'react-redux';
+import { closePopUp } from '../../../redux/popUpOportunity';
 
 const OportunityCreated = ({
   showPopEvents,
   setShowPopEvents,
   generateQuote,
   setGenerateQuote,
+  setIsCreated,
+  setShowPopUp,
+  setIsConnected,
+  unit,
 }) => {
   const [showCreatedPop, setShowCreatedPop] = useState(false);
+  const { projectsList } = useSelector((state) => state.projectState);
+  const { opportunitySelected } = useSelector(
+    (state) => state.opportunityState
+  );
 
   useEffect(() => {
     setShowCreatedPop(true);
@@ -18,13 +28,54 @@ const OportunityCreated = ({
     }, 4000);
   }, []);
 
+  const deleteOpportunity = async () => {
+    try {
+      const oppCreated = await fetch('/api/deleteOpportunity', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          opportunitySelected,
+        }),
+      });
+      console.log('respuesta de eleiminacion', oppCreated);
+      const responseData = await oppCreated.json();
+
+      if (!oppCreated.ok) {
+        throw new Error('Failed to delete opportunity');
+      }
+
+      document
+        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popSuccessTypeCreated}`)
+          .classList.remove(styles.activePopUp);
+        setShowPopUp(false);
+        setIsCreated(false);
+        setIsConnected(false);
+      }, 2000);
+    } catch (error) {
+      console.error('Error al eliminar la oportunidad:', error);
+    }
+  };
+
   return (
     <div className={styles['wrap-crear']}>
       <div className={styles.crear}>
         <div className={styles['left-side']}>
           <div className={styles['crear-tipo']}>
             <div className={styles['creacion-title']}>
-              <span className={styles['tipo-title']}>Fontana Campestre</span>
+              <span className={styles['tipo-title']}>
+                {
+                  projectsList.find(
+                    (objeto) => objeto.projectId === unit.projectId
+                  ).projectName
+                }
+              </span>
             </div>
             <div className={styles['tipo-unit']}>
               <div className={styles['img-tipo']}>
@@ -35,17 +86,14 @@ const OportunityCreated = ({
               </div>
               <div className={styles['tipo-info']}>
                 <div className={styles.tipos}>
-                  <span>TIPO 1 - 102, 103</span>
-                  <span>TIPO 2 - 303, 305</span>
+                  <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
                 </div>
-                <span className={styles.valor}>
-                  $120 millones - 160 millones
-                </span>
+                <span className={styles.valor}>{`$${unit.propertyPrice}`}</span>
                 <div className={styles.detalles}>
-                  <img src="/images/cards/bath.png" />
-                  <span>3-4</span>
-                  <img src="/images/cards/bed.png" />
-                  <span>2-3</span>
+                  <img src="/images/cards/bed.svg" />
+                  <span>{`${unit.bedrooms}`}</span>
+                  <img src="/images/cards/bath.svg" />
+                  <span>{`${unit.baths}`}</span>
                 </div>
               </div>
               <div className={styles.add}></div>
@@ -54,7 +102,11 @@ const OportunityCreated = ({
           {!generateQuote && (
             <div className={styles.contacto}>
               <div className={styles.conecta}>
-                <button className={styles['contacto-existente']}>
+                <button
+                  className={styles['contacto-existente']}
+                  onClick={() => {
+                    deleteOpportunity();
+                  }}>
                   Eliminar Oportunidad
                 </button>
                 <button

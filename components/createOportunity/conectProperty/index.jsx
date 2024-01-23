@@ -1,10 +1,16 @@
+import { useEffect, useState } from 'react';
 import styles from './conect-property.module.css';
+import { useDispatch } from 'react-redux';
+import { changeContactSelected } from '../../../redux/contactSelectedSlice';
 
 const ConectProperty = ({
   setShowPopUpCreateContact,
   setShowPopUpAddContact,
+  setIsConnected,
   recentContacts,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.contacto}>
       <div className={styles.conecta}>
@@ -24,15 +30,31 @@ const ConectProperty = ({
       </div>
       <div className={styles.recientes}>
         <span className={styles['conecta-contacto']}>CONTACTOS RECIENTES:</span>
-        {recentContacts && (
-          <div
-            className={styles.contact}
-            key={recentContacts.ContactId}
-            data-email={recentContacts.email}
-            data-phone-number={recentContacts.phoneNumber}>
-            <img src="/images/Ellipse 81.png" /> {recentContacts.contactName}
-          </div>
-        )}
+        {recentContacts &&
+          recentContacts.length > 0 &&
+          recentContacts.slice(0, 3).map((recent, i) => (
+            <div
+              className={styles.contact}
+              key={recent.idCli}
+              data-email={recent.email}
+              data-phone-number={recent.phoneNumber}
+              onClick={() => {
+                setIsConnected(true);
+                dispatch(changeContactSelected(recent));
+                setTimeout(() => {
+                  setShowPopUpAddContact(false);
+                }, 500);
+              }}>
+              <img
+                src={
+                  recent.image[0] !== '' && recent.image[0]
+                    ? `${recent.image[0].url}`
+                    : '/images/tipo-1.png'
+                }
+              />{' '}
+              {`${recent.name} ${recent.lastname}`}
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   typeSelected: 0,
-  typeSelectedName: '', // Nuevo atributo
+  typeSelectedName: '',
 };
 
 export const typeSelectedSlice = createSlice({

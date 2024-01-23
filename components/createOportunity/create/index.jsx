@@ -3,6 +3,7 @@ import ConectProperty from '../conectProperty';
 import styles from './create.module.css';
 import { useDispatch } from 'react-redux';
 import { closePopUp } from '../../../redux/popUpOportunity';
+import { useSelector } from 'react-redux';
 
 const CreateStep = ({
   setShowPopUpAddContact,
@@ -10,14 +11,24 @@ const CreateStep = ({
   isConnected,
   setIsCreated,
   recentContacts,
+  setIsConnected,
   setShowPopUp,
+  unit,
 }) => {
   const dispatch = useDispatch();
+  const { projectsList } = useSelector((state) => state.projectState);
+
+  console.log('contactos en creacion de oportunidada', recentContacts);
   return (
     <div className={styles.crear}>
       <div className={styles['crear-tipo']}>
         <div className={styles['creacion-title']}>
-          <span className={styles['tipo-title']}>Fontana Campestre</span>
+          <span className={styles['tipo-title']}>
+            {
+              projectsList.find((objeto) => objeto.projectId === unit.projectId)
+                .projectName
+            }
+          </span>
         </div>
         <div className={styles['tipo-unit']}>
           <div className={styles['img-tipo']}>
@@ -26,15 +37,14 @@ const CreateStep = ({
           </div>
           <div className={styles['tipo-info']}>
             <div className={styles.tipos}>
-              <span>TIPO 1 - 102, 103</span>
-              <span>TIPO 2 - 303, 305</span>
+              <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
             </div>
-            <span className={styles.valor}>$120 millones - 160 millones</span>
+            <span className={styles.valor}>{`$${unit.propertyPrice}`}</span>
             <div className={styles.detalles}>
               <img src="/images/cards/bed.svg" />
-              <span>3-4</span>
+              <span>{`${unit.bedrooms} - `}</span>
               <img src="/images/cards/bath.svg" />
-              <span>2-3</span>
+              <span>{`${unit.baths}`}</span>
             </div>
           </div>
           <div
@@ -54,6 +64,8 @@ const CreateStep = ({
           recentContacts={recentContacts}
           setShowPopUpAddContact={setShowPopUpAddContact}
           setShowPopUpCreateContact={setShowPopUpCreateContact}
+          setIsCreated={setIsCreated}
+          setIsConnected={setIsConnected}
         />
       )}
     </div>

@@ -1,10 +1,32 @@
 import { useEffect, useState } from 'react';
 import styles from './add-contact.module.css';
-const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
+import { useDispatch } from 'react-redux';
+import { changeContactSelected } from '../../redux/contactSelectedSlice';
+
+const AddContact = ({
+  setShowPopUpAddContact,
+  setIsConnected,
+  recentContacts,
+}) => {
+  const dispatch = useDispatch();
   const [isShow, setIsShow] = useState(false);
   useEffect(() => {
     setIsShow(true);
   }, []);
+  const [sortedContacts, setSortedContacts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    setSortedContacts(
+      recentContacts.sort((a, b) => a.name.localeCompare(b.name))
+    );
+  }, [recentContacts]);
+
+  const filteredContacts = sortedContacts.filter(
+    (contact) =>
+      contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      contact.lastname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div
@@ -37,68 +59,38 @@ const AddContact = ({ setShowPopUpAddContact, setIsConnected }) => {
               className={styles['search-input']}
               type="text"
               placeholder="Buscar Nombre"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="none"
-              stroke="#fff"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              className={styles['feather feather-search']}
-              viewBox="0 0 24 24">
-              <defs></defs>
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="M21 21l-4.35-4.35"></path>
-            </svg>
           </div>
           <div className={styles['agregar-contacto']}>
-            <div
-              className={styles.contact}
-              onClick={() => {
-                setIsConnected(true);
-                setIsShow(false);
-                setTimeout(() => {
-                  setShowPopUpAddContact(false);
-                }, 500);
-              }}>
-              <img src="/images/Ellipse 81.png" /> Gustavo Cerati
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 82.png" /> Whitney Houston
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 84.png" /> Amy Winehouse
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 81.png" /> Gustavo Cerati
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 82.png" /> Whitney Houston
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 84.png" /> Amy Winehouse
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 81.png" /> Gustavo Cerati
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 82.png" /> Whitney Houston
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 84.png" /> Amy Winehouse
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 81.png" /> Gustavo Cerati
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 82.png" /> Whitney Houston
-            </div>
-            <div className={styles.contact}>
-              <img src="/images/Ellipse 84.png" /> Amy Winehouse
-            </div>
+            {filteredContacts.length > 0 ? (
+              filteredContacts.map((recent, i) => (
+                <div
+                  className={styles.contact}
+                  key={i}
+                  onClick={() => {
+                    setIsConnected(true);
+                    setIsShow(false);
+                    dispatch(changeContactSelected(recent));
+                    setTimeout(() => {
+                      setShowPopUpAddContact(false);
+                    }, 500);
+                  }}>
+                  <img
+                    src={
+                      recent.image[0] !== '' && recent.image[0]
+                        ? `${recent.image[0].url}`
+                        : '/images/Ellipse 81.png'
+                    }
+                    alt={`${recent.name} ${recent.lastname}`}
+                  />
+                  {`${recent.name} ${recent.lastname}`}
+                </div>
+              ))
+            ) : (
+              <p>No se encontraron contactos.</p>
+            )}
           </div>
         </div>
       </div>

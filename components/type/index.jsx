@@ -3,8 +3,15 @@ import { CSS } from '@dnd-kit/utilities';
 import { useDispatch } from 'react-redux';
 import { changeTypeSelected } from '../../redux/typeSelectedSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
+import Button from '../button';
 
-const TypeCard = ({ units, type, setCreateOportunity, index }) => {
+const TypeCard = ({
+  units,
+  type,
+  setCreateOportunity,
+  setShowPopUpUnit,
+  index,
+}) => {
   const dispatch = useDispatch();
   const USDollar = new Intl.NumberFormat('en-US');
   return (
@@ -76,7 +83,7 @@ const TypeCard = ({ units, type, setCreateOportunity, index }) => {
             <div className="top-tabla">Precio</div>
             <div className="top-tabla"></div>
           </div>
-          D
+
           {units.map((unit, i) => (
             <div className="info-tabla" key={i}>
               <div className="detalle-tabla">{unit.idProperty}</div>
@@ -88,6 +95,16 @@ const TypeCard = ({ units, type, setCreateOportunity, index }) => {
                 onClick={() => setCreateOportunity(true)}></div>
             </div>
           ))}
+
+          <Button
+            inheritClass="add-unit-movil"
+            buttonType={'primary'}
+            label="Agregar Unidad"
+            iconImage={'/images/plus.svg'}
+            clickFunction={() => {
+              setShowPopUpUnit(true);
+            }}
+          />
         </div>
       </div>
     </li>

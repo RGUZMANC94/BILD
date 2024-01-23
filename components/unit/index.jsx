@@ -2,9 +2,15 @@ import { useState } from 'react';
 import styles from './unit.module.css';
 import { useDispatch } from 'react-redux';
 import { openPopUp } from '../../redux/popUpOportunity';
+import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 const Unit = ({ unit, setCreateOportunity }) => {
   const [isHidden, setIsHidden] = useState(true);
   const dispatch = useDispatch();
+
+  function handleDispatch() {
+    dispatch(openPopUp(true));
+    dispatch(changeUnitSelected(unit));
+  }
 
   return (
     <div className="info-tabla">
@@ -56,9 +62,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
           disabled={isHidden}
         />
       </div>
-      <div
-        className="llave-tabla"
-        onClick={() => dispatch(openPopUp(true))}></div>
+      <div className="llave-tabla" onClick={() => handleDispatch()}></div>
     </div>
   );
 };

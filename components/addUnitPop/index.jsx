@@ -17,7 +17,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
     projectId: router.query.id,
     nuimb: '',
     phase: '1',
-    type: typeSelectedName,
+    type: '-1',
     status: '0',
     group: '0',
     fieldSize: '0.0',
@@ -35,7 +35,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
     parkingPrice: '0.0',
     storageAreaPrice: '0.0',
     propertyPrice: '',
-    piso: '0',
+    piso: '1',
   });
 
   const handleChange = (e) => {
@@ -101,6 +101,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
       parkingPrice: addDecimalZero(datos.parkingPrice),
       storageAreaPrice: addDecimalZero(datos.storageAreaPrice),
       propertyPrice: addDecimalZero(datos.propertyPrice),
+      type: typeSelectedName,
     };
 
     console.log(
@@ -110,7 +111,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
       })
     );
 
-    /* try {
+    try {
       const typeCreated = await fetch('/api/createUnit', {
         method: 'post',
         headers: {
@@ -143,7 +144,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
       }, 2000);
     } catch (error) {
       console.error('Error al crear el proyecto:', error);
-    }*/
+    }
   };
 
   return (
@@ -333,6 +334,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
                 label={'CANCELAR'}
                 inheritClass={styles.buttonCreateType}
                 href="/"
+                clickFunction={() => setShowPopUpUnit(false)}
               />
               <Button
                 buttonType={'secondary'}

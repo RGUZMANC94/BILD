@@ -23,6 +23,7 @@ const TypesSide = ({
     if (!flagType) {
       setFlagType(true);
       dispatch(changeTypeSelected(-1));
+      dispatch(changeTypeSelectedName(-1));
     } else if (types[typeSelected]) {
       setSelectedType(
         units.filter((unit) => unit.type === types[typeSelected].idType)
@@ -35,6 +36,7 @@ const TypesSide = ({
       <AllTypes
         types={types}
         setShowPopUpType={setShowPopUpType}
+        setShowPopUpUnit={setShowPopUpUnit}
         setCreateOportunity={setCreateOportunity}
         units={units}
       />

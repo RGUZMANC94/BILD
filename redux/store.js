@@ -7,18 +7,32 @@ import thunk from 'redux-thunk';
 import userReducer from './userSlice';
 import projectReducer from './projectSlice';
 import typeReducer from './typeSelectedSlice';
+import unitReducer from './unitSelectedSlice';
 import popUpOportunityReducer from './popUpOportunity';
+import contactSelectedReducer from './contactSelectedSlice';
+import opportunitySelectedReducer from './opportunitySelectedSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['userState', 'projectState', 'typeState', 'popUpOportunityState'],
+  whitelist: [
+    'userState',
+    'projectState',
+    'typeState',
+    'popUpOportunityState',
+    'unitState',
+    'contactOpportunityState',
+    'opportunityState',
+  ],
 };
 
 const rootReducer = combineReducers({
   userState: userReducer,
   projectState: projectReducer,
   typeState: typeReducer,
+  unitState: unitReducer,
+  opportunityState: opportunitySelectedReducer,
+  contactOpportunityState: contactSelectedReducer,
   popUpOportunityState: popUpOportunityReducer,
 });
 

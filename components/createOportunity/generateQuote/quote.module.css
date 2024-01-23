@@ -23,38 +23,12 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   margin-top: 20px;
 }
 
 .seleccion > div {
-  width: 45%;
-}
-
-.seleccion > div span {
-  font-weight: 700;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.elegir-seleccion {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.proyect-form input,
-.subject_input {
-  width: 100%;
-  background-color: #21221d;
-  text-align: center;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  padding: 10px 10px;
-  appearance: none;
+  width: 20%;
 }
 
 .separacion {
@@ -63,18 +37,6 @@
   width: 100%;
   justify-content: flex-start;
   align-items: center;
-}
-
-.inputQuote {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  color: #c7c7c7ce;
-  background-color: #21221d;
-  text-align: center;
 }
 
 .cotizacion-form {
@@ -186,10 +148,6 @@
   margin-top: 20px;
 }
 
-.outerRange {
-  width: 100%;
-}
-
 .labelRangePercenth {
   width: 50px;
   border: 1px solid #fff;
@@ -199,6 +157,158 @@
   align-items: center;
   font-size: 14px;
   border-radius: 5px;
+}
+
+/*After Changes scope*/
+
+.proyect-form input,
+.subject_input {
+  background-color: #21221d;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 10px 10px;
+  appearance: none;
+}
+
+.labelSimple {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.61;
+}
+
+.labelFocus {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.61;
+}
+
+.seleccion .labelSimple {
+  margin-right: 10px;
+}
+
+.labelSubtitle {
+  width: 100%;
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.55;
+  margin: 40px 0 0 0;
+}
+
+.infoSection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+  background: #404040;
+  gap: 30px;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+.outerRange {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.buttonsSection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.buttonCreateOpportunity {
+  width: 48%;
+  height: 50px;
+}
+
+.cotizacion-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+.labelSide {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.inputQuote {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #c7c7c7ce;
+  background-color: #21221d;
+  text-align: center;
+}
+
+.subject_input {
+  width: 60%;
+}
+
+.squareInputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.labelQuotesSelect {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.5;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+.labelQuotesSelectNoLine {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.5;
+  margin-left: 10px;
+}
+
+.iconContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.iconSubContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
 }
 
 @media only screen and (max-width: 768px) {
