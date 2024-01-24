@@ -8,12 +8,21 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
+import { closePopUp } from '../../redux/popUpOportunity';
+
 
 const Oportunities = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
   const [allOpportunities, setAllOpportunities] = useState([]);
+  const [closeFlag, setCloseFlag] = useState(true);
+
+
+  if (closeFlag) {
+    dispatch(closePopUp());
+    setCloseFlag(false);
+  }
 
   const { openPopUpOportunity } = useSelector(
     (state) => state.popUpOportunityState

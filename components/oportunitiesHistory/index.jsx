@@ -4,7 +4,7 @@ import styles from './oportunities-history.module.css';
 import Button from '../button';
 import { useDispatch } from 'react-redux';
 
-const OportunitiesHistory = () => {
+const OportunitiesHistory = (opportunitySelected) => {
   const dispatch = useDispatch();
   const [selectedItem, setSelectedItem] = useState(null);
   const [showAllEvents, setShowAllEvents] = useState(false);

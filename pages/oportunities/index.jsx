@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import CreateOportunity from '../../components/createOportunity';
 import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
+import { useDispatch } from 'react-redux';
+import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
 const OportunitiesAllFilter = () => {
   const router = useRouter();
@@ -16,6 +18,8 @@ const OportunitiesAllFilter = () => {
   const [showSection, setShowSection] = useState('all');
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [recentContacts, setRecentsContacts] = useState([]);
+  const [oppIsSelected, setOppIsSelected] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleShowBar = () => {
     setShowBar(!showBar);
@@ -57,6 +61,29 @@ const OportunitiesAllFilter = () => {
     setRecentsContacts(recentsContacts);
   };
 
+   const getUnitSelected = async (idProperty, projectId) => {
+    const response = await fetch('/api/units', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        id,
+        projectId
+      }),
+    });
+
+    const units = await response.json();
+    console.log('Unidades:', units);
+
+    const unitSelected = units.find((unit) => unit.idProperty === idProperty);
+
+    console.log('Unidad seleccionada:', unitSelected);
+
+    dispatch(changeUnitSelected(unitSelected));
+
+   }
+
   useEffect(() => {
     if (!getSessionToken()) {
       router.push('/login');
@@ -83,6 +110,7 @@ const OportunitiesAllFilter = () => {
                   showSection === 'all' && styles.active
                 }`}></div>
             </div>
+            {/*
             <div className={styles['top-content-container']}>
               <button
                 className={styles['top-content-buttons']}
@@ -94,6 +122,7 @@ const OportunitiesAllFilter = () => {
                   showSection === 'pending' && styles.active
                 }`}></div>
             </div>
+              */}
             <div className={styles['top-content-container']}>
               <button
                 className={styles['top-content-buttons']}
@@ -129,11 +158,12 @@ const OportunitiesAllFilter = () => {
             <OportunitiesAll
               oppList={allOpportunities}
               contacts={recentContacts}
+              setOppIsSelected={setOppIsSelected}
             />
           )}
-          {showSection === 'pending' && (
+          {/*showSection === 'pending' && (
             <OportunitiesPending oppList={allOpportunities} />
-          )}
+          )*/}
           {showSection === 'closed' && (
             <OportunitiesClosed
               oppList={allOpportunities}

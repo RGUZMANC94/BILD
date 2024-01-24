@@ -4,7 +4,7 @@ import styles from './Add-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
+const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, }) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -12,6 +12,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const { id } = useSelector((state) => state.userState);
   const { typeSelectedName } = useSelector((state) => state.typeState);
+  const {projectsList} = useSelector((state) => state.projectState);
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -164,7 +165,8 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit }) => {
             <div className={`${styles.deleteIcon} bg-ct`}></div>
           </div>
 
-          <span className={styles.label}>Nombre proyecto</span>
+          <span className={styles.label}>{`${(projectsList.filter(
+    (project) => router.query.id === project.projectId))[0].projectName}`}</span>
           <span className={styles.labelSubtitle}>Nombre tipo</span>
 
           <form className={styles.formType} onSubmit={sendFormInfo}>

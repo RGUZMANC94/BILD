@@ -8,9 +8,10 @@ import AddUnitPop from '../../components/addUnitPop';
 import { getSessionToken } from '../../utils/getSessionToken';
 import { useRouter } from 'next/router';
 import { getLocalData } from '../api/detailProject';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
 import Link from 'next/link';
+import { closePopUp } from '../../redux/popUpOportunity';
 
 const DetailState = ({ units, types }) => {
   const { id } = useSelector((state) => state.userState);
@@ -22,6 +23,15 @@ const DetailState = ({ units, types }) => {
   const [recentContacts, setRecentsContacts] = useState({});
   const router = useRouter();
   const containerEstate = useRef(null);
+  const dispatch = useDispatch();
+  const [closeFlag, setCloseFlag] = useState(true);
+
+
+  if (closeFlag) {
+    dispatch(closePopUp());
+    setCloseFlag(false);
+  }
+  
 
   const { openPopUpOportunity } = useSelector(
     (state) => state.popUpOportunityState

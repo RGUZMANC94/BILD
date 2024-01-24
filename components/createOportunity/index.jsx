@@ -21,6 +21,21 @@ const CreateOportunity = ({ created, recentContacts }) => {
   const { unitSelected } = useSelector((state) => state.unitState);
   const dispatch = useDispatch();
 
+  const getProjects = async () => {
+    const response = await fetch('/api/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        page: pageProjects,
+      }),
+    });
+    const responseProjects = await response.json();
+    dispatch(setProjects(responseProjects));
+  };
+
   useEffect(() => {
     setShowPopUp(true);
   }, []);

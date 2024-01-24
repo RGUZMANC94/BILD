@@ -139,15 +139,28 @@ const GenerateQuote = ({ setGenerateQuote }) => {
       if (quoteCreated.ok) {
         const responseData = await quoteCreated.json();
         console.log('respuesta de la cotizacion', responseData);
-      } /* else {
+        
+        document
+        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .classList.add(styles.activePopUp);
+
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popSuccessTypeCreated}`)
+            .classList.remove(styles.activePopUp);
+            window.location.reload();
+        }, 2000);
+      }  else {
         console.error('Error en la respuesta del servidor (Creacion de oportunidad):', error);
-      }*/
+      }
     } catch (error) {
       console.error('Error al crear la cotizacion:', error);
     }
   };
 
   return (
+    <>
     <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
       <span className={styles.title}>GENERAR COTIZACIÓN</span>
       <div className={styles.seleccion}>
@@ -290,7 +303,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         <SquareInput onChangeFunct={handlePopQuotes} />
 
         <span className={styles.labelQuotesSelect}>
-          Ver detalle de cuotas {`${popQuotes}`}{' '}
+          Ver detalle de cuotas 
         </span>
       </div>
       {console.log(feesArray)}
@@ -352,6 +365,20 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         />
       </div>
     </form>
+    <div className={`${styles.popSuccessTypeCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                ¡Tú Cuata ha sido creada con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

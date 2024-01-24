@@ -4,13 +4,61 @@ import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-all.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
+import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-const OportunitiesAll = ({ oppList, contacts }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
 
-  const handleItemClick = (index) => {
-    selectedItem === index ? setSelectedItem(-1) : setSelectedItem(index);
+const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
+  const { id } = useSelector((state) => state.userState);
+  const [selectedItem, setSelectedItem] = useState(-1);
+  const [opportunitySelected, setOpportunitySelected] = useState(-1);
+  const dispatch = useDispatch();
+  console.log('Lista de oportunidades:', oppList);
+
+
+  const getUnitSelected = async (idProperty, projectId) => {
+    console.log('id de la propiedad:', idProperty);
+    console.log('id del proyecto:', projectId);
+    const response = await fetch('/api/units', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        id,
+        projectId
+      }),
+    });
+    console.log('Unidades:', response);
+
+    const units = await response.json();
+    console.log('Unidades:', units);
+
+    const unitSelected = units.find((unit) => unit.idProperty === idProperty);
+
+    console.log('Unidad seleccionada:', unitSelected);
+
+    dispatch(changeUnitSelected(unitSelected));
+
+   }
+
+  const handleItemClick = (index, oppId, idProperty, projectId) => {
+    if (selectedItem === index) {
+      setSelectedItem(-1);
+      dispatch(changeOpportunitySelected(-1));
+      setOppIsSelected(false);
+      setOpportunitySelected(-1)
+    } else { 
+      setSelectedItem(index);
+      dispatch(changeOpportunitySelected(oppId));
+      setOppIsSelected(true);
+      setOpportunitySelected(oppId)
+      getUnitSelected(idProperty,projectId)
+    }
   };
+
+  console.log('elemento seleccionado', selectedItem )
 
   function ClientById(array, clientId) {
     console.log('Clientes:', array);
@@ -71,11 +119,15 @@ const OportunitiesAll = ({ oppList, contacts }) => {
     <>
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-          {oppList.map((oportunity, i) => (
+          {console.log('') }
+          {oppList && 
+
+          (oppList.length > 0 ? 
+          oppList.map((oportunity, i) => (
             <div
               className={styles['card-unit-list']}
               key={i}
-              onClick={() => handleItemClick(i)}>
+              onClick={() => handleItemClick(i,oportunity.idSaleOp,oportunity.idProperty,oportunity.idProject)}>
               <OportunitiesCard
                 closed={oportunity.image}
                 estimatedProgress={oportunity.estimatedProgress}
@@ -96,11 +148,15 @@ const OportunitiesAll = ({ oppList, contacts }) => {
                 temperature={'cold'} // hot warm cold
               />
             </div>
-          ))}
+          )): '')
+          }
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        <OportunitiesHistory></OportunitiesHistory>
+        { selectedItem !== -1 &&
+          <OportunitiesHistory opportunitySelected={opportunitySelected} ></OportunitiesHistory>
+        }
+        
       </div>
     </>
   );
