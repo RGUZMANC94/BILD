@@ -6,6 +6,7 @@ import { getSessionToken } from '../utils/getSessionToken';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setProjects } from '../redux/projectSlice';
+import { changeTypeSelectedName } from '../redux/typeSelectedSlice';
 import Link from 'next/link';
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
   const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [pageProjects, setPageProjects] = useState(1);
+  const [ openFlag, setOpenFlag ] = useState(true);
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
       method: 'POST',
@@ -40,6 +42,14 @@ const Home = () => {
     getProjects();
     // if (projectsList.length === 0) {
     // }
+  }, []);
+
+  useEffect(() => {
+    if(openFlag) {
+      dispatch(changeTypeSelectedName(-1));
+      setOpenFlag(false);
+      return;
+    }
   }, []);
 
   return (

@@ -141,17 +141,27 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         console.log('respuesta de la cotizacion', responseData);
         
         document
-        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
 
 
         setTimeout(() => {
           document
-            .querySelector(`.${styles.popSuccessTypeCreated}`)
+            .querySelector(`.${styles.popSuccessCreated}`)
             .classList.remove(styles.activePopUp);
             window.location.reload();
         }, 2000);
       }  else {
+        document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popError}`)
+            .classList.remove(styles.activePopUp);
+        }, 2000);
         console.error('Error en la respuesta del servidor (Creacion de oportunidad):', error);
       }
     } catch (error) {
@@ -365,14 +375,27 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         />
       </div>
     </form>
-    <div className={`${styles.popSuccessTypeCreated}`}>
+    <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
           <div className={styles.content}>
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú Cuata ha sido creada con éxito!
+                ¡Tú cuota ha sido creada con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError} `}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.
               </span>
             </div>
           </div>

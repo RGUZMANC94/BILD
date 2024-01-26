@@ -125,7 +125,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
       }
 
       document
-        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
@@ -134,6 +134,16 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
         setShowPopUpType(false);
       }, 2000);
     } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popError}`)
+            .classList.remove(styles.activePopUp);
+        }, 2000);
       console.error('Error al crear el proyecto:', error);
     }
   };
@@ -291,7 +301,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
           </form>
         </div>
       </div>
-      <div className={`${styles.popSuccessTypeCreated}`}>
+      <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
           <div className={styles.content}>
@@ -299,6 +309,19 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
                 ¡Tú tipo ha sido creado con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.
               </span>
             </div>
           </div>

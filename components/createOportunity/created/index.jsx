@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './created.module.css';
 import EventsOportunity from '../eventsOportunity';
 import GenerateQuote from '../generateQuote';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closePopUp } from '../../../redux/popUpOportunity';
 
 const OportunityCreated = ({
@@ -16,19 +16,27 @@ const OportunityCreated = ({
   unit,
 }) => {
   const [showCreatedPop, setShowCreatedPop] = useState(false);
+  const [showDeletedPop, setShowDeletedPop] = useState(false);
   const { projectsList } = useSelector((state) => state.projectState);
   const { opportunitySelected } = useSelector(
     (state) => state.opportunityState
   );
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setShowCreatedPop(true);
-    setTimeout(() => {
-      setShowCreatedPop(false);
-    }, 4000);
-  }, []);
+  /* useEffect(() => {
+    document
+        .querySelector(`.${styles.popSuccessCreated}`)
+        .classList.add(styles.activePopUp);
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popSuccessCreated}`)
+            .classList.remove(styles.activePopUp);
+        }, 2000);
+  }, []);*/
 
   const deleteOpportunity = async () => {
+    setShowDeletedPop(true);
     try {
       const oppCreated = await fetch('/api/deleteOpportunity', {
         method: 'delete',
@@ -43,27 +51,42 @@ const OportunityCreated = ({
       const responseData = await oppCreated.json();
 
       if (!oppCreated.ok) {
+        document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popError}`)
+            .classList.remove(styles.activePopUp);
+        }, 2000);
         throw new Error('Failed to delete opportunity');
       }
 
       document
-        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
         document
-          .querySelector(`.${styles.popSuccessTypeCreated}`)
+          .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        setShowPopUp(false);
-        setIsCreated(false);
+          setShowPopEvents(false);
+        setShowPopUp(false); // primero
         setIsConnected(false);
+        setIsCreated(false); // ultimo
+        dispatch(closePopUp(false));
+
       }, 2000);
     } catch (error) {
       console.error('Error al eliminar la oportunidad:', error);
     }
+    setShowDeletedPop(false);
   };
 
   return (
+    <>
     <div className={styles['wrap-crear']}>
       <div className={styles.crear}>
         <div className={styles['left-side']}>
@@ -139,6 +162,43 @@ const OportunityCreated = ({
         <span>Tu oportunidad se creo satisfactoriamente</span>
       </div>
     </div>
+    <div className={`${styles.popSuccessCreated}`}>
+    <div className={styles.bgPopUp}></div>
+    <div className={styles.popup2}>
+      <div className={styles.content}>
+        <div className={styles['icon-box']}>
+          <img src="/images/check-circle.png" />
+          <span className={styles['pop-text']}>
+            {showDeletedPop ? '¡Tú oportunidad ha sido eliminada con éxito!' 
+            : '¡Tú oportunidad ha sido creada con éxito!'   
+            }      
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className={`${styles.popError} `}>
+    <div className={styles.bgPopUp}></div>
+    <div className={styles.popup3}>
+      <div className={styles.content}>
+        <div className={styles['icon-box']}>
+          <img src="/images/error-circle.png" />
+          <span className={styles['pop-text']}>
+          <span className={styles['pop-text-bold']}>
+            ¡Oops!</span>
+            { showDeletedPop ? 'Algo no está bien. Tú oportunidad no ha podido ser iliminaad con éxito'
+            :
+            'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.'
+            }
+            
+            
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </>
   );
 };
 

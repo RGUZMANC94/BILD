@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-history.module.css';
 import Button from '../button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-const OportunitiesHistory = (opportunitySelected) => {
+const OportunitiesHistory = ({opportunitySelected,oppSelectedObject}) => {
+  console.log('ID oportinidad enviada', opportunitySelected)
   const dispatch = useDispatch();
+  const { id } = useSelector((state) => state.userState);
+  const { unitSelected } = useSelector((state) => state.unitState);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showAllEvents, setShowAllEvents] = useState(false);
   const [allEvents, setAllEvents] = useState([
@@ -43,12 +46,61 @@ const OportunitiesHistory = (opportunitySelected) => {
     },
   ]);
 
+  const [firstEvent, setFirstEvent] = useState({});
+  const [eventsSelected, setEventsSelected] = useState([]);
+  
+
   const handleItemClick = (index) => {
     setSelectedItem(index);
   };
 
+  const getEventsSelected = async () => {
+    const response = await fetch('/api/events', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        id,
+        idsaleop: opportunitySelected,
+        idclient: ''
+      }),
+    });
+    console.log('Eventos:', response);
+
+    const events = await response.json();
+    console.log('Eventos format:', events);
+
+    setEventsSelected(events);
+
+    if (events.length > 0) {
+      const [firstEvent, ...remainingEvents] = events;
+      setFirstEvent(firstEvent);
+      setEventsSelected(remainingEvents);
+    } else if (events.length === 1){
+      setFirstEvent(events[0]);
+      setEventsSelected([]);
+    } else {
+      setFirstEvent({});
+      setEventsSelected([]);
+    }
+   };
+ 
+   useEffect(() => {
+    if (opportunitySelected !== -1 && opportunitySelected) {
+      getEventsSelected();
+    }
+  }, [opportunitySelected]);
+
+  console.log('ID oportinidad enviada', opportunitySelected)
+  console.log('Oportinidad Objeto', oppSelectedObject)
+  console.log('Primer evento', firstEvent)
+  console.log('eventos ya en:', eventsSelected)
+
   return (
     <>
+    
+      <>
       <div className={styles.right}>
         <div className={styles.line}>
           <img src="/images/Ellipse 81.png" />
@@ -63,6 +115,8 @@ const OportunitiesHistory = (opportunitySelected) => {
               <li>Tipo 2:302</li>
             </ul>
           </div>
+
+        { Object.keys(firstEvent).length > 0 && 
           <div className={styles.greybox}>
             <div className={styles.info}>
               <label>
@@ -88,7 +142,11 @@ const OportunitiesHistory = (opportunitySelected) => {
             </div>
             <div className={styles['blue-point']}></div>
           </div>
+        }
 
+
+
+          {eventsSelected.length > 0 &&
           <div
             className={`${styles['box-dotted']} ${
               showAllEvents ? styles.active : ''
@@ -96,10 +154,10 @@ const OportunitiesHistory = (opportunitySelected) => {
             <div
               className={styles['blue-point-plus']}
               onClick={() => setShowAllEvents(true)}>
-              {allEvents.length - 2}+
+              {eventsSelected.length - 2}+
             </div>
             <div className={styles.innerDottedContainer}>
-              {allEvents.reverse().map((eventItem, i) => (
+              {eventsSelected.reverse().map((eventItem, i) => (
                 <div
                   className={
                     eventItem.status === 'pending' ? styles.greybox : styles.box
@@ -119,14 +177,14 @@ const OportunitiesHistory = (opportunitySelected) => {
                       )}
 
                       <span className={styles['pendiente-date']}>
-                        {eventItem.date}
+                        {eventItem.createDateTime}
                       </span>
                     </label>
                     <ul>
                       <li className={styles['pendiente-list']}>
-                        <b>{eventItem.title}</b>
+                        <b>{`Titulo del evento`}</b>
                       </li>
-                      <li>{eventItem.detail}</li>
+                      <li>{eventItem.activity}</li>
                     </ul>
                   </div>
                   {eventItem.status === 'pending' && (
@@ -140,17 +198,24 @@ const OportunitiesHistory = (opportunitySelected) => {
               ))}
             </div>
           </div>
+          }
+          
+          {
+            /*
+            <div className={styles.box}>
+              <span className={styles['pendiente-date']}>05/01/22</span>
+              <ul>
+                <li className={styles['pendiente-list']}>
+                  Creación del Contacto
+                </li>
+                <li>Visita en la sala de ventas</li>
+              </ul>
+              <div className={styles['blue-point']}></div>
+            </div>
 
-          <div className={styles.box}>
-            <span className={styles['pendiente-date']}>05/01/22</span>
-            <ul>
-              <li className={styles['pendiente-list']}>
-                Creación del Contacto
-              </li>
-              <li>Visita en la sala de ventas</li>
-            </ul>
-            <div className={styles['blue-point']}></div>
-          </div>
+            */
+          }
+
         </div>
         <div className={styles['pendientes-bottom']}>
           <div onClick={() => dispatch(openPopUp(true))}>
@@ -166,6 +231,8 @@ const OportunitiesHistory = (opportunitySelected) => {
           </div>
         </div>
       </div>
+      </>
+    
     </>
   );
 };

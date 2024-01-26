@@ -4,7 +4,7 @@ import styles from './Add-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, }) => {
+const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, types }) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -135,7 +135,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, }) => {
       console.log('Proyecto creado:', responseData);
 
       document
-        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
@@ -167,7 +167,9 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, }) => {
 
           <span className={styles.label}>{`${(projectsList.filter(
     (project) => router.query.id === project.projectId))[0].projectName}`}</span>
-          <span className={styles.labelSubtitle}>Nombre tipo</span>
+          <span className={styles.labelSubtitle}>{typeSelectedName !== -1 && (types.filter(
+    (type) => type.idType === typeSelectedName
+          )[0].type)}</span>
 
           <form className={styles.formType} onSubmit={sendFormInfo}>
             <div className={`${styles.inputsGroup} flex j-sb a-st`}>
@@ -348,14 +350,27 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, }) => {
           </form>
         </div>
       </div>
-      <div className={`${styles.popSuccessTypeCreated}`}>
+      <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
           <div className={styles.content}>
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú unidad ha sido creado con éxito!
+                ¡Tú unidad ha sido creada con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError} `}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.
               </span>
             </div>
           </div>

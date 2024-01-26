@@ -82,7 +82,7 @@ const OportunitiesAllFilter = () => {
 
     dispatch(changeUnitSelected(unitSelected));
 
-   }
+   };
 
   useEffect(() => {
     if (!getSessionToken()) {
@@ -161,7 +161,7 @@ const OportunitiesAllFilter = () => {
               setOppIsSelected={setOppIsSelected}
             />
           )}
-          {/*showSection === 'pending' && (
+          {/* showSection === 'pending' && (
             <OportunitiesPending oppList={allOpportunities} />
           )*/}
           {showSection === 'closed' && (

@@ -170,6 +170,7 @@ const DetailState = ({ units, types }) => {
       <AddUnitPop
         setShowPopUpUnit={setShowPopUpUnit}
         showPopUpUnit={showPopUpUnit}
+        types={types}
       />
 
       {openPopUpOportunity && (

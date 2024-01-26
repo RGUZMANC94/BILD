@@ -21,6 +21,12 @@ const CreateOportunity = ({ created, recentContacts }) => {
   const { unitSelected } = useSelector((state) => state.unitState);
   const dispatch = useDispatch();
 
+  console.log('---showPopUp',showPopUp);
+  console.log('isConnected',isConnected);
+  console.log('isCreated',isCreated);
+  console.log('showPopEvents',showPopEvents);
+  console.log('generateQuote',generateQuote);
+
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
       method: 'POST',

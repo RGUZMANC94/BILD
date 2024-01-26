@@ -13,6 +13,7 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
+  const [oppSelectedObject, setOppSelectedObject] = useState({});
   const dispatch = useDispatch();
   console.log('Lista de oportunidades:', oppList);
 
@@ -41,24 +42,26 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
 
     dispatch(changeUnitSelected(unitSelected));
 
-   }
+   };
 
-  const handleItemClick = (index, oppId, idProperty, projectId) => {
+  const handleItemClick = (index, oppId, idProperty, projectId, opp) => {
     if (selectedItem === index) {
       setSelectedItem(-1);
       dispatch(changeOpportunitySelected(-1));
       setOppIsSelected(false);
-      setOpportunitySelected(-1)
+      setOpportunitySelected(-1);
+      setOppSelectedObject({});
     } else { 
       setSelectedItem(index);
       dispatch(changeOpportunitySelected(oppId));
       setOppIsSelected(true);
-      setOpportunitySelected(oppId)
-      getUnitSelected(idProperty,projectId)
+      setOpportunitySelected(oppId);
+      getUnitSelected(idProperty,projectId);
+      setOppSelectedObject(opp);
     }
   };
 
-  console.log('elemento seleccionado', selectedItem )
+  console.log('elemento seleccionado', selectedItem );
 
   function ClientById(array, clientId) {
     console.log('Clientes:', array);
@@ -127,7 +130,7 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
             <div
               className={styles['card-unit-list']}
               key={i}
-              onClick={() => handleItemClick(i,oportunity.idSaleOp,oportunity.idProperty,oportunity.idProject)}>
+              onClick={() => handleItemClick(i,oportunity.idSaleOp,oportunity.idProperty,oportunity.idProject,oportunity)}>
               <OportunitiesCard
                 closed={oportunity.image}
                 estimatedProgress={oportunity.estimatedProgress}
@@ -154,7 +157,7 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
       </div>
       <div className={styles['wrap-right']}>
         { selectedItem !== -1 &&
-          <OportunitiesHistory opportunitySelected={opportunitySelected} ></OportunitiesHistory>
+          <OportunitiesHistory opportunitySelected={opportunitySelected} oppSelectedObject={oppSelectedObject} ></OportunitiesHistory>
         }
         
       </div>

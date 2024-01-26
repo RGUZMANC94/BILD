@@ -187,11 +187,23 @@
   height: 36px;
   background-size: 18px 36px;
   margin: 0;
+  background-image: url(/images/oportunities-card-left-arrow.svg);
+  position: absolute;
+  top: 20px;
+  right: 17px;
+}
+
+.card-state-active .card-right-arrow-icon {
+  width: 18px;
+  height: 36px;
+  background-size: 18px 36px;
+  margin: 0;
   background-image: url(/images/oportunities-card-right-arrow.svg);
   position: absolute;
   top: 20px;
   right: 17px;
 }
+
 
 @media only screen and (max-width: 1024px) {
   .card-state-active .card-history-container {

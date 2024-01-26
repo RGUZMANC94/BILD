@@ -46,16 +46,26 @@ const PropertyConnected = ({ setIsCreated }) => {
       const responseData = await oppCreated.json();
 
       if (!oppCreated.ok) {
+        document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popError}`)
+            .classList.remove(styles.activePopUp);
+        }, 2000);
         throw new Error('Failed to create opportunity');
       }
 
       document
-        .querySelector(`.${styles.popSuccessTypeCreated}`)
+        .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
         document
-          .querySelector(`.${styles.popSuccessTypeCreated}`)
+          .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
         dispatch(changeOpportunitySelected(responseData.saleOpportunity));
         setIsCreated(true);
@@ -119,7 +129,7 @@ const PropertyConnected = ({ setIsCreated }) => {
           </div>
         </div>
       </form>
-      <div className={`${styles.popSuccessTypeCreated}`}>
+      <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
           <div className={styles.content}>
@@ -127,6 +137,19 @@ const PropertyConnected = ({ setIsCreated }) => {
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
                 ¡Tú oportunidad ha sido creada con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError} `}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Parece que esta unidad ya tiene una oportunidad asignada.
               </span>
             </div>
           </div>

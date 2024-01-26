@@ -31,7 +31,7 @@ const Unit = ({ unit, setCreateOportunity }) => {
         <input
           type="text"
           className={styles.inputToEditValue}
-          value={unit.idProperty}
+          value={unit.nuimb}
           disabled={isHidden}
         />
       </div>
@@ -51,7 +51,6 @@ const Unit = ({ unit, setCreateOportunity }) => {
           disabled={isHidden}
         />
       </div>
-      {unit.type}
       <div className="detalle-tabla">
         <input
           type="text"
