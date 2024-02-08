@@ -1,11 +1,12 @@
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-history.module.css';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
+import SquareInput from '../squareInput';
 
-const OportunitiesHistory = ({opportunitySelected,oppSelectedObject}) => {
-  console.log('ID oportinidad enviada', opportunitySelected)
+const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
+  console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
   const { unitSelected } = useSelector((state) => state.unitState);
@@ -48,7 +49,7 @@ const OportunitiesHistory = ({opportunitySelected,oppSelectedObject}) => {
 
   const [firstEvent, setFirstEvent] = useState({});
   const [eventsSelected, setEventsSelected] = useState([]);
-  
+  const [lastEvent, setLastEvent] = useState({});
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
@@ -60,10 +61,10 @@ const OportunitiesHistory = ({opportunitySelected,oppSelectedObject}) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         id,
         idsaleop: opportunitySelected,
-        idclient: ''
+        idclient: '',
       }),
     });
     console.log('Eventos:', response);
@@ -71,168 +72,188 @@ const OportunitiesHistory = ({opportunitySelected,oppSelectedObject}) => {
     const events = await response.json();
     console.log('Eventos format:', events);
 
-    setEventsSelected(events);
+     const filteredEvents = events ? events.filter(event => Object.keys(event).length >= 3) : [];
 
-    if (events.length > 0) {
-      const [firstEvent, ...remainingEvents] = events;
+    if (filteredEvents.length === 1) {
+      setFirstEvent(filteredEvents[0]);
+      setLastEvent({}); 
+      setEventsSelected([]);
+    } else if (filteredEvents.length === 2) {
+      setFirstEvent(filteredEvents[0]);
+      setLastEvent(filteredEvents[1]);
+      setEventsSelected([]);
+    } else if (filteredEvents.length > 2) {
+      const [firstEvent, ...remainingEvents] = filteredEvents;
       setFirstEvent(firstEvent);
       setEventsSelected(remainingEvents);
-    } else if (events.length === 1){
-      setFirstEvent(events[0]);
-      setEventsSelected([]);
+      const lastEvent = remainingEvents[remainingEvents.length - 1];
+      setLastEvent(lastEvent);
     } else {
       setFirstEvent({});
+      setLastEvent({}); 
       setEventsSelected([]);
     }
-   };
- 
-   useEffect(() => {
+  };
+
+  useEffect(() => {
     if (opportunitySelected !== -1 && opportunitySelected) {
       getEventsSelected();
     }
   }, [opportunitySelected]);
 
-  console.log('ID oportinidad enviada', opportunitySelected)
-  console.log('Oportinidad Objeto', oppSelectedObject)
-  console.log('Primer evento', firstEvent)
-  console.log('eventos ya en:', eventsSelected)
+  const handleEventClick = () => {
+    console.log('Evento seleccionado');
+  };
+
+  console.log('ID oportinidad enviada', opportunitySelected);
+  console.log('Oportinidad Objeto', oppSelectedObject);
+  console.log('Primer evento', firstEvent);
+  console.log('eventos ya en:', eventsSelected);
+  console.log('Ultimo evento', lastEvent);
 
   return (
     <>
-    
       <>
-      <div className={styles.right}>
-        <div className={styles.line}>
-          <img src="/images/Ellipse 81.png" />
-          <div className={styles['ver-line']}></div>
-        </div>
-
-        <div className={styles.pendientes}>
-          <div className={styles['pendiente-top']}>
-            <span className={styles['tipo-sub']}>John Lennon</span>
-            <ul className={styles.ulNode}>
-              <li>Fontana Campestre</li>
-              <li>Tipo 2:302</li>
-            </ul>
+        <div className={styles.right}>
+          <div className={styles.line}>
+            <img src="/images/Ellipse 81.png" />
+            <div className={styles['ver-line']}></div>
           </div>
 
-        { Object.keys(firstEvent).length > 0 && 
-          <div className={styles.greybox}>
-            <div className={styles.info}>
-              <label>
-                <input
-                  type="checkbox"
-                  id="checkbox1"
-                  className={styles.checkboxInput}
-                />
-                <label
-                  htmlFor="checkbox1"
-                  className={styles.checkboxLabelSquare}></label>
-                <span className={styles['pendiente-date']}>05/01/22</span>
-              </label>
-              <ul>
-                <li className={styles['pendiente-list']}>
-                  <b>Pendiente 3:</b>
-                </li>
-                <li>Entregar la información de documentación</li>
-              </ul>
-            </div>
-            <div className={styles.time}>
-              <span className={styles.hour}>11:07 am</span>
-            </div>
-            <div className={styles['blue-point']}></div>
-          </div>
-        }
+          <div className={styles.pendientes}>
 
-
-
-          {eventsSelected.length > 0 &&
-          <div
-            className={`${styles['box-dotted']} ${
-              showAllEvents ? styles.active : ''
-            } relative`}>
-            <div
-              className={styles['blue-point-plus']}
-              onClick={() => setShowAllEvents(true)}>
-              {eventsSelected.length - 2}+
-            </div>
-            <div className={styles.innerDottedContainer}>
-              {eventsSelected.reverse().map((eventItem, i) => (
-                <div
-                  className={
-                    eventItem.status === 'pending' ? styles.greybox : styles.box
-                  }
-                  key={eventItem.id}>
-                  <div className={styles.info}>
-                    <label>
-                      {eventItem.status === 'pending' && (
-                        <>
-                          <input
-                            type="checkbox"
-                            id="checkbox1"
-                            className={styles.checkboxInput}
-                          />
-                          <div className={styles.checkboxLabelSquare}></div>
-                        </>
-                      )}
-
-                      <span className={styles['pendiente-date']}>
-                        {eventItem.createDateTime}
-                      </span>
-                    </label>
-                    <ul>
-                      <li className={styles['pendiente-list']}>
-                        <b>{`Titulo del evento`}</b>
-                      </li>
-                      <li>{eventItem.activity}</li>
-                    </ul>
-                  </div>
-                  {eventItem.status === 'pending' && (
-                    <div className={styles.time}>
-                      <span className={styles.hour}>{eventItem.hour}</span>
-                    </div>
-                  )}
-
-                  <div className={styles['blue-point']}></div>
-                </div>
-              ))}
-            </div>
-          </div>
-          }
+          { oppSelectedObject &&
           
-          {
-            /*
-            <div className={styles.box}>
-              <span className={styles['pendiente-date']}>05/01/22</span>
-              <ul>
-                <li className={styles['pendiente-list']}>
-                  Creación del Contacto
-                </li>
-                <li>Visita en la sala de ventas</li>
+          (Object.keys(oppSelectedObject).length > 0 && 
+            
+            <div className={styles['pendiente-top']}>
+              <span className={styles['tipo-sub']}>{oppSelectedObject.nameCustomer}</span>
+              <ul className={styles.ulNode}>
+                <li>{oppSelectedObject.nameProject}</li>
+                <li>{`Tipo ${oppSelectedObject.propertyType.propertyType} : ${oppSelectedObject.idProperty}`}</li>
               </ul>
-              <div className={styles['blue-point']}></div>
-            </div>
-
-            */
+            </div>)
           }
 
-        </div>
-        <div className={styles['pendientes-bottom']}>
-          <div onClick={() => dispatch(openPopUp(true))}>
-            <Button
-              buttonType={'primary'}
-              classNameInherit={'align-center'}
-              iconImage={'/images/plus_icon_white.svg'}
-              label={'Ver oportunidad'}></Button>
+            {Object.keys(firstEvent).length > 0 && (
+              <div className={styles.greybox}>
+                <div className={styles.info}>
+                  <div>
+                  {//cambio scope
+                  /*<SquareInput onChangeFunct={handleEventClick} />*/ }
+                  
+                    <span className={styles['pendiente-date']}>{firstEvent.expirationDateTime.split(' ')[0]}</span>
+                  </div>
+                  <ul>
+                    <li className={styles['pendiente-list']}>
+                      <b>Titulo evento:</b>
+                    </li>
+                    <li>{firstEvent.activity}</li>
+                  </ul>
+                </div>
+                <div className={styles.time}>
+                  <span className={styles.hour}>{firstEvent.expirationDateTime.split(' ')[1]}</span>
+                </div>
+                <div className={styles['blue-point']}></div>
+              </div>
+            )}
+
+            {eventsSelected.length > 0 && (
+              <div
+                className={`${styles['box-dotted']} ${
+                  showAllEvents ? styles.active : ''
+                } relative`}>
+                <div
+                  className={styles['blue-point-plus']}
+                  onClick={() => setShowAllEvents(true)}>
+                  {eventsSelected.length - 1}+
+                </div>
+                <div className={styles.innerDottedContainer}>
+                  {eventsSelected.reverse().map((eventItem, i) => (
+                    
+                    Object.keys(eventItem).length > 3 &&
+                    
+                      <div
+                        className={
+                          eventItem.status === 'PE'
+                            ? styles.greybox
+                            : styles.box
+                        }
+                        key={eventItem.id}>
+                        <div className={styles.info}>
+                          <div>
+                            { //cambio scope
+                              /*{eventItem.status === 'PE' && (
+                                <>
+                                  <SquareInput onChangeFunct={handleEventClick} />
+                                </>
+                              )} />*/ 
+                            }
+                            
+
+                            <span className={styles['pendiente-date']}>
+                              {eventItem.expirationDateTime.split(' ')[0]}
+                            </span>
+                          </div>
+                          <ul>
+                            <li className={styles['pendiente-list']}>
+                              <b>{'Titulo del evento'}</b>
+                            </li>
+                            <li>{eventItem.activity}</li>
+                          </ul>
+                        </div>
+                        {eventItem.status === 'PE' && (
+                          <div className={styles.time}>
+                            <span className={styles.hour}>{eventItem.expirationDateTime.split(' ')[1]}</span>
+                          </div>
+                        )}
+
+                        <div className={styles['blue-point']}></div>
+                      </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {Object.keys(lastEvent).length > 0 &&
+            <div className={styles.greybox}>
+                <div className={styles.info}>
+                  <div>
+                  {//cambio scope
+                  /*<SquareInput onChangeFunct={handleEventClick} />*/ }
+                  
+                    <span className={styles['pendiente-date']}>{lastEvent.expirationDateTime.split(' ')[0]}</span>
+                  </div>
+                  <ul>
+                    <li className={styles['pendiente-list']}>
+                      <b>Titulo evento:</b>
+                    </li>
+                    <li>{lastEvent.activity}</li>
+                  </ul>
+                </div>
+                <div className={styles.time}>
+                  <span className={styles.hour}>{lastEvent.expirationDateTime.split(' ')[1]}</span>
+                </div>
+                <div className={styles['blue-point']}></div>
+              </div>
+
+            }
           </div>
-          <div className={styles['card-progress-bar-container']}>
-            <div className={styles['card-progress-bar-frost-icon']}></div>
-            <div className={styles['card-progress-bar-cold']}></div>
+          <div className={styles['pendientes-bottom']}>
+            <div onClick={() => dispatch(openPopUp(true))}>
+              <Button
+                buttonType={'primary'}
+                classNameInherit={'align-center'}
+                iconImage={'/images/plus_icon_white.svg'}
+                label={'Ver oportunidad'}></Button>
+            </div>
+            <div className={styles['card-progress-bar-container']}>
+              <div className={styles['card-progress-bar-frost-icon']}></div>
+              <div className={styles['card-progress-bar-cold']}></div>
+            </div>
           </div>
         </div>
-      </div>
       </>
-    
     </>
   );
 };

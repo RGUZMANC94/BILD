@@ -19,6 +19,7 @@ const OportunitiesAllFilter = () => {
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [recentContacts, setRecentsContacts] = useState([]);
   const [oppIsSelected, setOppIsSelected] = useState(false);
+  const [sorting, setSorting] = useState('DESC');
   const dispatch = useDispatch();
 
   const toggleShowBar = () => {
@@ -39,6 +40,7 @@ const OportunitiesAllFilter = () => {
         id,
         idProject: '',
         idClient: '',
+        sorting
       }),
     });
 
@@ -61,15 +63,15 @@ const OportunitiesAllFilter = () => {
     setRecentsContacts(recentsContacts);
   };
 
-   const getUnitSelected = async (idProperty, projectId) => {
+  const getUnitSelected = async (idProperty, projectId) => {
     const response = await fetch('/api/units', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         id,
-        projectId
+        projectId,
       }),
     });
 
@@ -81,8 +83,7 @@ const OportunitiesAllFilter = () => {
     console.log('Unidad seleccionada:', unitSelected);
 
     dispatch(changeUnitSelected(unitSelected));
-
-   };
+  };
 
   useEffect(() => {
     if (!getSessionToken()) {
@@ -92,7 +93,7 @@ const OportunitiesAllFilter = () => {
     }
     getAllOpportunities();
     getRecentsContacts();
-  }, []);
+  }, [sorting]);
 
   return (
     <>
@@ -137,15 +138,19 @@ const OportunitiesAllFilter = () => {
           </div>
           {showSection === 'all' && (
             <div className={styles.filter_container}>
-              <label htmlFor="subject"></label>
+              <label htmlFor="sorting"></label>
               <select
                 placeholder="Subject line"
-                name="subject"
-                className={styles.filter_input}>
-                <option>MAS CALIENTE</option>
-                <option>MAS FRÍA</option>
-                <option selected>MAS RECIENTE</option>
-                <option>MENOS RECIENTE</option>
+                name="sorting"
+                value={sorting}
+                className={styles.filter_input}
+                onChange={(e) => setSorting(e.target.value)}
+                >
+                
+                <option value='HOT'>MAS CALIENTE</option>
+                <option value='HOT'>MAS FRÍA</option>
+                <option value='DESC' selected >MAS RECIENTE</option>
+                <option value='ASC'>MENOS RECIENTE</option>
               </select>
               <span className={styles.label_filter}>Ordenar por:</span>
             </div>
@@ -157,7 +162,6 @@ const OportunitiesAllFilter = () => {
           {showSection === 'all' && (
             <OportunitiesAll
               oppList={allOpportunities}
-              contacts={recentContacts}
               setOppIsSelected={setOppIsSelected}
             />
           )}
@@ -167,7 +171,8 @@ const OportunitiesAllFilter = () => {
           {showSection === 'closed' && (
             <OportunitiesClosed
               oppList={allOpportunities}
-              contacts={recentContacts}
+              setOppIsSelected={setOppIsSelected}
+              setSorting={setSorting}
             />
           )}
         </div>

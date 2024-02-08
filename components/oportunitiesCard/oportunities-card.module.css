@@ -204,7 +204,6 @@
   right: 17px;
 }
 
-
 @media only screen and (max-width: 1024px) {
   .card-state-active .card-history-container {
     width: 100%;

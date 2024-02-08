@@ -24,7 +24,7 @@ const CreateStep = ({
       <div className={styles['crear-tipo']}>
         <div className={styles['creacion-title']}>
           <span className={styles['tipo-title']}>
-            { 
+            {
               projectsList.find((objeto) => objeto.projectId === unit.projectId)
                 .projectName
             }

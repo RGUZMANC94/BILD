@@ -15,8 +15,8 @@
   justify-content: flex-end;
   background-image: url(/images/add-contact.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 65%;
+  background-position: 15px;
+  background-size: 60%;
   background-color: #ff5567;
   border-radius: 50%;
   margin-left: auto;
@@ -74,7 +74,7 @@
   margin: 0 auto;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 35px;
+  padding-bottom: 135px;
   margin-top: 40px;
 }
 

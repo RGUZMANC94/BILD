@@ -148,13 +148,19 @@ i.fa-solid.fa-angle-left {
   height: auto;
 }
 
-.right {
+.right {/*
   width: 100%;
   height: 100%;
   display: flex;
   padding-top: 50px;
   align-items: stretch;
+  flex-wrap: wrap;*/
+  width: 30%;
+  display: flex;
+  padding-top: 50px;
+  align-items: stretch;
   flex-wrap: wrap;
+  position: fixed;
 }
 
 .line {
@@ -170,13 +176,12 @@ i.fa-solid.fa-angle-left {
 
 .ver-line {
   border-right: 2px solid #fff;
-  height: calc(100% - 152px);
+  height: calc(100% - 162px);
 }
 
 .pendientes {
   width: calc(100% - 64px);
   height: auto;
-  margin-bottom: 50px;
   position: relative;
 }
 
@@ -214,7 +219,7 @@ i.fa-solid.fa-angle-left {
 .info {
   width: 70%;
 }
-.info label {
+.info div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -283,7 +288,7 @@ li.pendiente-list {
   padding: 5px;
   margin-left: 20px;
   margin-bottom: 30px;
-  width: calc(100% + 55px);
+  width: calc(100% + 40px);
   position: relative;
   left: -55px;
   border-top: 2px dashed #fff;
@@ -301,7 +306,6 @@ li.pendiente-list {
 }
 
 .box-dotted.active {
-  padding-top: 20px;
   border-top: 2px dashed #ffffff00;
   border-bottom: 2px dashed #ffffff00;
   margin: 0 0 0 20px;
@@ -313,10 +317,8 @@ li.pendiente-list {
   overflow: initial;
 }
 .innerDottedContainer > div:first-of-type {
-  display: none;
 }
 .innerDottedContainer > div:last-of-type {
-  display: none;
 }
 
 .blue-point {
@@ -326,7 +328,7 @@ li.pendiente-list {
   background-color: #fff;
   position: absolute;
   top: 0px;
-  left: -63px;
+  left: -62px;
 }
 
 .blue-point-plus {

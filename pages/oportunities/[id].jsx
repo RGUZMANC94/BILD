@@ -10,13 +10,13 @@ import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
 import { closePopUp } from '../../redux/popUpOportunity';
 
-
 const Oportunities = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [closeFlag, setCloseFlag] = useState(true);
+  const [oppIsSelected, setOppIsSelected] = useState(false);
 
 
   if (closeFlag) {
@@ -68,7 +68,7 @@ const Oportunities = () => {
       </div>
       <section className={styles.main}>
         <div className="container flex j-sb a-s wrap">
-          <OportunitiesContact oppList={allOpportunities} />
+          <OportunitiesContact oppList={allOpportunities} setOppIsSelected={setOppIsSelected} />
         </div>
       </section>
       {openPopUpOportunity && <CreateOportunity created={true} />}

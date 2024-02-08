@@ -52,9 +52,8 @@ const OportunityCreated = ({
 
       if (!oppCreated.ok) {
         document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
-
+          .querySelector(`.${styles.popError}`)
+          .classList.add(styles.activePopUp);
 
         setTimeout(() => {
           document
@@ -72,12 +71,11 @@ const OportunityCreated = ({
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-          setShowPopEvents(false);
+        setShowPopEvents(false);
         setShowPopUp(false); // primero
         setIsConnected(false);
         setIsCreated(false); // ultimo
         dispatch(closePopUp(false));
-
       }, 2000);
     } catch (error) {
       console.error('Error al eliminar la oportunidad:', error);
@@ -87,118 +85,114 @@ const OportunityCreated = ({
 
   return (
     <>
-    <div className={styles['wrap-crear']}>
-      <div className={styles.crear}>
-        <div className={styles['left-side']}>
-          <div className={styles['crear-tipo']}>
-            <div className={styles['creacion-title']}>
-              <span className={styles['tipo-title']}>
-                {
-                  projectsList.find(
-                    (objeto) => objeto.projectId === unit.projectId
-                  ).projectName
-                }
+      <div className={styles['wrap-crear']}>
+        <div className={styles.crear}>
+          <div className={styles['left-side']}>
+            <div className={styles['crear-tipo']}>
+              <div className={styles['creacion-title']}>
+                <span className={styles['tipo-title']}>
+                  {
+                    projectsList.find(
+                      (objeto) => objeto.projectId === unit.projectId
+                    ).projectName
+                  }
+                </span>
+              </div>
+              <div className={styles['tipo-unit']}>
+                <div className={styles['img-tipo']}>
+                  <a href="#">
+                    <img src="/images/crear-tipo.png" />
+                  </a>
+                  <div className={styles['img-tipo-glass']}></div>
+                </div>
+                <div className={styles['tipo-info']}>
+                  <div className={styles.tipos}>
+                    <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
+                  </div>
+                  <span
+                    className={styles.valor}>{`$${unit.propertyPrice}`}</span>
+                  <div className={styles.detalles}>
+                    <img src="/images/cards/bed.svg" />
+                    <span>{`${unit.bedrooms}`}</span>
+                    <img src="/images/cards/bath.svg" />
+                    <span>{`${unit.baths}`}</span>
+                  </div>
+                </div>
+                <div className={styles.add}></div>
+              </div>
+            </div>
+            {!generateQuote && (
+              <div className={styles.contacto}>
+                <div className={styles.conecta}>
+                  <button
+                    className={styles['contacto-existente']}
+                    onClick={() => {
+                      deleteOpportunity();
+                    }}>
+                    Eliminar Oportunidad
+                  </button>
+                  <button
+                    className={styles['crear-cotizacion']}
+                    onClick={() => {
+                      setGenerateQuote(true);
+                    }}>
+                    Crear cotización
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className={styles['right-side']}>
+            {generateQuote ? (
+              <GenerateQuote setGenerateQuote={setGenerateQuote} />
+            ) : (
+              <EventsOportunity
+                showPopEvents={showPopEvents}
+                setShowPopEvents={setShowPopEvents}
+              />
+            )}
+          </div>
+        </div>
+        <div
+          className={`${styles.message} ${
+            showCreatedPop ? styles.showMiniPop : ''
+          }`}>
+          <img src="/images/check.png" />
+          <span>Tu oportunidad se creo satisfactoriamente</span>
+        </div>
+      </div>
+      <div className={`${styles.popSuccessCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                {showDeletedPop
+                  ? '¡Tú oportunidad ha sido eliminada con éxito!'
+                  : '¡Tú oportunidad ha sido creada con éxito!'}
               </span>
             </div>
-            <div className={styles['tipo-unit']}>
-              <div className={styles['img-tipo']}>
-                <a href="#">
-                  <img src="/images/crear-tipo.png" />
-                </a>
-                <div className={styles['img-tipo-glass']}></div>
-              </div>
-              <div className={styles['tipo-info']}>
-                <div className={styles.tipos}>
-                  <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
-                </div>
-                <span className={styles.valor}>{`$${unit.propertyPrice}`}</span>
-                <div className={styles.detalles}>
-                  <img src="/images/cards/bed.svg" />
-                  <span>{`${unit.bedrooms}`}</span>
-                  <img src="/images/cards/bath.svg" />
-                  <span>{`${unit.baths}`}</span>
-                </div>
-              </div>
-              <div className={styles.add}></div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError} `}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+                <span className={styles['pop-text-bold']}>¡Oops!</span>
+                {showDeletedPop
+                  ? 'Algo no está bien. Tú oportunidad no ha podido ser iliminaad con éxito'
+                  : 'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.'}
+              </span>
             </div>
           </div>
-          {!generateQuote && (
-            <div className={styles.contacto}>
-              <div className={styles.conecta}>
-                <button
-                  className={styles['contacto-existente']}
-                  onClick={() => {
-                    deleteOpportunity();
-                  }}>
-                  Eliminar Oportunidad
-                </button>
-                <button
-                  className={styles['crear-cotizacion']}
-                  onClick={() => {
-                    setGenerateQuote(true);
-                  }}>
-                  Crear cotización
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className={styles['right-side']}>
-          {generateQuote ? (
-            <GenerateQuote setGenerateQuote={setGenerateQuote} />
-          ) : (
-            <EventsOportunity
-              showPopEvents={showPopEvents}
-              setShowPopEvents={setShowPopEvents}
-            />
-          )}
         </div>
       </div>
-      <div
-        className={`${styles.message} ${
-          showCreatedPop ? styles.showMiniPop : ''
-        }`}>
-        <img src="/images/check.png" />
-        <span>Tu oportunidad se creo satisfactoriamente</span>
-      </div>
-    </div>
-    <div className={`${styles.popSuccessCreated}`}>
-    <div className={styles.bgPopUp}></div>
-    <div className={styles.popup2}>
-      <div className={styles.content}>
-        <div className={styles['icon-box']}>
-          <img src="/images/check-circle.png" />
-          <span className={styles['pop-text']}>
-            {showDeletedPop ? '¡Tú oportunidad ha sido eliminada con éxito!' 
-            : '¡Tú oportunidad ha sido creada con éxito!'   
-            }      
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className={`${styles.popError} `}>
-    <div className={styles.bgPopUp}></div>
-    <div className={styles.popup3}>
-      <div className={styles.content}>
-        <div className={styles['icon-box']}>
-          <img src="/images/error-circle.png" />
-          <span className={styles['pop-text']}>
-          <span className={styles['pop-text-bold']}>
-            ¡Oops!</span>
-            { showDeletedPop ? 'Algo no está bien. Tú oportunidad no ha podido ser iliminaad con éxito'
-            :
-            'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.'
-            }
-            
-            
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  </>
+    </>
   );
 };
 

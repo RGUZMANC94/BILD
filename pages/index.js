@@ -17,7 +17,7 @@ const Home = () => {
   const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [pageProjects, setPageProjects] = useState(1);
-  const [ openFlag, setOpenFlag ] = useState(true);
+  const [openFlag, setOpenFlag] = useState(true);
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
       method: 'POST',
@@ -45,7 +45,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if(openFlag) {
+    if (openFlag) {
       dispatch(changeTypeSelectedName(-1));
       setOpenFlag(false);
       return;

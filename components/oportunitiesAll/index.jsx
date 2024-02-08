@@ -8,15 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-
-const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
+const OportunitiesAll = ({ oppList, setOppIsSelected }) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
   const [oppSelectedObject, setOppSelectedObject] = useState({});
   const dispatch = useDispatch();
   console.log('Lista de oportunidades:', oppList);
-
 
   const getUnitSelected = async (idProperty, projectId) => {
     console.log('id de la propiedad:', idProperty);
@@ -26,23 +24,24 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         id,
-        projectId
+        projectId,
+        page: 1,
+        rows: 100,
       }),
     });
     console.log('Unidades:', response);
 
     const units = await response.json();
-    console.log('Unidades:', units);
+    console.log('Unidadesaaaa:', units);
 
     const unitSelected = units.find((unit) => unit.idProperty === idProperty);
 
     console.log('Unidad seleccionada:', unitSelected);
 
     dispatch(changeUnitSelected(unitSelected));
-
-   };
+  };
 
   const handleItemClick = (index, oppId, idProperty, projectId, opp) => {
     if (selectedItem === index) {
@@ -51,17 +50,17 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
       setOppIsSelected(false);
       setOpportunitySelected(-1);
       setOppSelectedObject({});
-    } else { 
+    } else {
       setSelectedItem(index);
       dispatch(changeOpportunitySelected(oppId));
       setOppIsSelected(true);
       setOpportunitySelected(oppId);
-      getUnitSelected(idProperty,projectId);
+      getUnitSelected(idProperty, projectId);
       setOppSelectedObject(opp);
     }
   };
 
-  console.log('elemento seleccionado', selectedItem );
+  console.log('elemento seleccionado', selectedItem);
 
   function ClientById(array, clientId) {
     console.log('Clientes:', array);
@@ -122,44 +121,57 @@ const OportunitiesAll = ({ oppList, contacts , setOppIsSelected}) => {
     <>
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-          {console.log('') }
-          {oppList && 
-
-          (oppList.length > 0 ? 
-          oppList.map((oportunity, i) => (
-            <div
-              className={styles['card-unit-list']}
-              key={i}
-              onClick={() => handleItemClick(i,oportunity.idSaleOp,oportunity.idProperty,oportunity.idProject,oportunity)}>
-              <OportunitiesCard
-                closed={oportunity.image}
-                estimatedProgress={oportunity.estimatedProgress}
-                state={selectedItem === i}
-                image={
-                  oportunity.idClient.image &&
-                  (oportunity.idClient.image[0] &&
-                  oportunity.idClient.image[0] !== ''
-                    ? `${oportunity.idClient.image[0].url}`
-                    : '/images/defatult-2.jpg')
-                }
-                name={oportunity.nameCustomer}
-                location={oportunity.nameProject}
-                type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
-                followingDate={oportunity.createdDate}
-                historyComponent={OportunitiesHistory}
-                progress={0.25}
-                temperature={'cold'} // hot warm cold
-              />
-            </div>
-          )): '')
-          }
+          {console.log('')}
+          {oppList &&
+            (oppList.length > 0
+              ? oppList.map((oportunity, i) => (
+                (Object.keys(oportunity).length > 3 &&
+                
+                <div
+                    className={styles['card-unit-list']}
+                    key={i}
+                    onClick={() =>
+                      handleItemClick(
+                        i,
+                        oportunity.idSaleOp,
+                        oportunity.idProperty,
+                        oportunity.idProject,
+                        oportunity
+                      )
+                    }>
+                    <OportunitiesCard
+                      closed={oportunity.image}
+                      estimatedProgress={oportunity.estimatedProgress}
+                      state={selectedItem === i}
+                      image={
+                        oportunity.idClient.image &&
+                        (oportunity.idClient.image[0] &&
+                        oportunity.idClient.image[0] !== ''
+                          ? `${oportunity.idClient.image[0].url}`
+                          : '/images/defatult-2.jpg')
+                      }
+                      name={oportunity.nameCustomer}
+                      location={oportunity.nameProject}
+                      type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
+                      followingDate={oportunity.createdDate}
+                      historyComponent={OportunitiesHistory}
+                      progress={oportunity.temperature/100}
+                      temperature={'cold'} // hot warm cold
+                    />
+                  </div>
+                
+                )
+                  
+                ))
+              : '')}
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        { selectedItem !== -1 &&
-          <OportunitiesHistory opportunitySelected={opportunitySelected} oppSelectedObject={oppSelectedObject} ></OportunitiesHistory>
-        }
-        
+        {selectedItem !== -1 && (
+          <OportunitiesHistory
+            opportunitySelected={opportunitySelected}
+            oppSelectedObject={oppSelectedObject}></OportunitiesHistory>
+        )}
       </div>
     </>
   );

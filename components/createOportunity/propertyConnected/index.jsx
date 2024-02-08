@@ -47,9 +47,8 @@ const PropertyConnected = ({ setIsCreated }) => {
 
       if (!oppCreated.ok) {
         document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
-
+          .querySelector(`.${styles.popError}`)
+          .classList.add(styles.activePopUp);
 
         setTimeout(() => {
           document
@@ -149,7 +148,9 @@ const PropertyConnected = ({ setIsCreated }) => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Parece que esta unidad ya tiene una oportunidad asignada.
+                <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
+                está bien. Parece que esta unidad ya tiene una oportunidad
+                asignada.
               </span>
             </div>
           </div>

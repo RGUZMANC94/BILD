@@ -4,13 +4,73 @@ import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-contact.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
+import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-const OportunitiesContact = ({ oppList }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
+const OportunitiesContact = ({ oppList, contacts, setOppIsSelected }) => {
+  const { id } = useSelector((state) => state.userState);
+  const [selectedItem, setSelectedItem] = useState(-1);
+  const [opportunitySelected, setOpportunitySelected] = useState(-1);
+  const [oppSelectedObject, setOppSelectedObject] = useState({});
+  const dispatch = useDispatch();
+  console.log('Lista de oportunidades:', oppList);
 
-  const handleItemClick = (index) => {
-    selectedItem === index ? setSelectedItem(-1) : setSelectedItem(index);
+  const getUnitSelected = async (idProperty, projectId) => {
+    console.log('id de la propiedad:', idProperty);
+    console.log('id del proyecto:', projectId);
+    const response = await fetch('/api/units', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        projectId,
+        page: 1,
+        rows: 100,
+      }),
+    });
+    console.log('Unidades:', response);
+
+    const units = await response.json();
+    console.log('Unidadesaaaa:', units);
+
+    const unitSelected = units.find((unit) => unit.idProperty === idProperty);
+
+    console.log('Unidad seleccionada:', unitSelected);
+
+    dispatch(changeUnitSelected(unitSelected));
   };
+
+  const handleItemClick = (index, oppId, idProperty, projectId, opp) => {
+    if (selectedItem === index) {
+      setSelectedItem(-1);
+      dispatch(changeOpportunitySelected(-1));
+      setOppIsSelected(false);
+      setOpportunitySelected(-1);
+      setOppSelectedObject({});
+    } else {
+      setSelectedItem(index);
+      dispatch(changeOpportunitySelected(oppId));
+      setOppIsSelected(true);
+      setOpportunitySelected(oppId);
+      getUnitSelected(idProperty, projectId);
+      setOppSelectedObject(opp);
+    }
+  };
+
+  console.log('elemento seleccionado', selectedItem);
+
+  function ClientById(array, clientId) {
+    console.log('Clientes:', array);
+    console.log('Clientes:', clientId);
+    console.log(
+      'Cliente encontrado:',
+      array.find((elem) => elem.idCli === clientId)
+    );
+    return array.find((elem) => elem.idCli === clientId);
+  }
 
   const oportunities = [
     {
@@ -61,36 +121,52 @@ const OportunitiesContact = ({ oppList }) => {
     <>
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-          {oppList.map((oportunity, i) => (
-            <div
-              className={styles['card-unit-list']}
-              key={i}
-              onClick={() => handleItemClick(i)}>
-              <OportunitiesCard
-                closed={oportunity.image}
-                estimatedProgress={oportunity.estimatedProgress}
-                state={selectedItem === i}
-                image={
-                  oportunity.propertyType.image &&
-                  (oportunity.propertyType.image[0] &&
-                  oportunity.propertyType.image[0] !== ''
-                    ? `${oportunity.propertyType.image[0].url}`
-                    : '/images/perfil-img.jpeg')
-                }
-                name={oportunity.nameCustomer}
-                location={oportunity.nameProject}
-                type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
-                followingDate={oportunity.createdDate}
-                historyComponent={OportunitiesHistory}
-                progress={0.25}
-                temperature={'cold'} // hot warm cold
-              />
-            </div>
-          ))}
+          {console.log('')}
+          {oppList &&
+            (oppList.length > 0
+              ? oppList.map((oportunity, i) => (
+                  <div
+                    className={styles['card-unit-list']}
+                    key={i}
+                    onClick={() =>
+                      handleItemClick(
+                        i,
+                        oportunity.idSaleOp,
+                        oportunity.idProperty,
+                        oportunity.idProject,
+                        oportunity
+                      )
+                    }>
+                    <OportunitiesCard
+                      closed={oportunity.image}
+                      estimatedProgress={oportunity.estimatedProgress}
+                      state={selectedItem === i}
+                      image={
+                        oportunity.idClient.image &&
+                        (oportunity.idClient.image[0] &&
+                        oportunity.idClient.image[0] !== ''
+                          ? `${oportunity.idClient.image[0].url}`
+                          : '/images/defatult-2.jpg')
+                      }
+                      name={oportunity.nameCustomer}
+                      location={oportunity.nameProject}
+                      type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
+                      followingDate={oportunity.createdDate}
+                      historyComponent={OportunitiesHistory}
+                      progress={oportunity.temperature/100}
+                      temperature={'cold'} // hot warm cold
+                    />
+                  </div>
+                ))
+              : '')}
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        <OportunitiesHistory></OportunitiesHistory>
+        {selectedItem !== -1 && (
+          <OportunitiesHistory
+            opportunitySelected={opportunitySelected}
+            oppSelectedObject={oppSelectedObject}></OportunitiesHistory>
+        )}
       </div>
     </>
   );

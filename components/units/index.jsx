@@ -31,7 +31,11 @@ const Units = ({ setCreateOportunity, setShowPopUpUnit, units }) => {
         <div className="top-tabla">Precio</div>
         <div className="top-tabla"></div>
       </div>
-      {units.map((unit, i) => (
+      { 
+
+      units.length > 0 &&
+              
+      units.map((unit, i) => (
         <Unit key={i} unit={unit} setCreateOportunity={setCreateOportunity} />
       ))}
 

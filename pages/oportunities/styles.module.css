@@ -3,7 +3,7 @@
 }
 
 .main {
-  width: 90%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
@@ -11,159 +11,98 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 1;
+  top: 150px;
+  padding: 0 50px 50px;
+  position: relative;
+  z-index: 2;
   margin-bottom: 50px;
-  margin-top: 160px;
+  gap: 50px;
 }
 
-.top-content {
-  color: #fff;
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
-  background-color: rgba(33, 34, 29, 0.3);
-  padding: 10px 0;
+.filter_container {
+  display: flex;
   width: 100%;
-  position: fixed;
-  top: 73px;
+  flex-direction: row-reverse;
+}
+
+.label_filter {
+  margin: 20px 0 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 22px;
+}
+
+.filter_input {
+  padding: 15px;
+  border: 1px solid #4d4d4d;
+  border-radius: 10px;
+  width: 285px;
+  height: 45px;
+  box-sizing: border-box;
+  appearance: none;
+  margin: 0 20px;
+  padding: 0;
+
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  /*line-height: 0.5;*/
+  letter-spacing: 1.26px;
   text-transform: uppercase;
+
+  cursor: pointer;
+  background-image: url(/images/arrow_filter.svg);
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
 }
 
 .oportunidades {
-  width: 100%;
+  width: 48%;
   height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-.title {
-  width: calc(100% - 40px);
-}
-
-.tipo {
-  width: calc(50% - 50px);
+.card-container {
+  width: calc(100% - 50px);
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: start;
   align-items: center;
-}
-
-.tipo-title {
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.tipo-unit {
-  width: calc(100% - 20px);
-  min-height: 100px;
-  height: auto;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  margin-top: 40px;
-  text-align: left;
-  padding: 20px;
-  border-radius: 16px;
-  background: #2e2e2c;
-  border: 1px solid #ff556600;
-  box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  position: relative;
-}
-
-.tipo-unit.active {
-  /* border: 1px solid #ff5567; */
-}
-
-.tipo-info {
-  margin-left: 20px;
-  width: 70%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0 0;
-}
-
-.tipo-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.tipo-sub {
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  text-transform: uppercase;
-  width: 100%;
-  margin-top: 15px;
-}
-
-.detalles {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 14px;
-  color: #fff;
-  font-weight: 200;
-  text-align: left;
-  margin-top: 10px;
+  gap: 48px;
 }
 
 .icon {
   width: 35%;
   height: auto;
-  justify-content: flex-start;
+  justify-content: start;
 }
 
-.progressBar {
-  width: 100%;
-  height: 7px;
-  position: relative;
-  background-color: #fff;
-  border-radius: 10px;
-  margin: 35px 0 15px;
+i.fa-solid.fa-angle-left {
+  left: 0;
+  font-size: 30px;
+  display: flex;
+  align-items: start;
 }
 
-.innerProgressBar {
-  width: 25%;
-  background-color: #3eaaf7;
-  border-radius: 10px;
-  height: 100%;
-  transition: all 0.15s ease-in-out;
-  position: relative;
-}
-
-.iceCreamBar {
-  position: absolute;
-  top: 50%;
-  width: 25px;
-  height: 25px;
-  margin-top: -12.5px;
-  right: -12.5px;
-  border-radius: 50%;
-  background-image: url(/images/ice.svg);
-}
-
-.top-content .icon {
-  background-image: url(/images/back.svg);
-  width: 40px;
-  height: 40px;
+.top-content.title {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tipo-sub {
-  font-size: 12px;
+  font-size: 18px;
+  font-style: normal;
   font-weight: 500;
+  line-height: 1.38;
   color: #fff;
   text-transform: uppercase;
   width: 100%;
@@ -171,21 +110,9 @@
 }
 
 .back {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 20px;
-  height: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url(/images/back.svg);
-  transform: rotateY(180deg);
-  transition: all 0.5s ease-in-out;
-}
-
-.active .back {
-  transform: rotateY(0deg);
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
 }
 
 .img-tipo {
@@ -202,9 +129,9 @@
 .zoom {
   background-image: url(/images/zoom.png);
   background-repeat: no-repeat;
-  background-color: #ff5567;
+  background-color: #2467ff;
   background-position: center;
-  background-size: 50%;
+  background-size: auto;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   right: 0;
@@ -221,245 +148,32 @@
   height: auto;
 }
 
-.right {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  padding-top: 50px;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-
-.line {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.ver-line {
-  border-right: 1px solid #fff;
-  height: 100%;
-  min-height: 80px;
-}
-
-.pendientes {
-  width: 70%;
-  height: auto;
-}
-
-.pendiente-top {
-  width: 100%;
-  margin-left: 20px;
-  margin-bottom: 30px;
-}
-
-.greybox {
-  border-radius: 10px;
-  background: #2e2e2c;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: relative;
-  color: #fff;
-}
-
-.info {
-  width: 70%;
-}
-
-.info label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.info li {
-  font-size: 16px;
-  color: #fff;
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-.pendiente-list {
-  font-size: 16px;
-  color: #fff;
-  padding-left: 20px;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.box li.pendiente-list {
-  font-size: 14px !important;
-  font-weight: 200;
-  color: #fff;
-}
-
-.ulNode li {
-  margin: 10px 0;
-  font-size: 14px !important;
-  font-weight: 200;
-  color: #fff;
-}
-
-.time {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
-  font-weight: 300;
-  padding-top: 10px;
-  color: #777;
-}
-
-.box {
-  padding: 20px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 100%;
-  height: auto;
-  position: relative;
-}
-
-.box-dotted {
-  min-height: 5px;
-  height: auto;
-  padding: 5px;
-  margin-bottom: 30px;
-  width: 100%;
-  position: relative;
-  left: -0;
-  border-top: 2px dashed #fff;
-  border-bottom: 2px dashed #fff;
-}
-
-.blue-point {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: absolute;
-  top: 0px;
-  left: calc(-5% - 42.5px);
-}
-
-.blue-point-plus {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #ff5567;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 300;
-  position: absolute;
-  top: -7px;
-  left: -12.5px;
-  text-align: center;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pendientes-bottom {
-  text-align: center;
+.card-unit-list {
   width: 100%;
 }
 
-.ver-oportunidad {
-  width: 40%;
-  height: 50px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-top: 30px;
-  padding: 10px 30px;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1em;
-  border: 2px solid transparent;
-  margin: 0 auto;
-  background-color: #2467ff;
-}
 @media only screen and (max-width: 1024px) {
-  /*.main {
-    padding: 0px;
-    top: 0px;
-  }*/
-
-  .main {
-    width: 100%;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 0px 15px 100px;
-    margin-top: 100px;
-  }
-
-  .main > div {
+  .oportunidades {
     width: 100%;
   }
 
-  .top-content {
-    position: relative;
-    background-color: transparent;
-    padding: 10px;
+  .card-container {
+    width: 80%;
+    margin: auto;
   }
 
-  .label_filter {
+  .wrap-right {
     display: none;
   }
 
-  .title {
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .top-content .icon {
-    width: 30px;
-    height: 30px;
+  .card-container {
+    gap: 37px;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .filter_input {
-    width: fill-available;
-  }
-}
-
-@media only screen and (max-width: 568px) {
-  .main {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 0px 5px 100px;
-  }
-
-  .top-content-buttons {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-  }
-
-  .filter_input {
-    text-align: center;
-    width: fill-available;
-    font-size: 11px;
-    line-height: 0.81;
-    font-style: normal;
+  .card-container {
+    width: 90%;
+    margin: auto;
   }
 }

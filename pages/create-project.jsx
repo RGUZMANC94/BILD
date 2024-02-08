@@ -250,12 +250,11 @@ const CreateProject = () => {
         .querySelector(`.${styles.popError}`)
         .classList.add(styles.activePopUp);
 
-
-        setTimeout(() => {
-          document
-            .querySelector(`.${styles.popError}`)
-            .classList.remove(styles.activePopUp);
-        }, 2000);
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
       console.error('Error al crear el proyecto:', error);
     }
   };
@@ -585,7 +584,9 @@ const CreateProject = () => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.
+                <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
+                está bien. Por favor, revisa los datos ingresados e inténtalo de
+                nuevo.
               </span>
             </div>
           </div>

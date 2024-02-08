@@ -12,7 +12,7 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, types }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const { id } = useSelector((state) => state.userState);
   const { typeSelectedName } = useSelector((state) => state.typeState);
-  const {projectsList} = useSelector((state) => state.projectState);
+  const { projectsList } = useSelector((state) => state.projectState);
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -165,11 +165,15 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, types }) => {
             <div className={`${styles.deleteIcon} bg-ct`}></div>
           </div>
 
-          <span className={styles.label}>{`${(projectsList.filter(
-    (project) => router.query.id === project.projectId))[0].projectName}`}</span>
-          <span className={styles.labelSubtitle}>{typeSelectedName !== -1 && (types.filter(
-    (type) => type.idType === typeSelectedName
-          )[0].type)}</span>
+          <span className={styles.label}>{`${
+            projectsList.filter(
+              (project) => router.query.id === project.projectId
+            )[0].projectName
+          }`}</span>
+          <span className={styles.labelSubtitle}>
+            {typeSelectedName !== -1 &&
+              types.filter((type) => type.idType === typeSelectedName)[0].type}
+          </span>
 
           <form className={styles.formType} onSubmit={sendFormInfo}>
             <div className={`${styles.inputsGroup} flex j-sb a-st`}>
@@ -370,7 +374,9 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, types }) => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-              <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.
+                <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
+                está bien. Por favor, revisa los datos ingresados e inténtalo de
+                nuevo.
               </span>
             </div>
           </div>

@@ -1,7 +1,7 @@
 export default async function recentsContacts(req, res) {
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${req.body.idClient}&idproject=${req.body.idProject}&username=${req.body.id}`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${req.body.idClient}&idproject=${req.body.idProject}&username=${req.body.id}&page=1&rows=100&sorting=${req.body.sorting}`
     );
     /* if (!response.ok) {
       throw new Error('Bad response from server');
