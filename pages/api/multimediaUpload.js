@@ -5,8 +5,7 @@ export default async function handler(req, res) {
       'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
       {
         method: 'POST',
-        headers: {
-        },
+        headers: {},
         body: req.body.formData,
       }
     );
@@ -21,7 +20,6 @@ export default async function handler(req, res) {
 
     const responseData = await response.json();
     res.status(200).json(responseData);
-
   } catch (error) {
     console.error(error);
     res.status(400).json({ error: error.message || 'Failed' });

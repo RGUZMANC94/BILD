@@ -15,12 +15,9 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
   const [datos, setDatos] = useState({
     projectId: router.query.id,
     typeDescription: '',
-    minSize: '',
-    maxSize: '',
-    minBed: '',
-    maxBed: '',
-    minBath: '',
-    maxBath: '',
+    size: '',
+    bed: '',
+    bath: '',
   });
 
   const handleChange = (e) => {
@@ -178,7 +175,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
             </label>
             {/* image*/}
             <span className={styles.label}>IMAGEN DEL PROYECTO:</span>
-            <div className={`${styles.inputsGroup} flex j-sb a-st`}>
+            <div className={`${styles.inputsGroup} flex a-st`}>
               <div className={styles.image}>
                 <div className={styles['main-image']}>
                   <div
@@ -207,42 +204,8 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
                   <span className={styles.labelInputTitle}>Área Mt2</span>
                   <input
                     type="text"
-                    name="minSize"
-                    value={datos.minSize}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-
-                  <span className={styles.labelInputText}>-</span>
-
-                  <input
-                    type="text"
-                    name="maxSize"
-                    value={datos.maxSize}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Baños</span>
-                  <input
-                    type="text"
-                    name="minBath"
-                    value={datos.minBath}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-
-                  <span className={styles.labelInputText}>-</span>
-
-                  <input
-                    type="text"
-                    name="maxBath"
-                    value={datos.maxBath}
+                    name="size"
+                    value={datos.size}
                     className={styles.inputTypeForm}
                     onChange={handleChange}
                     required
@@ -253,19 +216,20 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
                   <span className={styles.labelInputTitle}>Cuartos</span>
                   <input
                     type="text"
-                    name="minBed"
-                    value={datos.minBed}
+                    name="bed"
+                    value={datos.bed}
                     className={styles.inputTypeForm}
                     onChange={handleChange}
                     required
                   />
-
-                  <span className={styles.labelInputText}>-</span>
-
+                </label>
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>Baños</span>
                   <input
                     type="text"
-                    name="maxBed"
-                    value={datos.maxBed}
+                    name="bath"
+                    value={datos.bath}
                     className={styles.inputTypeForm}
                     onChange={handleChange}
                     required
@@ -274,7 +238,8 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
               </div>
             </div>
 
-            <label htmlFor="" className={styles.compeleteLabel}>
+            {/*
+              <label htmlFor="" className={styles.compeleteLabel}>
               <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
               <input
                 placeholder="SELECCIONA LOS ASESORES"
@@ -282,6 +247,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
                 className={`${styles.targetInputGroup} ${styles.tl}`}
               />
             </label>
+            */}
 
             <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
               <Button

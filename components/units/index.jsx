@@ -31,13 +31,10 @@ const Units = ({ setCreateOportunity, setShowPopUpUnit, units }) => {
         <div className="top-tabla">Precio</div>
         <div className="top-tabla"></div>
       </div>
-      { 
-
-      units.length > 0 &&
-              
-      units.map((unit, i) => (
-        <Unit key={i} unit={unit} setCreateOportunity={setCreateOportunity} />
-      ))}
+      {units.length > 0 &&
+        units.map((unit, i) => (
+          <Unit key={i} unit={unit} setCreateOportunity={setCreateOportunity} />
+        ))}
 
       <form
         className={`${styles.formUnits} ${

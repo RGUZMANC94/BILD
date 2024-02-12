@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
+  const [imagesGallery, setImagesGallery] = useState([]);
   const images = [
     '/images/galeria-tipo/galeria-tipo-01.jpg',
     '/images/galeria-tipo/galeria-tipo-02.jpg',
@@ -10,6 +12,31 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
     '/images/galeria-tipo/galeria-tipo-05.jpg',
     '/images/galeria-tipo/galeria-tipo-06.jpg',
   ];
+
+  console.log('Projecto en info:', info);
+
+  const getGalleryImages = async () => {
+    const response = await fetch('/api/multimediaRequest', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        idobject: `${info.projectId}`,
+        type: 'PRY',
+        subtype: 'IMGRF',
+      }),
+    });
+    const galleryResponse = await response.json();
+    // console.log('dentro de opotunidades id:', galleryResponse);
+    setImagesGallery(galleryResponse);
+  };
+
+  useEffect(() => {
+    getGalleryImages();
+  }, []);
+
+  console.log('imagesGallery:', imagesGallery);
 
   return (
     <>
@@ -24,9 +51,7 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
                 </div>
                 <div className="tipo-info">
                   <span className="tipo-title">{info.projectName}</span>
-                  <span className="valor">
-                    {info.price && '$ 120 millones - $ 160 millones'}
-                  </span>
+                  <span className="valor">{`$${info.maxPrice}`}</span>
                   <div className="detalles">
                     <img src="/images/cards/bed.svg" />
                     <span>
@@ -53,15 +78,16 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
         </div>
         <div className="galeria-tipo">
           <div className="gallery-image">
-            {images.map((img) => (
-              <div
-                key={img}
-                className="img-box"
-                onClick={() => setLightboxImage(img)}>
-                <img src={img} alt="" />
-                <div className="transparent-box"></div>
-              </div>
-            ))}
+            {imagesGallery.length > 0 &&
+              imagesGallery.map((img) => (
+                <div
+                  key={img}
+                  className="img-box"
+                  onClick={() => setLightboxImage(img.url)}>
+                  <img src={img.url} alt="" />
+                  <div className="transparent-box"></div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

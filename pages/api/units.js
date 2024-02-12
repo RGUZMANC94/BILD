@@ -9,7 +9,6 @@ export default async function handler(req, res) {
     const units = await response.json();
 
     if (units) {
-      
       res.status(200).json(units);
     }
   } catch (error) {

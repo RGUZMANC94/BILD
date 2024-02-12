@@ -124,40 +124,43 @@ const OportunitiesContact = ({ oppList, contacts, setOppIsSelected }) => {
           {console.log('')}
           {oppList &&
             (oppList.length > 0
-              ? oppList.map((oportunity, i) => (
-                  <div
-                    className={styles['card-unit-list']}
-                    key={i}
-                    onClick={() =>
-                      handleItemClick(
-                        i,
-                        oportunity.idSaleOp,
-                        oportunity.idProperty,
-                        oportunity.idProject,
-                        oportunity
-                      )
-                    }>
-                    <OportunitiesCard
-                      closed={oportunity.image}
-                      estimatedProgress={oportunity.estimatedProgress}
-                      state={selectedItem === i}
-                      image={
-                        oportunity.idClient.image &&
-                        (oportunity.idClient.image[0] &&
-                        oportunity.idClient.image[0] !== ''
-                          ? `${oportunity.idClient.image[0].url}`
-                          : '/images/defatult-2.jpg')
-                      }
-                      name={oportunity.nameCustomer}
-                      location={oportunity.nameProject}
-                      type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
-                      followingDate={oportunity.createdDate}
-                      historyComponent={OportunitiesHistory}
-                      progress={oportunity.temperature/100}
-                      temperature={'cold'} // hot warm cold
-                    />
-                  </div>
-                ))
+              ? oppList.map(
+                  (oportunity, i) =>
+                    Object.keys(oportunity).length > 3 && (
+                      <div
+                        className={styles['card-unit-list']}
+                        key={i}
+                        onClick={() =>
+                          handleItemClick(
+                            i,
+                            oportunity.idSaleOp,
+                            oportunity.idProperty,
+                            oportunity.idProject,
+                            oportunity
+                          )
+                        }>
+                        <OportunitiesCard
+                          closed={oportunity.image}
+                          estimatedProgress={oportunity.estimatedProgress}
+                          state={selectedItem === i}
+                          image={
+                            oportunity.idClient.image &&
+                            (oportunity.idClient.image[0] &&
+                            oportunity.idClient.image[0] !== ''
+                              ? `${oportunity.idClient.image[0].url}`
+                              : '/images/defatult-2.jpg')
+                          }
+                          name={oportunity.nameCustomer}
+                          location={oportunity.nameProject}
+                          type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
+                          followingDate={oportunity.createdDate}
+                          historyComponent={OportunitiesHistory}
+                          progress={oportunity.temperature / 100}
+                          temperature={'cold'} // hot warm cold
+                        />
+                      </div>
+                    )
+                )
               : '')}
         </div>
       </div>

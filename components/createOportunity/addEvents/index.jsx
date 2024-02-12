@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './add-events.module.css';
 import Button from '../../button';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import SquareInput from '../../squareInput';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,13 +14,12 @@ const AddEvents = ({ setShowPopEvents }) => {
   );
 
   const [datos, setDatos] = useState({
-    
-      idSaleOp: "",
-      activity: "Prueba evento 1",
-      ask1: "",
-      ask2: "",
-      ask3: "",
-      expirationDate: "2024-12-22 17:00:00" 
+    idSaleOp: '',
+    activity: 'Prueba evento 1',
+    ask1: '',
+    ask2: '',
+    ask3: '',
+    expirationDate: '2024-12-22 17:00:00',
   });
 
   const handleChange = (e) => {
@@ -28,7 +27,6 @@ const AddEvents = ({ setShowPopEvents }) => {
   };
 
   console.log('Datos: ', datos);
-
 
   useEffect(() => {
     setShow(true);
@@ -66,7 +64,7 @@ const AddEvents = ({ setShowPopEvents }) => {
       const responseData = await typeCreated.json();
 
       console.log('Proyecto creado:', responseData);
-      
+
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -81,7 +79,6 @@ const AddEvents = ({ setShowPopEvents }) => {
       console.error('Error al crear el proyecto:', error);
     }
   };
-
 
   return (
     <section className={`${styles.main} ${show ? styles.active : ''}`}>
@@ -127,13 +124,13 @@ const AddEvents = ({ setShowPopEvents }) => {
                   onChange={handleChange}
                   required></textarea>
                 <label className={styles.labelNode}>
-                  <input type="checkbox" name="cb-terminosservicio"/>{' '}
-                  Agendar seguimiento futuro
+                  <input type="checkbox" name="cb-terminosservicio" /> Agendar
+                  seguimiento futuro
                 </label>
                 <br />
               </div>
             </div>
-            {/*<div className={styles["right-side-event"]}>
+            {/* <div className={styles["right-side-event"]}>
               <label htmlFor="" className={styles["label-right-side"]}>
                 <span className={styles["text-origen"]}>Fecha:</span>
                 <DatePicker></DatePicker>

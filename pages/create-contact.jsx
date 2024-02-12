@@ -11,33 +11,33 @@ const CreateContact = () => {
   const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
 
-  const [datos, setDatos] = useState({ 
-      firstNames : "",
-      lastNames : "",
-      email : "",
-      id : "",
-      phoneNumber : "",
-      gender : "M",
-      idType : "CE",
-      birthDay : "1990-01-01",
-      documentExpeditionDate : "1990-01-02",
-      countryExpedition : "COL",
-      stateExpedition : "5",
-      cityExpedition : "1",
-      nacionality : "Colombiana",
-      typeClient : "J",
-      businessName : "Cliente",
-      origin : "845002",
-      pointOfAttention : "3",
-      StatusClient : "1",
-      idAdviser : "FDBILD",
-      dateRegister : "2023-12-03",
-      idProject : "85006",
-      isActive : "A",
-      country : "COL",
-      department : "5",
-      city : "1", 
-      thirdDependency : "N"
+  const [datos, setDatos] = useState({
+    firstNames: '',
+    lastNames: '',
+    email: '',
+    id: '',
+    phoneNumber: '',
+    gender: 'M',
+    idType: 'CE',
+    birthDay: '1990-01-01',
+    documentExpeditionDate: '1990-01-02',
+    countryExpedition: 'COL',
+    stateExpedition: '5',
+    cityExpedition: '1',
+    nacionality: 'Colombiana',
+    typeClient: 'J',
+    businessName: 'Cliente',
+    origin: '845002',
+    pointOfAttention: '3',
+    StatusClient: '1',
+    idAdviser: 'FDBILD',
+    dateRegister: '2023-12-03',
+    idProject: '85006',
+    isActive: 'A',
+    country: 'COL',
+    department: '5',
+    city: '1',
+    thirdDependency: 'N',
   });
 
   const [imagen, setImagen] = useState(null);
@@ -51,7 +51,7 @@ const CreateContact = () => {
         datos,
       })
     );
-      
+
     try {
       const contactCreated = await fetch('/api/createContact', {
         method: 'post',
@@ -89,20 +89,17 @@ const CreateContact = () => {
               body: formData,
             }
           );
-        
+
           if (!response.ok) {
             console.error('Error de solicitud. Estado:', response.status);
-            console.error('Detalles del error:', errorData);
           } else {
             console.log('Respuesta exitosa:', response);
           }
-        
         } catch (error) {
           console.error('Error al realizar la solicitud:', error);
-          
         }
       }
-  
+
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -131,7 +128,6 @@ const CreateContact = () => {
     e.preventDefault();
 
     console.log('imagen: ', imagen);
-      
 
     const formData = new FormData();
     formData.append('type', 'CLI');
@@ -139,19 +135,12 @@ const CreateContact = () => {
     formData.append('idObject', '95162');
     formData.append('file', imagen);
 
-    console.log(
+    console.log('formData:', formData);
 
-      'formData:',
-        formData,
-      
-    );
-      
     try {
       const contactCreated = await fetch('/api/multimediaUpload', {
         method: 'post',
-        body: 
-          formData,
-        
+        body: formData,
       });
 
       console.log('Tipo creado: ', contactCreated);
@@ -164,8 +153,6 @@ const CreateContact = () => {
 
       console.log('Proyecto creado:', responseData);
 
-      
-  
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -200,101 +187,136 @@ const CreateContact = () => {
     const imageFile = e.target.files[0];
     setImagen(imageFile);
   };
-  
 
   return (
     <>
-    <div className={styles['wrap-datos']}>
-      <div className="container flex j-sb a-s wrap relative">
-        <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
-        <div className={styles['top-content']}>
-          <div className={styles['top-content-buttonsBar']}>
-            <div className="container flex j-s a-c">
-              <div className={styles['top-buttons-container']}>
-                <div className={styles['top-content-container']}>
-                  <button
-                    className={styles['top-content-buttons']}
-                    onClick={() => setSelectedItem('contact')}>
-                    Datos de Contacto
-                  </button>
-                  <div
-                    className={`${styles['top-content-bar']} ${
-                      selectedPage === 'contact' && styles.active
-                    }`}></div>
-                </div>
-                <div className={styles['top-content-container']}>
-                  <button
-                    className={styles['top-content-buttons']}
-                    onClick={() => setSelectedItem('additional')}>
-                    Información Adicional
-                  </button>
-                  <div
-                    className={`${styles['top-content-bar']} ${
-                      selectedPage === 'additional' && styles.active
-                    }`}></div>
+      <div className={styles['wrap-datos']}>
+        <div className="container flex j-sb a-s wrap relative">
+          <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
+          <div className={styles['top-content']}>
+            <div className={styles['top-content-buttonsBar']}>
+              <div className="container flex j-s a-c">
+                <div className={styles['top-buttons-container']}>
+                  <div className={styles['top-content-container']}>
+                    <button
+                      className={styles['top-content-buttons']}
+                      onClick={() => setSelectedItem('contact')}>
+                      Datos de Contacto
+                    </button>
+                    <div
+                      className={`${styles['top-content-bar']} ${
+                        selectedPage === 'contact' && styles.active
+                      }`}></div>
+                  </div>
+                  <div className={styles['top-content-container']}>
+                    <button
+                      className={styles['top-content-buttons']}
+                      onClick={() => setSelectedItem('additional')}>
+                      Información Adicional
+                    </button>
+                    <div
+                      className={`${styles['top-content-bar']} ${
+                        selectedPage === 'additional' && styles.active
+                      }`}></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className={`${styles['datos-left']} ${
-            styles[
-              `${selectedPage === 'contact' ? 'page-active' : 'page-disabled'}`
-            ]
-          }`}>
-          <div className={styles['top-name']}>
-            <span>Datos de Contacto</span>{' '}
-          </div>
-          <form onSubmit={sendFormInfo} className={styles.msform}>
-            <fieldset>
-              <input type="text" name="firstNames" placeholder="Nombre" value={datos.firstNames} onChange={handleChange}/>
-              <input type="text" name="lastNames" placeholder="Apellidos" value={datos.lastNames} onChange={handleChange}/>
-              <input
-                type="text"
-                name="id"
-                placeholder="Número de Documento"
-                value={datos.id}
-                onChange={handleChange}
-              />
-              <input type="text" name="email" placeholder="Email" value={datos.email} onChange={handleChange}/>
-              <input type="text" name="phoneNumber" placeholder="Celular" value={datos.phoneNumber} onChange={handleChange}/>
-
-              <div className={styles.foto}>
-              <label htmlFor="imageInput" className={styles.imageInputLabel}>
-                  <div className={styles.outerImgWrapper}>
-                    {imagen ? (
-                      <img className={styles.photoImage}  src={URL.createObjectURL(imagen)} alt="Preview" />
-                    ) : (
-                      <img className={styles.imagePlaceHolder} src="images/cam.svg" alt="Camera" />
-                    )}
-                  </div>
-                </label>
+          <div
+            className={`${styles['datos-left']} ${
+              styles[
+                `${
+                  selectedPage === 'contact' ? 'page-active' : 'page-disabled'
+                }`
+              ]
+            }`}>
+            <div className={styles['top-name']}>
+              <span>Datos de Contacto</span>{' '}
+            </div>
+            <form onSubmit={sendFormInfo} className={styles.msform}>
+              <fieldset>
                 <input
-                  type="file"
-                  id="imageInput"
-                  accept="image/*"
-                  onChange={(e) => handleImageChange(e)}
-                  className={styles.inputFile}
+                  type="text"
+                  name="firstNames"
+                  placeholder="Nombre"
+                  value={datos.firstNames}
+                  onChange={handleChange}
                 />
-                Tomar Foto
-              </div>
+                <input
+                  type="text"
+                  name="lastNames"
+                  placeholder="Apellidos"
+                  value={datos.lastNames}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="id"
+                  placeholder="Número de Documento"
+                  value={datos.id}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={datos.email}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="Celular"
+                  value={datos.phoneNumber}
+                  onChange={handleChange}
+                />
 
-              <div className={styles.imageInputContainer}>
-                
-              </div>
-              
-              <Link
-                href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
-                className={styles['crear-contacto']}>
-                <i className="fa-solid fa-plus"></i>Crear oportunidad
-              </Link>
-              <button className={styles['contacto-existente']}>Guardar</button>
-            </fieldset>
-          </form>
-        </div>
-        <div
-          className={`${styles['datos-right']} 
+                <div className={styles.foto}>
+                  <label
+                    htmlFor="imageInput"
+                    className={styles.imageInputLabel}>
+                    <div className={styles.outerImgWrapper}>
+                      {imagen ? (
+                        <img
+                          className={styles.photoImage}
+                          src={URL.createObjectURL(imagen)}
+                          alt="Preview"
+                        />
+                      ) : (
+                        <img
+                          className={styles.imagePlaceHolder}
+                          src="images/cam.svg"
+                          alt="Camera"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(e)}
+                    className={styles.inputFile}
+                  />
+                  Tomar Foto
+                </div>
+
+                <div className={styles.imageInputContainer}></div>
+
+                <Link
+                  href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+                  className={styles['crear-contacto']}>
+                  <i className="fa-solid fa-plus"></i>Crear oportunidad
+                </Link>
+                <button className={styles['contacto-existente']}>
+                  Guardar
+                </button>
+              </fieldset>
+            </form>
+          </div>
+          <div
+            className={`${styles['datos-right']} 
             ${
               styles[
                 `${
@@ -304,82 +326,82 @@ const CreateContact = () => {
                 }`
               ]
             }`}>
-          <div className={`relative ${styles['top-name']}`}>
-            <span>Información Adicional</span>{' '}
-          </div>
-          <div className={styles['informacion-datos']}>
-            <span className={styles['sub-title']}>FAMILIAR:</span>
-            <div className={styles.datos}>
-              <button
-                type="button"
-                onClick="cambiarColor(this.parentNode)"
-                className={styles.campo}>
-                Casado
-              </button>
-              <button
-                type="button"
-                onClick="cambiarColor(this.parentNode)"
-                className={styles.campo}>
-                Soltero
-              </button>
-              <button
-                type="button"
-                onClick="cambiarColor(this.parentNode)"
-                className={styles.campo}>
-                Con Hijos
-              </button>
-              <button
-                type="button"
-                onClick="cambiarColor(this.parentNode)"
-                className={styles.campo}>
-                Sin Hijos
-              </button>
-              <button
-                type="button"
-                onClick="cambiarColor(this.parentNode)"
-                className={styles.campo}>
-                Separado
-              </button>
+            <div className={`relative ${styles['top-name']}`}>
+              <span>Información Adicional</span>{' '}
             </div>
-          </div>
-          <div className={styles['informacion-perfil']}>
             <div className={styles['informacion-datos']}>
-              <span className={styles['sub-title']}>TIPO DE COMPRADOR:</span>
+              <span className={styles['sub-title']}>FAMILIAR:</span>
               <div className={styles.datos}>
                 <button
                   type="button"
                   onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
-                  Inversionista
+                  Casado
                 </button>
                 <button
                   type="button"
                   onClick="cambiarColor(this.parentNode)"
                   className={styles.campo}>
-                  Familiar
+                  Soltero
+                </button>
+                <button
+                  type="button"
+                  onClick="cambiarColor(this.parentNode)"
+                  className={styles.campo}>
+                  Con Hijos
+                </button>
+                <button
+                  type="button"
+                  onClick="cambiarColor(this.parentNode)"
+                  className={styles.campo}>
+                  Sin Hijos
+                </button>
+                <button
+                  type="button"
+                  onClick="cambiarColor(this.parentNode)"
+                  className={styles.campo}>
+                  Separado
                 </button>
               </div>
-              {/* <button className={styles["crear-contacto"]}>
+            </div>
+            <div className={styles['informacion-perfil']}>
+              <div className={styles['informacion-datos']}>
+                <span className={styles['sub-title']}>TIPO DE COMPRADOR:</span>
+                <div className={styles.datos}>
+                  <button
+                    type="button"
+                    onClick="cambiarColor(this.parentNode)"
+                    className={styles.campo}>
+                    Inversionista
+                  </button>
+                  <button
+                    type="button"
+                    onClick="cambiarColor(this.parentNode)"
+                    className={styles.campo}>
+                    Familiar
+                  </button>
+                </div>
+                {/* <button className={styles["crear-contacto"]}>
                 <i className="fa-solid fa-plus"></i>Crear oportunidad
                 </button>
               <button className={styles["contacto-existente"]}>Guardar</button> */}
-              <div className={styles['buttons-right']}>
-                <Link
-                  href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
-                  className={styles['crear-contacto']}>
-                  <i className="fa-solid fa-plus"></i>Crear oportunidad
-                </Link>
-                <button className={styles['contacto-existente']}>
-                  Guardar
-                </button>
+                <div className={styles['buttons-right']}>
+                  <Link
+                    href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+                    className={styles['crear-contacto']}>
+                    <i className="fa-solid fa-plus"></i>Crear oportunidad
+                  </Link>
+                  <button className={styles['contacto-existente']}>
+                    Guardar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div className={`${styles.popSuccessCreated}`}>
+
+      <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
           <div className={styles.content}>

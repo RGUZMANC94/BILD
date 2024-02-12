@@ -7,7 +7,9 @@ import { useState, useEffect } from 'react';
 const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
-  const { opportunitySelected } = useSelector((state) => state.opportunityState);
+  const { opportunitySelected } = useSelector(
+    (state) => state.opportunityState
+  );
   const [firstEvent, setFirstEvent] = useState({});
   const [eventsSelected, setEventsSelected] = useState([]);
   const [lastEvent, setLastEvent] = useState({});
@@ -30,11 +32,13 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
     const events = await response.json();
     console.log('Eventos format:', events);
 
-    const filteredEvents = events ? events.filter(event => Object.keys(event).length >= 3) : [];
+    const filteredEvents = events
+      ? events.filter((event) => Object.keys(event).length >= 3)
+      : [];
 
     if (filteredEvents.length === 1) {
       setFirstEvent(filteredEvents[0]);
-      setLastEvent({}); 
+      setLastEvent({});
       setEventsSelected([]);
     } else if (filteredEvents.length === 2) {
       setFirstEvent(filteredEvents[0]);
@@ -48,40 +52,36 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
       setLastEvent(lastEvent);
     } else {
       setFirstEvent({});
-      setLastEvent({}); 
+      setLastEvent({});
       setEventsSelected([]);
     }
   };
 
   useEffect(() => {
-      getEventsSelected();
+    getEventsSelected();
   }, []);
 
   const handleEventClick = () => {
     console.log('Evento seleccionado');
   };
 
-
   return (
     <>
-    <button
+      <button
         className={styles.evento}
         onClick={() => {
           setShowPopEvents(true);
         }}>
         Agregar evento
       </button>
-    <div className={styles.right}>
-      
+      <div className={styles.right}>
+        <div className={styles.line}>
+          <img src="/images/Ellipse 81.png" />
+          <div className={styles['ver-line']}></div>
+        </div>
 
-      <div className={styles.line}>
-            <img src="/images/Ellipse 81.png" />
-            <div className={styles['ver-line']}></div>
-          </div>
-
-          <div className={styles.pendientes}>
-
-          { /*oppSelectedObject &&
+        <div className={styles.pendientes}>
+          {/* oppSelectedObject &&
           
           (Object.keys(oppSelectedObject).length > 0 && 
             
@@ -91,47 +91,51 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                 <li>{oppSelectedObject.nameProject}</li>
                 <li>{`Tipo ${oppSelectedObject.propertyType.propertyType} : ${oppSelectedObject.idProperty}`}</li>
               </ul>
-            </div>) */
-          }
+            </div>) */}
 
-{Object.keys(firstEvent).length > 0 && (
-              <div className={styles.greybox}>
-                <div className={styles.info}>
-                  <div>
-                  {//cambio scope
-                  /*<SquareInput onChangeFunct={handleEventClick} />*/ }
-                  
-                    <span className={styles['pendiente-date']}>{firstEvent.expirationDateTime.split(' ')[0]}</span>
-                  </div>
-                  <ul>
-                    <li className={styles['pendiente-list']}>
-                      <b>Titulo evento:</b>
-                    </li>
-                    <li>{firstEvent.activity}</li>
-                  </ul>
+          {Object.keys(firstEvent).length > 0 && (
+            <div className={styles.greybox}>
+              <div className={styles.info}>
+                <div>
+                  {
+                    // cambio scope
+                    /* <SquareInput onChangeFunct={handleEventClick} />*/
+                  }
+
+                  <span className={styles['pendiente-date']}>
+                    {firstEvent.expirationDateTime.split(' ')[0]}
+                  </span>
                 </div>
-                <div className={styles.time}>
-                  <span className={styles.hour}>{firstEvent.expirationDateTime.split(' ')[1]}</span>
-                </div>
-                <div className={styles['blue-point']}></div>
+                <ul>
+                  <li className={styles['pendiente-list']}>
+                    <b>Titulo evento:</b>
+                  </li>
+                  <li>{firstEvent.activity}</li>
+                </ul>
               </div>
-            )}
+              <div className={styles.time}>
+                <span className={styles.hour}>
+                  {firstEvent.expirationDateTime.split(' ')[1]}
+                </span>
+              </div>
+              <div className={styles['blue-point']}></div>
+            </div>
+          )}
 
-            {eventsSelected.length > 0 && (
+          {eventsSelected.length > 0 && (
+            <div
+              className={`${styles['box-dotted']} ${
+                showAllEvents ? styles.active : ''
+              } relative`}>
               <div
-                className={`${styles['box-dotted']} ${
-                  showAllEvents ? styles.active : ''
-                } relative`}>
-                <div
-                  className={styles['blue-point-plus']}
-                  onClick={() => setShowAllEvents(true)}>
-                  {eventsSelected.length - 1}+
-                </div>
-                <div className={styles.innerDottedContainer}>
-                  {eventsSelected.reverse().map((eventItem, i) => (
-                    
-                    Object.keys(eventItem).length > 3 &&
-                    
+                className={styles['blue-point-plus']}
+                onClick={() => setShowAllEvents(true)}>
+                {eventsSelected.length - 1}+
+              </div>
+              <div className={styles.innerDottedContainer}>
+                {eventsSelected.reverse().map(
+                  (eventItem, i) =>
+                    Object.keys(eventItem).length > 3 && (
                       <div
                         className={
                           eventItem.status === 'PE'
@@ -141,14 +145,14 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                         key={eventItem.id}>
                         <div className={styles.info}>
                           <div>
-                            { //cambio scope
-                              /*{eventItem.status === 'PE' && (
+                            {
+                              // cambio scope
+                              /* {eventItem.status === 'PE' && (
                                 <>
                                   <SquareInput onChangeFunct={handleEventClick} />
                                 </>
-                              )} />*/ 
+                              )} />*/
                             }
-                            
 
                             <span className={styles['pendiente-date']}>
                               {eventItem.expirationDateTime.split(' ')[0]}
@@ -163,41 +167,49 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                         </div>
                         {eventItem.status === 'PE' && (
                           <div className={styles.time}>
-                            <span className={styles.hour}>{eventItem.expirationDateTime.split(' ')[1]}</span>
+                            <span className={styles.hour}>
+                              {eventItem.expirationDateTime.split(' ')[1]}
+                            </span>
                           </div>
                         )}
 
                         <div className={styles['blue-point']}></div>
                       </div>
-                  ))}
-                </div>
+                    )
+                )}
               </div>
-            )}
+            </div>
+          )}
 
-            {Object.keys(lastEvent).length > 0 &&
+          {Object.keys(lastEvent).length > 0 && (
             <div className={styles.greybox}>
-                <div className={styles.info}>
-                  <div>
-                  {//cambio scope
-                  /*<SquareInput onChangeFunct={handleEventClick} />*/ }
-                  
-                    <span className={styles['pendiente-date']}>{lastEvent.expirationDateTime.split(' ')[0]}</span>
-                  </div>
-                  <ul>
-                    <li className={styles['pendiente-list']}>
-                      <b>Titulo evento:</b>
-                    </li>
-                    <li>{lastEvent.activity}</li>
-                  </ul>
-                </div>
-                <div className={styles.time}>
-                  <span className={styles.hour}>{lastEvent.expirationDateTime.split(' ')[1]}</span>
-                </div>
-                <div className={styles['blue-point']}></div>
-              </div>
+              <div className={styles.info}>
+                <div>
+                  {
+                    // cambio scope
+                    /* <SquareInput onChangeFunct={handleEventClick} />*/
+                  }
 
-            }
-          </div>
+                  <span className={styles['pendiente-date']}>
+                    {lastEvent.expirationDateTime.split(' ')[0]}
+                  </span>
+                </div>
+                <ul>
+                  <li className={styles['pendiente-list']}>
+                    <b>Titulo evento:</b>
+                  </li>
+                  <li>{lastEvent.activity}</li>
+                </ul>
+              </div>
+              <div className={styles.time}>
+                <span className={styles.hour}>
+                  {lastEvent.expirationDateTime.split(' ')[1]}
+                </span>
+              </div>
+              <div className={styles['blue-point']}></div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

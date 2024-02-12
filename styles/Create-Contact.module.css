@@ -438,7 +438,6 @@
 
 /* imagen */
 
-
 .foto {
   display: flex;
   flex-direction: row;
@@ -470,9 +469,7 @@
   width: 80%;
   object-fit: cover;
   margin: auto;
-  
 }
-
 
 .imageInputContainer {
   text-align: center;
@@ -485,8 +482,8 @@
 }
 
 .outerImgWrapper {
-  width: 45px; 
-  height: 45px; 
+  width: 45px;
+  height: 45px;
   overflow: hidden;
   border-radius: 50%;
   background-color: #ff5567;
@@ -496,11 +493,9 @@
   margin-right: 10px;
 }
 
-
 .inputFile {
   display: none;
 }
-
 
 @media only screen and (min-width: 2000px) {
   .wrap-datos {

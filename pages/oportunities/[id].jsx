@@ -18,7 +18,6 @@ const Oportunities = () => {
   const [closeFlag, setCloseFlag] = useState(true);
   const [oppIsSelected, setOppIsSelected] = useState(false);
 
-
   if (closeFlag) {
     dispatch(closePopUp());
     setCloseFlag(false);
@@ -38,6 +37,7 @@ const Oportunities = () => {
         id,
         idProject: '',
         idClient: `${router.query.id}`,
+        sorting: '',
       }),
     });
 
@@ -68,7 +68,10 @@ const Oportunities = () => {
       </div>
       <section className={styles.main}>
         <div className="container flex j-sb a-s wrap">
-          <OportunitiesContact oppList={allOpportunities} setOppIsSelected={setOppIsSelected} />
+          <OportunitiesContact
+            oppList={allOpportunities}
+            setOppIsSelected={setOppIsSelected}
+          />
         </div>
       </section>
       {openPopUpOportunity && <CreateOportunity created={true} />}

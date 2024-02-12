@@ -1,8 +1,9 @@
 export default async function handler(req, res) {
-  console.log('heyo:-', req.body.datos);
+  console.log('quote:                     ', req.body.datos);
+
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/CreateEvent?username=${req.body.id}`,
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/EditSalesOp?idopt=${req.body.idopt}&username=${req.body.id}`,
       {
         method: 'post',
         headers: {
@@ -14,14 +15,12 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log('Error: ', errorText);
-      throw new Error(`Bad response from server: Create event - ${errorText}`);
+      throw new Error(`Bad response from server: Edit Quote - ${errorText}`);
     }
-    console.log('Success: ', response.status);
+    const quoteEdited = await response.json();
 
-    const eventCreated = await response.json();
-
-    if (eventCreated) {
-      res.status(200).json(eventCreated);
+    if (quoteEdited) {
+      res.status(200).json(quoteEdited);
     }
   } catch (error) {
     console.error(error);

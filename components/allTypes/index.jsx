@@ -41,9 +41,7 @@ const AllTypes = ({
             key={type.nuimb}
             index={index}
             type={type}
-            units={
-              units.filter((unit) => unit.type === type.idType)
-            }
+            units={units.filter((unit) => unit.type === type.idType)}
           />
         ))}
       </ul>

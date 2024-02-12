@@ -140,9 +140,10 @@
   width: 100%;
   gap: 1%;
   margin-bottom: 60px;
+  gap: 8%;
 }
 .typeFeatures {
-  width: 45%;
+  width: 35%;
 }
 
 .imgType {
@@ -162,7 +163,7 @@
 }
 
 .manyTypeLabels .inputTypeForm {
-  width: 70px;
+  width: 100px;
   height: 35px;
   flex-shrink: 0;
 }

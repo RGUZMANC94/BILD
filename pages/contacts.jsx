@@ -5,9 +5,12 @@ import { useRouter } from 'next/router';
 import { getSessionToken } from '../utils/getSessionToken';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { changeContactListSelected } from '../redux/contactSelectedSlice';
 
 const Contacts = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [recentContacts, setRecentsContacts] = useState([]);
   const [sortedontacts, setSortedContacts] = useState([]);
   const { id } = useSelector((state) => state.userState);
@@ -56,7 +59,11 @@ const Contacts = () => {
           </div>
           {recentContacts.slice(0, 3).map((recent, i) => (
             <div className={styles['list-name']} key={i}>
-              <Link href={`/buyer/${recent.idCli}`}>
+              <Link
+                onClick={() => {
+                  dispatch(changeContactListSelected(recent));
+                }}
+                href={`/buyer/${recent.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
                     <div className={styles['contact-img-container']}>
@@ -95,7 +102,11 @@ const Contacts = () => {
           </div>
           {sortedontacts.map((contact, i) => (
             <div className={styles['list-name']} key={i}>
-              <Link href={`/buyer/${contact.idCli}`}>
+              <Link
+                onClick={() => {
+                  dispatch(changeContactListSelected(contact));
+                }}
+                href={`/buyer/${contact.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
                     <div className={styles['contact-img-container']}>
