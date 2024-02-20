@@ -4,7 +4,7 @@ import styles from './Add-type-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
+const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -127,7 +127,13 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
 
       setTimeout(() => {
         // router.push(`/detail-estate/${router.query.id}`);
-        window.location.reload();
+        // window.location.reload();
+        setTypeFlag(true);
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+
+        cleanForm();
         setShowPopUpType(false);
       }, 2000);
     } catch (error) {
@@ -142,6 +148,16 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
       }, 2000);
       console.error('Error al crear el proyecto:', error);
     }
+  };
+
+  const cleanForm = () => {
+    setDatos({
+      projectId: router.query.id,
+      typeDescription: '',
+      size: '',
+      bed: '',
+      bath: '',
+    });
   };
 
   return (
@@ -213,7 +229,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType }) => {
                 </label>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Cuartos</span>
+                  <span className={styles.labelInputTitle}>Habitaciones</span>
                   <input
                     type="text"
                     name="bed"

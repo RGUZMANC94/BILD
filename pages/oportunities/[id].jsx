@@ -17,6 +17,8 @@ const Oportunities = () => {
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [closeFlag, setCloseFlag] = useState(true);
   const [oppIsSelected, setOppIsSelected] = useState(false);
+  const [sorting, setSorting] = useState('DESC');
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   if (closeFlag) {
     dispatch(closePopUp());
@@ -25,6 +27,10 @@ const Oportunities = () => {
 
   const { openPopUpOportunity } = useSelector(
     (state) => state.popUpOportunityState
+  );
+
+  const { contactListSelected } = useSelector(
+    (state) => state.contactOpportunityState
   );
 
   const getAllOpportunities = async () => {
@@ -37,7 +43,7 @@ const Oportunities = () => {
         id,
         idProject: '',
         idClient: `${router.query.id}`,
-        sorting: '',
+        sorting: 'DESC',
       }),
     });
 
@@ -56,6 +62,14 @@ const Oportunities = () => {
     getAllOpportunities();
   }, []);
 
+  useEffect(() => {
+    if (refreshFlag) {
+      setRefreshFlag(false);
+    }
+    getAllOpportunities();
+    console.log('reset');
+  }, [refreshFlag]);
+
   return (
     <>
       <div className={styles['top-content']}>
@@ -63,7 +77,9 @@ const Oportunities = () => {
           <Link
             href={`/buyer/${router.query.id}`}
             className={`bg-ct ${styles.icon}`}></Link>
-          <div className={styles.title}>Oportunidades de John Lennon </div>
+          <div className={styles.title}>
+            {`Oportunidades de ${contactListSelected.name} ${contactListSelected.lastname}`}{' '}
+          </div>
         </div>
       </div>
       <section className={styles.main}>
@@ -71,6 +87,7 @@ const Oportunities = () => {
           <OportunitiesContact
             oppList={allOpportunities}
             setOppIsSelected={setOppIsSelected}
+            setRefreshFlag={setRefreshFlag}
           />
         </div>
       </section>

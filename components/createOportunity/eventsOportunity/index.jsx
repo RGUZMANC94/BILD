@@ -33,7 +33,7 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
     console.log('Eventos format:', events);
 
     const filteredEvents = events
-      ? events.filter((event) => Object.keys(event).length >= 3)
+      ? events.filter((event) => Object.keys(event).length >= 3).reverse()
       : [];
 
     if (filteredEvents.length === 1) {
@@ -47,8 +47,8 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
     } else if (filteredEvents.length > 2) {
       const [firstEvent, ...remainingEvents] = filteredEvents;
       setFirstEvent(firstEvent);
-      setEventsSelected(remainingEvents);
       const lastEvent = remainingEvents[remainingEvents.length - 1];
+      setEventsSelected(filteredEvents.slice(1, -1));
       setLastEvent(lastEvent);
     } else {
       setFirstEvent({});
@@ -130,7 +130,7 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
               <div
                 className={styles['blue-point-plus']}
                 onClick={() => setShowAllEvents(true)}>
-                {eventsSelected.length - 1}+
+                {eventsSelected.length}+
               </div>
               <div className={styles.innerDottedContainer}>
                 {eventsSelected.reverse().map(
@@ -138,9 +138,10 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                     Object.keys(eventItem).length > 3 && (
                       <div
                         className={
-                          eventItem.status === 'PE'
-                            ? styles.greybox
-                            : styles.box
+                          /*
+                        eventItem.status === 'PE'
+                          ? styles.greybox
+                          : styles.box*/ styles.greybox
                         }
                         key={eventItem.id}>
                         <div className={styles.info}>
@@ -165,13 +166,15 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                             <li>{eventItem.activity}</li>
                           </ul>
                         </div>
-                        {eventItem.status === 'PE' && (
-                          <div className={styles.time}>
-                            <span className={styles.hour}>
-                              {eventItem.expirationDateTime.split(' ')[1]}
-                            </span>
-                          </div>
-                        )}
+                        {
+                          /* eventItem.status === 'PE'*/ true && (
+                            <div className={styles.time}>
+                              <span className={styles.hour}>
+                                {eventItem.expirationDateTime.split(' ')[1]}
+                              </span>
+                            </div>
+                          )
+                        }
 
                         <div className={styles['blue-point']}></div>
                       </div>

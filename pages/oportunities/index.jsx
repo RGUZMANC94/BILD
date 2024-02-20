@@ -20,6 +20,7 @@ const OportunitiesAllFilter = () => {
   const [recentContacts, setRecentsContacts] = useState([]);
   const [oppIsSelected, setOppIsSelected] = useState(false);
   const [sorting, setSorting] = useState('DESC');
+  const [refreshFlag, setRefreshFlag] = useState(false);
   const dispatch = useDispatch();
 
   const toggleShowBar = () => {
@@ -95,6 +96,14 @@ const OportunitiesAllFilter = () => {
     getRecentsContacts();
   }, [sorting]);
 
+  useEffect(() => {
+    if (refreshFlag) {
+      setRefreshFlag(false);
+    }
+    getAllOpportunities();
+    console.log('reset');
+  }, [refreshFlag]);
+
   return (
     <>
       <div className={styles['top-content-buttonsBar']}>
@@ -163,6 +172,7 @@ const OportunitiesAllFilter = () => {
             <OportunitiesAll
               oppList={allOpportunities}
               setOppIsSelected={setOppIsSelected}
+              setRefreshFlag={setRefreshFlag}
             />
           )}
           {/* showSection === 'pending' && (
@@ -173,6 +183,7 @@ const OportunitiesAllFilter = () => {
               oppList={allOpportunities}
               setOppIsSelected={setOppIsSelected}
               setSorting={setSorting}
+              setRefreshFlag={setRefreshFlag}
             />
           )}
         </div>

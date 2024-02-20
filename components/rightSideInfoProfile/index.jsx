@@ -39,7 +39,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         </div>
       )}
 
-      {typeViewer !== 'admin' && (
+      {/* typeViewer !== 'admin' && (
         <>
           <div className={styles.flag}>Pendientes</div>
           <div className={styles.listado}>
@@ -102,7 +102,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             </div>
           </div>
         </>
-      )}
+      )*/}
 
       {typeViewer === 'admin' && (
         <div className={styles['datos-right']}>

@@ -24,9 +24,47 @@ const GenerateQuote = ({ setGenerateQuote }) => {
   const [unitBalance, setUnitBalance] = useState(0);
   const [separation, setSeparation] = useState(0);
   const [downPayment, setDownPayment] = useState(0);
-  const [fees, setFees] = useState(0);
+  const [fees, setFees] = useState(2);
   const [feesArray, setFeesArray] = useState([]);
-  const [datos, setDatos] = useState({});
+  const [datos, setDatos] = useState({
+    idSaleOp: opportunitySelected,
+    totalValue: null,
+    percentageToPay: null,
+    numberDues: null,
+    separationValue: null,
+    paymentStartDate: null,
+    payments: [],
+  });
+
+  console.log('fees', fees);
+  console.log('monthlyQuote:', monthlyQuote);
+  console.log('balanceInitialQuote:', balanceInitialQuote);
+
+  // Efecto para manejar cambios en valores y en popQuotes
+  useEffect(() => {
+    const formattedPayments = feesArray.map((paymentValue) => ({
+      paymentValue: `${paymentValue}.0`,
+    }));
+
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      totalValue: `${unitSelected.propertyPrice}.0`,
+      percentageToPay: values[0],
+      numberDues: fees,
+      separationValue: `${Number(separation) + Number(downPayment)}.0`,
+      paymentStartDate: '2024-12-30',
+      payments: popQuotes ? [...formattedPayments] : [],
+    }));
+  }, [
+    opportunitySelected,
+    unitSelected,
+    values,
+    fees,
+    separation,
+    downPayment,
+    popQuotes,
+    feesArray,
+  ]);
 
   useEffect(() => {
     setInitialQuote((unitSelected.propertyPrice * values[0]) / 100);
@@ -34,8 +72,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
 
   console.log(initialQuote, separation, downPayment);
   useEffect(() => {
-    const total = initialQuote - (Number(separation) + Number(downPayment));
-    setBalanceInitialQuote(total);
+    setBalanceInitialQuote(
+      initialQuote - (Number(separation) + Number(downPayment))
+    );
   }, [initialQuote, separation, downPayment]);
 
   useEffect(() => {
@@ -44,7 +83,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
 
   useEffect(() => {
     setMonthlyQuote(balanceInitialQuote / Number(fees));
-  }, [fees, initialQuote, separation, downPayment]);
+  }, [fees, balanceInitialQuote, initialQuote, separation, downPayment]);
 
   function formatMoney(num) {
     return num.toLocaleString('es-CO', { currency: 'COP', style: 'currency' });
@@ -53,7 +92,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
   const handlePopQuotes = () => {
     setPopQuotes(!popQuotes);
     if (popQuotes) {
-      setFeesArray([]); // Reinicia el array de precios cuando se cierran los campos dinámicos
+      setFeesArray([]);
     }
   };
 
@@ -91,6 +130,10 @@ const GenerateQuote = ({ setGenerateQuote }) => {
     e.preventDefault();
 
     if (!popQuotes) {
+      delete datos.payments;
+    }
+    /*
+    if (!popQuotes) {
       setDatos((prevDatos) => ({
         ...prevDatos,
         idSaleOp: opportunitySelected,
@@ -115,14 +158,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         paymentStartDate: '2024-12-30',
         payments: [...formattedPayments],
       }));
-    }
+    }*/
 
-    console.log(
-      JSON.stringify({
-        id,
-        datos,
-      })
-    );
+    console.log(datos);
 
     try {
       const quoteCreated = await fetch('/api/createQuote', {
@@ -290,7 +328,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             onChange={(e) => setFees(e.target.value)}
             className={styles.subject_input}
             required>
-            <option disabled defaultValue={0} hidden selected></option>
+            <option value={1} disabled hidden selected>
+              1
+            </option>
             <option>2</option>
             <option>3</option>
             <option>4</option>

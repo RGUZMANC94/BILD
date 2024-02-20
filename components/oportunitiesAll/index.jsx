@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-const OportunitiesAll = ({ oppList, setOppIsSelected }) => {
+const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
@@ -126,7 +126,10 @@ const OportunitiesAll = ({ oppList, setOppIsSelected }) => {
             (oppList.length > 0
               ? oppList.map(
                   (oportunity, i) =>
-                    Object.keys(oportunity).length > 3 && (
+                    Object.keys(oportunity).length > 3 &&
+                    (oportunity.stageCycleSaleOp === 'Oportunidad' ||
+                      oportunity.stageCycleSaleOp === 'Prospecto' ||
+                      oportunity.stageCycleSaleOp === 'Separacion') && (
                       <div
                         className={styles['card-unit-list']}
                         key={i}
@@ -168,7 +171,11 @@ const OportunitiesAll = ({ oppList, setOppIsSelected }) => {
         {selectedItem !== -1 && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
-            oppSelectedObject={oppSelectedObject}></OportunitiesHistory>
+            oppSelectedObject={oppSelectedObject}
+            setRefreshFlag={setRefreshFlag}
+            setSelectedItemOpp={setSelectedItem}
+            setOppIsSelected={setOppIsSelected}
+          />
         )}
       </div>
     </>

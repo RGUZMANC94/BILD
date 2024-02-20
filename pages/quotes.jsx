@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect, use } from 'react';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from '../styles/Quotes.module.css';
 import SquareInput from '../components/squareInput';
 
 const Quotes = () => {
+  const { id } = useSelector((state) => state.userState);
+  const { contactListSelected } = useSelector(
+    (state) => state.contactOpportunityState
+  );
   const [fileIndex, setFileIndex] = useState([]);
+  const [quotes, setQuotes] = useState(null);
+  const [allOpportunities, setAllOpportunities] = useState(null);
+  const [seleccion, setSeleccion] = useState(null);
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   const addCheckboxChange = (index) => {
     if (fileIndex.includes(index)) {
@@ -15,12 +24,154 @@ const Quotes = () => {
     }
   };
 
+  const getPrices = async () => {
+    const response = await fetch('/api/getQuote', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idSaleOp: '',
+        iddpf: '',
+        idClient: contactListSelected.idCli,
+      }),
+    });
+
+    const quotesResponse = await response.json();
+    console.log('dentro de Pagos:', quotesResponse);
+    setQuotes(quotesResponse.filter((objeto) => objeto.type === 'PR'));
+  };
+
+  /* const getClientOpportunities = async () => {
+    const response = await fetch('/api/opportunities', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idProject: '',
+        idClient: contactListSelected.idCli,
+        sorting: "DESC",
+      }),
+    });
+
+    const opportunitiesResponse = await response.json();
+    console.log('dentro de opotunidades:', opportunitiesResponse);
+    setAllOpportunities(opportunitiesResponse);
+  };*/
+
+  useEffect(() => {
+    getPrices();
+  }, []);
+
+  useEffect(() => {
+    getPrices();
+    if (refreshFlag) {
+      setRefreshFlag(false);
+    }
+  }, [refreshFlag]);
+
+  useEffect(() => {
+    console.log('Seleccion de documentos:', fileIndex);
+  }, [fileIndex]);
+
+  console.log('Lista de cotizaciones:', quotes);
+  console.log('Lista de Oportunidades:', allOpportunities);
+
+  const groupByProjectName = (array) => {
+    const groupedArray = array.reduce((result, current) => {
+      const projectName = current.projectName;
+
+      if (!result[projectName]) {
+        result[projectName] = [];
+      }
+
+      result[projectName].push(current);
+      return result;
+    }, {});
+
+    return Object.entries(groupedArray).map(([projectName, payments]) => ({
+      projectName,
+      payments,
+    }));
+  };
+  useEffect(() => {
+    if (quotes) {
+      setSeleccion(groupByProjectName(quotes));
+    }
+  }, [quotes]);
+
+  console.log('Seleccion:', seleccion);
+
+  const deleteQuote = async (idport) => {
+    try {
+      const quoteDeleted = await fetch('/api/deletePayment', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          iddpf: idport,
+        }),
+      });
+
+      console.log('Quote deleted: ', quoteDeleted);
+
+      if (!quoteDeleted.ok) {
+        throw new Error('Failed to delete Quote');
+      }
+
+      const responseData = await quoteDeleted.json();
+
+      console.log('Quote deleted:', responseData);
+
+      document
+        .querySelector(`.${styles.popSuccessCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        setRefreshFlag(true);
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
+    } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
+      console.error('Error al Borrar cuota:', error);
+    }
+  };
+
+  const chainedDelete = async (arr) => {
+    const chainedRes = await Promise.all(
+      arr.map(async (idport) => {
+        return await deleteQuote(idport);
+      })
+    );
+    setFileIndex([]);
+  };
+
   return (
     <>
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
-          <Link href={'/buyer/1'} className={`bg-ct ${styles.icon}`}></Link>
-          <div className={styles.title}>Cotizaciones de John Lennon </div>
+          <Link
+            href={`/buyer/${contactListSelected.idCli}`}
+            className={`bg-ct ${styles.icon}`}></Link>
+          <div
+            className={
+              styles.title
+            }>{`Cotizaciones de ${contactListSelected.name} ${contactListSelected.lastname}`}</div>
           <div className={styles['title-movil']}>Cotizaciones</div>
         </div>
       </div>
@@ -39,261 +190,60 @@ const Quotes = () => {
         </div>
         <div className={styles['listas-cotizaciones']}>
           <div className={styles['nombre-lista']}>
-            <details className={styles.accordion}>
-              <summary className={styles['accordion-btn']}>
-                FONTANA CAMPESTRE TIPO 1
-              </summary>
-              <div className={styles['accordion-content']}>
-                <div className={styles.file}>
-                  <div className={styles['name-field']}>
-                    <div
-                      onClick={() => addCheckboxChange(1)}
-                      className={styles['checkbox-container']}>
-                      <SquareInput />
-                    </div>
+            {seleccion &&
+              seleccion.map((project, i) => (
+                <details className={styles.accordion} key={i}>
+                  <summary className={styles['accordion-btn']}>
+                    {`${project.projectName}`}
+                  </summary>
+                  <div className={styles['accordion-content']}>
+                    {project.payments.map((payment, i) => (
+                      <div className={styles.file} key={i}>
+                        <div className={styles['name-field']}>
+                          <div className={styles['checkbox-container']}>
+                            <SquareInput
+                              onChangeFunct={() =>
+                                addCheckboxChange(payment.idPortfolio)
+                              }
+                            />
+                          </div>
 
-                    <img src="images/pdf-icon-white.svg" />
-                    <span>John Lennon. TIPO 1.pdf</span>
+                          <img src="images/pdf-icon-white.svg" />
+                          <span>{`TIPO ${payment.propertyType}-${payment.nameTypeProperty}.pdf`}</span>
+                        </div>
+                        <div
+                          className={
+                            styles['fecha-field']
+                          }>{`${payment.createdDate}`}</div>
+                        <div className={styles['size-field']}>
+                          169.74KB {`${payment.numberPayments}`}
+                        </div>
+                        <div className={styles['movil-info']}>
+                          <div className={styles['size-field-movil']}>
+                            169.74KB
+                          </div>
+                          <span className={styles['separator-movil']}>|</span>
+                          <div className={styles['fecha-field-movil']}>
+                            25/03/2023
+                          </div>
+                        </div>
+                        <div className={styles.icons}>
+                          <div className={styles.upload}>
+                            <img src="images/upload-documentation-white.svg" />
+                          </div>
+                          <div className={styles.delete}>
+                            <div
+                              className={styles.deleteContainer}
+                              onClick={() => deleteQuote(payment.idPortfolio)}>
+                              <img src="images/delete-quote-white.svg" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className={styles['fecha-field']}>25/03/2023 5:35pm</div>
-                  <div className={styles['size-field']}>169.74KB</div>
-                  <div className={styles['movil-info']}>
-                    <div className={styles['size-field-movil']}>169.74KB</div>
-                    <span className={styles['separator-movil']}>|</span>
-                    <div className={styles['fecha-field-movil']}>
-                      25/03/2023
-                    </div>
-                  </div>
-                  <div className={styles.icons}>
-                    <div className={styles.upload}>
-                      <img src="images/upload-documentation-white.svg" />
-                    </div>
-                    <div className={styles.delete}>
-                      <img src="images/delete-quote-white.svg" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.file}>
-                  <div className={styles['name-field']}>
-                    <div
-                      onClick={() => addCheckboxChange(2)}
-                      className={styles['checkbox-container']}>
-                      <SquareInput />
-                    </div>
-
-                    <img src="images/pdf-icon-white.svg" />
-                    <span>John Lennon. TIPO 1.pdf</span>
-                  </div>
-                  <div className={styles['fecha-field']}>25/03/2023 5:35pm</div>
-                  <div className={styles['size-field']}>169.74KB</div>
-                  <div className={styles['movil-info']}>
-                    <div className={styles['size-field-movil']}>169.74KB</div>
-                    <span className={styles['separator-movil']}>|</span>
-                    <div className={styles['fecha-field-movil']}>
-                      25/03/2023
-                    </div>
-                  </div>
-                  <div className={styles.icons}>
-                    <div className={styles.upload}>
-                      <img src="images/upload-documentation-white.svg" />
-                    </div>
-                    <div className={styles.delete}>
-                      <img src="images/delete-quote-white.svg" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.file}>
-                  <div className={styles['name-field']}>
-                    <div
-                      onClick={() => addCheckboxChange(3)}
-                      className={styles['checkbox-container']}>
-                      <SquareInput />
-                    </div>
-
-                    <img src="images/pdf-icon-white.svg" />
-                    <span>John Lennon. TIPO 1.pdf</span>
-                  </div>
-                  <div className={styles['fecha-field']}>25/03/2023 5:35pm</div>
-                  <div className={styles['size-field']}>169.74KB</div>
-                  <div className={styles['movil-info']}>
-                    <div className={styles['size-field-movil']}>169.74KB</div>
-                    <span className={styles['separator-movil']}>|</span>
-                    <div className={styles['fecha-field-movil']}>
-                      25/03/2023
-                    </div>
-                  </div>
-                  <div className={styles.icons}>
-                    <div className={styles.upload}>
-                      <img src="images/upload-documentation-white.svg" />
-                    </div>
-                    <div className={styles.delete}>
-                      <img src="images/delete-quote-white.svg" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.file}>
-                  <div className={styles['name-field']}>
-                    <div
-                      onClick={() => addCheckboxChange(4)}
-                      className={styles['checkbox-container']}>
-                      <SquareInput />
-                    </div>
-
-                    <img src="images/pdf-icon-white.svg" />
-                    <span>John Lennon. TIPO 1.pdf</span>
-                  </div>
-                  <div className={styles['fecha-field']}>25/03/2023 5:35pm</div>
-                  <div className={styles['size-field']}>169.74KB</div>
-                  <div className={styles['movil-info']}>
-                    <div className={styles['size-field-movil']}>169.74KB</div>
-                    <span className={styles['separator-movil']}>|</span>
-                    <div className={styles['fecha-field-movil']}>
-                      25/03/2023
-                    </div>
-                  </div>
-                  <div className={styles.icons}>
-                    <div className={styles.upload}>
-                      <img src="images/upload-documentation-white.svg" />
-                    </div>
-                    <div className={styles.delete}>
-                      <img src="images/delete-quote-white.svg" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            <details className={styles.accordion}>
-              <summary className={styles['accordion-btn']}>
-                FONTANA CAMPESTRE TIPO 2
-              </summary>
-              <div className={styles['accordion-content']}>
-                <div className={styles.file}>
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 1.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 2.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 3.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 4.pdf
-                </div>
-              </div>
-            </details>
-
-            <details className={styles.accordion}>
-              <summary className={styles['accordion-btn']}>
-                FONTANA CAMPESTRE TIPO 3
-              </summary>
-              <div className={styles['accordion-content']}>
-                <div className={styles.file}>
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 1.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 2.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 3.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 4.pdf
-                </div>
-              </div>
-            </details>
-
-            <details className={styles.accordion}>
-              <summary className={styles['accordion-btn']}>
-                FONTANA CAMPESTRE TIPO 4
-              </summary>
-              <div className={styles['accordion-content']}>
-                <div className={styles.file}>
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 1.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 2.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 3.pdf
-                </div>
-                <div className={styles.file}>
-                  {' '}
-                  <input
-                    type="radio"
-                    className={styles.fold}
-                    name="nickname-enabled"
-                  />{' '}
-                  John Lennon. TIPO 4.pdf
-                </div>
-              </div>
-            </details>
+                </details>
+              ))}
           </div>
         </div>
       </div>
@@ -309,11 +259,44 @@ const Quotes = () => {
               <img src="images/upload-documentation-white.svg" />
             </div>
             <div className={styles['sub-delete']}>
-              <img src="images/delete-quote-white.svg" />
+              <div
+                className={styles.deleteContainer}
+                onClick={() => chainedDelete(fileIndex)}>
+                <img src="images/delete-quote-white.svg" />
+              </div>
             </div>
           </div>
         </div>
       )}
+
+      <div className={`${styles.popSuccessCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                ¡Tú cotización ha sido eliminada con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+                <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
+                está bien. Por favor, revisa los datos ingresados e inténtalo de
+                nuevo.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

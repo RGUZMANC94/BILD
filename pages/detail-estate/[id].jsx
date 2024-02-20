@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
@@ -13,7 +13,7 @@ import LightBox from '../../components/lightbox';
 import Link from 'next/link';
 import { closePopUp } from '../../redux/popUpOportunity';
 
-const DetailState = ({ units, types }) => {
+const DetailState = () => {
   const { id } = useSelector((state) => state.userState);
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
@@ -25,6 +25,59 @@ const DetailState = ({ units, types }) => {
   const containerEstate = useRef(null);
   const dispatch = useDispatch();
   const [closeFlag, setCloseFlag] = useState(true);
+  const [typeFlag, setTypeFlag] = useState(false);
+  const [unitFlag, setUnitFlag] = useState(false);
+  const [types, setTypes] = useState([]);
+  const [units, setUnits] = useState([]);
+
+  const getTypes = async () => {
+    const response = await fetch('/api/types', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        projectId: `${router.query.id}`,
+        page: '1',
+        rows: '50',
+      }),
+    });
+
+    const typesResponse = await response.json();
+    console.log('Otros tipos:', typesResponse);
+    setTypes(typesResponse);
+  };
+
+  const getUnits = async () => {
+    const response = await fetch('/api/units', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        projectId: `${router.query.id}`,
+        page: '1',
+        rows: '50',
+      }),
+    });
+
+    const unitsResponse = await response.json();
+    console.log('Otros tipos:', unitsResponse);
+    setUnits(unitsResponse);
+  };
+
+  useEffect(() => {
+    if (typeFlag) {
+      setTypeFlag(false);
+    }
+    if (unitFlag) {
+      setUnitFlag(false);
+    }
+    getTypes();
+    getUnits();
+  }, [typeFlag, unitFlag]);
 
   if (closeFlag) {
     dispatch(closePopUp());
@@ -140,14 +193,17 @@ const DetailState = ({ units, types }) => {
       <section className="main">
         <div className="container">
           <div className={'containerEstate'} ref={containerEstate}>
-            <TypesSide
-              types={types}
-              units={units}
-              viewEstate={viewEstate}
-              setShowPopUpType={setShowPopUpType}
-              setShowPopUpUnit={setShowPopUpUnit}
-              setCreateOportunity={setCreateOportunity}
-            />
+            {types && types.length > 0 && types && units.length > 0 && (
+              <TypesSide
+                types={types}
+                units={units}
+                viewEstate={viewEstate}
+                setShowPopUpType={setShowPopUpType}
+                setShowPopUpUnit={setShowPopUpUnit}
+                setCreateOportunity={setCreateOportunity}
+              />
+            )}
+
             <InfoProject
               viewEstate={viewEstate}
               info={projectSelected}
@@ -165,12 +221,14 @@ const DetailState = ({ units, types }) => {
       <AddTypePop
         setShowPopUpType={setShowPopUpType}
         showPopUpType={showPopUpType}
+        setTypeFlag={setTypeFlag}
       />
 
       <AddUnitPop
         setShowPopUpUnit={setShowPopUpUnit}
         showPopUpUnit={showPopUpUnit}
         types={types}
+        setUnitFlag={setUnitFlag}
       />
 
       {openPopUpOportunity && (
@@ -181,7 +239,7 @@ const DetailState = ({ units, types }) => {
 };
 
 // Trae TODAS la unidades dado un id de pryecto
-export const getServerSideProps = async (context) => {
+/* export const getServerSideProps = async (context) => {
   const response = await fetch(
     `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD&type=&page=1&rows=50`
   );
@@ -204,6 +262,6 @@ export const getServerSideProps = async (context) => {
       types,
     },
   };
-};
+};*/
 
 export default DetailState;

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-const OportunitiesContact = ({ oppList, contacts, setOppIsSelected }) => {
+const OportunitiesContact = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
@@ -168,7 +168,11 @@ const OportunitiesContact = ({ oppList, contacts, setOppIsSelected }) => {
         {selectedItem !== -1 && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
-            oppSelectedObject={oppSelectedObject}></OportunitiesHistory>
+            oppSelectedObject={oppSelectedObject}
+            setRefreshFlag={setRefreshFlag}
+            setSelectedItemOpp={setSelectedItem}
+            setOppIsSelected={setOppIsSelected}
+          />
         )}
       </div>
     </>

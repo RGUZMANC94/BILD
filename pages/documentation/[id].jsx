@@ -1,13 +1,20 @@
 import Link from 'next/link';
 import Button from '../../components/button';
 import styles from './styles.module.css';
+import { useSelector } from 'react-redux';
 
 const Documentation = () => {
+  const { contactListSelected } = useSelector(
+    (state) => state.contactOpportunityState
+  );
+
   return (
     <>
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
-          <Link href={'/buyer/1'} className={`bg-ct ${styles.icon}`}></Link>
+          <Link
+            href={`/buyer/${contactListSelected.idCli}`}
+            className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>Documentación de John Lennon </div>
         </div>
       </div>

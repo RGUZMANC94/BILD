@@ -4,8 +4,15 @@ import styles from './oportunities-history.module.css';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
 import SquareInput from '../squareInput';
+import { useRouter } from 'next/router';
 
-const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
+const OportunitiesHistory = ({
+  opportunitySelected,
+  oppSelectedObject,
+  setRefreshFlag,
+  setSelectedItemOpp,
+  setOppIsSelected,
+}) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
@@ -50,6 +57,7 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
   const [firstEvent, setFirstEvent] = useState({});
   const [eventsSelected, setEventsSelected] = useState([]);
   const [lastEvent, setLastEvent] = useState({});
+  const [idPortafolio, setIdPortafolio] = useState('');
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
@@ -73,8 +81,9 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
     console.log('Eventos format:', events);
 
     const filteredEvents = events
-      ? events.filter((event) => Object.keys(event).length >= 3)
+      ? events.filter((event) => Object.keys(event).length >= 3).reverse()
       : [];
+    console.log('Eventos filtrados:', filteredEvents);
 
     if (filteredEvents.length === 1) {
       setFirstEvent(filteredEvents[0]);
@@ -87,8 +96,8 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
     } else if (filteredEvents.length > 2) {
       const [firstEvent, ...remainingEvents] = filteredEvents;
       setFirstEvent(firstEvent);
-      setEventsSelected(remainingEvents);
       const lastEvent = remainingEvents[remainingEvents.length - 1];
+      setEventsSelected(filteredEvents.slice(1, -1));
       setLastEvent(lastEvent);
     } else {
       setFirstEvent({});
@@ -103,8 +112,9 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
     }
   }, [opportunitySelected]);
 
-  const handleEventClick = () => {
-    console.log('Evento seleccionado');
+  const handleEventClick = (e) => {
+    console.log('Evento :', e);
+    changeOpportunity(e);
   };
 
   console.log('ID oportinidad enviada', opportunitySelected);
@@ -112,6 +122,65 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
   console.log('Primer evento', firstEvent);
   console.log('eventos ya en:', eventsSelected);
   console.log('Ultimo evento', lastEvent);
+
+  const changeOpportunity = async (idopp) => {
+    const datos = {
+      cycleSale: '1',
+      stageSale: '3',
+      idAdviser: '',
+      iddpf: idopp,
+    };
+    console.log('datos:', datos);
+
+    try {
+      const oppUpdated = await fetch('/api/editOpportunity', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          idopt: opportunitySelected,
+          datos,
+        }),
+      });
+
+      console.log('Tipo creado: ', oppUpdated);
+
+      if (!oppUpdated.ok) {
+        throw new Error('Failed to update opportunity');
+      }
+
+      const responseData = await oppUpdated.json();
+
+      console.log('Opportunity updated:', responseData);
+
+      document
+        .querySelector(`.${styles.popSuccessCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        // window.location.reload();
+        setRefreshFlag(true);
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+        setSelectedItemOpp(-1);
+        setOppIsSelected(false);
+      }, 2000);
+    } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
+      console.error('Error al crear el proyecto:', error);
+    }
+  };
 
   return (
     <>
@@ -159,6 +228,29 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
                   <span className={styles.hour}>
                     {firstEvent.expirationDateTime.split(' ')[1]}
                   </span>
+                  {firstEvent.additionalInformation !== '' &&
+                    firstEvent.additionalInformation !== '0' &&
+                    (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
+                      <div>
+                        <Button
+                          buttonType={'primary'}
+                          iconImage={false}
+                          label={'Aceptar'}
+                          inheritClass={styles.buttonQuote}
+                          clickFunction={() =>
+                            handleEventClick(firstEvent.additionalInformation)
+                          }
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        <Button
+                          iconImage={false}
+                          label={'Aceptada'}
+                          inheritClass={styles.buttonQuoteAcepted}
+                        />
+                      </div>
+                    ))}
                 </div>
                 <div className={styles['blue-point']}></div>
               </div>
@@ -172,7 +264,7 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
                 <div
                   className={styles['blue-point-plus']}
                   onClick={() => setShowAllEvents(true)}>
-                  {eventsSelected.length - 1}+
+                  {eventsSelected.length}+
                 </div>
                 <div className={styles.innerDottedContainer}>
                   {eventsSelected.reverse().map(
@@ -180,9 +272,10 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
                       Object.keys(eventItem).length > 3 && (
                         <div
                           className={
+                            /*
                             eventItem.status === 'PE'
                               ? styles.greybox
-                              : styles.box
+                              : styles.box*/ styles.greybox
                           }
                           key={eventItem.id}>
                           <div className={styles.info}>
@@ -207,13 +300,42 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
                               <li>{eventItem.activity}</li>
                             </ul>
                           </div>
-                          {eventItem.status === 'PE' && (
-                            <div className={styles.time}>
-                              <span className={styles.hour}>
-                                {eventItem.expirationDateTime.split(' ')[1]}
-                              </span>
-                            </div>
-                          )}
+                          {
+                            /* eventItem.status === 'PE'*/ true && (
+                              <div className={styles.time}>
+                                <span className={styles.hour}>
+                                  {eventItem.expirationDateTime.split(' ')[1]}
+                                </span>
+
+                                {eventItem.additionalInformation !== '' &&
+                                  eventItem.additionalInformation !== '0' &&
+                                  (oppSelectedObject.stageCycleSaleOp ===
+                                  'Oportunidad' ? (
+                                    <div>
+                                      <Button
+                                        buttonType={'primary'}
+                                        iconImage={false}
+                                        label={'Aceptar'}
+                                        inheritClass={styles.buttonQuote}
+                                        clickFunction={() =>
+                                          handleEventClick(
+                                            eventItem.additionalInformation
+                                          )
+                                        }
+                                      />
+                                    </div>
+                                  ) : (
+                                    <div>
+                                      <Button
+                                        iconImage={false}
+                                        label={'Aceptada'}
+                                        inheritClass={styles.buttonQuoteAcepted}
+                                      />
+                                    </div>
+                                  ))}
+                              </div>
+                            )
+                          }
 
                           <div className={styles['blue-point']}></div>
                         </div>
@@ -247,6 +369,29 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
                   <span className={styles.hour}>
                     {lastEvent.expirationDateTime.split(' ')[1]}
                   </span>
+                  {lastEvent.additionalInformation !== '' &&
+                    lastEvent.additionalInformation !== '0' &&
+                    (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
+                      <div>
+                        <Button
+                          buttonType={'primary'}
+                          iconImage={false}
+                          label={'Aceptar'}
+                          inheritClass={styles.buttonQuote}
+                          clickFunction={() =>
+                            handleEventClick(lastEvent.additionalInformation)
+                          }
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        <Button
+                          iconImage={false}
+                          label={'Aceptada'}
+                          inheritClass={styles.buttonQuoteAcepted}
+                        />
+                      </div>
+                    ))}
                 </div>
                 <div className={styles['blue-point']}></div>
               </div>
@@ -263,6 +408,34 @@ const OportunitiesHistory = ({ opportunitySelected, oppSelectedObject }) => {
             <div className={styles['card-progress-bar-container']}>
               <div className={styles['card-progress-bar-frost-icon']}></div>
               <div className={styles['card-progress-bar-cold']}></div>
+            </div>
+          </div>
+        </div>
+        <div className={`${styles.popSuccessCreated}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup2}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/check-circle.png" />
+                <span className={styles['pop-text']}>
+                  ¡Tú Cotización ha sido aceptada con éxito!
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`${styles.popError}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup3}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/error-circle.png" />
+                <span className={styles['pop-text']}>
+                  <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
+                  está bien. Por favor, revisa los datos ingresados e inténtalo
+                  de nuevo.
+                </span>
+              </div>
             </div>
           </div>
         </div>

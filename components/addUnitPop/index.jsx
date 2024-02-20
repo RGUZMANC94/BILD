@@ -4,7 +4,12 @@ import styles from './Add-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, types }) => {
+const AddTypePop = ({
+  showPopUpUnit,
+  setShowPopUpUnit,
+  types,
+  setUnitFlag,
+}) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -140,12 +145,53 @@ const AddTypePop = ({ showPopUpUnit, setShowPopUpUnit, types }) => {
 
       setTimeout(() => {
         // router.push(`/detail-estate/${router.query.id}`);
-        window.location.reload();
+        // window.location.reload();
+        setUnitFlag(true);
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+        cleanForm();
         setShowPopUpUnit(false);
       }, 2000);
     } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
       console.error('Error al crear el proyecto:', error);
     }
+  };
+
+  const cleanForm = () => {
+    setDatos({
+      projectId: router.query.id,
+      nuimb: '',
+      phase: '1',
+      type: '-1',
+      status: '0',
+      group: '0',
+      fieldSize: '0.0',
+      privateArea: '',
+      balconyArea: '',
+      terraceArea: '',
+      parkingArea: '0.0',
+      storageArea: '',
+      builtArea: '',
+      bedrooms: '',
+      baths: '',
+      parkingAmount: '',
+      parkingType: '',
+      view: 'E',
+      parkingPrice: '0.0',
+      storageAreaPrice: '0.0',
+      propertyPrice: '',
+      piso: '1',
+    });
   };
 
   return (

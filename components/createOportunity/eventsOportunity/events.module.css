@@ -326,10 +326,10 @@ li.pendiente-list {
 .box-dotted {
   min-height: 5px;
   height: auto;
-  padding: 5px;
+  padding: 5px 5px 5px 5px;
   margin-left: 20px;
   margin-bottom: 30px;
-  width: calc(100% + 40px);
+  width: 100%;
   position: relative;
   left: -55px;
   border-top: 2px dashed #fff;
@@ -347,6 +347,7 @@ li.pendiente-list {
 }
 
 .box-dotted.active {
+  width: calc(100% + 40px);
   border-top: 2px dashed #ffffff00;
   border-bottom: 2px dashed #ffffff00;
   margin: 0 0 0 20px;
