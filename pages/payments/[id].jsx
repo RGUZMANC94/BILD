@@ -207,7 +207,7 @@ const PaymentDetail = () => {
                       </div>
                       <div
                         className={styles.pdf}
-                        onClick={() =>
+                        onClick={
                           quotes.pdf.length
                             ? setPdfURL(quotes.pdf[0].url)
                             : setPdfURL(null)
@@ -237,7 +237,7 @@ const PaymentDetail = () => {
                   </div>
                 )}
 
-                {quotes &&
+                {/* quotes &&
                   (quotes.dues.length > 0
                     ? quotes.dues.map((quote, i) =>
                         Object.keys(quote).length > 4 ? (
@@ -304,7 +304,7 @@ const PaymentDetail = () => {
                           </div>
                         )
                       )
-                    : '')}
+                                    : '') */}
               </div>
               {pdfURL && (
                 <div className={styles['iframe-popup']}>
