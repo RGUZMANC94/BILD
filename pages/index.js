@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { getSessionToken } from '../utils/getSessionToken';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { setProjects, setFilteredList } from '../redux/projectSlice';
+import { setProjects,setFilteredList } from '../redux/projectSlice';
 import { changeTypeSelectedName } from '../redux/typeSelectedSlice';
 import { changeProjectEdit } from '../redux/editObjectSlice';
 import Link from 'next/link';
@@ -16,11 +16,10 @@ const Home = () => {
 
   const USDollar = new Intl.NumberFormat('en-US');
   const { user_rol, id } = useSelector((state) => state.userState);
-  const { projectsList, filteredList } = useSelector(
-    (state) => state.projectState
-  );
+  const { projectsList, filteredList } = useSelector((state) => state.projectState);
   const [pageProjects, setPageProjects] = useState(1);
   const [openFlag, setOpenFlag] = useState(true);
+
 
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
@@ -34,7 +33,7 @@ const Home = () => {
       }),
     });
     const responseProjects = await response.json();
-
+    
     dispatch(
       setProjects(
         responseProjects.filter((proj) => Object.keys(proj).length >= 3)
@@ -51,12 +50,13 @@ const Home = () => {
     }
     if (openFlag) {
       dispatch(changeTypeSelectedName(-1));
-
-      setOpenFlag(false);
+      setOpenFlag(false);    
     }
     dispatch(setFilteredList([]));
     getProjects();
   }, []);
+
+  
 
   return (
     <section className={styles.main}>
@@ -72,7 +72,7 @@ const Home = () => {
 
         <div className={styles.containerEstates}>
           {projectsList.length &&
-            (filteredList.length > 0 ? filteredList : projectsList).map(
+            (filteredList.length > 0 ?  filteredList:projectsList).map(
               (project) =>
                 Object.keys(project).length >= 3 && (
                   <Link
