@@ -11,6 +11,7 @@ import unitReducer from './unitSelectedSlice';
 import popUpOportunityReducer from './popUpOportunity';
 import contactSelectedReducer from './contactSelectedSlice';
 import opportunitySelectedReducer from './opportunitySelectedSlice';
+import editObjectReducer from './editObjectSlice';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const persistConfig = {
     'unitState',
     'contactOpportunityState',
     'opportunityState',
+    'editObjectState',
   ],
 };
 
@@ -34,6 +36,7 @@ const rootReducer = combineReducers({
   opportunityState: opportunitySelectedReducer,
   contactOpportunityState: contactSelectedReducer,
   popUpOportunityState: popUpOportunityReducer,
+  editObjectState: editObjectReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

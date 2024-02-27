@@ -240,6 +240,7 @@ li {
   /* max-height: calc(100vh - 350px); */
   /*padding: 10px 20px 0 0px;*/
   margin: 20px 0;
+  gap: 40px;
 }
 
 .outerUnits {
@@ -656,7 +657,6 @@ input[type='number'] {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  margin-bottom: 40px;
   z-index: 10;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
@@ -964,6 +964,9 @@ li.active button {
   background-image: url(/images/oportunities-card-left-arrow.svg);
 }
 
+.addTypeButton {
+  margin-top: 40px;
+}
 @media only screen and (max-width: 990px) {
   .menu-top {
     width: 100%;

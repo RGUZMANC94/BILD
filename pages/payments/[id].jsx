@@ -11,6 +11,7 @@ const PaymentDetail = () => {
   const [quotes, setQuotes] = useState(null);
   const [updateFlag, setUpdateFlag] = useState(false);
   const [opportunitySelected, setOpportunitySelected] = useState(null);
+  const [pdfURL, setPdfURL] = useState(null);
   const { contactListSelected } = useSelector(
     (state) => state.contactOpportunityState
   );
@@ -42,9 +43,11 @@ const PaymentDetail = () => {
     }
 
     getPrices();
+    getOpportunity();
   }, [updateFlag]);
 
   useEffect(() => {
+    getPrices();
     getOpportunity();
   }, []);
 
@@ -184,23 +187,55 @@ const PaymentDetail = () => {
                       }>{`N° de cuotas: ${quotes.dues.length}`}</span>
                   </div>
                 )}
-                <div className={styles.greybox}>
-                  <div className={styles.info}>
-                    <div className={styles.date}>
-                      {quotes ? `${quotes.updatedDate.split(' ')[0]}` : ''}
-                    </div>
-                    <div className={styles.aceptada}>
-                      <img src="/images/confirmed-deed.svg" />
-                      Cotización Aceptada
-                    </div>
-                    <div className={styles.pdf}>
-                      <img src="/images/pdf-icon-white.svg" />
-                    </div>
-                    <div className={styles.empty}></div>
-                  </div>
 
-                  <div className={styles['blue-point']}></div>
-                </div>
+                {opportunitySelected && (
+                  <div
+                    className={
+                      opportunitySelected.stageCycleSaleOp === 'Separacion'
+                        ? styles.box
+                        : styles.greybox
+                    }>
+                    <div className={styles.info}>
+                      <div className={styles.date}>
+                        {quotes ? `${quotes.updatedDate.split(' ')[0]}` : ''}
+                      </div>
+                      <div className={styles.aceptada}>
+                        <img src="/images/confirmed-deed.svg" />
+                        {opportunitySelected.stageCycleSaleOp === 'Separacion'
+                          ? 'Cotización Pendiente'
+                          : 'Cotización Aceptada'}
+                      </div>
+                      <div
+                        className={styles.pdf}
+                        onClick={() =>
+                          quotes.pdf.length
+                            ? setPdfURL(quotes.pdf[0].url)
+                            : setPdfURL(null)
+                        }>
+                        <img src="/images/pdf-icon-white.svg" />
+                      </div>
+                      {opportunitySelected.stageCycleSaleOp ===
+                        'Separacion' && (
+                        <Button
+                          buttonType={'primary'}
+                          iconImage={false}
+                          label={'Pago'}
+                          inheritClass={styles.buttonPayment}
+                          clickFunction={() =>
+                            payment(
+                              quotes.separationValue,
+                              0,
+                              quotes.idPortfolio
+                            )
+                          }
+                        />
+                      )}
+                      <div className={styles.empty}></div>
+                    </div>
+
+                    <div className={styles['blue-point']}></div>
+                  </div>
+                )}
 
                 {quotes &&
                   (quotes.dues.length > 0
@@ -242,23 +277,27 @@ const PaymentDetail = () => {
                               <div
                                 className={
                                   styles.pdf
-                                }>{`${quote.paymentValue}`}</div>
+                                }>{`$${quote.paymentValue}`}</div>
                               <div className={styles.empty}>
                                 Estado: Pendiente
+                                {opportunitySelected &&
+                                  opportunitySelected.stageCycleSaleOp ===
+                                    'Cartera' && (
+                                    <Button
+                                      buttonType={'primary'}
+                                      iconImage={false}
+                                      label={'Pago'}
+                                      inheritClass={styles.buttonPayment}
+                                      clickFunction={() =>
+                                        payment(
+                                          quote.paymentValue,
+                                          quote.dueNumber,
+                                          quotes.idPortfolio
+                                        )
+                                      }
+                                    />
+                                  )}
                               </div>
-                              <Button
-                                buttonType={'primary'}
-                                iconImage={false}
-                                label={'Pago'}
-                                inheritClass={styles.buttonPayment}
-                                clickFunction={() =>
-                                  payment(
-                                    quote.paymentValue,
-                                    quote.dueNumber,
-                                    quotes.idPortfolio
-                                  )
-                                }
-                              />
                             </div>
 
                             <div className={styles['grey-point']}></div>
@@ -267,6 +306,22 @@ const PaymentDetail = () => {
                       )
                     : '')}
               </div>
+              {pdfURL && (
+                <div className={styles['iframe-popup']}>
+                  <div className={styles['iframe-popup-content']}>
+                    <button
+                      onClick={() => setPdfURL(null)}
+                      className={styles['iframe-close']}
+                    />
+                    <iframe
+                      src={pdfURL}
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
             <div className={styles['pendientes-bottom']}>
               <a button className={styles.transferir} href="#popup1">

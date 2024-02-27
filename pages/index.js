@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 import { getSessionToken } from '../utils/getSessionToken';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { setProjects } from '../redux/projectSlice';
+import { setProjects, setFilteredList } from '../redux/projectSlice';
 import { changeTypeSelectedName } from '../redux/typeSelectedSlice';
+import { changeProjectEdit } from '../redux/editObjectSlice';
 import Link from 'next/link';
 
 const Home = () => {
@@ -15,9 +16,12 @@ const Home = () => {
 
   const USDollar = new Intl.NumberFormat('en-US');
   const { user_rol, id } = useSelector((state) => state.userState);
-  const { projectsList } = useSelector((state) => state.projectState);
+  const { projectsList, filteredList } = useSelector(
+    (state) => state.projectState
+  );
   const [pageProjects, setPageProjects] = useState(1);
   const [openFlag, setOpenFlag] = useState(true);
+
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
       method: 'POST',
@@ -30,7 +34,13 @@ const Home = () => {
       }),
     });
     const responseProjects = await response.json();
-    dispatch(setProjects(responseProjects));
+
+    dispatch(
+      setProjects(
+        responseProjects.filter((proj) => Object.keys(proj).length >= 3)
+      )
+    );
+    console.log('respuesta Proyectos', projectsList);
   };
 
   useEffect(() => {
@@ -39,17 +49,13 @@ const Home = () => {
       getProjects();
       return;
     }
-    getProjects();
-    // if (projectsList.length === 0) {
-    // }
-  }, []);
-
-  useEffect(() => {
     if (openFlag) {
       dispatch(changeTypeSelectedName(-1));
+
       setOpenFlag(false);
-      return;
     }
+    dispatch(setFilteredList([]));
+    getProjects();
   }, []);
 
   return (
@@ -66,68 +72,74 @@ const Home = () => {
 
         <div className={styles.containerEstates}>
           {projectsList.length &&
-            projectsList.map((project) => (
-              <Link
-                key={project.projectId}
-                className={styles.proyectos}
-                href={`/detail-estate/${project.projectId}`}>
-                <div className={styles['img-proyect']}>
-                  <img
-                    alt=""
-                    src={
-                      project.image[0] !== '' && project.image[0]
-                        ? `${project.image[0].url}`
-                        : '/images/defatult-2.jpg'
-                    }
-                  />
-                </div>
-                <div className={styles['proyect-info']}>
-                  <p className={styles['proyect-title']}>
-                    {project.projectName}
-                  </p>
-                  <p className={styles.valor}>
-                    {project.minPrice &&
-                      project.maxPrice &&
-                      `${USDollar.format(
-                        project.minPrice
-                      )}  - ${USDollar.format(project.maxPrice)} `}
-                  </p>
+            (filteredList.length > 0 ? filteredList : projectsList).map(
+              (project) =>
+                Object.keys(project).length >= 3 && (
+                  <Link
+                    key={project.projectId}
+                    className={styles.proyectos}
+                    href={`/detail-estate/${project.projectId}`}>
+                    <div className={styles['img-proyect']}>
+                      <img
+                        alt=""
+                        src={
+                          project.image[0] !== '' && project.image[0]
+                            ? `${project.image[0].url}`
+                            : '/images/defatult-2.jpg'
+                        }
+                      />
+                    </div>
+                    <div className={styles['proyect-info']}>
+                      <p className={styles['proyect-title']}>
+                        {project.projectName}
+                      </p>
+                      <p className={styles.valor}>
+                        {project.minPrice &&
+                          project.maxPrice &&
+                          `${USDollar.format(
+                            project.minPrice
+                          )}  - ${USDollar.format(project.maxPrice)} `}
+                      </p>
 
-                  <div className={styles.detalles}>
-                    {project.minBed !== 0 && project.maxBed !== 0 && (
-                      <>
-                        <img
-                          alt=""
-                          src="/images/cards/bed.png"
-                          width="22"
-                          height="20"
-                        />
-                        <p>{`${project.minBed}-${project.maxBed}`}</p>
-                      </>
-                    )}
-                    {project.minBath !== 0 && project.maxBath !== 0 && (
-                      <>
-                        <img
-                          alt=""
-                          src="/images/cards/bath.png"
-                          width="7"
-                          height="11"
-                        />
-                        <p>{`${project.minBath}-${project.maxBath}`}</p>
-                      </>
-                    )}
-                    {user_rol === 'ADMIN' && (
-                      <Link
-                        href={{
-                          pathname: '/create-project',
-                          query: { project: project.projectId },
-                        }}
-                        className={`bg-ct ${styles.editProject}`}></Link>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            ))}
+                      <div className={styles.detalles}>
+                        {project.minBed !== 0 && project.maxBed !== 0 && (
+                          <>
+                            <img
+                              alt=""
+                              src="/images/cards/bed.png"
+                              width="22"
+                              height="20"
+                            />
+                            <p>{`${project.minBed}-${project.maxBed}`}</p>
+                          </>
+                        )}
+                        {project.minBath !== 0 && project.maxBath !== 0 && (
+                          <>
+                            <img
+                              alt=""
+                              src="/images/cards/bath.png"
+                              width="7"
+                              height="11"
+                            />
+                            <p>{`${project.minBath}-${project.maxBath}`}</p>
+                          </>
+                        )}
+                        {user_rol === 'ADMIN' && (
+                          <Link
+                            href={{
+                              pathname: '/create-project',
+                              query: { project: project.projectId },
+                            }}
+                            className={`bg-ct ${styles.editProject}`}
+                            onClick={() =>
+                              dispatch(changeProjectEdit(project))
+                            }></Link>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                )
+            )}
         </div>
       </div>
     </section>

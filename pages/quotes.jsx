@@ -10,17 +10,29 @@ const Quotes = () => {
     (state) => state.contactOpportunityState
   );
   const [fileIndex, setFileIndex] = useState([]);
+  const [urlIndex, setUrlIndex] = useState([]);
   const [quotes, setQuotes] = useState(null);
   const [allOpportunities, setAllOpportunities] = useState(null);
   const [seleccion, setSeleccion] = useState(null);
   const [refreshFlag, setRefreshFlag] = useState(false);
+  const [showPDF, setShowPDF] = useState(true);
+  const [pdfURL, setPdfURL] = useState(null);
 
-  const addCheckboxChange = (index) => {
+  const addCheckboxChange = (index, paymentUrl) => {
     if (fileIndex.includes(index)) {
       const fileIndexActualizados = fileIndex.filter((num) => num !== index);
       setFileIndex(fileIndexActualizados);
+      if (paymentUrl !== '') {
+        const urlIndexActualizados = urlIndex.filter(
+          (url) => url !== paymentUrl
+        );
+        setUrlIndex(urlIndexActualizados);
+      }
     } else {
       setFileIndex([...fileIndex, index]);
+      if (paymentUrl !== '') {
+        setUrlIndex([...urlIndex, paymentUrl]);
+      }
     }
   };
 
@@ -74,7 +86,8 @@ const Quotes = () => {
   }, [refreshFlag]);
 
   useEffect(() => {
-    console.log('Seleccion de documentos:', fileIndex);
+    console.log('Seleccion de cuotas:', fileIndex);
+    console.log('Seleccion de documentos:', urlIndex);
   }, [fileIndex]);
 
   console.log('Lista de cotizaciones:', quotes);
@@ -161,6 +174,51 @@ const Quotes = () => {
     setFileIndex([]);
   };
 
+  const downloadSeletion = () => {
+    urlIndex.forEach(function (value, idx) {
+      const response = {
+        file: value,
+      };
+      setTimeout(() => {
+        window.location.href = response.file;
+      }, idx * 100);
+    });
+  };
+  /*
+const downloadAllFiles = () => {
+  urlIndex.forEach((url, index) => {
+    console.log('url:', url);
+    downloadFile(url, `file_${index + 1}.pdf`);
+  });
+};
+
+const downloadFile = async (url, name) => {
+  try {
+    
+    const response = await fetch(url, { mode: 'no-cors' });
+    console.log('response:', response);
+
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.status}`);
+    }
+
+    const blob = await response.blob();
+
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error(`Error downloading ${name}:`, error);
+  }
+};*/
+
+  const downloadAllFiles = () => {
+    urlIndex.forEach((URL) => window.open(URL));
+  };
+
   return (
     <>
       <div className={styles['top-content']}>
@@ -203,7 +261,10 @@ const Quotes = () => {
                           <div className={styles['checkbox-container']}>
                             <SquareInput
                               onChangeFunct={() =>
-                                addCheckboxChange(payment.idPortfolio)
+                                addCheckboxChange(
+                                  payment.idPortfolio,
+                                  payment.pdf.length ? payment.pdf[0].url : ''
+                                )
                               }
                             />
                           </div>
@@ -220,16 +281,24 @@ const Quotes = () => {
                         </div>
                         <div className={styles['movil-info']}>
                           <div className={styles['size-field-movil']}>
-                            169.74KB
+                            169.74KB {`${payment.numberPayments}`}
                           </div>
                           <span className={styles['separator-movil']}>|</span>
                           <div className={styles['fecha-field-movil']}>
-                            25/03/2023
+                            {`${payment.createdDate}`}
                           </div>
                         </div>
                         <div className={styles.icons}>
                           <div className={styles.upload}>
-                            <img src="images/upload-documentation-white.svg" />
+                            <div
+                              className={styles.uploadContainer}
+                              onClick={() =>
+                                payment.pdf.length
+                                  ? setPdfURL(payment.pdf[0].url)
+                                  : setPdfURL(null)
+                              }>
+                              <img src="images/upload-documentation-white.svg" />
+                            </div>
                           </div>
                           <div className={styles.delete}>
                             <div
@@ -246,6 +315,17 @@ const Quotes = () => {
               ))}
           </div>
         </div>
+        {pdfURL && (
+          <div className={styles['iframe-popup']}>
+            <div className={styles['iframe-popup-content']}>
+              <button
+                onClick={() => setPdfURL(null)}
+                className={styles['iframe-close']}
+              />
+              <iframe src={pdfURL} width="100%" height="100%" frameBorder="0" />
+            </div>
+          </div>
+        )}
       </div>
 
       {fileIndex.length > 0 && (
@@ -256,7 +336,11 @@ const Quotes = () => {
           </div>
           <div className={styles['sub-icons']}>
             <div className={styles['sub-upload']}>
-              <img src="images/upload-documentation-white.svg" />
+              <div
+                className={styles.deleteContainer}
+                onClick={() => downloadAllFiles()}>
+                <img src="images/upload-documentation-white.svg" />
+              </div>
             </div>
             <div className={styles['sub-delete']}>
               <div

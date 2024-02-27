@@ -1,36 +1,72 @@
-import React, { useState } from 'react';
+import React, { use, useState, useEffect } from 'react';
 import styles from './filter.module.css';
 import { Range, getTrackBackground } from 'react-range';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProjects } from '../../redux/projectSlice';
-
+import { setProjects, setFilteredList } from '../../redux/projectSlice';
 const Filter = ({ show, setShowFilter }) => {
+  const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
 
-  const minSize =
+  const [minSize, setMinSize] = useState(
     projectsList.length > 0
       ? Math.min(...projectsList.map((project) => project.minSize))
-      : 45;
-  const maxSize =
+      : 45
+  );
+  const [maxSize, setMaxSize] = useState(
     projectsList.length > 0
       ? Math.max(...projectsList.map((project) => project.maxSize))
-      : 1200;
-  const minPrice =
+      : 1200
+  );
+  const [minPrice, setMinPrice] = useState(
     projectsList.length > 0
       ? Math.min(...projectsList.map((project) => project.minPrice))
-      : 45;
-  const maxPrice =
+      : 45
+  );
+  const [maxPrice, setMaxPrice] = useState(
     projectsList.length > 0
       ? Math.max(...projectsList.map((project) => project.maxPrice))
-      : 1200;
+      : 1200
+  );
+
+  const [firstRender, setFirstRender] = useState(true);
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    if (firstRender) {
+      setMinSize(
+        projectsList.length > 0
+          ? Math.min(...projectsList.map((project) => project.minSize))
+          : 45
+      );
+
+      setMaxSize(
+        projectsList.length > 0
+          ? Math.max(...projectsList.map((project) => project.maxSize))
+          : 1200
+      );
+
+      setMinPrice(
+        projectsList.length > 0
+          ? Math.min(...projectsList.map((project) => project.minPrice))
+          : 45
+      );
+
+      setMaxPrice(
+        projectsList.length > 0
+          ? Math.max(...projectsList.map((project) => project.maxPrice))
+          : 1200
+      );
+      setFirstRender(false);
+    }
+  }, [projectsList]);
 
   const [priceValues, setPriceValues] = useState([minPrice, maxPrice]);
   const [floorValues, setFloorValues] = useState([1, 21]);
   const [sizeValues, setSizeValues] = useState([minSize, maxSize]);
   const [locationSelected, setLocationSelected] = useState('');
-  const [bedSelected, setBedSelected] = useState('');
-  const [bathSelected, setBathSelected] = useState('');
+  const [bedSelected, setBedSelected] = useState(1);
+  const [bathSelected, setBathSelected] = useState(1);
 
   const dispatch = useDispatch();
 
@@ -48,23 +84,35 @@ const Filter = ({ show, setShowFilter }) => {
           maxFloor: floorValues[1],
           minSize: sizeValues[0],
           maxSize: sizeValues[1],
+          minBeds: bedSelected,
+          maxBeds: 99,
+          minBaths: bathSelected,
+          maxBaths: 99,
           locationSelected,
-          bedSelected,
-          bathSelected,
+          projectId: '',
+          id,
         }),
       });
       if (!response.ok) {
         throw new Error('Bad response from server');
       }
       const leakedProjects = await response.json();
-      dispatch(setProjects(leakedProjects));
+      console.log('leakedProjects', leakedProjects);
+      dispatch(setFilteredList(leakedProjects));
     } catch (error) {
-      console.log(
-        '%cerror index.jsx line:28 ',
-        'color: red; display: block; width: 100%;',
-        error
-      );
+      console.error('Error al Establecer filtro:', error);
     }
+  };
+
+  const clearFilter = () => {
+    dispatch(setFilteredList([]));
+  };
+
+  const setFilter = () => {
+    filterProjects();
+    setTimeout(() => {
+      setShowFilter(false);
+    }, 500);
   };
 
   if (!projectsList.length) {
@@ -76,7 +124,7 @@ const Filter = ({ show, setShowFilter }) => {
       type: 'price',
       min: minPrice,
       max: maxPrice,
-      step: 5000000,
+      step: 5000,
     },
     {
       type: 'floor',
@@ -138,6 +186,8 @@ const Filter = ({ show, setShowFilter }) => {
                 {rangeSlider.type === 'floor' && 'Piso'}
                 {rangeSlider.type === 'size' && 'Área'}:
               </span>
+              {console.log('min', rangeSlider.min)}
+              {console.log('max', rangeSlider.max)}
               <Range
                 step={rangeSlider.step}
                 min={rangeSlider.min}
@@ -239,18 +289,21 @@ const Filter = ({ show, setShowFilter }) => {
               <label htmlFor={styles.labelFilter}>
                 <span className={styles.labelText}>HABITACIONES:</span>
                 <select
-                  value={'default'}
                   defaultValue={'default'}
+                  value={'default'}
                   onChange={(e) => {
                     setBedSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
                   <option value={'default'} selected>
-                    3+
+                    1+
                   </option>
-                  <option value={1}>4+</option>
-                  <option value={2}>5+</option>
-                  <option value={3}>6</option>
+                  <option value={2}>2+</option>
+                  <option value={3}>3+</option>
+                  <option value={4}>4+</option>
+                  <option value={4}>4+</option>
+                  <option value={5}>5+</option>
+                  <option value={6}>6+</option>
                 </select>
               </label>
             </div>
@@ -267,9 +320,12 @@ const Filter = ({ show, setShowFilter }) => {
                   <option value={'default'} selected>
                     1+
                   </option>
-                  <option value={1}>2+</option>
-                  <option value={2}>3+</option>
-                  <option value={2}>4+</option>
+                  <option value={2}>2+</option>
+                  <option value={3}>3+</option>
+                  <option value={4}>4+</option>
+                  <option value={4}>4+</option>
+                  <option value={5}>5+</option>
+                  <option value={6}>6+</option>
                 </select>
               </label>
             </div>
@@ -280,13 +336,14 @@ const Filter = ({ show, setShowFilter }) => {
               buttonType="secondary"
               label="Filtrar"
               classNameInherit="buttonsFilter"
-              clickFunction={filterProjects}
+              clickFunction={setFilter}
             />
             <Button
               buttonType="primary"
               label="Borrar"
               classNameInherit="buttonsFilter"
               className={styles['filter-buttons-bottom']}
+              clickFunction={clearFilter}
             />
           </div>
         </div>

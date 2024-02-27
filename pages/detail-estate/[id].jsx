@@ -13,7 +13,7 @@ import LightBox from '../../components/lightbox';
 import Link from 'next/link';
 import { closePopUp } from '../../redux/popUpOportunity';
 
-const DetailState = () => {
+const DetailState = ({ unitsInit, typesInit }) => {
   const { id } = useSelector((state) => state.userState);
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
@@ -27,8 +27,9 @@ const DetailState = () => {
   const [closeFlag, setCloseFlag] = useState(true);
   const [typeFlag, setTypeFlag] = useState(false);
   const [unitFlag, setUnitFlag] = useState(false);
-  const [types, setTypes] = useState([]);
-  const [units, setUnits] = useState([]);
+  const [types, setTypes] = useState(typesInit);
+  const [units, setUnits] = useState(unitsInit);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const getTypes = async () => {
     const response = await fetch('/api/types', {
@@ -46,7 +47,7 @@ const DetailState = () => {
 
     const typesResponse = await response.json();
     console.log('Otros tipos:', typesResponse);
-    setTypes(typesResponse);
+    setTypes(typesResponse.length ? typesResponse : []);
   };
 
   const getUnits = async () => {
@@ -64,8 +65,8 @@ const DetailState = () => {
     });
 
     const unitsResponse = await response.json();
-    console.log('Otros tipos:', unitsResponse);
-    setUnits(unitsResponse);
+    console.log('Otros unidades:', unitsResponse);
+    setUnits(unitsResponse.length ? unitsResponse : []);
   };
 
   useEffect(() => {
@@ -78,6 +79,11 @@ const DetailState = () => {
     getTypes();
     getUnits();
   }, [typeFlag, unitFlag]);
+
+  useEffect(() => {
+    getTypes();
+    getUnits();
+  }, []);
 
   if (closeFlag) {
     dispatch(closePopUp());
@@ -193,16 +199,14 @@ const DetailState = () => {
       <section className="main">
         <div className="container">
           <div className={'containerEstate'} ref={containerEstate}>
-            {types && types.length > 0 && types && units.length > 0 && (
-              <TypesSide
-                types={types}
-                units={units}
-                viewEstate={viewEstate}
-                setShowPopUpType={setShowPopUpType}
-                setShowPopUpUnit={setShowPopUpUnit}
-                setCreateOportunity={setCreateOportunity}
-              />
-            )}
+            <TypesSide
+              types={types}
+              units={units}
+              viewEstate={viewEstate}
+              setShowPopUpType={setShowPopUpType}
+              setShowPopUpUnit={setShowPopUpUnit}
+              setCreateOportunity={setCreateOportunity}
+            />
 
             <InfoProject
               viewEstate={viewEstate}
@@ -238,8 +242,7 @@ const DetailState = () => {
   );
 };
 
-// Trae TODAS la unidades dado un id de pryecto
-/* export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const response = await fetch(
     `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD&type=&page=1&rows=50`
   );
@@ -258,10 +261,10 @@ const DetailState = () => {
 
   return {
     props: {
-      units: units.length ? units : [],
-      types,
+      unitsInit: units.length ? units : [],
+      typesInit: types.length ? types : [],
     },
   };
-};*/
+};
 
 export default DetailState;
