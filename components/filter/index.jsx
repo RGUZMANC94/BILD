@@ -97,8 +97,11 @@ const Filter = ({ show, setShowFilter }) => {
         throw new Error('Bad response from server');
       }
       const leakedProjects = await response.json();
-      console.log('leakedProjects', leakedProjects);
-      dispatch(setFilteredList(leakedProjects));
+      dispatch(
+        setFilteredList(
+          leakedProjects.filter((proj) => Object.keys(proj).length >= 3)
+        )
+      );
     } catch (error) {
       console.error('Error al Establecer filtro:', error);
     }
@@ -186,8 +189,6 @@ const Filter = ({ show, setShowFilter }) => {
                 {rangeSlider.type === 'floor' && 'Piso'}
                 {rangeSlider.type === 'size' && 'Área'}:
               </span>
-              {console.log('min', rangeSlider.min)}
-              {console.log('max', rangeSlider.max)}
               <Range
                 step={rangeSlider.step}
                 min={rangeSlider.min}
