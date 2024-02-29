@@ -33,6 +33,7 @@ const Home = () => {
       body: JSON.stringify({
         id,
         page: pageProjects,
+        rows: 100,
       }),
     });
     const responseProjects = await response.json();
@@ -94,7 +95,6 @@ const Home = () => {
             )}
 
             <div className={styles.containerEstates}>
-              {console.log('proyectos', displayProjects)}
               {displayProjects.length &&
                 displayProjects.map(
                   (project, i) =>
