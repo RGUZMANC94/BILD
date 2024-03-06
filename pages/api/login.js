@@ -1,3 +1,8 @@
+import { serialize } from 'cookie';
+import { sign } from 'jsonwebtoken';
+
+const secret = process.env.SECRET;
+
 export default async function handler(req, res) {
   try {
     const response = await fetch(
@@ -8,7 +13,26 @@ export default async function handler(req, res) {
     }
     const user = await response.json();
 
+    const { email, last_name, name, rol, userid } = user;
+
     if (user) {
+      const token = sign(
+        {
+          exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+          username: userid,
+        },
+        secret
+      );
+
+      const serialised = serialize('OursiteJWT', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development',
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24,
+        path: '/',
+      });
+
+      res.setHeader('Set-Cookie', serialised);
       res.status(200).json(user);
     }
   } catch (error) {

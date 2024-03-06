@@ -45,7 +45,6 @@ const LogInComponent = () => {
       return;
     }
     dispatch(setUser(loginData));
-    sessionStorage.setItem('token', loginData.id);
     router.push('/');
   };
 

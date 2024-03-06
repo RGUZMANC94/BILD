@@ -5,12 +5,12 @@ import { getSessionToken } from '../utils/getSessionToken';
 import { useRouter } from 'next/router';
 
 const LogIn = () => {
-  const router = useRouter();
-  useEffect(() => {
-    if (getSessionToken()) {
-      router.push('/');
-    }
-  }, []);
+  // const router = useRouter();
+  // useEffect(() => {
+  //   if (getSessionToken()) {
+  //     router.push('/');
+  //   }
+  // }, []);
   return (
     <section className={styles['main-container']}>
       <div className={styles.background}>
