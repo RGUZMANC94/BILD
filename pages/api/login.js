@@ -1,7 +1,6 @@
-import { serialize } from 'cookie';
-import { sign } from 'jsonwebtoken';
-
-const secret = process.env.SECRET;
+// import { serialize } from 'cookie';
+// import { sign } from 'jsonwebtoken';
+// const secret = process.env.SECRET;
 
 export default async function handler(req, res) {
   try {
@@ -16,23 +15,31 @@ export default async function handler(req, res) {
     const { email, last_name, name, rol, userid } = user;
 
     if (user) {
-      const token = sign(
-        {
-          exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
-          username: userid,
-        },
-        secret
-      );
+      // const token = sign(
+      //   {
+      //     exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+      //     username: userid,
+      //   },
+      //   secret
+      // );
 
-      const serialised = serialize('OursiteJWT', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== 'development',
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 24,
-        path: '/',
+      // const serialised = serialize('OursiteJWT', token, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV !== 'development',
+      //   sameSite: 'strict',
+      //   maxAge: 60 * 60 * 24,
+      //   path: '/',
+      // });
+
+      res.writeHead(200, {
+        'Set-Cookie': [
+          `userid=${userid}; expires=${new Date(
+            new Date().getTime() + 30 * 60000
+          ).toUTCString()}, name=${name}; expires=${new Date(
+            new Date().getTime() + 30 * 60000
+          ).toUTCString()}`,
+        ],
       });
-
-      res.setHeader('Set-Cookie', serialised);
       res.status(200).json(user);
     }
   } catch (error) {

@@ -7,6 +7,8 @@ const protectedRoutes = process.env.PROTECTED_ROUTES.split(',');
 export default function middleware(req) {
   const { cookies } = req;
 
+  console.log(cookies);
+
   const jwt = cookies.get('OursiteJWT');
 
   const returnUrl = req.nextUrl.clone();
