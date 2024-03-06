@@ -29,18 +29,26 @@ const CreateProject = () => {
 
   const [xlsxFileName, setXlsxFileName] = useState('');
 
+  console.log('xlsxFileName: ', xlsxFileName);
+
   const changeXlsx = (event) => {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      if (event.target.files[0].name.split('.')[1] !== 'xlsx') {
+      const allowedExtensions = ['xlsx', 'csv']; // Agrega 'csv' a las extensiones permitidas
+  
+      const fileExtension = event.target.files[0].name.split('.').pop().toLowerCase();
+  
+      if (!allowedExtensions.includes(fileExtension)) {
         return;
       }
+  
       reader.onload = (e) => {
         setXlsxFileName(event.target.files[0].name);
         if (featuredProject.current) {
           featuredProject.current.classList.add(styles.showXlsx);
         }
       };
+  
       reader.readAsDataURL(event.target.files[0]);
     }
   };

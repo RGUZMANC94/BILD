@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-all.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
@@ -15,6 +15,24 @@ const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
   const [oppSelectedObject, setOppSelectedObject] = useState({});
   const dispatch = useDispatch();
   console.log('Lista de oportunidades:', oppList);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    
+  }, []);
+
+  const [propsHistory, setPropsHistory] = useState({
+    opportunitySelected: opportunitySelected,
+    oppSelectedObject: oppSelectedObject,
+    setRefreshFlag: () => {setRefreshFlag()},
+    setSelectedItemOpp: () => {setSelectedItem()},
+    setOppIsSelected: () => {setOppIsSelected()},
+  });
 
   const getUnitSelected = async (idProperty, projectId) => {
     console.log('id de la propiedad:', idProperty);
@@ -122,9 +140,8 @@ const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
           {console.log('')}
-          {oppList &&
-            (oppList.length > 0
-              ? oppList.map(
+          {(oppList && oppList.length > 0) ? 
+              oppList.map(
                   (oportunity, i) =>
                     Object.keys(oportunity).length > 3 &&
                     (oportunity.stageCycleSaleOp === 'Oportunidad' ||
@@ -157,18 +174,22 @@ const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
                           location={oportunity.nameProject}
                           type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
                           followingDate={oportunity.createdDate}
-                          historyComponent={OportunitiesHistory}
                           progress={oportunity.temperature / 100}
                           temperature={'cold'} // hot warm cold
+                          opportunitySelected={opportunitySelected}
+                          oppSelectedObject={oppSelectedObject}
+                          setRefreshFlag={setRefreshFlag}
+                          setSelectedItemOpp={setSelectedItem}
+                          setOppIsSelected={setOppIsSelected}
                         />
                       </div>
                     )
                 )
-              : '')}
+              : ''}
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        {selectedItem !== -1 && (
+        {(selectedItem !== -1 && !isMobile) && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
             oppSelectedObject={oppSelectedObject}
