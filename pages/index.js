@@ -2,17 +2,13 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Button from '../components/button';
 import { useSelector } from 'react-redux';
-import { getSessionToken } from '../utils/getSessionToken';
-import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setProjects, setFilteredList } from '../redux/projectSlice';
 import { changeTypeSelectedName } from '../redux/typeSelectedSlice';
 import { changeProjectEdit } from '../redux/editObjectSlice';
 import Link from 'next/link';
-import { get } from 'sortablejs';
 
 const Home = () => {
-  const router = useRouter();
   const dispatch = useDispatch();
 
   const USDollar = new Intl.NumberFormat('en-US');
@@ -50,10 +46,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // if (!getSessionToken()) {
-    //   router.push('/login');
-    //   return;
-    // }
     if (openFlag) {
       dispatch(changeTypeSelectedName(-1));
       setOpenFlag(false);
@@ -63,10 +55,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // if (!getSessionToken()) {
-    //   router.push('/login');
-    //   return;
-    // }
     if (filteredList.length > 0) {
       console.log('Filtro');
       setDisplayProjects([]);
@@ -76,12 +64,7 @@ const Home = () => {
     }
   }, [filteredList]);
 
-  /* useEffect(() => {
-    console.log('display', displayProjects);
-  }, [displayProjects]);*/
-
   return (
-    // getSessionToken() && (
     <>
       <section className={styles.main}>
         <div className={styles['main-container']}>
