@@ -32,6 +32,27 @@ const Filter = ({ show, setShowFilter }) => {
   const [firstRender, setFirstRender] = useState(true);
   const [refresh, setRefresh] = useState(false);
 
+  const [rangeSliders, setReangeSlider] = useState([
+    {
+      type: 'price',
+      min: minPrice,
+      max: maxPrice,
+      step: 800,
+    },
+    {
+      type: 'floor',
+      min: 1,
+      max: 22,
+      step: 1,
+    },
+    {
+      type: 'size',
+      min: minSize,
+      max: maxSize,
+      step: 5,
+    },
+  ]);
+
   useEffect(() => {
     if (firstRender) {
       setMinSize(
@@ -122,26 +143,26 @@ const Filter = ({ show, setShowFilter }) => {
     return <></>;
   }
 
-  const rangeSliders = [
-    {
-      type: 'price',
-      min: minPrice,
-      max: maxPrice,
-      step: 5000,
-    },
-    {
-      type: 'floor',
-      min: 1,
-      max: 21,
-      step: 1,
-    },
-    {
-      type: 'size',
-      min: minSize,
-      max: maxSize,
-      step: 5,
-    },
-  ];
+  // const rangeSliders = [
+  //   {
+  //     type: 'price',
+  //     min: minPrice,
+  //     max: maxPrice,
+  //     step: 5000,
+  //   },
+  //   {
+  //     type: 'floor',
+  //     min: 1,
+  //     max: 21,
+  //     step: 1,
+  //   },
+  //   {
+  //     type: 'size',
+  //     min: minSize,
+  //     max: maxSize,
+  //     step: 5,
+  //   },
+  // ];
 
   return (
     <div className={`${styles.filterPopUp} ${show ? styles.active : ''}`}>
