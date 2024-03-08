@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const protectedRoutes = process.env.PROTECTED_ROUTES.split(',');
+// const protectedRoutes = process.env.PROTECTED_ROUTES.split(',');
 
 export default function middleware(req) {
   const { cookies } = req;
@@ -14,25 +14,38 @@ export default function middleware(req) {
   if (pathname.includes('/login')) {
     if (user) {
       if (user.value) {
-        try {
-          return NextResponse.redirect(new URL('/', req.url).toString());
-        } catch (error) {
-          return NextResponse.next();
-        }
+        return NextResponse.redirect(new URL('/', req.url).toString());
       }
     }
+    return NextResponse.next();
   }
 
-  if (protectedRoutes.includes(pathname)) {
-    if (user) {
-      return NextResponse.next();
-    }
-
-    console.log('No esta autorizado para ingresar a la ruta solicitada');
-    return NextResponse.redirect(returnUrl);
+  // if (protectedRoutes.includes(pathname)) {
+  if (user) {
+    return NextResponse.next();
   }
+
+  return NextResponse.redirect(returnUrl);
+  // }
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    // '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/',
+    '/detail-estate/:path*',
+    '/contact',
+    '/create-contact',
+    '/create-project',
+    '/dashboard',
+    '/payments',
+    '/login',
+    '/quotes',
+    '/buyer/:path*',
+    '/documentation/:path*',
+    '/oportunities/:path*',
+    '/oportunities',
+    '/payments/:path*',
+    '/profile/:path+',
+  ],
 };
