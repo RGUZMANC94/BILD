@@ -87,11 +87,11 @@ const OportunitiesAllFilter = () => {
   };
 
   useEffect(() => {
-    if (!getSessionToken()) {
-      router.push('/login');
-      getRecentsContacts();
-      return;
-    }
+    // if (!getSessionToken()) {
+    //   router.push('/login');
+    //   getRecentsContacts();
+    //   return;
+    // }
     getAllOpportunities();
     getRecentsContacts();
   }, [sorting]);

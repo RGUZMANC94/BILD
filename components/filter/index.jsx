@@ -3,7 +3,11 @@ import styles from './filter.module.css';
 import { Range, getTrackBackground } from 'react-range';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProjects, setFilteredList } from '../../redux/projectSlice';
+import {
+  setProjects,
+  setFilteredList,
+  onFilter,
+} from '../../redux/projectSlice';
 const Filter = ({ show, setShowFilter }) => {
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -28,9 +32,16 @@ const Filter = ({ show, setShowFilter }) => {
       ? Math.max(...projectsList.map((project) => project.maxPrice))
       : 1200
   );
-
-  const [firstRender, setFirstRender] = useState(true);
-  const [refresh, setRefresh] = useState(false);
+  // const [minFloor, setMinFloor] = useState(
+  //   projectsList.length > 0
+  //     ? Math.min(...projectsList.map((project) => project.minPrice))
+  //     : 45
+  // );
+  // const [maxFloor, setMaxFloor] = useState(
+  //   projectsList.length > 0
+  //     ? Math.max(...projectsList.map((project) => project.maxPrice))
+  //     : 1200
+  // );
 
   const [rangeSliders, setReangeSlider] = useState([
     {
@@ -53,6 +64,7 @@ const Filter = ({ show, setShowFilter }) => {
     },
   ]);
 
+  const [firstRender, setFirstRender] = useState(true);
   const [priceValues, setPriceValues] = useState([minPrice, maxPrice]);
   const [floorValues, setFloorValues] = useState([1, 21]);
   const [sizeValues, setSizeValues] = useState([minSize, maxSize]);
@@ -150,17 +162,20 @@ const Filter = ({ show, setShowFilter }) => {
         throw new Error('Bad response from server');
       }
       const leakedProjects = await response.json();
+      console.log(leakedProjects);
       dispatch(
         setFilteredList(
           leakedProjects.filter((proj) => Object.keys(proj).length >= 3)
         )
       );
+      dispatch(onFilter(true));
     } catch (error) {
       console.error('Error al Establecer filtro:', error);
     }
   };
 
   const clearFilter = () => {
+    dispatch(onFilter(false));
     dispatch(setFilteredList([]));
   };
 
@@ -174,27 +189,6 @@ const Filter = ({ show, setShowFilter }) => {
   if (!projectsList.length) {
     return <></>;
   }
-
-  // const rangeSliders = [
-  //   {
-  //     type: 'price',
-  //     min: minPrice,
-  //     max: maxPrice,
-  //     step: 5000,
-  //   },
-  //   {
-  //     type: 'floor',
-  //     min: 1,
-  //     max: 21,
-  //     step: 1,
-  //   },
-  //   {
-  //     type: 'size',
-  //     min: minSize,
-  //     max: maxSize,
-  //     step: 5,
-  //   },
-  // ];
 
   return (
     <div className={`${styles.filterPopUp} ${show ? styles.active : ''}`}>

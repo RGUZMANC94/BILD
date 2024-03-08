@@ -1,5 +1,4 @@
-import { use, useEffect, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
 import InfoProject from '../../components/infoProject';
@@ -7,7 +6,6 @@ import AddTypePop from '../../components/addTypePop';
 import AddUnitPop from '../../components/addUnitPop';
 import { getSessionToken } from '../../utils/getSessionToken';
 import { useRouter } from 'next/router';
-import { getLocalData } from '../api/detailProject';
 import { useDispatch, useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
 import Link from 'next/link';
@@ -103,10 +101,6 @@ const DetailState = ({ unitsInit, typesInit }) => {
   console.log('Unidades: ', units);
   console.log('Tipos: ', types);
   useEffect(() => {
-    if (!getSessionToken()) {
-      router.push('/login');
-      return;
-    }
     getRecentsContacts();
   }, []);
 

@@ -12,6 +12,7 @@ export default function middleware(req) {
 
   const pathname = req.nextUrl.pathname;
   if (pathname.includes('/login')) {
+    console.log('Entro a login');
     if (user) {
       if (user.value) {
         return NextResponse.redirect(new URL('/', req.url).toString());
@@ -20,11 +21,15 @@ export default function middleware(req) {
     return NextResponse.next();
   }
 
+  console.log(NextResponse.next());
+
   // if (protectedRoutes.includes(pathname)) {
+  console.log('ingresando a otra ruta');
   if (user) {
+    console.log('ingresando a otra ruta con usuario');
     return NextResponse.next();
   }
-
+  console.log('ingresando a otra ruta sin usuario');
   return NextResponse.redirect(returnUrl);
   // }
 }
@@ -33,7 +38,7 @@ export const config = {
   matcher: [
     // '/((?!api|_next/static|_next/image|favicon.ico).*)',
     '/',
-    '/detail-estate/:path*',
+    '/detail-estate/:detailId*',
     '/contact',
     '/create-contact',
     '/create-project',
