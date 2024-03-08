@@ -18,6 +18,10 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
     size: '',
     bed: '',
     bath: '',
+    privateArea: '',
+        balconyArea: '',
+        storageArea: '',
+        priceStorage: '0'
   });
 
   const handleChange = (e) => {
@@ -157,6 +161,10 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
       size: '',
       bed: '',
       bath: '',
+      privateArea: '',
+          balconyArea: '',
+          storageArea: '',
+          priceStorage: '0'
     });
   };
 
@@ -251,6 +259,46 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                     required
                   />
                 </label>
+
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>A. CONSTR</span>
+                  <input
+                    type="text"
+                    name="privateArea"
+                    value={datos.privateArea}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>A. BALCÓN</span>
+                  <input
+                    type="text"
+                    name="balconyArea"
+                    value={datos.balconyArea}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>DEPOSITO A.</span>
+                  <input
+                    type="text"
+                    name="storageArea"
+                    value={datos.storageArea}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+
               </div>
             </div>
 

@@ -508,17 +508,33 @@
   visibility: visible;
 }
 
-/*@media only screen and (max-width: 1600px) {
-  .wrapperTypePopUp {
-    width: 60%;
-  }
+.squareInputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0 40px 0;
 }
 
-@media only screen and (max-width: 1200px) {
-  .wrapperTypePopUp {
-    width: 80%;
-  }
-}*/
+.labelQuotesSelect {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.5;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+.labelQuotesSelectNoLine {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.5;
+  margin-left: 10px;
+}
 
 @media only screen and (max-width: 768px) {
   .wrapperTypePopUp {

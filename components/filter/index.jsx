@@ -14,8 +14,8 @@ const Filter = ({ show, setShowFilter }) => {
       : 45
   );
   const [maxSize, setMaxSize] = useState(
-    projectsList.length > 0
-      ? Math.max(...projectsList.map((project) => project.maxSize))
+    ((projectsList.length > 0) && (Math.max(...projectsList.map((project) => project.maxSize)) !== 0))
+      ? Math.max(...projectsList.map((project) => project.maxSize))+1
       : 1200
   );
   const [minPrice, setMinPrice] = useState(
@@ -24,8 +24,8 @@ const Filter = ({ show, setShowFilter }) => {
       : 45
   );
   const [maxPrice, setMaxPrice] = useState(
-    projectsList.length > 0
-      ? Math.max(...projectsList.map((project) => project.maxPrice))
+    ((projectsList.length > 0) && (Math.max(...projectsList.map((project) => project.maxPrice)) !== 0))
+      ? Math.max(...projectsList.map((project) => project.maxPrice))+1
       : 1200
   );
 
@@ -41,9 +41,9 @@ const Filter = ({ show, setShowFilter }) => {
       );
 
       setMaxSize(
-        projectsList.length > 0
-          ? Math.max(...projectsList.map((project) => project.maxSize))
-          : 1200
+        ((projectsList.length > 0) && (Math.max(...projectsList.map((project) => project.maxSize)) !== 0))
+      ? Math.max(...projectsList.map((project) => project.maxSize))+1
+      : 1200
       );
 
       setMinPrice(
@@ -53,8 +53,8 @@ const Filter = ({ show, setShowFilter }) => {
       );
 
       setMaxPrice(
-        projectsList.length > 0
-          ? Math.max(...projectsList.map((project) => project.maxPrice))
+        ((projectsList.length > 0) && (Math.max(...projectsList.map((project) => project.maxPrice)) !== 0))
+          ? Math.max(...projectsList.map((project) => project.maxPrice))+1
           : 1200
       );
       setFirstRender(false);

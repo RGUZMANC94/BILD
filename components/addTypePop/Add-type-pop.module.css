@@ -221,7 +221,7 @@
 }
 
 .buttonsCreateType {
-  margin-top: 700px;
+  /*margin-top: 700px;*/
 }
 
 /* popup*/
@@ -377,7 +377,7 @@
 
 .image {
   width: 40%;
-  height: auto;
+  max-height: 250px;
   text-align: left;
   text-transform: uppercase;
 }
