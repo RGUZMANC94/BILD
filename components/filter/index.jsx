@@ -53,41 +53,73 @@ const Filter = ({ show, setShowFilter }) => {
     },
   ]);
 
-  useEffect(() => {
-    if (firstRender) {
-      setMinSize(
-        projectsList.length > 0
-          ? Math.min(...projectsList.map((project) => project.minSize))
-          : 45
-      );
-
-      setMaxSize(
-        projectsList.length > 0
-          ? Math.max(...projectsList.map((project) => project.maxSize))
-          : 1200
-      );
-
-      setMinPrice(
-        projectsList.length > 0
-          ? Math.min(...projectsList.map((project) => project.minPrice))
-          : 45
-      );
-
-      setMaxPrice(
-        projectsList.length > 0
-          ? Math.max(...projectsList.map((project) => project.maxPrice))
-          : 1200
-      );
-      setFirstRender(false);
-    }
-  }, [projectsList]);
-
   const [priceValues, setPriceValues] = useState([minPrice, maxPrice]);
   const [floorValues, setFloorValues] = useState([1, 21]);
   const [sizeValues, setSizeValues] = useState([minSize, maxSize]);
   const [locationSelected, setLocationSelected] = useState('');
   const [bedSelected, setBedSelected] = useState(1);
   const [bathSelected, setBathSelected] = useState(1);
+
+  useEffect(() => {
+    if (firstRender) {
+      if (projectsList.length) {
+        setMinSize(Math.min(...projectsList.map((project) => project.minSize)));
+
+        setMaxSize(Math.max(...projectsList.map((project) => project.maxSize)));
+
+        setMinPrice(
+          Math.min(...projectsList.map((project) => project.minPrice))
+        );
+
+        setMaxPrice(
+          Math.max(...projectsList.map((project) => project.maxPrice))
+        );
+
+        const newRangeSliders = rangeSliders.map((range) => {
+          switch (range.type) {
+            case 'price':
+              return {
+                ...range,
+                min: Math.min(
+                  ...projectsList.map((project) => project.minPrice)
+                ),
+                max: Math.max(
+                  ...projectsList.map((project) => project.maxPrice)
+                ),
+              };
+            case 'floor':
+              return { ...range, min: 1, max: 22 };
+            case 'size':
+              return {
+                ...range,
+                min: Math.min(
+                  ...projectsList.map((project) => project.minSize)
+                ),
+                max: Math.max(
+                  ...projectsList.map((project) => project.maxSize)
+                ),
+              };
+            default:
+              return range;
+          }
+        });
+        const newPriceValues = [
+          Math.min(...projectsList.map((project) => project.minPrice)),
+          Math.max(...projectsList.map((project) => project.maxPrice)),
+        ];
+        const newFloorValues = [1, 22];
+        const newSizeValues = [
+          Math.min(...projectsList.map((project) => project.minSize)),
+          Math.max(...projectsList.map((project) => project.maxSize)),
+        ];
+        setPriceValues([...newPriceValues]);
+        setFloorValues([...newFloorValues]);
+        setSizeValues([...newSizeValues]);
+        setReangeSlider(newRangeSliders);
+        setFirstRender(false);
+      }
+    }
+  }, [projectsList]);
 
   const dispatch = useDispatch();
 
