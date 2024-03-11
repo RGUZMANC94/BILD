@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect  } from 'react';
+import { useState, useEffect } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-all.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
@@ -23,15 +23,20 @@ const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
       setIsMobile(window.innerWidth < 1024);
     };
     window.addEventListener('resize', handleResize);
-    
   }, []);
 
   const [propsHistory, setPropsHistory] = useState({
-    opportunitySelected: opportunitySelected,
-    oppSelectedObject: oppSelectedObject,
-    setRefreshFlag: () => {setRefreshFlag()},
-    setSelectedItemOpp: () => {setSelectedItem()},
-    setOppIsSelected: () => {setOppIsSelected()},
+    opportunitySelected,
+    oppSelectedObject,
+    setRefreshFlag: () => {
+      setRefreshFlag();
+    },
+    setSelectedItemOpp: () => {
+      setSelectedItem();
+    },
+    setOppIsSelected: () => {
+      setOppIsSelected();
+    },
   });
 
   const getUnitSelected = async (idProperty, projectId) => {
@@ -140,56 +145,56 @@ const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
           {console.log('')}
-          {(oppList && oppList.length > 0) ? 
-              oppList.map(
-                  (oportunity, i) =>
-                    Object.keys(oportunity).length > 3 &&
-                    (oportunity.stageCycleSaleOp === 'Oportunidad' ||
-                      oportunity.stageCycleSaleOp === 'Prospecto' ||
-                      oportunity.stageCycleSaleOp === 'Separacion') && (
-                      <div
-                        className={styles['card-unit-list']}
-                        key={i}
-                        onClick={() =>
-                          handleItemClick(
-                            i,
-                            oportunity.idSaleOp,
-                            oportunity.idProperty,
-                            oportunity.idProject,
-                            oportunity
-                          )
-                        }>
-                        <OportunitiesCard
-                          closed={oportunity.image}
-                          estimatedProgress={oportunity.estimatedProgress}
-                          state={selectedItem === i}
-                          image={
-                            oportunity.idClient.image &&
-                            (oportunity.idClient.image[0] &&
-                            oportunity.idClient.image[0] !== ''
-                              ? `${oportunity.idClient.image[0].url}`
-                              : '/images/defatult-2.jpg')
-                          }
-                          name={oportunity.nameCustomer}
-                          location={oportunity.nameProject}
-                          type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
-                          followingDate={oportunity.createdDate}
-                          progress={oportunity.temperature / 100}
-                          temperature={'cold'} // hot warm cold
-                          opportunitySelected={opportunitySelected}
-                          oppSelectedObject={oppSelectedObject}
-                          setRefreshFlag={setRefreshFlag}
-                          setSelectedItemOpp={setSelectedItem}
-                          setOppIsSelected={setOppIsSelected}
-                        />
-                      </div>
-                    )
-                )
-              : ''}
+          {oppList && oppList.length > 0
+            ? oppList.map(
+                (oportunity, i) =>
+                  Object.keys(oportunity).length > 3 &&
+                  (oportunity.stageCycleSaleOp === 'Oportunidad' ||
+                    oportunity.stageCycleSaleOp === 'Prospecto' ||
+                    oportunity.stageCycleSaleOp === 'Separacion') && (
+                    <div
+                      className={styles['card-unit-list']}
+                      key={i}
+                      onClick={() =>
+                        handleItemClick(
+                          i,
+                          oportunity.idSaleOp,
+                          oportunity.idProperty,
+                          oportunity.idProject,
+                          oportunity
+                        )
+                      }>
+                      <OportunitiesCard
+                        closed={oportunity.image}
+                        estimatedProgress={oportunity.estimatedProgress}
+                        state={selectedItem === i}
+                        image={
+                          oportunity.idClient.image &&
+                          (oportunity.idClient.image[0] &&
+                          oportunity.idClient.image[0] !== ''
+                            ? `${oportunity.idClient.image[0].url}`
+                            : '/images/defatult-2.jpg')
+                        }
+                        name={oportunity.nameCustomer}
+                        location={oportunity.nameProject}
+                        type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
+                        followingDate={oportunity.createdDate}
+                        progress={oportunity.temperature / 100}
+                        temperature={'cold'} // hot warm cold
+                        opportunitySelected={opportunitySelected}
+                        oppSelectedObject={oppSelectedObject}
+                        setRefreshFlag={setRefreshFlag}
+                        setSelectedItemOpp={setSelectedItem}
+                        setOppIsSelected={setOppIsSelected}
+                      />
+                    </div>
+                  )
+              )
+            : ''}
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        {(selectedItem !== -1 && !isMobile) && (
+        {selectedItem !== -1 && !isMobile && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
             oppSelectedObject={oppSelectedObject}

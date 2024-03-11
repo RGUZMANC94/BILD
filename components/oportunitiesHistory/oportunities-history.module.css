@@ -613,11 +613,10 @@ li.pendiente-list {
   }
 
   .right {
-    position: relative; 
+    position: relative;
     width: 100%;
     margin-right: 20px;
     padding-top: 0px;
-  
   }
 
   .wrap-right {

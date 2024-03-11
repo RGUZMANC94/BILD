@@ -61,7 +61,9 @@ const Unit = ({ unit, setCreateOportunity }) => {
           disabled={isHidden}
         />
       </div>
-      <div className="llave-tabla" onClick={() => handleDispatch()}></div>
+      <div
+        className={unit.status === 'R' ? 'llave-tabla-desabled' : 'llave-tabla'}
+        onClick={() => handleDispatch()}></div>
     </div>
   );
 };

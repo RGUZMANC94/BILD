@@ -19,9 +19,9 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
     bed: '',
     bath: '',
     privateArea: '',
-        balconyArea: '',
-        storageArea: '',
-        priceStorage: '0'
+    balconyArea: '',
+    storageArea: '',
+    priceStorage: '0',
   });
 
   const handleChange = (e) => {
@@ -162,9 +162,9 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
       bed: '',
       bath: '',
       privateArea: '',
-          balconyArea: '',
-          storageArea: '',
-          priceStorage: '0'
+      balconyArea: '',
+      storageArea: '',
+      priceStorage: '0',
     });
   };
 
@@ -298,7 +298,6 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                     required
                   />
                 </label>
-
               </div>
             </div>
 

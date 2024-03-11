@@ -62,7 +62,6 @@ const AddTypePop = ({
     handleFileChange(e);
     readURL(e);
   }
-  
 
   const readURL = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -108,18 +107,19 @@ const AddTypePop = ({
       privateArea: addDecimalZero(datos.privateArea),
       balconyArea: addDecimalZero(datos.balconyArea),
       terraceArea: addDecimalZero(datos.terraceArea),
-      //parkingArea: addDecimalZero(datos.parkingArea),
+      // parkingArea: addDecimalZero(datos.parkingArea),
       storageArea: addDecimalZero(datos.storageArea),
       builtArea: addDecimalZero(datos.builtArea),
-      //parkingPrice: addDecimalZero(datos.parkingPrice),
-      //storageAreaPrice: addDecimalZero(datos.storageAreaPrice),
+      // parkingPrice: addDecimalZero(datos.parkingPrice),
+      // storageAreaPrice: addDecimalZero(datos.storageAreaPrice),
       propertyPrice: addDecimalZero(datos.propertyPrice),
       type: typeSelectedName,
+      parkingAmount: '0',
     };
 
     console.log('Datos a enviar:', updatedDatos);
 
-    if (!optionalPop)  {
+    if (!optionalPop) {
       delete updatedDatos.privateArea;
       delete updatedDatos.balconyArea;
       delete updatedDatos.storageArea;
@@ -169,7 +169,7 @@ const AddTypePop = ({
           .classList.remove(styles.activePopUp);
         cleanForm();
         setShowPopUpUnit(false);
-      }, 2000);
+      }, 4000);
     } catch (error) {
       document
         .querySelector(`.${styles.popError}`)
@@ -179,7 +179,7 @@ const AddTypePop = ({
         document
           .querySelector(`.${styles.popError}`)
           .classList.remove(styles.activePopUp);
-      }, 2000);
+      }, 4000);
       console.error('Error al crear el proyecto:', error);
     }
   };
@@ -187,27 +187,27 @@ const AddTypePop = ({
   const cleanForm = () => {
     setDatos({
       projectId: router.query.id,
-    nuimb: '',
-    phase: '1',
-    type: '-1',
-    status: '0',
-    group: '0',
-    fieldSize: '0.0',
-    privateArea: '',
-    balconyArea: '',
-    terraceArea: '',
-    parkingArea: '0.0',
-    storageArea: '',
-    builtArea: '',
-    bedrooms: '',
-    baths: '',
-    parkingAmount: '0',
-    parkingType: 'D',
-    view: 'E',
-    parkingPrice: '0.0',
-    storageAreaPrice: '0.0',
-    propertyPrice: '',
-    piso: '1',
+      nuimb: '',
+      phase: '1',
+      type: '-1',
+      status: '0',
+      group: '0',
+      fieldSize: '0.0',
+      privateArea: '',
+      balconyArea: '',
+      terraceArea: '',
+      parkingArea: '0.0',
+      storageArea: '',
+      builtArea: '',
+      bedrooms: '',
+      baths: '',
+      parkingAmount: '0',
+      parkingType: 'D',
+      view: 'E',
+      parkingPrice: '0.0',
+      storageAreaPrice: '0.0',
+      propertyPrice: '',
+      piso: '1',
     });
   };
 
@@ -268,16 +268,16 @@ const AddTypePop = ({
                 </label>
 
                 <label
-                      className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                      <span className={styles.labelInputTitle}>A. TERRAZA</span>
-                      <input
-                        type="text"
-                        name="terraceArea"
-                        value={datos.terraceArea}
-                        className={styles.inputTypeForm}
-                        onChange={handleChange}
-                        required
-                      />
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>A. TERRAZA</span>
+                  <input
+                    type="text"
+                    name="terraceArea"
+                    value={datos.terraceArea}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
                 </label>
               </div>
             </div>
@@ -288,13 +288,10 @@ const AddTypePop = ({
                 Personalizar informacion
               </span>
             </div>
-            { optionalPop && 
+            {optionalPop && (
               <>
-
-
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                   <div className={`${styles.typeFeatures}`}>
-
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                       <span className={styles.labelInputTitle}>ALCOBAS</span>
@@ -304,7 +301,6 @@ const AddTypePop = ({
                         value={datos.bedrooms}
                         className={styles.inputTypeForm}
                         onChange={handleChange}
-                        
                       />
                     </label>
 
@@ -317,7 +313,6 @@ const AddTypePop = ({
                         value={datos.baths}
                         className={styles.inputTypeForm}
                         onChange={handleChange}
-                        
                       />
                     </label>
                   </div>
@@ -334,7 +329,6 @@ const AddTypePop = ({
                         value={datos.builtArea}
                         className={styles.inputTypeForm}
                         onChange={handleChange}
-                        
                       />
                     </label>
 
@@ -347,11 +341,8 @@ const AddTypePop = ({
                         value={datos.privateArea}
                         className={styles.inputTypeForm}
                         onChange={handleChange}
-                        
                       />
                     </label>
-
-                    
 
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
@@ -362,7 +353,6 @@ const AddTypePop = ({
                         value={datos.balconyArea}
                         className={styles.inputTypeForm}
                         onChange={handleChange}
-                        
                       />
                     </label>
                   </div>
@@ -370,8 +360,7 @@ const AddTypePop = ({
 
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                   <div className={`${styles.typeFeatures}`}>
-                    {
-                      /* 
+                    {/* 
                       
                        <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
@@ -403,27 +392,25 @@ const AddTypePop = ({
                       </select>
                     </label>
                       
-                      */
-                    }
-                   
+                      */}
 
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                      <span className={styles.labelInputTitle}>DEPOSITO A.</span>
+                      <span className={styles.labelInputTitle}>
+                        DEPOSITO A.
+                      </span>
                       <input
                         type="text"
                         name="storageArea"
                         value={datos.storageArea}
                         className={styles.inputTypeForm}
                         onChange={handleChange}
-                        
                       />
                     </label>
                   </div>
                 </div>
               </>
-            }
-
+            )}
 
             <div className={`${styles.buttonsCreateType}`}>
               <Button

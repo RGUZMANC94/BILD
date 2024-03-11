@@ -30,7 +30,7 @@ const TypesSide = ({
       );
       dispatch(changeTypeSelectedName(types[typeSelected].idType));
     }
-  }, [typeSelected, types]);
+  }, [typeSelected, types, units]);
   return (
     <div className={`unidadesSide ${viewEstate === 'units' ? 'active' : ''}`}>
       <AllTypes

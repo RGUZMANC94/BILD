@@ -304,7 +304,7 @@ const PaymentDetail = () => {
                           </div>
                         )
                       )
-                                    : '') }
+                    : '')}
               </div>
               {pdfURL && (
                 <div className={styles['iframe-popup']}>
