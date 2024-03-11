@@ -112,6 +112,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
             {
               method: 'POST',
               body: formData,
+              mode: 'no-cors',
             }
           );
 
