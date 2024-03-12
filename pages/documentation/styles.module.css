@@ -42,9 +42,11 @@
 .perfil-img {
   border-radius: 50%;
   width: 120px;
+  height: 120px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 35px;
+  overflow: hidden;
 }
 
 .perfil-img img {

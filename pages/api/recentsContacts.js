@@ -3,6 +3,7 @@ export default async function recentsContacts(req, res) {
     const response = await fetch(
       `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetRecentContacts?username=${req.body.id}&page=1&rows=100`
     );
+    console.log(response);
     if (!response.ok) {
       throw new Error('Bad response from server');
     }

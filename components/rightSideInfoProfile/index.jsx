@@ -27,7 +27,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red}`}>5</span>
             Cotizaciones
           </Link>
-          <Link href="/documentation/1" className={styles.opcion}>
+          <Link href={`/documentation/${clientId}`} className={styles.opcion}>
             <img src="/images/docs-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>3</span>
             Documentación

@@ -6,13 +6,13 @@ export default function middleware(req) {
   const { cookies } = req;
 
   const user = cookies.get('userid');
-
+  
   const returnUrl = req.nextUrl.clone();
   returnUrl.pathname = '/login';
-
+  
   const pathname = req.nextUrl.pathname;
+  
   if (pathname.includes('/login')) {
-    console.log('Entro a login');
     if (user) {
       if (user.value) {
         return NextResponse.redirect(new URL('/', req.url).toString());
@@ -21,15 +21,13 @@ export default function middleware(req) {
     return NextResponse.next();
   }
 
-  console.log(NextResponse.next());
+  
 
   // if (protectedRoutes.includes(pathname)) {
-  console.log('ingresando a otra ruta');
   if (user) {
-    console.log('ingresando a otra ruta con usuario');
     return NextResponse.next();
   }
-  console.log('ingresando a otra ruta sin usuario');
+  console.log('Devolviendo a login');
   return NextResponse.redirect(returnUrl);
   // }
 }
@@ -46,7 +44,7 @@ export const config = {
     '/payments',
     '/login',
     '/quotes',
-    '/buyer/:path*',
+    '/buyer/:buyerId*',
     '/documentation/:path*',
     '/oportunities/:path*',
     '/oportunities',

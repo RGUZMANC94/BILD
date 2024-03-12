@@ -15,18 +15,30 @@ const Documentation = () => {
           <Link
             href={`/buyer/${contactListSelected.idCli}`}
             className={`bg-ct ${styles.icon}`}></Link>
-          <div className={styles.title}>Documentación de John Lennon </div>
+          <div className={styles.title}>
+            Documentación de {contactListSelected.name}{' '}
+            {contactListSelected.lastname}
+          </div>
         </div>
       </div>
       <div className={styles['doc-perfil']}>
         <div className={styles['editar-perfil']}>
           <div className={styles['perfil-img']}>
-            <img src="/images/henry.png" />
+            <img
+              src={
+                contactListSelected.image[0] !== '' &&
+                contactListSelected.image[0]
+                  ? `${contactListSelected.image[0].url}`
+                  : '/images/tipo-1.png'
+              }
+            />
           </div>
-          <span className={styles['name-perfil']}>Henry Cavill</span>
+          <span className={styles['name-perfil']}>
+            {contactListSelected.name} {contactListSelected.lastname}
+          </span>
           <div className={styles['id-perfil']}>
             <img src="/images/id.png" />
-            13.932.102. Bogotá D.C
+            {contactListSelected.documentNumber} .
           </div>
           <div className={styles['perfil-icons']}>
             <div className={styles['perfil-icon']}>
