@@ -299,6 +299,32 @@
   align-items: center;
 }
 
+.uploadButtons {
+  display: flex;
+  width: 100%;
+  height: auto;
+  gap: 4%;
+}
+
+.disabledButton {
+  width: 50%;
+  height: auto;
+  padding: 10px;
+  border: 1px solid #2467ff;
+  background-color: #2467ff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  background-color: #343434;
+  color: #777777;
+  border-color: #777777;
+  cursor: not-allowed;
+}
+
 .blue-border {
   width: 100%;
   height: 200px;

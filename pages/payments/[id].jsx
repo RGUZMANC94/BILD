@@ -207,11 +207,9 @@ const PaymentDetail = () => {
                       </div>
                       <div
                         className={styles.pdf}
-                        onClick={
-                          quotes.pdf.length
-                            ? setPdfURL(quotes.pdf[0].url)
-                            : setPdfURL(null)
-                        }>
+                        onClick={() => {
+                          quotes.pdf.length ? setPdfURL(quotes.pdf[0].url) : setPdfURL(null);
+                        }}>
                         <img src="/images/pdf-icon-white.svg" />
                       </div>
                       {opportunitySelected.stageCycleSaleOp ===
@@ -237,9 +235,8 @@ const PaymentDetail = () => {
                   </div>
                 )}
 
-                {/* quotes &&
-                  (quotes.dues.length > 0
-                    ? quotes.dues.map((quote, i) =>
+                {(quotes && quotes.dues.length > 0)
+                    ? quotes.dues.map((quote, i) => (
                         Object.keys(quote).length > 4 ? (
                           <div className={styles.greybox} key={i}>
                             <div className={styles.info}>
@@ -303,8 +300,8 @@ const PaymentDetail = () => {
                             <div className={styles['grey-point']}></div>
                           </div>
                         )
-                      )
-                                    : '') */}
+                    ))
+                    : ''}
               </div>
               {pdfURL && (
                 <div className={styles['iframe-popup']}>

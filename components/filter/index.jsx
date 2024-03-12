@@ -1,13 +1,9 @@
-import React, { use, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './filter.module.css';
 import { Range, getTrackBackground } from 'react-range';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  setProjects,
-  setFilteredList,
-  onFilter,
-} from '../../redux/projectSlice';
+import { setFilteredList } from '../../redux/projectSlice';
 const Filter = ({ show, setShowFilter }) => {
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -18,8 +14,9 @@ const Filter = ({ show, setShowFilter }) => {
       : 45
   );
   const [maxSize, setMaxSize] = useState(
-    projectsList.length > 0
-      ? Math.max(...projectsList.map((project) => project.maxSize))
+    projectsList.length > 0 &&
+      Math.max(...projectsList.map((project) => project.maxSize)) !== 0
+      ? Math.max(...projectsList.map((project) => project.maxSize)) + 1
       : 1200
   );
   const [minPrice, setMinPrice] = useState(
@@ -28,8 +25,9 @@ const Filter = ({ show, setShowFilter }) => {
       : 45
   );
   const [maxPrice, setMaxPrice] = useState(
-    projectsList.length > 0
-      ? Math.max(...projectsList.map((project) => project.maxPrice))
+    projectsList.length > 0 &&
+      Math.max(...projectsList.map((project) => project.maxPrice)) !== 0
+      ? Math.max(...projectsList.map((project) => project.maxPrice)) + 1
       : 1200
   );
   // const [minFloor, setMinFloor] = useState(
@@ -168,14 +166,14 @@ const Filter = ({ show, setShowFilter }) => {
           leakedProjects.filter((proj) => Object.keys(proj).length >= 3)
         )
       );
-      dispatch(onFilter(true));
+      // dispatch(onFilter(true));
     } catch (error) {
       console.error('Error al Establecer filtro:', error);
     }
   };
 
   const clearFilter = () => {
-    dispatch(onFilter(false));
+    // dispatch(onFilter(false));
     dispatch(setFilteredList([]));
   };
 

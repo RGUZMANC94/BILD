@@ -292,11 +292,11 @@ const downloadFile = async (url, name) => {
                           <div className={styles.upload}>
                             <div
                               className={styles.uploadContainer}
-                              onClick={
+                              onClick={() => {
                                 payment.pdf.length
                                   ? setPdfURL(payment.pdf[0].url)
-                                  : setPdfURL(null)
-                              }>
+                                  : setPdfURL(null);
+                              }}>
                               <img src="images/upload-documentation-white.svg" />
                             </div>
                           </div>

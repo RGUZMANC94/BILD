@@ -27,20 +27,31 @@ const CreateProject = () => {
   const inputProjectStage = useRef(null);
   const inputProjectDescription = useRef(null);
 
-  const [xlsxFileName, setXlsxFileName] = useState('');
+  const [xlsxFileName, setXlsxFileName] = useState(null);
+
+  console.log('xlsxFileName: ', xlsxFileName);
 
   const changeXlsx = (event) => {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      if (event.target.files[0].name.split('.')[1] !== 'xlsx') {
+      const allowedExtensions = ['xlsx', 'csv']; // Agrega 'csv' a las extensiones permitidas
+
+      const fileExtension = event.target.files[0].name
+        .split('.')
+        .pop()
+        .toLowerCase();
+
+      if (!allowedExtensions.includes(fileExtension)) {
         return;
       }
+
       reader.onload = (e) => {
         setXlsxFileName(event.target.files[0].name);
         if (featuredProject.current) {
           featuredProject.current.classList.add(styles.showXlsx);
         }
       };
+
       reader.readAsDataURL(event.target.files[0]);
     }
   };
@@ -133,22 +144,6 @@ const CreateProject = () => {
 
     const form = new FormData(document.getElementById('IDForm'));
     console.log(form);
-
-    /* const projectCreated = await fetch('/api/createProject', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      body: form,
-    });
-
-    dispatch(addNewProject(newProjectInfo));
-    document
-      .querySelector(`.${styles.popSuccessProjectCreated}`)
-      .classList.add(styles.activePopUp);
-    setTimeout(() => {
-      router.push('/');
-    }, 2000);*/
   };
 
   const [datos, setDatos] = useState({
@@ -226,6 +221,7 @@ const CreateProject = () => {
             {
               method: 'POST',
               body: formData,
+              mode: 'no-cors',
             }
           );
 
@@ -282,6 +278,71 @@ const CreateProject = () => {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
+
+  const [xlsxData, setXlsxData] = useState(null);
+
+  const handleXlsxData = (e) => {
+    setXlsxData(e.target.files[0]);
+  };
+
+  const sendXlsx = async () => {
+    if (xlsxData) {
+      const formData = new FormData();
+      formData.append('projects', xlsxData);
+
+      console.log('formData: ', formData);
+
+      try {
+        const response = await fetch(
+          'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadProjects',
+          {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors',
+          }
+        );
+
+        if (response.ok) {
+          console.log('Batch de proyectos subido correctamente');
+        } else {
+          const errorText = await response.text();
+          const errorDta = await response;
+          console.log('Error: ', errorText);
+          console.log('Error: ', errorDta);
+        }
+
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.add(styles.activePopUp);
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popSuccessCreated}`)
+            .classList.remove(styles.activePopUp);
+        }, 2000);
+      } catch (error) {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.add(styles.activePopUp);
+
+        setTimeout(() => {
+          document
+            .querySelector(`.${styles.popError}`)
+            .classList.remove(styles.activePopUp);
+          router.push('/');
+        }, 2000);
+        console.error(error.message);
+        console.error('Error al realizar la solicitud:', error.message);
+      }
+    } else {
+      console.error('No se ha seleccionado ningún archivo.');
+    }
+  };
+
+  function handleXlsxClick(e) {
+    changeXlsx(e);
+    handleXlsxData(e);
+  }
 
   return (
     <>
@@ -478,17 +539,25 @@ const CreateProject = () => {
                 </span>
                 <input type="file" hidden ref={xlsxInput} />
               </div>
-              <label className={styles.subir}>
-                SUBIR EXCEL de INVENTARIO
-                <input
-                  type="file"
-                  hidden
-                  ref={inputXlsx}
-                  onChange={changeXlsx}
-                  accept=".xlsx, .xls, .csv"
-                  name="excel"
-                />
-              </label>
+              <div className={styles.uploadButtons}>
+                <label className={styles.subir}>
+                  SUBIR EXCEL de INVENTARIO
+                  <input
+                    type="file"
+                    hidden
+                    ref={inputXlsx}
+                    onChange={handleXlsxClick}
+                    accept=".xlsx, .xls, .csv"
+                    name="excel"
+                  />
+                </label>
+
+                <label
+                  className={xlsxData ? styles.subir : styles.disabledButton}>
+                  SUBIR PROYECTOS
+                  <input type="button" hidden onClick={sendXlsx} name="excel" />
+                </label>
+              </div>
             </div>
 
             <div className={`${styles.projectDocument}`} ref={featuredProject}>

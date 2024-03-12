@@ -89,7 +89,7 @@ const Payments = () => {
                 )
             )
           ) : (
-            <span>No se han encontrado Pagos activos para este cliente</span>
+            <span></span>
           )}
         </div>
       </div>

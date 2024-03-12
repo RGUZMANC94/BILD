@@ -87,6 +87,7 @@ const CreateContact = () => {
             {
               method: 'POST',
               body: formData,
+              mode: 'no-cors',
             }
           );
 

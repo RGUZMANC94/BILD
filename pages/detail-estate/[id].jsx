@@ -70,11 +70,12 @@ const DetailState = ({ unitsInit, typesInit }) => {
   useEffect(() => {
     if (typeFlag) {
       setTypeFlag(false);
+      getTypes();
     }
     if (unitFlag) {
       setUnitFlag(false);
+      getUnits();
     }
-    getTypes();
     getUnits();
   }, [typeFlag, unitFlag]);
 
@@ -141,6 +142,9 @@ const DetailState = ({ unitsInit, typesInit }) => {
       setinfoText('Información');
     }
   }, [windowWidth]);
+
+  console.log('units:', unitFlag);
+  console.log('types:', typeFlag);
 
   return (
     <>
