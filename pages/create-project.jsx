@@ -221,6 +221,7 @@ const CreateProject = () => {
             {
               method: 'POST',
               body: formData,
+              mode: 'no-cors',
             }
           );
 
