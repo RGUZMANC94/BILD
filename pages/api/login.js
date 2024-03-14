@@ -1,7 +1,6 @@
 import { serialize } from 'cookie';
 
 export default async function handler(req, res) {
-
   try {
     const response = await fetch(
       `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/login?username=${req.body.name}&password=0f64c95acb3a7fb93ee845d2d3d26c8e391d373e`
