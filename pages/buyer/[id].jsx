@@ -3,13 +3,8 @@ import styles from './styles.module.css';
 import SideInfoProfile from '../../components/sideInfoProfile';
 import RightSideProfile from '../../components/rightSideInfoProfile';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import cookie from 'cookie';
-
-function parseCookies(cookieString) {
-  return cookie.parse(cookieString);
-}
+import { useState } from 'react';
+import { parseCookies } from '../../utils/parseCookies';
 
 export const getServerSideProps = async ({
   req: {

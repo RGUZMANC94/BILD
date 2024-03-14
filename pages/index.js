@@ -7,18 +7,32 @@ import { setProjects, setFilteredList } from '../redux/projectSlice';
 import { changeTypeSelectedName } from '../redux/typeSelectedSlice';
 import { changeProjectEdit } from '../redux/editObjectSlice';
 import Link from 'next/link';
+import Loader from '../components/lodaer';
+import { useQuery } from 'react-query';
+import { parseCookies } from '../utils/parseCookies';
 
-const Home = () => {
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+}) => {
+  const { userid, rol } = parseCookies(cookie);
+  return { props: { id: userid, user_rol: rol } };
+};
+
+const Home = ({ id, user_rol }) => {
   const dispatch = useDispatch();
 
   const USDollar = new Intl.NumberFormat('en-US');
-  const { user_rol, id } = useSelector((state) => state.userState);
-  const { projectsList, filteredList } = useSelector(
+  // const { user_rol, id } = useSelector((state) => state.userState);
+  const { projectsList, filteredList, isFiltered } = useSelector(
     (state) => state.projectState
   );
   const [pageProjects, setPageProjects] = useState(1);
   const [openFlag, setOpenFlag] = useState(true);
-  const [displayProjects, setDisplayProjects] = useState([]);
+  const [displayProjects, setDisplayProjects] = useState(
+    projectsList.length ? projectsList : []
+  );
 
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
@@ -33,16 +47,11 @@ const Home = () => {
       }),
     });
     const responseProjects = await response.json();
-    dispatch(
-      setProjects(
-        responseProjects.filter((proj) => Object.keys(proj).length >= 3)
-      )
-    );
-    setDisplayProjects([]);
     setDisplayProjects(
       responseProjects.filter((proj) => Object.keys(proj).length >= 3)
     );
     console.log('respuesta Proyectos', responseProjects);
+    return responseProjects;
   };
 
   useEffect(() => {
@@ -54,15 +63,29 @@ const Home = () => {
     getProjects();
   }, []);
 
+  const { data, status } = useQuery('projects', getProjects);
+
   useEffect(() => {
-    if (filteredList.length > 0) {
-      console.log('Filtro');
-      setDisplayProjects([]);
+    if (isFiltered) {
       setDisplayProjects(filteredList);
     } else {
-      getProjects();
+      setDisplayProjects(data);
     }
-  }, [filteredList]);
+  }, [isFiltered]);
+
+  if (status === 'loading') {
+    return <Loader />;
+  }
+
+  // useEffect(() => {
+  //   if (filteredList.length > 0) {
+  //     console.log('Filtro');
+  //     setDisplayProjects([]);
+  //     setDisplayProjects(filteredList);
+  //   } else {
+  //     getProjects();
+  //   }
+  // }, [filteredList]);
 
   return (
     <>
@@ -78,7 +101,8 @@ const Home = () => {
           )}
 
           <div className={styles.containerEstates}>
-            {displayProjects.length &&
+            {displayProjects &&
+              displayProjects.length &&
               displayProjects.map(
                 (project, i) =>
                   Object.keys(project).length >= 3 && (
@@ -96,7 +120,6 @@ const Home = () => {
                           }
                         />
                       </div>
-                      {console.log('proyecto: ', i)}
                       <div className={styles['proyect-info']}>
                         <p className={styles['proyect-title']}>
                           {project.projectName}

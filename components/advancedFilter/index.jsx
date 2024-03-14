@@ -104,10 +104,9 @@ const AdvancedFilter = ({ show, setShowFilter }) => {
                 <label className={styles.advancedLabelFilter}>
                   <span className={styles.advancedLabelText}>PROYECTO:</span>
                   <select
-                    value={'default'}
                     defaultValue={'default'}
                     className={styles.advancedProjectSelect}>
-                    <option value={'default'} selected>
+                    <option value={'default'} >
                       Projecto 1
                     </option>
                     <option value={1}>Projecto 2</option>

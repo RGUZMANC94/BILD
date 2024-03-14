@@ -258,7 +258,9 @@ const CreateProject = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    if (event.target.files[0]) {
+      setSelectedFile(event.target.files[0]);
+    }
   };
 
   function handleBloth(e) {

@@ -3,7 +3,7 @@ import styles from './filter.module.css';
 import { Range, getTrackBackground } from 'react-range';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilteredList } from '../../redux/projectSlice';
+import { setFilteredList, onFilter } from '../../redux/projectSlice';
 const Filter = ({ show, setShowFilter }) => {
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -166,22 +166,23 @@ const Filter = ({ show, setShowFilter }) => {
           leakedProjects.filter((proj) => Object.keys(proj).length >= 3)
         )
       );
-      // dispatch(onFilter(true));
+      dispatch(onFilter(true));
     } catch (error) {
       console.error('Error al Establecer filtro:', error);
     }
   };
 
   const clearFilter = () => {
-    // dispatch(onFilter(false));
+    dispatch(onFilter(false));
     dispatch(setFilteredList([]));
+    setShowFilter(false);
   };
 
   const setFilter = () => {
     filterProjects();
     setTimeout(() => {
       setShowFilter(false);
-    }, 500);
+    }, 200);
   };
 
   if (!projectsList.length) {
@@ -211,10 +212,9 @@ const Filter = ({ show, setShowFilter }) => {
                 onChange={(e) => {
                   setLocationSelected(e.target.value);
                 }}
-                value={0}
-                defaultValue={0}
+                defaultValue={'default'}
                 className={styles.ubicationSelect}>
-                <option value={0} disabled hidden selected></option>
+                <option value={'default'} disabled hidden>Elige la ubicación</option>
                 <option value={0}>Fontana Campestre</option>
                 <option value={1}>La florida</option>
                 <option value={2}>Campo alegre</option>
@@ -336,12 +336,11 @@ const Filter = ({ show, setShowFilter }) => {
                 <span className={styles.labelText}>HABITACIONES:</span>
                 <select
                   defaultValue={'default'}
-                  value={'default'}
                   onChange={(e) => {
                     setBedSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
-                  <option value={'default'} selected>
+                  <option value={'default'} >
                     1+
                   </option>
                   <option value={2}>2+</option>
@@ -358,12 +357,11 @@ const Filter = ({ show, setShowFilter }) => {
                 <span className={styles.labelText}>BAÑOS:</span>
                 <select
                   defaultValue={'default'}
-                  value={'default'}
                   onChange={(e) => {
                     setBathSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
-                  <option value={'default'} selected>
+                  <option value={'default'} >
                     1+
                   </option>
                   <option value={2}>2+</option>

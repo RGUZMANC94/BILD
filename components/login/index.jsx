@@ -45,6 +45,7 @@ const LogInComponent = () => {
       return;
     }
     dispatch(setUser(loginData));
+    console.log(loginData);
     router.push('/');
   };
 
