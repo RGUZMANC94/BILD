@@ -13,6 +13,7 @@ const TypesSide = ({
   types,
   units,
   setCreateOportunity,
+  setUnitFlag,
 }) => {
   const dispatch = useDispatch();
   const [selectedType, setSelectedType] = useState([]);
@@ -46,6 +47,7 @@ const TypesSide = ({
             setCreateOportunity={setCreateOportunity}
             setShowPopUpUnit={setShowPopUpUnit}
             units={selectedType}
+            setUnitFlag={setUnitFlag}
           />
         )}
       </div>

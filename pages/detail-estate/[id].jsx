@@ -210,6 +210,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
               setShowPopUpType={setShowPopUpType}
               setShowPopUpUnit={setShowPopUpUnit}
               setCreateOportunity={setCreateOportunity}
+              setUnitFlag={setUnitFlag}
             />
 
             <InfoProject
