@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from '../styles/Quotes.module.css';
@@ -17,6 +17,7 @@ const Quotes = () => {
   const [refreshFlag, setRefreshFlag] = useState(false);
   const [showPDF, setShowPDF] = useState(true);
   const [pdfURL, setPdfURL] = useState(null);
+  const [errorShown, setErrorShown] = useState(null);
 
   const addCheckboxChange = (index, paymentUrl) => {
     if (fileIndex.includes(index)) {
@@ -52,27 +53,18 @@ const Quotes = () => {
 
     const quotesResponse = await response.json();
     console.log('dentro de Pagos:', quotesResponse);
-    setQuotes(quotesResponse.filter((objeto) => objeto.type === 'PR'));
+    console.log('dentro de Pagos:', quotesResponse.length);
+    if (quotesResponse.length) {
+      setQuotes(quotesResponse.filter((pago) => pago.type === 'PR'));
+      console.log(
+        'cotizaciones filtradas:',
+        quotesResponse.find((pago) => pago.type === 'PR')
+      );
+    } else {
+      setQuotes([]);
+      setErrorShown(`${quotesResponse.Description}`);
+    }
   };
-
-  /* const getClientOpportunities = async () => {
-    const response = await fetch('/api/opportunities', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id,
-        idProject: '',
-        idClient: contactListSelected.idCli,
-        sorting: "DESC",
-      }),
-    });
-
-    const opportunitiesResponse = await response.json();
-    console.log('dentro de opotunidades:', opportunitiesResponse);
-    setAllOpportunities(opportunitiesResponse);
-  };*/
 
   useEffect(() => {
     getPrices();
@@ -84,14 +76,6 @@ const Quotes = () => {
       setRefreshFlag(false);
     }
   }, [refreshFlag]);
-
-  useEffect(() => {
-    console.log('Seleccion de cuotas:', fileIndex);
-    console.log('Seleccion de documentos:', urlIndex);
-  }, [fileIndex]);
-
-  console.log('Lista de cotizaciones:', quotes);
-  console.log('Lista de Oportunidades:', allOpportunities);
 
   const groupByProjectName = (array) => {
     const groupedArray = array.reduce((result, current) => {
@@ -184,36 +168,6 @@ const Quotes = () => {
       }, idx * 100);
     });
   };
-  /*
-const downloadAllFiles = () => {
-  urlIndex.forEach((url, index) => {
-    console.log('url:', url);
-    downloadFile(url, `file_${index + 1}.pdf`);
-  });
-};
-
-const downloadFile = async (url, name) => {
-  try {
-    
-    const response = await fetch(url, { mode: 'no-cors' });
-    console.log('response:', response);
-
-    if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.status}`);
-    }
-
-    const blob = await response.blob();
-
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.download = name;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  } catch (error) {
-    console.error(`Error downloading ${name}:`, error);
-  }
-};*/
 
   const downloadAllFiles = () => {
     urlIndex.forEach((URL) => window.open(URL));
@@ -313,6 +267,8 @@ const downloadFile = async (url, name) => {
                   </div>
                 </details>
               ))}
+
+            {errorShown && <div className={styles.error}>{errorShown}</div>}
           </div>
         </div>
         {pdfURL && (

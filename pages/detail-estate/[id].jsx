@@ -117,7 +117,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id, idclient: '' }),
     });
 
     const recentsContacts = await response.json();

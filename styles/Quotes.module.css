@@ -493,6 +493,13 @@
   background-size: contain;
 }
 
+.error {
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+}
 @media only screen and (max-width: 1380px) {
   .wrap-cotizaciones {
     margin-bottom: 150px;

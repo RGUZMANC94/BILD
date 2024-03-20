@@ -18,7 +18,7 @@ const BuyerProfile = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id, idclient: '' }),
     });
 
     const recentsContactsres = await response.json();
