@@ -185,7 +185,14 @@ const Documentation = () => {
       <div className={styles['doc-perfil']}>
         <div className={styles['editar-perfil']}>
           <div className={styles['perfil-img']}>
-            <img src="/images/henry.png" />
+            <img
+              src={
+                contactListSelected.image[0] !== '' &&
+                contactListSelected.image[0]
+                  ? `${contactListSelected.image[0].url}`
+                  : '/images/tipo-1.png'
+              }
+            />
           </div>
           <span
             className={

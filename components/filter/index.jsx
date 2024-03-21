@@ -1,9 +1,9 @@
-import React, { use, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './filter.module.css';
 import { Range, getTrackBackground } from 'react-range';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProjects, setFilteredList } from '../../redux/projectSlice';
+import { setFilteredList, onFilter } from '../../redux/projectSlice';
 const Filter = ({ show, setShowFilter }) => {
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -30,47 +30,106 @@ const Filter = ({ show, setShowFilter }) => {
       ? Math.max(...projectsList.map((project) => project.maxPrice)) + 1
       : 1200
   );
+  // const [minFloor, setMinFloor] = useState(
+  //   projectsList.length > 0
+  //     ? Math.min(...projectsList.map((project) => project.minPrice))
+  //     : 45
+  // );
+  // const [maxFloor, setMaxFloor] = useState(
+  //   projectsList.length > 0
+  //     ? Math.max(...projectsList.map((project) => project.maxPrice))
+  //     : 1200
+  // );
+
+  const [rangeSliders, setReangeSlider] = useState([
+    {
+      type: 'price',
+      min: minPrice,
+      max: maxPrice,
+      step: 800,
+    },
+    {
+      type: 'floor',
+      min: 1,
+      max: 22,
+      step: 1,
+    },
+    {
+      type: 'size',
+      min: minSize,
+      max: maxSize,
+      step: 5,
+    },
+  ]);
 
   const [firstRender, setFirstRender] = useState(true);
-  const [refresh, setRefresh] = useState(false);
-
-  useEffect(() => {
-    if (firstRender) {
-      setMinSize(
-        projectsList.length > 0
-          ? Math.min(...projectsList.map((project) => project.minSize))
-          : 45
-      );
-
-      setMaxSize(
-        projectsList.length > 0 &&
-          Math.max(...projectsList.map((project) => project.maxSize)) !== 0
-          ? Math.max(...projectsList.map((project) => project.maxSize)) + 1
-          : 1200
-      );
-
-      setMinPrice(
-        projectsList.length > 0
-          ? Math.min(...projectsList.map((project) => project.minPrice))
-          : 45
-      );
-
-      setMaxPrice(
-        projectsList.length > 0 &&
-          Math.max(...projectsList.map((project) => project.maxPrice)) !== 0
-          ? Math.max(...projectsList.map((project) => project.maxPrice)) + 1
-          : 1200
-      );
-      setFirstRender(false);
-    }
-  }, [projectsList]);
-
   const [priceValues, setPriceValues] = useState([minPrice, maxPrice]);
   const [floorValues, setFloorValues] = useState([1, 21]);
   const [sizeValues, setSizeValues] = useState([minSize, maxSize]);
   const [locationSelected, setLocationSelected] = useState('');
   const [bedSelected, setBedSelected] = useState(1);
   const [bathSelected, setBathSelected] = useState(1);
+
+  useEffect(() => {
+    if (firstRender) {
+      if (projectsList.length) {
+        setMinSize(Math.min(...projectsList.map((project) => project.minSize)));
+
+        setMaxSize(Math.max(...projectsList.map((project) => project.maxSize)));
+
+        setMinPrice(
+          Math.min(...projectsList.map((project) => project.minPrice))
+        );
+
+        setMaxPrice(
+          Math.max(...projectsList.map((project) => project.maxPrice))
+        );
+
+        const newRangeSliders = rangeSliders.map((range) => {
+          switch (range.type) {
+            case 'price':
+              return {
+                ...range,
+                min: Math.min(
+                  ...projectsList.map((project) => project.minPrice)
+                ),
+                max: Math.max(
+                  ...projectsList.map((project) => project.maxPrice)
+                ),
+              };
+            case 'floor':
+              return { ...range, min: 1, max: 22 };
+            case 'size':
+              return {
+                ...range,
+                min: Math.min(
+                  ...projectsList.map((project) => project.minSize)
+                ),
+                max: Math.max(
+                  ...projectsList.map((project) => project.maxSize)
+                ),
+              };
+            default:
+              return range;
+          }
+        });
+        const newPriceValues = [
+          Math.min(...projectsList.map((project) => project.minPrice)),
+          Math.max(...projectsList.map((project) => project.maxPrice)),
+        ];
+        const newFloorValues = [1, 22];
+        const newSizeValues = [
+          Math.min(...projectsList.map((project) => project.minSize)),
+          Math.max(...projectsList.map((project) => project.maxSize)),
+        ];
+        setPriceValues([...newPriceValues]);
+        setFloorValues([...newFloorValues]);
+        setSizeValues([...newSizeValues]);
+        setReangeSlider(newRangeSliders);
+        setFirstRender(false);
+      }
+    }
+  }, [projectsList]);
 
   const dispatch = useDispatch();
 
@@ -101,51 +160,34 @@ const Filter = ({ show, setShowFilter }) => {
         throw new Error('Bad response from server');
       }
       const leakedProjects = await response.json();
+      console.log(leakedProjects);
       dispatch(
         setFilteredList(
           leakedProjects.filter((proj) => Object.keys(proj).length >= 3)
         )
       );
+      dispatch(onFilter(true));
     } catch (error) {
       console.error('Error al Establecer filtro:', error);
     }
   };
 
   const clearFilter = () => {
+    dispatch(onFilter(false));
     dispatch(setFilteredList([]));
+    setShowFilter(false);
   };
 
   const setFilter = () => {
     filterProjects();
     setTimeout(() => {
       setShowFilter(false);
-    }, 500);
+    }, 200);
   };
 
   if (!projectsList.length) {
     return <></>;
   }
-
-  const rangeSliders = [
-    {
-      type: 'price',
-      min: minPrice,
-      max: maxPrice,
-      step: 5000,
-    },
-    {
-      type: 'floor',
-      min: 1,
-      max: 21,
-      step: 1,
-    },
-    {
-      type: 'size',
-      min: minSize,
-      max: maxSize,
-      step: 5,
-    },
-  ];
 
   return (
     <div className={`${styles.filterPopUp} ${show ? styles.active : ''}`}>
@@ -170,10 +212,9 @@ const Filter = ({ show, setShowFilter }) => {
                 onChange={(e) => {
                   setLocationSelected(e.target.value);
                 }}
-                value={0}
-                defaultValue={0}
+                defaultValue={'default'}
                 className={styles.ubicationSelect}>
-                <option value={0} disabled hidden selected></option>
+                <option value={'default'} disabled hidden>Elige la ubicación</option>
                 <option value={0}>Fontana Campestre</option>
                 <option value={1}>La florida</option>
                 <option value={2}>Campo alegre</option>
@@ -295,12 +336,11 @@ const Filter = ({ show, setShowFilter }) => {
                 <span className={styles.labelText}>HABITACIONES:</span>
                 <select
                   defaultValue={'default'}
-                  value={'default'}
                   onChange={(e) => {
                     setBedSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
-                  <option value={'default'} selected>
+                  <option value={'default'} >
                     1+
                   </option>
                   <option value={2}>2+</option>
@@ -317,12 +357,11 @@ const Filter = ({ show, setShowFilter }) => {
                 <span className={styles.labelText}>BAÑOS:</span>
                 <select
                   defaultValue={'default'}
-                  value={'default'}
                   onChange={(e) => {
                     setBathSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
-                  <option value={'default'} selected>
+                  <option value={'default'} >
                     1+
                   </option>
                   <option value={2}>2+</option>

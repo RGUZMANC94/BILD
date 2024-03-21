@@ -1,3 +1,5 @@
+import { serialize } from 'cookie';
+
 export default async function handler(req, res) {
   try {
     const response = await fetch(
@@ -8,8 +10,26 @@ export default async function handler(req, res) {
     }
     const user = await response.json();
 
+    const { userid, rol } = user;
+
     if (user) {
-      res.status(200).json(user);
+      const useridSerialized = serialize('userid', userid, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development',
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24,
+        path: '/',
+      });
+      const rolSerialized = serialize('rol', rol, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development',
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24,
+        path: '/',
+      });
+
+      res.setHeader('Set-Cookie', [useridSerialized, rolSerialized]);
+      res.json(user);
     }
   } catch (error) {
     console.error(error);

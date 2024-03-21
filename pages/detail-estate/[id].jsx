@@ -1,5 +1,4 @@
-import { use, useEffect, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
 import InfoProject from '../../components/infoProject';
@@ -7,7 +6,6 @@ import AddTypePop from '../../components/addTypePop';
 import AddUnitPop from '../../components/addUnitPop';
 import { getSessionToken } from '../../utils/getSessionToken';
 import { useRouter } from 'next/router';
-import { getLocalData } from '../api/detailProject';
 import { useDispatch, useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
 import Link from 'next/link';
@@ -104,10 +102,6 @@ const DetailState = ({ unitsInit, typesInit }) => {
   console.log('Unidades: ', units);
   console.log('Tipos: ', types);
   useEffect(() => {
-    if (!getSessionToken()) {
-      router.push('/login');
-      return;
-    }
     getRecentsContacts();
   }, []);
 
@@ -251,7 +245,7 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(
     `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD&type=&page=1&rows=50`
   );
-  console.log('response:', response);
+  // console.log('response:', response);
 
   const units = await response.json();
 
@@ -261,8 +255,8 @@ export const getServerSideProps = async (context) => {
 
   const types = await resp.json();
 
-  console.log('Unidades principales: ', units);
-  console.log('Tipos: ', types);
+  // console.log('Unidades principales: ', units);
+  // console.log('Tipos: ', types);
 
   return {
     props: {

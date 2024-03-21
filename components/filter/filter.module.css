@@ -122,6 +122,10 @@
   line-height: 1;
 }
 
+.ubicationSelect option{
+  color: #000;
+}
+
 .rangeTrack {
   height: 20px;
   display: 'flex';

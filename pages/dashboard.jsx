@@ -134,8 +134,8 @@ const Dashboard = () => {
     colors.areaBottomColor,
   ]);
 
-  const [startDate, setStartDate] = useState(new Date('2014/02/08'));
-  const [endDate, setEndDate] = useState(new Date('2014/02/10'));
+  const [startDate, setStartDate] = useState(new Date('2024/02/08'));
+  const [endDate, setEndDate] = useState(new Date('2024/02/10'));
 
   const chartContainerRef = useRef();
   const chartVolumesRef = useRef();

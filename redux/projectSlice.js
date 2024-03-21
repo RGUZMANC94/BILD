@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   projectsList: [],
   filteredList: [],
+  isFiltered: false
 };
 
 export const projectSlice = createSlice({
@@ -18,9 +19,12 @@ export const projectSlice = createSlice({
     setFilteredList: (state, action) => {
       state.filteredList = action.payload;
     },
+    onFilter: (state, action) => {
+      state.isFiltered = action.payload;
+    },
   },
 });
 
-export const { addNewProject, setProjects, setFilteredList } =
+export const { addNewProject, setProjects, setFilteredList, onFilter } =
   projectSlice.actions;
 export default projectSlice.reducer;

@@ -55,10 +55,10 @@ const Oportunities = () => {
   };
 
   useEffect(() => {
-    if (!getSessionToken()) {
-      router.push('/login');
-      return;
-    }
+    // if (!getSessionToken()) {
+    //   router.push('/login');
+    //   return;
+    // }
     getAllOpportunities();
   }, []);
 
