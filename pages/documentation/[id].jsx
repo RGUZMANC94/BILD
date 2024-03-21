@@ -231,10 +231,14 @@ const Documentation = () => {
                   Haga click para subir o arrastra acá el archivo a compartir
                 </span>
               </div>
-
-              <span className={styles['title-cert-selected']}>
-                {docSelected !== '' ? docSelected : 'no categoria seleccionada'}
-              </span>
+              {
+                /*
+                <span className={styles['title-cert-selected']}>
+                  {docSelected !== '' ? docSelected : 'no categoria seleccionada'}
+                </span>
+                */
+              }
+              
 
               <div className={`${styles.uploadButtons} flex j-e a-c`}>
                 <label className={styles.subir}>

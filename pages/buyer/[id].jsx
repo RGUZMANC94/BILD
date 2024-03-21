@@ -51,6 +51,8 @@ const BuyerProfile = ({ contacts }) => {
       body: JSON.stringify({ id, idclient: '' }),
     });
 
+  };
+ 
   //   console.log(response);
   //   const recentsContactsres = await response.json();
   //   console.log(recentsContactsres);
@@ -87,5 +89,4 @@ const BuyerProfile = ({ contacts }) => {
     </div>
   );
 };
-
 export default BuyerProfile;
