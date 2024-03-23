@@ -245,7 +245,6 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(
     `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD&type=&page=1&rows=50`
   );
-  // console.log('response:', response);
 
   const units = await response.json();
 
@@ -254,9 +253,6 @@ export const getServerSideProps = async (context) => {
   );
 
   const types = await resp.json();
-
-  // console.log('Unidades principales: ', units);
-  // console.log('Tipos: ', types);
 
   return {
     props: {

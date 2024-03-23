@@ -47,6 +47,12 @@ const Home = ({ id, user_rol }) => {
       }),
     });
     const responseProjects = await response.json();
+    dispatch(
+      setProjects(
+        responseProjects.filter((proj) => Object.keys(proj).length >= 3)
+      )
+    );
+    
     setDisplayProjects(
       responseProjects.filter((proj) => Object.keys(proj).length >= 3)
     );

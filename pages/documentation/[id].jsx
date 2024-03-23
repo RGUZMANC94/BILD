@@ -165,8 +165,54 @@ const Documentation = () => {
     }
   };
 
-  const deleteDoc = async (idport) => {
-    console.log('Delete.');
+  const deleteDoc = async (idDoc, subType) => {
+    try {
+      const fileDeleted = await fetch('/api/deleteMultimedia', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          idfile: idDoc,
+          type: 'CLI',
+          subtype: subType,
+          idobject: contactListSelected.idCli
+        }),
+      });
+
+      console.log('File deleted: ', fileDeleted);
+
+      if (!fileDeleted.ok) {
+        throw new Error('Failed to delete Quote');
+      }
+
+      const responseData = await fileDeleted.json();
+
+      console.log('Quote deleted:', responseData);
+
+      document
+        .querySelector(`.${styles.popSuccessCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+        setContactRefresh(true);
+      }, 2000);
+    } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
+      console.error('Error al Borrar cuota:', error);
+    }
   };
 
   return (
@@ -304,7 +350,7 @@ const Documentation = () => {
                           className={styles['clip-icon']}
                         />
                         <div
-                          onClick={() => deleteDoc()}
+                          onClick={() => deleteDoc(doc.id, 'ID')}
                           className={styles['delete-icon']}
                         />
                       </div>
@@ -337,7 +383,7 @@ const Documentation = () => {
                           className={styles['clip-icon']}
                         />
                         <div
-                          onClick={() => deleteDoc()}
+                          onClick={() => deleteDoc(doc.id, 'LDOC')}
                           className={styles['delete-icon']}
                         />
                       </div>
@@ -370,7 +416,7 @@ const Documentation = () => {
                           className={styles['clip-icon']}
                         />
                         <div
-                          onClick={() => deleteDoc()}
+                          onClick={() => deleteDoc(doc.id, 'PAYS')}
                           className={styles['delete-icon']}
                         />
                       </div>
@@ -403,7 +449,7 @@ const Documentation = () => {
                           className={styles['clip-icon']}
                         />
                         <div
-                          onClick={() => deleteDoc()}
+                          onClick={() => deleteDoc(doc.id, 'PAYR')}
                           className={styles['delete-icon']}
                         />
                       </div>
