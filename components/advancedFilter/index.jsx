@@ -106,9 +106,7 @@ const AdvancedFilter = ({ show, setShowFilter }) => {
                   <select
                     defaultValue={'default'}
                     className={styles.advancedProjectSelect}>
-                    <option value={'default'} >
-                      Projecto 1
-                    </option>
+                    <option value={'default'}>Projecto 1</option>
                     <option value={1}>Projecto 2</option>
                     <option value={2}>Projecto 3</option>
                   </select>

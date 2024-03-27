@@ -115,12 +115,14 @@ const CreateProject = () => {
     const dT = new DataTransfer();
     dT.items.add(file);
     inputXlsx.current.files = dT.files;
+    setXlsxData(file);
     setXlsxFileName(name);
     dragZone.current.classList.remove(styles.activeZone);
     featuredProject.current.classList.add(styles.showXlsx);
   };
 
   const deleteXlsx = () => {
+    setXlsxData(null);
     featuredProject.current.classList.remove(styles.showXlsx);
     setTimeout(() => {
       setXlsxFileName('');

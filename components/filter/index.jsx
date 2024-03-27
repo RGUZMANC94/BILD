@@ -214,7 +214,9 @@ const Filter = ({ show, setShowFilter }) => {
                 }}
                 defaultValue={'default'}
                 className={styles.ubicationSelect}>
-                <option value={'default'} disabled hidden>Elige la ubicación</option>
+                <option value={'default'} disabled hidden>
+                  Elige la ubicación
+                </option>
                 <option value={0}>Fontana Campestre</option>
                 <option value={1}>La florida</option>
                 <option value={2}>Campo alegre</option>
@@ -340,9 +342,7 @@ const Filter = ({ show, setShowFilter }) => {
                     setBedSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
-                  <option value={'default'} >
-                    1+
-                  </option>
+                  <option value={'default'}>1+</option>
                   <option value={2}>2+</option>
                   <option value={3}>3+</option>
                   <option value={4}>4+</option>
@@ -361,9 +361,7 @@ const Filter = ({ show, setShowFilter }) => {
                     setBathSelected(e.target.value);
                   }}
                   className={styles.ubicationSelect}>
-                  <option value={'default'} >
-                    1+
-                  </option>
+                  <option value={'default'}>1+</option>
                   <option value={2}>2+</option>
                   <option value={3}>3+</option>
                   <option value={4}>4+</option>

@@ -35,41 +35,10 @@ export const getServerSideProps = async ({
 };
 
 const BuyerProfile = ({ contacts }) => {
-  // console.log(contacts);
   const router = useRouter();
   const [recentContacts, setRecentsContacts] = useState(
     contacts.filter((res) => res.idCli === router.query.id)
   );
-  // const { id } = useSelector((state) => state.userState);
-
-  const getRecentsContacts = async () => {
-    const response = await fetch('/api/recentsContacts', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id, idclient: '' }),
-    });
-
-  };
- 
-  //   console.log(response);
-  //   const recentsContactsres = await response.json();
-  //   console.log(recentsContactsres);
-
-  //   setRecentsContacts(
-  //     recentsContactsres.filter((res) => res.idCli === router.query.id)
-  //   );
-  // };
-
-  // useEffect(() => {
-  // if (!getSessionToken()) {
-  //   router.push('/login');
-  //   getRecentsContacts();
-  //   return;
-  // }
-  // getRecentsContacts();
-  // }, []);
 
   return (
     <div className={styles.perfil}>

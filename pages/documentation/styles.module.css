@@ -646,6 +646,35 @@ button.upload-file {
   text-align: center;
 }
 
+.blue-border {
+  width: 100%;
+  height: 200px;
+  border: 1px dashed #fff;
+  border-radius: 10px;
+  padding: 30px 50px;
+  text-align: center;
+  font-size: 18px;
+  color: #c7c7c7 !important;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+  transition: all 0.15s ease-in-out;
+}
+
+.activeZone.blue-border {
+  border: 2px dashed #2466ff;
+  transform: scale(1.01);
+}
+
+.blue-border img {
+  margin-bottom: 20px;
+  width: 63px;
+  height: 58px;
+}
+
 @media only screen and (max-width: 1024px) {
   .doc-perfil {
     padding-top: 140px;

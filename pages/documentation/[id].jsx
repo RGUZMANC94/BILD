@@ -21,6 +21,8 @@ const Documentation = () => {
   const [dni, setDni] = useState([]);
   const [contactRefresh, setContactRefresh] = useState(false);
   const [pdfURL, setPdfURL] = useState(null);
+  const dragZone = useRef(null);
+  const xlsxInput = useRef(null);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
@@ -52,7 +54,29 @@ const Documentation = () => {
     }
   }, [contactLocal]);
 
-  console.log('certLaboral:', certLaboral);
+  const dropHandler = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    const { name } = file;
+    const ext = name.split('.')[1];
+
+    if (ext !== 'xlsx') {
+      return;
+    }
+
+    const dT = new DataTransfer();
+    dT.items.add(file);
+    inputXlsx.current.files = dT.files;
+    setXlsxData(file);
+    setXlsxFileName(name);
+    dragZone.current.classList.remove(styles.activeZone);
+    featuredProject.current.classList.add(styles.showXlsx);
+  };
+
+  const dragHandler = (e) => {
+    e.preventDefault();
+    dragZone.current.classList.add(styles.activeZone);
+  };
 
   const changeDoc = (docType) => {
     if (docSelected === docType) {
@@ -88,11 +112,11 @@ const Documentation = () => {
   };
 
   const deleteXlsx = () => {
+    setXlsxData(null);
     featuredProject.current.classList.remove(styles.showXlsx);
     setTimeout(() => {
       setXlsxFileName('');
       inputXlsx.current.value = '';
-      setXlsxData(null);
     }, 300);
   };
 
@@ -177,7 +201,7 @@ const Documentation = () => {
           idfile: idDoc,
           type: 'CLI',
           subtype: subType,
-          idobject: contactListSelected.idCli
+          idobject: contactListSelected.idCli,
         }),
       });
 
@@ -271,20 +295,18 @@ const Documentation = () => {
           </div>
           <div className={styles['doc-wrap']}>
             <div className={styles.archivo}>
-              <div className={styles.load}>
+              <div
+                ref={dragZone}
+                className={styles['blue-border']}
+                onDrop={dropHandler}
+                onDragOver={dragHandler}
+                onDragEnter={dragHandler}>
                 <img src="/images/upload-icon.png" />
                 <span>
                   Haga click para subir o arrastra acá el archivo a compartir
                 </span>
+                <input type="file" hidden ref={xlsxInput} />
               </div>
-              {
-                /*
-                <span className={styles['title-cert-selected']}>
-                  {docSelected !== '' ? docSelected : 'no categoria seleccionada'}
-                </span>
-                */
-              }
-              
 
               <div className={`${styles.uploadButtons} flex j-e a-c`}>
                 <label className={styles.subir}>

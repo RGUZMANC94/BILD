@@ -3,6 +3,7 @@ import Button from '../button';
 import styles from './Add-type-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { event } from 'jquery';
 
 const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
   const router = useRouter();
@@ -65,6 +66,11 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
       parentDeleteIcon.classList.remove(styles.active);
       inputSelected.value = '';
     }
+  };
+
+  const cancelInfo = () => {
+    setShowPopUpType(false);
+    cleanForm();
   };
 
   const sendFormInfo = async (e) => {
@@ -319,6 +325,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                 iconImage={false}
                 label={'CANCELAR'}
                 inheritClass={styles.buttonCreateType}
+                clickFunction={cancelInfo}
               />
               <Button
                 buttonType={'secondary'}

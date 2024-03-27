@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   projectsList: [],
   filteredList: [],
-  isFiltered: false
+  isFiltered: false,
 };
 
 export const projectSlice = createSlice({

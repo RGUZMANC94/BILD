@@ -208,7 +208,9 @@ const PaymentDetail = () => {
                       <div
                         className={styles.pdf}
                         onClick={() => {
-                          quotes.pdf.length ? setPdfURL(quotes.pdf[0].url) : setPdfURL(null);
+                          quotes.pdf.length
+                            ? setPdfURL(quotes.pdf[0].url)
+                            : setPdfURL(null);
                         }}>
                         <img src="/images/pdf-icon-white.svg" />
                       </div>
@@ -235,73 +237,73 @@ const PaymentDetail = () => {
                   </div>
                 )}
 
-                {(quotes && quotes.dues.length > 0)
-                    ? quotes.dues.map((quote, i) => (
-                        Object.keys(quote).length > 4 ? (
-                          <div className={styles.greybox} key={i}>
-                            <div className={styles.info}>
-                              <div
-                                className={
-                                  styles.date
-                                }>{`${quote.expirationDate}`}</div>
-                              <div className={styles.aceptada}>
-                                <img src="/images/card.svg" />
-                                {`Pago cuota N°${quote.dueNumber}`}
-                              </div>
-                              <div
-                                className={
-                                  styles.pdf
-                                }>{`${quote.paymentValue}`}</div>
-                              <div className={styles.empty}>
-                                Estado:{' '}
-                                <span className={styles.estado}>Pagado</span>
-                              </div>
+                {quotes && quotes.dues.length > 0
+                  ? quotes.dues.map((quote, i) =>
+                      Object.keys(quote).length > 4 ? (
+                        <div className={styles.greybox} key={i}>
+                          <div className={styles.info}>
+                            <div
+                              className={
+                                styles.date
+                              }>{`${quote.expirationDate}`}</div>
+                            <div className={styles.aceptada}>
+                              <img src="/images/card.svg" />
+                              {`Pago cuota N°${quote.dueNumber}`}
                             </div>
-
-                            <div className={styles['blue-point']}></div>
-                          </div>
-                        ) : (
-                          <div className={styles.box} key={i}>
-                            <div className={styles.info}>
-                              <div
-                                className={
-                                  styles.date
-                                }>{`${quote.expirationDate}`}</div>
-                              <div className={styles.aceptada}>
-                                <img src="/images/card.svg" />
-                                {`Pago cuota N°${quote.dueNumber}`}
-                              </div>
-                              <div
-                                className={
-                                  styles.pdf
-                                }>{`$${quote.paymentValue}`}</div>
-                              <div className={styles.empty}>
-                                Estado: Pendiente
-                                {opportunitySelected &&
-                                  opportunitySelected.stageCycleSaleOp ===
-                                    'Cartera' && (
-                                    <Button
-                                      buttonType={'primary'}
-                                      iconImage={false}
-                                      label={'Pago'}
-                                      inheritClass={styles.buttonPayment}
-                                      clickFunction={() =>
-                                        payment(
-                                          quote.paymentValue,
-                                          quote.dueNumber,
-                                          quotes.idPortfolio
-                                        )
-                                      }
-                                    />
-                                  )}
-                              </div>
+                            <div
+                              className={
+                                styles.pdf
+                              }>{`${quote.paymentValue}`}</div>
+                            <div className={styles.empty}>
+                              Estado:{' '}
+                              <span className={styles.estado}>Pagado</span>
                             </div>
-
-                            <div className={styles['grey-point']}></div>
                           </div>
-                        )
-                    ))
-                    : ''}
+
+                          <div className={styles['blue-point']}></div>
+                        </div>
+                      ) : (
+                        <div className={styles.box} key={i}>
+                          <div className={styles.info}>
+                            <div
+                              className={
+                                styles.date
+                              }>{`${quote.expirationDate}`}</div>
+                            <div className={styles.aceptada}>
+                              <img src="/images/card.svg" />
+                              {`Pago cuota N°${quote.dueNumber}`}
+                            </div>
+                            <div
+                              className={
+                                styles.pdf
+                              }>{`$${quote.paymentValue}`}</div>
+                            <div className={styles.empty}>
+                              Estado: Pendiente
+                              {opportunitySelected &&
+                                opportunitySelected.stageCycleSaleOp ===
+                                  'Cartera' && (
+                                  <Button
+                                    buttonType={'primary'}
+                                    iconImage={false}
+                                    label={'Pago'}
+                                    inheritClass={styles.buttonPayment}
+                                    clickFunction={() =>
+                                      payment(
+                                        quote.paymentValue,
+                                        quote.dueNumber,
+                                        quotes.idPortfolio
+                                      )
+                                    }
+                                  />
+                                )}
+                            </div>
+                          </div>
+
+                          <div className={styles['grey-point']}></div>
+                        </div>
+                      )
+                    )
+                  : ''}
               </div>
               {pdfURL && (
                 <div className={styles['iframe-popup']}>

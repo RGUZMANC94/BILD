@@ -6,12 +6,12 @@ export default function middleware(req) {
   const { cookies } = req;
 
   const user = cookies.get('userid');
-  
+
   const returnUrl = req.nextUrl.clone();
   returnUrl.pathname = '/login';
-  
+
   const pathname = req.nextUrl.pathname;
-  
+
   if (pathname.includes('/login')) {
     if (user) {
       if (user.value) {
@@ -20,8 +20,6 @@ export default function middleware(req) {
     }
     return NextResponse.next();
   }
-
-  
 
   // if (protectedRoutes.includes(pathname)) {
   if (user) {

@@ -146,6 +146,9 @@ const Units = ({
               setCreateOportunity={setCreateOportunity}
             />
           ))}
+        {units.length === 0 && (
+            <div className={styles['bottom-content']}>No hay unidades registradas</div>
+        )}
 
         <form
           className={`${styles.formUnits} ${

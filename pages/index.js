@@ -52,7 +52,7 @@ const Home = ({ id, user_rol }) => {
         responseProjects.filter((proj) => Object.keys(proj).length >= 3)
       )
     );
-    
+
     setDisplayProjects(
       responseProjects.filter((proj) => Object.keys(proj).length >= 3)
     );
