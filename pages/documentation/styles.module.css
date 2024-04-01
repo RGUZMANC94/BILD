@@ -260,6 +260,7 @@ button.upload-file {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  cursor: pointer;
 }
 
 .delete-icon {
@@ -269,6 +270,7 @@ button.upload-file {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  cursor: pointer;
 }
 
 .buttons > button {

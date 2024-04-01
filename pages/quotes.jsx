@@ -267,8 +267,11 @@ const Quotes = () => {
                   </div>
                 </details>
               ))}
-            {(seleccion && seleccion.length === 0) &&
-            (<div className={styles['bottom-content']}>No se encuentran contizaciones asignadas a este usuario</div>) }
+            {seleccion && seleccion.length === 0 && (
+              <div className={styles['bottom-content']}>
+                No se encuentran contizaciones asignadas a este usuario
+              </div>
+            )}
             {errorShown && <div className={styles.error}>{errorShown}</div>}
           </div>
         </div>
