@@ -57,6 +57,20 @@
   background-color: transparent;
   border: 0.7px solid #fff;
 }
+
+.subject_input {
+
+  color: #fff;
+  background-color: rgba(33, 34, 29, 0.7);
+  appearance: none;
+  background-image: url(/images/oportunities-card-down-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 8px;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  background-color: #343434;
+}
+
 .proyect-form textarea {
   padding: 15px;
   border: 1px solid #ccc;

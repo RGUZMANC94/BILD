@@ -123,7 +123,9 @@
 }
 
 .ubicationSelect option {
-  color: #000;
+  color: #fff;
+  background-color: #343434;
+  backdrop-filter: blur(10px);
 }
 
 .rangeTrack {
