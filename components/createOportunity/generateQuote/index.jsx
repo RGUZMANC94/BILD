@@ -321,34 +321,15 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         <div className={styles['cotizacion-form']}>
           <span className={styles.labelSide}>No. Cuotas Mensuales</span>
 
-          <select
+          <input
+            className={styles.subject_input}
             type="text"
             name="fees"
             value={fees}
             onChange={(e) => setFees(e.target.value)}
-            className={styles.subject_input}
-            required>
-            <option value={1} disabled hidden selected>
-              1
-            </option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>16</option>
-            <option>18</option>
-            <option>20</option>
-            <option>24</option>
-          </select>
+            placeholder="2"
+            required
+          />
         </div>
 
         <div className={styles.squareInputContainer}>

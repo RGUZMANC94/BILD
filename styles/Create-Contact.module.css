@@ -192,6 +192,12 @@
   border: 1px solid #2467ff;
 }
 
+.campo.active {
+  background-color: #2467ff;
+  color: #fff;
+  border: 1px solid #2467ff;
+}
+
 .informacion-datos {
   width: 80%;
   height: auto;

@@ -19,6 +19,28 @@ const TypesSide = ({
   const [selectedType, setSelectedType] = useState([]);
   const [flagType, setFlagType] = useState(false);
   const { typeSelected } = useSelector((state) => state.typeState);
+  const [xlsxTemplate, setXlsxTemplate] = useState(null);
+
+  const getXlsxTemplate = async () => {
+    const response = await fetch('/api/multimediaRequest', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        idobject: '1',
+        type: 'GL',
+        subtype: 'PIM',
+      }),
+    });
+    const templateResponse = await response.json();
+    setXlsxTemplate(templateResponse);
+  };
+
+  useEffect(() => {
+    getXlsxTemplate();
+  }, []);
+
 
   useEffect(() => {
     if (!flagType) {
@@ -48,6 +70,7 @@ const TypesSide = ({
             setShowPopUpUnit={setShowPopUpUnit}
             units={selectedType}
             setUnitFlag={setUnitFlag}
+            xlsxTemplate={xlsxTemplate}
           />
         )}
       </div>

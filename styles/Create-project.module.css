@@ -871,6 +871,10 @@
   padding: 15px 10px;
 }
 
+.date-Input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 @media only screen and (max-width: 1380px) {
   .createProjectForm {
     margin-bottom: 80px;

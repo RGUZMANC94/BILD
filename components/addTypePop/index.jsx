@@ -230,19 +230,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                 </div>
               </div>
               <div className={`${styles.typeFeatures}`}>
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Área Mt2</span>
-                  <input
-                    type="text"
-                    name="size"
-                    value={datos.size}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-                <label
+              <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                   <span className={styles.labelInputTitle}>Habitaciones</span>
                   <input
@@ -254,6 +242,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                     required
                   />
                 </label>
+
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                   <span className={styles.labelInputTitle}>Baños</span>
@@ -269,7 +258,20 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>A. CONSTR</span>
+                  <span className={styles.labelInputTitle}>Área Priv.</span>
+                  <input
+                    type="text"
+                    name="size"
+                    value={datos.size}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>AREA CONSTR.</span>
                   <input
                     type="text"
                     name="privateArea"
@@ -282,7 +284,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>A. BALCÓN</span>
+                  <span className={styles.labelInputTitle}>AREA BALCÓN</span>
                   <input
                     type="text"
                     name="balconyArea"
@@ -295,7 +297,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>DEPOSITO A.</span>
+                  <span className={styles.labelInputTitle}>DEPOSITO AREA</span>
                   <input
                     type="text"
                     name="storageArea"

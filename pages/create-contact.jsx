@@ -45,6 +45,8 @@ const CreateContact = () => {
   const sendFormInfo = async (e) => {
     e.preventDefault();
 
+    setDatos({ ...datos, typeClient: 'J' });
+
     console.log(
       JSON.stringify({
         id,
@@ -187,6 +189,14 @@ const CreateContact = () => {
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0];
     setImagen(imageFile);
+  };
+
+  const changebusinessName = (name) => {
+    setDatos({ ...datos, businessName: name });
+  };
+
+  const changeTypeClient = (type) => {
+    setDatos({ ...datos, typeClient: type });
   };
 
   return (
@@ -335,32 +345,32 @@ const CreateContact = () => {
               <div className={styles.datos}>
                 <button
                   type="button"
-                  onClick="cambiarColor(this.parentNode)"
-                  className={styles.campo}>
+                  onClick={()=>changeTypeClient('casado')}
+                  className={`${styles.campo} ${datos.typeClient === 'casado' && styles.active}`}>
                   Casado
                 </button>
                 <button
                   type="button"
-                  onClick="cambiarColor(this.parentNode)"
-                  className={styles.campo}>
+                  onClick={()=>changeTypeClient('soltero')}
+                  className={`${styles.campo} ${datos.typeClient === 'soltero' && styles.active}`}>
                   Soltero
                 </button>
                 <button
                   type="button"
-                  onClick="cambiarColor(this.parentNode)"
-                  className={styles.campo}>
+                  onClick={()=>changeTypeClient('conHijos')}
+                  className={`${styles.campo} ${datos.typeClient === 'conHijos' && styles.active}`}>
                   Con Hijos
                 </button>
                 <button
                   type="button"
-                  onClick="cambiarColor(this.parentNode)"
-                  className={styles.campo}>
+                  onClick={()=>changeTypeClient('sinHijos')}
+                  className={`${styles.campo} ${datos.typeClient === 'sinHijos' && styles.active}`}>
                   Sin Hijos
                 </button>
                 <button
                   type="button"
-                  onClick="cambiarColor(this.parentNode)"
-                  className={styles.campo}>
+                  onClick={()=>changeTypeClient('separado')}
+                  className={`${styles.campo} ${datos.typeClient === 'separado' && styles.active}`}>
                   Separado
                 </button>
               </div>
@@ -371,14 +381,14 @@ const CreateContact = () => {
                 <div className={styles.datos}>
                   <button
                     type="button"
-                    onClick="cambiarColor(this.parentNode)"
-                    className={styles.campo}>
+                    onClick={() => changebusinessName('inversionista')}
+                    className={`${styles.campo} ${datos.businessName === 'inversionista' && styles.active}`}>
                     Inversionista
                   </button>
                   <button
                     type="button"
-                    onClick="cambiarColor(this.parentNode)"
-                    className={styles.campo}>
+                    onClick={() => changebusinessName('familiar')}
+                    className={`${styles.campo} ${datos.businessName === 'familiar' && styles.active}`}>
                     Familiar
                   </button>
                 </div>

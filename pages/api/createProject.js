@@ -15,8 +15,9 @@ export default async function handler(req, res) {
       }
     );
     if (!response.ok) {
-      console.log('Error: ', response);
-      throw new Error('Bad response from server: Create Project');
+      const errorText = await response.text();
+      console.log('Error Back: ', errorText);
+      throw new Error(`Bad response from server: Create Proyect - ${errorText}`);
     }
     const projectCreated = await response.json();
 
@@ -25,6 +26,6 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error(error);
-    res.status(400).json({ error: 'Failed' });
+    res.status(400).json({ error: error.message || 'Failed' });
   }
 }

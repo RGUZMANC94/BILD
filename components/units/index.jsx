@@ -9,6 +9,7 @@ const Units = ({
   setShowPopUpUnit,
   units,
   setUnitFlag,
+  xlsxTemplate
 }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
   const { user_rol } = useSelector((state) => state.userState);
@@ -119,18 +120,25 @@ const Units = ({
   return (
     <>
       <div className="caracteristicas">
-        {user_rol === 'ADMIN' && (
-          <Button
-            classNameInherit={'align-end'}
-            buttonType={'primary'}
-            label="Agregar Unidad"
-            iconImage={'/images/plus.svg'}
-            clickFunction={() => {
-              setShowPopUpUnit(true);
-              // setShowFormUnits(true);
-            }}
-          />
-        )}
+        <div className={styles.upperButtons}>
+          {user_rol === 'ADMIN' && (
+            <Button
+              buttonType={'primary'}
+              label="Agregar Unidad"
+              iconImage={'/images/plus.svg'}
+              clickFunction={() => {
+                setShowPopUpUnit(true);
+                // setShowFormUnits(true);
+              }}
+            />
+          )}
+          <label className={styles.file}>
+            <a className={styles.descargar} href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
+              <img src="/images/download.svg" />
+              Descargar Excel Base
+            </a>
+          </label>
+        </div>
         <div className="caracteristicas-top">
           <div className="top-tabla">ID</div>
           <div className="top-tabla">Alcobas</div>
@@ -198,6 +206,9 @@ const Units = ({
             clickFunction={() => {sendXlsx();}}
           />
       */}
+        
+
+
               <label className={styles.subir}>
                 SUBIR EXCEL de INVENTARIO
                 <input

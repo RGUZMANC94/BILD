@@ -104,7 +104,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         </>
       )*/}
 
-      {typeViewer === 'admin' && (
+      {/* typeViewer === 'admin' && (
         <div className={styles['datos-right']}>
           <div className={styles['top-name']}>Permisos</div>
           <hr />
@@ -223,7 +223,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             </fieldset>
           </form>
         </div>
-      )}
+      ); */}
     </>
   );
 };

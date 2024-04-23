@@ -133,9 +133,9 @@ const Home = ({ id, user_rol }) => {
                         <p className={styles.valor}>
                           {project.minPrice &&
                             project.maxPrice &&
-                            `${USDollar.format(
+                            `${(USDollar.format(
                               project.minPrice
-                            )}  - ${USDollar.format(project.maxPrice)} `}
+                            )).replace(',', '.')}  - ${(USDollar.format(project.maxPrice)).replace(',', '.')} `}
                         </p>
 
                         <div className={styles.detalles}>
