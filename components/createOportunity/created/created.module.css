@@ -360,6 +360,8 @@
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  background-image: none;
+  pointer-events: none;
 }
 
 .img-tipo-glass {

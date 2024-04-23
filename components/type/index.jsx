@@ -51,8 +51,7 @@ const TypeCard = ({
         <div className="tipo-info">
           <span className="tipo-title">Tipo {type.type}</span>
           <span className="valor">
-            $ {USDollar.format(type.minPrice)} -{' '}
-            {USDollar.format(type.maxPrice)}
+           {`$ ${parseInt(type.minPrice).toLocaleString('es-ES')} - ${parseInt(type.maxPrice).toLocaleString('es-ES')} `}
           </span>
           <div className="detalles">
             <img src="/images/cards/bed.png" />

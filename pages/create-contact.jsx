@@ -45,8 +45,6 @@ const CreateContact = () => {
   const sendFormInfo = async (e) => {
     e.preventDefault();
 
-    setDatos({ ...datos, typeClient: 'J' });
-
     console.log(
       JSON.stringify({
         id,

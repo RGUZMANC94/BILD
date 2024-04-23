@@ -363,7 +363,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
           </span>
           <img src="/images/link-pago.png" className={styles.arrowImage} />
         </div>
-        <div className={styles['cotizacion-form']}>
+        <div className={`${styles['cotizacion-form']} ${styles['label-hide']}`}>
           <span className={styles.labelFocus}>COMPARTIR:</span>
 
           <div className={styles.iconContainer}>

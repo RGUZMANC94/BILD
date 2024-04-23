@@ -133,9 +133,7 @@ const Home = ({ id, user_rol }) => {
                         <p className={styles.valor}>
                           {project.minPrice &&
                             project.maxPrice &&
-                            `${(USDollar.format(
-                              project.minPrice
-                            )).replace(',', '.')}  - ${(USDollar.format(project.maxPrice)).replace(',', '.')} `}
+                            `$${parseInt(project.minPrice).toLocaleString('es-ES')} - $${parseInt(project.maxPrice).toLocaleString('es-ES')} `}
                         </p>
 
                         <div className={styles.detalles}>
