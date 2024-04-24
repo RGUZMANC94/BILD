@@ -10,6 +10,9 @@ const CreateContact = () => {
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
+  const [typeClient, setTypeClient] = useState('');
+  const [businessName, setBusinessName] = useState('');
+
 
   const [datos, setDatos] = useState({
     firstNames: '',
@@ -190,11 +193,13 @@ const CreateContact = () => {
   };
 
   const changebusinessName = (name) => {
-    setDatos({ ...datos, businessName: name });
+    // setDatos({ ...datos, businessName: name });
+    setBusinessName(name);
   };
 
   const changeTypeClient = (type) => {
-    setDatos({ ...datos, typeClient: type });
+    // setDatos({ ...datos, typeClient: type });
+    setTypeClient(type);
   };
 
   return (
@@ -344,31 +349,31 @@ const CreateContact = () => {
                 <button
                   type="button"
                   onClick={()=>changeTypeClient('casado')}
-                  className={`${styles.campo} ${datos.typeClient === 'casado' && styles.active}`}>
+                  className={`${styles.campo} ${typeClient === 'casado' && styles.active}`}>
                   Casado
                 </button>
                 <button
                   type="button"
                   onClick={()=>changeTypeClient('soltero')}
-                  className={`${styles.campo} ${datos.typeClient === 'soltero' && styles.active}`}>
+                  className={`${styles.campo} ${typeClient === 'soltero' && styles.active}`}>
                   Soltero
                 </button>
                 <button
                   type="button"
                   onClick={()=>changeTypeClient('conHijos')}
-                  className={`${styles.campo} ${datos.typeClient === 'conHijos' && styles.active}`}>
+                  className={`${styles.campo} ${typeClient === 'conHijos' && styles.active}`}>
                   Con Hijos
                 </button>
                 <button
                   type="button"
                   onClick={()=>changeTypeClient('sinHijos')}
-                  className={`${styles.campo} ${datos.typeClient === 'sinHijos' && styles.active}`}>
+                  className={`${styles.campo} ${typeClient === 'sinHijos' && styles.active}`}>
                   Sin Hijos
                 </button>
                 <button
                   type="button"
                   onClick={()=>changeTypeClient('separado')}
-                  className={`${styles.campo} ${datos.typeClient === 'separado' && styles.active}`}>
+                  className={`${styles.campo} ${typeClient === 'separado' && styles.active}`}>
                   Separado
                 </button>
               </div>
@@ -380,13 +385,13 @@ const CreateContact = () => {
                   <button
                     type="button"
                     onClick={() => changebusinessName('inversionista')}
-                    className={`${styles.campo} ${datos.businessName === 'inversionista' && styles.active}`}>
+                    className={`${styles.campo} ${businessName === 'inversionista' && styles.active}`}>
                     Inversionista
                   </button>
                   <button
                     type="button"
                     onClick={() => changebusinessName('familiar')}
-                    className={`${styles.campo} ${datos.businessName === 'familiar' && styles.active}`}>
+                    className={`${styles.campo} ${businessName === 'familiar' && styles.active}`}>
                     Familiar
                   </button>
                 </div>
