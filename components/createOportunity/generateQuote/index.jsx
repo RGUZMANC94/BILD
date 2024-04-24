@@ -4,6 +4,8 @@ import styles from './quote.module.css';
 import { useSelector } from 'react-redux';
 import Button from '../../button';
 import SquareInput from '../../squareInput';
+import CurrencyInput from 'react-currency-input-field';
+
 
 const GenerateQuote = ({ setGenerateQuote }) => {
   const { id } = useSelector((state) => state.userState);
@@ -287,26 +289,34 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         <div className={styles['cotizacion-form']}>
           <span className={styles.labelSide}>Separación</span>
 
-          <input
+          <CurrencyInput
             className={styles.inputQuote}
-            type="text"
+            prefix="$ " 
+            decimalSeparator="," 
+            groupSeparator="."
+            id="separation-input"
             name="separation"
-            value={separation}
-            onChange={(e) => setSeparation(e.target.value)}
-            placeholder="0'000.000"
+            placeholder="$0"
+            // defaultValue={1000000}
+            decimalsLimit={2}
+            onValueChange={(value) => setSeparation(value)}
             required
           />
         </div>
         <div className={styles['cotizacion-form']}>
           <span className={styles.labelSide}>Abono Inicial</span>
 
-          <input
+          <CurrencyInput
             className={styles.inputQuote}
-            type="text"
+            prefix="$ " 
+            decimalSeparator="," 
+            groupSeparator="."
+            id="downPayment-input"
             name="downPayment"
-            value={downPayment}
-            onChange={(e) => setDownPayment(e.target.value)}
-            placeholder="0'000.000"
+            placeholder="$0"
+            // defaultValue={1000000}
+            decimalsLimit={2}
+            onValueChange={(value) => setDownPayment(value)}
             required
           />
         </div>
