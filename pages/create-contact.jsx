@@ -200,7 +200,7 @@ const CreateContact = () => {
   return (
     <>
       <div className={styles['wrap-datos']}>
-        <div className="container flex j-sb a-s wrap relative">
+        <div className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
           <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
           <div className={styles['top-content']}>
             <div className={styles['top-content-buttonsBar']}>

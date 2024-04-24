@@ -11,6 +11,11 @@
   align-items: stretch;
 }
 
+.contactContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .close {
   width: 30px;
   height: 30px;
@@ -31,6 +36,7 @@
 .datos-left {
   width: 48%;
   padding-top: 30px;
+  padding-left: 5%;
 }
 
 .datos-right {
@@ -38,6 +44,7 @@
   width: 48%;
   height: auto;
   position: relative;
+  padding-right: 5%;
 }
 
 .datos-right:before {
@@ -526,7 +533,9 @@
 
   .close {
     /*top: 80px;*/
-    right: 0px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
   }
 
   .top-content {
@@ -557,15 +566,16 @@
     width: 100%;
     margin: 0px auto 110px auto;
     padding: 0px;
+    padding: 50px 0px;
   }
 
-  .datos-right:before {
+  /*.datos-right:before {
     background-image: none;
   }
   .datos-right:after {
     backdrop-filter: none;
     background-color: transparent;
-  }
+  }*/
 
   .informacion-datos {
     width: 90%;

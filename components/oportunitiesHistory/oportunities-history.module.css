@@ -149,19 +149,19 @@ i.fa-solid.fa-angle-left {
 }
 
 .right {
-  /*
-  width: 100%;
-  height: 100%;
+  width: 35%;
+  height: calc(100% - 147px);
   display: flex;
   padding-top: 50px;
-  align-items: stretch;
-  flex-wrap: wrap;*/
-  width: 30%;
-  display: flex;
-  padding-top: 50px;
-  align-items: stretch;
+  padding-right: 2%;
   flex-wrap: wrap;
   position: fixed;
+  /* overflow-y: hidden; */
+  /* overflow: auto; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: stretch;
+  align-content: flex-start;
 }
 
 .line {
@@ -606,6 +606,15 @@ li.pendiente-list {
   width: 30% !important;
   padding: 15px 10px;
 }
+
+@media only screen and (max-width: 1380px) {
+  .right {
+    width: 45%;
+    height: calc(100% - 313px);
+  }
+  
+}
+
 
 @media only screen and (max-width: 1024px) {
   .card-container {

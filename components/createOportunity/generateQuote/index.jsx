@@ -366,7 +366,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
           <span className={styles.labelFocus}>{formatMoney(unitBalance)}</span>
         </div>
 
-        <div className={styles.squareInputContainer}>
+        <div className={`${styles['squareInputContainer']} ${styles['label-hide']}`}>
           <SquareInput onChangeFunct={handleSentLink} />
           <span className={styles.labelQuotesSelectNoLine}>
             Enviar link de pago {`${sentLink}`}{' '}

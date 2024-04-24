@@ -80,7 +80,7 @@ const OportunitiesHistory = ({
     const events = await response.json();
     console.log('Eventos format:', events);
 
-    const filteredEvents = events
+    const filteredEvents = (events && events.length > 0)
       ? events.filter((event) => Object.keys(event).length >= 3).reverse()
       : [];
     console.log('Eventos filtrados:', filteredEvents);
