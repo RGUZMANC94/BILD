@@ -12,6 +12,7 @@ const CreateContact = () => {
   const [selectedPage, setSelectedItem] = useState('contact');
   const [typeClient, setTypeClient] = useState('');
   const [businessName, setBusinessName] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [datos, setDatos] = useState({
     firstNames: '',
@@ -69,7 +70,28 @@ const CreateContact = () => {
       console.log('Tipo creado: ', contactCreated);
 
       if (!contactCreated.ok) {
-        throw new Error('Failed to create Contact');
+        const errorMessage = await contactCreated.text();
+        console.log('Error FInal: ', errorMessage);
+        try {
+          const errorObj = JSON.parse(errorMessage);
+          if (errorObj && errorObj.error) {
+            const errorDescription = errorObj.error.match(
+              /"Description":"([^"]*)"/
+            )[1];
+            const decodedErrorDescription = errorDescription.replace(
+              /\\u[\dA-F]{4}/gi,
+              (match) =>
+                String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16))
+            );
+            console.log('Error Description:', decodedErrorDescription);
+            setErrorMessage(decodedErrorDescription);
+          } else {
+            console.log('Error object or error property not found');
+          }
+        } catch (error) {
+          console.log('Error parsing JSON:', error);
+        }
+        throw new Error(errorMessage);
       }
 
       const responseData = await contactCreated.json();
@@ -449,9 +471,13 @@ const CreateContact = () => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
-                está bien. Por favor, revisa los datos ingresados e inténtalo de
-                nuevo.
+                <span className={styles['pop-text-bold']}>¡Oops!</span>
+                {`Algo no
+                está bien.${
+                  errorMessage
+                    ? `\n${errorMessage}`
+                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+                }.`}
               </span>
             </div>
           </div>
