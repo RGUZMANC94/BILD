@@ -612,9 +612,7 @@ li.pendiente-list {
     width: 45%;
     height: calc(100% - 313px);
   }
-  
 }
-
 
 @media only screen and (max-width: 1024px) {
   .card-container {

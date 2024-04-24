@@ -13,7 +13,6 @@ const CreateContact = () => {
   const [typeClient, setTypeClient] = useState('');
   const [businessName, setBusinessName] = useState('');
 
-
   const [datos, setDatos] = useState({
     firstNames: '',
     lastNames: '',
@@ -205,7 +204,8 @@ const CreateContact = () => {
   return (
     <>
       <div className={styles['wrap-datos']}>
-        <div className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
+        <div
+          className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
           <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
           <div className={styles['top-content']}>
             <div className={styles['top-content-buttonsBar']}>
@@ -348,32 +348,42 @@ const CreateContact = () => {
               <div className={styles.datos}>
                 <button
                   type="button"
-                  onClick={()=>changeTypeClient('casado')}
-                  className={`${styles.campo} ${typeClient === 'casado' && styles.active}`}>
+                  onClick={() => changeTypeClient('casado')}
+                  className={`${styles.campo} ${
+                    typeClient === 'casado' && styles.active
+                  }`}>
                   Casado
                 </button>
                 <button
                   type="button"
-                  onClick={()=>changeTypeClient('soltero')}
-                  className={`${styles.campo} ${typeClient === 'soltero' && styles.active}`}>
+                  onClick={() => changeTypeClient('soltero')}
+                  className={`${styles.campo} ${
+                    typeClient === 'soltero' && styles.active
+                  }`}>
                   Soltero
                 </button>
                 <button
                   type="button"
-                  onClick={()=>changeTypeClient('conHijos')}
-                  className={`${styles.campo} ${typeClient === 'conHijos' && styles.active}`}>
+                  onClick={() => changeTypeClient('conHijos')}
+                  className={`${styles.campo} ${
+                    typeClient === 'conHijos' && styles.active
+                  }`}>
                   Con Hijos
                 </button>
                 <button
                   type="button"
-                  onClick={()=>changeTypeClient('sinHijos')}
-                  className={`${styles.campo} ${typeClient === 'sinHijos' && styles.active}`}>
+                  onClick={() => changeTypeClient('sinHijos')}
+                  className={`${styles.campo} ${
+                    typeClient === 'sinHijos' && styles.active
+                  }`}>
                   Sin Hijos
                 </button>
                 <button
                   type="button"
-                  onClick={()=>changeTypeClient('separado')}
-                  className={`${styles.campo} ${typeClient === 'separado' && styles.active}`}>
+                  onClick={() => changeTypeClient('separado')}
+                  className={`${styles.campo} ${
+                    typeClient === 'separado' && styles.active
+                  }`}>
                   Separado
                 </button>
               </div>
@@ -385,13 +395,17 @@ const CreateContact = () => {
                   <button
                     type="button"
                     onClick={() => changebusinessName('inversionista')}
-                    className={`${styles.campo} ${businessName === 'inversionista' && styles.active}`}>
+                    className={`${styles.campo} ${
+                      businessName === 'inversionista' && styles.active
+                    }`}>
                     Inversionista
                   </button>
                   <button
                     type="button"
                     onClick={() => changebusinessName('familiar')}
-                    className={`${styles.campo} ${businessName === 'familiar' && styles.active}`}>
+                    className={`${styles.campo} ${
+                      businessName === 'familiar' && styles.active
+                    }`}>
                     Familiar
                   </button>
                 </div>

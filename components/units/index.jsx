@@ -9,7 +9,7 @@ const Units = ({
   setShowPopUpUnit,
   units,
   setUnitFlag,
-  xlsxTemplate
+  xlsxTemplate,
 }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
   const { user_rol } = useSelector((state) => state.userState);
@@ -133,7 +133,9 @@ const Units = ({
             />
           )}
           <label className={styles.file}>
-            <a className={styles.descargar} href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
+            <a
+              className={styles.descargar}
+              href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
               <img src="/images/download.svg" />
               Descargar Excel Base
             </a>
@@ -206,8 +208,6 @@ const Units = ({
             clickFunction={() => {sendXlsx();}}
           />
       */}
-        
-
 
               <label className={styles.subir}>
                 SUBIR EXCEL de INVENTARIO

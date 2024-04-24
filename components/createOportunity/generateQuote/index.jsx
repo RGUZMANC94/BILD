@@ -6,7 +6,6 @@ import Button from '../../button';
 import SquareInput from '../../squareInput';
 import CurrencyInput from 'react-currency-input-field';
 
-
 const GenerateQuote = ({ setGenerateQuote }) => {
   const { id } = useSelector((state) => state.userState);
   const [values, setValues] = useState([30]);
@@ -291,8 +290,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
 
           <CurrencyInput
             className={styles.inputQuote}
-            prefix="$ " 
-            decimalSeparator="," 
+            prefix="$ "
+            decimalSeparator=","
             groupSeparator="."
             id="separation-input"
             name="separation"
@@ -308,8 +307,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
 
           <CurrencyInput
             className={styles.inputQuote}
-            prefix="$ " 
-            decimalSeparator="," 
+            prefix="$ "
+            decimalSeparator=","
             groupSeparator="."
             id="downPayment-input"
             name="downPayment"
@@ -366,7 +365,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
           <span className={styles.labelFocus}>{formatMoney(unitBalance)}</span>
         </div>
 
-        <div className={`${styles['squareInputContainer']} ${styles['label-hide']}`}>
+        <div
+          className={`${styles.squareInputContainer} ${styles['label-hide']}`}>
           <SquareInput onChangeFunct={handleSentLink} />
           <span className={styles.labelQuotesSelectNoLine}>
             Enviar link de pago {`${sentLink}`}{' '}

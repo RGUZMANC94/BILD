@@ -17,7 +17,9 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log('Error Back: ', errorText);
-      throw new Error(`Bad response from server: Create Proyect - ${errorText}`);
+      throw new Error(
+        `Bad response from server: Create Proyect - ${errorText}`
+      );
     }
     const projectCreated = await response.json();
 

@@ -230,7 +230,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                 </div>
               </div>
               <div className={`${styles.typeFeatures}`}>
-              <label
+                <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                   <span className={styles.labelInputTitle}>Habitaciones</span>
                   <input
@@ -268,7 +268,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag }) => {
                     required
                   />
                 </label>
-                
+
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                   <span className={styles.labelInputTitle}>AREA CONSTR.</span>

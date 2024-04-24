@@ -41,7 +41,6 @@ const TypesSide = ({
     getXlsxTemplate();
   }, []);
 
-
   useEffect(() => {
     if (!flagType) {
       setFlagType(true);

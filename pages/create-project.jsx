@@ -74,8 +74,7 @@ const CreateProject = () => {
       console.log('Template:', xlsxTemplate[0].url);
       console.log('cities:', cities);
     }
-  }, [cities,xlsxTemplate]);
-
+  }, [cities, xlsxTemplate]);
 
   const changeXlsx = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -254,8 +253,14 @@ const CreateProject = () => {
         try {
           const errorObj = JSON.parse(errorMessage);
           if (errorObj && errorObj.error) {
-            const errorDescription = errorObj.error.match(/"Description":"([^"]*)"/)[1];
-            const decodedErrorDescription = errorDescription.replace(/\\u[\dA-F]{4}/gi, (match) => String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16)));
+            const errorDescription = errorObj.error.match(
+              /"Description":"([^"]*)"/
+            )[1];
+            const decodedErrorDescription = errorDescription.replace(
+              /\\u[\dA-F]{4}/gi,
+              (match) =>
+                String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16))
+            );
             console.log('Error Description:', decodedErrorDescription);
             setErrorMessage(decodedErrorDescription);
           } else {
@@ -266,7 +271,6 @@ const CreateProject = () => {
         }
         throw new Error(errorMessage);
       }
-  
 
       const responseData = await projectCreated.json();
 
@@ -315,7 +319,7 @@ const CreateProject = () => {
           .querySelector(`.${styles.popError}`)
           .classList.remove(styles.activePopUp);
       }, 2000);
-      console.error('Error al crear el proyecto:', error.message );
+      console.error('Error al crear el proyecto:', error.message);
     }
   };
 
@@ -445,12 +449,16 @@ const CreateProject = () => {
                     onChange={handleChange}
                     className={styles.subject_input}
                     required>
-                      <option disabled defaultValue={0} hidden selected></option>
-                    {(cities && cities.length > 0) && cities.filter(city => city.neighborhoodId).map((city, i) => (
-                      <option key={i} value={city.neighborhoodId}>
-                        {city.nameState}
-                      </option>
-                    ))}
+                    <option disabled defaultValue={0} hidden selected></option>
+                    {cities &&
+                      cities.length > 0 &&
+                      cities
+                        .filter((city) => city.neighborhoodId)
+                        .map((city, i) => (
+                          <option key={i} value={city.neighborhoodId}>
+                            {city.nameState}
+                          </option>
+                        ))}
                   </select>
                 </div>
 
@@ -514,7 +522,9 @@ const CreateProject = () => {
           </div>
           <div className={styles['proyect-right']}>
             <div className={styles.file}>
-              <a className={styles.descargar} href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
+              <a
+                className={styles.descargar}
+                href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
                 <img src="/images/download.svg" />
                 Descargar Excel Base
               </a>
@@ -652,20 +662,17 @@ const CreateProject = () => {
 
             <div className={styles.origen}>
               {
-              // <p className={styles['text-origen']}>Asignar proyecto:</p> 
+                // <p className={styles['text-origen']}>Asignar proyecto:</p>
               }
               <div className={styles['elegir-origen']}>
                 <div className={styles.dropDownAssignProject}>
-                  {
-                  /*
+                  {/*
                      <input
                      type="text"
                      className={styles.inputAssignProject}
                      onInput={searchContact}
                    />
-                   */
-                  }
-                 
+                   */}
 
                   <div className={styles.contactsToAssign}>
                     <div className={`flex j-s a-c ${styles.optionContact}`}>
@@ -737,11 +744,13 @@ const CreateProject = () => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{`Algo no
-                está bien.${errorMessage ? 
-                `\n${errorMessage}`
-                : 
-                '\nPor favor, revisa los datos ingresados e inténtalo denuevo'}.`}
+                <span className={styles['pop-text-bold']}>¡Oops!</span>
+                {`Algo no
+                está bien.${
+                  errorMessage
+                    ? `\n${errorMessage}`
+                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+                }.`}
               </span>
             </div>
           </div>
