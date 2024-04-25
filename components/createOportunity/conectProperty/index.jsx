@@ -25,7 +25,7 @@ const ConectProperty = ({
         <button
           className={styles['contacto-existente']}
           onClick={() => setShowPopUpAddContact(true)}>
-          Contacto Existente
+          Elegir contacto
         </button>
       </div>
       <div className={styles.recientes}>

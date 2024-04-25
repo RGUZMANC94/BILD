@@ -36,6 +36,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
     paymentStartDate: null,
     payments: [],
   });
+  const [errorMessage, setErrorMessage] = useState(null);
 
   console.log('fees', fees);
   console.log('monthlyQuote:', monthlyQuote);
@@ -97,9 +98,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
     }
   };
 
-  const handleFeeChange = (e, index) => {
+  const handleFeeChange = (value, index) => {
     const newFeesArray = [...feesArray];
-    newFeesArray[index] = e.target.value;
+    newFeesArray[index] = value;
     setFeesArray(newFeesArray);
   };
 
@@ -109,12 +110,17 @@ const GenerateQuote = ({ setGenerateQuote }) => {
       inputs.push(
         <div key={i} className={styles['cotizacion-form']}>
           <span className={styles.labelSide}>{`Cuota ${i + 1}`}</span>
-          <input
+          <CurrencyInput
             className={styles.inputQuote}
-            type="number"
-            value={feesArray[i] || ''}
-            onChange={(e) => handleFeeChange(e, i)}
+            prefix="$ "
+            decimalSeparator=","
+            groupSeparator="."
+            id={`Cuota ${i + 1}`}
+            name={`downPayment ${i + 1}`}
             placeholder={`Cuota ${i + 1}`}
+            // defaultValue={1000000}
+            decimalsLimit={2}
+            onValueChange={(value) => handleFeeChange(value, i)}
             required
           />
         </div>
@@ -175,36 +181,58 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         }),
       });
 
-      if (quoteCreated.ok) {
-        const responseData = await quoteCreated.json();
-        console.log('respuesta de la cotizacion', responseData);
+      if (!quoteCreated.ok) {
+        const errorMessage = await quoteCreated.text();
+        console.log('Error FInal: ', errorMessage);
+        try {
+          const errorObj = JSON.parse(errorMessage);
+          if (errorObj && errorObj.error) {
+            const errorDescription = errorObj.error.match(
+              /"Description":"([^"]*)"/
+            )[1];
+            const decodedErrorDescription = errorDescription.replace(
+              /\\u[\dA-F]{4}/gi,
+              (match) =>
+                String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16))
+            );
+            console.log('Error Description:', decodedErrorDescription);
+            setErrorMessage(decodedErrorDescription);
+          } else {
+            console.log('Error object or error property not found');
+          }
+        } catch (error) {
+          console.log('Error parsing JSON:', error);
+        }
+        throw new Error(errorMessage);
+      }
 
+      const responseData = await quoteCreated.json();
+      console.log('respuesta de la cotizacion', responseData);
+
+      document
+        .querySelector(`.${styles.popSuccessCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
         document
           .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.add(styles.activePopUp);
+          .classList.remove(styles.activePopUp);
+        window.location.reload();
+      }, 2000);
+    } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
 
-        setTimeout(() => {
-          document
-            .querySelector(`.${styles.popSuccessCreated}`)
-            .classList.remove(styles.activePopUp);
-          window.location.reload();
-        }, 2000);
-      } else {
+      setTimeout(() => {
         document
           .querySelector(`.${styles.popError}`)
-          .classList.add(styles.activePopUp);
-
-        setTimeout(() => {
-          document
-            .querySelector(`.${styles.popError}`)
-            .classList.remove(styles.activePopUp);
-        }, 2000);
-        console.error(
-          'Error en la respuesta del servidor (Creacion de oportunidad)'
-        );
-      }
-    } catch (error) {
-      console.error('Error al crear la cotizacion:', error);
+          .classList.remove(styles.activePopUp);
+      }, 5000);
+      console.error(
+        'Error en la respuesta del servidor (Creacion de oportunidad)'
+      );
+      console.error('Error al crear la cotizacion:', error.errorMessage);
     }
   };
 
@@ -423,16 +451,20 @@ const GenerateQuote = ({ setGenerateQuote }) => {
           </div>
         </div>
       </div>
-      <div className={`${styles.popError} `}>
+      <div className={`${styles.popError}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup3}>
           <div className={styles.content}>
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
-                está bien. Por favor, revisa los datos ingresados e inténtalo de
-                nuevo.
+                <span className={styles['pop-text-bold']}>¡Oops!</span>
+                {`Algo no
+                está bien.${
+                  errorMessage
+                    ? `\n${errorMessage}`
+                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+                }.`}
               </span>
             </div>
           </div>

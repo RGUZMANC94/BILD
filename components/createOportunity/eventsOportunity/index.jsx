@@ -32,9 +32,10 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
     const events = await response.json();
     console.log('Eventos format:', events);
 
-    const filteredEvents = events
-      ? events.filter((event) => Object.keys(event).length >= 3).reverse()
-      : [];
+    const filteredEvents =
+      events && events.length > 0
+        ? events.filter((event) => Object.keys(event).length >= 3).reverse()
+        : [];
 
     if (filteredEvents.length === 1) {
       setFirstEvent(filteredEvents[0]);

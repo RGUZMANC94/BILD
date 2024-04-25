@@ -318,7 +318,7 @@ const CreateProject = () => {
         document
           .querySelector(`.${styles.popError}`)
           .classList.remove(styles.activePopUp);
-      }, 2000);
+      }, 5000);
       console.error('Error al crear el proyecto:', error.message);
     }
   };

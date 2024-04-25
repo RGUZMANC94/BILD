@@ -39,7 +39,9 @@ const CreateStep = ({
             <div className={styles.tipos}>
               <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
             </div>
-            <span className={styles.valor}>{`$${unit.propertyPrice}`}</span>
+            <span className={styles.valor}>{`$ ${parseInt(
+              unit.propertyPrice
+            ).toLocaleString('es-ES')}`}</span>
             <div className={styles.detalles}>
               <img src="/images/cards/bed.svg" />
               <span>{`${unit.bedrooms} - `}</span>
