@@ -296,6 +296,8 @@ const CreateProject = () => {
           if (response.ok) {
             console.log('Imagen subida correctamente');
           } else {
+            console.log(response);
+
             console.error('Error al subir la imagen');
           }
         } catch (error) {
