@@ -2,15 +2,28 @@ import React from 'react';
 import styles from './SideInfoProfile.module.css';
 import capitalizeFLetter from '../../utils/capitalizeFirstLetter';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { changeContactEdit } from '../../redux/editObjectSlice';
 
 const SideInfoProfile = ({ contactInfo, typeViewer }) => {
+  const dispatch = useDispatch();
+  const { contactListSelected } = useSelector(
+    (state) => state.contactOpportunityState
+  );
+
   console.log('Informacion del contactIndo: ', contactInfo);
   return (
     <>
       {contactInfo && (
         <div className={styles['editar-perfil']}>
           {typeViewer === 'buyer' && (
-            <div className={styles.editar}>Editar</div>
+            <Link
+            href={{
+              pathname: '/edit-contact',
+              query: { contact : contactInfo.idCli},
+            }}
+            className={`${styles.editar}`}>Editar</Link>
           )}
 
           <div className={styles['perfil-img']}>

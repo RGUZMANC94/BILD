@@ -4,6 +4,7 @@ const initialState = {
   projectEdit: {},
   unitEdit: {},
   typeEdit: {},
+  contactEdit: {},
 };
 
 export const editObjectSlice = createSlice({
@@ -19,6 +20,9 @@ export const editObjectSlice = createSlice({
     changeTypeEdit: (state, action) => {
       state.typeEdit = action.payload;
     },
+    changeContactEdit: (state, action) => {
+      state.typeEdit = action.payload;
+    }
   },
 });
 

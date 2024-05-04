@@ -166,7 +166,7 @@ const Home = ({ id, user_rol }) => {
                           {user_rol === 'ADMIN' && (
                             <Link
                               href={{
-                                pathname: '/create-project',
+                                pathname: '/edit-project',
                                 query: { project: project.projectId },
                               }}
                               className={`bg-ct ${styles.editProject}`}

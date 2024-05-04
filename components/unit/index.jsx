@@ -3,7 +3,8 @@ import styles from './unit.module.css';
 import { useDispatch } from 'react-redux';
 import { openPopUp } from '../../redux/popUpOportunity';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
-const Unit = ({ unit, setCreateOportunity }) => {
+import { changeUnitEdit } from '../../redux/editObjectSlice';
+const Unit = ({ unit, setCreateOportunity, setShowEditUnit }) => {
   const [isHidden, setIsHidden] = useState(true);
   const dispatch = useDispatch();
 
@@ -16,16 +17,9 @@ const Unit = ({ unit, setCreateOportunity }) => {
     <div className="info-tabla">
       <div
         className={`edit-unit ${styles.editUnit} bg-ct`}
-        onClick={(e) => {
-          const parentNode = e.target.parentNode;
-          if (isHidden) {
-            parentNode.classList.add('editValues');
-            setIsHidden(false);
-            return;
-          }
-
-          parentNode.classList.remove('editValues');
-          setIsHidden(true);
+        onClick={() => {
+          dispatch(changeUnitEdit(unit));
+          setShowEditUnit(true);
         }}></div>
       <div className="detalle-tabla">
         <input

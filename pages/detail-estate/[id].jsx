@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
 import Link from 'next/link';
 import { closePopUp } from '../../redux/popUpOportunity';
+import EditTypePop from '../../components/editTypePop';
+import EditUnitPop from '../../components/editUnitPop';
 
 const DetailState = ({ unitsInit, typesInit }) => {
   const { id } = useSelector((state) => state.userState);
@@ -28,6 +30,8 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [types, setTypes] = useState(typesInit);
   const [units, setUnits] = useState(unitsInit);
   const [firstLoad, setFirstLoad] = useState(true);
+  const [showEditType, setShowEditType] = useState(false);
+  const [showEditUnit, setShowEditUnit] = useState(false);
 
   const getTypes = async () => {
     const response = await fetch('/api/types', {
@@ -205,6 +209,8 @@ const DetailState = ({ unitsInit, typesInit }) => {
               setShowPopUpUnit={setShowPopUpUnit}
               setCreateOportunity={setCreateOportunity}
               setUnitFlag={setUnitFlag}
+              setShowEditType={setShowEditType}
+              setShowEditUnit={setShowEditUnit}
             />
 
             <InfoProject
@@ -232,6 +238,19 @@ const DetailState = ({ unitsInit, typesInit }) => {
         showPopUpUnit={showPopUpUnit}
         types={types}
         setUnitFlag={setUnitFlag}
+      />
+
+      <EditTypePop
+        showEditType={showEditType}
+        setShowEditType={setShowEditType}
+        setTypeFlag={setTypeFlag}
+      />
+
+      <EditUnitPop
+        showEditUnit={showEditUnit}
+        setShowEditUnit={setShowEditUnit}
+        setUnitFlag={setUnitFlag}
+        types={types}
       />
 
       {openPopUpOportunity && (

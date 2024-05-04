@@ -10,6 +10,7 @@ const Units = ({
   units,
   setUnitFlag,
   xlsxTemplate,
+  setShowEditUnit
 }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
   const { user_rol } = useSelector((state) => state.userState);
@@ -154,6 +155,7 @@ const Units = ({
               key={i}
               unit={unit}
               setCreateOportunity={setCreateOportunity}
+              setShowEditUnit={setShowEditUnit}
             />
           ))}
         {units.length === 0 && (

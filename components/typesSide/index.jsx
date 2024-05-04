@@ -14,6 +14,8 @@ const TypesSide = ({
   units,
   setCreateOportunity,
   setUnitFlag,
+  setShowEditType,
+  setShowEditUnit
 }) => {
   const dispatch = useDispatch();
   const [selectedType, setSelectedType] = useState([]);
@@ -61,6 +63,7 @@ const TypesSide = ({
         setShowPopUpUnit={setShowPopUpUnit}
         setCreateOportunity={setCreateOportunity}
         units={units}
+        setShowEditType={setShowEditType}
       />
       <div className="outerUnits">
         {typeSelected !== -1 && (
@@ -70,6 +73,7 @@ const TypesSide = ({
             units={selectedType}
             setUnitFlag={setUnitFlag}
             xlsxTemplate={xlsxTemplate}
+            setShowEditUnit={setShowEditUnit}
           />
         )}
       </div>

@@ -2,6 +2,7 @@
 import { CSS } from '@dnd-kit/utilities';
 import { useDispatch } from 'react-redux';
 import { changeTypeSelected } from '../../redux/typeSelectedSlice';
+import { changeTypeEdit } from '../../redux/editObjectSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
 import Button from '../button';
 
@@ -10,6 +11,7 @@ const TypeCard = ({
   type,
   setCreateOportunity,
   setShowPopUpUnit,
+  setShowEditType,
   index,
 }) => {
   const dispatch = useDispatch();
@@ -67,12 +69,12 @@ const TypeCard = ({
           </div>
         </div>
         <div className="tipo-icons">
-          {/* <div
-            className="llave"
+          <div
+            className="edit-type"
             onClick={() => {
-              dispatch(openPopUp(true));
-            }}></div>*/}
-          <div className="llave"></div>
+              dispatch(changeTypeEdit(type));
+              setShowEditType(true);
+            }}></div>
           <div className="tipo-arrow"></div>
         </div>
 
