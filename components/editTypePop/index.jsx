@@ -1,11 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef , useEffect } from 'react';
 import Button from '../button';
 import styles from './Edit-type-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { event } from 'jquery';
 
-const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
+const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -13,10 +13,13 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const { id } = useSelector((state) => state.userState);
   const [errorMessage, setErrorMessage] = useState(null);
+  const { typeEdit } = useSelector((state) => state.editObjectState);
+  const [infoType, setInfoType] = useState({});
+  
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
-    typeDescription: '',
+    typeDescription: types.filter((type) => type.idType === typeEdit.idType)[0].type,
     size: '',
     bed: '',
     bath: '',
@@ -25,6 +28,38 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
     storageArea: '',
     priceStorage: '0',
   });
+
+  const getType = async () => {
+    const response = await fetch('/api/getTypeInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        typeId: typeEdit.idType,
+      }),
+    });
+    const responseType = await response.json();
+
+    setInfoType(responseType[0]);
+    console.log('respuesta type: ', responseType[0]);
+  };
+
+  useEffect(() => {
+    getType();
+  }, [typeEdit]);
+
+  useEffect(() => {
+    getType();
+  }, []);
+
+  useEffect(() => {
+    if (infoType) {
+      setDatos({ ...datos, ...infoType });
+      console.log('Datos: ', datos);
+    }
+  }, [infoType]);
 
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
@@ -85,7 +120,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
     );
 
     try {
-      const typeCreated = await fetch('/api/createType', {
+      const typeCreated = await fetch('/api/editType', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -96,7 +131,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
         }),
       });
 
-      console.log('Tipo creado: ', typeCreated);
+      console.log('Tipo Editado: ', typeCreated);
 
       if (!typeCreated.ok) {
         const errorMessage = await typeCreated.text();
@@ -127,7 +162,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
 
       console.log('Proyecto creado:', responseData);
 
-      if (typeCreated.ok) {
+      if (typeCreated.ok && selectedFile) {
         const formData = new FormData();
         formData.append('type', 'TIPOM');
         formData.append('subType', 'IMGPR');
@@ -179,7 +214,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag }) => {
           .querySelector(`.${styles.popError}`)
           .classList.remove(styles.activePopUp);
       }, 2000);
-      console.error('Error al crear el proyecto:', error);
+      console.error('Error al Editar el proyecto:', error);
     }
   };
 

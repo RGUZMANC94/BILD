@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef , useEffect } from 'react';
 import Button from '../button';
 import styles from './Edit-unit-pop.module.css';
 import { useSelector } from 'react-redux';
@@ -20,6 +20,7 @@ const EditUnitPop = ({
   const { typeSelectedName } = useSelector((state) => state.typeState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [errorMessage, setErrorMessage] = useState(null);
+  const { unitEdit } = useSelector((state) => state.editObjectState);
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -45,6 +46,13 @@ const EditUnitPop = ({
     propertyPrice: '',
     piso: '1',
   });
+
+  useEffect(() => {
+    if (unitEdit) {
+      setDatos({ ...datos, ...unitEdit });
+      console.log('Datos: ', datos);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
@@ -125,7 +133,7 @@ const EditUnitPop = ({
     );
 
     try {
-      const typeCreated = await fetch('/api/createUnit', {
+      const typeCreated = await fetch('/api/editUnit', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',

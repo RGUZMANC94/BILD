@@ -244,6 +244,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         showEditType={showEditType}
         setShowEditType={setShowEditType}
         setTypeFlag={setTypeFlag}
+        types={types}
       />
 
       <EditUnitPop
