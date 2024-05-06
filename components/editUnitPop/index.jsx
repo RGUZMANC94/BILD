@@ -52,7 +52,7 @@ const EditUnitPop = ({
       setDatos({ ...datos, ...unitEdit });
       console.log('Datos: ', datos);
     }
-  }, []);
+  }, [unitEdit]);
 
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });

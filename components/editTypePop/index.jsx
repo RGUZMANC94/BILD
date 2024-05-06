@@ -19,7 +19,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
-    typeDescription: types.filter((type) => type.idType === typeEdit.idType)[0].type,
+    typeDescription: '',
     size: '',
     bed: '',
     bath: '',
@@ -53,6 +53,12 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
   useEffect(() => {
     getType();
   }, []);
+
+  useEffect(() => {
+    if (showEditType && types.find(type => type.idType === typeEdit.idType)) {
+      setDatos({ ...datos, typeDescription: types.filter((type) => type.idType === typeEdit.idType)[0].type });
+    }
+  }, [showEditType]);
 
   useEffect(() => {
     if (infoType) {

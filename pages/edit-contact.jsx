@@ -20,7 +20,7 @@ const EditContact = () => {
     firstNames: '',
     lastNames: '',
     email: '',
-    id: '',
+    documentNumber: '',
     phoneNumber: '',
     gender: 'M',
     idType: 'CE',
@@ -207,7 +207,7 @@ const EditContact = () => {
       <div className={styles['wrap-datos']}>
         <div
           className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
-          <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
+          <Link href={`/buyer/${contactListSelected.idCli}`} className={`${styles.close} bg-ct`}></Link>
           <div className={styles['top-content']}>
             <div className={styles['top-content-buttonsBar']}>
               <div className="container flex j-s a-c">
@@ -247,7 +247,7 @@ const EditContact = () => {
               ]
             }`}>
             <div className={styles['top-name']}>
-              <span>Datos de Contacto</span>{' '}
+              <span>Edicion - Datos de Contacto</span>{' '}
             </div>
             <form onSubmit={sendFormInfo} className={styles.msform}>
               <fieldset>
@@ -269,7 +269,7 @@ const EditContact = () => {
                   type="text"
                   name="id"
                   placeholder="Número de Documento"
-                  value={datos.id}
+                  value={datos.documentNumber}
                   onChange={handleChange}
                 />
                 <input

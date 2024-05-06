@@ -18,7 +18,7 @@ const CreateContact = () => {
     firstNames: '',
     lastNames: '',
     email: '',
-    id: '',
+    documentNumber: '',
     phoneNumber: '',
     gender: 'M',
     idType: 'CE',
@@ -288,9 +288,9 @@ const CreateContact = () => {
                 />
                 <input
                   type="text"
-                  name="id"
+                  name="documentNumber"
                   placeholder="Número de Documento"
-                  value={datos.id}
+                  value={datos.documentNumber}
                   onChange={handleChange}
                 />
                 <input
