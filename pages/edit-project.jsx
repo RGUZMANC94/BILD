@@ -8,8 +8,6 @@ import Link from 'next/link';
 import ImageDummy from '../public/images/tipo-1.png';
 
 const EditProject = () => {
-  const d = new Date();
-  console.log('Fecha: ', d);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -70,9 +68,15 @@ const EditProject = () => {
     getProject();
   }, []);
 
+
+  useEffect(() => {
+    console.log('Datos entrega: ', datos);
+  }, [datos]);
+
   useEffect(() => {
     if (infoProject) {
       setDatos({ ...datos, ...infoProject });
+      setDateValue(infoProject.startDate);
       console.log('Datos: ', datos);
     }
 
@@ -353,8 +357,9 @@ const EditProject = () => {
   const [dateValue, setDateValue] = useState('');
 
   const handleDateChange = (event) => {
+    console.log('Fecha entrada:', event.target.value);  
     setDateValue(event.target.value);
-    console.log('Fecha entrada:', dateValue);  
+    // console.log('Fecha entrada:', dateValue);  
   };
   const formatDate = (inputDate) => {
     const date = new Date(inputDate);
