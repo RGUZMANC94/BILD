@@ -267,7 +267,7 @@ const EditContact = () => {
                 />
                 <input
                   type="text"
-                  name="id"
+                  name="documentNumber"
                   placeholder="Número de Documento"
                   value={datos.documentNumber}
                   onChange={handleChange}

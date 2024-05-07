@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  console.log('quote:                     ', req.body.datos);
+  console.log('Edit Unit:                     ', req.body.updatedDatos);
 
   try {
     const response = await fetch(
@@ -9,13 +9,13 @@ export default async function handler(req, res) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(req.body.datos),
+        body: JSON.stringify(req.body.updatedDatos),
       }
     );
     if (!response.ok) {
       const errorText = await response.text();
       console.log('Error: ', errorText);
-      throw new Error(`Bad response from server: Edit Quote - ${errorText}`);
+      throw new Error(`Bad response from server: Edit Unit - ${errorText}`);
     }
     const quoteEdited = await response.json();
 

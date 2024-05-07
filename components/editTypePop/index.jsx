@@ -10,7 +10,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
   const mainImage = useRef(null);
   const firstImage = useRef(null);
   const secondImage = useRef(null);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFileEdit, setSelectedFileEdit] = useState(null);
   const { id } = useSelector((state) => state.userState);
   const [errorMessage, setErrorMessage] = useState(null);
   const { typeEdit } = useSelector((state) => state.editObjectState);
@@ -72,7 +72,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
   };
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    setSelectedFileEdit(event.target.files[0]);
   };
 
   function handleBloth(e) {
@@ -85,7 +85,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        if (event.target.id === 'mainImgProject') {
+        if (event.target.id === 'mainImgProjectEdit') {
           mainImage.current.style.backgroundImage = `url(${e.target.result})`;
           mainImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
@@ -112,7 +112,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
 
   const cancelInfo = () => {
     setShowEditType(false);
-    cleanForm();
+    // cleanForm();
   };
 
   const sendFormInfo = async (e) => {
@@ -168,12 +168,12 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
 
       console.log('Proyecto creado:', responseData);
 
-      if (typeCreated.ok && selectedFile) {
+      if (typeCreated.ok && selectedFileEdit) {
         const formData = new FormData();
         formData.append('type', 'TIPOM');
         formData.append('subType', 'IMGPR');
-        formData.append('idObject', responseData.idType);
-        formData.append('file', selectedFile);
+        formData.append('idObject', typeEdit.idType);
+        formData.append('file', selectedFileEdit);
 
         try {
           const response = await fetch(
@@ -272,17 +272,17 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
             {/* <span className={styles.label}>IMAGEN DEL PROYECTO:</span> */}
             
             <div className={`${styles.inputsGroup} flex a-st`}>
-              {/*
+              
               <div className={styles.image}>
                 <div className={styles['main-image']}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
                     onClick={deleteImage}></div>
                   <label
-                    htmlFor="mainImgProject"
+                    htmlFor="mainImgProjectEdit"
                     className={styles.labelInputImage}>
                     <input
-                      id="mainImgProject"
+                      id="mainImgProjectEdit"
                       type="file"
                       hidden
                       onChange={handleBloth}
@@ -295,8 +295,6 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
                   </label>
                 </div>                
               </div>
-              */
-            }
               <div className={`${styles.typeFeatures}`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
