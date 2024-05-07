@@ -68,7 +68,6 @@ const EditProject = () => {
     getProject();
   }, []);
 
-
   useEffect(() => {
     console.log('Datos entrega: ', datos);
   }, [datos]);
@@ -79,7 +78,6 @@ const EditProject = () => {
       setDateValue(infoProject.startDate);
       console.log('Datos: ', datos);
     }
-
   }, [infoProject]);
 
   const getCities = async () => {
@@ -357,9 +355,9 @@ const EditProject = () => {
   const [dateValue, setDateValue] = useState('');
 
   const handleDateChange = (event) => {
-    console.log('Fecha entrada:', event.target.value);  
+    console.log('Fecha entrada:', event.target.value);
     setDateValue(event.target.value);
-    // console.log('Fecha entrada:', dateValue);  
+    // console.log('Fecha entrada:', dateValue);
   };
   const formatDate = (inputDate) => {
     const date = new Date(inputDate);
@@ -541,7 +539,6 @@ const EditProject = () => {
             </div>
           </div>
           <div className={styles['proyect-right']}>
-
             <div className={styles.image}>
               <span className={styles.label}>IMAGEN DEL PROYECTO:</span>
               <div className={styles['main-image']}>

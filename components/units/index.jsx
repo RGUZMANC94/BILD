@@ -10,7 +10,7 @@ const Units = ({
   units,
   setUnitFlag,
   xlsxTemplate,
-  setShowEditUnit
+  setShowEditUnit,
 }) => {
   const [showFormUnits, setShowFormUnits] = useState(false);
   const { user_rol } = useSelector((state) => state.userState);

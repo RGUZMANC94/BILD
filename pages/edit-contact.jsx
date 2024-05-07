@@ -9,7 +9,9 @@ const EditContact = () => {
   const router = useRouter();
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
-  const { contactListSelected } = useSelector((state) => state.contactOpportunityState);
+  const { contactListSelected } = useSelector(
+    (state) => state.contactOpportunityState
+  );
   const [selectedPage, setSelectedItem] = useState('contact');
   const [typeClient, setTypeClient] = useState('');
   const [businessName, setBusinessName] = useState('');
@@ -73,7 +75,6 @@ const EditContact = () => {
       setDatos({ ...datos, ...infoContact });
       console.log('Datos: ', datos);
     }
-
   }, [infoContact]);
 
   const sendFormInfo = async (e) => {
@@ -84,7 +85,7 @@ const EditContact = () => {
         id,
         datos,
       })
-    ); 
+    );
 
     try {
       const contactCreated = await fetch('/api/editContact', {
@@ -207,7 +208,9 @@ const EditContact = () => {
       <div className={styles['wrap-datos']}>
         <div
           className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
-          <Link href={`/buyer/${contactListSelected.idCli}`} className={`${styles.close} bg-ct`}></Link>
+          <Link
+            href={`/buyer/${contactListSelected.idCli}`}
+            className={`${styles.close} bg-ct`}></Link>
           <div className={styles['top-content']}>
             <div className={styles['top-content-buttonsBar']}>
               <div className="container flex j-s a-c">

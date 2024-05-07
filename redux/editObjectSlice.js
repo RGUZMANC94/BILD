@@ -22,7 +22,7 @@ export const editObjectSlice = createSlice({
     },
     changeContactEdit: (state, action) => {
       state.typeEdit = action.payload;
-    }
+    },
   },
 });
 

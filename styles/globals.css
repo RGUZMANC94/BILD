@@ -462,8 +462,8 @@ li {
   z-index: 1;
   transition: all 0.25s ease;
   background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .edit-unit {

@@ -10,7 +10,7 @@ const AllTypes = ({
   setShowPopUpUnit,
   types,
   setCreateOportunity,
-  setShowEditType
+  setShowEditType,
 }) => {
   const { user_rol } = useSelector((state) => state.userState);
   const [flag, setFlag] = useState(false);

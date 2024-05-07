@@ -15,7 +15,7 @@ const TypesSide = ({
   setCreateOportunity,
   setUnitFlag,
   setShowEditType,
-  setShowEditUnit
+  setShowEditUnit,
 }) => {
   const dispatch = useDispatch();
   const [selectedType, setSelectedType] = useState([]);

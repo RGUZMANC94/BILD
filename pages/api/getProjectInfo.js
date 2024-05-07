@@ -6,7 +6,9 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log('Error: ', errorText);
-      throw new Error(`Bad response from server: Get Project info - ${errorText}`);
+      throw new Error(
+        `Bad response from server: Get Project info - ${errorText}`
+      );
     }
 
     const multimedia = await response.json();

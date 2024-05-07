@@ -19,11 +19,13 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['editar-perfil']}>
           {typeViewer === 'buyer' && (
             <Link
-            href={{
-              pathname: '/edit-contact',
-              query: { contact : contactInfo.idCli},
-            }}
-            className={`${styles.editar}`}>Editar</Link>
+              href={{
+                pathname: '/edit-contact',
+                query: { contact: contactInfo.idCli },
+              }}
+              className={`${styles.editar}`}>
+              Editar
+            </Link>
           )}
 
           <div className={styles['perfil-img']}>

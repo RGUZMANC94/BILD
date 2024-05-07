@@ -1,11 +1,11 @@
-import { useState, useRef , useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Button from '../button';
 import styles from './Edit-type-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { event } from 'jquery';
 
-const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
+const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -15,7 +15,6 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const { typeEdit } = useSelector((state) => state.editObjectState);
   const [infoType, setInfoType] = useState({});
-  
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -55,8 +54,13 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
   }, []);
 
   useEffect(() => {
-    if (showEditType && types.find(type => type.idType === typeEdit.idType)) {
-      setDatos({ ...datos, typeDescription: types.filter((type) => type.idType === typeEdit.idType)[0].type });
+    if (showEditType && types.find((type) => type.idType === typeEdit.idType)) {
+      setDatos({
+        ...datos,
+        typeDescription: types.filter(
+          (type) => type.idType === typeEdit.idType
+        )[0].type,
+      });
     }
   }, [showEditType]);
 
@@ -270,9 +274,8 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
               />
             </label>
             {/* <span className={styles.label}>IMAGEN DEL PROYECTO:</span> */}
-            
+
             <div className={`${styles.inputsGroup} flex a-st`}>
-              
               <div className={styles.image}>
                 <div className={styles['main-image']}>
                   <div
@@ -293,7 +296,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types}) => {
                       className={`${styles.imageSelected}`}
                       ref={mainImage}></div>
                   </label>
-                </div>                
+                </div>
               </div>
               <div className={`${styles.typeFeatures}`}>
                 <label
