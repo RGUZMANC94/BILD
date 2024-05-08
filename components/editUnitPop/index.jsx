@@ -45,10 +45,6 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
   useEffect(() => {
     if (unitEdit) {
       setDatos({ ...datos, ...unitEdit });
-      setDatos((prevDatos) => ({
-        ...prevDatos,
-        idProperty: unitEdit.idProperty.trim(),
-      }));
       console.log('Datos: ', datos);
     }
   }, [unitEdit]);
