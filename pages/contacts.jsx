@@ -8,6 +8,10 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { changeContactListSelected } from '../redux/contactSelectedSlice';
 import { parseCookies } from '../utils/parseCookies';
+import { MyContext } from './_app.js';  // Asegúrate de que la ruta de importación sea correcta
+import { useContext } from 'react';
+
+
 
 export const getServerSideProps = async ({
   req: {
@@ -24,6 +28,9 @@ const Contacts = (token) => {
   const [recentContacts, setRecentsContacts] = useState([]);
   const [sortedontacts, setSortedContacts] = useState([]);
   const { id } = useSelector((state) => state.userState);
+  const { contextValue } = useContext(MyContext);
+
+  console.log('contextValue:', contextValue); 
   
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {

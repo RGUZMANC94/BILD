@@ -3,11 +3,15 @@ import styles from './login.module.css';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/userSlice';
+import { useContext } from 'react';
+import { MyContext } from '../../pages/_app.js'; // Asegúrate de que la ruta de importación sea correcta
+
 
 const LogInComponent = () => {
   const dispatch = useDispatch();
   const username = useRef(null);
   const password = useRef(null);
+  const { setContextValue } = useContext(MyContext);
 
   const [errorLogin, setErrorLogin] = useState(false);
 
@@ -58,7 +62,7 @@ const LogInComponent = () => {
         client_secret: '0f64c95acb3a7fb93ee845d2d3d26c8e391d373e'
       }),
     });
-
+      
     if (!tokenResponse.ok) {
       const errorText = await tokenResponse.text();
       console.log('Error: ', errorText);
@@ -69,26 +73,12 @@ const LogInComponent = () => {
 
     const tokenData = await tokenResponse.json();
 
-    console.log(tokenData);
+    console.log('solo token: ',tokenData.accesss_token);
+
+    console.log('token data Inicio de sesion: ',tokenData);
      
-    
+    setContextValue(tokenData.accesss_token);
     router.push('/');
-  };
-
-  const getSessionToken = async () => {
-
-    const response = await fetch('/api/getSessionToken', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        grant_type:'',
-        client_id: '',
-        client_secret: ''
-      }),
-    });
-
   };
 
   const logInFn = async (e) => {
