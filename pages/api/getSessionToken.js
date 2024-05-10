@@ -28,14 +28,14 @@ export default async function handler(req, res) {
 
     if (tokenResponse) {
       const access_tokenSerialized = serialize('access_token', accesss_token, {
-        httpOnly: true,
+        httpOnly: false,
         secure: process.env.NODE_ENV !== 'development',
         sameSite: 'strict',
         maxAge: expires_in,
         path: '/',
       });
       const expires_inSerialized = serialize('expires_in', expires_in, {
-        httpOnly: true,
+        httpOnly: false,
         secure: process.env.NODE_ENV !== 'development',
         sameSite: 'strict',
         maxAge: expires_in,
