@@ -46,7 +46,49 @@ const LogInComponent = () => {
     }
     dispatch(setUser(loginData));
     console.log(loginData);
+
+    const tokenResponse = await fetch('/api/getSessionToken', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        grant_type:'client_credentials',
+        client_id: 'BILD@DevelopmentClient',
+        client_secret: '0f64c95acb3a7fb93ee845d2d3d26c8e391d373e'
+      }),
+    });
+
+    if (!tokenResponse.ok) {
+      const errorText = await tokenResponse.text();
+      console.log('Error: ', errorText);
+      throw new Error(
+        `Bad response from server: Token Session - ${errorText}`
+      );
+    }
+
+    const tokenData = await tokenResponse.json();
+
+    console.log(tokenData);
+     
+    
     router.push('/');
+  };
+
+  const getSessionToken = async () => {
+
+    const response = await fetch('/api/getSessionToken', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        grant_type:'',
+        client_id: '',
+        client_secret: ''
+      }),
+    });
+
   };
 
   const logInFn = async (e) => {

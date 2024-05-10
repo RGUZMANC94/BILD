@@ -7,14 +7,16 @@ export default function middleware(req) {
 
   const user = cookies.get('userid');
 
+  const token = cookies.get('access_token');
+
   const returnUrl = req.nextUrl.clone();
   returnUrl.pathname = '/login';
 
   const pathname = req.nextUrl.pathname;
 
   if (pathname.includes('/login')) {
-    if (user) {
-      if (user.value) {
+    if (user && token) {
+      if (user.value && token.value) {
         return NextResponse.redirect(new URL('/', req.url).toString());
       }
     }
@@ -22,7 +24,7 @@ export default function middleware(req) {
   }
 
   // if (protectedRoutes.includes(pathname)) {
-  if (user) {
+  if (user && token) {
     return NextResponse.next();
   }
   console.log('Devolviendo a login');
@@ -38,6 +40,11 @@ export const config = {
     '/contact',
     '/create-contact',
     '/create-project',
+    '/detail-estate',
+    '/detail-estate/:detailId*',
+    '/edit-project',
+    '/edit-project/:projectId*',
+    '/edit-conatct',
     '/dashboard',
     '/payments',
     '/login',
@@ -47,6 +54,8 @@ export const config = {
     '/oportunities/:path*',
     '/oportunities',
     '/payments/:path*',
+    '/payments',
     '/profile/:path+',
+    '/profile'
   ],
 };

@@ -7,19 +7,30 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { changeContactListSelected } from '../redux/contactSelectedSlice';
+import { parseCookies } from '../utils/parseCookies';
 
-const Contacts = () => {
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+}) => {
+  const { access_token } = parseCookies(cookie);
+  return { props: { token: access_token } };
+};
+
+const Contacts = (token) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [recentContacts, setRecentsContacts] = useState([]);
   const [sortedontacts, setSortedContacts] = useState([]);
   const { id } = useSelector((state) => state.userState);
-
+  
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({ id, idclient: '' }),
     });
