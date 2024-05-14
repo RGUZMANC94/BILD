@@ -6,6 +6,8 @@ import Button from '../components/button';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 const Dashboard = () => {
+  {
+    /* 
   const data = [
     { time: '2022-12-18', value: 5 },
     { time: '2023-01-19', value: 5 },
@@ -133,6 +135,8 @@ const Dashboard = () => {
     colors.areaTopColor,
     colors.areaBottomColor,
   ]);
+*/
+  }
 
   const [startDate, setStartDate] = useState(new Date('2024/02/08'));
   const [endDate, setEndDate] = useState(new Date('2024/02/10'));
@@ -150,6 +154,7 @@ const Dashboard = () => {
 
   return (
     <>
+      {/*
       <div className={styles['top-dashboard']}>
         <div className="container flex j-sb a-c">
           <div className={`flex j-s a-c ${styles.calendar}`}>
@@ -322,6 +327,7 @@ const Dashboard = () => {
         </div>
       </div>
       <CategoriesPopUp />
+      */}
     </>
   );
 };

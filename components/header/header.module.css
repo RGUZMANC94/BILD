@@ -21,6 +21,7 @@
   background-color: #1c1c1c;
   padding: 0 0 0 30px;
   width: 100%;
+  padding-right: 4.5%;
 }
 
 .containerHeader {
@@ -150,7 +151,13 @@
   font-size: 13px;
 }
 
-@media only screen and (max-width: 1380px) {
+@media only screen and (max-width: 1025px) {
+  .siteHeader {
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   #main-container {
     margin: 0 auto;
     width: 100%;
@@ -251,6 +258,7 @@
   .menuPpal a:hover > div img {
     margin-top: -36px;
   }
+
   .logo img {
     width: 45px;
     height: 19px;

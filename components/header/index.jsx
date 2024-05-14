@@ -45,6 +45,7 @@ const Header = () => {
                 </div>
                 Contactos
               </Link>
+              {/*  
               <Link
                 href={pathname === '/dashboard' ? '' : '/dashboard'}
                 className={pathname === '/dashboard' ? styles.active : ''}>
@@ -52,7 +53,9 @@ const Header = () => {
                   <img alt="" src="/images/header/dashboard.png" />
                 </div>
                 Dashboard
-              </Link>
+              </Link> 
+              */}
+
               <Link
                 href={pathname === '/oportunities' ? '' : '/oportunities'}
                 className={pathname === '/oportunities' ? styles.active : ''}>
@@ -77,20 +80,24 @@ const Header = () => {
                 </div>
                 {user_rol === 'ADMIN' ? 'Ajustes' : 'Perfil'}
               </Link>
+              {/*
               <div
                 className={styles.search}
                 onClick={() => setShowFilter(true)}>
                 <div className={`${styles.glass} bg-ct`}></div>
               </div>
+              */}
             </div>
           </div>
         </div>
       </header>
+      {/*
       <Filter show={showFilter} setShowFilter={setShowFilter} />
       <AdvancedFilter
         show={showAdvancedFilter}
         setShowFilter={setShowAdvancedFilter}
-      />
+      /> 
+      */}
     </>
   );
 };
