@@ -601,9 +601,7 @@ const EditProject = () => {
                 <div className={styles.contacto}>
                   <div className={styles.botones}>
                     <Link href="/" className={styles.cancelar}>
-                      <button className={styles['inner-cancelar']}>
-                        cancelar
-                      </button>
+                      cancelar
                     </Link>
                     <button className={styles.crear} /* href="#popproyecto"*/>
                       Crear Proyecto
