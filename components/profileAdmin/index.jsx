@@ -6,9 +6,7 @@ const ProfileOptions = () => {
   return (
     <>
       <div className={`${styles.optionsProfileAdmin} flex j-c a-c`}>
-
-        {
-          /*
+        {/*
         <Link href="/profile/all-users" className={styles.btn}>
           <div className="usuarios">
             <img src="/images/users.svg" />
@@ -21,9 +19,8 @@ const ProfileOptions = () => {
             <div className={styles['btn-text']}>Roles</div>
           </div>
         </Link> 
-        */
-        }
-        
+        */}
+
         <Link href="/profile/admin" className={styles.btn}>
           <div className="perfil">
             <img src="/images/user-circle.svg" />
@@ -33,11 +30,13 @@ const ProfileOptions = () => {
 
         <Link href="/profile/login" className={styles.btn}>
           <div className="perfil">
-            <img  src="/images/close-white.svg" className={styles['close-session']}/>
+            <img
+              src="/images/close-white.svg"
+              className={styles['close-session']}
+            />
             <div className={styles['btn-text']}>Cerrar Sesión</div>
           </div>
         </Link>
-
       </div>
     </>
   );

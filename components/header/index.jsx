@@ -55,7 +55,7 @@ const Header = () => {
                 Dashboard
               </Link> 
               */}
-            
+
               <Link
                 href={pathname === '/oportunities' ? '' : '/oportunities'}
                 className={pathname === '/oportunities' ? styles.active : ''}>
