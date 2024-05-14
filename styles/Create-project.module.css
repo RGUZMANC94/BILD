@@ -39,7 +39,7 @@
 .proyect-form fieldset {
   position: relative;
   margin: 0 5%;
-  padding: 20px;
+  padding: 20px 0;
   width: 90%;
   height: auto;
 }
@@ -186,7 +186,7 @@
   display: block;
   position: relative;
   cursor: pointer;
-  border: 2px solid #fff;
+  border: 2px dotted #fff;
   border-radius: 5px;
   border-radius: 5px;
   background-image: url(/images/camera_white_icon.svg);

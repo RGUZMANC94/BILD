@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   position: relative;
-  padding: 150px 50px 50px;
+  padding: 100px 50px 50px;
   position: relative;
   z-index: 2;
 }
@@ -37,7 +37,6 @@
   position: relative;
 }
 .proyect-form fieldset {
-  padding: 20px;
   width: 90%;
   height: auto;
   margin: 0 5%;
@@ -132,19 +131,20 @@
 .name-field {
   display: flex;
   flex-direction: column;
-  text-align: left;
-  font-size: 16px;
+  padding: 5px 0 0;
   color: #ffffff;
   font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: left;
   text-transform: uppercase;
 }
 
 .label {
-  margin: 0px 0 5px;
   display: flex;
   align-items: center;
+  margin: 10px 0;
   color: #fff;
+  text-transform: uppercase;
 }
 
 .file {

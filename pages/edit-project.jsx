@@ -436,7 +436,7 @@ const EditProject = () => {
     <>
       <section className={styles.main}>
         <form
-          className={styles.createProjectForm}
+          className={`${styles.createProjectForm} container`}
           onSubmit={sendFormInfo}
           id="IDForm">
           <div className={styles['proyect-left']}>
