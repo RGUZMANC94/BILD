@@ -45,6 +45,7 @@ const Header = () => {
                 </div>
                 Contactos
               </Link>
+              {/*  
               <Link
                 href={pathname === '/dashboard' ? '' : '/dashboard'}
                 className={pathname === '/dashboard' ? styles.active : ''}>
@@ -52,7 +53,9 @@ const Header = () => {
                   <img alt="" src="/images/header/dashboard.png" />
                 </div>
                 Dashboard
-              </Link>
+              </Link> 
+              */}
+            
               <Link
                 href={pathname === '/oportunities' ? '' : '/oportunities'}
                 className={pathname === '/oportunities' ? styles.active : ''}>

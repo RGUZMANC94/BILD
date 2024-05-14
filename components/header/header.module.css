@@ -149,7 +149,7 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 1380px) {
+@media only screen and (max-width: 768px) {
   #main-container {
     width: 100%;
     margin: 0 auto;
@@ -249,9 +249,7 @@
   .menuPpal a:hover > div img {
     margin-top: -36px;
   }
-}
 
-@media only screen and (max-width: 768px) {
   .logo img {
     width: 45px;
     height: 19px;
