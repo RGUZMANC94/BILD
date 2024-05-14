@@ -58,14 +58,18 @@ const TypeCard = ({
             ).toLocaleString('es-ES')} `}
           </span>
           <div className="detalles">
-            <img src="/images/cards/bed.png" />
-            <span>
-              {type.minBed}-{type.maxBed}
-            </span>
-            <img src="/images/cards/bath.png" />
-            <span>
-              {type.minBath}-{type.maxBath}
-            </span>
+            <div className="detailsGroup">
+              <img src="/images/cards/bed.png" />
+              <span>
+                {type.minBed}-{type.maxBed}
+              </span>
+            </div>
+            <div className="detailsGroup">
+              <img src="/images/cards/bath.png" />
+              <span>
+                {type.minBath}-{type.maxBath}
+              </span>
+            </div>
           </div>
         </div>
         <div className="tipo-icons">

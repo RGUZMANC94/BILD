@@ -65,14 +65,12 @@
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  columns: #4d4d4d;
   text-align: left;
-  margin-bottom: 20px;
 }
 
-.tipos span {
+/* .tipos span {
   margin-bottom: 10px;
-}
+} */
 
 .img-tipo {
   width: 30%;
@@ -122,7 +120,7 @@
   font-size: 14px;
   color: #fff;
   font-weight: 200;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .detalles {
@@ -131,11 +129,22 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 14px;
-  gap: 10px;
   color: #fff;
   font-weight: 200;
   text-align: left;
   margin-top: 10px;
+  gap: 10px;
+}
+
+.details-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0px;
+}
+
+.details-group img{
+  margin-right: 5px;
 }
 
 .contacto {
