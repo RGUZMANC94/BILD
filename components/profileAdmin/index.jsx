@@ -33,7 +33,7 @@ const ProfileOptions = () => {
 
         <Link href="/profile/login" className={styles.btn}>
           <div className="perfil">
-            <img src="/images/user-circle.svg" />
+            <img  src="/images/close-white.svg" className={styles['closeSession']}/>
             <div className={styles['btn-text']}>Cerrar Sesión</div>
           </div>
         </Link>
