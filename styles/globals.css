@@ -404,7 +404,6 @@ li {
   height: 20px;
 }
 
-
 .caracteristicas-top {
   display: flex;
   justify-content: center;
@@ -1001,7 +1000,7 @@ li.active button {
   margin-top: 40px;
 }
 
-.detailsGroup{
+.detailsGroup {
   display: flex;
   justify-content: flex-start;
   align-items: center;

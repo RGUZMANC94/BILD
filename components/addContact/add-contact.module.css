@@ -152,11 +152,11 @@
   color: #fff;
   text-align: left;
   cursor: pointer;
-  transition: all .25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   transform: translateX(0px);
 }
 
-.contact:hover{
+.contact:hover {
   transform: translateX(-10px);
 }
 
