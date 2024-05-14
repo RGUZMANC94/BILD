@@ -80,20 +80,24 @@ const Header = () => {
                 </div>
                 {user_rol === 'ADMIN' ? 'Ajustes' : 'Perfil'}
               </Link>
+              {/*
               <div
                 className={styles.search}
                 onClick={() => setShowFilter(true)}>
                 <div className={`${styles.glass} bg-ct`}></div>
               </div>
+              */}
             </div>
           </div>
         </div>
       </header>
+      {/*
       <Filter show={showFilter} setShowFilter={setShowFilter} />
       <AdvancedFilter
         show={showAdvancedFilter}
         setShowFilter={setShowAdvancedFilter}
-      />
+      /> 
+      */}
     </>
   );
 };
