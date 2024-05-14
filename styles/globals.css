@@ -1,66 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 *::-webkit-scrollbar {
+  border-radius: 10px;
   background-color: #c7c7c7;
   width: 10px;
-  border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  border: 1px solid #c7c7c7;
-  background-color: #565555;
   box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  background-color: #565555;
 }
 
 .container {
+  margin: 0 auto;
   width: 90%;
   max-width: 1600px;
-  margin: 0 auto;
 }
 
 .containerEstate {
-  width: 200%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 50px;
+  width: 200%;
   max-height: 90vh;
   overflow-y: auto;
 }
 
 .main {
-  width: 100%;
-  height: auto;
+  position: relative;
+  position: relative;
   /* display: flex;
   flex-direction: row;
   flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
-  position: relative;
+  z-index: 2;
   /* top: 150px; */
   padding-top: 30px;
-  position: relative;
-  z-index: 2;
+  width: 100%;
+  height: auto;
   overflow: hidden;
 }
 .top-content {
-  position: fixed;
-  top: 70px;
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  text-align: left;
-  justify-content: flex-start;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 20px;
+  position: fixed;
   position: relative;
-  background: rgba(33, 34, 29, 0.3);
+  top: 70px;
+  flex-direction: row;
+  justify-content: flex-start;
+  z-index: 3;
   backdrop-filter: blur(3.5px);
   margin-bottom: 40px;
+  background: rgba(33, 34, 29, 0.3);
   padding: 15px 0;
-  z-index: 3;
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 /* 
@@ -106,49 +106,49 @@
 */
 
 .top-content a ul {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .top-content ul {
-  list-style: none;
-  padding: 0;
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
+  padding: 0;
   width: 90%;
   max-width: 1600px;
-  margin: 0 auto;
+  list-style: none;
 }
 
 .back-arrow {
   display: block;
+  margin-right: 50px;
+  background-image: url(/images/back.svg);
   width: 15px;
   height: 25px;
-  background-image: url(/images/back.svg);
-  margin-right: 50px;
 }
 
 .buttonTopDetailState {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  margin-right: 50px;
+  border-bottom: 3px solid #2466ff00;
   width: auto;
   height: auto;
-  margin-right: 50px;
-  text-transform: uppercase;
   color: #c7c7c7;
   font-weight: 500;
   font-size: 20px;
+  letter-spacing: 1px;
   text-align: left;
   text-decoration: none;
-  cursor: pointer;
-  border-bottom: 3px solid #2466ff00;
-  letter-spacing: 1px;
-  transition: all 0.5s ease-in-out;
+  text-transform: uppercase;
 }
 
 .itemTopContent.active .buttonTopDetailState {
+  border-bottom: 3px solid #2467ff;
   color: #fff;
   font-weight: 700;
-  border-bottom: 3px solid #2467ff;
 }
 
 .itemTopContent,
@@ -157,69 +157,69 @@ li {
 }
 
 .unidadesSide {
-  width: 50%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
-  flex-wrap: wrap;
   transform: translateX(-100%);
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
   transition: all 0.5s ease-in-out;
+  width: 50%;
 }
 
 .unidadesSide.active {
   transform: translateX(0%);
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 
 .infoContainer {
-  width: 50%;
   transform: translateX(0%);
-  opacity: 0;
   visibility: hidden;
-  overflow-y: auto;
-  padding-right: 50px;
+  opacity: 0;
   transition: all 0.5s ease-in-out;
+  padding-right: 50px;
+  width: 50%;
+  overflow-y: auto;
 }
 
 .infoContainer.active {
   transform: translateX(-100%);
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 
 .unidades {
-  width: 100%;
-  height: auto;
   display: flex;
+  position: relative;
   flex-direction: row;
   flex-wrap: wrap;
-  position: relative;
+  width: 100%;
+  height: auto;
 }
 
 .editProject {
   position: absolute;
   top: 0;
   right: 0;
+  border-radius: 5px;
+  background-image: url(/images/edit-icon.svg);
+  background-size: 60% !important;
+  background-color: #2467ff;
   width: 50px;
   height: 50px;
-  background-color: #2467ff;
-  border-radius: 5px;
-  background-size: 60% !important;
-  background-image: url(/images/edit-icon.svg);
 }
 
 .selectFilterProject {
-  padding: 10px 20px;
-  padding-right: 50px;
+  appearance: none;
   margin-left: 30px;
-  background-color: rgba(33, 34, 29, 0.3);
   border: 1px solid #fff;
   border-radius: 5px;
+  background-color: rgba(33, 34, 29, 0.3);
+  padding: 10px 20px;
+  padding-right: 50px;
   color: #fff;
-  appearance: none;
 }
 
 .selectFilterFlex {
@@ -231,30 +231,30 @@ li {
 }
 
 .tipo {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 40px;
   /* max-height: calc(100vh - 350px); */
   /*padding: 10px 20px 0 0px;*/
   margin: 20px 0;
-  gap: 40px;
+  width: 100%;
+  height: auto;
 }
 
 .outerUnits {
-  width: calc(50% - 50px);
   padding-top: 20px;
+  width: calc(50% - 50px);
 }
 
 .caracteristicas {
-  width: 100%;
-  height: auto;
-  overflow-y: auto;
   position: sticky;
   top: 0;
   left: 0;
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
 }
 
 .caracteristicas-top-movil {
@@ -262,88 +262,88 @@ li {
 }
 
 .add-unit-movil {
-  width: 80%;
   align-self: center;
   margin-top: 10px;
+  width: 80%;
 }
 
 .add-unit-movil span {
-  font-size: 12px;
-  font-weight: 700;
   color: #fff;
-  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
   line-height: 1.38;
+  text-transform: uppercase;
 }
 
 .tipo-unit {
-  width: 100%;
-  min-height: 100px;
-  height: auto;
   display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #2e2e2c;
-  box-shadow: 2px 7px 10px 0px #00000026;
-  border-radius: 15px;
-  text-align: left;
-  padding: 20px;
-  position: relative;
-  border: 1px solid #ff556700;
-  top: 0;
-  left: 0;
   transition: all 0.25s ease-in-out;
+  box-shadow: 2px 7px 10px 0px #00000026;
+  border: 1px solid #ff556700;
+  border-radius: 15px;
+  background-color: #2e2e2c;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  text-align: left;
 }
 
 .itemDrag:hover .tipo-unit,
 .itemDrag.active .tipo-unit {
-  left: 20px;
   top: -0;
+  left: 20px;
 }
 
 .tipo-unit.informacion {
-  width: 480px;
-  height: auto;
   display: initial;
-  background: rgba(33, 34, 29, 0.35);
+  flex-wrap: wrap;
   box-shadow:
     0px 0px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  text-align: left;
+  background: rgba(33, 34, 29, 0.35);
   padding: 40px 30px;
-  flex-wrap: wrap;
+  width: 480px;
+  height: auto;
+  text-align: left;
 }
 
 .img-tipo {
+  position: relative;
   width: 125px;
   height: 125px;
-  position: relative;
 }
 .img-tipo img {
   position: relative;
+  border-radius: 10px;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   object-fit: cover;
 }
 
 .img-tipo-glass {
   position: absolute;
-  height: 37px;
-  width: 37px;
-  background-image: url(/images/tipo-glass-pink.svg);
   top: 2px;
   right: 2px;
   z-index: 2;
+  background-image: url(/images/tipo-glass-pink.svg);
+  width: 37px;
+  height: 37px;
 }
 
 .tipo-info {
-  height: auto;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   margin-left: 10px;
+  padding: 10px;
+  height: auto;
 }
 
 .itemDrag .tipo-info {
@@ -351,11 +351,11 @@ li {
 }
 
 .tipo-title {
-  font-size: 18px;
-  font-weight: 700;
   color: #fff;
-  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 18px;
   line-height: 1.38;
+  text-transform: uppercase;
 }
 
 .llave {
@@ -374,10 +374,10 @@ li {
 } Scope*/
 
 .valor {
-  /* padding-top: 33px; */
-  font-size: 16px;
   color: #fff;
   font-weight: 400;
+  /* padding-top: 33px; */
+  font-size: 16px;
   /* margin-top: 20px; */
   line-height: 2;
 }
@@ -391,18 +391,18 @@ li {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-size: 14px;
+  margin-top: 10px;
   color: #fff;
   font-weight: 400;
-  text-align: left;
-  margin-top: 10px;
+  font-size: 14px;
   line-height: 2.29;
+  text-align: left;
 }
 
 .detalles img {
+  margin: 0 10px 0 0px;
   width: 20px;
   height: 20px;
-  margin: 0 10px 0 0px;
 }
 
 .detalles span {
@@ -410,101 +410,108 @@ li {
 }
 
 .caracteristicas-top {
-  width: 100%;
-  height: auto;
-  padding: 5vh 0px 0 35px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  margin: 0 auto 10px;
+  border-bottom: 1px solid #2467ff;
+  padding: 5vh 32px 0 50px;
+  width: 100%;
+  height: auto;
+  color: #fff;
   font-weight: 600;
+  font-size: 18px;
   text-align: center;
   text-transform: uppercase;
-  margin: 0 auto 10px;
-  color: #fff;
-  border-bottom: 1px solid #2467ff;
 }
 
 .top-tabla {
-  width: 20%;
-  padding: 30px 0;
   margin: 0 10px;
+  padding: 30px 0;
+  width: 20%;
   text-align: center;
 }
 
 .top-tabla:last-of-type {
-  width: 40px;
   margin: 0;
+  width: 40%;
 }
 
 .info-tabla {
-  width: 100%;
-  height: auto;
-  padding: 0px 0px 0 35px;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 20px 0 20px 0;
+  padding: 0 32px 0 50px;
+  width: 100%;
+  height: auto;
   text-align: center;
   text-transform: uppercase;
-  margin: 20px 0 20px 0;
-  position: relative;
 }
 
 .edit-type {
-  width: 50px;
-  height: 30px;
-  cursor: pointer;
   top: 50%;
   left: 2px;
-  background-image: url(/images/edit.svg);
   z-index: 1;
   transition: all 0.25s ease;
+  cursor: pointer;
+  background-image: url(/images/edit.svg);
+  background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
+  width: 50px;
+  height: 30px;
 }
 
 .edit-unit {
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 2px;
-  margin-top: -12.5px;
-  background-image: url(/images/edit.svg);
   z-index: 1;
   transition: all 0.25s ease;
+  cursor: pointer;
+  background-image: url(/images/edit.svg);
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -15px;
 }
 
 .editValues .edit-unit {
-  width: 35px;
-  height: 35px;
   margin-top: -17.5px;
   background-image: url(/images/check-circle.png);
+  width: 35px;
+  height: 35px;
 }
 
 .detalle-tabla {
-  width: 20%;
   display: flex;
   justify-content: center;
-  text-align: center;
   margin: 0 10px;
+  width: 20%;
   font-weight: 400;
   font-size: 18px;
+  text-align: center;
+}
+
+.price-table.detalle-tabla {
+  width: 40%;
 }
 
 .llave-tabla {
-  width: 32px;
-  height: 32px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  margin-top: -16px;
   background-image: url(/images/key.svg);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: contain;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
 }
 
 .llave-tabla:hover {
@@ -512,97 +519,101 @@ li {
 }
 
 .llave-tabla-desabled {
-  width: 32px;
-  height: 32px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  cursor: not-allowed;
+  margin-top: -16px;
   background-image: url(/images/key-dark.svg);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: contain;
-  cursor: not-allowed;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
   pointer-events: none;
 }
 
 button.agregar {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 30px;
+  border: 1px solid #2467ff;
+  border-radius: 10px;
+  background-color: #565555;
+  padding: 10px 30px;
   width: 40%;
   height: 50px;
   color: #fff;
-  font-size: 16px;
   font-weight: 500;
+  font-size: 16px;
   letter-spacing: 1px;
-  border-radius: 10px;
-  border: 1px solid #2467ff;
-  text-transform: uppercase;
-  margin-top: 30px;
-  padding: 10px 30px;
   text-align: center;
-  cursor: pointer;
   text-decoration: none;
-  background-color: #565555;
-  display: flex;
-  align-items: center;
+  text-transform: uppercase;
 }
 
 i.fa-solid.fa-plus {
   padding-right: 15px;
-  font-size: 28px;
   font-weight: 200;
+  font-size: 28px;
 }
 
 .galeria-tipo {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  height: auto;
 }
 
 .fecha-estimada {
-  width: 100%;
-  text-align: left;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 300;
   margin-top: 22px;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 16px;
+  text-align: left;
 }
 
 .zoom-img {
   position: absolute;
   top: 2px;
   right: 2px;
-  width: 37px;
-  height: 37px;
-  background-color: #ff5567;
+  border-radius: 10px;
   background-image: url('/images/search-white.png');
   background-size: 60% !important;
-  border-radius: 10px;
+  background-color: #ff5567;
+  width: 37px;
+  height: 37px;
 }
 
 .gallery-image {
-  padding: 20px 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
+  padding: 20px 0px;
 }
 
 .gallery-image img {
-  width: 100%;
   transform: scale(1);
 
   transition: transform 0.4s ease;
+  width: 100%;
 }
 
 .img-box {
   display: flex;
-  box-sizing: content-box;
-  width: calc(33.3333% - 10px);
-  overflow: hidden;
-  color: white;
   position: relative;
-  background-color: white;
-  aspect-ratio: 16/9;
-  object-fit: cover;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
+  background-color: white;
+  aspect-ratio: 16/9;
+  width: calc(33.3333% - 10px);
+  overflow: hidden;
+  object-fit: cover;
+  color: white;
 }
 
 .caption {
@@ -616,13 +627,13 @@ i.fa-solid.fa-plus {
 }
 
 .transparent-box {
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0);
   position: absolute;
   top: 0;
   left: 0;
   transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100%;
 }
 
 .img-box:hover img {
@@ -661,11 +672,11 @@ input[type='number'] {
 }
 
 .draggable {
-  min-width: 25px;
-  min-height: 25px;
+  z-index: 3;
   cursor: pointer;
   background-image: url(/images/drag.svg);
-  z-index: 3;
+  min-width: 25px;
+  min-height: 25px;
 }
 
 .maskDraggable {
@@ -677,15 +688,15 @@ input[type='number'] {
 }
 
 .itemDrag {
-  width: 100%;
-  position: relative;
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
   z-index: 10;
-  cursor: pointer;
   transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  width: 100%;
 }
 
 .activeDrag .maskDraggable {
@@ -693,16 +704,16 @@ input[type='number'] {
 }
 
 .unFade {
-  opacity: 0;
-  visibility: hidden;
   top: -100%;
+  visibility: hidden;
+  opacity: 0;
   transition: all 0.5s ease-in-out;
 }
 
 .fade {
-  opacity: 1;
-  visibility: visible;
   top: 0;
+  visibility: visible;
+  opacity: 1;
 }
 
 #logo {
@@ -710,9 +721,9 @@ input[type='number'] {
 }
 
 .menu-top {
-  width: 50%;
   justify-content: flex-end;
   margin-right: 20px;
+  width: 50%;
 }
 
 /* .top-content {
@@ -733,16 +744,16 @@ input[type='number'] {
 
 .top-content ul li button {
   float: left;
+  cursor: pointer;
+  margin-right: 50px;
   width: auto;
   height: auto;
-  margin-right: 50px;
-  text-transform: uppercase;
   color: #c7c7c7;
   font-weight: 500;
   font-size: 20px;
   text-align: left;
   text-decoration: none;
-  cursor: pointer;
+  text-transform: uppercase;
 }
 
 /* .top-content ul {
@@ -754,11 +765,11 @@ input[type='number'] {
 } */
 
 .top-content ul li:first-of-type {
+  cursor: pointer;
+  background-position: left center;
   /* background-image: url(/images/back.svg); */
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: left center;
-  cursor: pointer;
 }
 
 .top-content ul li {
@@ -770,47 +781,47 @@ li {
 }
 
 li.active button {
-  color: #4d4d4d;
   border-bottom: 3px solid #2467ff;
+  color: #4d4d4d;
 }
 .main-contain-gerente {
-  width: 100%;
-  margin: 0 auto;
-  height: auto;
-  position: relative;
-  padding-top: 0;
   display: flex;
+  position: relative;
   flex-direction: column;
+  margin: 0 auto;
+  padding-top: 0;
+  width: 100%;
+  height: auto;
 }
 
 .nombre,
 .mail,
 .reciente-col,
 .contact {
+  gap: 10px;
   width: 30%;
   color: #fff;
-  gap: 10px;
 }
 
 .user-data {
-  width: 20%;
-  text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 20%;
   color: #fff;
+  text-align: center;
 }
 
 .number,
 .rol-data {
-  width: 20%;
-  text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 20%;
   color: #fff;
+  text-align: center;
 }
 
 .number img {
@@ -822,77 +833,77 @@ li.active button {
 }
 
 .listas {
-  width: 100%;
-  height: auto;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 0;
+  margin: 0 auto;
   margin-top: 20px;
+  padding-bottom: 0;
+  width: 100%;
+  height: auto;
 }
 
 .list-contact {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
-  text-align: left;
   justify-content: space-between;
   margin-bottom: 30px;
+  width: 100%;
+  height: auto;
+  text-align: left;
 }
 .contact-top {
-  width: 100%;
-  height: auto;
   display: flex;
-  margin: 0 auto;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 35px;
+  margin: 0 auto;
   margin-top: 40px;
-  border-bottom: 1px solid #d9d9d9;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  font-weight: 700;
-  text-transform: uppercase;
   margin-bottom: 30px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 35px;
+  width: 100%;
+  height: auto;
+  color: #fff;
+  font-weight: 500;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 .crear-usuario {
-  width: 90%;
-  height: 60px;
-  margin: 0 auto;
   display: flex;
-  margin-top: 50px;
   justify-content: end;
+  margin: 0 auto;
+  margin-top: 50px;
   background-image: url(/images/add.png);
-  background-repeat: no-repeat;
   background-position: right;
   background-size: 60px 60px;
+  background-repeat: no-repeat;
+  width: 90%;
+  height: 60px;
 }
 .list-name {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .react-datepicker__header.react-datepicker__header {
+  border: none;
   background-color: #1c1c1c;
   color: #fff;
-  border: none;
 }
 .react-datepicker__current-month.react-datepicker__current-month,
 .react-datepicker-time__header.react-datepicker-time__header,
 .react-datepicker-year-header.react-datepicker-year-header {
-  color: #fff;
   margin: 0px 0 20px;
+  color: #fff;
 }
 
 .react-datepicker.react-datepicker {
   border: none;
-  padding: 20px;
   background-color: #1c1c1c;
+  padding: 20px;
 }
 
 .react-datepicker.react-datepicker {
@@ -906,12 +917,12 @@ li.active button {
 .react-datepicker__day-name.react-datepicker__day-name,
 .react-datepicker__day.react-datepicker__day,
 .react-datepicker__time-name.react-datepicker__time-name {
-  color: #fff;
+  margin: 0;
   border: 1px solid #ffffff6d;
   border-radius: 15px 15px 0 0;
-  margin: 0;
   padding: 2.5px 0;
   width: 35px;
+  color: #fff;
 }
 .react-datepicker__month.react-datepicker__month,
 .react-datepicker__month-container.react-datepicker__month-container {
@@ -970,20 +981,20 @@ li.active button {
 }
 
 .tipo-icons {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 35px;
+  height: 100%;
 }
 
 .tipo-arrow {
-  width: 30px;
-  height: 30px;
   background-image: url(/images/oportunities-card-right-arrow.svg);
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  width: 30px;
+  height: 30px;
 }
 
 .itemDrag.active .tipo-arrow {
@@ -1004,8 +1015,8 @@ li.active button {
 }
 @media only screen and (max-width: 990px) {
   .menu-top {
-    width: 100%;
     justify-content: center;
+    width: 100%;
   }
 }
 
@@ -1025,16 +1036,16 @@ li.active button {
   }
 
   .main-contain-gerente {
-    width: 100%;
     top: 80px;
+    width: 100%;
   }
 
   .crear-usuario {
-    width: 100%;
     position: fixed;
+    right: 90px;
     bottom: 140px;
     z-index: 10;
-    right: 90px;
+    width: 100%;
   }
 
   .infoContainer {
@@ -1043,29 +1054,29 @@ li.active button {
 
   .top-content ul li button {
     float: left;
+    margin-right: 50px;
     width: auto;
     height: auto;
-    margin-right: 50px;
-    text-transform: uppercase;
     color: #c7c7c7;
     font-weight: 300;
     font-size: 12px;
     text-align: left;
     text-decoration: none;
+    text-transform: uppercase;
   }
 
   .contact {
     width: 90%;
-    font-size: 16px;
     font-weight: 200;
+    font-size: 16px;
   }
 
   .iconos-movil {
     display: flex;
     flex-direction: row;
-    width: 10%;
     justify-content: flex-end;
     align-items: center;
+    width: 10%;
   }
 
   .list-name {
@@ -1081,33 +1092,33 @@ li.active button {
 
 @media only screen and (max-width: 568px) {
   .crear-usuario {
-    width: 100%;
     position: fixed;
+    right: 60px;
     bottom: 140px;
     z-index: 10;
-    right: 60px;
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .main {
-    width: 100%;
-    height: auto;
     display: flex;
+    position: relative;
+    top: 70px;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    top: 70px;
+    z-index: 2;
     /*padding: 0 20px 50px;*/
     padding: 0;
-    position: relative;
-    z-index: 2;
+    width: 100%;
+    height: auto;
   }
 
   .containerEstate {
-    max-height: unset;
     padding-bottom: 180px;
+    max-height: unset;
   }
 
   .outerTypes {
@@ -1124,36 +1135,36 @@ li.active button {
   }
 
   .unidades {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    background: rgba(33, 34, 29, 0.35);
+    padding: 15px;
     width: 100%;
     min-width: 267px;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    background: rgba(33, 34, 29, 0.35);
-    box-shadow:
-      0px 0px 4px 0px rgba(0, 0, 0, 0.25),
-      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 30px;
   }
 
   .tipo {
-    width: 100%;
     margin: 0;
+    width: 100%;
   }
 
   .tipo-unit {
-    width: 100%;
-    min-width: 320px;
-    border-radius: 15px;
-    background: #2e2e2c;
+    flex-wrap: wrap;
+    backdrop-filter: blur(2.5px);
     box-shadow:
       0px 0px 4px 0px rgba(0, 0, 0, 0.25),
       0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(2.5px);
+    border-radius: 15px;
+    background: #2e2e2c;
+    width: 100%;
+    min-width: 320px;
     text-align: left;
-    flex-wrap: wrap;
   }
 
   .img-tipo {
@@ -1161,21 +1172,21 @@ li.active button {
     height: 80px;
   }
   .img-tipo img {
-    width: 100%;
-    height: 100%;
-    margin-right: 20px;
     position: relative;
     z-index: 1;
+    margin-right: 20px;
+    width: 100%;
+    height: 100%;
   }
   .tipo-title {
     font-size: 12px;
   }
   .valor {
-    padding-top: 20px;
     margin: 0;
-    font-size: 10px;
+    padding-top: 20px;
     font-style: normal;
     font-weight: 300;
+    font-size: 10px;
     line-height: 1.6;
   }
   .detalle {
@@ -1188,25 +1199,25 @@ li.active button {
   }
 
   .llave {
+    background-size: cover;
     width: 30px;
     height: 30px;
-    background-size: cover;
   }
 
   .zoom-img {
-    width: 28px;
-    height: 28px;
+    position: absolute;
     top: 4%;
     right: 4%;
-    background-repeat: no-repeat;
-    position: absolute;
-    border-radius: 5px;
     z-index: 2;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
   }
 
   .caracteristicas-top {
+    padding: 20px 32px 20px 0;
     width: 100%;
-    padding: 20px 0px;
   }
   .caracteristicas {
     display: none;
@@ -1221,13 +1232,13 @@ li.active button {
 
   .more-info {
     display: block;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease-in-out;
     width: 100%;
     height: auto;
     max-height: 0px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.25s ease-in-out;
   }
 
   .tipo-unit.active .more-info {
@@ -1235,43 +1246,43 @@ li.active button {
   }
 
   .top-tabla {
-    width: 25%;
-    text-align: center;
-    font-size: 12px;
     padding: 0px;
+    width: 20%;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
   }
 
   .info-tabla {
-    width: 100%;
-    height: auto;
-    padding: 20px 0 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    padding: 20px 32px 0 0;
+    width: 100%;
+    height: auto;
     text-align: center;
     text-transform: uppercase;
-    margin: 0 auto;
   }
 
   .detalle-tabla {
-    width: 100%;
     display: flex;
     justify-content: center;
-    text-align: center;
-    margin: 10px;
+    margin: 10px 0;
     font-weight: 400;
     font-size: 12px;
+    text-align: center;
   }
 
   .llave-tabla {
-    width: 100%;
-    height: 40px;
+    transition: none;
     background-image: url(/images/key.svg);
     background-position: center;
-    background-repeat: no-repeat;
     background-size: 28px 28px;
-    transition: none;
+    background-repeat: no-repeat;
+    /* width: 100%;
+    height: 40px; */
   }
 
   .clearfix {
@@ -1280,42 +1291,42 @@ li.active button {
 
   .arrowDrop {
     background-color: #565555;
+    padding-top: 30px;
     width: 30px;
     height: 60px;
-    text-align: center;
-    padding-top: 30px;
-    font-size: 22px;
     font-weight: 100;
+    font-size: 22px;
+    text-align: center;
   }
 
   .tipo-unit.informacion {
-    width: 100%;
-    border-bottom: none;
     justify-content: space-evenly;
-    padding: 0;
-    background: none;
     box-shadow: none;
+    border-bottom: none;
     border-radius: 0px;
+    background: none;
+    padding: 0;
+    width: 100%;
   }
 
   .img-tipo.informacion {
+    margin-right: 20px;
     width: 45px;
     height: 45px;
-    margin-right: 20px;
   }
 
   .img-box {
-    min-width: 267px;
     border-radius: 15px;
     width: 100%;
+    min-width: 267px;
   }
 
   .editProject {
-    height: 35px;
-    width: 35px;
     position: absolute;
     top: 14px;
     right: 10px;
+    width: 35px;
+    height: 35px;
   }
   .gallery-image {
     gap: 13px;
@@ -1323,15 +1334,15 @@ li.active button {
   }
 
   .buttonTopDetailState {
-    font-size: 18px;
     font-style: normal;
     font-weight: 600;
+    font-size: 18px;
     line-height: 0.81;
   }
 
   .back-arrow {
-    height: 22px;
     width: 20px;
+    height: 22px;
   }
 
   .unidadesSide.active {
@@ -1353,15 +1364,15 @@ li.active button {
 
   .itemDrag.active .caracteristicas-top-movil {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
-    flex-direction: column;
   }
 
   .img-tipo-glass {
+    background-size: contain;
     width: 32px;
     height: 32px;
-    background-size: contain;
   }
 
   .itemDrag.active .tipo-title {
@@ -1393,20 +1404,20 @@ li.active button {
   }
 
   .selectFilterProject {
-    width: 100%;
-    margin-left: 0px;
     margin-top: 10px;
+    margin-left: 0px;
+    width: 100%;
   }
   .selectFilterFlex {
-    width: 90%;
     flex-direction: column;
     margin: 0 auto;
+    width: 90%;
   }
 }
 
 .selectFilterFlex p {
-  font-size: 16px;
   font-weight: 600;
+  font-size: 16px;
 }
 
 @media only screen and (max-width: 480px) {

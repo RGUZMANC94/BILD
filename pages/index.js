@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Loader from '../components/lodaer';
 import { useQuery } from 'react-query';
 import { parseCookies } from '../utils/parseCookies';
+import Image from 'next/image';
 
 export const getServerSideProps = async ({
   req: {
@@ -99,23 +100,25 @@ const Home = ({ id, user_rol }) => {
         <div className={styles['main-container']}>
           {user_rol === 'ADMIN' && (
             <Button
-              classNameInherit={'align-end'}
               buttonType={'primary'}
               label="Crear Proyecto"
               link={'/create-project'}
             />
           )}
 
-          <div className={styles.containerEstates}>
+          <div
+            className={`${styles.containerEstates} home_container_projects_cards`}>
             {displayProjects &&
               displayProjects.length &&
               displayProjects.map(
                 (project, i) =>
                   Object.keys(project).length >= 3 && (
-                    <Link
+                    <div
                       key={project.projectId}
-                      className={styles.proyectos}
-                      href={`/detail-estate/${project.projectId}`}>
+                      className={`${styles.proyectos} home_projects_cards`}>
+                      <Link
+                        className={styles.anchorCards}
+                        href={`/detail-estate/${project.projectId}`}></Link>
                       <div className={styles['img-proyect']}>
                         <img
                           alt=""
@@ -142,26 +145,26 @@ const Home = ({ id, user_rol }) => {
 
                         <div className={styles.detalles}>
                           {project.minBed !== 0 && project.maxBed !== 0 && (
-                            <>
-                              <img
+                            <span className={styles.detailsGroup}>
+                              <Image
                                 alt=""
                                 src="/images/cards/bed.png"
-                                width="22"
-                                height="20"
+                                width="15"
+                                height="15"
                               />
                               <p>{`${project.minBed}-${project.maxBed}`}</p>
-                            </>
+                            </span>
                           )}
                           {project.minBath !== 0 && project.maxBath !== 0 && (
-                            <>
-                              <img
+                            <span className={styles.detailsGroup}>
+                              <Image
                                 alt=""
                                 src="/images/cards/bath.png"
-                                width="7"
-                                height="11"
+                                width="15"
+                                height="15"
                               />
                               <p>{`${project.minBath}-${project.maxBath}`}</p>
-                            </>
+                            </span>
                           )}
                           {user_rol === 'ADMIN' && (
                             <Link
@@ -176,7 +179,7 @@ const Home = ({ id, user_rol }) => {
                           )}
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   )
               )}
           </div>

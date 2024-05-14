@@ -45,7 +45,7 @@ const Unit = ({ unit, setCreateOportunity, setShowEditUnit }) => {
           disabled={isHidden}
         />
       </div>
-      <div className="detalle-tabla">
+      <div className="detalle-tabla price-table">
         <input
           type="text"
           className={styles.inputToEditValue}

@@ -96,7 +96,12 @@ i.fa-solid.fa-user {
   width: 100%;
   margin-bottom: 15px;
   text-align: left;
+  cursor: pointer;
+  transform: translateX(0px);
+  transition: all .25s ease-in-out;
 }
+
+
 
 .contact img {
   margin-right: 1vh;
@@ -105,6 +110,10 @@ i.fa-solid.fa-user {
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.contact:hover {
+  transform: translateX(-10px);
 }
 
 @media only screen and (max-width: 768px) {

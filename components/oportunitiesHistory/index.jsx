@@ -432,7 +432,7 @@ const OportunitiesHistory = ({
               <div className={styles['icon-box']}>
                 <img src="/images/error-circle.png" />
                 <span className={styles['pop-text']}>
-                  <span className={styles['pop-text-bold']}>¡Oops!</span>Algo no
+                  <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}Algo no
                   está bien. Por favor, revisa los datos ingresados e inténtalo
                   de nuevo.
                 </span>

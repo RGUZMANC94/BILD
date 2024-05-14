@@ -376,7 +376,7 @@ const PaymentDetail = () => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>
+                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
                 {`Algo no
                 está bien.${
                   errorMessage

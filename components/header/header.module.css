@@ -2,42 +2,42 @@
 /* @import url("https://fonts.googleapis.com/css?family=family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
 
 #main-container {
-  width: 100%;
   margin: 0 auto;
+  width: 100%;
   height: auto;
 }
 
 .siteHeader {
-  width: 100%;
-  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: -3px 0px 8px #1c1c1c;
   position: fixed;
   top: 0;
   left: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   z-index: 8;
+  margin: 0 auto;
+  box-shadow: -3px 0px 8px #1c1c1c;
   background-color: #1c1c1c;
   padding: 0 0 0 30px;
+  width: 100%;
 }
 
 .containerHeader {
-  margin: 0 auto;
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
 }
 
 .logo {
-  width: 200px;
-  height: 70px;
   display: flex;
   align-items: center;
+  width: 200px;
+  height: 70px;
 }
 
 .logo img {
@@ -45,43 +45,43 @@
 }
 
 .search {
-  width: 73px;
-  height: 73px;
-  background-color: #ff5567;
-  font-size: 18px;
-  font-weight: 500;
-  color: #a3a3a3;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 10px 15px;
-  align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: none;
-  margin-left: 10px;
+  align-items: center;
   cursor: pointer;
+  margin-left: 10px;
+  outline: none;
+  background-color: #ff5567;
+  padding: 10px 15px;
+  width: 73px;
+  height: 73px;
+  color: #a3a3a3;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .searchInput {
-  width: 100%;
   display: block;
-  padding: 9px 4px 9px 20px;
-  background-color: transparent;
+  outline: none;
   border: none;
   background-position: right;
-  outline: none;
+  background-color: transparent;
+  padding: 9px 4px 9px 20px;
+  width: 100%;
 }
 
 .glass {
+  z-index: 1;
+  cursor: pointer;
   background-image: url('/images/search-white.png');
-  background-repeat: no-repeat;
-  background-size: contain;
   background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 30px;
   height: 30px;
-  cursor: pointer;
-  z-index: 1;
 }
 
 .menu-top {
@@ -96,33 +96,33 @@
 }
 
 .menuPpal a {
-  color: #fff;
   display: flex;
-  justify-content: center;
+  position: relative;
   flex-direction: column;
-  align-items: center;
   flex-wrap: wrap;
-  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+  padding: 0 10px 0;
+  color: #fff;
   font-weight: 300;
+  font-size: 12px;
   text-align: center;
   text-decoration: none;
-  padding: 0 10px 0;
-  position: relative;
-  transition: all 0.15s ease-in-out;
 }
 
 .menuPpal a .imageMenu {
-  width: 33px;
-  height: 33px;
   display: block;
   margin: 0 auto 5px;
+  width: 33px;
+  height: 33px;
   overflow: hidden;
 }
 
 .menuPpal a:hover,
 .menuPpal a.active {
-  color: #fff;
   border-bottom: 3px solid #2467ff;
+  color: #fff;
 }
 
 .menuPpal a > div img {
@@ -135,105 +135,107 @@
 }
 
 .smallNumber {
-  background-color: #ff5567;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 13px;
+  display: flex;
+  display: none;
   position: absolute;
   top: 5px;
   right: 15px;
-  width: 20px;
-  height: 20px;
-  display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  background-color: #ff5567;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  font-size: 13px;
 }
 
 @media only screen and (max-width: 1380px) {
   #main-container {
-    width: 100%;
     margin: 0 auto;
+    width: 100%;
     height: auto;
   }
 
   .siteHeader {
-    width: 100%;
-    margin: 0 auto;
-    height: auto;
     display: flex;
+    position: fixed;
     flex-direction: row;
     justify-content: space-between;
-    background: #1c1c1c;
-    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.12);
     z-index: 9;
-    position: fixed;
+    margin: 0 auto;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.12);
+    background: #1c1c1c;
     padding: 0;
+    width: 100%;
+    height: auto;
   }
 
   .containerHeader {
-    width: 100%;
-    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    height: auto;
   }
 
   .logo {
     padding-left: 20px;
   }
+}
 
+@media only screen and (max-width: 768px) {
   .search {
-    width: 70px;
-    height: 70px;
-    margin: 0;
-    font-size: 16px;
-    outline: none;
     position: fixed;
     top: 0%;
     right: 0%;
+    margin: 0;
+    outline: none;
+    width: 70px;
+    height: 70px;
+    font-size: 16px;
   }
 
   input.search {
-    width: 100%;
     display: block;
-    padding: 0px;
-    background: transparent url('/images/search.svg') no-repeat 13px;
     border: none;
+    background: transparent url('/images/search.svg') no-repeat 13px;
     background-position: right;
+    padding: 0px;
+    width: 100%;
   }
 
   .menu-top {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
     display: flex;
+    position: fixed;
+    bottom: 0;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin: 0 auto;
     margin-top: 15px;
-    position: fixed;
-    bottom: 0;
-    background-color: #1c1c1c;
-    padding-top: 20px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
     border-radius: 10px 10px 0px 0px;
     background: #1c1c1c;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+    background-color: #1c1c1c;
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
   }
 
   .menuPpal {
-    width: 80%;
-    gap: 10%;
     flex-direction: row;
     justify-content: center;
-
+    gap: 10%;
+    width: 80%;
     overflow: hidden;
   }
 
   .menuPpal a {
+    padding: 5px 5px 20px;
     width: 20%;
     color: #fff;
     font-size: 10px;
-    padding: 5px 5px 20px;
   }
 
   .menuPpal a div.imageMenu {
@@ -242,16 +244,13 @@
   }
 
   .menuPpal a:hover {
-    color: #fff;
     border-bottom: 3px solid #2467ff;
+    color: #fff;
   }
 
   .menuPpal a:hover > div img {
     margin-top: -36px;
   }
-}
-
-@media only screen and (max-width: 768px) {
   .logo img {
     width: 45px;
     height: 19px;
@@ -268,8 +267,8 @@
 
 @media only screen and (max-width: 375px) {
   .menuPpal {
-    width: 100%;
     gap: unset;
+    width: 100%;
   }
 }
 

@@ -84,7 +84,7 @@ const TypeCard = ({
             <div className="top-tabla">Alcobas</div>
             <div className="top-tabla">Baños</div>
             <div className="top-tabla">Precio</div>
-            <div className="top-tabla"></div>
+            {/* <div className="top-tabla"></div> */}
           </div>
 
           {units.map((unit, i) => (
@@ -92,7 +92,7 @@ const TypeCard = ({
               <div className="detalle-tabla">{unit.idProperty}</div>
               <div className="detalle-tabla">{unit.bedrooms}</div>
               <div className="detalle-tabla">{unit.baths}</div>
-              <div className="detalle-tabla">{`$${unit.propertyPrice}`}</div>
+              <div className="detalle-tabla price-table">{`$${unit.propertyPrice}`}</div>
               <div
                 className="llave-tabla"
                 onClick={() => setCreateOportunity(true)}></div>

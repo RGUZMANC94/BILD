@@ -420,7 +420,7 @@ const CreateProject = () => {
     <>
       <section className={styles.main}>
         <form
-          className={styles.createProjectForm}
+          className={`${styles.createProjectForm} container`}
           onSubmit={sendFormInfo}
           id="IDForm">
           <div className={styles['proyect-left']}>
@@ -686,9 +686,7 @@ const CreateProject = () => {
                 <div className={styles.contacto}>
                   <div className={styles.botones}>
                     <Link href="/" className={styles.cancelar}>
-                      <button className={styles['inner-cancelar']}>
                         cancelar
-                      </button>
                     </Link>
                     <button className={styles.crear} /* href="#popproyecto"*/>
                       Crear Proyecto
@@ -746,7 +744,7 @@ const CreateProject = () => {
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>
+                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
                 {`Algo no
                 está bien.${
                   errorMessage
