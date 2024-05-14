@@ -436,7 +436,7 @@ const EditProject = () => {
     <>
       <section className={styles.main}>
         <form
-          className={styles.createProjectForm}
+          className={`${styles.createProjectForm} container`}
           onSubmit={sendFormInfo}
           id="IDForm">
           <div className={styles['proyect-left']}>
@@ -601,9 +601,7 @@ const EditProject = () => {
                 <div className={styles.contacto}>
                   <div className={styles.botones}>
                     <Link href="/" className={styles.cancelar}>
-                      <button className={styles['inner-cancelar']}>
-                        cancelar
-                      </button>
+                      cancelar
                     </Link>
                     <button className={styles.crear} /* href="#popproyecto"*/>
                       Crear Proyecto

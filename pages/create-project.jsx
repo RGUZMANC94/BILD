@@ -556,7 +556,7 @@ const CreateProject = () => {
                 </label>
               </div>
             </div>
-            <div className={styles['/images']}>
+            {/* <div className={styles['/images']}>
               <div className={styles['img-title']}>
                 <span className={styles.label}>
                   Imágenes del Proyecto:{' '}
@@ -605,7 +605,7 @@ const CreateProject = () => {
                   </label>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className={styles['file-movil']}>
               <a className={styles.subir} href="#popup1">
                 SUBIR EXCEL de INVENTARIO
