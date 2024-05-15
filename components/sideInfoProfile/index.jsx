@@ -24,7 +24,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                 query: { contact: contactInfo.idCli },
               }}
               className={`${styles.editar}`}>
-              Editar
+              
             </Link>
           )}
 

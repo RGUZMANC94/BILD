@@ -37,15 +37,14 @@
 }
 
 .editar {
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  text-align: right;
-  border-bottom: 2px solid #fff;
   margin: 25px 25px 0 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  display: block;
+  background-image: url(/images/edit.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 30px;
 }
 
 .perfil-img {

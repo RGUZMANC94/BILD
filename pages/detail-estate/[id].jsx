@@ -12,8 +12,10 @@ import Link from 'next/link';
 import { closePopUp } from '../../redux/popUpOportunity';
 import EditTypePop from '../../components/editTypePop';
 import EditUnitPop from '../../components/editUnitPop';
+import { changeProjectEdit } from '../../redux/editObjectSlice';
 
 const DetailState = ({ unitsInit, typesInit }) => {
+  const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
@@ -23,7 +25,6 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [recentContacts, setRecentsContacts] = useState({});
   const router = useRouter();
   const containerEstate = useRef(null);
-  const dispatch = useDispatch();
   const [closeFlag, setCloseFlag] = useState(true);
   const [typeFlag, setTypeFlag] = useState(false);
   const [unitFlag, setUnitFlag] = useState(false);
@@ -105,6 +106,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
   console.log('Unidades: ', units);
   console.log('Tipos: ', types);
+  console.log('Proyecto: ', projectSelected);
   useEffect(() => {
     getRecentsContacts();
   }, []);
@@ -171,6 +173,27 @@ const DetailState = ({ unitsInit, typesInit }) => {
               <li>
                 <Link href="/" className="back-arrow bg-ct"></Link>
               </li>
+
+              <li>
+                <h1 className="topProjectName">{projectSelected && projectSelected.projectName}</h1>
+              </li>
+
+              <li>
+                <Link
+                  href={{
+                    pathname: '/edit-project',
+                    query: { project: projectSelected ? projectSelected.projectId : ''},
+                  }}
+                  className={'editProjectDetailState'}
+                  onClick={() =>
+                    dispatch(changeProjectEdit(projectSelected))
+                  }
+                  ></Link>
+              </li>
+
+
+              
+              {/*
               <li>
                 <a href="#">
                   <i className="fa-solid fa-angle-left"></i>
@@ -194,6 +217,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
                 }}>
                 <button className="buttonTopDetailState">{infoText}</button>
               </li>
+              */}
             </>
           )}
         </ul>
@@ -213,12 +237,14 @@ const DetailState = ({ unitsInit, typesInit }) => {
               setShowEditUnit={setShowEditUnit}
             />
 
+            {/*
             <InfoProject
               viewEstate={viewEstate}
               info={projectSelected}
               setLightboxImage={setLightboxImage}
               projectId={router.query.id}
             />
+            */}
           </div>
         </div>
       </section>
