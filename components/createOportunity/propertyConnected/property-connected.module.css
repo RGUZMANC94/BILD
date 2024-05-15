@@ -67,7 +67,7 @@
   font-size: 12px;
 }
 
-.subject_input{
+.subject_input {
   background-image: url(/images/arrow-select-white.svg);
   background-position: 95% 50%;
   background-size: 15px;
@@ -129,7 +129,6 @@
 .elegir-origen {
   width: 100%;
 }
-
 
 .message_input {
   display: block;
