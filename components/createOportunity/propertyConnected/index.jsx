@@ -83,7 +83,7 @@ const PropertyConnected = ({ setIsCreated }) => {
           </div>
         </div>
         <div className={styles['conecta-dos']}>
-          <span className={styles.conectado}>CONECTADO CON:</span>
+          <span className={styles.conectado}>Conectado con:</span>
           <div className={styles['contacto-dos']}>
             <img
               src={
@@ -98,7 +98,7 @@ const PropertyConnected = ({ setIsCreated }) => {
         </div>
         <div className={styles.clear}></div>
         <div className={styles.origen}>
-          <span className={styles['text-origen']}>ORIGEN:</span>
+          <span className={styles['text-origen']}>Origen:</span>
           <div className={styles['elegir-origen']}>
             <select
               placeholder="Subject line"
@@ -113,7 +113,7 @@ const PropertyConnected = ({ setIsCreated }) => {
               <option>Opción 3</option>
             </select>
             <div className="name-field">
-              <span className={styles.label}>Descripción del Proyecto</span>
+              <span className={styles.label}>Descripción del Proyecto:</span>
               <textarea
                 name="message"
                 placeholder=""

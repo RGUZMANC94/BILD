@@ -533,7 +533,7 @@ const CreateProject = () => {
             </div>
 
             <div className={styles.image}>
-              <span className={styles.label}>IMAGEN DEL PROYECTO:</span>
+              <span className={styles.label}>Imágen del Proyecto:</span>
               <div className={styles['main-image']}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}

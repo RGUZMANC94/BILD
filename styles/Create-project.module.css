@@ -131,27 +131,25 @@
 .name-field {
   display: flex;
   flex-direction: column;
-  padding: 5px 0 0;
   color: #ffffff;
   font-weight: 400;
   font-size: 16px;
   text-align: left;
-  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .label {
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  margin: 0px 0 10px;
   color: #fff;
-  text-transform: uppercase;
 }
 
 .file {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 100%;
 }
 .descargar {
@@ -179,7 +177,6 @@
   width: 100%;
   height: auto;
   text-align: left;
-  text-transform: uppercase;
 }
 
 .main-image {
@@ -424,7 +421,10 @@
   width: calc(50% - 10px);
   letter-spacing: 1px;
   text-decoration: none;
+  font-size: 15px;
   text-transform: uppercase;
+  height: 45px;
+  line-height: 45px;
 }
 
 .inner-cancelar {
@@ -448,11 +448,13 @@
   width: calc(50% - 10px);
   color: #fff;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  height: 45px;
+  line-height: 45px;
 }
 
 .text-origen {

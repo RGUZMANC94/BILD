@@ -113,10 +113,15 @@ const OportunityCreated = ({
                     unit.propertyPrice
                   ).toLocaleString('es-ES')}`}</span>
                   <div className={styles.detalles}>
-                    <img src="/images/cards/bed.svg" />
-                    <span>{`${unit.bedrooms}`}</span>
-                    <img src="/images/cards/bath.svg" />
-                    <span>{`${unit.baths}`}</span>
+                    <div className={styles['details-group']}>
+                      <img src="/images/cards/bed.svg" />
+                      <span>{`${unit.bedrooms}`}</span>
+                    </div>
+                    -
+                    <div className={styles['details-group']}>
+                      <img src="/images/cards/bath.svg" />
+                      <span>{`${unit.baths}`}</span>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.add}></div>

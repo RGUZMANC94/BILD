@@ -13,6 +13,9 @@
     border 0.25s ease-in 0s;
   overflow: hidden;
   position: relative;
+  height: 45px;
+  line-height: 45px;
+  font-size: 15px;
 }
 
 .siteButton:hover {
@@ -39,9 +42,9 @@
   transition: all 0.25s ease-in-out;
 }
 
-.siteButton:hover:before {
+/* .siteButton:hover:before {
   transform: translateY(0%);
-}
+} */
 
 .primary:before {
   background-color: #2467ff;
@@ -77,10 +80,10 @@
   color: #fff;
 }
 
-.secondary:hover {
+/* .secondary:hover {
   color: #fff;
   border-color: #2467ff;
-}
+} */
 
 .secondary:before {
   background-color: #2467ff;

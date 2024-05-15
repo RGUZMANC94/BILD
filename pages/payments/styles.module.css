@@ -84,7 +84,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 85px;
+  padding-bottom: 55px;
 }
 
 .line img {
@@ -219,7 +219,7 @@
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
-  top: 0px;
+  top: calc(50% - 10px);
   left: -42px;
 }
 
@@ -229,13 +229,12 @@
   border-radius: 50%;
   background-color: #777;
   position: absolute;
-  top: 0px;
+  top: calc(50% - 10px);
   left: -42px;
 }
 
 .seguimiento {
   width: 40%;
-  height: 50px;
   background-color: rgba(60, 64, 67, 0.35);
   color: #fff;
   font-size: 18px;
@@ -251,7 +250,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid #fff;
   margin-top: 30px;
 }
@@ -346,12 +345,11 @@
 
 button.confirmar {
   width: 45%;
-  height: 50px;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #2467ff;
   text-transform: uppercase;
   margin-top: 30px;
@@ -377,7 +375,6 @@ button.confirmar {
 
 button.cancelar {
   width: 40%;
-  height: 50px;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
@@ -394,13 +391,12 @@ button.cancelar {
   background:
     linear-gradient(white, white) padding-box,
     linear-gradient(0deg, #2467ff, #00bdff) border-box;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid transparent;
 }
 
 .transferir {
   width: 40%;
-  height: 50px;
   color: #fff;
   font-size: 18px;
   font-weight: 500;
@@ -415,7 +411,7 @@ button.cancelar {
   align-items: center;
   justify-content: center;
   background-color: #2467ff;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid transparent;
 }
 

@@ -540,7 +540,7 @@ const EditProject = () => {
           </div>
           <div className={styles['proyect-right']}>
             <div className={styles.image}>
-              <span className={styles.label}>IMAGEN DEL PROYECTO:</span>
+              <span className={styles.label}>Imagen del Proyecto:</span>
               <div className={styles['main-image']}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}

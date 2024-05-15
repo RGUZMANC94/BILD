@@ -228,8 +228,7 @@
 }
 
 .buttonCreateOpportunity {
-  width: 48%;
-  height: 50px;
+  width: calc(50% - 10px);
 }
 
 .cotizacion-form {

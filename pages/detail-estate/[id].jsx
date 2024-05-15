@@ -4,7 +4,7 @@ import TypesSide from '../../components/typesSide';
 import InfoProject from '../../components/infoProject';
 import AddTypePop from '../../components/addTypePop';
 import AddUnitPop from '../../components/addUnitPop';
-import { getSessionToken } from '../../utils/getSessionToken';
+import Button from '../../components/button';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
@@ -21,6 +21,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [showPopUpUnit, setShowPopUpUnit] = useState(false);
   const [createOportunity, setCreateOportunity] = useState(false);
   const [recentContacts, setRecentsContacts] = useState({});
+  const { user_rol } = useSelector((state) => state.userState);
   const router = useRouter();
   const containerEstate = useRef(null);
   const dispatch = useDispatch();
@@ -150,53 +151,94 @@ const DetailState = ({ unitsInit, typesInit }) => {
   console.log('units:', unitFlag);
   console.log('types:', typeFlag);
 
+  const [xlsxTemplate, setXlsxTemplate] = useState(null);
+
+  const getXlsxTemplate = async () => {
+    const response = await fetch('/api/multimediaRequest', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        idobject: '1',
+        type: 'GL',
+        subtype: 'PIM',
+      }),
+    });
+    const templateResponse = await response.json();
+    setXlsxTemplate(templateResponse);
+  };
+
   return (
     <>
       <div className="top-content">
-        <ul>
-          {conectContact && (
-            <li className="selectFilterFlex j-s a-c">
-              <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
-              <select className={'selectFilterProject'}>
-                {projectsList.map((project) => (
-                  <option key={project.projectId} value={project.projectId}>
-                    {project.projectName}
-                  </option>
-                ))}
-              </select>
-            </li>
-          )}
-          {!conectContact && (
-            <>
-              <li>
-                <Link href="/" className="back-arrow bg-ct"></Link>
+        <div className="container flex j-sb">
+          <ul>
+            {conectContact && (
+              <li className="selectFilterFlex j-s a-c">
+                <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
+                <select className={'selectFilterProject'}>
+                  {projectsList.map((project) => (
+                    <option key={project.projectId} value={project.projectId}>
+                      {project.projectName}
+                    </option>
+                  ))}
+                </select>
               </li>
-              <li>
-                <a href="#">
-                  <i className="fa-solid fa-angle-left"></i>
-                </a>
-              </li>
-              <li
-                className={`itemTopContent ${
-                  viewEstate === 'units' ? 'active' : ''
-                }`}
-                onClick={() => {
-                  setViewEstate('units');
-                }}>
-                <button className="buttonTopDetailState">Unidades</button>
-              </li>
-              <li
-                className={`itemTopContent ${
-                  viewEstate === 'info' ? 'active' : ''
-                }`}
-                onClick={() => {
-                  setViewEstate('info');
-                }}>
-                <button className="buttonTopDetailState">{infoText}</button>
-              </li>
-            </>
-          )}
-        </ul>
+            )}
+            {!conectContact && (
+              <>
+                <li>
+                  <Link href="/" className="back-arrow bg-ct"></Link>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fa-solid fa-angle-left"></i>
+                  </a>
+                </li>
+                <li
+                  className={`itemTopContent ${
+                    viewEstate === 'units' ? 'active' : ''
+                  }`}
+                  onClick={() => {
+                    setViewEstate('units');
+                  }}>
+                  <button className="buttonTopDetailState">Unidades</button>
+                </li>
+                <li
+                  className={`itemTopContent ${
+                    viewEstate === 'info' ? 'active' : ''
+                  }`}
+                  onClick={() => {
+                    setViewEstate('info');
+                  }}>
+                  <button className="buttonTopDetailState">{infoText}</button>
+                </li>
+              </>
+            )}
+          </ul>
+          <div className="upperButtons">
+            {user_rol === 'ADMIN' && (
+              <Button
+                buttonType={'primary'}
+                label="subir"
+                iconImage={'/images/plus.svg'}
+                clickFunction={() => {
+                  setShowPopUpUnit(true);
+                  // setShowFormUnits(true);
+                }}
+              />
+            )}
+            <label className="file">
+              <a
+                className="descargar"
+                href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
+                <img src="/images/download.svg" />
+                Descargar
+              </a>
+            </label>
+          </div>
+        </div>
       </div>
       <section className="main">
         <div className="container">

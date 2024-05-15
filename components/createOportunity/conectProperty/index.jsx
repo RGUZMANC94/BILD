@@ -15,7 +15,7 @@ const ConectProperty = ({
     <div className={styles.contacto}>
       <div className={styles.conecta}>
         <span className={styles['conecta-contacto']}>
-          CONECTA EL INMUEBLE A UN CONTACTO:
+          Conecta el inmueble a un contacto:
         </span>
         <button
           className={styles['crear-contacto']}
@@ -29,7 +29,7 @@ const ConectProperty = ({
         </button>
       </div>
       <div className={styles.recientes}>
-        <span className={styles['conecta-contacto']}>CONTACTOS RECIENTES:</span>
+        <span className={styles['conecta-contacto']}>Contactos recientes:</span>
         {recentContacts &&
           recentContacts.length > 0 &&
           recentContacts.slice(0, 3).map((recent, i) => (

@@ -1,11 +1,12 @@
 .crear {
   width: 50%;
+  max-width: 1000px;
   height: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px 15px 25px;
+  padding: 25px;
   background-color: #343434;
   color: #fff;
   border-radius: 15px;
@@ -25,22 +26,21 @@
   background-color: #343434;
   border-radius: 15px;
   text-align: left;
-  padding: 10px 15px 30px;
+  margin-bottom: 20px;
 }
 
 .tipo-unit {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   background-color: transparent;
   text-align: left;
-  margin-top: 10px;
+  position: relative;
 }
 
 .creacion-title {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .tipo-unit.informacion {
   width: calc(80% - 20px);
@@ -62,7 +62,7 @@
 .tipos {
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   text-transform: uppercase;
   text-align: left;
@@ -74,9 +74,8 @@
 
 .img-tipo {
   width: 30%;
-  height: 144px;
   overflow: hidden;
-  margin-right: 1vh;
+  margin-right: 20px;
   border-radius: 10px;
   position: relative;
 }
@@ -93,7 +92,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 0 0;
 }
 
 .tipo-title {
@@ -117,10 +116,10 @@
 }
 
 .valor {
-  font-size: 14px;
+  font-size: 15px;
   color: #fff;
   font-weight: 200;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .detalles {
@@ -134,6 +133,8 @@
   text-align: left;
   margin-top: 10px;
   gap: 10px;
+  position: absolute;
+  bottom: 10px;
 }
 
 .details-group{
@@ -155,7 +156,6 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 50px;
   font-size: 14px;
 }
 
@@ -165,7 +165,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .img-tipo-glass {

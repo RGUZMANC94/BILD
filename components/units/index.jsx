@@ -121,7 +121,7 @@ const Units = ({
   return (
     <>
       <div className="caracteristicas">
-        <div className={styles.upperButtons}>
+        {/* <div className={styles.upperButtons}>
           {user_rol === 'ADMIN' && (
             <Button
               buttonType={'primary'}
@@ -141,7 +141,7 @@ const Units = ({
               Descargar Excel Base
             </a>
           </label>
-        </div>
+        </div> */}
         <div className="caracteristicas-top">
           <div className="top-tabla">ID</div>
           <div className="top-tabla">Alcobas</div>
@@ -211,22 +211,24 @@ const Units = ({
       */}
 
               <label className={styles.subir}>
-                SUBIR EXCEL de INVENTARIO
-                <input
-                  type="file"
-                  hidden
-                  ref={inputXlsx}
-                  onChange={handleXlsxClick}
-                  accept=".xlsx, .xls, .csv"
-                  name="excel"
-                />
+                {user_rol === 'ADMIN' && (
+                  <Button
+                    buttonType={'primary'}
+                    label="Agregar Unidad"
+                    iconImage={'/images/plus.svg'}
+                    clickFunction={() => {
+                      setShowPopUpUnit(true);
+                      // setShowFormUnits(true);
+                    }}
+                  />
+                )}
               </label>
 
-              <label
+              {/* <label
                 className={xlsxData ? styles.subir : styles.disabledButton}>
                 SUBIR PROYECTOS
                 <input type="button" hidden onClick={sendXlsx} name="excel" />
-              </label>
+              </label> */}
             </div>
             <div className={`${styles.projectDocument}`} ref={featuredProject}>
               <p className={styles['text-origen']}>DOCUMENTO unidades:</p>
@@ -263,7 +265,7 @@ const Units = ({
             <div className={styles['icon-box']}>
               <img src="/images/error-circle.png" />
               <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}Algo no
+                <span className={styles['pop-text-bold']}>¡Oops!</span> Algo no
                 está bien. Por favor, revisa los datos ingresados e inténtalo de
                 nuevo.
               </span>
