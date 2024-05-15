@@ -10,8 +10,8 @@ const CreateContact = () => {
   const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
-  const [typeClient, setTypeClient] = useState('');
-  const [businessName, setBusinessName] = useState('');
+  const [civilStatus, setCivilStatus] = useState('');
+  const [housingInversion, setHousingInversion] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
 
   const [datos, setDatos] = useState({
@@ -41,6 +41,8 @@ const CreateContact = () => {
     department: '5',
     city: '1',
     thirdDependency: 'N',
+    housingInversion: '',
+    civilStatus: '',
   });
 
   const [imagen, setImagen] = useState(null);
@@ -214,13 +216,11 @@ const CreateContact = () => {
   };
 
   const changebusinessName = (name) => {
-    // setDatos({ ...datos, businessName: name });
-    setBusinessName(name);
+    setDatos({ ...datos, housingInversion: name });
   };
 
   const changeTypeClient = (type) => {
-    // setDatos({ ...datos, typeClient: type });
-    setTypeClient(type);
+    setDatos({ ...datos, civilStatus: type });
   };
 
   return (
@@ -370,25 +370,27 @@ const CreateContact = () => {
               <div className={styles.datos}>
                 <button
                   type="button"
-                  onClick={() => changeTypeClient('casado')}
+                  onClick={() => changeTypeClient('C')}
                   className={`${styles.campo} ${
-                    typeClient === 'casado' && styles.active
+                    datos.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
                 </button>
                 <button
                   type="button"
-                  onClick={() => changeTypeClient('soltero')}
+                  onClick={() => changeTypeClient('S')}
                   className={`${styles.campo} ${
-                    typeClient === 'soltero' && styles.active
+                    datos.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
                 </button>
+                {/*
+                  
                 <button
                   type="button"
                   onClick={() => changeTypeClient('conHijos')}
                   className={`${styles.campo} ${
-                    typeClient === 'conHijos' && styles.active
+                    datos.civilStatus === 'conHijos' && styles.active
                   }`}>
                   Con Hijos
                 </button>
@@ -396,17 +398,26 @@ const CreateContact = () => {
                   type="button"
                   onClick={() => changeTypeClient('sinHijos')}
                   className={`${styles.campo} ${
-                    typeClient === 'sinHijos' && styles.active
+                    datos.civilStatus === 'sinHijos' && styles.active
                   }`}>
                   Sin Hijos
                 </button>
+                  */}
                 <button
                   type="button"
-                  onClick={() => changeTypeClient('separado')}
+                  onClick={() => changeTypeClient('UN')}
                   className={`${styles.campo} ${
-                    typeClient === 'separado' && styles.active
+                    datos.civilStatus === 'UN' && styles.active
                   }`}>
-                  Separado
+                  Unión Libre
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeTypeClient('DI')}
+                  className={`${styles.campo} ${
+                    datos.civilStatus === 'DI' && styles.active
+                  }`}>
+                  Divorciado
                 </button>
               </div>
             </div>
@@ -416,17 +427,17 @@ const CreateContact = () => {
                 <div className={styles.datos}>
                   <button
                     type="button"
-                    onClick={() => changebusinessName('inversionista')}
+                    onClick={() => changebusinessName('I')}
                     className={`${styles.campo} ${
-                      businessName === 'inversionista' && styles.active
+                      datos.housingInversion === 'I' && styles.active
                     }`}>
                     Inversionista
                   </button>
                   <button
                     type="button"
-                    onClick={() => changebusinessName('familiar')}
+                    onClick={() => changebusinessName('V')}
                     className={`${styles.campo} ${
-                      businessName === 'familiar' && styles.active
+                      datos.housingInversion === 'V' && styles.active
                     }`}>
                     Familiar
                   </button>

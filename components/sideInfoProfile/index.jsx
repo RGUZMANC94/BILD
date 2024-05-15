@@ -23,9 +23,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                 pathname: '/edit-contact',
                 query: { contact: contactInfo.idCli },
               }}
-              className={`${styles.editar}`}>
-              Editar
-            </Link>
+              className={`${styles.editar}`}></Link>
           )}
 
           <div className={styles['perfil-img']}>
