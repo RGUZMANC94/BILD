@@ -155,7 +155,6 @@ const DetailState = ({ unitsInit, typesInit }) => {
   return (
     <>
       <div className="top-content">
-        <ul>
           {conectContact && (
             <li className="selectFilterFlex j-s a-c">
               <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
@@ -168,32 +167,47 @@ const DetailState = ({ unitsInit, typesInit }) => {
               </select>
             </li>
           )}
+          <div className='topInfo-container'>
           {!conectContact && (
             <>
-              <li>
+
+                <div className="top-infoContainer">
+                  
                 <Link href="/" className="back-arrow bg-ct"></Link>
-              </li>
+              
 
-              <li>
-                <h1 className="topProjectName">
-                  {projectSelected && projectSelected.projectName}
-                </h1>
-              </li>
+              
+                <h1 className="topProjectName">{projectSelected && projectSelected.projectName}</h1>
+              
 
-              <li>
+              
                 <Link
                   href={{
                     pathname: '/edit-project',
-                    query: {
-                      project: projectSelected ? projectSelected.projectId : '',
-                    },
+                    query: { project: projectSelected ? projectSelected.projectId : ''},
                   }}
                   className={'editProjectDetailState'}
                   onClick={() =>
                     dispatch(changeProjectEdit(projectSelected))
-                  }></Link>
-              </li>
+                  }
+                  />
+                </div>
+              
+              
+              
+              <div className={'top-buttons-container'}>
+                  <button className={'top-donwload'}>
+                    <div className={'top-download-icon'} />
+                    Descargar
+                  </button>
 
+                  <button className={'top-upload'}>
+                    <div className={'top-upload-icon'} />
+                    Subir
+                  </button>
+
+              </div>
+              
               {/*
               <li>
                 <a href="#">
@@ -221,7 +235,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
               */}
             </>
           )}
-        </ul>
+          </div>
       </div>
       <section className="main">
         <div className="container">

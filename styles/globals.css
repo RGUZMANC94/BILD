@@ -55,12 +55,12 @@
   backdrop-filter: blur(3.5px);
   margin-bottom: 40px;
   background: rgba(33, 34, 29, 0.3);
-  padding: 15px 0;
   width: 100%;
   font-weight: 500;
   font-size: 20px;
   text-align: left;
   text-transform: uppercase;
+  height: 60px;
 }
 
 /* 
@@ -228,12 +228,14 @@ li {
 
 .editProjectDetailState {
   display: block;
-  background-image: url(/images/edit.svg);
+  background-image: url(/images/edit-icon.svg);
   background-position: center center;
-  background-size: contain;
+  background-size: 65%;
   background-repeat: no-repeat;
-  width: 50px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  background-color: #2467ff;
+  border-radius: 15%;
 }
 
 .selectFilterProject {
@@ -405,7 +407,7 @@ li {
   font-weight: 400;
   /* padding-top: 33px; */
   font-size: 15px;
-  margin-top: 5px;
+  margin-top: 3px;
   width: 100%;
 }
 
@@ -804,7 +806,7 @@ input[type='number'] {
   margin: 0 auto;
 } */
 
-.top-content ul li button {
+.top-content ul li {
   float: left;
   cursor: pointer;
   margin-right: 50px;
@@ -840,6 +842,75 @@ input[type='number'] {
 .top-content ul li,
 li {
   color: #c7c7c7;
+}
+
+.top-content ul {
+  position: relative;
+}
+
+.topInfo-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1600px;
+}
+
+.top-infoContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+
+.top-buttons-container {
+  position: absolute;
+  display: flex;
+  right: 0;
+  height: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-donwload, .top-upload{
+  width: 150px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px; 
+  text-transform: uppercase;
+  color: #fff;
+  gap: 5px;
+}
+
+.top-donwload {
+  border: 1px solid #fff;
+}
+
+.top-upload {
+  background-color: #2467ff;
+}
+
+.top-download-icon, .top-upload-icon {
+  background-size: 100%;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.top-download-icon {
+  background-image: url(/images/downloadExcel-icon.png);
+}
+
+.top-upload-icon {
+  background-image: url(/images/uploadExcel-icon.png);
 }
 
 li.active button {
