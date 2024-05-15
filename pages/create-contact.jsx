@@ -42,7 +42,7 @@ const CreateContact = () => {
     city: '1',
     thirdDependency: 'N',
     housingInversion: '',
-    civilStatus:''
+    civilStatus: '',
   });
 
   const [imagen, setImagen] = useState(null);
@@ -384,8 +384,7 @@ const CreateContact = () => {
                   }`}>
                   Soltero
                 </button>
-                {
-                  /*
+                {/*
                   
                 <button
                   type="button"
@@ -403,8 +402,7 @@ const CreateContact = () => {
                   }`}>
                   Sin Hijos
                 </button>
-                  */
-                }
+                  */}
                 <button
                   type="button"
                   onClick={() => changeTypeClient('UN')}

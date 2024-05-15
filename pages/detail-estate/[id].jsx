@@ -175,24 +175,25 @@ const DetailState = ({ unitsInit, typesInit }) => {
               </li>
 
               <li>
-                <h1 className="topProjectName">{projectSelected && projectSelected.projectName}</h1>
+                <h1 className="topProjectName">
+                  {projectSelected && projectSelected.projectName}
+                </h1>
               </li>
 
               <li>
                 <Link
                   href={{
                     pathname: '/edit-project',
-                    query: { project: projectSelected ? projectSelected.projectId : ''},
+                    query: {
+                      project: projectSelected ? projectSelected.projectId : '',
+                    },
                   }}
                   className={'editProjectDetailState'}
                   onClick={() =>
                     dispatch(changeProjectEdit(projectSelected))
-                  }
-                  ></Link>
+                  }></Link>
               </li>
 
-
-              
               {/*
               <li>
                 <a href="#">
