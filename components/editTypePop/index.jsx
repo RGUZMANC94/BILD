@@ -402,14 +402,14 @@ const EditTypePop = ({
           </form>
           <div className={`${styles.BottomContent}`}>
             <Button
-              buttonType={'primary'}
+              buttonType={'secondary'}
               iconImage={false}
               label={'CANCELAR'}
               inheritClass={styles.buttonCreateType}
               clickFunction={cancelInfo}
             />
             <Button
-              buttonType={'secondary'}
+              buttonType={'primary'}
               iconImage={false}
               label={'Guardar'}
               inheritClass={styles.buttonCreateType}

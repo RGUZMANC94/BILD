@@ -439,14 +439,14 @@ const AddUnitPop = ({
           </form>
           <div className={`${styles.BottomContent}`}>
             <Button
-              buttonType={'primary'}
+              buttonType={'secondary'}
               iconImage={false}
               label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
               clickFunction={() => setShowPopUpUnit(false)}
             />
             <Button
-              buttonType={'secondary'}
+              buttonType={'primary'}
               iconImage={false}
               label={'Guardar'}
               inheritClass={styles.buttonCreateType}

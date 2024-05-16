@@ -90,10 +90,12 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  height: 70px;
 }
 
 .menuPpal {
   display: flex;
+  height: 100%;
 }
 
 .menuPpal a {

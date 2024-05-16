@@ -424,14 +424,14 @@ const EditUnitPop = ({
           </form>
           <div className={`${styles.BottomContent}`}>
             <Button
-              buttonType={'primary'}
+              buttonType={'secondary'}
               iconImage={false}
               label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
               clickFunction={() => setShowEditUnit(false)}
             />
             <Button
-              buttonType={'secondary'}
+              buttonType={'primary'}
               iconImage={false}
               label={'Guardar'}
               inheritClass={styles.buttonCreateType}
