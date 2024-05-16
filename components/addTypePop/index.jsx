@@ -76,6 +76,8 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag, projectSelec
 
   const sendFormInfo = async () => {
 
+    console.log('Datos:', datos);
+
     console.log(
       JSON.stringify({
         id,
@@ -363,7 +365,7 @@ const AddTypePop = ({ showPopUpType, setShowPopUpType, setTypeFlag, projectSelec
                 iconImage={false}
                 label={'Guardar'}
                 inheritClass={styles.buttonCreateType}
-                onClick={sendFormInfo}
+                clickFunction={sendFormInfo}
               />
           </div>
         </div>

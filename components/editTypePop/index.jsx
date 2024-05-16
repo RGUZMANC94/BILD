@@ -119,8 +119,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
     // cleanForm();
   };
 
-  const sendFormInfo = async (e) => {
-    e.preventDefault();
+  const sendFormInfo = async () => {
 
     console.log(
       JSON.stringify({
@@ -409,7 +408,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
               iconImage={false}
               label={'Guardar'}
               inheritClass={styles.buttonCreateType}
-              onClick={sendFormInfo}
+              clickFunction={sendFormInfo}
             />
         </div>
       </div>

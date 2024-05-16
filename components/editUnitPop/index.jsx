@@ -97,8 +97,7 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag, projec
     return isNaN(floatValue) ? `${value}.0` : floatValue.toFixed(1);
   };
 
-  const sendFormInfo = async (e) => {
-    e.preventDefault();
+  const sendFormInfo = async () => {
 
     const updatedDatos = {
       ...datos,
@@ -431,7 +430,7 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag, projec
                 iconImage={false}
                 label={'Guardar'}
                 inheritClass={styles.buttonCreateType}
-                onClick={sendFormInfo}
+                clickFunction={sendFormInfo}
               />
           </div>
         </div>
