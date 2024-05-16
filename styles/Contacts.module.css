@@ -1,59 +1,59 @@
 .main-contain-contact {
-  width: 100%;
-  height: auto;
-  position: relative;
-  padding-top: 120px;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
+  padding-top: 90px;
+  width: 100%;
+  height: auto;
 }
 
 .crear-contacto {
-  width: 64px;
-  height: 60px;
   display: flex;
   justify-content: flex-end;
+  margin-left: auto;
+  border-radius: 50%;
   background-image: url(/images/add-contact.svg);
-  background-repeat: no-repeat;
   background-position: 15px;
   background-size: 60%;
+  background-repeat: no-repeat;
   background-color: #ff5567;
-  border-radius: 50%;
-  margin-left: auto;
+  width: 64px;
+  height: 60px;
 }
 
 .crear-contacto-container {
-  margin-top: 50px;
-  width: 90%;
-  height: fit-content;
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: nowrap;
+  margin-top: 50px;
+  width: 90%;
+  height: fit-content;
 }
 
 .contact-top {
-  width: 100%;
-  height: auto;
   display: flex;
-  margin: 0 auto;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 35px;
-  margin-top: 40px;
+  margin: 0 auto;
+  margin-top: 30px;
   border-bottom: 1px solid #d9d9d9;
-  font-size: 18px;
-  font-weight: 500;
+  padding-bottom: 35px;
+  width: 100%;
+  height: auto;
   color: #fff;
+  font-weight: 500;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
 .nombre {
-  width: 40%;
-  height: auto;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  width: 40%;
+  height: auto;
   font-weight: 700;
+  text-align: left;
 }
 
 .mail {
@@ -63,18 +63,18 @@
 
 .numero {
   width: 20%;
-  text-align: right;
   font-weight: 700;
+  text-align: right;
 }
 
 .listas {
-  width: 100%;
-  height: auto;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 40px;
+  margin: 0 auto;
+  margin: 40px 0 20px;
+  width: 100%;
+  height: auto;
 }
 
 .listas:first-of-type {
@@ -85,46 +85,46 @@
 }
 
 .reciente {
-  width: 100%;
-  height: auto;
   display: flex;
-  margin: 0 auto;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 35px;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 700;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
   color: #fff;
+  font-weight: 700;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
 .list-name {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .contact {
-  width: 40%;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
   position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  width: 40%;
 }
 
 .contact-img-container {
-  width: 42px;
-  height: 42px;
   position: relative;
   margin-right: 20px;
+  width: 40px;
+  height: 40px;
 }
 
 .contact-img-container img {
   position: relative;
+  border-radius: 50%;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -132,8 +132,8 @@
   margin-left: 20px !important;
 }
 .list-mail {
-  width: 40%;
   padding-top: 20px;
+  width: 40%;
 }
 
 .list-mail ul li {
@@ -141,19 +141,19 @@
 }
 
 .list-number {
-  width: 20%;
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  width: 20%;
+  height: auto;
 }
 
 .number {
-  width: 20%;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
+  width: 20%;
 }
 
 .number img {
@@ -161,37 +161,36 @@
 }
 
 .list-contact {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
-  text-align: left;
   justify-content: space-between;
-  margin-bottom: 30px;
+  width: 100%;
+  height: auto;
   color: #fff;
+  text-align: left;
 }
 
 .reciente-col {
-  width: 40%;
-  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width: 40%;
+  height: auto;
 }
 
 .badge.red {
-  background-color: #ff5567;
-  border-radius: 50%;
-  left: -3px;
+  display: none;
   position: absolute;
   top: -5px;
-  color: #fff;
+  left: -3px;
+  border-radius: 50%;
+  background-color: #ff5567;
   padding: 4px;
   width: 25px;
   height: 25px;
+  color: #fff;
   text-align: center;
-  display: none;
 }
 
 .badge {
@@ -200,6 +199,10 @@
 
 .iconos-movil {
   display: none;
+}
+
+.main-contain-contact > div {
+  position: relative;
 }
 @media only screen and (max-width: 1200px) {
   .wa-movil img {
@@ -232,22 +235,37 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .listas{
+    margin-top: 0px;
+  }
+
+  .main-contain-contact{
+    padding: 120px 0 80px;
+  }
   .crear-contacto-container {
     position: absolute;
     bottom: 48%;
   }
 
+  .contact-img-container{
+    margin-right: 10px;
+  }
+
+  .list-name{
+    margin-bottom: 20px;
+  }
+
   .crear-contacto {
-    width: 70px;
-    height: 70px;
+    position: fixed;
+    top: 65px;
+    right: 4%;
     background-image: url(/images/create-contect-movile.png);
-    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     background-color: unset;
-    position: fixed;
-    top: 90px;
-    right: 40px;
+    width: 50px;
+    height: 50px;
   }
 
   .contact-top,
@@ -262,9 +280,9 @@
   .iconos-movil {
     display: flex;
     flex-direction: row;
-    width: 30%;
     justify-content: flex-end;
     align-items: center;
+    width: 30%;
   }
   .phone-movil {
     width: 50%;

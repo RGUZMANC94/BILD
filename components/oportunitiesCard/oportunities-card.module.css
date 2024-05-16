@@ -9,7 +9,7 @@
   background: #2e2e2c;
   box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15);
   text-align: left;
-  padding: 34px;
+  padding: 30px;
   position: relative;
 }
 
@@ -114,9 +114,8 @@
   font-size: 18px;
   color: #fff;
   font-style: normal;
-  font-weight: 600;
-  line-height: 1.38889;
-  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .card-location {
@@ -124,17 +123,17 @@
   color: #fff;
   font-style: normal;
   font-style: normal;
-  font-weight: 600;
-  line-height: 1.38889;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .card-sub {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
   color: #fff;
   text-transform: uppercase;
   width: 100%;
-  margin: 10px 0px;
+  margin: 0px 0 20px;
 }
 
 .card-detalles {
@@ -143,23 +142,18 @@
   flex-direction: row;
   justify-content: start;
   align-items: start;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 300;
-  line-height: 1.78611;
 }
 
 .card-sub {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: #fff;
   text-transform: uppercase;
   width: 100%;
-  margin-top: 15px;
-  font-size: 18px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 1.78611;
 }
 
 .card-back {

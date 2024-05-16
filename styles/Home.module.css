@@ -187,11 +187,12 @@
   }
 
   .proyect-info {
-    padding: 10px 5px 10px 0;
+    padding: 5px 35px 5px 0;
     width: fill-available;
   }
   .editProject {
-    top: -55px;
+    top: 5px;
+    right: 5px;
     border-radius: 8px;
     background-size: cover;
     width: 30px;
@@ -200,23 +201,25 @@
 
   .proyect-title {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
+    margin-bottom: 0px;
   }
   .valor {
-    margin: 5px 0 0;
+    margin: 0px 0 20px;
     font-weight: 300;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .detalles {
     margin-top: 0;
     font-weight: 300;
-    font-size: 11px;
+    font-size: 12px;
+    position: initial;
   }
 
   .detalles img {
-    width: 11px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
   }
 }
 

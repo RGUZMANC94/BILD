@@ -2,7 +2,7 @@
   position: relative;
   position: relative;
   z-index: 2;
-  padding: 100px 50px 50px;
+  padding: 100px 0px 50px;
   width: 100%;
   height: auto;
 }
@@ -13,7 +13,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
 }
 
 .proyect-left {
@@ -135,7 +134,7 @@
   font-weight: 400;
   font-size: 16px;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .label {
@@ -178,13 +177,14 @@
   width: 100%;
   height: auto;
   text-align: left;
+  margin-bottom: 20px;
 }
 
 .main-image {
   display: block;
   position: relative;
   cursor: pointer;
-  margin: 20px 0 0 0;
+  margin: 0px 0 0 0;
   border: 2px dotted #fff;
   border-radius: 5px;
   border-radius: 5px;
@@ -413,7 +413,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-top: 10px;
   border: 1px solid #fff;
   border-radius: 5px;
   background: #343434;
@@ -438,7 +437,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-top: 10px;
   border: 1px solid #2467ff;
   border-radius: 5px;
   background-color: #2467ff;
@@ -458,9 +456,9 @@
   text-transform: uppercase;
 }
 
-.elegir-origen {
+/* .elegir-origen {
   margin-top: 20px;
-}
+} */
 
 .image-movil,
 .file-movil {
@@ -883,7 +881,7 @@
 
   section.main {
     flex-direction: column;
-    padding: 127px 30px 50px;
+    padding: 90px 0px 50px;
   }
 
   .proyect-form {
@@ -899,7 +897,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     margin: 0 auto;
     margin-bottom: 20px;
     width: 100%;
@@ -920,12 +918,10 @@
   }
 
   span.label {
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     font-style: normal;
     font-weight: 400;
-    font-size: 11px;
-    line-height: 1.45;
-    text-transform: uppercase;
+    font-size: 16px;
   }
 
   .proyect-form input,
@@ -934,8 +930,7 @@
   }
 
   .proyect-form fieldset {
-    margin: 0 1%;
-    padding: 20px 0;
+    margin: 0;
     width: 100%;
     height: auto;
   }
@@ -966,13 +961,21 @@
     margin-bottom: 20px;
   }
 
-  .botones {
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
 
   .popup {
     width: 90%;
+  }
+
+  .botones{
+    flex-wrap: wrap;
+  }
+
+  .cancelar{
+    margin-bottom: 20px;
+  }
+
+  .cancelar, .crear{
+    width: 100%;
   }
 
   .icon-box .subir {
