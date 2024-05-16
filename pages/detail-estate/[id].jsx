@@ -33,6 +33,28 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [showEditType, setShowEditType] = useState(false);
   const [showEditUnit, setShowEditUnit] = useState(false);
+  const [xlsxTemplate, setXlsxTemplate] = useState(null); 
+
+  const getXlsxTemplate = async () => {
+    const response = await fetch('/api/multimediaRequest', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        idobject: '1',
+        type: 'GL',
+        subtype: 'PIM',
+      }),
+    });
+    const templateResponse = await response.json();
+    setXlsxTemplate(templateResponse);
+  };
+
+  useEffect(() => {
+    getXlsxTemplate();
+  }, []);
+
 
   const getTypes = async () => {
     const response = await fetch('/api/types', {
@@ -149,8 +171,43 @@ const DetailState = ({ unitsInit, typesInit }) => {
     }
   }, [windowWidth]);
 
-  console.log('units:', unitFlag);
-  console.log('types:', typeFlag);
+  const sendXlsx = async (data) => {
+      const formData = new FormData();
+      formData.append('properties', data);
+
+      console.log('formData: ', formData);
+
+      try {
+        const response = await fetch(
+          'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadProperties',
+          {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors',
+          }
+        );
+
+        if (response.ok) {
+          console.log('Batch de unidades subido correctamente');
+        } else {
+          const errorText = await response.text();
+          const errorDta = await response;
+          console.log('Error: ', errorText);
+          console.log('Error: ', errorDta);
+        }
+        setTimeout(() => {
+          setUnitFlag(true);
+        }, 2000);
+      } catch (error) {
+        console.error(error.message);
+        console.error('Error al realizar la solicitud:', error.message);
+      }
+  };
+
+  const handleXlsxData = (e) => {
+    sendXlsx(e.target.files[0]);
+  };
+
 
   return (
     <>
@@ -196,15 +253,15 @@ const DetailState = ({ unitsInit, typesInit }) => {
               
               
               <div className={'top-buttons-container'}>
-                  <button className={'top-donwload'}>
+                  <a className={'top-donwload'} href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
                     <div className={'top-download-icon'} />
                     Descargar
-                  </button>
+                  </a>
 
-                  <button className={'top-upload'}>
+                  <a className={'top-upload'} clickFunction={(e) => {handleXlsxData(e);}}>
                     <div className={'top-upload-icon'} />
                     Subir
-                  </button>
+                  </a>
 
               </div>
               
