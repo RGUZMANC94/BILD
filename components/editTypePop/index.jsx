@@ -5,7 +5,13 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { event } from 'jquery';
 
-const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projectSelected }) => {
+const EditTypePop = ({
+  showEditType,
+  setShowEditType,
+  setTypeFlag,
+  types,
+  projectSelected,
+}) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -120,7 +126,6 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
   };
 
   const sendFormInfo = async () => {
-
     console.log(
       JSON.stringify({
         id,
@@ -243,29 +248,31 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
 
   return (
     <>
-    <div
-      className={`${styles.typePopUp} ${
-        showEditType ? styles.activePopUp : ''
-      } flex j-e a-s`}>
       <div
-        className={`${styles.bgTypePopUp}`}
-        onClick={() => setShowEditType(false)}></div>
-      <div className={`${styles.wrapperTypePopUp}`}>
-        <div className={`${styles.topContent}`}>
-          <div className={`${styles.topContentInfo}`}>
-            <h1 className={`${styles.topContentTitle}`}>
-              {projectSelected.projectName}
-            </h1>
-            <h2 className={`${styles.topContentSubTitle}`}
-            >Creación de tipo</h2>
+        className={`${styles.typePopUp} ${
+          showEditType ? styles.activePopUp : ''
+        } flex j-e a-s`}>
+        <div
+          className={`${styles.bgTypePopUp}`}
+          onClick={() => setShowEditType(false)}></div>
+        <div className={`${styles.wrapperTypePopUp}`}>
+          <div className={`${styles.topContent}`}>
+            <div className={`${styles.topContentInfo}`}>
+              <h1 className={`${styles.topContentTitle}`}>
+                {projectSelected.projectName}
+              </h1>
+              <h2 className={`${styles.topContentSubTitle}`}>
+                Creación de tipo
+              </h2>
+            </div>
+            <div
+              className={`${styles.closeIcon} bg-ct`}
+              onClick={() => setShowEditType(false)}
+            />
           </div>
-          <div
-            className={`${styles.closeIcon} bg-ct`}
-            onClick={() => setShowEditType(false)}/>
-        </div>
 
-        <form className={styles.formType} onSubmit={sendFormInfo}>
-          <div className={`${styles.inputsGroup} flex a-st`}>
+          <form className={styles.formType} onSubmit={sendFormInfo}>
+            <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Nombre</span>
               <input
                 type="text"
@@ -275,33 +282,33 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
                 onChange={handleChange}
                 required
               />
-          </div>
-          <div className={`${styles.inputsGroup} flex a-st`}>
-            <span className={styles.labelText}>Imágen del Proyecto</span>
-            <div className={styles.image}>
-              <div className={styles['main-image']}>
-                <div
-                  className={`bg-ct ${styles.deleteIcon}`}
-                  onClick={deleteImage}></div>
-                <label
-                  htmlFor="mainImgProject"
-                  className={styles.labelInputImage}>
-                  <input
-                    id="mainImgProject"
-                    type="file"
-                    hidden
-                    onChange={handleBloth}
-                    accept="image/*"
-                    name="mainImage"
-                  />
+            </div>
+            <div className={`${styles.inputsGroup} flex a-st`}>
+              <span className={styles.labelText}>Imágen del Proyecto</span>
+              <div className={styles.image}>
+                <div className={styles['main-image']}>
                   <div
-                    className={`${styles.imageSelected}`}
-                    ref={mainImage}></div>
-                </label>
+                    className={`bg-ct ${styles.deleteIcon}`}
+                    onClick={deleteImage}></div>
+                  <label
+                    htmlFor="mainImgProject"
+                    className={styles.labelInputImage}>
+                    <input
+                      id="mainImgProject"
+                      type="file"
+                      hidden
+                      onChange={handleBloth}
+                      accept="image/*"
+                      name="mainImage"
+                    />
+                    <div
+                      className={`${styles.imageSelected}`}
+                      ref={mainImage}></div>
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-          
+
             <div className={`${styles.inputsGroup}`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
@@ -382,7 +389,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
               </label>
             </div>
 
-          {/*
+            {/*
             <label htmlFor="" className={styles.compeleteLabel}>
             <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
             <input
@@ -392,10 +399,8 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
             />
           </label>
           */}
-
-         
-        </form>
-        <div className={`${styles.BottomContent}`}>
+          </form>
+          <div className={`${styles.BottomContent}`}>
             <Button
               buttonType={'primary'}
               iconImage={false}
@@ -410,42 +415,42 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projec
               inheritClass={styles.buttonCreateType}
               clickFunction={sendFormInfo}
             />
-        </div>
-      </div>
-    </div>
-    <div className={`${styles.popSuccessCreated}`}>
-      <div className={styles.bgPopUp}></div>
-      <div className={styles.popup2}>
-        <div className={styles.content}>
-          <div className={styles['icon-box']}>
-            <img src="/images/check-circle.png" />
-            <span className={styles['pop-text']}>
-              ¡Tú tipo ha sido creado con éxito!
-            </span>
           </div>
         </div>
       </div>
-    </div>
-    <div className={`${styles.popError}`}>
-      <div className={styles.bgPopUp}></div>
-      <div className={styles.popup3}>
-        <div className={styles.content}>
-          <div className={styles['icon-box']}>
-            <img src="/images/error-circle.png" />
-            <span className={styles['pop-text']}>
-              <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-              {`Algo no
+      <div className={`${styles.popSuccessCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                ¡Tú tipo ha sido creado con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+                {`Algo no
               está bien.${
                 errorMessage
                   ? `\n${errorMessage}`
                   : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
               }.`}
-            </span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
 

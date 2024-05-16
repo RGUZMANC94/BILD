@@ -861,7 +861,7 @@ li {
   max-width: 1600px;
 }
 
-.top-infoContainer{
+.top-infoContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -877,13 +877,14 @@ li {
   gap: 10px;
 }
 
-.top-donwload, .top-upload{
+.top-donwload,
+.top-upload {
   width: 150px;
   height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 15px; 
+  border-radius: 15px;
   text-transform: uppercase;
   color: #fff;
   gap: 5px;
@@ -898,7 +899,8 @@ li {
   background-color: #2467ff;
 }
 
-.top-download-icon, .top-upload-icon {
+.top-download-icon,
+.top-upload-icon {
   background-size: 100%;
   width: 25px;
   height: 25px;
