@@ -329,6 +329,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         setShowPopUpType={setShowPopUpType}
         showPopUpType={showPopUpType}
         setTypeFlag={setTypeFlag}
+        projectSelected={projectSelected}
       />
 
       <AddUnitPop
@@ -336,6 +337,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         showPopUpUnit={showPopUpUnit}
         types={types}
         setUnitFlag={setUnitFlag}
+        projectSelected={projectSelected}
       />
 
       <EditTypePop
@@ -343,6 +345,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         setShowEditType={setShowEditType}
         setTypeFlag={setTypeFlag}
         types={types}
+        projectSelected={projectSelected}
       />
 
       <EditUnitPop
@@ -350,6 +353,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         setShowEditUnit={setShowEditUnit}
         setUnitFlag={setUnitFlag}
         types={types}
+        projectSelected={projectSelected}
       />
 
       {openPopUpOportunity && (

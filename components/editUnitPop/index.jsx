@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
 
-const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
+const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag, projectSelected }) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -226,33 +226,27 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
       <div
         className={`${styles.typePopUp} ${
           showEditUnit ? styles.activePopUp : ''
-        } flex`}>
+        } flex j-e a-s`}>
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditUnit(false)}></div>
         <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.closeDeleteControls} flex `}>
+        <div className={`${styles.topContent}`}>
+            <div className={`${styles.topContentInfo}`}>
+              <h1 className={`${styles.topContentTitle}`}>
+                {projectSelected.projectName}
+              </h1>
+              <h2 className={`${styles.topContentSubTitle}`}
+              >{typeSelectedName !== -1 &&
+                types.filter((type) => type.idType === typeSelectedName)[0].type}</h2>
+            </div>
             <div
-              className={`${styles.arrowBack} bg-ct`}
-              onClick={() => setShowEditUnit(false)}></div>
-            <div className={`${styles.deleteIcon} bg-ct`}></div>
+              className={`${styles.closeIcon} bg-ct`}
+              onClick={() => setShowEditUnit(false)}/>
           </div>
-
-          <span className={styles.label}>{`${
-            projectsList.filter(
-              (project) => router.query.id === project.projectId
-            )[0].projectName
-          }`}</span>
-          <span className={styles.labelSubtitle}>
-            {typeSelectedName !== -1 &&
-              `${
-                types.filter((type) => type.idType === typeSelectedName)[0].type
-              } - Edición`}
-          </span>
 
           <form className={styles.formType} onSubmit={sendFormInfo}>
             <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-              <div className={`${styles.typeFeatures}`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                   <span className={styles.labelInputTitle}>ID</span>
@@ -291,12 +285,15 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
                     required
                   />
                 </label>
-              </div>
             </div>
 
             <>
+                
+              <div className={`${styles.sectionTitle} flex j-sb a-c`}>
+                  <h2 className={`${styles.sectionTitleText}`}>Datos</h2>
+              </div>
+
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-                <div className={`${styles.typeFeatures}`}>
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                     <span className={styles.labelInputTitle}>HABITACIONES</span>
@@ -320,11 +317,13 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
                       onChange={handleChange}
                     />
                   </label>
-                </div>
               </div>
 
+              <div className={`${styles.sectionTitle} flex j-sb a-c`}>
+              <h2 className={`${styles.sectionTitleText}`}>Áreas</h2>
+            </div>
+
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-                <div className={`${styles.typeFeatures}`}>
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                     <span className={styles.labelInputTitle}>AREA CONSTR</span>
@@ -360,12 +359,25 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
                       onChange={handleChange}
                     />
                   </label>
-                </div>
-              </div>
 
+                  <label
+                    className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                    <span className={styles.labelInputTitle}>
+                      AREA DEPOSITO
+                    </span>
+                    <input
+                      type="text"
+                      name="storageArea"
+                      value={datos.storageArea}
+                      className={styles.inputTypeForm}
+                      onChange={handleChange}
+                    />
+                  </label>
+              </div>
+              {/* 
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <div className={`${styles.typeFeatures}`}>
-                  {/* 
+                 
                       
                        <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
@@ -397,32 +409,21 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
                       </select>
                     </label>
                       
-                      */}
+                     
 
-                  <label
-                    className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>
-                      AREA DEPOSITO
-                    </span>
-                    <input
-                      type="text"
-                      name="storageArea"
-                      value={datos.storageArea}
-                      className={styles.inputTypeForm}
-                      onChange={handleChange}
-                    />
-                  </label>
+                  
                 </div>
               </div>
-            </>
 
-            <div className={`${styles.buttonsCreateType}`}>
+               */}
+            </>
+          </form>
+          <div className={`${styles.BottomContent}`}>
               <Button
                 buttonType={'primary'}
                 iconImage={false}
-                label={'CANCELAR'}
+                label={'Cancelar'}
                 inheritClass={styles.buttonCreateType}
-                href="/"
                 clickFunction={() => setShowEditUnit(false)}
               />
               <Button
@@ -430,9 +431,9 @@ const EditUnitPop = ({ showEditUnit, setShowEditUnit, types, setUnitFlag }) => {
                 iconImage={false}
                 label={'Guardar'}
                 inheritClass={styles.buttonCreateType}
+                onClick={sendFormInfo}
               />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
       <div className={`${styles.popSuccessCreated}`}>

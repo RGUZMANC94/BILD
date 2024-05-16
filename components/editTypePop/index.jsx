@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { event } from 'jquery';
 
-const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
+const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types, projectSelected }) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -244,25 +244,29 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
 
   return (
     <>
+    <div
+      className={`${styles.typePopUp} ${
+        showEditType ? styles.activePopUp : ''
+      } flex j-e a-s`}>
       <div
-        className={`${styles.typePopUp} ${
-          showEditType ? styles.activePopUp : ''
-        } flex j-e a-s`}>
-        <div
-          className={`${styles.bgTypePopUp}`}
-          onClick={() => setShowEditType(false)}></div>
-        <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.closeDeleteControls} flex j-sb a-c`}>
-            <div
-              className={`${styles.arrowBack} bg-ct`}
-              onClick={() => setShowEditType(false)}></div>
-            <div className={`${styles.deleteIcon} bg-ct`}></div>
+        className={`${styles.bgTypePopUp}`}
+        onClick={() => setShowEditType(false)}></div>
+      <div className={`${styles.wrapperTypePopUp}`}>
+        <div className={`${styles.topContent}`}>
+          <div className={`${styles.topContentInfo}`}>
+            <h1 className={`${styles.topContentTitle}`}>
+              {projectSelected.projectName}
+            </h1>
+            <h2 className={`${styles.topContentSubTitle}`}
+            >Creación de tipo</h2>
           </div>
+          <div
+            className={`${styles.closeIcon} bg-ct`}
+            onClick={() => setShowEditType(false)}/>
+        </div>
 
-          <span className={styles.titleLabel}>Edicion tipo</span>
-
-          <form className={styles.formType} onSubmit={sendFormInfo}>
-            <label className={`${styles.typeLabel} flex wrap j-s a-c`}>
+        <form className={styles.formType} onSubmit={sendFormInfo}>
+          <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Nombre</span>
               <input
                 type="text"
@@ -272,175 +276,177 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
                 onChange={handleChange}
                 required
               />
-            </label>
-            {/* <span className={styles.label}>IMAGEN DEL PROYECTO:</span> */}
-
-            <div className={`${styles.inputsGroup} flex a-st`}>
-              <div className={styles.image}>
-                <div className={styles['main-image']}>
+          </div>
+          <div className={`${styles.inputsGroup} flex a-st`}>
+            <span className={styles.labelText}>Imágen del Proyecto</span>
+            <div className={styles.image}>
+              <div className={styles['main-image']}>
+                <div
+                  className={`bg-ct ${styles.deleteIcon}`}
+                  onClick={deleteImage}></div>
+                <label
+                  htmlFor="mainImgProject"
+                  className={styles.labelInputImage}>
+                  <input
+                    id="mainImgProject"
+                    type="file"
+                    hidden
+                    onChange={handleBloth}
+                    accept="image/*"
+                    name="mainImage"
+                  />
                   <div
-                    className={`bg-ct ${styles.deleteIcon}`}
-                    onClick={deleteImage}></div>
-                  <label
-                    htmlFor="mainImgProjectEdit"
-                    className={styles.labelInputImage}>
-                    <input
-                      id="mainImgProjectEdit"
-                      type="file"
-                      hidden
-                      onChange={handleBloth}
-                      accept="image/*"
-                      name="mainImage"
-                    />
-                    <div
-                      className={`${styles.imageSelected}`}
-                      ref={mainImage}></div>
-                  </label>
-                </div>
-              </div>
-              <div className={`${styles.typeFeatures}`}>
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Habitaciones</span>
-                  <input
-                    type="text"
-                    name="bed"
-                    value={datos.bed}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Baños</span>
-                  <input
-                    type="text"
-                    name="bath"
-                    value={datos.bath}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Área Priv.</span>
-                  <input
-                    type="text"
-                    name="size"
-                    value={datos.size}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA CONSTR.</span>
-                  <input
-                    type="text"
-                    name="privateArea"
-                    value={datos.privateArea}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA BALCÓN</span>
-                  <input
-                    type="text"
-                    name="balconyArea"
-                    value={datos.balconyArea}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>DEPOSITO AREA</span>
-                  <input
-                    type="text"
-                    name="storageArea"
-                    value={datos.storageArea}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
+                    className={`${styles.imageSelected}`}
+                    ref={mainImage}></div>
                 </label>
               </div>
             </div>
+          </div>
+          
+            <div className={`${styles.inputsGroup}`}>
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Habitaciones</span>
+                <input
+                  type="text"
+                  name="bed"
+                  value={datos.bed}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-            {/*
-              <label htmlFor="" className={styles.compeleteLabel}>
-              <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
-              <input
-                placeholder="SELECCIONA LOS ASESORES"
-                type="text"
-                className={`${styles.targetInputGroup} ${styles.tl}`}
-              />
-            </label>
-            */}
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Baños</span>
+                <input
+                  type="text"
+                  name="bath"
+                  value={datos.bath}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-            <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
-              <Button
-                buttonType={'primary'}
-                iconImage={false}
-                label={'CANCELAR'}
-                inheritClass={styles.buttonCreateType}
-                clickFunction={cancelInfo}
-              />
-              <Button
-                buttonType={'secondary'}
-                iconImage={false}
-                label={'Guardar'}
-                inheritClass={styles.buttonCreateType}
-              />
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Área Priv.</span>
+                <input
+                  type="text"
+                  name="size"
+                  value={datos.size}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Área Constr.</span>
+                <input
+                  type="text"
+                  name="privateArea"
+                  value={datos.privateArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Área Balcón</span>
+                <input
+                  type="text"
+                  name="balconyArea"
+                  value={datos.balconyArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Depósito Área</span>
+                <input
+                  type="text"
+                  name="storageArea"
+                  value={datos.storageArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
             </div>
-          </form>
+
+          {/*
+            <label htmlFor="" className={styles.compeleteLabel}>
+            <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
+            <input
+              placeholder="SELECCIONA LOS ASESORES"
+              type="text"
+              className={`${styles.targetInputGroup} ${styles.tl}`}
+            />
+          </label>
+          */}
+
+         
+        </form>
+        <div className={`${styles.BottomContent}`}>
+            <Button
+              buttonType={'primary'}
+              iconImage={false}
+              label={'CANCELAR'}
+              inheritClass={styles.buttonCreateType}
+              clickFunction={cancelInfo}
+            />
+            <Button
+              buttonType={'secondary'}
+              iconImage={false}
+              label={'Guardar'}
+              inheritClass={styles.buttonCreateType}
+              onClick={sendFormInfo}
+            />
         </div>
       </div>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú tipo ha sido creado con éxito!
-              </span>
-            </div>
+    </div>
+    <div className={`${styles.popSuccessCreated}`}>
+      <div className={styles.bgPopUp}></div>
+      <div className={styles.popup2}>
+        <div className={styles.content}>
+          <div className={styles['icon-box']}>
+            <img src="/images/check-circle.png" />
+            <span className={styles['pop-text']}>
+              ¡Tú tipo ha sido creado con éxito!
+            </span>
           </div>
         </div>
       </div>
-      <div className={`${styles.popError}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
-              </span>
-            </div>
+    </div>
+    <div className={`${styles.popError}`}>
+      <div className={styles.bgPopUp}></div>
+      <div className={styles.popup3}>
+        <div className={styles.content}>
+          <div className={styles['icon-box']}>
+            <img src="/images/error-circle.png" />
+            <span className={styles['pop-text']}>
+              <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+              {`Algo no
+              está bien.${
+                errorMessage
+                  ? `\n${errorMessage}`
+                  : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+              }.`}
+            </span>
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </>
   );
 };
 

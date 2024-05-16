@@ -33,11 +33,6 @@ const Contacts = () => {
   };
 
   useEffect(() => {
-    // if (!getSessionToken()) {
-    //   router.push('/login');
-    //   getRecentsContacts();
-    //   return;
-    // }
     getRecentsContacts();
   }, []);
 

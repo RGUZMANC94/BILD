@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
 
-const AddTypePop = ({
+const AddUnitPop = ({
   showPopUpUnit,
   setShowPopUpUnit,
   types,
   setUnitFlag,
+  projectSelected
 }) => {
   const router = useRouter();
   const mainImage = useRef(null);
@@ -238,31 +239,27 @@ const AddTypePop = ({
       <div
         className={`${styles.typePopUp} ${
           showPopUpUnit ? styles.activePopUp : ''
-        } flex`}>
+        } flex j-e a-s`}>
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowPopUpUnit(false)}></div>
         <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.closeDeleteControls} flex `}>
+        <div className={`${styles.topContent}`}>
+            <div className={`${styles.topContentInfo}`}>
+              <h1 className={`${styles.topContentTitle}`}>
+                {projectSelected.projectName}
+              </h1>
+              <h2 className={`${styles.topContentSubTitle}`}
+              >{typeSelectedName !== -1 &&
+                types.filter((type) => type.idType === typeSelectedName)[0].type}</h2>
+            </div>
             <div
-              className={`${styles.arrowBack} bg-ct`}
-              onClick={() => setShowPopUpUnit(false)}></div>
-            <div className={`${styles.deleteIcon} bg-ct`}></div>
+              className={`${styles.closeIcon} bg-ct`}
+              onClick={() => setShowPopUpUnit(false)}/>
           </div>
 
-          <span className={styles.label}>{`${
-            projectsList.filter(
-              (project) => router.query.id === project.projectId
-            )[0].projectName
-          }`}</span>
-          <span className={styles.labelSubtitle}>
-            {typeSelectedName !== -1 &&
-              types.filter((type) => type.idType === typeSelectedName)[0].type}
-          </span>
-
           <form className={styles.formType} onSubmit={sendFormInfo}>
-            <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-              <div className={`${styles.typeFeatures}`}>
+            <div className={`${styles.inputsGroup}`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                   <span className={styles.labelInputTitle}>ID</span>
@@ -278,7 +275,7 @@ const AddTypePop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>PRECIO</span>
+                  <span className={styles.labelInputTitle}>Precio</span>
                   <input
                     type="text"
                     name="propertyPrice"
@@ -291,7 +288,7 @@ const AddTypePop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA TERRAZA</span>
+                  <span className={styles.labelInputTitle}>Area terraza</span>
                   <input
                     type="text"
                     name="terraceArea"
@@ -301,7 +298,6 @@ const AddTypePop = ({
                     required
                   />
                 </label>
-              </div>
             </div>
 
             <div className={styles.squareInputContainer}>
@@ -312,12 +308,14 @@ const AddTypePop = ({
             </div>
             {optionalPop && (
               <>
+                <div className={`${styles.sectionTitle} flex j-sb a-c`}>
+                  <h2 className={`${styles.sectionTitleText}`}>Datos</h2>
+                </div>
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-                  <div className={`${styles.typeFeatures}`}>
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                       <span className={styles.labelInputTitle}>
-                        HABITACIONES
+                        Habitaciones
                       </span>
                       <input
                         type="text"
@@ -330,7 +328,7 @@ const AddTypePop = ({
 
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                      <span className={styles.labelInputTitle}>BAÑOS</span>
+                      <span className={styles.labelInputTitle}>Baños</span>
                       <input
                         type="text"
                         name="baths"
@@ -339,15 +337,17 @@ const AddTypePop = ({
                         onChange={handleChange}
                       />
                     </label>
-                  </div>
                 </div>
 
+                <div className={`${styles.sectionTitle} flex j-sb a-c`}>
+              <h2 className={`${styles.sectionTitleText}`}>Áreas</h2>
+            </div>
+
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-                  <div className={`${styles.typeFeatures}`}>
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                       <span className={styles.labelInputTitle}>
-                        AREA CONSTR
+                        Area Const.
                       </span>
                       <input
                         type="text"
@@ -361,7 +361,7 @@ const AddTypePop = ({
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                       <span className={styles.labelInputTitle}>
-                        AREA PRIVADA
+                        Área Priv.
                       </span>
                       <input
                         type="text"
@@ -375,7 +375,7 @@ const AddTypePop = ({
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                       <span className={styles.labelInputTitle}>
-                        AREA BALCÓN
+                        Área Bálcon
                       </span>
                       <input
                         type="text"
@@ -385,12 +385,24 @@ const AddTypePop = ({
                         onChange={handleChange}
                       />
                     </label>
-                  </div>
-                </div>
 
+                    <label
+                      className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                      <span className={styles.labelInputTitle}>
+                        Área Deposito
+                      </span>
+                      <input
+                        type="text"
+                        name="storageArea"
+                        value={datos.storageArea}
+                        className={styles.inputTypeForm}
+                        onChange={handleChange}
+                      />
+                    </label>
+                </div>
+                {/* 
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
-                  <div className={`${styles.typeFeatures}`}>
-                    {/* 
+                    
                       
                        <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
@@ -422,33 +434,23 @@ const AddTypePop = ({
                       </select>
                     </label>
                       
-                      */}
+                      
 
-                    <label
-                      className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                      <span className={styles.labelInputTitle}>
-                        AREA DEPOSITO
-                      </span>
-                      <input
-                        type="text"
-                        name="storageArea"
-                        value={datos.storageArea}
-                        className={styles.inputTypeForm}
-                        onChange={handleChange}
-                      />
-                    </label>
-                  </div>
+              
                 </div>
+                */}
               </>
             )}
 
             <div className={`${styles.buttonsCreateType}`}>
+            </div>
+          </form>
+          <div className={`${styles.BottomContent}`}>
               <Button
                 buttonType={'primary'}
                 iconImage={false}
-                label={'CANCELAR'}
+                label={'Cancelar'}
                 inheritClass={styles.buttonCreateType}
-                href="/"
                 clickFunction={() => setShowPopUpUnit(false)}
               />
               <Button
@@ -456,9 +458,9 @@ const AddTypePop = ({
                 iconImage={false}
                 label={'Guardar'}
                 inheritClass={styles.buttonCreateType}
+                onClick={sendFormInfo}
               />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
       <div className={`${styles.popSuccessCreated}`}>
@@ -497,4 +499,4 @@ const AddTypePop = ({
   );
 };
 
-export default AddTypePop;
+export default AddUnitPop;
