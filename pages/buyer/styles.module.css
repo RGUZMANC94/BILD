@@ -398,8 +398,10 @@
   .perfil {
     width: 100%;
     flex-direction: column;
-    margin: 70px auto 0;
+    margin: 63px auto 0;
   }
+
+  
 
   .editar-perfil {
     width: calc(100% - 25px);
