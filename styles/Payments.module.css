@@ -63,7 +63,7 @@
 }
 
 .left-box {
-  width: 90%;
+  width: calc(100% - 25px);
   height: auto;
   display: flex;
   flex-direction: column;
