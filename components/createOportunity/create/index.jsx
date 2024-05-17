@@ -4,6 +4,7 @@ import styles from './create.module.css';
 import { useDispatch } from 'react-redux';
 import { closePopUp } from '../../../redux/popUpOportunity';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
 
 const CreateStep = ({
   setShowPopUpAddContact,
@@ -44,12 +45,22 @@ const CreateStep = ({
             ).toLocaleString('es-ES')}`}</span>
             <div className={styles.detalles}>
               <div className={styles['details-group']}>
-                <img src="/images/cards/bed.svg" />
+                <Image
+                  alt=""
+                  src="/images/cards/bed.png"
+                  width="15"
+                  height="15"
+                />
                 <span>{`${unit.bedrooms}`}</span>
               </div>
               -
               <div className={styles['details-group']}>
-                <img src="/images/cards/bath.svg" />
+                <Image
+                  alt=""
+                  src="/images/cards/bath.png"
+                  width="15"
+                  height="15"
+                />
                 <span>{`${unit.baths}`}</span>
               </div>
             </div>

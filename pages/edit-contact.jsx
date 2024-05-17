@@ -254,41 +254,59 @@ const EditContact = () => {
             </div>
             <form onSubmit={sendFormInfo} className={styles.msform}>
               <fieldset>
-                <input
-                  type="text"
-                  name="firstNames"
-                  placeholder="Nombre"
-                  value={datos.firstNames}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="lastNames"
-                  placeholder="Apellidos"
-                  value={datos.lastNames}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="documentNumber"
-                  placeholder="Número de Documento"
-                  value={datos.documentNumber}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  value={datos.email}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  placeholder="Celular"
-                  value={datos.phoneNumber}
-                  onChange={handleChange}
-                />
+                <label className={styles.label}>
+                  <span>Nombre:</span>
+                  <input
+                    type="text"
+                    name="firstNames"
+                    placeholder="Nombre"
+                    value={datos.firstNames}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label className={styles.label}>
+                  <span>Apellidos:</span>
+                  <input
+                    type="text"
+                    name="lastNames"
+                    placeholder="Apellidos"
+                    value={datos.lastNames}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label className={styles.label}>
+                  <span>Número de Documento:</span>
+                  <input
+                    type="text"
+                    name="documentNumber"
+                    placeholder="Número de Documento"
+                    value={datos.documentNumber}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label className={styles.label}>
+                  <span>Email:</span>
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={datos.email}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label className={styles.label}>
+                  <span>Celular:</span>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    placeholder="Celular"
+                    value={datos.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </label>
 
                 <div className={styles.foto}>
                   <label

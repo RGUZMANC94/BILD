@@ -102,11 +102,11 @@ i.fa-solid.fa-angle-left {
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.38;
   color: #fff;
   text-transform: uppercase;
   width: 100%;
-  margin-top: 15px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .back {
@@ -149,17 +149,10 @@ i.fa-solid.fa-angle-left {
 }
 
 .right {
-  width: 35%;
-  height: calc(100% - 147px);
+  width: 100%;
   display: flex;
-  padding-top: 50px;
   padding-right: 2%;
   flex-wrap: wrap;
-  position: fixed;
-  /* overflow-y: hidden; */
-  /* overflow: auto; */
-  overflow-y: auto;
-  overflow-x: hidden;
   align-items: stretch;
   align-content: flex-start;
 }
@@ -199,7 +192,7 @@ i.fa-solid.fa-angle-left {
 .pendiente-top {
   width: 100%;
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .greybox {
@@ -208,7 +201,7 @@ i.fa-solid.fa-angle-left {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 20px;
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -249,7 +242,7 @@ li.pendiente-list {
 }
 
 .ulNode li {
-  margin: 10px 0;
+  margin: 0px 0 10px;
   font-size: 14px !important;
   font-weight: 200;
   color: #fff;
@@ -607,12 +600,12 @@ li.pendiente-list {
   padding: 15px 10px;
 }
 
-@media only screen and (max-width: 1380px) {
+/* @media only screen and (max-width: 1380px) {
   .right {
     width: 45%;
     height: calc(100% - 313px);
   }
-}
+} */
 
 @media only screen and (max-width: 1024px) {
   .card-container {

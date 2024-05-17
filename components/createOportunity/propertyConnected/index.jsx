@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../button';
 import { useRouter } from 'next/router';
 import { changeOpportunitySelected } from '../../../redux/opportunitySelectedSlice';
+import { useState } from 'react';
 
 const PropertyConnected = ({ setIsCreated }) => {
   const { id } = useSelector((state) => state.userState);
@@ -11,6 +12,7 @@ const PropertyConnected = ({ setIsCreated }) => {
   );
   const { unitSelected } = useSelector((state) => state.unitState);
   const dispatch = useDispatch();
+  const [enableTextarea, setEnableTextarea] = useState(false);
 
   const sendFormInfo = async (e) => {
     e.preventDefault();
@@ -74,6 +76,16 @@ const PropertyConnected = ({ setIsCreated }) => {
     }
   };
 
+  const toggleTextarea = (e) => {
+    if (e.target.value === 'other') {
+      console.log('first');
+      setEnableTextarea(true);
+      document.querySelector(`.${styles.message_input}`).focus();
+      return;
+    }
+    setEnableTextarea(false);
+  };
+
   return (
     <>
       <form className={styles['contacto-wrap']} onSubmit={sendFormInfo}>
@@ -98,27 +110,28 @@ const PropertyConnected = ({ setIsCreated }) => {
         </div>
         <div className={styles.clear}></div>
         <div className={styles.origen}>
-          <span className={styles['text-origen']}>Origen:</span>
+          <span className={styles['text-origen']}>Origen del contacto:</span>
           <div className={styles['elegir-origen']}>
             <select
+              onChange={(e) => toggleTextarea(e)}
               placeholder="Subject line"
               name="subject"
               className={styles.subject_input}
               required>
               <option disabled hidden selected>
-                OTRO
+                Seleccione origen
               </option>
-              <option>Opción 1</option>
-              <option>Opción 2</option>
-              <option>Opción 3</option>
+              <option>Sucesión de propiedad</option>
+              <option>Recomendación</option>
+              <option value={'other'}>Otro</option>
             </select>
             <div className="name-field">
-              <span className={styles.label}>Descripción del Proyecto:</span>
+              <span className={styles.label}>Descripción:</span>
               <textarea
+                disabled={!enableTextarea}
                 name="message"
                 placeholder=""
-                className={styles.message_input}
-                required></textarea>
+                className={styles.message_input}></textarea>
             </div>
             <div className={styles.boton}>
               <button className={styles['contacto-existente']}>

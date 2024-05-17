@@ -11,6 +11,10 @@ const EditProject = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const {
+    query: { back },
+  } = router;
+
   const mainImage = useRef(null);
   const firstImage = useRef(null);
   const secondImage = useRef(null);
@@ -600,7 +604,13 @@ const EditProject = () => {
                 </div>
                 <div className={styles.contacto}>
                   <div className={styles.botones}>
-                    <Link href="/" className={styles.cancelar}>
+                    <Link
+                      href={
+                        back === '1'
+                          ? '/'
+                          : `/detail-estate/${projectEdit.projectId}`
+                      }
+                      className={styles.cancelar}>
                       cancelar
                     </Link>
                     <button className={styles.crear} /* href="#popproyecto"*/>

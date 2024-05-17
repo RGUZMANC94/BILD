@@ -5,6 +5,7 @@ import { changeTypeSelected } from '../../redux/typeSelectedSlice';
 import { changeTypeEdit } from '../../redux/editObjectSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
 import Button from '../button';
+import Image from 'next/image';
 
 const TypeCard = ({
   units,
@@ -59,13 +60,23 @@ const TypeCard = ({
           </span>
           <div className="detalles">
             <div className="detailsGroup">
-              <img src="/images/cards/bed.png" />
+              <Image
+                alt=""
+                src="/images/cards/bed.png"
+                width="15"
+                height="15"
+              />
               <span>
                 {type.minBed}-{type.maxBed}
               </span>
             </div>
             <div className="detailsGroup">
-              <img src="/images/cards/bath.png" />
+              <Image
+                alt=""
+                src="/images/cards/bath.png"
+                width="15"
+                height="15"
+              />
               <span>
                 {type.minBath}-{type.maxBath}
               </span>

@@ -162,7 +162,6 @@
   text-align: left;
   text-decoration: none;
   text-transform: uppercase;
-  margin-top: 5px;
   margin-right: 15px;
 }
 
@@ -384,6 +383,7 @@ li {
   font-weight: 700;
   font-size: 18px;
   width: 100%;
+  margin-bottom: 5px;
   text-transform: uppercase;
 }
 
@@ -432,8 +432,8 @@ li {
 }
 
 .detalles img {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 .caracteristicas-top {
@@ -441,14 +441,13 @@ li {
   justify-content: center;
   align-items: center;
   margin: 0 auto 10px;
-  padding: 20px 32px 20px 50px;
+  padding: 20px 42px 20px 50px;
   width: 100%;
   height: auto;
   color: #fff;
   font-weight: 600;
   font-size: 18px;
   text-align: center;
-  text-transform: uppercase;
   background-color: #2e2e2c;
 }
 
@@ -499,6 +498,7 @@ li {
 .top-tabla:last-of-type {
   margin: 0;
   width: 40%;
+  text-align: right;
 }
 
 .info-tabla {
@@ -561,6 +561,12 @@ li {
 
 .price-table.detalle-tabla {
   width: 40%;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.price-table.detalle-tabla > input {
+  text-align: right;
 }
 
 .llave-tabla {
@@ -875,20 +881,23 @@ li {
   height: 100%;
   align-items: center;
   gap: 10px;
+  width: calc(50% - 50px);
+  justify-content: flex-end;
 }
 
 .top-donwload,
 .top-upload {
-  width: 150px;
   height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
+  line-height: 45px;
+  border-radius: 5px;
   text-transform: uppercase;
   color: #fff;
   gap: 5px;
   font-size: 14px;
+  width: calc(35% - 10px);
+  padding: 0 55px;
+  position: relative;
+  text-align: center;
 }
 
 .top-donwload {
@@ -906,6 +915,10 @@ li {
   height: 25px;
   background-repeat: no-repeat;
   background-position: center;
+  position: absolute;
+  top: calc(50% - 12.5px);
+  left: 20px;
+  background-size: contain;
 }
 
 .top-download-icon {
@@ -1151,7 +1164,7 @@ li.active button {
 
 @media only screen and (max-width: 1380px) {
   .unidadesSide {
-    margin-bottom: 90px;
+    margin-bottom: 0px;
   }
   .outerTypes {
     /*margin-bottom: 90px;*/
@@ -1165,6 +1178,12 @@ li.active button {
 }
 
 @media only screen and (max-width: 768px) {
+  .top-content {
+    top: 63px;
+  }
+  .addTypeButton {
+    margin-top: 20px;
+  }
   .main {
     width: 100%;
   }
@@ -1232,6 +1251,11 @@ li.active button {
     max-width: 1600px;
     margin: 0 auto;
   }*/
+
+  .itemDrag .tipo-info {
+    width: calc(100% - 60px);
+    padding-left: 10px;
+  }
 }
 
 @media only screen and (max-width: 568px) {
@@ -1263,10 +1287,11 @@ li.active button {
   .containerEstate {
     padding-bottom: 180px;
     max-height: unset;
+    width: 100%;
   }
 
   .outerTypes {
-    width: 76%;
+    width: 100%;
   }
 
   .top-content {
@@ -1296,6 +1321,7 @@ li.active button {
   .tipo {
     margin: 0;
     width: 100%;
+    gap: 0;
   }
 
   .tipo-unit {
@@ -1307,31 +1333,33 @@ li.active button {
     border-radius: 15px;
     background: #2e2e2c;
     width: 100%;
-    min-width: 320px;
+    min-width: initial;
     text-align: left;
+    padding: 0;
   }
 
   .img-tipo {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    margin-right: 0px;
+    aspect-ratio: 4 / 2;
+    height: auto;
+    margin-bottom: 15px;
   }
   .img-tipo img {
     position: relative;
     z-index: 1;
-    margin-right: 20px;
     width: 100%;
     height: 100%;
+    border-radius: 10px 10px 0 0;
   }
   .tipo-title {
-    font-size: 12px;
+    font-size: 14px;
   }
   .valor {
     margin: 0;
-    padding-top: 20px;
     font-style: normal;
     font-weight: 300;
-    font-size: 10px;
-    line-height: 1.6;
+    font-size: 12px;
   }
   .detalle {
     font-size: 10px;
@@ -1360,9 +1388,11 @@ li.active button {
   }
 
   .caracteristicas-top {
-    padding: 20px 32px 20px 0;
+    padding: 10px 35px 10px 0;
     width: 100%;
+    text-transform: none;
   }
+
   .caracteristicas {
     display: none;
   }
@@ -1403,7 +1433,8 @@ li.active button {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 20px 32px 0 0;
+    padding: 0px 35px 0 0;
+    margin-bottom: 10px;
     width: 100%;
     height: auto;
     text-align: center;
@@ -1511,6 +1542,7 @@ li.active button {
     flex-direction: column;
     width: 100%;
     height: auto;
+    padding-bottom: 20px;
   }
 
   .img-tipo-glass {
@@ -1532,19 +1564,34 @@ li.active button {
     display: none;
   }
 
-  .itemDrag.active .img-tipo {
+  /* .itemDrag.active .img-tipo {
     width: 40px;
     height: 40px;
-  }
+  } */
 
   .itemDrag.active .img-tipo-glass {
     width: 18px;
     height: 18px;
   }
 
-  .itemDrag.active .tipo-icons {
+  /* .itemDrag.active .tipo-icons {
     flex-direction: row;
     gap: 20px;
+  } */
+
+  .tipo-icons {
+    gap: 35px 0;
+    height: 100%;
+    padding-right: 10px;
+    margin: 0px 0 10px;
+    gap: 35px 0;
+    height: 100%;
+    padding-right: 10px;
+    margin: 0px 0 10px;
+  }
+
+  .detalles {
+    bottom: 5px;
   }
 
   .selectFilterProject {
@@ -1572,7 +1619,7 @@ li.active button {
 
 @media only screen and (max-width: 375px) {
   .itemDrag {
-    gap: 5px;
+    gap: 10px;
   }
 }
 
