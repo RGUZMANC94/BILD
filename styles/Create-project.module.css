@@ -460,7 +460,6 @@
   text-transform: uppercase;
 }
 
-
 .image-movil,
 .file-movil {
   display: none;
@@ -962,10 +961,9 @@
     line-height: 45px;
     padding: 0;
   }
-  .subir{
+  .subir {
     margin-bottom: 20px;
   }
-  
 
   .upload {
     display: none;
@@ -983,11 +981,12 @@
     width: 90%;
   }
 
-  .cancelar, .crear{
+  .cancelar,
+  .crear {
     width: 100%;
   }
 
-  .cancelar{
+  .cancelar {
     margin-bottom: 20px;
   }
 

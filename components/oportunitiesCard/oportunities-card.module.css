@@ -9,7 +9,7 @@
   background: #2e2e2c;
   box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15);
   text-align: left;
-  padding: 30px;
+  padding: 25px;
   position: relative;
 }
 
@@ -91,14 +91,12 @@
 .card-state-disabled {
   border-radius: 15px;
   background: #2e2e2c;
-
   box-shadow: 0px -3px 7px 0px rgba(0, 0, 0, 0.15);
 }
 
 .card-state-active {
   border-radius: 15px;
   background: #2e2e2c;
-
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -163,7 +161,7 @@
 }
 
 .img-card {
-  margin: 0px 24px;
+  margin: 0px 25px 0 0;
 }
 
 .image-card-circle {
@@ -171,8 +169,8 @@
 }
 
 .img-card img {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
 }
 
@@ -185,8 +183,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   position: absolute;
-  top: 20px;
-  right: 17px;
+  top: 25px;
+  right: 25px;
 }
 
 .card-state-active .card-right-arrow-icon {

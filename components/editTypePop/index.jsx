@@ -5,7 +5,13 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { event } from 'jquery';
 
-const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
+const EditTypePop = ({
+  showEditType,
+  setShowEditType,
+  setTypeFlag,
+  types,
+  projectSelected,
+}) => {
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -119,9 +125,7 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
     // cleanForm();
   };
 
-  const sendFormInfo = async (e) => {
-    e.preventDefault();
-
+  const sendFormInfo = async () => {
     console.log(
       JSON.stringify({
         id,
@@ -252,17 +256,23 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditType(false)}></div>
         <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.closeDeleteControls} flex j-sb a-c`}>
+          <div className={`${styles.topContent}`}>
+            <div className={`${styles.topContentInfo}`}>
+              <h1 className={`${styles.topContentTitle}`}>
+                {projectSelected.projectName}
+              </h1>
+              <h2 className={`${styles.topContentSubTitle}`}>
+                Creación de tipo
+              </h2>
+            </div>
             <div
-              className={`${styles.arrowBack} bg-ct`}
-              onClick={() => setShowEditType(false)}></div>
-            <div className={`${styles.deleteIcon} bg-ct`}></div>
+              className={`${styles.closeIcon} bg-ct`}
+              onClick={() => setShowEditType(false)}
+            />
           </div>
 
-          <span className={styles.titleLabel}>Edicion tipo</span>
-
           <form className={styles.formType} onSubmit={sendFormInfo}>
-            <label className={`${styles.typeLabel} flex wrap j-s a-c`}>
+            <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Nombre</span>
               <input
                 type="text"
@@ -272,20 +282,19 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
                 onChange={handleChange}
                 required
               />
-            </label>
-            {/* <span className={styles.label}>IMAGEN DEL PROYECTO:</span> */}
-
+            </div>
             <div className={`${styles.inputsGroup} flex a-st`}>
+              <span className={styles.labelText}>Imágen del Proyecto</span>
               <div className={styles.image}>
                 <div className={styles['main-image']}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
                     onClick={deleteImage}></div>
                   <label
-                    htmlFor="mainImgProjectEdit"
+                    htmlFor="mainImgProject"
                     className={styles.labelInputImage}>
                     <input
-                      id="mainImgProjectEdit"
+                      id="mainImgProject"
                       type="file"
                       hidden
                       onChange={handleBloth}
@@ -298,114 +307,115 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
                   </label>
                 </div>
               </div>
-              <div className={`${styles.typeFeatures}`}>
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Habitaciones</span>
-                  <input
-                    type="text"
-                    name="bed"
-                    value={datos.bed}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
+            </div>
 
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Baños</span>
-                  <input
-                    type="text"
-                    name="bath"
-                    value={datos.bath}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
+            <div className={`${styles.inputsGroup}`}>
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Habitaciones</span>
+                <input
+                  type="text"
+                  name="bed"
+                  value={datos.bed}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Área Priv.</span>
-                  <input
-                    type="text"
-                    name="size"
-                    value={datos.size}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Baños</span>
+                <input
+                  type="text"
+                  name="bath"
+                  value={datos.bath}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA CONSTR.</span>
-                  <input
-                    type="text"
-                    name="privateArea"
-                    value={datos.privateArea}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Área Priv.</span>
+                <input
+                  type="text"
+                  name="size"
+                  value={datos.size}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA BALCÓN</span>
-                  <input
-                    type="text"
-                    name="balconyArea"
-                    value={datos.balconyArea}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Área Constr.</span>
+                <input
+                  type="text"
+                  name="privateArea"
+                  value={datos.privateArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-                <label
-                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>DEPOSITO AREA</span>
-                  <input
-                    type="text"
-                    name="storageArea"
-                    value={datos.storageArea}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </label>
-              </div>
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Área Balcón</span>
+                <input
+                  type="text"
+                  name="balconyArea"
+                  value={datos.balconyArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Depósito Área</span>
+                <input
+                  type="text"
+                  name="storageArea"
+                  value={datos.storageArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
             </div>
 
             {/*
-              <label htmlFor="" className={styles.compeleteLabel}>
-              <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
-              <input
-                placeholder="SELECCIONA LOS ASESORES"
-                type="text"
-                className={`${styles.targetInputGroup} ${styles.tl}`}
-              />
-            </label>
-            */}
-
-            <div className={`${styles.buttonsCreateType} flex j-sb a-s`}>
-              <Button
-                buttonType={'primary'}
-                iconImage={false}
-                label={'CANCELAR'}
-                inheritClass={styles.buttonCreateType}
-                clickFunction={cancelInfo}
-              />
-              <Button
-                buttonType={'secondary'}
-                iconImage={false}
-                label={'Guardar'}
-                inheritClass={styles.buttonCreateType}
-              />
-            </div>
+            <label htmlFor="" className={styles.compeleteLabel}>
+            <p className={`${styles.labelTextGroup}`}>ASIGNAR PROYECTO:</p>
+            <input
+              placeholder="SELECCIONA LOS ASESORES"
+              type="text"
+              className={`${styles.targetInputGroup} ${styles.tl}`}
+            />
+          </label>
+          */}
           </form>
+          <div className={`${styles.BottomContent}`}>
+            <Button
+              buttonType={'secondary'}
+              iconImage={false}
+              label={'CANCELAR'}
+              inheritClass={styles.buttonCreateType}
+              clickFunction={cancelInfo}
+            />
+            <Button
+              buttonType={'primary'}
+              iconImage={false}
+              label={'Guardar'}
+              inheritClass={styles.buttonCreateType}
+              clickFunction={sendFormInfo}
+            />
+          </div>
         </div>
       </div>
       <div className={`${styles.popSuccessCreated}`}>
@@ -430,11 +440,11 @@ const EditTypePop = ({ showEditType, setShowEditType, setTypeFlag, types }) => {
               <span className={styles['pop-text']}>
                 <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
                 {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
+              está bien.${
+                errorMessage
+                  ? `\n${errorMessage}`
+                  : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+              }.`}
               </span>
             </div>
           </div>

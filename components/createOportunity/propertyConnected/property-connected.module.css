@@ -144,6 +144,10 @@
   color: #fff;
 }
 
+.message_input:disabled{
+  opacity: 0.5;
+}
+
 .label {
   display: block;
   position: relative;

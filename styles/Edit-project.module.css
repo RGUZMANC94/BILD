@@ -961,20 +961,20 @@
     margin-bottom: 20px;
   }
 
-
   .popup {
     width: 90%;
   }
 
-  .botones{
+  .botones {
     flex-wrap: wrap;
   }
 
-  .cancelar{
+  .cancelar {
     margin-bottom: 20px;
   }
 
-  .cancelar, .crear{
+  .cancelar,
+  .crear {
     width: 100%;
   }
 

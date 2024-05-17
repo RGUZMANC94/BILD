@@ -235,11 +235,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .listas{
+  .listas {
     margin-top: 0px;
   }
 
-  .main-contain-contact{
+  .main-contain-contact {
     padding: 120px 0 80px;
   }
   .crear-contacto-container {
@@ -247,11 +247,11 @@
     bottom: 48%;
   }
 
-  .contact-img-container{
+  .contact-img-container {
     margin-right: 10px;
   }
 
-  .list-name{
+  .list-name {
     margin-bottom: 20px;
   }
 
