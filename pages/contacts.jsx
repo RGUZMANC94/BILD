@@ -54,13 +54,12 @@ const Contacts = () => {
           </div>
           {recentContacts.slice(0, 3).map((recent, i) => (
             <div className={styles['list-name']} key={i}>
-              <Link
-                onClick={() => {
+              
+                <div className={styles['list-contact']}>
+                  <Link onClick={() => {
                   dispatch(changeContactListSelected(recent));
                 }}
-                href={`/buyer/${recent.idCli}`}>
-                <div className={styles['list-contact']}>
-                  <div className={styles.contact}>
+                href={`/buyer/${recent.idCli}`} className={styles.contact}>
                     <div className={styles['contact-img-container']}>
                       <img
                         src={
@@ -72,11 +71,15 @@ const Contacts = () => {
                     </div>
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
                     {`${recent.name} ${recent.lastname}`}
-                  </div>
+                  </Link>
                   <div className={styles['reciente-col']}>{recent.email}</div>
                   <div className={styles.number}>
                     {`+57 ${recent.phoneNumber}`}
-                    <img src="/images/whastapp-blue.png" />
+                    <a 
+                    href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                   target="_blank">
+                      <img src="/images/whastapp-blue.png" />
+                    </a>          
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
@@ -87,7 +90,6 @@ const Contacts = () => {
                     </div>
                   </div>
                 </div>
-              </Link>
             </div>
           ))}
         </div>
