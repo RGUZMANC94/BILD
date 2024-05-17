@@ -52,6 +52,7 @@
   background-color: #2c2c2c;
   padding: 20px 30px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .closeIcon {
@@ -74,6 +75,7 @@
 .topContentInfo {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -91,7 +93,7 @@
   width: 100%;
   text-align: start;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 400;
 }
 
