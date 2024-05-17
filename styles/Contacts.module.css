@@ -204,6 +204,11 @@
 .main-contain-contact > div {
   position: relative;
 }
+
+.whastapp-icon {
+  display: inline-block;
+    height: 40px;
+}
 @media only screen and (max-width: 1200px) {
   .wa-movil img {
     width: 40px;

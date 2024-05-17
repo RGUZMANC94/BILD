@@ -77,7 +77,8 @@ const Contacts = () => {
                     {`+57 ${recent.phoneNumber}`}
                     <a 
                     href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
-                   target="_blank">
+                   target="_blank"
+                   className={styles['whastapp-icon']}>
                       <img src="/images/whastapp-blue.png" />
                     </a>          
                   </div>
