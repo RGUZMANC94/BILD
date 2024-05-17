@@ -99,7 +99,7 @@ const AddEvents = ({ setShowPopEvents }) => {
             seguimiento
           </div>
           <form className={styles.origen}>
-            <span className={styles['text-origen']}>ORIGEN:</span>
+            <span className={styles['text-origen']}>Tipo de evento:</span>
             <div className={styles['elegir-origen']}>
               <span className={styles.label}></span>
               <label className={styles.labelNode} for="subject"></label>
@@ -109,11 +109,12 @@ const AddEvents = ({ setShowPopEvents }) => {
                 className={styles.subject_input}
                 required>
                 <option disabled hidden selected>
-                  OTRO
+                  Seleccionar tipo de evento
                 </option>
-                <option>Opción 1</option>
-                <option>Opción 2</option>
-                <option>Opción 3</option>
+                <option>Llamada</option>
+                <option>Whatsapp</option>
+                <option>Correo</option>
+                <option>Visita</option>
               </select>
               <div className={styles['name-field']}>
                 <span className={styles.label}>NOtas</span>
