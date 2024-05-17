@@ -54,40 +54,44 @@ const Contacts = () => {
           </div>
           {recentContacts.slice(0, 3).map((recent, i) => (
             <div className={styles['list-name']} key={i}>
-              <Link
-                onClick={() => {
-                  dispatch(changeContactListSelected(recent));
-                }}
-                href={`/buyer/${recent.idCli}`}>
-                <div className={styles['list-contact']}>
-                  <div className={styles.contact}>
-                    <div className={styles['contact-img-container']}>
-                      <img
-                        src={
-                          recent.image[0] !== '' && recent.image[0]
-                            ? `${recent.image[0].url}`
-                            : '/images/tipo-1.png'
-                        }
-                      />
-                    </div>
-                    <span className={`${styles.badge} ${styles.red}`}>1</span>
-                    {`${recent.name} ${recent.lastname}`}
+              <div className={styles['list-contact']}>
+                <Link
+                  onClick={() => {
+                    dispatch(changeContactListSelected(recent));
+                  }}
+                  href={`/buyer/${recent.idCli}`}
+                  className={styles.contact}>
+                  <div className={styles['contact-img-container']}>
+                    <img
+                      src={
+                        recent.image[0] !== '' && recent.image[0]
+                          ? `${recent.image[0].url}`
+                          : '/images/tipo-1.png'
+                      }
+                    />
                   </div>
-                  <div className={styles['reciente-col']}>{recent.email}</div>
-                  <div className={styles.number}>
-                    {`+57 ${recent.phoneNumber}`}
+                  <span className={`${styles.badge} ${styles.red}`}>1</span>
+                  {`${recent.name} ${recent.lastname}`}
+                </Link>
+                <div className={styles['reciente-col']}>{recent.email}</div>
+                <div className={styles.number}>
+                  {`+57 ${recent.phoneNumber}`}
+                  <a
+                    href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                    target="_blank"
+                    className={styles['whastapp-icon']}>
                     <img src="/images/whastapp-blue.png" />
+                  </a>
+                </div>
+                <div className={styles['iconos-movil']}>
+                  <div className={styles['phone-movil']}>
+                    <img src="/images/blue-phone-movil.png" />
                   </div>
-                  <div className={styles['iconos-movil']}>
-                    <div className={styles['phone-movil']}>
-                      <img src="/images/blue-phone-movil.png" />
-                    </div>
-                    <div className={styles['wa-movil']}>
-                      <img src="/images/whatsapp-contacts.png" />
-                    </div>
+                  <div className={styles['wa-movil']}>
+                    <img src="/images/whatsapp-contacts.png" />
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </div>

@@ -42,9 +42,6 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
             <span className={styles['name-perfil']}>
               {`${contactInfo.name} ${contactInfo.lastname}`}
             </span>
-            <span className={styles['sub-name']}>
-              {capitalizeFLetter(typeViewer)}
-            </span>
             {(typeViewer === 'adviser' || typeViewer === 'admin') && (
               <div className={styles['perfil-icons-admin']}>
                 <div className={styles['admin-section-container']}>
@@ -52,7 +49,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                     <img src="/images/id-profile.svg" />
                   </div>
                   <div className={styles['admin-text-container']}>
-                    13.932.102. Bogotá D.C
+                    {contactInfo.documentNumber}
                   </div>
                 </div>
 
@@ -129,19 +126,26 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
               <>
                 <div className={styles['id-perfil']}>
                   <img src="/images/id.png" />
-                  13.932.102. Bogotá D.C
+                  {contactInfo.documentNumber}
                 </div>
 
                 <div className={styles['perfil-icons']}>
-                  <div className={styles['perfil-icon']}>
+                  <a
+                    href={`tel:+57${contactListSelected.phoneNumber}`}
+                    className={styles['perfil-icon']}>
                     <img src="/images/phone-profile.png" />
-                  </div>
-                  <div className={styles['perfil-icon']}>
+                  </a>
+                  <a
+                    href={`mailto:${contactListSelected.email}?subject=BILD`}
+                    className={styles['perfil-icon']}>
                     <img src="/images/mail-profile.png" />
-                  </div>
-                  <div className={styles['perfil-icon']}>
+                  </a>
+                  <a
+                    href={`https://wa.me/${contactListSelected.phoneNumber}?subject=BILD`}
+                    target="_blank"
+                    className={styles['perfil-icon']}>
                     <img src="/images/whats-profile.png" />
-                  </div>
+                  </a>
                 </div>
                 <div className={styles['pendientes-movil']}>
                   <div className={styles['opc-pendiente']}>
@@ -167,43 +171,79 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                     </Link>
                   </div>
                 </div>
-                <div className={styles['informacion-perfil']}>
-                  <span className={styles['info-perfil']}>
-                    Información adicional
-                  </span>
-                  <div className={styles['campos-informacion']}>
-                    <span className={styles['sub-title']}>Familiar:</span>
-                    <div className={styles.campos}>
-                      <button
-                        type="button"
-                        onClick="cambiarColor(this.parentNode)"
-                        className={styles.campo}>
-                        Con Hijos
-                      </button>
-                      <button
-                        type="button"
-                        onClick="cambiarColor(this.parentNode)"
-                        className={styles.campo}>
-                        Separado
-                      </button>
+                {contactInfo.contactProfile.length > 0 && (
+                  <>
+                    <div className={styles['informacion-perfil']}>
+                      <span className={styles['info-perfil']}>
+                        Información adicional
+                      </span>
+                      <div className={styles['campos-informacion']}>
+                        <span className={styles['sub-title']}>Familiar:</span>
+                        <div className={styles.campos}>
+                          {contactInfo.contactProfile[0].civilStatus && (
+                            <button
+                              type="button"
+                              onClick="cambiarColor(this.parentNode)"
+                              className={styles.campo}>
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'S' && 'Soltero'}
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'C' && 'Casado'}
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'DI' && 'Divorciado'}
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'UN' && 'Union Libre'}
+                            </button>
+                          )}
+                          {contactInfo.contactProfile[0].amountChildren &&
+                            (contactInfo.contactProfile[0].amountChildren ===
+                            0 ? (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Sin Hijos
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Con Hijos
+                              </button>
+                            ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className={styles['informacion-perfil']}>
-                  <div className={styles['campos-informacion']}>
-                    <span className={styles['sub-title']}>
-                      Tipo de comprador:
-                    </span>
-                    <div className={styles.campos}>
-                      <button
-                        type="button"
-                        onClick="cambiarColor(this.parentNode)"
-                        className={styles.campo}>
-                        Inversionista
-                      </button>
+                    <div className={styles['informacion-perfil']}>
+                      <div className={styles['campos-informacion']}>
+                        <span className={styles['sub-title']}>
+                          Tipo de comprador:
+                        </span>
+                        <div className={styles.campos}>
+                          {contactInfo.contactProfile[0].housingInversion &&
+                            (contactInfo.contactProfile[0].housingInversion ===
+                            'I' ? (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Inversionista
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Vivienda
+                              </button>
+                            ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </>
+                )}
+
                 <div className={styles.flag}>Pendientes:</div>
                 <div className={styles.listado}>
                   <label className={styles.penlist}>

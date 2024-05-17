@@ -70,7 +70,7 @@
   color: #fff;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%;
   display: block;
 }
@@ -100,7 +100,7 @@
 
 .id-perfil img {
   margin-right: 20px;
-  width: 40px;
+  width: 25px;
 }
 
 .perfil-icons {
@@ -425,7 +425,7 @@
   font-weight: 500;
   columns: #4d4d4d;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .sub-name {
   font-size: 18px;
@@ -461,7 +461,7 @@
 
 .id-perfil img,
 .perfil-edit img {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .perfil-icon img {
