@@ -260,7 +260,7 @@ const PaymentDetail = () => {
                 )}
 
                 {quotes && quotes.dues.length > 0
-                  ? quotes.dues.map((quote, i) =>(
+                  ? quotes.dues.map((quote, i) =>
                       (Object.keys(quote).length > 4 ? (
                         <div className={styles.greybox} key={i}>
                           <div className={styles.info}>
@@ -324,7 +324,7 @@ const PaymentDetail = () => {
                           <div className={styles['grey-point']}></div>
                         </div>
                       ))
-                    ))
+                    )
                   : ''}
               </div>
               {pdfURL && (

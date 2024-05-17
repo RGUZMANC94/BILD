@@ -204,7 +204,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
       console.error('Error al realizar la solicitud:', error.message);
     }
   };
-  
+
   function handleXlsxClick(e) {
     setXlsxData(e.target.files[0]);
   }

@@ -170,7 +170,7 @@ const Home = ({ id, user_rol }) => {
                             <Link
                               href={{
                                 pathname: '/edit-project',
-                                query: { project: project.projectId, back: 1},
+                                query: { project: project.projectId, back: 1 },
                               }}
                               className={`bg-ct ${styles.editProject}`}
                               onClick={() =>
