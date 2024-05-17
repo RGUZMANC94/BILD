@@ -34,6 +34,8 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [showEditType, setShowEditType] = useState(false);
   const [showEditUnit, setShowEditUnit] = useState(false);
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
+  const [xlsxData, setXlsxData] = useState(null);
+  const inputXlsx = useRef(null);
 
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
@@ -202,10 +204,14 @@ const DetailState = ({ unitsInit, typesInit }) => {
       console.error('Error al realizar la solicitud:', error.message);
     }
   };
+  
+  function handleXlsxClick(e) {
+    setXlsxData(e.target.files[0]);
+  }
 
-  const handleXlsxData = (e) => {
-    sendXlsx(e.target.files[0]);
-  };
+  useEffect(() => {
+    sendXlsx(xlsxData);
+  }, [xlsxData]);
 
   return (
     <>
@@ -251,15 +257,18 @@ const DetailState = ({ unitsInit, typesInit }) => {
                   <div className={'top-download-icon'} />
                   Descargar
                 </a>
-
-                <a
-                  className={'top-upload'}
-                  clickFunction={(e) => {
-                    handleXlsxData(e);
-                  }}>
+                <label className={'top-upload'}>
+                  <input
+                    type="file"
+                    hidden
+                    ref={inputXlsx}
+                    onChange={handleXlsxClick}
+                    accept=".xlsx, .xls, .csv"
+                    name="excel"
+                  />
                   <div className={'top-upload-icon'} />
                   Subir
-                </a>
+                </label>
               </div>
 
               {/*
