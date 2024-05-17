@@ -130,20 +130,20 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                 </div>
 
                 <div className={styles['perfil-icons']}>
-                  <a 
-                  href={`tel:+57${contactListSelected.phoneNumber}`}
-                  className={styles['perfil-icon']}>
+                  <a
+                    href={`tel:+57${contactListSelected.phoneNumber}`}
+                    className={styles['perfil-icon']}>
                     <img src="/images/phone-profile.png" />
                   </a>
-                  <a 
-                  href={`mailto:${contactListSelected.email}?subject=BILD`}
-                  className={styles['perfil-icon']}>
+                  <a
+                    href={`mailto:${contactListSelected.email}?subject=BILD`}
+                    className={styles['perfil-icon']}>
                     <img src="/images/mail-profile.png" />
                   </a>
-                  <a 
-                   href={`https://wa.me/${contactListSelected.phoneNumber}?subject=BILD`}
-                   target="_blank"
-                  className={styles['perfil-icon']}>
+                  <a
+                    href={`https://wa.me/${contactListSelected.phoneNumber}?subject=BILD`}
+                    target="_blank"
+                    className={styles['perfil-icon']}>
                     <img src="/images/whats-profile.png" />
                   </a>
                 </div>
@@ -172,82 +172,78 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                   </div>
                 </div>
                 {contactInfo.contactProfile.length > 0 && (
-                      <>
-                <div className={styles['informacion-perfil']}>
-                  <span className={styles['info-perfil']}>
-                    Información adicional
-                  </span>
-                  <div className={styles['campos-informacion']}>
-                    
-                      <span className={styles['sub-title']}>Familiar:</span>
+                  <>
+                    <div className={styles['informacion-perfil']}>
+                      <span className={styles['info-perfil']}>
+                        Información adicional
+                      </span>
+                      <div className={styles['campos-informacion']}>
+                        <span className={styles['sub-title']}>Familiar:</span>
                         <div className={styles.campos}>
-                        {contactInfo.contactProfile[0].civilStatus && ( 
+                          {contactInfo.contactProfile[0].civilStatus && (
                             <button
-                            type="button"
-                            onClick="cambiarColor(this.parentNode)"
-                            className={styles.campo}>
-                            {contactInfo.contactProfile[0].civilStatus === 'S' && 'Soltero'}
-                            {contactInfo.contactProfile[0].civilStatus === 'C' && 'Casado'}
-                            {contactInfo.contactProfile[0].civilStatus === 'DI' && 'Divorciado'}
-                            {contactInfo.contactProfile[0].civilStatus === 'UN' && 'Union Libre'}
-                          </button>
-                          ) 
-                          }
-                          {contactInfo.contactProfile[0].amountChildren && (contactInfo.contactProfile[0].amountChildren === 0 ? (
-                            <button
-                            type="button"
-                            onClick="cambiarColor(this.parentNode)"
-                            className={styles.campo}>
-                            Sin Hijos
-                          </button>
-                          ) :(
-
-                            <button
-                            type="button"
-                            onClick="cambiarColor(this.parentNode)"
-                            className={styles.campo}>
-                            Con Hijos
-                          </button>
-
-                          )) 
-                          }
+                              type="button"
+                              onClick="cambiarColor(this.parentNode)"
+                              className={styles.campo}>
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'S' && 'Soltero'}
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'C' && 'Casado'}
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'DI' && 'Divorciado'}
+                              {contactInfo.contactProfile[0].civilStatus ===
+                                'UN' && 'Union Libre'}
+                            </button>
+                          )}
+                          {contactInfo.contactProfile[0].amountChildren &&
+                            (contactInfo.contactProfile[0].amountChildren ===
+                            0 ? (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Sin Hijos
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Con Hijos
+                              </button>
+                            ))}
                         </div>
-
-              
-                  </div>
-                </div>
-                <div className={styles['informacion-perfil']}>
-                  <div className={styles['campos-informacion']}>
-                    <span className={styles['sub-title']}>
-                      Tipo de comprador:
-                    </span>
-                    <div className={styles.campos}>
-                    {contactInfo.contactProfile[0].housingInversion && (contactInfo.contactProfile[0].housingInversion === 'I' ? (
-                            <button
-                            type="button"
-                            onClick="cambiarColor(this.parentNode)"
-                            className={styles.campo}>
-                            Inversionista
-                          </button>
-                          ) :(
-
-                            <button
-                        type="button"
-                        onClick="cambiarColor(this.parentNode)"
-                        className={styles.campo}>
-                        Vivienda
-                      </button>
-
-                          )) 
-                          }
+                      </div>
                     </div>
-                  </div>
-                </div>
+                    <div className={styles['informacion-perfil']}>
+                      <div className={styles['campos-informacion']}>
+                        <span className={styles['sub-title']}>
+                          Tipo de comprador:
+                        </span>
+                        <div className={styles.campos}>
+                          {contactInfo.contactProfile[0].housingInversion &&
+                            (contactInfo.contactProfile[0].housingInversion ===
+                            'I' ? (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Inversionista
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick="cambiarColor(this.parentNode)"
+                                className={styles.campo}>
+                                Vivienda
+                              </button>
+                            ))}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
 
- </>
-                    )
-                    }
-                
                 <div className={styles.flag}>Pendientes:</div>
                 <div className={styles.listado}>
                   <label className={styles.penlist}>
