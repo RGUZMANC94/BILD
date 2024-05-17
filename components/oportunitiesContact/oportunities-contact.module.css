@@ -146,6 +146,11 @@ i.fa-solid.fa-angle-left {
 .wrap-right {
   width: 50%;
   height: auto;
+  position: sticky;
+  top: 150px;
+  padding-bottom: 30px;
+  padding-right: 10px;
+  height: calc(100vh - 150px);
 }
 
 .card-unit-list {

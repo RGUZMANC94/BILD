@@ -3,23 +3,31 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  padding-top: 90px;
+  padding-top: 70px;
   width: 100%;
   height: auto;
 }
 
 .crear-contacto {
-  display: flex;
-  justify-content: flex-end;
+  display: block;
   margin-left: auto;
-  border-radius: 50%;
   background-image: url(/images/add-contact.svg);
-  background-position: 15px;
-  background-size: 60%;
+  background-position: 20px 50%;
+  background-size: 25px;
   background-repeat: no-repeat;
-  background-color: #ff5567;
-  width: 64px;
-  height: 60px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  position: sticky;
+  width: 250px;
+  top: 150px;
+  text-transform: uppercase;
+  background-color: #2467ff;
+  text-align: center;
+  z-index: 1;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 0 10px 0 45px;
 }
 
 .crear-contacto-container {
@@ -31,20 +39,22 @@
   height: fit-content;
 }
 
-.contact-top {
+.contact-top.contact-top {
   display: flex;
+  position: sticky;
+  top: 70px;
+  left: 0;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 auto;
-  margin-top: 30px;
-  border-bottom: 1px solid #d9d9d9;
-  padding-bottom: 35px;
+  margin: 0 auto 20px;
+  height: 60px;
   width: 100%;
-  height: auto;
   color: #fff;
   font-weight: 500;
   font-size: 18px;
   text-transform: uppercase;
+  background-color: #282624;
+  z-index: 1;
 }
 
 .nombre {
@@ -101,8 +111,8 @@
 .list-name {
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .contact {

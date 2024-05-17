@@ -38,15 +38,18 @@ const Contacts = () => {
 
   return (
     <section className={styles['main-contain-contact']}>
-      <div className="container">
-        <Link
-          className={styles['crear-contacto']}
-          href="/create-contact"></Link>
-        <div className={styles['contact-top']}>
+      <div className={styles['contact-top']}>
+        <div className="container flex j-sb a-c">
           <div className={styles.nombre}>Nombre</div>
           <div className={styles.mail}>Correo Electrónico</div>
           <div className={styles.numero}>Número de contacto</div>
         </div>
+      </div>
+      <div className="container">
+        <Link
+          className={styles['crear-contacto']}
+          href="/create-contact">Nuevo contacto</Link>
+
         <div className={styles.listas}>
           <div className={styles.reciente}>
             Creados Recientemente (
