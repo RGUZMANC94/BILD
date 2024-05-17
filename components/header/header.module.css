@@ -19,9 +19,8 @@
   margin: 0 auto;
   box-shadow: -3px 0px 8px #1c1c1c;
   background-color: #1c1c1c;
-  padding: 0 0 0 30px;
+  padding: 0 30px;
   width: 100%;
-  padding-right: 4.5%;
 }
 
 .containerHeader {

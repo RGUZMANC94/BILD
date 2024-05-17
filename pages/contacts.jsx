@@ -46,9 +46,9 @@ const Contacts = () => {
         </div>
       </div>
       <div className="container">
-        <Link
-          className={styles['crear-contacto']}
-          href="/create-contact">Nuevo contacto</Link>
+        <Link className={styles['crear-contacto']} href="/create-contact">
+          Nuevo contacto
+        </Link>
 
         <div className={styles.listas}>
           <div className={styles.reciente}>
@@ -76,7 +76,14 @@ const Contacts = () => {
                   <span className={`${styles.badge} ${styles.red}`}>1</span>
                   {`${recent.name} ${recent.lastname}`}
                 </Link>
-                <div className={styles['reciente-col']}>{recent.email}</div>
+                <Link
+                  onClick={() => {
+                    dispatch(changeContactListSelected(recent));
+                  }}
+                  href={`/buyer/${recent.idCli}`}
+                  className={styles.contact}>
+                  <div className={styles['reciente-col']}>{recent.email}</div>
+                </Link>
                 <div className={styles.number}>
                   {`+57 ${recent.phoneNumber}`}
                   <a
