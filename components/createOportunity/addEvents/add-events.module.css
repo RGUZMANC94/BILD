@@ -118,11 +118,11 @@
 
 .text-origen {
   color: #fff;
-    font-size: 15px;
-    font-style: normal;
-    line-height: 2.13;
-    text-align: left;
-    margin-bottom: 10px;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 2.13;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .elegir-origen {
@@ -130,7 +130,7 @@
 }
 
 .subject_input {
-  height: 35px ;
+  height: 35px;
   appearance: none;
   width: 100%;
   border-radius: 5px;
@@ -141,7 +141,7 @@
   padding: 0 10px;
   background-color: transparent;
   color: #fff;
-  background-color: #21221d; 
+  background-color: #21221d;
   margin-bottom: 20px;
 }
 
@@ -154,7 +154,6 @@
   align-items: center;
   width: 100%;
   padding: 25px;
-
 }
 
 .name-field {

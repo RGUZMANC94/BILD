@@ -34,7 +34,6 @@ const AddEvents = ({ setShowPopEvents }) => {
   }, []);
 
   const sendFormInfo = async () => {
-
     console.log(
       JSON.stringify({
         id,
@@ -128,35 +127,29 @@ const AddEvents = ({ setShowPopEvents }) => {
                 <DatePicker></DatePicker>
               </label>
         </div> */}
-            
-              
           </form>
-
         </div>
-          <div className={styles.bottomContent}>
-
-              <Button
-                buttonType={'secondary'}
-                iconImage={false}
-                label={'CANCELAR'}
-                inheritClass={styles.buttonCreateType}
-                clickFunction={() =>{
-                  setShow(false);
-                  setTimeout(() => {
-                    setShowPopEvents(false);
-                  }, 500);
-                }
-              }
-              />
-              <Button
-                buttonType={'primary'}
-                iconImage={false}
-                label={'Guardar'}
-                inheritClass={styles.buttonCreateType}
-                clickFunction={sendFormInfo}
-              />
-
-            </div>
+        <div className={styles.bottomContent}>
+          <Button
+            buttonType={'secondary'}
+            iconImage={false}
+            label={'CANCELAR'}
+            inheritClass={styles.buttonCreateType}
+            clickFunction={() => {
+              setShow(false);
+              setTimeout(() => {
+                setShowPopEvents(false);
+              }, 500);
+            }}
+          />
+          <Button
+            buttonType={'primary'}
+            iconImage={false}
+            label={'Guardar'}
+            inheritClass={styles.buttonCreateType}
+            clickFunction={sendFormInfo}
+          />
+        </div>
       </div>
       <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>

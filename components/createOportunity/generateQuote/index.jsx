@@ -251,10 +251,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
               <span className={styles.labelFocus}>{unitSelected.type}</span>
             </div>
           </div>
-        </div>  
+        </div>
 
         <div className={styles.infoContainer}>
-
           <span className={styles.labelSubtitle}>
             Porcentaje de Cuota Inicial
           </span>
@@ -315,7 +314,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
 
           <div className={styles.infoSection}>
             <span className={styles.labelSimple}>Total Cuota Inicial:</span>
-            <span className={styles.labelFocus}>{formatMoney(initialQuote)}</span>
+            <span className={styles.labelFocus}>
+              {formatMoney(initialQuote)}
+            </span>
           </div>
           <div className={styles['cotizacion-form']}>
             <span className={styles.labelSide}>Separación:</span>
@@ -394,7 +395,9 @@ const GenerateQuote = ({ setGenerateQuote }) => {
 
           <div className={styles.infoSection}>
             <span className={styles.labelSimple}>Saldo Apartamento:</span>
-            <span className={styles.labelFocus}>{formatMoney(unitBalance)}</span>
+            <span className={styles.labelFocus}>
+              {formatMoney(unitBalance)}
+            </span>
           </div>
 
           <div
@@ -405,7 +408,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             </span>
             <img src="/images/link-pago.png" className={styles.arrowImage} />
           </div>
-          <div className={`${styles['cotizacion-form']} ${styles['label-hide']}`}>
+          <div
+            className={`${styles['cotizacion-form']} ${styles['label-hide']}`}>
             <span className={styles.labelFocus}>COMPARTIR:</span>
 
             <div className={styles.iconContainer}>
@@ -426,27 +430,24 @@ const GenerateQuote = ({ setGenerateQuote }) => {
               </div>
             </div>
           </div>
-
-          
         </div>
-       
-<div className={styles.bottomContent}>
-            <Button
-              buttonType={'secondary'}
-              iconImage={false}
-              label={'CANCELAR'}
-              inheritClass={styles.buttonCreateOpportunity}
-            />
-            <Button
-              buttonType={'primary'}
-              iconImage={false}
-              label={'Guardar'}
-              inheritClass={styles.buttonCreateOpportunity}
-            />
+
+        <div className={styles.bottomContent}>
+          <Button
+            buttonType={'secondary'}
+            iconImage={false}
+            label={'CANCELAR'}
+            inheritClass={styles.buttonCreateOpportunity}
+          />
+          <Button
+            buttonType={'primary'}
+            iconImage={false}
+            label={'Guardar'}
+            inheritClass={styles.buttonCreateOpportunity}
+          />
         </div>
       </form>
 
-      
       <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
