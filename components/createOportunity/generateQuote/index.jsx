@@ -109,7 +109,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
     for (let i = 0; i < fees; i++) {
       inputs.push(
         <div key={i} className={styles['cotizacion-form']}>
-          <span className={styles.labelSide}>{`Cuota ${i + 1}`}</span>
+          <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
           <CurrencyInput
             className={styles.inputQuote}
             prefix="$ "
@@ -239,205 +239,214 @@ const GenerateQuote = ({ setGenerateQuote }) => {
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
-        <span className={styles.title}>GENERAR COTIZACIÓN</span>
-        <div className={styles.seleccion}>
-          <div className={styles.origen}>
-            <span className={styles.labelSimple}>Tipo:</span>
-            <span className={styles.labelFocus}>{unitSelected.type}</span>
+        <div className={styles.topContent}>
+          <span className={styles.title}>GENERAR COTIZACIÓN</span>
+          <div className={styles.seleccion}>
+            <div className={styles.origen}>
+              <span className={styles.labelSimple}>Tipo:</span>
+              <span className={styles.labelFocus}>{unitSelected.type}</span>
+            </div>
+            <div className={styles.origen}>
+              <span className={styles.labelSimple}>Apto:</span>
+              <span className={styles.labelFocus}>{unitSelected.type}</span>
+            </div>
           </div>
-          <div className={styles.origen}>
-            <span className={styles.labelSimple}>Apto:</span>
-            <span className={styles.labelFocus}>{unitSelected.type}</span>
-          </div>
-        </div>
+        </div>  
 
-        <span className={styles.labelSubtitle}>
-          Porcentaje de Cuota Inicial
-        </span>
+        <div className={styles.infoContainer}>
 
-        <div className={`flex j-sb a-c ${styles.outerRange}`}>
-          <Range
-            values={values}
-            step={1}
-            min={0}
-            max={100}
-            // rtl={rtl}
-            onChange={(values) => setValues(values)}
-            renderTrack={({ props, children }) => (
-              <div
-                onMouseDown={props.onMouseDown}
-                onTouchStart={props.onTouchStart}
-                style={{
-                  ...props.style,
-                  height: '36px',
-                  display: 'flex',
-                  width: 'calc(100% - 80px)',
-                }}>
+          <span className={styles.labelSubtitle}>
+            Porcentaje de Cuota Inicial
+          </span>
+
+          <div className={`flex j-sb a-c ${styles.outerRange}`}>
+            <Range
+              values={values}
+              step={1}
+              min={0}
+              max={100}
+              // rtl={rtl}
+              onChange={(values) => setValues(values)}
+              renderTrack={({ props, children }) => (
                 <div
-                  ref={props.ref}
+                  onMouseDown={props.onMouseDown}
+                  onTouchStart={props.onTouchStart}
                   style={{
-                    height: '12px',
-                    width: '100%',
-                    background: getTrackBackground({
-                      values,
-                      colors: ['#D9D9D9', '#D9D9D9'],
-                      min: 0,
-                      max: 100,
-                      // rtl,
-                    }),
-                    alignSelf: 'center',
+                    ...props.style,
+                    height: '36px',
+                    display: 'flex',
+                    width: 'calc(100% - 80px)',
                   }}>
-                  {children}
+                  <div
+                    ref={props.ref}
+                    style={{
+                      height: '4px',
+                      width: '100%',
+                      background: getTrackBackground({
+                        values,
+                        colors: ['#D9D9D9', '#D9D9D9'],
+                        min: 0,
+                        max: 100,
+                        // rtl,
+                      }),
+                      alignSelf: 'center',
+                    }}>
+                    {children}
+                  </div>
                 </div>
-              </div>
-            )}
-            renderThumb={({ props, isDragged }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: '35px',
-                  width: '56px',
-                  borderRadius: '3px',
-                  backgroundColor: '#2467FF',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}></div>
-            )}
-          />
-          <div className={styles.labelRangePercenth}>{`${values}%`}</div>
-        </div>
+              )}
+              renderThumb={({ props, isDragged }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: '20px',
+                    width: '46px',
+                    borderRadius: '3px',
+                    backgroundColor: '#2467FF',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}></div>
+              )}
+            />
+            <div className={styles.labelRangePercenth}>{`${values}%`}</div>
+          </div>
 
-        <div className={styles.infoSection}>
-          <span className={styles.labelSimple}>Total Cuota Inicial</span>
-          <span className={styles.labelFocus}>{formatMoney(initialQuote)}</span>
-        </div>
-        <div className={styles['cotizacion-form']}>
-          <span className={styles.labelSide}>Separación</span>
-
-          <CurrencyInput
-            className={styles.inputQuote}
-            prefix="$ "
-            decimalSeparator=","
-            groupSeparator="."
-            id="separation-input"
-            name="separation"
-            placeholder="$0"
-            // defaultValue={1000000}
-            decimalsLimit={2}
-            onValueChange={(value) => setSeparation(value)}
-            required
-          />
-        </div>
-        <div className={styles['cotizacion-form']}>
-          <span className={styles.labelSide}>Abono Inicial</span>
-
-          <CurrencyInput
-            className={styles.inputQuote}
-            prefix="$ "
-            decimalSeparator=","
-            groupSeparator="."
-            id="downPayment-input"
-            name="downPayment"
-            placeholder="$0"
-            // defaultValue={1000000}
-            decimalsLimit={2}
-            onValueChange={(value) => setDownPayment(value)}
-            required
-          />
-        </div>
-
-        <div className={styles.infoSection}>
-          <span className={styles.labelSimple}>Saldo Cuota Inicial</span>
-          <span className={styles.labelFocus}>
-            {formatMoney(balanceInitialQuote)}
-          </span>
-        </div>
-
-        <div className={styles['cotizacion-form']}>
-          <span className={styles.labelSide}>No. Cuotas Mensuales</span>
-
-          <input
-            className={styles.subject_input}
-            type="text"
-            name="fees"
-            value={fees}
-            onChange={(e) => setFees(e.target.value)}
-            placeholder="2"
-            required
-          />
-        </div>
-
-        <div className={styles.squareInputContainer}>
-          <SquareInput onChangeFunct={handlePopQuotes} />
-
-          <span className={styles.labelQuotesSelect}>
-            Ver detalle de cuotas
-          </span>
-        </div>
-        {console.log(feesArray)}
-        {popQuotes && renderDynamicInputs()}
-
-        {!popQuotes && (
           <div className={styles.infoSection}>
-            <span className={styles.labelSimple}>Valor Cuota Mensual</span>
+            <span className={styles.labelSimple}>Total Cuota Inicial:</span>
+            <span className={styles.labelFocus}>{formatMoney(initialQuote)}</span>
+          </div>
+          <div className={styles['cotizacion-form']}>
+            <span className={styles.labelSide}>Separación:</span>
+
+            <CurrencyInput
+              className={styles.inputQuote}
+              prefix="$ "
+              decimalSeparator=","
+              groupSeparator="."
+              id="separation-input"
+              name="separation"
+              placeholder="$0"
+              // defaultValue={1000000}
+              decimalsLimit={2}
+              onValueChange={(value) => setSeparation(value)}
+              required
+            />
+          </div>
+          <div className={styles['cotizacion-form']}>
+            <span className={styles.labelSide}>Abono Inicial:</span>
+
+            <CurrencyInput
+              className={styles.inputQuote}
+              prefix="$ "
+              decimalSeparator=","
+              groupSeparator="."
+              id="downPayment-input"
+              name="downPayment"
+              placeholder="$0"
+              // defaultValue={1000000}
+              decimalsLimit={2}
+              onValueChange={(value) => setDownPayment(value)}
+              required
+            />
+          </div>
+
+          <div className={styles.infoSection}>
+            <span className={styles.labelSimple}>Saldo Cuota Inicial:</span>
             <span className={styles.labelFocus}>
-              {formatMoney(monthlyQuote)}
+              {formatMoney(balanceInitialQuote)}
             </span>
           </div>
-        )}
 
-        <div className={styles.infoSection}>
-          <span className={styles.labelSimple}>Saldo Apartamento</span>
-          <span className={styles.labelFocus}>{formatMoney(unitBalance)}</span>
-        </div>
+          <div className={styles['cotizacion-form']}>
+            <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
 
-        <div
-          className={`${styles.squareInputContainer} ${styles['label-hide']}`}>
-          <SquareInput onChangeFunct={handleSentLink} />
-          <span className={styles.labelQuotesSelectNoLine}>
-            Enviar link de pago {`${sentLink}`}{' '}
-          </span>
-          <img src="/images/link-pago.png" className={styles.arrowImage} />
-        </div>
-        <div className={`${styles['cotizacion-form']} ${styles['label-hide']}`}>
-          <span className={styles.labelFocus}>COMPARTIR:</span>
+            <input
+              className={styles.subject_input}
+              type="text"
+              name="fees"
+              value={fees}
+              onChange={(e) => setFees(e.target.value)}
+              placeholder="2"
+              required
+            />
+          </div>
 
-          <div className={styles.iconContainer}>
-            <div className={styles.iconSubContainer}>
-              <img src="/images/mail.png" />
-              <span className={styles.labelSimple}>MAIL</span>
-            </div>
+          <div className={styles.squareInputContainer}>
+            <SquareInput onChangeFunct={handlePopQuotes} />
 
-            <div className={styles.iconSubContainer}>
-              <img src="/images/whatsapp.png" />
-              <span
-                className={styles.labelSimple}
-                onClick={() => {
-                  setGenerateQuote(false);
-                }}>
-                WHATSAPP
+            <span className={styles.labelQuotesSelect}>
+              Ver detalle de cuotas
+            </span>
+          </div>
+          {console.log(feesArray)}
+          {popQuotes && renderDynamicInputs()}
+
+          {!popQuotes && (
+            <div className={styles.infoSection}>
+              <span className={styles.labelSimple}>Valor Cuota Mensual:</span>
+              <span className={styles.labelFocus}>
+                {formatMoney(monthlyQuote)}
               </span>
             </div>
-          </div>
-        </div>
+          )}
 
-        <div className={`${styles.buttonsSection} flex j-sb a-s`}>
-          <Button
-            buttonType={'primary'}
-            iconImage={false}
-            label={'CANCELAR'}
-            inheritClass={styles.buttonCreateOpportunity}
-          />
-          <Button
-            buttonType={'secondary'}
-            iconImage={false}
-            label={'Guardar'}
-            inheritClass={styles.buttonCreateOpportunity}
-          />
+          <div className={styles.infoSection}>
+            <span className={styles.labelSimple}>Saldo Apartamento:</span>
+            <span className={styles.labelFocus}>{formatMoney(unitBalance)}</span>
+          </div>
+
+          <div
+            className={`${styles.squareInputContainer} ${styles['label-hide']}`}>
+            <SquareInput onChangeFunct={handleSentLink} />
+            <span className={styles.labelQuotesSelectNoLine}>
+              Enviar link de pago {`${sentLink}`}{' '}
+            </span>
+            <img src="/images/link-pago.png" className={styles.arrowImage} />
+          </div>
+          <div className={`${styles['cotizacion-form']} ${styles['label-hide']}`}>
+            <span className={styles.labelFocus}>COMPARTIR:</span>
+
+            <div className={styles.iconContainer}>
+              <div className={styles.iconSubContainer}>
+                <img src="/images/mail.png" />
+                <span className={styles.labelSimple}>MAIL</span>
+              </div>
+
+              <div className={styles.iconSubContainer}>
+                <img src="/images/whatsapp.png" />
+                <span
+                  className={styles.labelSimple}
+                  onClick={() => {
+                    setGenerateQuote(false);
+                  }}>
+                  WHATSAPP
+                </span>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+       
+<div className={styles.bottomContent}>
+            <Button
+              buttonType={'secondary'}
+              iconImage={false}
+              label={'CANCELAR'}
+              inheritClass={styles.buttonCreateOpportunity}
+            />
+            <Button
+              buttonType={'primary'}
+              iconImage={false}
+              label={'Guardar'}
+              inheritClass={styles.buttonCreateOpportunity}
+            />
         </div>
       </form>
+
+      
       <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
@@ -445,7 +454,7 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú cuota ha sido creada con éxito!
+                ¡Tú cotización ha sido creada con éxito!
               </span>
             </div>
           </div>
