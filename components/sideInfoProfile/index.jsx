@@ -197,7 +197,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                           )}
                           {contactInfo.contactProfile[0].amountChildren &&
                             (contactInfo.contactProfile[0].amountChildren ===
-                            0 ? (
+                            '0' ? (
                               <button
                                 type="button"
                                 onClick="cambiarColor(this.parentNode)"

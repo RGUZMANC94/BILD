@@ -44,7 +44,25 @@ const EditContact = () => {
     country: 'COL',
     department: '5',
     city: '1',
-    thirdDependency: 'N',
+    thirdDependency: 'N'
+  });
+
+  const [profileData, setProfileData] = useState({
+    clientId: '',
+    civilStatus: '',
+    amountChildren: '',
+    housingInversion: '',
+    timeDecision: '',
+    decision: '',
+    adjustTimeDelivery: '',
+    zoneInterest: '',
+    budget: '0.0',
+    amountBeds: '',
+    rangeAgeChildren: '',
+    profesion: '',
+    pets: '',
+    hobby: '',
+    habeas: ''
   });
 
   const [imagen, setImagen] = useState(null);
@@ -73,6 +91,12 @@ const EditContact = () => {
   useEffect(() => {
     if (infoContact) {
       setDatos({ ...datos, ...infoContact });
+      if(infoContact.contactProfile) {
+        if(infoContact.contactProfile.length > 0) {
+          setProfileData({ ...profileData, ...infoContact.contactProfile[0] });
+        } 
+        
+      }
       console.log('Datos: ', datos);
     }
   }, [infoContact]);
@@ -158,6 +182,13 @@ const EditContact = () => {
         }
       }
 
+      if (contactCreated.ok) {
+        setProfileData(prevProfileData => ({
+          ...prevProfileData,
+          clientId: responseData.clientId
+        }));
+      }
+
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -182,6 +213,38 @@ const EditContact = () => {
     }
   };
 
+  useEffect(() => {
+    if (profileData.clientId) {
+      sendProfileData();
+    } 
+  }, [profileData.clientId]);
+
+  
+  const sendProfileData = async () => {
+    
+    try {
+      const response = await fetch('/api/editProfile', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          profileData,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Error de solicitud. Estado:', response.status);
+      } else {
+        console.log('Respuesta exitosa:', response);
+      }
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
+    }
+  };
+
+
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
@@ -194,13 +257,16 @@ const EditContact = () => {
   };
 
   const changebusinessName = (name) => {
-    // setDatos({ ...datos, businessName: name });
-    setBusinessName(name);
+    setProfileData({ ...profileData, housingInversion: name });
   };
 
   const changeTypeClient = (type) => {
-    // setDatos({ ...datos, typeClient: type });
-    setTypeClient(type);
+    setProfileData({ ...profileData, civilStatus: type });
+  };
+
+
+  const changeAmountChildren = (amount) => {
+    setProfileData({ ...profileData, amountChildren: amount });
   };
 
   return (
@@ -366,29 +432,31 @@ const EditContact = () => {
               <span>Información Adicional</span>{' '}
             </div>
             <div className={styles['informacion-datos']}>
-              <span className={styles['sub-title']}>FAMILIAR:</span>
+              <span className={styles['sub-title']}>Situacion Familiar:</span>
               <div className={styles.datos}>
                 <button
                   type="button"
-                  onClick={() => changeTypeClient('casado')}
+                  onClick={() => changeTypeClient('C')}
                   className={`${styles.campo} ${
-                    typeClient === 'casado' && styles.active
+                    profileData.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
                 </button>
                 <button
                   type="button"
-                  onClick={() => changeTypeClient('soltero')}
+                  onClick={() => changeTypeClient('S')}
                   className={`${styles.campo} ${
-                    typeClient === 'soltero' && styles.active
+                    profileData.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
                 </button>
+                {/*
+                  
                 <button
                   type="button"
                   onClick={() => changeTypeClient('conHijos')}
                   className={`${styles.campo} ${
-                    typeClient === 'conHijos' && styles.active
+                    profileData.civilStatus === 'conHijos' && styles.active
                   }`}>
                   Con Hijos
                 </button>
@@ -396,37 +464,81 @@ const EditContact = () => {
                   type="button"
                   onClick={() => changeTypeClient('sinHijos')}
                   className={`${styles.campo} ${
-                    typeClient === 'sinHijos' && styles.active
+                    profileData.civilStatus === 'sinHijos' && styles.active
                   }`}>
                   Sin Hijos
                 </button>
+                  */}
                 <button
                   type="button"
-                  onClick={() => changeTypeClient('separado')}
+                  onClick={() => changeTypeClient('UN')}
                   className={`${styles.campo} ${
-                    typeClient === 'separado' && styles.active
+                    profileData.civilStatus === 'UN' && styles.active
                   }`}>
-                  Separado
+                  Unión Libre
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeTypeClient('DI')}
+                  className={`${styles.campo} ${
+                    profileData.civilStatus === 'DI' && styles.active
+                  }`}>
+                  Divorciado
                 </button>
               </div>
             </div>
+
             <div className={styles['informacion-perfil']}>
               <div className={styles['informacion-datos']}>
-                <span className={styles['sub-title']}>TIPO DE COMPRADOR:</span>
+                <span className={styles['sub-title']}>Numero de Hijos:</span>
                 <div className={styles.datos}>
                   <button
                     type="button"
-                    onClick={() => changebusinessName('inversionista')}
+                    onClick={() => changeAmountChildren('0')}
                     className={`${styles.campo} ${
-                      businessName === 'inversionista' && styles.active
+                      profileData.amountChildren === '0' && styles.active
+                    }`}>
+                    Sin Hijos
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => changeAmountChildren('1')}
+                    className={`${styles.campo} ${
+                      profileData.amountChildren === '1' && styles.active
+                    }`}>
+                    Con Hijos
+                  </button>
+                </div>
+                <div className={styles['buttons-right']}>
+                  <Link
+                    href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+                    className={styles['crear-contacto']}>
+                    <i className="fa-solid fa-plus"></i>Crear oportunidad
+                  </Link>
+                  <button className={styles['contacto-existente']}>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles['informacion-perfil']}>
+              <div className={styles['informacion-datos']}>
+                <span className={styles['sub-title']}>Tipo de Comprador:</span>
+                <div className={styles.datos}>
+                  <button
+                    type="button"
+                    onClick={() => changebusinessName('I')}
+                    className={`${styles.campo} ${
+                      profileData.housingInversion === 'I' && styles.active
                     }`}>
                     Inversionista
                   </button>
                   <button
                     type="button"
-                    onClick={() => changebusinessName('familiar')}
+                    onClick={() => changebusinessName('V')}
                     className={`${styles.campo} ${
-                      businessName === 'familiar' && styles.active
+                      profileData.housingInversion === 'V' && styles.active
                     }`}>
                     Familiar
                   </button>
