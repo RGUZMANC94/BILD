@@ -260,7 +260,8 @@ const PaymentDetail = () => {
                 )}
 
                 {quotes && quotes.dues.length > 0
-                  ? quotes.dues.map((quote, i) =>
+                  ? // eslint-disable-next-line no-confusing-arrow
+                    quotes.dues.map((quote, i) =>
                       Object.keys(quote).length > 4 ? (
                         <div className={styles.greybox} key={i}>
                           <div className={styles.info}>
