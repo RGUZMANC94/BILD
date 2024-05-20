@@ -44,7 +44,7 @@ const EditContact = () => {
     country: 'COL',
     department: '5',
     city: '1',
-    thirdDependency: 'N'
+    thirdDependency: 'N',
   });
 
   const [profileData, setProfileData] = useState({
@@ -62,7 +62,7 @@ const EditContact = () => {
     profesion: '',
     pets: '',
     hobby: '',
-    habeas: ''
+    habeas: '',
   });
 
   const [imagen, setImagen] = useState(null);
@@ -91,11 +91,10 @@ const EditContact = () => {
   useEffect(() => {
     if (infoContact) {
       setDatos({ ...datos, ...infoContact });
-      if(infoContact.contactProfile) {
-        if(infoContact.contactProfile.length > 0) {
+      if (infoContact.contactProfile) {
+        if (infoContact.contactProfile.length > 0) {
           setProfileData({ ...profileData, ...infoContact.contactProfile[0] });
-        } 
-        
+        }
       }
       console.log('Datos: ', datos);
     }
@@ -183,9 +182,9 @@ const EditContact = () => {
       }
 
       if (contactCreated.ok) {
-        setProfileData(prevProfileData => ({
+        setProfileData((prevProfileData) => ({
           ...prevProfileData,
-          clientId: responseData.clientId
+          clientId: responseData.clientId,
         }));
       }
 
@@ -216,12 +215,10 @@ const EditContact = () => {
   useEffect(() => {
     if (profileData.clientId) {
       sendProfileData();
-    } 
+    }
   }, [profileData.clientId]);
 
-  
   const sendProfileData = async () => {
-    
     try {
       const response = await fetch('/api/editProfile', {
         method: 'post',
@@ -244,7 +241,6 @@ const EditContact = () => {
     }
   };
 
-
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
@@ -263,7 +259,6 @@ const EditContact = () => {
   const changeTypeClient = (type) => {
     setProfileData({ ...profileData, civilStatus: type });
   };
-
 
   const changeAmountChildren = (amount) => {
     setProfileData({ ...profileData, amountChildren: amount });

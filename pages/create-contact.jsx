@@ -58,10 +58,8 @@ const CreateContact = () => {
     profesion: '',
     pets: '',
     hobby: '',
-    habeas: ''
+    habeas: '',
   });
-
-
 
   const [imagen, setImagen] = useState(null);
 
@@ -144,14 +142,14 @@ const CreateContact = () => {
           console.error('Error al realizar la solicitud:', error);
         }
       }
- 
+
       if (contactCreated.ok) {
-        setProfileData(prevProfileData => ({
+        setProfileData((prevProfileData) => ({
           ...prevProfileData,
-          clientId: responseData.clientId
+          clientId: responseData.clientId,
         }));
       }
-        
+
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -179,12 +177,10 @@ const CreateContact = () => {
   useEffect(() => {
     if (profileData.clientId) {
       sendProfileData();
-    } 
+    }
   }, [profileData.clientId]);
 
-  
   const sendProfileData = async () => {
-    
     try {
       const response = await fetch('/api/createProfile', {
         method: 'post',
@@ -279,7 +275,6 @@ const CreateContact = () => {
     setProfileData({ ...profileData, civilStatus: type });
   };
 
-
   const changeAmountChildren = (amount) => {
     setProfileData({ ...profileData, amountChildren: amount });
   };
@@ -332,7 +327,7 @@ const CreateContact = () => {
             </div>
             <form onSubmit={sendFormInfo} className={styles.msform}>
               <fieldset>
-              <label className={styles.label}>
+                <label className={styles.label}>
                   <span>Nombre:</span>
                   <input
                     type="text"
