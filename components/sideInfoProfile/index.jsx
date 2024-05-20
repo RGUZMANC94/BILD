@@ -132,19 +132,19 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                 <div className={styles['perfil-icons']}>
                   <a
                     href={`tel:+57${contactListSelected.phoneNumber}`}
-                    className={styles['perfil-icon']}>
-                    <img src="/images/phone-profile.png" />
+                    className={styles['perfil-buttons']}>
+                    <img src="/images/profile-phone-icon.png" />
                   </a>
                   <a
                     href={`mailto:${contactListSelected.email}?subject=BILD`}
-                    className={styles['perfil-icon']}>
-                    <img src="/images/mail-profile.png" />
+                    className={styles['perfil-buttons']}>
+                    <img src="/images/profile-email-icon.png" />
                   </a>
                   <a
                     href={`https://wa.me/${contactListSelected.phoneNumber}?subject=BILD`}
                     target="_blank"
-                    className={styles['perfil-icon']}>
-                    <img src="/images/whats-profile.png" />
+                    className={styles['perfil-buttons']}>
+                    <img src="/images/profile-whatsapp-icon.png" />
                   </a>
                 </div>
                 <div className={styles['pendientes-movil']}>
