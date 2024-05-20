@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './RightProfile.module.css';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 const RightSideProfile = ({ contactInfo, typeViewer }) => {
-  const { user_rol } = useSelector((state) => state.userState);
   const [clientId, setClientId] = useState('');
 
   useEffect(() => {

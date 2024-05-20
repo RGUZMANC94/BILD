@@ -262,7 +262,7 @@ const EditTypePop = ({
                 {projectSelected.projectName}
               </h1>
               <h2 className={`${styles.topContentSubTitle}`}>
-              Edición de tipo
+                Edición de tipo
               </h2>
             </div>
             <div

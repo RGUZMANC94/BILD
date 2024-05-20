@@ -144,7 +144,7 @@
   color: #fff;
 }
 
-.message_input:disabled{
+.message_input:disabled {
   opacity: 0.5;
 }
 

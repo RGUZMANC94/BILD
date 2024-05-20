@@ -1,30 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './SquareInput.module.css';
-import { useState } from 'react';
 
-const SquareInput = ({ onChangeFunct }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const SquareInput = ({ onChangeFunct, selectCheckboxes }) => {
+  // const [isChecked, setIsChecked] = useState(selectCheckboxes);
+  // console.log(isChecked);
+
+  useEffect(() => {
+    console.log(selectCheckboxes);
+  }, [selectCheckboxes]);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    // setIsChecked(!isChecked);
     onChangeFunct();
   };
 
   return (
-    <div
-      className={`${styles.checkboxWrapper} ${
-        isChecked ? styles.checkboxChecked : ''
-      }`}
-      onClick={handleCheckboxChange}>
+    <label>
       <input
         type="checkbox"
-        className={styles.checkboxInput}
-        checked={isChecked}
-        onClick={() => {
-          onChangeFunct();
-        }}
+        className={`checkboxInputQuotes ${styles.checkboxInput}`}
+        // onClick={() => {
+        //   onChangeFunct();
+        // }}
       />
-    </div>
+      <div
+        className={`${styles.checkboxWrapper} /*
+        isChecked ? styles.checkboxChecked : ''*/
+      `}
+        onClick={handleCheckboxChange}></div>
+    </label>
   );
 };
 

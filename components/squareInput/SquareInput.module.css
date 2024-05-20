@@ -7,9 +7,9 @@
   cursor: pointer;
 }
 
-.checkboxChecked {
+.checkboxInput:checked ~ .checkboxWrapper {
   background-image: url(/images/white-rectangle.svg);
-  background-size: 14px 14px;
+  background-size: 14.5px 14.5px;
   background-repeat: no-repeat;
   background-position: center;
 }

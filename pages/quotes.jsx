@@ -18,6 +18,7 @@ const Quotes = () => {
   const [showPDF, setShowPDF] = useState(true);
   const [pdfURL, setPdfURL] = useState(null);
   const [errorShown, setErrorShown] = useState(null);
+  const [selectCheckboxes, setSelectCheckboxes] = useState(true);
 
   const addCheckboxChange = (index, paymentUrl) => {
     if (fileIndex.includes(index)) {
@@ -220,11 +221,18 @@ const Quotes = () => {
                                   payment.pdf.length ? payment.pdf[0].url : ''
                                 )
                               }
+                              selectCheckboxes={selectCheckboxes}
                             />
                           </div>
 
                           <img src="images/pdf-icon-white.svg" />
-                          <span>{`TIPO ${payment.propertyType}-${payment.nameTypeProperty}.pdf`}</span>
+                          <span
+                            className={styles.nameQuote}
+                            onClick={() => {
+                              payment.pdf.length
+                                ? setPdfURL(payment.pdf[0].url)
+                                : setPdfURL(null);
+                            }}>{`TIPO ${payment.propertyType}-${payment.nameTypeProperty}.pdf`}</span>
                         </div>
                         <div
                           className={
@@ -290,7 +298,22 @@ const Quotes = () => {
 
       {fileIndex.length > 0 && (
         <div className={styles.submenu}>
-          <div className={styles['sub-close']} />
+          <div
+            className={styles['sub-close']}
+            onClick={() => {
+              setSelectCheckboxes(false);
+              setFileIndex((prevFiles) => (prevFiles = []));
+              const checkboxInputsQuotes = document.querySelectorAll(
+                '.checkboxInputQuotes'
+              );
+              if (checkboxInputsQuotes.length) {
+                checkboxInputsQuotes.forEach((checkboxInput) => {
+                  console.log(checkboxInput);
+                  checkboxInput.checked = false;
+                });
+              }
+            }}
+          />
           <div className={styles['sub-text']}>
             {fileIndex.length} elemento seleccionado
           </div>
