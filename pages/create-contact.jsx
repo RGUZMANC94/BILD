@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Create-Contact.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -41,8 +41,24 @@ const CreateContact = () => {
     department: '5',
     city: '1',
     thirdDependency: 'N',
-    housingInversion: '',
+  });
+
+  const [profileData, setProfileData] = useState({
+    clientId: '',
     civilStatus: '',
+    amountChildren: '',
+    housingInversion: '',
+    timeDecision: '',
+    decision: '',
+    adjustTimeDelivery: '',
+    zoneInterest: '',
+    budget: '0.0',
+    amountBeds: '',
+    rangeAgeChildren: '',
+    profesion: '',
+    pets: '',
+    hobby: '',
+    habeas: '',
   });
 
   const [imagen, setImagen] = useState(null);
@@ -127,6 +143,13 @@ const CreateContact = () => {
         }
       }
 
+      if (contactCreated.ok) {
+        setProfileData((prevProfileData) => ({
+          ...prevProfileData,
+          clientId: responseData.clientId,
+        }));
+      }
+
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -148,6 +171,35 @@ const CreateContact = () => {
           .classList.remove(styles.activePopUp);
       }, 2000);
       console.error('Error al crear el proyecto:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (profileData.clientId) {
+      sendProfileData();
+    }
+  }, [profileData.clientId]);
+
+  const sendProfileData = async () => {
+    try {
+      const response = await fetch('/api/createProfile', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          profileData,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Error de solicitud. Estado:', response.status);
+      } else {
+        console.log('Respuesta exitosa:', response);
+      }
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
     }
   };
 
@@ -216,13 +268,16 @@ const CreateContact = () => {
   };
 
   const changebusinessName = (name) => {
-    setDatos({ ...datos, housingInversion: name });
+    setProfileData({ ...profileData, housingInversion: name });
   };
 
   const changeTypeClient = (type) => {
-    setDatos({ ...datos, civilStatus: type });
+    setProfileData({ ...profileData, civilStatus: type });
   };
 
+  const changeAmountChildren = (amount) => {
+    setProfileData({ ...profileData, amountChildren: amount });
+  };
   return (
     <>
       <div className={styles['wrap-datos']}>
@@ -272,41 +327,59 @@ const CreateContact = () => {
             </div>
             <form onSubmit={sendFormInfo} className={styles.msform}>
               <fieldset>
-                <input
-                  type="text"
-                  name="firstNames"
-                  placeholder="Nombre"
-                  value={datos.firstNames}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="lastNames"
-                  placeholder="Apellidos"
-                  value={datos.lastNames}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="documentNumber"
-                  placeholder="Número de Documento"
-                  value={datos.documentNumber}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  value={datos.email}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  placeholder="Celular"
-                  value={datos.phoneNumber}
-                  onChange={handleChange}
-                />
+                <label className={styles.label}>
+                  <span>Nombre:</span>
+                  <input
+                    type="text"
+                    name="firstNames"
+                    placeholder="Nombre"
+                    value={datos.firstNames}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label className={styles.label}>
+                  <span>Apellidos:</span>
+                  <input
+                    type="text"
+                    name="lastNames"
+                    placeholder="Apellidos"
+                    value={datos.lastNames}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label className={styles.label}>
+                  <span>Número de Documento:</span>
+                  <input
+                    type="text"
+                    name="documentNumber"
+                    placeholder="Número de Documento"
+                    value={datos.documentNumber}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label className={styles.label}>
+                  <span>Email:</span>
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={datos.email}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label className={styles.label}>
+                  <span>Celular:</span>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    placeholder="Celular"
+                    value={datos.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </label>
 
                 <div className={styles.foto}>
                   <label
@@ -366,13 +439,13 @@ const CreateContact = () => {
               <span>Información Adicional</span>{' '}
             </div>
             <div className={styles['informacion-datos']}>
-              <span className={styles['sub-title']}>FAMILIAR:</span>
+              <span className={styles['sub-title']}>Situacion Familiar:</span>
               <div className={styles.datos}>
                 <button
                   type="button"
                   onClick={() => changeTypeClient('C')}
                   className={`${styles.campo} ${
-                    datos.civilStatus === 'C' && styles.active
+                    profileData.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
                 </button>
@@ -380,7 +453,7 @@ const CreateContact = () => {
                   type="button"
                   onClick={() => changeTypeClient('S')}
                   className={`${styles.campo} ${
-                    datos.civilStatus === 'S' && styles.active
+                    profileData.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
                 </button>
@@ -407,7 +480,7 @@ const CreateContact = () => {
                   type="button"
                   onClick={() => changeTypeClient('UN')}
                   className={`${styles.campo} ${
-                    datos.civilStatus === 'UN' && styles.active
+                    profileData.civilStatus === 'UN' && styles.active
                   }`}>
                   Unión Libre
                 </button>
@@ -415,21 +488,56 @@ const CreateContact = () => {
                   type="button"
                   onClick={() => changeTypeClient('DI')}
                   className={`${styles.campo} ${
-                    datos.civilStatus === 'DI' && styles.active
+                    profileData.civilStatus === 'DI' && styles.active
                   }`}>
                   Divorciado
                 </button>
               </div>
             </div>
+
             <div className={styles['informacion-perfil']}>
               <div className={styles['informacion-datos']}>
-                <span className={styles['sub-title']}>TIPO DE COMPRADOR:</span>
+                <span className={styles['sub-title']}>Numero de Hijos:</span>
+                <div className={styles.datos}>
+                  <button
+                    type="button"
+                    onClick={() => changeAmountChildren('0')}
+                    className={`${styles.campo} ${
+                      profileData.amountChildren === '0' && styles.active
+                    }`}>
+                    Sin Hijos
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => changeAmountChildren('1')}
+                    className={`${styles.campo} ${
+                      profileData.amountChildren === '1' && styles.active
+                    }`}>
+                    Con Hijos
+                  </button>
+                </div>
+                <div className={styles['buttons-right']}>
+                  <Link
+                    href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+                    className={styles['crear-contacto']}>
+                    <i className="fa-solid fa-plus"></i>Crear oportunidad
+                  </Link>
+                  <button className={styles['contacto-existente']}>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles['informacion-perfil']}>
+              <div className={styles['informacion-datos']}>
+                <span className={styles['sub-title']}>Tipo de Comprador:</span>
                 <div className={styles.datos}>
                   <button
                     type="button"
                     onClick={() => changebusinessName('I')}
                     className={`${styles.campo} ${
-                      datos.housingInversion === 'I' && styles.active
+                      profileData.housingInversion === 'I' && styles.active
                     }`}>
                     Inversionista
                   </button>
@@ -437,7 +545,7 @@ const CreateContact = () => {
                     type="button"
                     onClick={() => changebusinessName('V')}
                     className={`${styles.campo} ${
-                      datos.housingInversion === 'V' && styles.active
+                      profileData.housingInversion === 'V' && styles.active
                     }`}>
                     Familiar
                   </button>

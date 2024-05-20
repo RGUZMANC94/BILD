@@ -15,7 +15,7 @@ const AddEvents = ({ setShowPopEvents }) => {
 
   const [datos, setDatos] = useState({
     idSaleOp: '',
-    activity: 'Prueba evento 1',
+    activity: '',
     ask1: '',
     ask2: '',
     ask3: '',
@@ -33,9 +33,7 @@ const AddEvents = ({ setShowPopEvents }) => {
     setDatos({ ...datos, idSaleOp: opportunitySelected });
   }, []);
 
-  const sendFormInfo = async (e) => {
-    e.preventDefault();
-
+  const sendFormInfo = async () => {
     console.log(
       JSON.stringify({
         id,
@@ -84,25 +82,21 @@ const AddEvents = ({ setShowPopEvents }) => {
     <section className={`${styles.main} ${show ? styles.active : ''}`}>
       <div className={styles.banner}></div>
       <div className={styles.descripcion}>
-        <div
-          className={`${styles.close} bg-ct`}
-          onClick={() => {
-            setShow(false);
-            setTimeout(() => {
-              setShowPopEvents(false);
-            }, 500);
-          }}></div>
-        <div onSubmit={sendFormInfo} className={styles['left-side-event']}>
-          <span className={styles['title-descripcion']}>Descripción</span>
-          <div className={styles.questions}>
-            ¿De donde sale el evento? ¿Qué busca el cliente? Descripción de este
-            seguimiento
-          </div>
+        <div className={styles.topContent}>
+          <span className={styles['title-descripcion']}>Añadir Evento</span>
+          <div
+            className={`${styles.close} bg-ct`}
+            onClick={() => {
+              setShow(false);
+              setTimeout(() => {
+                setShowPopEvents(false);
+              }, 500);
+            }}></div>
+        </div>
+        <div onSubmit={sendFormInfo} className={styles['info-content']}>
           <form className={styles.origen}>
-            <span className={styles['text-origen']}>Tipo de evento:</span>
+            <h2 className={styles['text-origen']}>Tipo de evento:</h2>
             <div className={styles['elegir-origen']}>
-              <span className={styles.label}></span>
-              <label className={styles.labelNode} for="subject"></label>
               <select
                 placeholder="Subject line"
                 name="subject"
@@ -117,17 +111,13 @@ const AddEvents = ({ setShowPopEvents }) => {
                 <option>Visita</option>
               </select>
               <div className={styles['name-field']}>
-                <span className={styles.label}>NOtas</span>
+                <h2 className={styles['text-origen']}>Notas</h2>
                 <textarea
                   name="activity"
                   value={datos.activity}
                   className={styles.message_input}
                   onChange={handleChange}
                   required></textarea>
-                <label className={styles.labelNode}>
-                  <input type="checkbox" name="cb-terminosservicio" /> Agendar
-                  seguimiento futuro
-                </label>
                 <br />
               </div>
             </div>
@@ -137,14 +127,28 @@ const AddEvents = ({ setShowPopEvents }) => {
                 <DatePicker></DatePicker>
               </label>
         </div> */}
-            <div className={styles.boton}>
-              <Button
-                buttonType="primary"
-                label="guardar"
-                className="buttonsFilter"
-              />
-            </div>
           </form>
+        </div>
+        <div className={styles.bottomContent}>
+          <Button
+            buttonType={'secondary'}
+            iconImage={false}
+            label={'CANCELAR'}
+            inheritClass={styles.buttonCreateType}
+            clickFunction={() => {
+              setShow(false);
+              setTimeout(() => {
+                setShowPopEvents(false);
+              }, 500);
+            }}
+          />
+          <Button
+            buttonType={'primary'}
+            iconImage={false}
+            label={'Guardar'}
+            inheritClass={styles.buttonCreateType}
+            clickFunction={sendFormInfo}
+          />
         </div>
       </div>
       <div className={`${styles.popSuccessCreated}`}>
