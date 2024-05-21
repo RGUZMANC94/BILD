@@ -158,7 +158,7 @@
 }
 
 .contact:hover {
-  transform: translateX(-10px);
+  transform: translateX(10px);
 }
 
 .contact img {
