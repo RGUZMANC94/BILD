@@ -893,6 +893,7 @@ li {
   padding: 0 55px;
   position: relative;
   text-align: center;
+  cursor: pointer;
 }
 
 .top-donwload {

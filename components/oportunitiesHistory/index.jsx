@@ -219,9 +219,11 @@ const OportunitiesHistory = ({
                     </span>
                   </div>
                   <ul>
-                    <li className={styles['pendiente-list']}>
-                      <b>Titulo evento:</b>
-                    </li>
+                    {firstEvent.title && (
+                      <li className={styles['pendiente-list']}>
+                        <b>{firstEvent.title}</b>
+                      </li>
+                    )}
                     <li>{firstEvent.activity}</li>
                   </ul>
                 </div>
@@ -295,9 +297,11 @@ const OportunitiesHistory = ({
                               </span>
                             </div>
                             <ul>
-                              <li className={styles['pendiente-list']}>
-                                <b>{'Titulo del evento'}</b>
-                              </li>
+                              {eventItem.title && (
+                                <li className={styles['pendiente-list']}>
+                                  <b>{eventItem.title}</b>
+                                </li>
+                              )}
                               <li>{eventItem.activity}</li>
                             </ul>
                           </div>
@@ -361,7 +365,11 @@ const OportunitiesHistory = ({
                   </div>
                   <ul>
                     <li className={styles['pendiente-list']}>
-                      <b>Titulo evento:</b>
+                      {lastEvent.title && (
+                        <li className={styles['pendiente-list']}>
+                          <b>{lastEvent.title}</b>
+                        </li>
+                      )}
                     </li>
                     <li>{lastEvent.activity}</li>
                   </ul>

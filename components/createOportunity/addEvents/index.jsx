@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import SquareInput from '../../squareInput';
 import { useDispatch, useSelector } from 'react-redux';
 
-const AddEvents = ({ setShowPopEvents }) => {
+const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
   const { id } = useSelector((state) => state.userState);
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -72,6 +72,7 @@ const AddEvents = ({ setShowPopEvents }) => {
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
         setShowPopEvents(false);
+        setRefreshFlag(true);
       }, 2000);
     } catch (error) {
       console.error('Error al crear el proyecto:', error);

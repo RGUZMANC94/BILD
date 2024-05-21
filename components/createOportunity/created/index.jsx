@@ -15,6 +15,8 @@ const OportunityCreated = ({
   setShowPopUp,
   setIsConnected,
   unit,
+  refreshFlag,
+  setRefreshFlag,
 }) => {
   const [showCreatedPop, setShowCreatedPop] = useState(false);
   const [showDeletedPop, setShowDeletedPop] = useState(false);
@@ -165,6 +167,8 @@ const OportunityCreated = ({
               <EventsOportunity
                 showPopEvents={showPopEvents}
                 setShowPopEvents={setShowPopEvents}
+                refreshFlag={refreshFlag}
+                setRefreshFlag={setRefreshFlag}
               />
             )}
           </div>

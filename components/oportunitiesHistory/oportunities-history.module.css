@@ -170,7 +170,7 @@ i.fa-solid.fa-angle-left {
 
 .ver-line {
   border-right: 2px solid #fff;
-  height: calc(100% - 162px);
+  height: calc(100% - 125px);
 }
 
 .pendientes {
@@ -221,6 +221,7 @@ i.fa-solid.fa-angle-left {
 
 .pendiente-date {
   font-size: 10px;
+  margin-bottom: 10px;
   font-weight: 300;
   color: #fff;
 }
@@ -438,12 +439,14 @@ li.pendiente-list {
 }
 
 .buttonQuote {
-  padding: 10px;
+  height: 35px;
+  padding: 0 10px;
   font-size: 10px;
 }
 
 .buttonQuoteAcepted {
-  padding: 10px;
+  height: 35px;
+  padding: 0 10px;
   font-size: 10px;
   background-color: #343434;
   color: #777777;

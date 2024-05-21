@@ -19,6 +19,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
   const [generateQuote, setGenerateQuote] = useState(false);
   const [contactSelected, setContactSelected] = useState({});
   const { unitSelected } = useSelector((state) => state.unitState);
+  const [refreshFlag, setRefreshFlag] = useState(false);
   const dispatch = useDispatch();
 
   console.log('---showPopUp', showPopUp);
@@ -93,6 +94,8 @@ const CreateOportunity = ({ created, recentContacts }) => {
               setGenerateQuote={setGenerateQuote}
               setIsCreated={setIsCreated}
               unit={unitSelected}
+              refreshFlag={refreshFlag}
+              setRefreshFlag={setRefreshFlag}
             />
           ) : (
             <CreateStep
@@ -127,7 +130,12 @@ const CreateOportunity = ({ created, recentContacts }) => {
         />
       )}
 
-      {showPopEvents && <AddEvents setShowPopEvents={setShowPopEvents} />}
+      {showPopEvents && (
+        <AddEvents
+          setShowPopEvents={setShowPopEvents}
+          setRefreshFlag={setRefreshFlag}
+        />
+      )}
     </>
   );
 };

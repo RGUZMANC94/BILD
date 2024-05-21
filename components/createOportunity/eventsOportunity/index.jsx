@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import SquareInput from '../../squareInput';
 import { useState, useEffect } from 'react';
 
-const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
+const EventsOportunity = ({
+  setShowPopEvents,
+  showPopEvents,
+  refreshFlag,
+  setRefreshFlag,
+}) => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
   const { opportunitySelected } = useSelector(
@@ -62,10 +67,12 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
     getEventsSelected();
   }, []);
 
-  const handleEventClick = () => {
-    console.log('Evento seleccionado');
-  };
-
+  useEffect(() => {
+    if (refreshFlag) {
+      setRefreshFlag(false);
+    }
+    getEventsSelected();
+  }, [refreshFlag]);
   return (
     <>
       <button
@@ -108,9 +115,12 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                   </span>
                 </div>
                 <ul>
-                  <li className={styles['pendiente-list']}>
-                    <b>Titulo evento:</b>
-                  </li>
+                  {firstEvent.title && (
+                    <li className={styles['pendiente-list']}>
+                      <b>{firstEvent.title}</b>
+                    </li>
+                  )}
+
                   <li>{firstEvent.activity}</li>
                 </ul>
               </div>
@@ -131,7 +141,7 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
               <div
                 className={styles['blue-point-plus']}
                 onClick={() => setShowAllEvents(true)}>
-                {eventsSelected.length}+
+                {eventsSelected.length}
               </div>
               <div className={styles.innerDottedContainer}>
                 {eventsSelected.reverse().map(
@@ -161,9 +171,11 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                             </span>
                           </div>
                           <ul>
-                            <li className={styles['pendiente-list']}>
-                              <b>{'Titulo del evento'}</b>
-                            </li>
+                            {eventItem.title && (
+                              <li className={styles['pendiente-list']}>
+                                <b>{eventItem.title}</b>
+                              </li>
+                            )}
                             <li>{eventItem.activity}</li>
                           </ul>
                         </div>
@@ -199,9 +211,11 @@ const EventsOportunity = ({ setShowPopEvents, showPopEvents }) => {
                   </span>
                 </div>
                 <ul>
-                  <li className={styles['pendiente-list']}>
-                    <b>Titulo evento:</b>
-                  </li>
+                  {lastEvent.title && (
+                    <li className={styles['pendiente-list']}>
+                      <b>{lastEvent.title}</b>
+                    </li>
+                  )}
                   <li>{lastEvent.activity}</li>
                 </ul>
               </div>
