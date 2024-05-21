@@ -13,10 +13,12 @@ import { closePopUp } from '../../redux/popUpOportunity';
 import EditTypePop from '../../components/editTypePop';
 import EditUnitPop from '../../components/editUnitPop';
 import { changeProjectEdit } from '../../redux/editObjectSlice';
+import ZoomImg from '../../components/zoomImg';
 
 const DetailState = ({ unitsInit, typesInit }) => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
+  const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
   const [showPopUpType, setShowPopUpType] = useState(false);
@@ -30,7 +32,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [unitFlag, setUnitFlag] = useState(false);
   const [types, setTypes] = useState(typesInit);
   const [units, setUnits] = useState(unitsInit);
-  const [firstLoad, setFirstLoad] = useState(true);
+  // const [firstLoad, setFirstLoad] = useState(true);
   const [showEditType, setShowEditType] = useState(false);
   const [showEditUnit, setShowEditUnit] = useState(false);
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
@@ -365,6 +367,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
       {openPopUpOportunity && (
         <CreateOportunity created={false} recentContacts={recentContacts} />
       )}
+      {isOnZoomImg && <ZoomImg imgToZoom={imgToZoom} />}
     </>
   );
 };

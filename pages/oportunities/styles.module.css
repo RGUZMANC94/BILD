@@ -23,7 +23,7 @@
   color: #fff;
   font-weight: 500;
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   background-color: #282624;
   height: 60px;
   display: flex;
@@ -40,6 +40,7 @@
   background-image: url(/images/back.svg);
   width: 30px;
   height: 30px;
+  margin-right: 20px;
 }
 
 .title {
@@ -102,7 +103,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  gap: 48px;
+  gap: 20px;
 }
 
 .icon {

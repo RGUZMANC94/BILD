@@ -9,11 +9,13 @@ import { useState, useEffect } from 'react';
 import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
 import { closePopUp } from '../../redux/popUpOportunity';
+import ZoomImg from '../../components/zoomImg';
 
 const Oportunities = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
+  const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [closeFlag, setCloseFlag] = useState(true);
   const [oppIsSelected, setOppIsSelected] = useState(false);
@@ -92,6 +94,7 @@ const Oportunities = () => {
         </div>
       </section>
       {openPopUpOportunity && <CreateOportunity created={true} />}
+      {isOnZoomImg && <ZoomImg imgToZoom={imgToZoom} />}
     </>
   );
 };

@@ -1,0 +1,83 @@
+.wrapperZoomImg {
+  display: flex;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 11;
+  backdrop-filter: blur(10px);
+  transition:
+    all 0.5s ease-in-out,
+    top 0s ease 0.5s;
+  background-color: #343434;
+  width: 100%;
+  height: 100%;
+  padding: 80px 80px 20px;
+}
+
+.wrapperZoomImg.active {
+  top: 0%;
+  visibility: visible;
+  opacity: 1;
+  transition:
+    all 0.5s ease-in-out,
+    top 0s ease 0s;
+}
+
+.closeZoomImgBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.closeZoomImg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  cursor: pointer;
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+}
+.zoomImg {
+  position: relative;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 95%;
+  height: 95%;
+}
+
+.headerMainContainer {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 0px 5px 0;
+  height: 60px;
+  background-color: #262824;
+}
+
+.closePopUp {
+  top: 5px;
+  right: 5px;
+  z-index: 3;
+  cursor: pointer;
+  border-radius: 50%;
+  background-image: url(/images/close.svg);
+  background-position: center center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-color: #ffffffcc;
+  width: 40px;
+  height: 40px;
+}

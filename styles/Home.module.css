@@ -1,10 +1,16 @@
 .main-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
   margin: 0 auto;
   width: 90%;
   max-width: 1600px;
+  text-align: right;
+}
+
+.createProjectButton {
+  padding: 0 30px;
+  position: sticky;
+  top: 90px;
+  left: 0;
+  z-index: 2;
 }
 
 .main {
@@ -20,7 +26,7 @@
   position: relative;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 30px 20px;
   margin-top: 20px;
   width: 100%;
@@ -30,13 +36,13 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: space-around;
   transition: all 0.25s ease-in-out;
   box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background: #565555;
+  padding-bottom: 55px;
   width: calc(25% - 15px);
-  height: auto;
+  min-height: 300px;
   overflow: hidden;
   text-align: left;
 }
@@ -80,7 +86,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 25px;
+  margin-bottom: 5px;
   color: #fff;
   font-weight: 500;
   font-size: 18px;
@@ -88,8 +94,7 @@
 }
 
 .valor {
-  margin: 5px 0;
-  min-height: 20px;
+  margin: 0px;
   color: #fff;
   font-weight: 400;
   font-size: 14px;
@@ -97,13 +102,15 @@
 
 .detalles {
   display: flex;
-  position: relative;
+  position: absolute;
+  bottom: 20px;
+  left: 0px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
-  margin-top: 10px;
-  min-height: 30px;
+  padding: 0 20px;
+  width: 100%;
   color: #fff;
   font-weight: 400;
   font-size: 14px;
@@ -119,11 +126,9 @@
 }
 
 .editProject {
-  position: absolute;
-  top: 0;
-  right: 0;
   z-index: 1;
   cursor: pointer;
+  margin-left: auto;
   background-image: url(/images/edit.svg);
   width: 50px;
   height: 25px;
@@ -176,8 +181,8 @@
   .img-proyect {
     margin: 0 0 10px;
     aspect-ratio: 4/2;
-    max-width: initial;
     width: 100%;
+    max-width: initial;
     height: auto;
   }
 
@@ -189,9 +194,9 @@
   }
 
   .proyect-info {
+    position: relative;
     padding: 0 10px 10px;
     width: fill-available;
-    position: relative;
   }
   .editProject {
     top: 0px;

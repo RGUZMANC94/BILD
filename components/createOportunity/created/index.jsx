@@ -4,6 +4,7 @@ import EventsOportunity from '../eventsOportunity';
 import GenerateQuote from '../generateQuote';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePopUp } from '../../../redux/popUpOportunity';
+import { openZoomImg } from '../../../redux/zoomImg';
 
 const OportunityCreated = ({
   showPopEvents,
@@ -83,6 +84,11 @@ const OportunityCreated = ({
     setShowDeletedPop(false);
   };
 
+  const activeZoomImg = (e, imgToZoom) => {
+    e.stopPropagation();
+    dispatch(openZoomImg(imgToZoom));
+  };
+
   return (
     <>
       <div className={styles['wrap-crear']}>
@@ -103,7 +109,11 @@ const OportunityCreated = ({
                   <a href="#">
                     <img src="/images/crear-tipo.png" />
                   </a>
-                  <div className={styles['img-tipo-glass']}></div>
+                  <div
+                    className={styles['img-tipo-glass']}
+                    onClick={(e) => {
+                      activeZoomImg(e, '/images/crear-tipo.png');
+                    }}></div>
                 </div>
                 <div className={styles['tipo-info']}>
                   <div className={styles.tipos}>

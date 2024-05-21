@@ -10,10 +10,12 @@ import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
 import { useDispatch } from 'react-redux';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
+import ZoomImg from '../../components/zoomImg';
 
 const OportunitiesAllFilter = () => {
   const router = useRouter();
   const { id } = useSelector((state) => state.userState);
+  const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
   const [showBar, setShowBar] = useState(false);
   const [showSection, setShowSection] = useState('all');
   const [allOpportunities, setAllOpportunities] = useState([]);
@@ -192,6 +194,7 @@ const OportunitiesAllFilter = () => {
       {openPopUpOportunity && (
         <CreateOportunity created={true} recentContacts={recentContacts} />
       )}
+      {isOnZoomImg && <ZoomImg imgToZoom={imgToZoom} />}
     </>
   );
 };

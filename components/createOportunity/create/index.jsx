@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { closePopUp } from '../../../redux/popUpOportunity';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
+import { openZoomImg } from '../../../redux/zoomImg';
 
 const CreateStep = ({
   setShowPopUpAddContact,
@@ -18,6 +19,10 @@ const CreateStep = ({
 }) => {
   const dispatch = useDispatch();
   const { projectsList } = useSelector((state) => state.projectState);
+  const activeZoomImg = (e, imgToZoom) => {
+    e.stopPropagation();
+    dispatch(openZoomImg(imgToZoom));
+  };
 
   console.log('contactos en creacion de oportunidada', recentContacts);
   return (
@@ -34,7 +39,11 @@ const CreateStep = ({
         <div className={styles['tipo-unit']}>
           <div className={styles['img-tipo']}>
             <img src="/images/crear-tipo.png" />
-            <div className={styles['img-tipo-glass']}></div>
+            <div
+              className={styles['img-tipo-glass']}
+              onClick={(e) => {
+                activeZoomImg(e, '/images/crear-tipo.png');
+              }}></div>
           </div>
           <div className={styles['tipo-info']}>
             <div className={styles.tipos}>

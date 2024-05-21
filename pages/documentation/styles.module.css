@@ -325,12 +325,16 @@ button.upload-file {
   color: #fff;
   font-weight: 500;
   font-size: 20px;
-  text-align: center;
-  background-color: rgba(33, 34, 29, 0.3);
-  padding: 10px 0;
+  text-align: left;
+  background-color: #282624;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   position: fixed;
-  top: 73px;
+  top: 70px;
+  z-index: 3;
   text-transform: uppercase;
 }
 
@@ -338,6 +342,7 @@ button.upload-file {
   background-image: url(/images/back.svg);
   width: 30px;
   height: 30px;
+  margin-right: 20px;
 }
 
 .title {

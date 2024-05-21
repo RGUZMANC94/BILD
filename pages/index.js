@@ -103,6 +103,7 @@ const Home = ({ id, user_rol }) => {
               buttonType={'primary'}
               label="Crear Proyecto"
               link={'/create-project'}
+              inheritClass={styles.createProjectButton}
             />
           )}
 

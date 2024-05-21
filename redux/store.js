@@ -12,6 +12,7 @@ import popUpOportunityReducer from './popUpOportunity';
 import contactSelectedReducer from './contactSelectedSlice';
 import opportunitySelectedReducer from './opportunitySelectedSlice';
 import editObjectReducer from './editObjectSlice';
+import zoomImgReducer from './zoomImg';
 
 const persistConfig = {
   key: 'root',
@@ -25,6 +26,7 @@ const persistConfig = {
     'contactOpportunityState',
     'opportunityState',
     'editObjectState',
+    'zoomImgState',
   ],
 };
 
@@ -37,6 +39,7 @@ const rootReducer = combineReducers({
   contactOpportunityState: contactSelectedReducer,
   popUpOportunityState: popUpOportunityReducer,
   editObjectState: editObjectReducer,
+  zoomImgState: zoomImgReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

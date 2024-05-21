@@ -6,6 +6,7 @@ import { changeTypeEdit } from '../../redux/editObjectSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
 import Button from '../button';
 import Image from 'next/image';
+import { openZoomImg } from '../../redux/zoomImg';
 
 const TypeCard = ({
   units,
@@ -17,6 +18,10 @@ const TypeCard = ({
 }) => {
   const dispatch = useDispatch();
   const USDollar = new Intl.NumberFormat('en-US');
+  const activeZoomImg = (e, imgToZoom) => {
+    e.stopPropagation();
+    dispatch(openZoomImg(imgToZoom));
+  };
   return (
     <li
       id={type.nuimb}
@@ -49,7 +54,16 @@ const TypeCard = ({
                 : '/images/tipo-1.png'
             }
           />
-          <div className="img-tipo-glass"></div>
+          <div
+            className="img-tipo-glass"
+            onClick={(e) => {
+              activeZoomImg(
+                e,
+                type.image[0] !== '' && type.image[0]
+                  ? `${type.image[0].url}`
+                  : '/images/tipo-1.png'
+              );
+            }}></div>
         </div>
         <div className="tipo-info">
           <span className="tipo-title">Tipo {type.type}</span>
