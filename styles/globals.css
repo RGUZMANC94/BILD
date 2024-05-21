@@ -25,7 +25,6 @@
   align-items: flex-start;
   width: calc(100% + 10px);
   height: calc(100vh - 165px);
-  overflow-y: auto;
 }
 
 .main {
@@ -38,21 +37,21 @@
   overflow: hidden;
 }
 .top-content {
+  -webkit-backdrop-filter: blur(3.5px);
   display: flex;
   position: relative;
-  margin-top: 70px;
   justify-content: flex-start;
   z-index: 3;
-  -webkit-backdrop-filter: blur(3.5px);
   backdrop-filter: blur(3.5px);
+  margin-top: 70px;
   margin-bottom: 20px;
   background: rgba(33, 34, 29, 0.3);
   width: 100%;
+  height: 60px;
   font-weight: 500;
   font-size: 20px;
   text-align: left;
   text-transform: uppercase;
-  height: 60px;
 }
 
 /* 
@@ -106,11 +105,11 @@
 .top-content ul {
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
   padding: 0;
-  list-style: none;
   width: 90%;
   max-width: 1600px;
-  margin: 0 auto;
+  list-style: none;
 }
 
 .back-arrow {
@@ -145,6 +144,7 @@
 
 .topProjectName {
   display: block;
+  margin-right: 15px;
   width: auto;
   height: auto;
   color: #fff;
@@ -154,7 +154,6 @@
   text-align: left;
   text-decoration: none;
   text-transform: uppercase;
-  margin-right: 15px;
 }
 
 .itemTopContent,
@@ -167,7 +166,7 @@ li {
   opacity: 0;
   transition: all 0.5s ease-in-out;
   width: 100%;
-  padding-right: 10px;
+  height: 100%;
 }
 
 .unidadesSide.active {
@@ -215,14 +214,14 @@ li {
 
 .editProjectDetailState {
   display: block;
+  border-radius: 15%;
   background-image: url(/images/edit-icon.svg);
   background-position: center center;
   background-size: 65%;
   background-repeat: no-repeat;
+  background-color: #2467ff;
   width: 25px;
   height: 25px;
-  background-color: #2467ff;
-  border-radius: 15%;
 }
 
 .selectFilterProject {
@@ -241,11 +240,18 @@ li {
 }
 
 .outerTypes {
-  width: calc(50% - 50px);
   display: inline-block;
-  height: 100%;
   vertical-align: top;
-  margin-right: 100px;
+  margin-right: 75px;
+  width: calc(50% - 25px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 25px;
+}
+
+.outerTypes::-webkit-scrollbar {
+  display: none;
 }
 
 .tipo {
@@ -260,22 +266,20 @@ li {
 }
 
 .outerUnits {
-  width: calc(50% - 50px);
-  position: sticky;
-  top: 0px;
-  left: 0;
-  height: 100%;
   display: inline-block;
   vertical-align: top;
+  width: calc(50% - 50px);
+  height: 100%;
 }
 
 .caracteristicas {
-  position: sticky;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow-y: auto;
+}
+
+.caracteristicas::-webkit-scrollbar {
+  display: none;
 }
 
 .caracteristicas-top-movil {
@@ -299,7 +303,6 @@ li {
 .tipo-unit {
   display: flex;
   position: relative;
-  top: 0;
   left: 0;
   flex-direction: row;
   justify-content: space-between;
@@ -314,7 +317,6 @@ li {
   height: auto;
   min-height: 100px;
   text-align: left;
-  position: relative;
 }
 
 .itemDrag:hover .tipo-unit,
@@ -325,6 +327,7 @@ li {
 
 .tipo-unit.informacion {
   display: initial;
+  position: relative;
   flex-wrap: wrap;
   box-shadow:
     0px 0px 4px 0px rgba(0, 0, 0, 0.25),
@@ -335,14 +338,13 @@ li {
   width: 480px;
   height: auto;
   text-align: left;
-  position: relative;
 }
 
 .img-tipo {
   position: relative;
+  margin-right: 20px;
   width: 125px;
   height: 125px;
-  margin-right: 20px;
 }
 .img-tipo img {
   position: relative;
@@ -374,11 +376,11 @@ li {
 }
 
 .tipo-title {
+  margin-bottom: 5px;
+  width: 100%;
   color: #fff;
   font-weight: 700;
   font-size: 18px;
-  width: 100%;
-  margin-bottom: 5px;
   text-transform: uppercase;
 }
 
@@ -398,12 +400,12 @@ li {
 } Scope*/
 
 .valor {
+  margin-top: 3px;
+  width: 100%;
   color: #fff;
   font-weight: 400;
   /* padding-top: 33px; */
   font-size: 15px;
-  margin-top: 3px;
-  width: 100%;
 }
 
 .arrowDrop {
@@ -412,18 +414,18 @@ li {
 
 .detalles {
   display: flex;
+  position: absolute;
+  bottom: 20px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  align-self: flex-end;
   margin-top: 5px;
   color: #fff;
   font-weight: 400;
   font-size: 14px;
   line-height: 2.29;
   text-align: left;
-  align-self: flex-end;
-  position: absolute;
-  bottom: 20px;
 }
 
 .detalles img {
@@ -433,9 +435,14 @@ li {
 
 .caracteristicas-top {
   display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
   justify-content: center;
   align-items: center;
+  z-index: 2;
   margin: 0 auto 10px;
+  background-color: #2e2e2c;
   padding: 20px 42px 20px 50px;
   width: 100%;
   height: auto;
@@ -443,41 +450,40 @@ li {
   font-weight: 600;
   font-size: 18px;
   text-align: center;
-  background-color: #2e2e2c;
 }
 
 .upperButtons {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: flex-start;
   justify-content: flex-start;
+  align-items: flex-start;
   gap: 10px;
 }
 
 .file {
-  width: 50%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  width: 50%;
 }
 .descargar {
-  height: 45px;
-  line-height: 45px;
-  font-size: 15px;
-  padding: 10px 20px;
-  color: #fff;
-  border: 1px solid #fff;
-  background-color: transparent;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-size: 16px;
-  text-align: center;
-  float: right;
-  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  float: right;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 10px 20px;
+  height: 45px;
+  color: #fff;
+  font-size: 15px;
+  font-size: 16px;
+  line-height: 45px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .descargar img {
@@ -525,16 +531,16 @@ li {
 }
 
 .edit-unit {
-  z-index: 1;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  background-image: url(/images/edit.svg);
-  width: 25px;
-  height: 25px;
   position: absolute;
   top: 50%;
   left: 0;
+  z-index: 1;
+  transition: all 0.25s ease;
+  cursor: pointer;
   margin-top: -15px;
+  background-image: url(/images/edit.svg);
+  width: 25px;
+  height: 25px;
 }
 
 .editValues .edit-unit {
@@ -555,9 +561,9 @@ li {
 }
 
 .price-table.detalle-tabla {
+  justify-content: flex-end;
   width: 40%;
   text-align: right;
-  justify-content: flex-end;
 }
 
 .price-table.detalle-tabla > input {
@@ -755,6 +761,7 @@ input[type='number'] {
 .itemDrag {
   display: flex;
   position: relative;
+  left: 0;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
@@ -850,16 +857,16 @@ li {
 }
 
 .topInfo-container {
-  position: relative;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: auto;
   margin: 0 auto;
+  width: 100%;
   width: 90%;
   max-width: 1600px;
+  height: auto;
 }
 
 .top-infoContainer {
@@ -870,29 +877,29 @@ li {
 }
 
 .top-buttons-container {
-  position: absolute;
   display: flex;
+  position: absolute;
   right: 0;
-  height: 100%;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
   width: calc(50% - 50px);
-  justify-content: flex-end;
+  height: 100%;
 }
 
 .top-donwload,
 .top-upload {
-  height: 45px;
-  line-height: 45px;
-  border-radius: 5px;
-  text-transform: uppercase;
-  color: #fff;
-  gap: 5px;
-  font-size: 14px;
-  width: calc(35% - 10px);
-  padding: 0 55px;
   position: relative;
+  gap: 5px;
+  border-radius: 5px;
+  padding: 0 55px;
+  width: calc(35% - 10px);
+  height: 45px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 45px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .top-donwload {
@@ -905,15 +912,15 @@ li {
 
 .top-download-icon,
 .top-upload-icon {
-  background-size: 100%;
-  width: 25px;
-  height: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
   position: absolute;
   top: calc(50% - 12.5px);
   left: 20px;
+  background-position: center;
+  background-size: 100%;
   background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
 }
 
 .top-download-icon {
@@ -1248,8 +1255,8 @@ li.active button {
   }*/
 
   .itemDrag .tipo-info {
-    width: calc(100% - 60px);
     padding-left: 10px;
+    width: calc(100% - 60px);
   }
 }
 
@@ -1281,8 +1288,8 @@ li.active button {
 
   .containerEstate {
     padding-bottom: 180px;
-    max-height: unset;
     width: 100%;
+    max-height: unset;
   }
 
   .outerTypes {
@@ -1314,9 +1321,9 @@ li.active button {
   }
 
   .tipo {
+    gap: 0;
     margin: 0;
     width: 100%;
-    gap: 0;
   }
 
   .tipo-unit {
@@ -1327,25 +1334,25 @@ li.active button {
       0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     background: #2e2e2c;
+    padding: 0;
     width: 100%;
     min-width: initial;
     text-align: left;
-    padding: 0;
   }
 
   .img-tipo {
-    width: 100%;
     margin-right: 0px;
-    aspect-ratio: 4 / 2;
-    height: auto;
     margin-bottom: 15px;
+    aspect-ratio: 4 / 2;
+    width: 100%;
+    height: auto;
   }
   .img-tipo img {
     position: relative;
     z-index: 1;
+    border-radius: 10px 10px 0 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px 10px 0 0;
   }
   .tipo-title {
     font-size: 14px;
@@ -1415,11 +1422,11 @@ li.active button {
   }
 
   .top-tabla {
+    margin: 0;
     padding: 0px;
     width: 20%;
     font-size: 12px;
     text-align: center;
-    margin: 0;
   }
 
   .info-tabla {
@@ -1428,8 +1435,8 @@ li.active button {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 0px 35px 0 0;
     margin-bottom: 10px;
+    padding: 0px 35px 0 0;
     width: 100%;
     height: auto;
     text-align: center;
@@ -1535,9 +1542,9 @@ li.active button {
   .itemDrag.active .caracteristicas-top-movil {
     display: flex;
     flex-direction: column;
+    padding-bottom: 20px;
     width: 100%;
     height: auto;
-    padding-bottom: 20px;
   }
 
   .img-tipo-glass {
@@ -1576,13 +1583,13 @@ li.active button {
 
   .tipo-icons {
     gap: 35px 0;
-    height: 100%;
-    padding-right: 10px;
-    margin: 0px 0 10px;
     gap: 35px 0;
-    height: 100%;
-    padding-right: 10px;
     margin: 0px 0 10px;
+    margin: 0px 0 10px;
+    padding-right: 10px;
+    padding-right: 10px;
+    height: 100%;
+    height: 100%;
   }
 
   .detalles {
