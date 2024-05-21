@@ -40,22 +40,22 @@ const AddContact = ({
           }, 500);
         }}></div>
       <div className={styles['popup-window']}>
-      <div className={styles['top-content']}>
-        <div className={styles['top-name']}>
-          <h1 className={styles['top-content-title']}>Seleccionar Contacto</h1>
-          
+        <div className={styles['top-content']}>
+          <div className={styles['top-name']}>
+            <h1 className={styles['top-content-title']}>
+              Seleccionar Contacto
+            </h1>
+          </div>
+          <div
+            className={styles['close-icon']}
+            onClick={() => {
+              setIsShow(false);
+              setTimeout(() => {
+                setShowPopUpAddContact(false);
+              }, 500);
+            }}></div>
         </div>
-        <div
-          className={styles['close-icon']}
-          onClick={() => {
-            setIsShow(false);
-            setTimeout(() => {
-              setShowPopUpAddContact(false);
-            }, 500);
-          }}>
-        </div>
-      </div>
-        
+
         <div className={styles['agregar-wrapper']}>
           <div className={styles['search-wrapper']}>
             <input
