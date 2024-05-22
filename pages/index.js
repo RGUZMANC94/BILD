@@ -181,10 +181,11 @@ const Home = ({ id, user_rol }) => {
                             <button
                               className={`bg-ct ${styles.editProject}`}
                               onClick={() =>
-                                (
-                                  dispatch(changeProjectEdit(project)),
-                                  setShowEditProject(true)
-                                )                        }></button>
+                                {
+                                  dispatch(changeProjectEdit(project));
+                                setShowEditProject(true);
+                                console.log('Editando');
+                                }                      }/>
                           )}
                         </div>
                       </div>
@@ -201,8 +202,8 @@ const Home = ({ id, user_rol }) => {
       />
 
       <EditProjectPop
-        showEditProject={showAddProject}
-        setShowEditProject={setShowAddProject}
+        showEditProject={showEditProject}
+        setShowEditProject={setShowEditProject}
         setRefreshProjects={setRefreshProjects}
       />
     </>

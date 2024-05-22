@@ -54,7 +54,15 @@ const EditProjectPop = ({
 
   useEffect(() => {
     getProject();
-  }, []);
+  }, [showEditProject]);
+
+  useEffect(() => {
+    if (infoProject) {
+      setDatos({ ...datos, ...infoProject });
+      setDateValue(infoProject.startDate);
+      console.log('Datos: ', datos);
+    }
+  }, [infoProject]);
 
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
@@ -105,7 +113,7 @@ const EditProjectPop = ({
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        if (event.target.id === 'mainImgProject') {
+        if (event.target.id === 'mainImgProjectEdit') {
           mainImage.current.style.backgroundImage = `url(${e.target.result})`;
           mainImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
@@ -231,7 +239,7 @@ const EditProjectPop = ({
     );
 
     try {
-      const projectCreated = await fetch('/api/createProject', {
+      const projectCreated = await fetch('/api/editProject', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -312,6 +320,9 @@ const EditProjectPop = ({
         setShowEditProject(false);
         setRefreshProjects(true);
         cleanForm();
+      }, 2000);
+      setTimeout(() => {
+        setRefreshProjects(true);
       }, 2000);
     } catch (error) {
       document
@@ -440,7 +451,24 @@ const EditProjectPop = ({
     }
   };
 
-  const cleanForm = () => {};
+  const cleanForm = () => {
+    setDatos(
+      {
+        projectName: '',
+    projectType: 'E',
+    location: '',
+    neighborhoodId: '5',
+    startDate: '',
+    pool: '',
+    TurkishBath: '',
+    sauna: '',
+    bbq: '',
+    gym: '',
+    coworking: 'X',
+    laundry: '',
+      }
+    );
+  };
 
   return (
     <>
@@ -566,10 +594,10 @@ const EditProjectPop = ({
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
                 <label
-                  htmlFor="mainImgProject"
+                  htmlFor="mainImgProjectEdit"
                   className={styles.labelInputImage}>
                   <input
-                    id="mainImgProject"
+                    id="mainImgProjectEdit"
                     type="file"
                     hidden
                     onChange={handleBloth}

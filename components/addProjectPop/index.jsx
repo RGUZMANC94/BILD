@@ -417,7 +417,24 @@ const AddProjectPop = ({
     }
   };
 
-  const cleanForm = () => {};
+  const cleanForm = () => {
+    setDatos(
+      {
+        projectName: '',
+    projectType: 'E',
+    location: '',
+    neighborhoodId: '5',
+    startDate: '',
+    pool: '',
+    TurkishBath: '',
+    sauna: '',
+    bbq: '',
+    gym: '',
+    coworking: 'X',
+    laundry: '',
+      }
+    );
+  };
 
   return (
     <>
@@ -427,7 +444,10 @@ const AddProjectPop = ({
         } flex j-e a-s`}>
         <div
           className={`${styles.bgTypePopUp}`}
-          onClick={() => setShowAddProject(false)}></div>
+          onClick={() => {
+            setShowAddProject(false);
+            cleanForm();
+          }}></div>
         <div className={`${styles.wrapperTypePopUp}`}>
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
@@ -437,7 +457,10 @@ const AddProjectPop = ({
             </div>
             <div
               className={`${styles.closeIcon} bg-ct`}
-              onClick={() => setShowAddProject(false)}
+              onClick={() =>  {
+                setShowAddProject(false);
+                cleanForm();
+              }}
             />
           </div>
 
@@ -630,7 +653,10 @@ const AddProjectPop = ({
               iconImage={false}
               label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
-              clickFunction={() => setShowAddProject(false)}
+              clickFunction={() =>  {
+                setShowAddProject(false);
+                cleanForm();
+              }}
             />
             <Button
               buttonType={'primary'}
