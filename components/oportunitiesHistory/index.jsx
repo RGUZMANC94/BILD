@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-history.module.css';
 import Button from '../button';
 import { useDispatch, useSelector } from 'react-redux';
 import SquareInput from '../squareInput';
 import { useRouter } from 'next/router';
+import Portal from '../../HOC/portal';
+import GenerateQuote from '../createOportunity/generateQuote';
+import BackgroundPopUp from '../backgroundPopUp';
+import AddEvents from '../createOportunity/addEvents';
 
 const OportunitiesHistory = ({
   opportunitySelected,
@@ -19,6 +23,10 @@ const OportunitiesHistory = ({
   const { unitSelected } = useSelector((state) => state.unitState);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showAllEvents, setShowAllEvents] = useState(false);
+  const [generateQuote, setGenerateQuote] = useState(false);
+  const [addEvents, setAddEvents] = useState(false);
+  const [animateCloseGenerateQuote, setAnimateCloseGenerateQuote] =
+    useState(false);
   const [allEvents, setAllEvents] = useState([
     {
       id: '1',
@@ -63,7 +71,7 @@ const OportunitiesHistory = ({
     setSelectedItem(index);
   };
 
-  const getEventsSelected = async () => {
+  const getEventsSelected = useCallback(async () => {
     const response = await fetch('/api/events', {
       method: 'post',
       headers: {
@@ -105,7 +113,7 @@ const OportunitiesHistory = ({
       setLastEvent({});
       setEventsSelected([]);
     }
-  };
+  }, [opportunitySelected]);
 
   useEffect(() => {
     if (opportunitySelected !== -1 && opportunitySelected) {
@@ -162,7 +170,7 @@ const OportunitiesHistory = ({
 
       setTimeout(() => {
         // window.location.reload();
-        setRefreshFlag(true);
+        setRefreshFlag((prevState) => !prevState);
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
@@ -182,6 +190,71 @@ const OportunitiesHistory = ({
       console.error('Error al crear el proyecto:', error);
     }
   };
+
+  const deleteOpportunity = async () => {
+    // setShowDeletedPop(true);
+    try {
+      const oppCreated = await fetch('/api/deleteOpportunity', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          opportunitySelected,
+          id,
+        }),
+      });
+      console.log('respuesta de eliminacion', oppCreated);
+      const responseData = await oppCreated.json();
+
+      // if (!oppCreated.ok) {
+      //   document
+      //     .querySelector(`.${styles.popError}`)
+      //     .classList.add(styles.activePopUp);
+
+      //   setTimeout(() => {
+      //     document
+      //       .querySelector(`.${styles.popError}`)
+      //       .classList.remove(styles.activePopUp);
+      //   }, 2000);
+      //   throw new Error('Failed to delete opportunity');
+      // }
+
+      setRefreshFlag((prevState) => !prevState);
+
+      // document
+      //   .querySelector(`.${styles.popSuccessCreated}`)
+      //   .classList.add(styles.activePopUp);
+
+      // setTimeout(() => {
+      //   document
+      //     .querySelector(`.${styles.popSuccessCreated}`)
+      //     .classList.remove(styles.activePopUp);
+      //   // setShowPopEvents(false);
+      //   // setShowPopUp(false); // primero
+      //   // setIsConnected(false);
+      //   // setIsCreated(false); // ultimo
+      //   // dispatch(closePopUp(false));
+      // }, 2000);
+    } catch (error) {
+      console.error('Error al eliminar la oportunidad:', error);
+    }
+    // setShowDeletedPop(false);
+  };
+
+  const openPopUpQuote = () => {
+    setGenerateQuote((prevState) => true);
+  };
+
+  const closePopUpQuote = useCallback(() => {
+    setGenerateQuote((prevState) => false);
+  }, []);
+  const animateClosePopUpQuote = useCallback(() => {
+    setAnimateCloseGenerateQuote((prevState) => true);
+    setTimeout(() => {
+      setAnimateCloseGenerateQuote((prevState) => false);
+    }, 350);
+  }, []);
 
   return (
     <>
@@ -204,6 +277,23 @@ const OportunitiesHistory = ({
                 </ul>
               </div>
             )}
+
+            <div className={`flex j-sb a-c ${styles.containerButtonsEvents}`}>
+              <Button
+                buttonType={'secondary'}
+                iconImage={false}
+                label={'Crear cotización'}
+                inheritClass={styles.buttonEventHistory}
+                clickFunction={openPopUpQuote}></Button>
+              <Button
+                buttonType={'primary'}
+                iconImage={false}
+                label={'Agregar evento'}
+                inheritClass={styles.buttonEventHistory}
+                clickFunction={() => {
+                  setAddEvents((prevState) => true);
+                }}></Button>
+            </div>
 
             {Object.keys(firstEvent).length > 0 && (
               <div className={styles.greybox}>
@@ -305,42 +395,39 @@ const OportunitiesHistory = ({
                               <li>{eventItem.activity}</li>
                             </ul>
                           </div>
-                          {
-                            /* eventItem.status === 'PE'*/ true && (
-                              <div className={styles.time}>
-                                <span className={styles.hour}>
-                                  {eventItem.expirationDateTime.split(' ')[1]}
-                                </span>
 
-                                {eventItem.additionalInformation !== '' &&
-                                  eventItem.additionalInformation !== '0' &&
-                                  (oppSelectedObject.stageCycleSaleOp ===
-                                  'Oportunidad' ? (
-                                    <div>
-                                      <Button
-                                        buttonType={'primary'}
-                                        iconImage={false}
-                                        label={'Aceptar'}
-                                        inheritClass={styles.buttonQuote}
-                                        clickFunction={() =>
-                                          handleEventClick(
-                                            eventItem.additionalInformation
-                                          )
-                                        }
-                                      />
-                                    </div>
-                                  ) : (
-                                    <div>
-                                      <Button
-                                        iconImage={false}
-                                        label={'Aceptada'}
-                                        inheritClass={styles.buttonQuoteAcepted}
-                                      />
-                                    </div>
-                                  ))}
-                              </div>
-                            )
-                          }
+                          <div className={styles.time}>
+                            <span className={styles.hour}>
+                              {eventItem.expirationDateTime.split(' ')[1]}
+                            </span>
+
+                            {eventItem.additionalInformation !== '' &&
+                              eventItem.additionalInformation !== '0' &&
+                              (oppSelectedObject.stageCycleSaleOp ===
+                              'Oportunidad' ? (
+                                <div>
+                                  <Button
+                                    buttonType={'primary'}
+                                    iconImage={false}
+                                    label={'Aceptar'}
+                                    inheritClass={styles.buttonQuote}
+                                    clickFunction={() =>
+                                      handleEventClick(
+                                        eventItem.additionalInformation
+                                      )
+                                    }
+                                  />
+                                </div>
+                              ) : (
+                                <div>
+                                  <Button
+                                    iconImage={false}
+                                    label={'Aceptada'}
+                                    inheritClass={styles.buttonQuoteAcepted}
+                                  />
+                                </div>
+                              ))}
+                          </div>
 
                           <div className={styles['blue-point']}></div>
                         </div>
@@ -407,16 +494,11 @@ const OportunitiesHistory = ({
             )}
           </div>
           <div className={styles['pendientes-bottom']}>
-            <div onClick={() => dispatch(openPopUp(true))}>
+            <div onClick={deleteOpportunity}>
               <Button
                 buttonType={'primary'}
                 classNameInherit={'align-center'}
-                iconImage={'/images/plus_icon_white.svg'}
-                label={'Ver oportunidad'}></Button>
-            </div>
-            <div className={styles['card-progress-bar-container']}>
-              <div className={styles['card-progress-bar-frost-icon']}></div>
-              <div className={styles['card-progress-bar-cold']}></div>
+                label={'Elminar oportunidad'}></Button>
             </div>
           </div>
         </div>
@@ -449,6 +531,26 @@ const OportunitiesHistory = ({
           </div>
         </div>
       </>
+      {generateQuote && (
+        <Portal>
+          <BackgroundPopUp
+            closePopUp={closePopUpQuote}
+            closeAnimate={animateCloseGenerateQuote}>
+            <GenerateQuote
+              closePopUp={animateClosePopUpQuote}
+              setRefreshFlag={getEventsSelected}
+            />
+          </BackgroundPopUp>
+        </Portal>
+      )}
+      {addEvents && (
+        <Portal>
+          <AddEvents
+            setAddEvents={setAddEvents}
+            updateEvents={getEventsSelected}
+          />
+        </Portal>
+      )}
     </>
   );
 };

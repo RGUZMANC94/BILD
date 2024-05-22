@@ -57,8 +57,8 @@ const Header = () => {
               */}
 
               <Link
-                href={pathname === '/oportunities' ? '' : '/oportunities'}
-                className={pathname === '/oportunities' ? styles.active : ''}>
+                href={pathname === '/opportunities' ? '' : '/opportunities'}
+                className={pathname === '/opportunities' ? styles.active : ''}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/key.png" />
                 </div>

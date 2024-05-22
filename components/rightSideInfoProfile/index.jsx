@@ -15,7 +15,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
     <>
       {typeViewer === 'buyer' && (
         <div className={styles['opc-pendiente']}>
-          <Link href={`/oportunities/${clientId}`} className={styles.opcion}>
+          <Link href={`/opportunities/${clientId}`} className={styles.opcion}>
             <img src="/images/key-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>2</span>
             Oportunidades

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import ImageDummy from '../public/images/tipo-1.png';
+import { useFetch } from '../hooks/useFetch';
 
 const EditProject = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const EditProject = () => {
   const {
     query: { back },
   } = router;
+
+  const { id } = useSelector((state) => state.userState);
 
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -50,7 +53,17 @@ const EditProject = () => {
     coworking: 'X',
     laundry: '',
   });
-
+  const metadataFetch = {
+    url: '/api/getProjectInfo',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: {
+      id,
+      projectId: projectEdit.projectId,
+    },
+  };
   const getProject = async () => {
     const response = await fetch('/api/getProjectInfo', {
       method: 'POST',
@@ -227,7 +240,6 @@ const EditProject = () => {
     const form = new FormData(document.getElementById('IDForm'));
     console.log(form);
   };
-  const { id } = useSelector((state) => state.userState);
 
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });

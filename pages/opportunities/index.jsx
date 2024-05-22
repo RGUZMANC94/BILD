@@ -49,7 +49,7 @@ const OportunitiesAllFilter = () => {
 
     const opportunitiesResponse = await response.json();
     console.log('dentro de opotunidades:', opportunitiesResponse);
-    setAllOpportunities(opportunitiesResponse);
+    setAllOpportunities((prevState) => [...opportunitiesResponse]);
   };
 
   const getRecentsContacts = async () => {
@@ -99,9 +99,9 @@ const OportunitiesAllFilter = () => {
   }, [sorting]);
 
   useEffect(() => {
-    if (refreshFlag) {
-      setRefreshFlag(false);
-    }
+    // if (refreshFlag) {
+    //   setRefreshFlag(false);
+    // }
     getAllOpportunities();
     console.log('reset');
   }, [refreshFlag]);
@@ -174,6 +174,7 @@ const OportunitiesAllFilter = () => {
             <OportunitiesAll
               oppList={allOpportunities}
               setOppIsSelected={setOppIsSelected}
+              refreshFlag={refreshFlag}
               setRefreshFlag={setRefreshFlag}
             />
           )}

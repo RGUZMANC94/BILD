@@ -6,7 +6,7 @@ import Button from '../../button';
 import SquareInput from '../../squareInput';
 import CurrencyInput from 'react-currency-input-field';
 
-const GenerateQuote = ({ setGenerateQuote }) => {
+const GenerateQuote = ({ setGenerateQuote, closePopUp, setRefreshFlag }) => {
   const { id } = useSelector((state) => state.userState);
   const [values, setValues] = useState([30]);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -217,7 +217,11 @@ const GenerateQuote = ({ setGenerateQuote }) => {
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        window.location.reload();
+        if (setRefreshFlag) {
+          setRefreshFlag((prevState) => true);
+          closePopUp();
+        }
+        // window.location.reload();
       }, 2000);
     } catch (error) {
       document
@@ -438,6 +442,8 @@ const GenerateQuote = ({ setGenerateQuote }) => {
             iconImage={false}
             label={'CANCELAR'}
             inheritClass={styles.buttonCreateOpportunity}
+            clickFunction={closePopUp ?? null}
+            preventDefault={true}
           />
           <Button
             buttonType={'primary'}

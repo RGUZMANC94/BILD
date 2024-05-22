@@ -106,7 +106,7 @@ i.fa-solid.fa-angle-left {
   text-transform: uppercase;
   width: 100%;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .back {
@@ -168,9 +168,14 @@ i.fa-solid.fa-angle-left {
   /* z-index: 1; */
 }
 
+.line img {
+  width: 40px;
+  height: 40px;
+}
+
 .ver-line {
-  border-right: 2px solid #fff;
-  height: calc(100% - 125px);
+  border-right: 1px solid #fff;
+  height: calc(100% - 60px);
 }
 
 .pendientes {
@@ -243,10 +248,20 @@ li.pendiente-list {
 }
 
 .ulNode li {
-  margin: 0px 0 10px;
+  margin: 0px 0 5px;
   font-size: 14px !important;
   font-weight: 200;
   color: #fff;
+}
+
+.containerButtonsEvents {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: calc(100% - 20px);
+}
+
+.buttonEventHistory {
+  width: calc(50% - 10px);
 }
 
 .time {
@@ -317,13 +332,13 @@ li.pendiente-list {
 }
 
 .blue-point {
-  width: 20px;
-  height: 20px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
-  top: 0px;
-  left: -62px;
+  top: 50%;
+  left: -55px;
 }
 
 .blue-point-plus {

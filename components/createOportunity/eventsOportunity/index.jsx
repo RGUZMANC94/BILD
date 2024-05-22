@@ -68,9 +68,9 @@ const EventsOportunity = ({
   }, []);
 
   useEffect(() => {
-    if (refreshFlag) {
-      setRefreshFlag(false);
-    }
+    // if (refreshFlag) {
+    //   setRefreshFlag ? setRefreshFlag((prevState) => !prevState) : null;
+    // }
     getEventsSelected();
   }, [refreshFlag]);
   return (
@@ -179,15 +179,11 @@ const EventsOportunity = ({
                             <li>{eventItem.activity}</li>
                           </ul>
                         </div>
-                        {
-                          /* eventItem.status === 'PE'*/ true && (
-                            <div className={styles.time}>
-                              <span className={styles.hour}>
-                                {eventItem.expirationDateTime.split(' ')[1]}
-                              </span>
-                            </div>
-                          )
-                        }
+                        <div className={styles.time}>
+                          <span className={styles.hour}>
+                            {eventItem.expirationDateTime.split(' ')[1]}
+                          </span>
+                        </div>
 
                         <div className={styles['blue-point']}></div>
                       </div>

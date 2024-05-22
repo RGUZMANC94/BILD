@@ -10,6 +10,7 @@ const Button = ({
   label,
   link,
   clickFunction,
+  preventDefault,
 }) => {
   return (
     <>
@@ -32,6 +33,7 @@ const Button = ({
       {!link && (
         <button
           onClick={(e) => {
+            preventDefault ? e.preventDefault() : null;
             clickFunction ? clickFunction() : '';
           }}
           className={`${styles[buttonType]} ${styles.siteButton} ${

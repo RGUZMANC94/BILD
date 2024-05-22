@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import styles from './add-events.module.css';
 import Button from '../../button';
-import DatePicker from 'react-datepicker';
-import SquareInput from '../../squareInput';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
+const AddEvents = ({
+  setShowPopEvents,
+  setRefreshFlag,
+  setAddEvents,
+  updateEvents,
+}) => {
   const { id } = useSelector((state) => state.userState);
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -29,7 +32,9 @@ const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
   console.log('Datos: ', datos);
 
   useEffect(() => {
-    setShow(true);
+    setTimeout(() => {
+      setShow(true);
+    }, 100);
     setDatos({ ...datos, idSaleOp: opportunitySelected });
   }, []);
 
@@ -71,8 +76,10 @@ const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        setShowPopEvents(false);
-        setRefreshFlag(true);
+        setShowPopEvents ? setShowPopEvents(false) : null;
+        setAddEvents ? setAddEvents(false) : null;
+        setRefreshFlag ? setRefreshFlag((prevState) => !prevState) : null;
+        updateEvents ? updateEvents() : null;
       }, 2000);
     } catch (error) {
       console.error('Error al crear el proyecto:', error);
@@ -81,7 +88,15 @@ const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
 
   return (
     <section className={`${styles.main} ${show ? styles.active : ''}`}>
-      <div className={styles.banner}></div>
+      <div
+        className={styles.banner}
+        onClick={() => {
+          setShow(false);
+          setTimeout(() => {
+            setShowPopEvents ? setShowPopEvents(false) : null;
+            setAddEvents ? setAddEvents(false) : null;
+          }, 500);
+        }}></div>
       <div className={styles.descripcion}>
         <div className={styles.topContent}>
           <span className={styles['title-descripcion']}>Añadir Evento</span>
@@ -90,7 +105,8 @@ const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
             onClick={() => {
               setShow(false);
               setTimeout(() => {
-                setShowPopEvents(false);
+                setShowPopEvents ? setShowPopEvents(false) : null;
+                setAddEvents ? setAddEvents(false) : null;
               }, 500);
             }}></div>
         </div>
@@ -139,7 +155,8 @@ const AddEvents = ({ setShowPopEvents, setRefreshFlag }) => {
             clickFunction={() => {
               setShow(false);
               setTimeout(() => {
-                setShowPopEvents(false);
+                setShowPopEvents ? setShowPopEvents(false) : null;
+                setAddEvents ? setAddEvents(false) : null;
               }, 500);
             }}
           />

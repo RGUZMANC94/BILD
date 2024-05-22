@@ -65,9 +65,9 @@ const Oportunities = () => {
   }, []);
 
   useEffect(() => {
-    if (refreshFlag) {
-      setRefreshFlag(false);
-    }
+    // if (refreshFlag) {
+    //   setRefreshFlag((prevState) => !prevState);
+    // }
     getAllOpportunities();
     console.log('reset');
   }, [refreshFlag]);

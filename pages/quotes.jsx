@@ -73,9 +73,9 @@ const Quotes = () => {
 
   useEffect(() => {
     getPrices();
-    if (refreshFlag) {
-      setRefreshFlag(false);
-    }
+    // if (refreshFlag) {
+    //   setRefreshFlag(false);
+    // }
   }, [refreshFlag]);
 
   const groupByProjectName = (array) => {
@@ -131,7 +131,7 @@ const Quotes = () => {
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
-        setRefreshFlag(true);
+        setRefreshFlag((prevState) => !prevState);
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);

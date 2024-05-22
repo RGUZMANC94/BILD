@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     const response = await fetch(
       `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/DeleteSalesOp?idopt=${encodeURIComponent(
         req.body.opportunitySelected
-      )}`,
+      )}&username=${req.body.id}`,
       {
         method: 'delete',
         headers: {

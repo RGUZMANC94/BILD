@@ -149,7 +149,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
                 </div>
                 <div className={styles['pendientes-movil']}>
                   <div className={styles['opc-pendiente']}>
-                    <Link href="/oportunities/0" className={styles.opcion}>
+                    <Link href="/opportunities/0" className={styles.opcion}>
                       <img src="/images/key-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>2</span>
                       Oportunidades

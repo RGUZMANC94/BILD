@@ -8,7 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
+const OportunitiesAll = ({
+  oppList,
+  setOppIsSelected,
+  refreshFlag,
+  setRefreshFlag,
+}) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
@@ -24,6 +29,11 @@ const OportunitiesAll = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
     };
     window.addEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    console.log('UpdateIndex');
+    setSelectedItem((prevState) => -1);
+  }, [refreshFlag]);
 
   const [propsHistory, setPropsHistory] = useState({
     opportunitySelected,
