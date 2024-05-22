@@ -540,7 +540,7 @@ const OportunitiesHistory = ({
             closePopUp={closePopUpQuote}
             closeAnimate={animateCloseGenerateQuote}>
             <GenerateQuote
-              closePopUp={animateClosePopUpQuote}
+              closePopUpPortal={animateClosePopUpQuote}
               setRefreshFlag={getEventsSelected}
             />
           </BackgroundPopUp>

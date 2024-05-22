@@ -1,31 +1,30 @@
 .evento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #2467ff;
+  border-radius: 5px;
+  background-color: #2467ff;
+  padding: 10px 30px;
   width: 70%;
   height: 45px;
-  line-height: 45px;
   color: #fff;
-  font-size: 12px;
   font-weight: 500;
+  font-size: 12px;
   letter-spacing: 1px;
-  border-radius: 5px;
-  border: 1px solid #2467ff;
-  text-transform: uppercase;
-  margin-top: 30px;
-  padding: 10px 30px;
   text-align: center;
-  cursor: pointer;
   text-decoration: none;
-  background-color: #2467ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .contact {
-  width: 70%;
-  margin-top: 30px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: 30px;
+  width: 70%;
 }
 
 .user-evento {
@@ -48,8 +47,8 @@
 
 .ulEvent li {
   margin: 10px 0;
-  font-size: 16px;
   font-weight: 300;
+  font-size: 16px;
 }
 
 .search {
@@ -57,116 +56,116 @@
 }
 
 .main {
-  width: 100%;
-  height: auto;
   display: flex;
+  position: relative;
+  position: relative;
+  top: 150px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  top: 150px;
-  padding: 0 50px 50px;
-  position: relative;
   z-index: 2;
   margin-bottom: 50px;
+  padding: 0 50px 50px;
+  width: 100%;
+  height: auto;
 }
 
 .filter_container {
   display: flex;
-  width: 100%;
   flex-direction: row-reverse;
+  width: 100%;
 }
 
 .label_filter {
-  margin: 20px 0 20px;
-  color: #fff;
   display: flex;
-  align-items: center;
   flex-wrap: nowrap;
+  align-items: center;
+  margin: 20px 0 20px;
   margin: 0 22px;
+  color: #fff;
 }
 
 .filter_input {
-  padding: 15px;
-  border: 1px solid #4d4d4d;
-  border-radius: 10px;
-  width: 285px;
-  height: 45px;
-  box-sizing: border-box;
   appearance: none;
-  margin: 0 20px;
-  padding: 0;
-
-  text-align: center;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 300;
-  /*line-height: 0.5;*/
-  letter-spacing: 1.26px;
-  text-transform: uppercase;
 
   cursor: pointer;
+  box-sizing: border-box;
+  margin: 0 20px;
+  border: 1px solid #4d4d4d;
+  border-radius: 10px;
   background-image: url(/images/arrow_filter.svg);
   background-repeat: no-repeat;
   background-position-x: 95%;
   background-position-y: 50%;
+  padding: 15px;
+  padding: 0;
+  width: 285px;
+  height: 45px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  /*line-height: 0.5;*/
+  letter-spacing: 1.26px;
+
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .oportunidades {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
+  height: auto;
 }
 
 .card-container {
-  width: calc(50% - 50px);
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   gap: 48px;
+  width: calc(50% - 50px);
+  height: auto;
 }
 
 .icon {
+  justify-content: start;
   width: 35%;
   height: auto;
-  justify-content: start;
 }
 
 i.fa-solid.fa-angle-left {
-  left: 0;
-  font-size: 30px;
   display: flex;
+  left: 0;
   align-items: start;
+  font-size: 30px;
 }
 
 .top-content.title {
-  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
 }
 
 .tipo-sub {
-  font-size: 18px;
+  margin-top: 15px;
+  width: 100%;
+  color: #fff;
   font-style: normal;
   font-weight: 500;
+  font-size: 18px;
   line-height: 1.38;
-  color: #fff;
   text-transform: uppercase;
-  width: 100%;
-  margin-top: 15px;
 }
 
 .back {
+  background-size: 40px 40px;
   width: 40px;
   height: 40px;
-  background-size: 40px 40px;
 }
 
 .img-tipo {
@@ -174,23 +173,23 @@ i.fa-solid.fa-angle-left {
 }
 
 .img-tipo img {
-  width: 100px;
-  height: 100px;
+  position: relative;
   margin-left: 10px;
   border-radius: 10px;
-  position: relative;
+  width: 100px;
+  height: 100px;
 }
 .zoom {
-  background-image: url(/images/zoom.png);
-  background-repeat: no-repeat;
-  background-color: #2467ff;
-  background-position: center;
-  background-size: auto;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  right: 0;
   position: absolute;
   top: 0;
+  right: 0;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-image: url(/images/zoom.png);
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: #2467ff;
   padding: 4px;
   width: 25px;
   height: 25px;
@@ -203,12 +202,11 @@ i.fa-solid.fa-angle-left {
 }
 
 .right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
   width: 100%;
   height: 100%;
-  display: flex;
-  padding-top: 50px;
-  align-items: stretch;
-  flex-wrap: wrap;
 }
 
 .right img {
@@ -216,13 +214,13 @@ i.fa-solid.fa-angle-left {
 }
 
 .line {
-  width: 64px;
-  height: auto;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  position: relative;
+  width: 64px;
+  height: auto;
   /* z-index: 1; */
 }
 
@@ -232,29 +230,29 @@ i.fa-solid.fa-angle-left {
 }
 
 .pendientes {
+  position: relative;
   width: calc(100% - 64px);
   height: auto;
-  position: relative;
 }
 
 .pendiente-top {
-  width: 100%;
-  margin-left: 20px;
   margin-bottom: 30px;
+  margin-left: 20px;
+  width: 100%;
 }
 
 .greybox {
-  border-radius: 10px;
-  background: #2e2e2c;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 90%;
   display: flex;
+  position: relative;
   justify-content: flex-start;
   align-items: start;
-  position: relative;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background: #2e2e2c;
+  padding: 20px;
+  width: 90%;
   color: #fff;
 }
 
@@ -268,96 +266,96 @@ i.fa-solid.fa-angle-left {
 }
 
 .pendiente-date {
-  font-size: 10px;
-  font-weight: 300;
-  color: #fff;
   margin-bottom: 10px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 10px;
 }
 
 li.pendiente-list {
-  font-size: 16px !important;
   color: #fff;
-  font-size: 16px;
   font-style: normal;
   font-weight: 500;
+  font-size: 16px !important;
+  font-size: 16px;
   line-height: 1.87;
 }
 
 .box li.pendiente-list {
-  font-size: 16px !important;
   font-style: normal;
   font-weight: 300;
+  font-size: 16px !important;
   line-height: 30px;
 }
 
 .ulNode li {
   margin: 10px 0;
-  font-size: 14px !important;
-  font-weight: 200;
   color: #fff;
+  font-weight: 200;
+  font-size: 14px !important;
 }
 
 .time {
-  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  font-size: 10px;
-  font-weight: 300;
+  width: 30%;
   color: #fff;
+  font-weight: 300;
+  font-size: 10px;
 }
 
 .hour {
-  font-size: 12px;
   font-style: normal;
   font-weight: 400;
+  font-size: 12px;
   line-height: 1.81;
   text-align: right;
 }
 
 .box {
-  padding: 20px;
-  margin-left: 20px;
+  position: relative;
   margin-bottom: 30px;
+  margin-left: 20px;
+  padding: 20px;
   width: 100%;
   height: auto;
-  position: relative;
 }
 
 .box-dotted {
-  min-height: 5px;
-  height: auto;
-  padding: 5px 5px 5px 5px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  width: 100%;
   position: relative;
   left: -55px;
+  transition: all 0.25s ease-in-out;
+  margin-bottom: 30px;
+  margin-left: 20px;
   border-top: 2px dashed #fff;
   border-bottom: 2px dashed #fff;
-  transition: all 0.25s ease-in-out;
+  padding: 5px 5px 5px 5px;
+  width: 100%;
+  height: auto;
+  min-height: 5px;
 }
 
 .innerDottedContainer {
-  max-height: 0px;
-  overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  padding-left: 30px;
   transition: all 0.25s ease-in-out;
+  padding-left: 30px;
+  max-height: 0px;
+  overflow: hidden;
 }
 
 .box-dotted.active {
-  width: calc(100% + 40px);
+  margin: 0 0 0 20px;
   border-top: 2px dashed #ffffff00;
   border-bottom: 2px dashed #ffffff00;
-  margin: 0 0 0 20px;
+  width: calc(100% + 40px);
 }
 .box-dotted.active .innerDottedContainer {
-  max-height: initial;
   visibility: visible;
   opacity: 1;
+  max-height: initial;
   overflow: initial;
 }
 .innerDottedContainer > div:first-of-type {
@@ -366,108 +364,108 @@ li.pendiente-list {
 }
 
 .blue-point {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #fff;
   position: absolute;
   top: 0px;
   left: -62px;
+  border-radius: 50%;
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
 }
 
 .blue-point-plus {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #ff5567;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 300;
   position: absolute;
   top: -8px;
   left: -10px;
-  text-align: center;
-  margin: 0 auto;
-  padding: 5px;
-  cursor: pointer;
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
   transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #ff5567;
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  text-align: center;
 }
 
 .active .blue-point-plus {
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
 }
 
 .pendientes-bottom {
   display: flex;
   flex-direction: column;
-  text-align: center;
   align-items: center;
   width: 100%;
+  text-align: center;
 }
 
 .pendientes-bottom-icon {
-  width: 20px;
-  height: 20px;
   background-image: url(/images/plus_icon_white.svg);
   background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .ver-oportunidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 30px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #2467ff;
+  padding: 20px 30px;
   width: 50%;
   height: fit-content;
   color: #fff;
-  font-size: 16px;
   font-style: normal;
   font-weight: 100;
+  font-size: 16px;
   line-height: 1;
   letter-spacing: 1.12px;
-  text-transform: uppercase;
-  margin-top: 30px;
-  padding: 20px 30px;
   text-align: center;
-  cursor: pointer;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: #2467ff;
-  border: 2px solid transparent;
-  margin: 0 auto;
-  gap: 15px;
+  text-transform: uppercase;
 }
 
 .card-progress-bar-container {
-  width: 80%;
-  height: auto;
   display: flex;
-  margin-top: 50px;
   position: relative;
-  background-color: #fff;
   flex-direction: column;
   justify-content: center;
+  margin-top: 50px;
   border-radius: 10px;
+  background-color: #fff;
+  width: 80%;
+  height: auto;
 }
 
 .card-progress-bar-cold {
+  display: flex;
+  border-radius: 10px;
+  background-color: #2467ff;
   width: 40%;
   height: 9px;
-  display: flex;
-  background-color: #2467ff;
-  border-radius: 10px;
 }
 
 .card-progress-bar-frost-icon {
-  width: 23px;
-  height: 23px;
-  left: calc(40% - 2%);
   position: absolute;
-  background-size: 23px 23px;
+  left: calc(40% - 2%);
   margin: 0;
   background-image: url(/images/cold-icon.svg);
+  background-size: 23px 23px;
+  width: 23px;
+  height: 23px;
 }
 
 .checkboxInput {
@@ -476,11 +474,11 @@ li.pendiente-list {
 
 .checkboxLabelSquare {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid white;
   cursor: pointer;
   margin-right: 10px;
+  border: 1px solid white;
+  width: 20px;
+  height: 20px;
 }
 
 .checkboxInput:checked + .checkboxLabelSquare {

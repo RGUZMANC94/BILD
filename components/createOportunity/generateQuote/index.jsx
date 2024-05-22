@@ -1,14 +1,22 @@
 import { Range, getTrackBackground } from 'react-range';
 import { useState, useEffect } from 'react';
 import styles from './quote.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../button';
 import SquareInput from '../../squareInput';
 import CurrencyInput from 'react-currency-input-field';
 import Portal from '../../../HOC/portal';
+import { useRouter } from 'next/router';
+import { closePopUp } from '../../../redux/popUpOportunity';
 
-const GenerateQuote = ({ setGenerateQuote, closePopUp, setRefreshFlag }) => {
+const GenerateQuote = ({
+  setGenerateQuote,
+  closePopUpPortal,
+  setRefreshFlag,
+}) => {
   const { id } = useSelector((state) => state.userState);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [values, setValues] = useState([30]);
   const { projectsList } = useSelector((state) => state.projectState);
   const { unitSelected } = useSelector((state) => state.unitState);
@@ -220,7 +228,10 @@ const GenerateQuote = ({ setGenerateQuote, closePopUp, setRefreshFlag }) => {
           .classList.remove(styles.activePopUp);
         if (setRefreshFlag) {
           setRefreshFlag((prevState) => true);
-          closePopUp();
+          closePopUpPortal();
+        } else {
+          dispatch(closePopUp());
+          router.push('/opportunities');
         }
         // window.location.reload();
       }, 2000);
@@ -443,7 +454,7 @@ const GenerateQuote = ({ setGenerateQuote, closePopUp, setRefreshFlag }) => {
             iconImage={false}
             label={'CANCELAR'}
             inheritClass={styles.buttonCreateOpportunity}
-            clickFunction={closePopUp ?? null}
+            clickFunction={closePopUpPortal ?? null}
             preventDefault={true}
           />
           <Button

@@ -106,7 +106,6 @@
   margin-right: 10px;
   border-radius: 10px;
   width: 40%;
-  height: 144px;
   overflow: hidden;
 }
 
@@ -258,6 +257,7 @@
   background: #343434;
   width: 45%;
   height: auto;
+  padding-top: 20px;
 }
 
 .conecta {
@@ -285,7 +285,7 @@
   border: 1px solid #2467ff;
   border-radius: 7px;
   background-color: #2467ff;
-  padding: 10px 30px;
+  padding: 10px 0px;
   width: 70%;
   height: 50px;
   color: #fff;
@@ -302,7 +302,6 @@
   border-radius: 5px;
   width: calc(50% - 10px);
   height: 45px;
-  line-height: 45px;
 }
 
 .contact {
@@ -341,13 +340,12 @@
   border-radius: 5px;
   border-radius: 5px;
   background-color: #41434300;
-  padding: 10px 30px;
+  padding: 10px 0px;
   width: calc(50% - 10px);
   height: 45px;
   color: #fff;
   font-weight: 500;
   font-size: 12px;
-  line-height: 45px;
   letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
@@ -358,7 +356,6 @@
   margin-right: 20px;
   border-radius: 10px;
   width: 30%;
-  height: 144px;
   overflow: hidden;
 }
 
