@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import Button from '../../button';
 import SquareInput from '../../squareInput';
 import CurrencyInput from 'react-currency-input-field';
+import Portal from '../../../HOC/portal';
 
 const GenerateQuote = ({ setGenerateQuote, closePopUp, setRefreshFlag }) => {
   const { id } = useSelector((state) => state.userState);
@@ -453,39 +454,40 @@ const GenerateQuote = ({ setGenerateQuote, closePopUp, setRefreshFlag }) => {
           />
         </div>
       </form>
-
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú cotización ha sido creada con éxito!
-              </span>
+      <Portal>
+        <div className={`${styles.popSuccessCreated}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup2}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/check-circle.png" />
+                <span className={styles['pop-text']}>
+                  ¡Tú cotización ha sido creada con éxito!
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={`${styles.popError}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
+        <div className={`${styles.popError}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup3}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/error-circle.png" />
+                <span className={styles['pop-text']}>
+                  <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+                  {`Algo no
                 está bien.${
                   errorMessage
                     ? `\n${errorMessage}`
                     : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
                 }.`}
-              </span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Portal>
     </>
   );
 };
