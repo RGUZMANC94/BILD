@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-history.module.css';
 import Button from '../button';
@@ -9,6 +9,7 @@ import Portal from '../../HOC/portal';
 import GenerateQuote from '../createOportunity/generateQuote';
 import BackgroundPopUp from '../backgroundPopUp';
 import AddEvents from '../createOportunity/addEvents';
+import BildContext from '../context/index';
 
 const OportunitiesHistory = ({
   opportunitySelected,
@@ -19,6 +20,7 @@ const OportunitiesHistory = ({
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
+  const { quicksand } = useContext(BildContext);
   const { id } = useSelector((state) => state.userState);
   const { unitSelected } = useSelector((state) => state.unitState);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -27,6 +29,7 @@ const OportunitiesHistory = ({
   const [addEvents, setAddEvents] = useState(false);
   const [animateCloseGenerateQuote, setAnimateCloseGenerateQuote] =
     useState(false);
+  console.log(quicksand);
   const [allEvents, setAllEvents] = useState([
     {
       id: '1',

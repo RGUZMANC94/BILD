@@ -1,8 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import styles from './backgroundPopUp.module.css';
 import { useEffect } from 'react';
+import BildContext from '../context';
 
 const BackgroundPopUp = ({ children, closePopUp, closeAnimate }) => {
+  const { quicksand } = useContext(BildContext);
   const [active, setActive] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -25,7 +27,9 @@ const BackgroundPopUp = ({ children, closePopUp, closeAnimate }) => {
 
   return (
     <div
-      className={`${styles.backgroudnPopUp} ${active ? styles.activePop : ''}`}>
+      className={`${styles.backgroudnPopUp} ${quicksand.className} ${
+        active ? styles.activePop : ''
+      }`}>
       <div className={styles.wrapperBackgroundPopUp} onClick={closePop}></div>
 
       <div className={styles['right-side']}>

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './add-events.module.css';
 import Button from '../../button';
 import { useSelector } from 'react-redux';
+import BildContext from '../../context';
 
 const AddEvents = ({
   setShowPopEvents,
@@ -9,6 +10,7 @@ const AddEvents = ({
   setAddEvents,
   updateEvents,
 }) => {
+  const { quicksand } = useContext(BildContext);
   const { id } = useSelector((state) => state.userState);
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -87,7 +89,10 @@ const AddEvents = ({
   };
 
   return (
-    <section className={`${styles.main} ${show ? styles.active : ''}`}>
+    <section
+      className={`${quicksand.className} ${styles.main} ${
+        show ? styles.active : ''
+      }`}>
       <div
         className={styles.banner}
         onClick={() => {
