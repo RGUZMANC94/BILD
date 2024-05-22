@@ -180,12 +180,12 @@ const Home = ({ id, user_rol }) => {
                           {user_rol === 'ADMIN' && (
                             <button
                               className={`bg-ct ${styles.editProject}`}
-                              onClick={() =>
-                                {
-                                  dispatch(changeProjectEdit(project));
+                              onClick={() => {
+                                dispatch(changeProjectEdit(project));
                                 setShowEditProject(true);
                                 console.log('Editando');
-                                }                      }/>
+                              }}
+                            />
                           )}
                         </div>
                       </div>

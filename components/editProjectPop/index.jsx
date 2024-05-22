@@ -452,22 +452,20 @@ const EditProjectPop = ({
   };
 
   const cleanForm = () => {
-    setDatos(
-      {
-        projectName: '',
-    projectType: 'E',
-    location: '',
-    neighborhoodId: '5',
-    startDate: '',
-    pool: '',
-    TurkishBath: '',
-    sauna: '',
-    bbq: '',
-    gym: '',
-    coworking: 'X',
-    laundry: '',
-      }
-    );
+    setDatos({
+      projectName: '',
+      projectType: 'E',
+      location: '',
+      neighborhoodId: '5',
+      startDate: '',
+      pool: '',
+      TurkishBath: '',
+      sauna: '',
+      bbq: '',
+      gym: '',
+      coworking: 'X',
+      laundry: '',
+    });
   };
 
   return (

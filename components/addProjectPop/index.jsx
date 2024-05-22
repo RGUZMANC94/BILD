@@ -418,22 +418,20 @@ const AddProjectPop = ({
   };
 
   const cleanForm = () => {
-    setDatos(
-      {
-        projectName: '',
-    projectType: 'E',
-    location: '',
-    neighborhoodId: '5',
-    startDate: '',
-    pool: '',
-    TurkishBath: '',
-    sauna: '',
-    bbq: '',
-    gym: '',
-    coworking: 'X',
-    laundry: '',
-      }
-    );
+    setDatos({
+      projectName: '',
+      projectType: 'E',
+      location: '',
+      neighborhoodId: '5',
+      startDate: '',
+      pool: '',
+      TurkishBath: '',
+      sauna: '',
+      bbq: '',
+      gym: '',
+      coworking: 'X',
+      laundry: '',
+    });
   };
 
   return (
@@ -457,7 +455,7 @@ const AddProjectPop = ({
             </div>
             <div
               className={`${styles.closeIcon} bg-ct`}
-              onClick={() =>  {
+              onClick={() => {
                 setShowAddProject(false);
                 cleanForm();
               }}
@@ -653,7 +651,7 @@ const AddProjectPop = ({
               iconImage={false}
               label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
-              clickFunction={() =>  {
+              clickFunction={() => {
                 setShowAddProject(false);
                 cleanForm();
               }}
