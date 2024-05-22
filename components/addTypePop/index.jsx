@@ -229,7 +229,7 @@ const AddTypePop = ({
 
           <form className={styles.formType} onSubmit={sendFormInfo}>
             <div className={`${styles.inputsGroup} flex a-st`}>
-              <span className={styles.labelText}>Nombre</span>
+              <span className={styles.labelText}>Nombre:</span>
               <input
                 type="text"
                 name="typeDescription"
@@ -240,7 +240,7 @@ const AddTypePop = ({
               />
             </div>
             <div className={`${styles.inputsGroup} flex a-st`}>
-              <span className={styles.labelText}>Imágen del Tipo</span>
+              <span className={styles.labelText}>Imágen del Tipo:</span>
               <div className={styles.image}>
                 <div className={styles['main-image']}>
                   <div
@@ -268,7 +268,7 @@ const AddTypePop = ({
             <div className={`${styles.inputsGroup}`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Habitaciones</span>
+                <span className={styles.labelInputTitle}>Habitaciones:</span>
                 <input
                   type="text"
                   name="bed"
@@ -281,7 +281,7 @@ const AddTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Baños</span>
+                <span className={styles.labelInputTitle}>Baños:</span>
                 <input
                   type="text"
                   name="bath"
@@ -294,7 +294,7 @@ const AddTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Área Priv.</span>
+                <span className={styles.labelInputTitle}>Área Priv:</span>
                 <input
                   type="text"
                   name="size"
@@ -307,7 +307,7 @@ const AddTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Área Constr.</span>
+                <span className={styles.labelInputTitle}>Área Constr:</span>
                 <input
                   type="text"
                   name="privateArea"
@@ -320,7 +320,7 @@ const AddTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Área Balcón</span>
+                <span className={styles.labelInputTitle}>Área Balcón:</span>
                 <input
                   type="text"
                   name="balconyArea"
@@ -333,7 +333,7 @@ const AddTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Depósito Área</span>
+                <span className={styles.labelInputTitle}>Depósito Área:</span>
                 <input
                   type="text"
                   name="storageArea"

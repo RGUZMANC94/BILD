@@ -256,7 +256,7 @@ const EditUnitPop = ({
             <div className={`${styles.inputsGroup} flex j-sb a-st`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>ID</span>
+                <span className={styles.labelInputTitle}>ID:</span>
                 <input
                   type="text"
                   name="nuimb"
@@ -269,7 +269,7 @@ const EditUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>PRECIO</span>
+                <span className={styles.labelInputTitle}>Precio:</span>
                 <input
                   type="text"
                   name="propertyPrice"
@@ -282,7 +282,7 @@ const EditUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>AREA TERRAZA</span>
+                <span className={styles.labelInputTitle}>Area terraza:</span>
                 <input
                   type="text"
                   name="terraceArea"
@@ -296,13 +296,13 @@ const EditUnitPop = ({
 
             <>
               <div className={`${styles.sectionTitle} flex j-sb a-c`}>
-                <h2 className={`${styles.sectionTitleText}`}>Datos</h2>
+                <h2 className={`${styles.sectionTitleText}`}>Datos:</h2>
               </div>
 
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>HABITACIONES</span>
+                  <span className={styles.labelInputTitle}>Habitaciones:</span>
                   <input
                     type="text"
                     name="bedrooms"
@@ -314,7 +314,7 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>BAÑOS</span>
+                  <span className={styles.labelInputTitle}>Baños:</span>
                   <input
                     type="text"
                     name="baths"
@@ -332,7 +332,7 @@ const EditUnitPop = ({
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA CONSTR</span>
+                  <span className={styles.labelInputTitle}>Area Const:</span>
                   <input
                     type="text"
                     name="builtArea"
@@ -344,7 +344,7 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA PRIVADA</span>
+                  <span className={styles.labelInputTitle}>Área Priv:</span>
                   <input
                     type="text"
                     name="privateArea"
@@ -356,7 +356,7 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA BALCÓN</span>
+                  <span className={styles.labelInputTitle}>Área Bálcon:</span>
                   <input
                     type="text"
                     name="balconyArea"
@@ -368,7 +368,7 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>AREA DEPOSITO</span>
+                  <span className={styles.labelInputTitle}>Área Deposito:</span>
                   <input
                     type="text"
                     name="storageArea"

@@ -78,7 +78,6 @@ const Home = ({ id, user_rol }) => {
     getProjects();
   }, [refreshProjects]);
 
-
   const { data, status } = useQuery('projects', getProjects);
 
   useEffect(() => {
@@ -196,7 +195,7 @@ const Home = ({ id, user_rol }) => {
           </div>
         </div>
       </section>
-      <AddProjectPop 
+      <AddProjectPop
         showAddProject={showAddProject}
         setShowAddProject={setShowAddProject}
         setRefreshProjects={setRefreshProjects}

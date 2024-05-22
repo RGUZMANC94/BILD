@@ -9,7 +9,7 @@ import Link from 'next/link';
 const AddProjectPop = ({
   showAddProject,
   setShowAddProject,
-  setRefreshProjects
+  setRefreshProjects,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -32,7 +32,7 @@ const AddProjectPop = ({
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [cities, setCities] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  
+
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
       method: 'post',
@@ -76,7 +76,6 @@ const AddProjectPop = ({
       console.log('cities:', cities);
     }
   }, [cities, xlsxTemplate]);
-
 
   const readURL = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -196,7 +195,6 @@ const AddProjectPop = ({
   };
 
   const sendFormInfo = async () => {
-
     setDatos((prevDatos) => ({
       ...prevDatos,
       startDate: formatDate(dateValue),
@@ -285,13 +283,12 @@ const AddProjectPop = ({
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
       setTimeout(() => {
-        
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-          setShowAddProject(false);
-          setRefreshProjects(true);
-          cleanForm();
+        setShowAddProject(false);
+        setRefreshProjects(true);
+        cleanForm();
       }, 2000);
     } catch (error) {
       document
@@ -420,8 +417,7 @@ const AddProjectPop = ({
     }
   };
 
-  const cleanForm = () => {
-  };
+  const cleanForm = () => {};
 
   return (
     <>
@@ -446,81 +442,80 @@ const AddProjectPop = ({
           </div>
 
           <form className={styles.formType} onSubmit={sendFormInfo}>
-            
-                <div className={styles.inputsGroup}>
-                  <span className={styles.labelText}>Nombre del Proyecto</span>
-                  <input
-                    type="text"
-                    name="projectName"
-                    value={datos.projectName}
-                    className={styles.inputTypeForm}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Nombre del Proyecto:</span>
+              <input
+                type="text"
+                name="projectName"
+                value={datos.projectName}
+                className={styles.inputTypeForm}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-                <div className={styles.inputsGroup}>
-                  <span className={styles.labelText}>Ciudad</span>
-                  <label htmlFor="subject"></label>
-                  <select
-                    type="text"
-                    name="neighborhoodId"
-                    value={datos.neighborhoodId}
-                    onChange={handleChange}
-                    className={`${styles.inputTypeForm} ${styles.labelSelect}`}
-                    required>
-                    <option disabled defaultValue={0} hidden selected></option>
-                    {cities &&
-                      cities.length > 0 &&
-                      cities
-                        .filter((city) => city.neighborhoodId)
-                        .map((city, i) => (
-                          <option key={i} value={city.neighborhoodId}>
-                            {city.nameState}
-                          </option>
-                        ))}
-                  </select>
-                </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Ciudad:</span>
+              <label htmlFor="subject"></label>
+              <select
+                type="text"
+                name="neighborhoodId"
+                value={datos.neighborhoodId}
+                onChange={handleChange}
+                className={`${styles.inputTypeForm} ${styles.labelSelect}`}
+                required>
+                <option disabled defaultValue={0} hidden selected></option>
+                {cities &&
+                  cities.length > 0 &&
+                  cities
+                    .filter((city) => city.neighborhoodId)
+                    .map((city, i) => (
+                      <option key={i} value={city.neighborhoodId}>
+                        {city.nameState}
+                      </option>
+                    ))}
+              </select>
+            </div>
 
-                <div className={styles.inputsGroup}>
-                  <span className={styles.labelText}>Ubicación</span>
-                  <input
-                    type="text"
-                    name="location"
-                    value={datos.location}
-                    onChange={handleChange}
-                    className={styles.inputTypeForm}
-                    required
-                  />
-                </div>
-                <div className={styles.inputsGroup}>
-                  <span className={styles.labelText}>Tipo de Inmueble</span>
-                  <label htmlFor="subject"></label>
-                  <select
-                    type="text"
-                    name="projectType"
-                    value={datos.projectType}
-                    onChange={handleChange}
-                    className={`${styles.inputTypeForm} ${styles.labelSelect}`}
-                    required>
-                    <option disabled defaultValue={0} hidden selected></option>
-                    <option value="C">Casa</option>
-                    <option value="A">Apartamento</option>
-                    <option value="EC">Establecimiento comercial</option>
-                  </select>
-                </div>
-                <div className={styles.inputsGroup}>
-                  <span className={styles.labelText}>Fecha de inicio</span>
-                  <input
-                    type="date"
-                    value={dateValue}
-                    required
-                    onChange={handleDateChange}
-                    className={styles.inputTypeForm}
-                  />
-                </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Ubicación:</span>
+              <input
+                type="text"
+                name="location"
+                value={datos.location}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
+            </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Tipo de Inmueble:</span>
+              <label htmlFor="subject"></label>
+              <select
+                type="text"
+                name="projectType"
+                value={datos.projectType}
+                onChange={handleChange}
+                className={`${styles.inputTypeForm} ${styles.labelSelect}`}
+                required>
+                <option disabled defaultValue={0} hidden selected></option>
+                <option value="C">Casa</option>
+                <option value="A">Apartamento</option>
+                <option value="EC">Establecimiento comercial</option>
+              </select>
+            </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Fecha de inicio:</span>
+              <input
+                type="date"
+                value={dateValue}
+                required
+                onChange={handleDateChange}
+                className={styles.inputTypeForm}
+              />
+            </div>
 
-                {/* <div className={styles.inputsGroup}>
+            {/* <div className={styles.inputsGroup}>
                   <span className={styles.labelText}>Etapas</span>
                   <input
                     type="text"
@@ -529,18 +524,18 @@ const AddProjectPop = ({
                     ref={inputProjectStage}
                     />
                 </div>*/}
-                <div className={styles.inputsGroup}>
-                  <span className={styles.labelText}>Descripción del Proyecto</span>
-                  <textarea
-                    name="message"
-                    placeholder=""
-                    className={styles.descriptionTypeForm}
-                    // required
-                    ref={inputProjectDescription}></textarea>
-                </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Descripción del Proyecto:</span>
+              <textarea
+                name="message"
+                placeholder=""
+                className={styles.descriptionTypeForm}
+                // required
+                ref={inputProjectDescription}></textarea>
+            </div>
 
             <div className={`${styles.inputsGroup} flex a-st`}>
-            <span className={styles.labelText}>Imágen del Proyecto:</span>
+              <span className={styles.labelText}>Imágen del Proyecto:</span>
               <div className={styles['main-image']}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
@@ -565,7 +560,6 @@ const AddProjectPop = ({
               </div>
             </div>
 
-            
             <div className={styles.upload}>
               <div className={styles.file}>
                 <a
@@ -585,8 +579,9 @@ const AddProjectPop = ({
                 <input type="file" hidden ref={xlsxInput} />
               </div>
               <div className={styles.uploadButtons}>
-                <label className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
-                  SUBIR EXCEL de INVENTARIO
+                <label
+                  className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
+                  Subir Excel de Inventario
                   <input
                     type="file"
                     hidden
@@ -599,15 +594,17 @@ const AddProjectPop = ({
                 </label>
 
                 <label
-                  className={`${styles.buttonProyect}  ${xlsxData ? styles.buttonUpload : styles.ButtonDisabled}`}>
-                  SUBIR PROYECTOS
+                  className={`${styles.buttonProyect}  ${
+                    xlsxData ? styles.buttonUpload : styles.ButtonDisabled
+                  }`}>
+                  Subir Proyectos
                   <input type="button" hidden onClick={sendXlsx} name="excel" />
                 </label>
               </div>
             </div>
 
             <div className={`${styles.projectDocument}`} ref={featuredProject}>
-              <p className={styles.labelText}>DOCUMENTO proyecto:</p>
+              <p className={styles.labelText}>Documento proyecto:</p>
               <div className={`${styles.projectUploaded} flex j-sb a-c`}>
                 <div className={`${styles.backroundSide} flex j-s a-c`}>
                   <div className={`${styles.xlsxIcon} bg-ct`}></div>
