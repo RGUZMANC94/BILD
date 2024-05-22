@@ -12,6 +12,7 @@ import { useQuery } from 'react-query';
 import { parseCookies } from '../utils/parseCookies';
 import Image from 'next/image';
 import AddProjectPop from '../components/addProjectPop';
+import EditProjectPop from '../components/editProjectPop';
 
 export const getServerSideProps = async ({
   req: {
@@ -177,15 +178,13 @@ const Home = ({ id, user_rol }) => {
                             </span>
                           )}
                           {user_rol === 'ADMIN' && (
-                            <Link
-                              href={{
-                                pathname: '/edit-project',
-                                query: { project: project.projectId, back: 1 },
-                              }}
+                            <button
                               className={`bg-ct ${styles.editProject}`}
                               onClick={() =>
-                                dispatch(changeProjectEdit(project))
-                              }></Link>
+                                (
+                                  dispatch(changeProjectEdit(project)),
+                                  setShowEditProject(true)
+                                )                        }></button>
                           )}
                         </div>
                       </div>
@@ -198,6 +197,12 @@ const Home = ({ id, user_rol }) => {
       <AddProjectPop
         showAddProject={showAddProject}
         setShowAddProject={setShowAddProject}
+        setRefreshProjects={setRefreshProjects}
+      />
+
+      <EditProjectPop
+        showEditProject={showAddProject}
+        setShowEditProject={setShowAddProject}
         setRefreshProjects={setRefreshProjects}
       />
     </>
