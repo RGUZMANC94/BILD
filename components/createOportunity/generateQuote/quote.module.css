@@ -1,63 +1,74 @@
 .generar-cotizacion {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border-radius: 20px;
+  border-radius: 5px;
+  padding: 120px 0 60px;
+  width: 100%;
+  height: calc(100% - 0px);
+  overflow-y: auto;
 }
 
 .topContent {
-  width: 100%;
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
   flex-direction: column;
-  align-items: start;
-  margin-bottom: 20px;
-  height: 100px;
-  padding: 25px;
-  background-color: #2c2c2c;
-  border-radius: 15px 15px 0px 0px;
   justify-content: center;
+  align-items: start;
+  z-index: 1;
+  margin-bottom: 20px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #2c2c2c;
+  padding: 25px;
+  width: 100%;
+  height: 100px;
 }
 
 .bottomContent {
-  width: 100%;
-  background-color: #2c2c2c;
-  border-radius: 0px 0px 15px 15px;
-  justify-content: center;
   display: flex;
-  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  background-color: #2c2c2c;
   width: 100%;
   height: 65px;
-  background-color: #2c2c2c;
-  justify-content: center;
-  gap: 10px;
+}
+
+.noRadius .topContent,
+.noRadius .bottomContent {
+  border-radius: 0px;
 }
 
 .infoContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0px 25px 0px;
+  width: 100%;
 }
 
 .title {
-  font-size: 18px;
-  text-transform: uppercase;
-  color: #fff;
-  text-align: left;
-  font-weight: 600;
   margin-bottom: 10px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 .seleccion {
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  width: 100%;
 }
 
 .seleccion > div {
@@ -67,28 +78,28 @@
 .separacion {
   display: flex;
   flex-direction: row;
-  width: 100%;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
 .cotizacion-form {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  width: 100%;
 }
 
 .lado-a {
-  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  text-align: left;
   margin-right: 10px;
+  width: 20%;
+  text-align: left;
 }
 .lado-b {
   flex: 1 1 auto;
@@ -96,18 +107,18 @@
 
 .lado-c {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
   width: 20%;
 }
 .lado-d {
   display: flex;
+  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
-  flex: 1 1 auto;
-  text-align: center;
   margin-left: 10px;
+  text-align: center;
 }
 
 .lado-d fieldset {
@@ -120,9 +131,9 @@
 }
 
 .title-saldo {
+  width: 100%;
   color: #fff;
   font-weight: 500;
-  width: 100%;
   text-align: left;
 }
 
@@ -140,16 +151,16 @@
 
 .checked {
   display: flex;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   margin: 10px 0;
 }
 
 .checkboxMask {
+  margin-right: 10px;
+  border: 1px solid #fff;
   width: 25px;
   height: 25px;
-  border: 1px solid #fff;
-  margin-right: 10px;
 }
 
 .cuotas:checked ~ .checkboxMask {
@@ -169,55 +180,55 @@
 }
 
 .title-separacion {
-  text-align: left;
   margin-right: 10px;
+  text-align: left;
 }
 
 .lado-e {
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 20px;
+  width: 100%;
 }
 
 .labelRangePercenth {
-  width: 50px;
-  border: 1px solid #fff;
-  padding: 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  border: 1px solid #fff;
   border-radius: 5px;
+  padding: 10px 0;
+  width: 50px;
+  font-size: 14px;
 }
 
 /*After Changes scope*/
 
 .proyect-form input,
 .subject_input {
-  background-color: unset;
-  text-align: center;
-  color: #fff;
+  appearance: none;
   border: 1px solid #fff;
   border-radius: 5px;
+  background-color: unset;
   padding: 10px 10px;
-  appearance: none;
+  color: #fff;
+  text-align: center;
 }
 
 .labelSimple {
   color: #fff;
-  font-size: 14px;
   font-style: normal;
   font-weight: 400;
+  font-size: 14px;
   line-height: 0.61;
 }
 
 .labelFocus {
   color: #fff;
-  font-size: 14px;
   font-style: normal;
   font-weight: 500;
+  font-size: 14px;
   line-height: 0.61;
 }
 
@@ -228,35 +239,35 @@
 .labelSubtitle {
   width: 100%;
   color: #fff;
-  font-size: 15px;
   font-style: normal;
+  font-size: 15px;
   line-height: 2.13;
   text-align: left;
 }
 
 .infoSection {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: #2c2c2c;
+  align-items: center;
   gap: 30px;
   margin-bottom: 20px;
+  background: #2c2c2c;
+  width: 100%;
   height: 40px;
-  align-items: center;
 }
 
 .outerRange {
-  width: 100%;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .buttonsSection {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 40px;
+  width: 100%;
 }
 
 .buttonCreateOpportunity {
@@ -266,33 +277,33 @@
 }
 
 .cotizacion-form {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
   margin: 0 0 20px;
+  padding: 0;
+  width: 100%;
 }
 
 .labelSide {
   color: #fff;
-  font-size: 14px;
   font-style: normal;
   font-weight: 400;
+  font-size: 14px;
   line-height: 1;
 }
 
 .inputQuote {
-  width: 60%;
-  height: 35px;
+  box-sizing: border-box;
   border: 1px solid #fff;
   border-radius: 5px;
-  box-sizing: border-box;
-  color: #c7c7c7ce;
   background-color: unset;
-  text-align: center;
+  width: 60%;
+  height: 35px;
+  color: #c7c7c7ce;
   font-size: 14px;
+  text-align: center;
 }
 
 .subject_input {
@@ -300,67 +311,67 @@
 }
 
 .squareInputContainer {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   margin: 20px 0;
+  width: 100%;
 }
 
 .labelQuotesSelect {
+  margin-left: 10px;
   color: #fff;
-  font-size: 14px;
   font-style: normal;
   font-weight: 500;
+  font-size: 14px;
   line-height: 0.5;
-  margin-left: 10px;
 }
 
 .labelQuotesSelectNoLine {
+  margin-left: 10px;
   color: #fff;
-  font-size: 18px;
   font-style: normal;
   font-weight: 600;
+  font-size: 18px;
   line-height: 0.5;
-  margin-left: 10px;
 }
 
 .iconContainer {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   margin-left: 30px;
+  width: 100%;
 }
 
 .iconSubContainer {
-  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
+  width: 50%;
 }
 
 /* popup*/
 
 .popSuccessCreated,
 .popError {
+  display: flex;
   position: fixed;
   top: -100%;
   left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
   z-index: 10;
   transition:
     top 0s linear 0.5s,
     opacity 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
 }
 
 .popSuccessCreated.activePopUp {
@@ -383,73 +394,73 @@
   position: absolute;
   top: 0;
   left: 0;
+  background-color: #00000055;
   width: 100%;
   height: 100%;
-  background-color: #00000055;
 }
 
 .popup2 {
-  margin: 70px auto;
-  padding: 50px 68px;
-  border-radius: 5px;
-  width: 95%;
-  height: auto;
   position: relative;
-  transition: all 5s ease-in-out;
-  z-index: 9;
   top: 0px;
-  text-align: center;
+  z-index: 9;
+  transition: all 5s ease-in-out;
+  margin: 70px auto;
+  box-shadow: 0px 0px 46.667px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
   border-radius: 10px;
   background: #343434;
-  box-shadow: 0px 0px 46.667px 0px rgba(0, 0, 0, 0.25);
+  padding: 50px 68px;
+  width: 95%;
+  height: auto;
+  text-align: center;
 }
 
 .popup3 {
-  margin: 70px auto;
-  padding: 50px 20px;
-  border-radius: 5px;
-  width: 95%;
-  height: auto;
   position: relative;
-  transition: all 5s ease-in-out;
-  z-index: 9;
   top: 0px;
-  text-align: center;
+  z-index: 9;
+  transition: all 5s ease-in-out;
+  margin: 70px auto;
+  box-shadow: 0px 0px 46.667px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
   border-radius: 10px;
   background: #343434;
-  box-shadow: 0px 0px 46.667px 0px rgba(0, 0, 0, 0.25);
+  padding: 50px 20px;
+  width: 95%;
+  height: auto;
+  text-align: center;
 }
 
 .popup {
+  position: relative;
+  top: 0px;
+  z-index: 9;
+  transition: all 5s ease-in-out;
   margin: 70px auto;
-  padding: 40px 20px;
-  background: #fff;
   border-radius: 5px;
+  background: #fff;
+  padding: 40px 20px;
   width: 50%;
   height: auto;
-  position: relative;
-  transition: all 5s ease-in-out;
-  z-index: 9;
-  top: 0px;
   text-align: center;
 }
 
 .popup h2 {
   margin-top: 0;
   color: #fff;
-  font-size: 18px;
   font-weight: 700;
+  font-size: 18px;
   line-height: 30px;
 }
 
 .pop-text {
+  margin-top: 20px;
   color: #fff;
-  text-align: center;
-  font-size: 18px;
   font-style: normal;
   font-weight: 400;
+  font-size: 18px;
   line-height: 1.86;
-  margin-top: 20px;
+  text-align: center;
 }
 
 .pop-text-bold {
@@ -461,10 +472,10 @@
   top: 0;
   right: 30px;
   transition: all 200ms;
-  font-size: 50px;
-  font-weight: 100;
-  text-decoration: none;
   color: #fff;
+  font-weight: 100;
+  font-size: 50px;
+  text-decoration: none;
 }
 .popup .close:hover {
   color: #fff;
@@ -474,13 +485,13 @@
 }
 
 .icon-box {
-  margin: 0 auto;
-  color: #c7c7c7;
   display: flex;
   flex-direction: column;
-  width: 100%;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  color: #c7c7c7;
 }
 
 .icon-box img {
@@ -489,18 +500,18 @@
 }
 
 .icon-box .subir {
-  width: 30% !important;
   padding: 15px 10px;
+  width: 30% !important;
 }
 
 .label-hide {
   opacity: 0;
-  height: 0px;
-  width: 100%;
-  margin-bottom: 0;
   margin-top: 0;
+  margin-bottom: 0;
   padding-top: 0;
   padding-bottom: 0;
+  width: 100%;
+  height: 0px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -509,45 +520,45 @@
     padding: 0;
   }
   .seleccion > div span {
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
 
   .title {
-    font-size: 12px;
     font-style: normal;
     font-weight: 600;
+    font-size: 12px;
     line-height: 1.33;
   }
 
   .title-separacion {
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
 
   .inputQuote {
     margin-bottom: 0px;
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
 
   .see-detalles {
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
   .proyect-form input,
   .subject_input {
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
   .lado-a {
@@ -555,21 +566,21 @@
   }
 
   .lado-b {
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
 
   .lado-c {
-    margin-right: 12px;
     flex-wrap: nowrap;
+    margin-right: 12px;
   }
 
   .lado-d {
-    font-size: 10px;
     font-style: normal;
     font-weight: 400;
+    font-size: 10px;
     line-height: 1.1;
   }
 

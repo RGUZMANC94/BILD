@@ -525,7 +525,9 @@ const AddProjectPop = ({
                     />
                 </div>*/}
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Descripción del Proyecto:</span>
+              <span className={styles.labelText}>
+                Descripción del Proyecto:
+              </span>
               <textarea
                 name="message"
                 placeholder=""

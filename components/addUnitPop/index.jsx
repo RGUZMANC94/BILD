@@ -315,7 +315,9 @@ const AddUnitPop = ({
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Habitaciones:</span>
+                    <span className={styles.labelInputTitle}>
+                      Habitaciones:
+                    </span>
                     <input
                       type="text"
                       name="bedrooms"
