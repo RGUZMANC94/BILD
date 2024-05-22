@@ -1,13 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styles from '../styles/Create-project.module.css';
+import Button from '../button';
+import styles from './Add-project-pop.module.css';
 import { useDispatch } from 'react-redux';
-import { addNewProject } from '../redux/projectSlice';
-import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ImageDummy from '../public/images/tipo-1.png';
 
-const CreateProject = () => {
+const AddProjectPop = ({
+  showAddProject,
+  setShowAddProject,
+  setRefreshProjects
+}) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -29,7 +32,7 @@ const CreateProject = () => {
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [cities, setCities] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
       method: 'post',
@@ -74,30 +77,6 @@ const CreateProject = () => {
     }
   }, [cities, xlsxTemplate]);
 
-  const changeXlsx = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      const allowedExtensions = ['xlsx', 'csv']; // Agrega 'csv' a las extensiones permitidas
-
-      const fileExtension = event.target.files[0].name
-        .split('.')
-        .pop()
-        .toLowerCase();
-
-      if (!allowedExtensions.includes(fileExtension)) {
-        return;
-      }
-
-      reader.onload = (e) => {
-        setXlsxFileName(event.target.files[0].name);
-        if (featuredProject.current) {
-          featuredProject.current.classList.add(styles.showXlsx);
-        }
-      };
-
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  };
 
   const readURL = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -216,8 +195,7 @@ const CreateProject = () => {
     console.log(e.target.value);
   };
 
-  const sendFormInfo = async (e) => {
-    e.preventDefault();
+  const sendFormInfo = async () => {
 
     setDatos((prevDatos) => ({
       ...prevDatos,
@@ -307,7 +285,13 @@ const CreateProject = () => {
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
       setTimeout(() => {
-        router.push('/');
+        
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+          setShowAddProject(false);
+          setRefreshProjects(true);
+          cleanForm();
       }, 2000);
     } catch (error) {
       document
@@ -384,7 +368,6 @@ const CreateProject = () => {
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.add(styles.activePopUp);
-
         setTimeout(() => {
           document
             .querySelector(`.${styles.popSuccessCreated}`)
@@ -394,12 +377,10 @@ const CreateProject = () => {
         document
           .querySelector(`.${styles.popError}`)
           .classList.add(styles.activePopUp);
-
         setTimeout(() => {
           document
             .querySelector(`.${styles.popError}`)
             .classList.remove(styles.activePopUp);
-          router.push('/');
         }, 2000);
         console.error(error.message);
         console.error('Error al realizar la solicitud:', error.message);
@@ -414,40 +395,79 @@ const CreateProject = () => {
     handleXlsxData(e);
   }
 
+  const changeXlsx = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      const allowedExtensions = ['xlsx', 'csv']; // Agrega 'csv' a las extensiones permitidas
+
+      const fileExtension = event.target.files[0].name
+        .split('.')
+        .pop()
+        .toLowerCase();
+
+      if (!allowedExtensions.includes(fileExtension)) {
+        return;
+      }
+
+      reader.onload = (e) => {
+        setXlsxFileName(event.target.files[0].name);
+        if (featuredProject.current) {
+          featuredProject.current.classList.add(styles.showXlsx);
+        }
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
+
+  const cleanForm = () => {
+  };
+
   return (
     <>
-      <section className={styles.main}>
-        <form
-          className={`${styles.createProjectForm} container`}
-          onSubmit={sendFormInfo}
-          id="IDForm">
-          <div className={styles['proyect-left']}>
-            <div className={styles['image-movil']}>
-              <span className={styles.label}>Imagen del Proyecto:</span>
-              <div className={styles['main-image']}></div>
+      <div
+        className={`${styles.typePopUp} ${
+          showAddProject ? styles.activePopUp : ''
+        } flex j-e a-s`}>
+        <div
+          className={`${styles.bgTypePopUp}`}
+          onClick={() => setShowAddProject(false)}></div>
+        <div className={`${styles.wrapperTypePopUp}`}>
+          <div className={`${styles.topContent}`}>
+            <div className={`${styles.topContentInfo}`}>
+              <h1 className={`${styles.topContentTitle}`}>
+                Creacion de Projecto
+              </h1>
             </div>
-            <div className={styles['proyect-form']}>
-              <fieldset>
-                <div className={styles['name-field']}>
-                  <span className={styles.label}>Nombre del Proyecto</span>
+            <div
+              className={`${styles.closeIcon} bg-ct`}
+              onClick={() => setShowAddProject(false)}
+            />
+          </div>
+
+          <form className={styles.formType} onSubmit={sendFormInfo}>
+            
+                <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Nombre del Proyecto</span>
                   <input
                     type="text"
                     name="projectName"
                     value={datos.projectName}
+                    className={styles.inputTypeForm}
                     onChange={handleChange}
                     required
                   />
                 </div>
 
-                <div className={styles['name-field']}>
-                  <span className={styles.label}>Ciudad</span>
+                <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Ciudad</span>
                   <label htmlFor="subject"></label>
                   <select
                     type="text"
                     name="neighborhoodId"
                     value={datos.neighborhoodId}
                     onChange={handleChange}
-                    className={styles.subject_input}
+                    className={`${styles.inputTypeForm} ${styles.labelSelect}`}
                     required>
                     <option disabled defaultValue={0} hidden selected></option>
                     {cities &&
@@ -462,25 +482,26 @@ const CreateProject = () => {
                   </select>
                 </div>
 
-                <div className={styles['name-field']}>
-                  <span className={styles.label}>Ubicación</span>
+                <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Ubicación</span>
                   <input
                     type="text"
                     name="location"
                     value={datos.location}
                     onChange={handleChange}
+                    className={styles.inputTypeForm}
                     required
                   />
                 </div>
-                <div className={styles['name-field']}>
-                  <span className={styles.label}>Tipo de Inmueble</span>
+                <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Tipo de Inmueble</span>
                   <label htmlFor="subject"></label>
                   <select
                     type="text"
                     name="projectType"
                     value={datos.projectType}
                     onChange={handleChange}
-                    className={styles.subject_input}
+                    className={`${styles.inputTypeForm} ${styles.labelSelect}`}
                     required>
                     <option disabled defaultValue={0} hidden selected></option>
                     <option value="C">Casa</option>
@@ -488,19 +509,19 @@ const CreateProject = () => {
                     <option value="EC">Establecimiento comercial</option>
                   </select>
                 </div>
-                <div className={styles['name-field']}>
-                  <span className={styles.label}>Fecha de inicio</span>
+                <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Fecha de inicio</span>
                   <input
                     type="date"
                     value={dateValue}
                     required
                     onChange={handleDateChange}
-                    className={styles['date-Input']}
+                    className={styles.inputTypeForm}
                   />
                 </div>
 
-                {/* <div className={styles['name-field']}>
-                  <span className={styles.label}>Etapas</span>
+                {/* <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Etapas</span>
                   <input
                     type="text"
                     name="phone"
@@ -508,30 +529,18 @@ const CreateProject = () => {
                     ref={inputProjectStage}
                     />
                 </div>*/}
-                <div className={styles['name-field']}>
-                  <span className={styles.label}>Descripción del Proyecto</span>
+                <div className={styles.inputsGroup}>
+                  <span className={styles.labelText}>Descripción del Proyecto</span>
                   <textarea
                     name="message"
                     placeholder=""
-                    className={styles.message_input}
+                    className={styles.descriptionTypeForm}
                     // required
                     ref={inputProjectDescription}></textarea>
                 </div>
-              </fieldset>
-            </div>
-          </div>
-          <div className={styles['proyect-right']}>
-            <div className={styles.file}>
-              <a
-                className={styles.descargar}
-                href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
-                <img src="/images/download.svg" />
-                Descargar Excel Base
-              </a>
-            </div>
 
-            <div className={styles.image}>
-              <span className={styles.label}>Imágen del Proyecto:</span>
+            <div className={`${styles.inputsGroup} flex a-st`}>
+            <span className={styles.labelText}>Imágen del Proyecto:</span>
               <div className={styles['main-image']}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
@@ -544,6 +553,7 @@ const CreateProject = () => {
                     type="file"
                     hidden
                     onChange={handleBloth}
+                    className={styles.inputTypeForm}
                     accept="image/*"
                     name="mainImage"
                   />
@@ -554,66 +564,17 @@ const CreateProject = () => {
                 </label>
               </div>
             </div>
-            {/* <div className={styles['/images']}>
-              <div className={styles['img-title']}>
-                <span className={styles.label}>
-                  Imágenes del Proyecto:{' '}
-                  <i className={styles['fa-solid fa-plus']}></i>
-                </span>
-              </div>
-              <div className={styles['more-images']}>
-                <div className={styles['proyect-img']}>
-                  <div
-                    className={`bg-ct ${styles.deleteIcon}`}
-                    onClick={deleteImage}></div>
-                  <label
-                    htmlFor="firstImgProject"
-                    className={styles.labelInputImage}>
-                    <input
-                      id="firstImgProject"
-                      type="file"
-                      hidden
-                      onChange={readURL}
-                      accept="image/*"
-                      name="firstImage"
-                    />
-                    <div
-                      className={`${styles.imageSelected}`}
-                      ref={firstImage}></div>
-                  </label>
-                </div>
-                <div className={styles['proyect-img']}>
-                  <div
-                    className={`bg-ct ${styles.deleteIcon}`}
-                    onClick={deleteImage}></div>
-                  <label
-                    htmlFor="secondImgProject"
-                    className={styles.labelInputImage}>
-                    <input
-                      id="secondImgProject"
-                      type="file"
-                      hidden
-                      onChange={readURL}
-                      accept="image/*"
-                      name="secondImage"
-                    />
-                    <div
-                      className={`${styles.imageSelected}`}
-                      ref={secondImage}></div>
-                  </label>
-                </div>
-              </div>
-            </div> */}
-            <div className={styles['file-movil']}>
-              <a className={styles.subir} href="#popup1">
-                SUBIR EXCEL de INVENTARIO
-              </a>
-              <a className={styles.descargar} href="#">
-                <img src="/images/download.png" />
-                Descargar Excel Base
-              </a>
-            </div>
+
+            
             <div className={styles.upload}>
+              <div className={styles.file}>
+                <a
+                  className={`${styles.buttonProyect} ${styles.buttonDownload}`}
+                  href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
+                  <img src="/images/download.svg" />
+                  Descargar Excel Base
+                </a>
+              </div>
               <div
                 ref={dragZone}
                 className={styles['blue-border']}
@@ -621,26 +582,24 @@ const CreateProject = () => {
                 onDragOver={dragHandler}
                 onDragEnter={dragHandler}>
                 <img src="/images/upload-icon.png" />
-                <span>
-                  Haga click para subir o arrastra acá el archivo a compartir
-                </span>
                 <input type="file" hidden ref={xlsxInput} />
               </div>
               <div className={styles.uploadButtons}>
-                <label className={styles.subir}>
+                <label className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
                   SUBIR EXCEL de INVENTARIO
                   <input
                     type="file"
                     hidden
                     ref={inputXlsx}
                     onChange={handleXlsxClick}
+                    className={styles.inputTypeForm}
                     accept=".xlsx, .xls, .csv"
                     name="excel"
                   />
                 </label>
 
                 <label
-                  className={xlsxData ? styles.subir : styles.disabledButton}>
+                  className={`${styles.buttonProyect}  ${xlsxData ? styles.buttonUpload : styles.ButtonDisabled}`}>
                   SUBIR PROYECTOS
                   <input type="button" hidden onClick={sendXlsx} name="excel" />
                 </label>
@@ -648,7 +607,7 @@ const CreateProject = () => {
             </div>
 
             <div className={`${styles.projectDocument}`} ref={featuredProject}>
-              <p className={styles['text-origen']}>DOCUMENTO proyecto:</p>
+              <p className={styles.labelText}>DOCUMENTO proyecto:</p>
               <div className={`${styles.projectUploaded} flex j-sb a-c`}>
                 <div className={`${styles.backroundSide} flex j-s a-c`}>
                   <div className={`${styles.xlsxIcon} bg-ct`}></div>
@@ -664,61 +623,23 @@ const CreateProject = () => {
               {
                 // <p className={styles['text-origen']}>Asignar proyecto:</p>
               }
-              <div className={styles['elegir-origen']}>
-                <div className={styles.dropDownAssignProject}>
-                  {/*
-                     <input
-                     type="text"
-                     className={styles.inputAssignProject}
-                     onInput={searchContact}
-                   />
-                   */}
-
-                  <div className={styles.contactsToAssign}>
-                    <div className={`flex j-s a-c ${styles.optionContact}`}>
-                      <div className={`${styles.contactImg} bg-ct`}></div>
-                      <p className={styles.contactName}>John Legend</p>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.contacto}>
-                  <div className={styles.botones}>
-                    <Link href="/" className={styles.cancelar}>
-                      cancelar
-                    </Link>
-                    <button className={styles.crear} /* href="#popproyecto"*/>
-                      Crear Proyecto
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </form>
-      </section>
-      <div className={`${styles.overlay} ${styles.popup1}`}>
-        <div className={styles.popup}>
-          <hr />
-          <a className={styles.close} href="#">
-            &times;
-          </a>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/upload-icon.png" />
-              <span className={styles['pop-text']}>
-                Haga click para subir o arrastra acá el archivo a compartir
-              </span>
-              <a className={styles.subir} href="#">
-                SUBIR ARCHIVO
-              </a>
-              <div className={styles.contacto}>
-                <div className={styles.popbutton}>
-                  <button className={styles.crearpop}>GUARDAR</button>
-
-                  <button className={styles.cancelarpop}>cancelar</button>
-                </div>
-              </div>
-            </div>
+          </form>
+          <div className={`${styles.BottomContent}`}>
+            <Button
+              buttonType={'secondary'}
+              iconImage={false}
+              label={'Cancelar'}
+              inheritClass={styles.buttonCreateType}
+              clickFunction={() => setShowAddProject(false)}
+            />
+            <Button
+              buttonType={'primary'}
+              iconImage={false}
+              label={'Guardar'}
+              inheritClass={styles.buttonCreateType}
+              clickFunction={sendFormInfo}
+            />
           </div>
         </div>
       </div>
@@ -729,7 +650,7 @@ const CreateProject = () => {
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú proyecto ha sido creada con éxito!
+                ¡Tú unidad ha sido creada con éxito!
               </span>
             </div>
           </div>
@@ -758,4 +679,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default AddProjectPop;
