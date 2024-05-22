@@ -11,6 +11,7 @@ import Loader from '../components/lodaer';
 import { useQuery } from 'react-query';
 import { parseCookies } from '../utils/parseCookies';
 import Image from 'next/image';
+import AddProjectPop from '../components/addProjectPop';
 
 export const getServerSideProps = async ({
   req: {
@@ -34,6 +35,9 @@ const Home = ({ id, user_rol }) => {
   const [displayProjects, setDisplayProjects] = useState(
     projectsList.length ? projectsList : []
   );
+  const [showAddProject, setShowAddProject] = useState(false);
+  const [showEditProject, setShowEditProject] = useState(false);
+  const [refreshProjects, setRefreshProjects] = useState(false);
 
   const getProjects = async () => {
     const response = await fetch('/api/projects', {
@@ -70,6 +74,10 @@ const Home = ({ id, user_rol }) => {
     getProjects();
   }, []);
 
+  useEffect(() => {
+    getProjects();
+  }, [refreshProjects]);
+
   const { data, status } = useQuery('projects', getProjects);
 
   useEffect(() => {
@@ -102,8 +110,9 @@ const Home = ({ id, user_rol }) => {
             <Button
               buttonType={'primary'}
               label="Crear Proyecto"
-              link={'/create-project'}
+              // link={'/create-project'}
               inheritClass={styles.createProjectButton}
+              clickFunction={() => setShowAddProject(true)}
             />
           )}
 
@@ -186,6 +195,11 @@ const Home = ({ id, user_rol }) => {
           </div>
         </div>
       </section>
+      <AddProjectPop
+        showAddProject={showAddProject}
+        setShowAddProject={setShowAddProject}
+        setRefreshProjects={setRefreshProjects}
+      />
     </>
   );
   // );

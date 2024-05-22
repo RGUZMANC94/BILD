@@ -504,11 +504,6 @@
   text-align: left;
 }
 
-button.campo:hover {
-  background-color: #2467ff;
-  color: #fff;
-}
-
 .flag {
   width: 185px;
   height: 55px;

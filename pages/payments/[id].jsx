@@ -364,7 +364,7 @@ const PaymentDetail = () => {
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú Cotización ha sido aceptada con éxito!
+                ¡Su cuota ha sido marcada como pagada!
               </span>
             </div>
           </div>

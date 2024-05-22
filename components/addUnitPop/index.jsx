@@ -263,7 +263,7 @@ const AddUnitPop = ({
             <div className={`${styles.inputsGroup}`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>ID</span>
+                <span className={styles.labelInputTitle}>ID:</span>
                 <input
                   type="text"
                   name="nuimb"
@@ -276,7 +276,7 @@ const AddUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Precio</span>
+                <span className={styles.labelInputTitle}>Precio:</span>
                 <input
                   type="text"
                   name="propertyPrice"
@@ -289,7 +289,7 @@ const AddUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Area terraza</span>
+                <span className={styles.labelInputTitle}>Area terraza:</span>
                 <input
                   type="text"
                   name="terraceArea"
@@ -310,12 +310,12 @@ const AddUnitPop = ({
             {optionalPop && (
               <>
                 <div className={`${styles.sectionTitle} flex j-sb a-c`}>
-                  <h2 className={`${styles.sectionTitleText}`}>Datos</h2>
+                  <h2 className={`${styles.sectionTitleText}`}>Datos:</h2>
                 </div>
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Habitaciones</span>
+                    <span className={styles.labelInputTitle}>Habitaciones:</span>
                     <input
                       type="text"
                       name="bedrooms"
@@ -327,7 +327,7 @@ const AddUnitPop = ({
 
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Baños</span>
+                    <span className={styles.labelInputTitle}>Baños:</span>
                     <input
                       type="text"
                       name="baths"
@@ -339,13 +339,13 @@ const AddUnitPop = ({
                 </div>
 
                 <div className={`${styles.sectionTitle} flex j-sb a-c`}>
-                  <h2 className={`${styles.sectionTitleText}`}>Áreas</h2>
+                  <h2 className={`${styles.sectionTitleText}`}>Áreas:</h2>
                 </div>
 
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Area Const.</span>
+                    <span className={styles.labelInputTitle}>Area Const:</span>
                     <input
                       type="text"
                       name="builtArea"
@@ -357,7 +357,7 @@ const AddUnitPop = ({
 
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Área Priv.</span>
+                    <span className={styles.labelInputTitle}>Área Priv:</span>
                     <input
                       type="text"
                       name="privateArea"
@@ -369,7 +369,7 @@ const AddUnitPop = ({
 
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Área Bálcon</span>
+                    <span className={styles.labelInputTitle}>Área Bálcon:</span>
                     <input
                       type="text"
                       name="balconyArea"
@@ -382,7 +382,7 @@ const AddUnitPop = ({
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                     <span className={styles.labelInputTitle}>
-                      Área Deposito
+                      Área Deposito:
                     </span>
                     <input
                       type="text"
