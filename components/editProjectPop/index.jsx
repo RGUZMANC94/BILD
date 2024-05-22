@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Button from '../button';
-import styles from './Add-project-pop.module.css';
+import styles from './Edit-project-pop.module.css';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const AddProjectPop = ({
-  showAddProject,
-  setShowAddProject,
+const EditProjectPop = ({
+  showEditProject,
+  setShowEditProject,
   setRefreshProjects,
 }) => {
   const dispatch = useDispatch();
@@ -32,6 +32,37 @@ const AddProjectPop = ({
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [cities, setCities] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const { projectEdit } = useSelector((state) => state.editObjectState);
+  const [infoProject, setInfoProject] = useState(null);
+
+  const getProject = async () => {
+    const response = await fetch('/api/getProjectInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        projectId: projectEdit.projectId,
+      }),
+    });
+    const responseProject = await response.json();
+
+    setInfoProject(responseProject[0]);
+    console.log('respuesta edicion proyecto: ', responseProject[0]);
+  };
+
+  useEffect(() => {
+    getProject();
+  }, [showEditProject]);
+
+  useEffect(() => {
+    if (infoProject) {
+      setDatos({ ...datos, ...infoProject });
+      setDateValue(infoProject.startDate);
+      console.log('Datos: ', datos);
+    }
+  }, [infoProject]);
 
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
@@ -82,7 +113,7 @@ const AddProjectPop = ({
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        if (event.target.id === 'mainImgProject') {
+        if (event.target.id === 'mainImgProjectEdit') {
           mainImage.current.style.backgroundImage = `url(${e.target.result})`;
           mainImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
@@ -208,7 +239,7 @@ const AddProjectPop = ({
     );
 
     try {
-      const projectCreated = await fetch('/api/createProject', {
+      const projectCreated = await fetch('/api/editProject', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -286,9 +317,12 @@ const AddProjectPop = ({
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        setShowAddProject(false);
+        setShowEditProject(false);
         setRefreshProjects(true);
         cleanForm();
+      }, 2000);
+      setTimeout(() => {
+        setRefreshProjects(true);
       }, 2000);
     } catch (error) {
       document
@@ -440,14 +474,11 @@ const AddProjectPop = ({
     <>
       <div
         className={`${styles.typePopUp} ${
-          showAddProject ? styles.activePopUp : ''
+          showEditProject ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div
           className={`${styles.bgTypePopUp}`}
-          onClick={() => {
-            setShowAddProject(false);
-            cleanForm();
-          }}></div>
+          onClick={() => setShowEditProject(false)}></div>
         <div className={`${styles.wrapperTypePopUp}`}>
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
@@ -457,10 +488,7 @@ const AddProjectPop = ({
             </div>
             <div
               className={`${styles.closeIcon} bg-ct`}
-              onClick={() =>  {
-                setShowAddProject(false);
-                cleanForm();
-              }}
+              onClick={() => setShowEditProject(false)}
             />
           </div>
 
@@ -566,10 +594,10 @@ const AddProjectPop = ({
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
                 <label
-                  htmlFor="mainImgProject"
+                  htmlFor="mainImgProjectEdit"
                   className={styles.labelInputImage}>
                   <input
-                    id="mainImgProject"
+                    id="mainImgProjectEdit"
                     type="file"
                     hidden
                     onChange={handleBloth}
@@ -653,10 +681,7 @@ const AddProjectPop = ({
               iconImage={false}
               label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
-              clickFunction={() =>  {
-                setShowAddProject(false);
-                cleanForm();
-              }}
+              clickFunction={() => setShowEditProject(false)}
             />
             <Button
               buttonType={'primary'}
@@ -704,4 +729,4 @@ const AddProjectPop = ({
   );
 };
 
-export default AddProjectPop;
+export default EditProjectPop;
