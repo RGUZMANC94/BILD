@@ -14,6 +14,8 @@ import EditTypePop from '../../components/editTypePop';
 import EditUnitPop from '../../components/editUnitPop';
 import { changeProjectEdit } from '../../redux/editObjectSlice';
 import ZoomImg from '../../components/zoomImg';
+import EditProjectPop from '../../components/editProjectPop';
+import AddProjectPop from '../../components/addProjectPop';
 
 const DetailState = ({ unitsInit, typesInit }) => {
   const dispatch = useDispatch();
@@ -38,6 +40,9 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [xlsxData, setXlsxData] = useState(null);
   const inputXlsx = useRef(null);
+  const [showEditProject, setShowEditProject] = useState(false);
+  const [refreshProjects, setRefreshProjects] = useState(false);
+  const [infoProject, setInfoProject] = useState(null);
 
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
@@ -58,6 +63,30 @@ const DetailState = ({ unitsInit, typesInit }) => {
   useEffect(() => {
     getXlsxTemplate();
   }, []);
+
+  const getProject = async () => {
+    const response = await fetch('/api/getProjectInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        projectId: router.query.id,
+      }),
+    });
+    const responseProject = await response.json();
+
+    setInfoProject(responseProject[0]);
+    console.log('Project actual: ', responseProject[0]);
+  };
+
+  useEffect(() => {
+    if (refreshProjects) {
+      setRefreshProjects(false);
+    }
+    getProject();
+  }, [refreshProjects]);
 
   const getTypes = async () => {
     const response = await fetch('/api/types', {
@@ -135,6 +164,9 @@ const DetailState = ({ unitsInit, typesInit }) => {
   useEffect(() => {
     getRecentsContacts();
   }, []);
+
+  useEffect(() => {
+  }, [refreshProjects]);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
@@ -237,18 +269,19 @@ const DetailState = ({ unitsInit, typesInit }) => {
                 <Link href="/" className="back-arrow bg-ct"></Link>
 
                 <h1 className="topProjectName">
-                  {projectSelected && projectSelected.projectName}
+                  {(infoProject && infoProject.projectName) ? 
+                  infoProject.projectName
+                  : 
+                  ((projectSelected && projectSelected.projectName) ? projectSelected.projectName : infoProject.projectName) 
+                  }
                 </h1>
 
-                <Link
-                  href={{
-                    pathname: '/edit-project',
-                    query: {
-                      project: projectSelected ? projectSelected.projectId : '',
-                    },
-                  }}
+                <button
                   className={'editProjectDetailState'}
-                  onClick={() => dispatch(changeProjectEdit(projectSelected))}
+                  onClick={() => {
+                    dispatch(changeProjectEdit(projectSelected));
+                    setShowEditProject(true);
+                  } }
                 />
               </div>
 
@@ -332,6 +365,12 @@ const DetailState = ({ unitsInit, typesInit }) => {
       {lightboxImage !== '' && (
         <LightBox image={lightboxImage} setLightboxImage={setLightboxImage} />
       )}
+
+      <EditProjectPop 
+        showEditProject={showEditProject}
+        setShowEditProject={setShowEditProject}
+        setRefreshProjects={setRefreshProjects}
+      />
 
       <AddTypePop
         setShowPopUpType={setShowPopUpType}

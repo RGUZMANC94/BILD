@@ -95,7 +95,7 @@ const EditTypePop = ({
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        if (event.target.id === 'mainImgProjectEdit') {
+        if (event.target.id === 'mainImgUnitEdit') {
           mainImage.current.style.backgroundImage = `url(${e.target.result})`;
           mainImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
@@ -291,10 +291,10 @@ const EditTypePop = ({
                     className={`bg-ct ${styles.deleteIcon}`}
                     onClick={deleteImage}></div>
                   <label
-                    htmlFor="mainImgProject"
+                    htmlFor="mainImgUnitEdit"
                     className={styles.labelInputImage}>
                     <input
-                      id="mainImgProject"
+                      id="mainImgUnitEdit"
                       type="file"
                       hidden
                       onChange={handleBloth}

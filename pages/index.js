@@ -183,7 +183,6 @@ const Home = ({ id, user_rol }) => {
                               onClick={() => {
                                 dispatch(changeProjectEdit(project));
                                 setShowEditProject(true);
-                                console.log('Editando');
                               }}
                             />
                           )}
