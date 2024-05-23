@@ -589,7 +589,7 @@ const AddProjectPop = ({
 
             <div className={styles.upload}>
               <div className={styles.uploadButtons}>
-              <a
+                <a
                   className={`${styles.buttonProyect} ${styles.buttonDownload}`}
                   href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
                   <img src="/images/download.svg" />

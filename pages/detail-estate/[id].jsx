@@ -165,8 +165,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
     getRecentsContacts();
   }, []);
 
-  useEffect(() => {
-  }, [refreshProjects]);
+  useEffect(() => {}, [refreshProjects]);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
@@ -269,11 +268,11 @@ const DetailState = ({ unitsInit, typesInit }) => {
                 <Link href="/" className="back-arrow bg-ct"></Link>
 
                 <h1 className="topProjectName">
-                  {(infoProject && infoProject.projectName) ? 
-                  infoProject.projectName
-                  : 
-                  ((projectSelected && projectSelected.projectName) ? projectSelected.projectName : infoProject.projectName) 
-                  }
+                  {infoProject && infoProject.projectName
+                    ? infoProject.projectName
+                    : projectSelected && projectSelected.projectName
+                      ? projectSelected.projectName
+                      : infoProject.projectName}
                 </h1>
 
                 <button
@@ -281,7 +280,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
                   onClick={() => {
                     dispatch(changeProjectEdit(projectSelected));
                     setShowEditProject(true);
-                  } }
+                  }}
                 />
               </div>
 
@@ -366,7 +365,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         <LightBox image={lightboxImage} setLightboxImage={setLightboxImage} />
       )}
 
-      <EditProjectPop 
+      <EditProjectPop
         showEditProject={showEditProject}
         setShowEditProject={setShowEditProject}
         setRefreshProjects={setRefreshProjects}
