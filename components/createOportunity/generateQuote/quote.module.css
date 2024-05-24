@@ -258,11 +258,11 @@
 }
 
 .infoSectionDivider {
- width: 100%;
- border-top: 1px solid #fff;
- margin-bottom: 20px;
- margin-top: 0;
- height: 0px;
+  width: 100%;
+  border-top: 1px solid #fff;
+  margin-bottom: 20px;
+  margin-top: 0;
+  height: 0px;
 }
 .outerRange {
   margin-bottom: 20px;
