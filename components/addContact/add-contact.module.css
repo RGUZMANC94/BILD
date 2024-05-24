@@ -23,10 +23,10 @@
   position: absolute;
   z-index: 1;
   background-color: #343434;
-  transition: all .35s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 
-.popup-agregar.active .popup-window{
+.popup-agregar.active .popup-window {
   right: 0;
 }
 

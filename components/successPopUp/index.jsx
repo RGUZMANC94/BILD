@@ -11,7 +11,10 @@ const SuccessPopUp = ({ message }) => {
     }, 2000);
   }, []);
   return (
-    <div className={`${styles.popSuccessCreated} ${activePopUp ? styles.activePopUp : ''}`}>
+    <div
+      className={`${styles.popSuccessCreated} ${
+        activePopUp ? styles.activePopUp : ''
+      }`}>
       <div className={styles.bgPopUp}></div>
       <div className={styles.popup2}>
         <div className={styles.content}>
