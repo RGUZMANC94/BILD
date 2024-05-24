@@ -124,7 +124,7 @@ const GenerateQuote = ({
   const handleFeeChange = (value, index) => {
     const newFeesArray = [...feesArray];
     newFeesArray[index] = value;
-    setFeesArray(newFeesArray);
+    setFeesArray(prevState => [...newFeesArray]);
   };
 
   const renderDynamicInputs = () => {

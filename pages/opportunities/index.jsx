@@ -157,7 +157,7 @@ const OportunitiesAllFilter = () => {
                 className={styles.filter_input}
                 onChange={(e) => setSorting(e.target.value)}>
                 <option value="HOT">MAS CALIENTE</option>
-                <option value="HOT">MAS FRÍA</option>
+                <option value="COLD">MAS FRÍA</option>
                 <option value="DESC" selected>
                   MAS RECIENTE
                 </option>
