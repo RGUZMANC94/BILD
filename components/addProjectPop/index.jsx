@@ -588,6 +588,7 @@ const AddProjectPop = ({
             </div>
 
             <div className={styles.upload}>
+              <span className={styles.labelText}>Crear inventario en batch:</span>
               <div className={styles.uploadButtons}>
                 <a
                   className={`${styles.buttonProyect} ${styles.buttonDownload}`}

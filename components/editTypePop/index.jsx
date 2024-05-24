@@ -284,7 +284,7 @@ const EditTypePop = ({
               />
             </div>
             <div className={`${styles.inputsGroup} flex a-st`}>
-              <span className={styles.labelText}>Imágen del Proyecto:</span>
+              <span className={styles.labelText}>Imágen del Tipo:</span>
               <div className={styles.image}>
                 <div className={styles['main-image']}>
                   <div
