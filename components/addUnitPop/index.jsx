@@ -50,9 +50,9 @@ const AddUnitPop = ({
   });
 
   const handlePrice = (nuevoValor) => {
-    setDatos(prevDatos => ({
+    setDatos((prevDatos) => ({
       ...prevDatos,
-      propertyPrice: nuevoValor
+      propertyPrice: nuevoValor,
     }));
   };
 
