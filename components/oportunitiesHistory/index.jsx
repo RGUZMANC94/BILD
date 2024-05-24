@@ -69,6 +69,7 @@ const OportunitiesHistory = ({
   const [eventsSelected, setEventsSelected] = useState([]);
   const [lastEvent, setLastEvent] = useState({});
   const [idPortafolio, setIdPortafolio] = useState('');
+  const [refreshEvents, setRefreshEvents] = useState(false);
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
@@ -97,32 +98,34 @@ const OportunitiesHistory = ({
         : [];
     console.log('Eventos filtrados:', filteredEvents);
 
-    if (filteredEvents.length === 1) {
+    updateEventsBox(filteredEvents);
+  }, [opportunitySelected, refreshEvents]);
+
+  const updateEventsBox = (filteredEvents) => {
+    if (filteredEvents.length > 0 && filteredEvents.length < 3) {
       setFirstEvent(filteredEvents[0]);
-      setLastEvent({});
+      setLastEvent(filteredEvents[1] ?? {});
       setEventsSelected([]);
-    } else if (filteredEvents.length === 2) {
-      setFirstEvent(filteredEvents[0]);
-      setLastEvent(filteredEvents[1]);
-      setEventsSelected([]);
-    } else if (filteredEvents.length > 2) {
+      return;
+    }
+    if (filteredEvents.length > 2) {
       const [firstEvent, ...remainingEvents] = filteredEvents;
       setFirstEvent(firstEvent);
       const lastEvent = remainingEvents[remainingEvents.length - 1];
       setEventsSelected(filteredEvents.slice(1, -1));
       setLastEvent(lastEvent);
-    } else {
-      setFirstEvent({});
-      setLastEvent({});
-      setEventsSelected([]);
+      return;
     }
-  }, [opportunitySelected]);
+    setFirstEvent({});
+    setLastEvent({});
+    setEventsSelected([]);
+  };
 
   useEffect(() => {
     if (opportunitySelected !== -1 && opportunitySelected) {
       getEventsSelected();
     }
-  }, [opportunitySelected]);
+  }, [opportunitySelected, refreshEvents]);
 
   const handleEventClick = (e) => {
     console.log('Evento :', e);
@@ -172,13 +175,11 @@ const OportunitiesHistory = ({
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
-        // window.location.reload();
-        setRefreshFlag((prevState) => !prevState);
+        // getEventsSelected();
+        setRefreshEvents((prevState) => !prevState);
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        setSelectedItemOpp(-1);
-        setOppIsSelected(false);
       }, 2000);
     } catch (error) {
       document
@@ -210,35 +211,11 @@ const OportunitiesHistory = ({
       console.log('respuesta de eliminacion', oppCreated);
       const responseData = await oppCreated.json();
 
-      // if (!oppCreated.ok) {
-      //   document
-      //     .querySelector(`.${styles.popError}`)
-      //     .classList.add(styles.activePopUp);
-
-      //   setTimeout(() => {
-      //     document
-      //       .querySelector(`.${styles.popError}`)
-      //       .classList.remove(styles.activePopUp);
-      //   }, 2000);
-      //   throw new Error('Failed to delete opportunity');
-      // }
+      if (!oppCreated.ok) {
+        throw new Error('Failed to delete opportunity');
+      }
 
       setRefreshFlag((prevState) => !prevState);
-
-      // document
-      //   .querySelector(`.${styles.popSuccessCreated}`)
-      //   .classList.add(styles.activePopUp);
-
-      // setTimeout(() => {
-      //   document
-      //     .querySelector(`.${styles.popSuccessCreated}`)
-      //     .classList.remove(styles.activePopUp);
-      //   // setShowPopEvents(false);
-      //   // setShowPopUp(false); // primero
-      //   // setIsConnected(false);
-      //   // setIsCreated(false); // ultimo
-      //   // dispatch(closePopUp(false));
-      // }, 2000);
     } catch (error) {
       console.error('Error al eliminar la oportunidad:', error);
     }
@@ -366,14 +343,7 @@ const OportunitiesHistory = ({
                   {eventsSelected.reverse().map(
                     (eventItem, i) =>
                       Object.keys(eventItem).length > 3 && (
-                        <div
-                          className={
-                            /*
-                            eventItem.status === 'PE'
-                              ? styles.greybox
-                              : styles.box*/ styles.greybox
-                          }
-                          key={eventItem.id}>
+                        <div className={styles.greybox} key={eventItem.id}>
                           <div className={styles.info}>
                             <div>
                               {

@@ -5,6 +5,7 @@ import GenerateQuote from '../generateQuote';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePopUp } from '../../../redux/popUpOportunity';
 import { openZoomImg } from '../../../redux/zoomImg';
+import Portal from '../../../HOC/portal';
 
 const OportunityCreated = ({
   showPopEvents,
@@ -18,6 +19,7 @@ const OportunityCreated = ({
   refreshFlag,
   setRefreshFlag,
 }) => {
+  const { id } = useSelector((state) => state.userState);
   const [showCreatedPop, setShowCreatedPop] = useState(false);
   const [showDeletedPop, setShowDeletedPop] = useState(false);
   const { projectsList } = useSelector((state) => state.projectState);
@@ -48,6 +50,7 @@ const OportunityCreated = ({
         },
         body: JSON.stringify({
           opportunitySelected,
+          id,
         }),
       });
       console.log('respuesta de eleiminacion', oppCreated);
@@ -181,37 +184,39 @@ const OportunityCreated = ({
           <span>Tu oportunidad se creo satisfactoriamente</span>
         </div>
       </div>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                {showDeletedPop
-                  ? '¡Tú oportunidad ha sido eliminada con éxito!'
-                  : '¡Tú oportunidad ha sido creada con éxito!'}
-              </span>
+      <Portal>
+        <div className={`${styles.popSuccessCreated}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup2}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/check-circle.png" />
+                <span className={styles['pop-text']}>
+                  {showDeletedPop
+                    ? '¡Tú oportunidad ha sido eliminada con éxito!'
+                    : '¡Tú oportunidad ha sido creada con éxito!'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {showDeletedPop
-                  ? 'Algo no está bien. Tú oportunidad no ha podido ser iliminaad con éxito'
-                  : 'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.'}
-              </span>
+        <div className={`${styles.popError} `}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup3}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/error-circle.png" />
+                <span className={styles['pop-text']}>
+                  <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+                  {showDeletedPop
+                    ? 'Algo no está bien. Tú oportunidad no ha podido ser iliminaad con éxito'
+                    : 'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Portal>
     </>
   );
 };

@@ -10,30 +10,61 @@ import { getSessionToken } from '../../utils/getSessionToken';
 import opportunities from '../api/opportunities';
 import { closePopUp } from '../../redux/popUpOportunity';
 import ZoomImg from '../../components/zoomImg';
+import { parseCookies } from '../../utils/parseCookies';
 
-const Oportunities = () => {
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+  query: { id },
+}) => {
+  const { userid } = parseCookies(cookie);
+  try {
+    const response = await fetch(
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${id}&idproject=&username=${userid}&page=1&rows=100&sorting=DESC`
+    );
+    if (!response.ok) {
+      throw new Error('Bad response from server');
+    }
+    const oportunities = await response.json();
+    console.log(oportunities);
+    console.log(id);
+    console.log(userid);
+    return {
+      props: {
+        oportunities,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        error: 'Error in request',
+      },
+    };
+  }
+};
+
+const Oportunities = ({ oportunities }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.userState);
   const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
-  const [allOpportunities, setAllOpportunities] = useState([]);
+  const [allOpportunities, setAllOpportunities] = useState(oportunities);
   const [closeFlag, setCloseFlag] = useState(true);
   const [oppIsSelected, setOppIsSelected] = useState(false);
   const [sorting, setSorting] = useState('DESC');
   const [refreshFlag, setRefreshFlag] = useState(false);
+  const { openPopUpOportunity } = useSelector(
+    (state) => state.popUpOportunityState
+  );
+  const { contactListSelected } = useSelector(
+    (state) => state.contactOpportunityState
+  );
 
   if (closeFlag) {
     dispatch(closePopUp());
     setCloseFlag(false);
   }
-
-  const { openPopUpOportunity } = useSelector(
-    (state) => state.popUpOportunityState
-  );
-
-  const { contactListSelected } = useSelector(
-    (state) => state.contactOpportunityState
-  );
 
   const getAllOpportunities = async () => {
     const response = await fetch('/api/opportunities', {
@@ -56,20 +87,17 @@ const Oportunities = () => {
     setAllOpportunities(opportunitiesResponse);
   };
 
-  useEffect(() => {
-    // if (!getSessionToken()) {
-    //   router.push('/login');
-    //   return;
-    // }
-    getAllOpportunities();
-  }, []);
+  // useEffect(() => {
+  //   getAllOpportunities();
+  // }, []);
 
   useEffect(() => {
     // if (refreshFlag) {
     //   setRefreshFlag((prevState) => !prevState);
     // }
-    getAllOpportunities();
-    console.log('reset');
+    if (refreshFlag) {
+      getAllOpportunities();
+    }
   }, [refreshFlag]);
 
   return (

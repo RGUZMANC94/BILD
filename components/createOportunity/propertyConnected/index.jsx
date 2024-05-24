@@ -1,9 +1,8 @@
 import styles from './property-connected.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../button';
-import { useRouter } from 'next/router';
 import { changeOpportunitySelected } from '../../../redux/opportunitySelectedSlice';
 import { useState } from 'react';
+import Portal from '../../../HOC/portal';
 
 const PropertyConnected = ({ setIsCreated }) => {
   const { id } = useSelector((state) => state.userState);
@@ -141,34 +140,36 @@ const PropertyConnected = ({ setIsCreated }) => {
           </div>
         </div>
       </form>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú oportunidad ha sido creada con éxito!
-              </span>
+      <Portal>
+        <div className={`${styles.popSuccessCreated}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup2}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/check-circle.png" />
+                <span className={styles['pop-text']}>
+                  ¡Tú oportunidad ha sido creada con éxito!
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span> Algo no
-                está bien. Parece que esta unidad ya tiene una oportunidad
-                asignada.
-              </span>
+        <div className={`${styles.popError} `}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup3}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/error-circle.png" />
+                <span className={styles['pop-text']}>
+                  <span className={styles['pop-text-bold']}>¡Oops!</span> Algo
+                  no está bien. Parece que esta unidad ya tiene una oportunidad
+                  asignada.
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Portal>
     </>
   );
 };

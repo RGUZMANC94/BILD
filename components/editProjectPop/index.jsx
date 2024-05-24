@@ -481,7 +481,7 @@ const EditProjectPop = ({
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
-                Creacion de Projecto
+                Editar Projecto
               </h1>
             </div>
             <div

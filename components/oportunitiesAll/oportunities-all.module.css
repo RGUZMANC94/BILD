@@ -153,6 +153,7 @@ i.fa-solid.fa-angle-left {
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 .card-unit-list {
