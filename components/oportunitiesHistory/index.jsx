@@ -471,7 +471,7 @@ const OportunitiesHistory = ({
               <Button
                 buttonType={'primary'}
                 classNameInherit={'align-center'}
-                label={'Elminar oportunidad'}></Button>
+                label={'Eliminar oportunidad'}></Button>
             </div>
           </div>
         </div>
