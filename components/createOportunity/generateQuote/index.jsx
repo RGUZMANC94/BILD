@@ -49,12 +49,19 @@ const GenerateQuote = ({
     payments: [],
   });
   const [errorMessage, setErrorMessage] = useState(null);
+  const [feesTotal, setFeesTotal] = useState(0);
 
   console.log('fees', fees);
   console.log('monthlyQuote:', monthlyQuote);
   console.log('balanceInitialQuote:', balanceInitialQuote);
 
-  // Efecto para manejar cambios en valores y en popQuotes
+  useEffect(() => {
+    if (feesArray.length !== 0) {
+
+      setFeesTotal(feesArray.reduce((acc, fee) => acc + Number(fee), 0));
+    }
+  }, [feesArray, fees]);
+
   useEffect(() => {
     const formattedPayments = feesArray.map((paymentValue) => ({
       paymentValue: `${paymentValue}.0`,
@@ -100,8 +107,8 @@ const GenerateQuote = ({
   }, [fees, balanceInitialQuote, initialQuote, separation, downPayment]);
 
   function formatMoney(num) {
-    return num.toLocaleString('es-CO', { currency: 'COP', style: 'currency' });
-  }
+return num.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}  
 
   const handlePopQuotes = () => {
     setPopQuotes(!popQuotes);
@@ -119,27 +126,44 @@ const GenerateQuote = ({
   const renderDynamicInputs = () => {
     const inputs = [];
     for (let i = 0; i < fees; i++) {
-      inputs.push(
-        <div key={i} className={styles['cotizacion-form']}>
-          <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
-          <CurrencyInput
-            className={styles.inputQuote}
-            prefix="$ "
-            decimalSeparator=","
-            groupSeparator="."
-            id={`Cuota ${i + 1}`}
-            name={`downPayment ${i + 1}`}
-            placeholder={`Cuota ${i + 1}`}
-            // defaultValue={1000000}
-            decimalsLimit={2}
-            onValueChange={(value) => handleFeeChange(value, i)}
-            required
-          />
-        </div>
-      );
+        inputs.push(
+            <div key={i} className={styles['cotizacion-form']}>
+                <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
+                <CurrencyInput
+                    className={styles.inputQuote}
+                    prefix="$ "
+                    decimalSeparator=","
+                    groupSeparator="."
+                    id={`Cuota ${i + 1}`}
+                    name={`downPayment ${i + 1}`}
+                    placeholder={`Cuota ${i + 1}`}
+                    value={feesArray[i]}
+                    decimalsLimit={0}
+                    onValueChange={(value) => handleFeeChange(value, i)}
+                    required
+                />
+            </div>
+        );
     }
     return inputs;
-  };
+};
+
+  function initializeFeesArray() {
+    const feeValue = Math.floor(balanceInitialQuote / fees);
+    const remainder = balanceInitialQuote % fees;
+
+    const initialFeesArray = Array.from({ length: fees }, (_, i) => (
+
+      i < remainder ? feeValue + 1 : feeValue
+    )
+    );
+
+    setFeesArray(initialFeesArray);
+}
+
+useEffect(() => {
+    initializeFeesArray();
+}, [unitBalance, fees, balanceInitialQuote, popQuotes]);
 
   const handleSentLink = () => {
     setSentLink(!sentLink);
@@ -374,8 +398,21 @@ const GenerateQuote = ({
               Ver detalle de cuotas
             </span>
           </div>
-          {console.log(feesArray)}
-          {popQuotes && renderDynamicInputs()}
+          {console.log('fessArray:',feesArray)}
+          {popQuotes && (
+            <>
+            
+            {renderDynamicInputs()}
+
+            
+            <div className={styles.infoSection}>
+            <span className={styles.labelSimple}>Total de Cuotas:</span>
+              <span className={styles.labelFocus}>
+                {formatMoney(feesTotal)}
+              </span>
+            </div>
+            </>
+          )}
 
           {!popQuotes && (
             <div className={styles.infoSection}>
@@ -385,6 +422,8 @@ const GenerateQuote = ({
               </span>
             </div>
           )}
+
+          <span className={styles.infoSectionDivider}/>
 
           <div className={styles.infoSection}>
             <span className={styles.labelSimple}>Saldo Apartamento:</span>
