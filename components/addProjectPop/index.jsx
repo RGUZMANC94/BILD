@@ -417,6 +417,10 @@ const AddProjectPop = ({
     }
   };
 
+  useEffect(() => {
+    sendXlsx(xlsxData);
+  }, [xlsxData]);
+
   const cleanForm = () => {
     setDatos({
       projectName: '',
@@ -584,24 +588,13 @@ const AddProjectPop = ({
             </div>
 
             <div className={styles.upload}>
-              <div className={styles.file}>
+              <div className={styles.uploadButtons}>
                 <a
                   className={`${styles.buttonProyect} ${styles.buttonDownload}`}
                   href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
                   <img src="/images/download.svg" />
                   Descargar Excel Base
                 </a>
-              </div>
-              <div
-                ref={dragZone}
-                className={styles['blue-border']}
-                onDrop={dropHandler}
-                onDragOver={dragHandler}
-                onDragEnter={dragHandler}>
-                <img src="/images/upload-icon.png" />
-                <input type="file" hidden ref={xlsxInput} />
-              </div>
-              <div className={styles.uploadButtons}>
                 <label
                   className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
                   Subir Excel de Inventario
@@ -615,27 +608,6 @@ const AddProjectPop = ({
                     name="excel"
                   />
                 </label>
-
-                <label
-                  className={`${styles.buttonProyect}  ${
-                    xlsxData ? styles.buttonUpload : styles.ButtonDisabled
-                  }`}>
-                  Subir Proyectos
-                  <input type="button" hidden onClick={sendXlsx} name="excel" />
-                </label>
-              </div>
-            </div>
-
-            <div className={`${styles.projectDocument}`} ref={featuredProject}>
-              <p className={styles.labelText}>Documento proyecto:</p>
-              <div className={`${styles.projectUploaded} flex j-sb a-c`}>
-                <div className={`${styles.backroundSide} flex j-s a-c`}>
-                  <div className={`${styles.xlsxIcon} bg-ct`}></div>
-                  <p className={`${styles.xlsxName}`}>{xlsxFileName}</p>
-                </div>
-                <div
-                  className={`${styles.deleteXlsxUploaded} bg-ct`}
-                  onClick={deleteXlsx}></div>
               </div>
             </div>
 
@@ -673,7 +645,7 @@ const AddProjectPop = ({
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú unidad ha sido creada con éxito!
+                ¡Su proyecto ha sido creado con éxito!
               </span>
             </div>
           </div>

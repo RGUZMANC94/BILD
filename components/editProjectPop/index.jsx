@@ -611,49 +611,6 @@ const EditProjectPop = ({
               </div>
             </div>
 
-            <div className={styles.upload}>
-              <div className={styles.file}>
-                <a
-                  className={`${styles.buttonProyect} ${styles.buttonDownload}`}
-                  href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
-                  <img src="/images/download.svg" />
-                  Descargar Excel Base
-                </a>
-              </div>
-              <div
-                ref={dragZone}
-                className={styles['blue-border']}
-                onDrop={dropHandler}
-                onDragOver={dragHandler}
-                onDragEnter={dragHandler}>
-                <img src="/images/upload-icon.png" />
-                <input type="file" hidden ref={xlsxInput} />
-              </div>
-              <div className={styles.uploadButtons}>
-                <label
-                  className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
-                  Subir Excel de Inventario
-                  <input
-                    type="file"
-                    hidden
-                    ref={inputXlsx}
-                    onChange={handleXlsxClick}
-                    className={styles.inputTypeForm}
-                    accept=".xlsx, .xls, .csv"
-                    name="excel"
-                  />
-                </label>
-
-                <label
-                  className={`${styles.buttonProyect}  ${
-                    xlsxData ? styles.buttonUpload : styles.ButtonDisabled
-                  }`}>
-                  Subir Proyectos
-                  <input type="button" hidden onClick={sendXlsx} name="excel" />
-                </label>
-              </div>
-            </div>
-
             <div className={`${styles.projectDocument}`} ref={featuredProject}>
               <p className={styles.labelText}>Documento proyecto:</p>
               <div className={`${styles.projectUploaded} flex j-sb a-c`}>
