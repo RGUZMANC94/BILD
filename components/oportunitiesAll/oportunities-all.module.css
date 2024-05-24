@@ -160,6 +160,9 @@ i.fa-solid.fa-angle-left {
   width: 100%;
 }
 
+.card-unit-list {
+}
+
 @media only screen and (max-width: 1024px) {
   .oportunidades {
     width: 100%;

@@ -319,7 +319,11 @@ li {
   text-align: left;
 }
 
-.itemDrag:hover .tipo-unit,
+.itemDrag:hover .tipo-unit {
+  left: 5px;
+  top: -0;
+}
+
 .itemDrag.active .tipo-unit {
   top: -0;
   left: 20px;
