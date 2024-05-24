@@ -7,6 +7,7 @@ import OportunitiesHistory from '../../components/oportunitiesHistory';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
+import { useRouter } from 'next/router';
 
 const OportunitiesAll = ({
   oppList,
@@ -18,7 +19,11 @@ const OportunitiesAll = ({
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
   const [oppSelectedObject, setOppSelectedObject] = useState({});
+  const [opacityCards, setOpacityCards] = useState(false);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const { asPath } = router;
+  const URLHash = asPath.split('#')[1];
   console.log('Lista de oportunidades:', oppList);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -28,7 +33,30 @@ const OportunitiesAll = ({
       setIsMobile(window.innerWidth < 1024);
     };
     window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+  useEffect(() => {
+    if (URLHash) {
+      const recentOppCreated = oppList.find(
+        (opportunity) => Number(opportunity.idSaleOp) === Number(URLHash)
+      );
+      if (recentOppCreated) {
+        const indexOpp = oppList.indexOf(recentOppCreated);
+        handleItemClick(
+          indexOpp,
+          URLHash,
+          recentOppCreated.idProperty,
+          recentOppCreated.idProject,
+          recentOppCreated,
+          true
+        );
+        setOpacityCards((prevState) => true);
+      }
+    }
+  }, [oppList]);
 
   useEffect(() => {
     console.log('UpdateIndex');
@@ -76,13 +104,21 @@ const OportunitiesAll = ({
     dispatch(changeUnitSelected(unitSelected));
   };
 
-  const handleItemClick = (index, oppId, idProperty, projectId, opp) => {
-    if (selectedItem === index) {
+  const handleItemClick = (
+    index,
+    oppId,
+    idProperty,
+    projectId,
+    opp,
+    activeWithHash = false
+  ) => {
+    if (selectedItem === index && !activeWithHash) {
       setSelectedItem(-1);
       dispatch(changeOpportunitySelected(-1));
       setOppIsSelected(false);
       setOpportunitySelected(-1);
       setOppSelectedObject({});
+      setOpacityCards((prevState) => false);
     } else {
       setSelectedItem(index);
       dispatch(changeOpportunitySelected(oppId));
@@ -90,6 +126,9 @@ const OportunitiesAll = ({
       setOpportunitySelected(oppId);
       getUnitSelected(idProperty, projectId);
       setOppSelectedObject(opp);
+      if (!activeWithHash) {
+        setOpacityCards((prevState) => false);
+      }
     }
   };
 
@@ -163,8 +202,15 @@ const OportunitiesAll = ({
                     oportunity.stageCycleSaleOp === 'Prospecto' ||
                     oportunity.stageCycleSaleOp === 'Separacion') && (
                     <div
+                      style={{
+                        opacity: opacityCards
+                          ? Number(URLHash === oportunity.idSaleOp)
+                            ? '1'
+                            : '0.6'
+                          : '1',
+                      }}
                       className={styles['card-unit-list']}
-                      key={i}
+                      key={oportunity.idSaleOp}
                       onClick={() =>
                         handleItemClick(
                           i,

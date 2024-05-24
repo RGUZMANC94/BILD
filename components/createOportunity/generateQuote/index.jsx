@@ -8,6 +8,8 @@ import CurrencyInput from 'react-currency-input-field';
 import Portal from '../../../HOC/portal';
 import { useRouter } from 'next/router';
 import { closePopUp } from '../../../redux/popUpOportunity';
+import SuccessPopUp from '../../successPopUp';
+import ErrorPopUp from '../../errorPopUp';
 
 const GenerateQuote = ({
   setGenerateQuote,
@@ -35,6 +37,7 @@ const GenerateQuote = ({
   const [separation, setSeparation] = useState(0);
   const [downPayment, setDownPayment] = useState(0);
   const [fees, setFees] = useState(2);
+  const [successQuote, setSuccessQuote] = useState(0);
   const [feesArray, setFeesArray] = useState([]);
   const [datos, setDatos] = useState({
     idSaleOp: opportunitySelected,
@@ -148,33 +151,6 @@ const GenerateQuote = ({
     if (!popQuotes) {
       delete datos.payments;
     }
-    /*
-    if (!popQuotes) {
-      setDatos((prevDatos) => ({
-        ...prevDatos,
-        idSaleOp: opportunitySelected,
-        totalValue: `${unitSelected.propertyPrice}.0`,
-        percentageToPay: `${values[0]}`,
-        numberDues: fees,
-        separationValue: `${Number(separation) + Number(downPayment)}.0`,
-        paymentStartDate: '2024-12-30',
-      }));
-    } else {
-      const formattedPayments = feesArray.map((paymentValue) => ({
-        paymentValue: `${paymentValue}.0`,
-      }));
-
-      setDatos((prevDatos) => ({
-        ...prevDatos,
-        idSaleOp: opportunitySelected,
-        totalValue: `${unitSelected.propertyPrice}.0`,
-        percentageToPay: values[0],
-        numberDues: fees,
-        separationValue: `${Number(separation) + Number(downPayment)}.0`,
-        paymentStartDate: '2024-12-30',
-        payments: [...formattedPayments],
-      }));
-    }*/
 
     console.log(datos);
 
@@ -217,15 +193,15 @@ const GenerateQuote = ({
 
       const responseData = await quoteCreated.json();
       console.log('respuesta de la cotizacion', responseData);
-
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessQuote((prevState) => 1);
+      // document
+      //   .querySelector(`.${styles.popSuccessCreated}`)
+      //   .classList.add(styles.activePopUp);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        // document
+        //   .querySelector(`.${styles.popSuccessCreated}`)
+        //   .classList.remove(styles.activePopUp);
         if (setRefreshFlag) {
           setRefreshFlag((prevState) => true);
           closePopUpPortal();
@@ -233,18 +209,19 @@ const GenerateQuote = ({
           dispatch(closePopUp());
           router.push('/opportunities');
         }
+        setTimeout(() => {
+          setSuccessQuote((prevState) => 0);
+        }, 500);
         // window.location.reload();
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
-
+      // document
+      //   .querySelector(`.${styles.popError}`)
+      //   .classList.add(styles.activePopUp);
+      setSuccessQuote((prevState) => 2);
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
-      }, 5000);
+        setSuccessQuote((prevState) => 0);
+      }, 2500);
       console.error(
         'Error en la respuesta del servidor (Creacion de oportunidad)'
       );
@@ -466,38 +443,13 @@ const GenerateQuote = ({
         </div>
       </form>
       <Portal>
-        <div className={`${styles.popSuccessCreated}`}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup2}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/check-circle.png" />
-                <span className={styles['pop-text']}>
-                  ¡Tú cotización ha sido creada con éxito!
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={`${styles.popError}`}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup3}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/error-circle.png" />
-                <span className={styles['pop-text']}>
-                  <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                  {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {successQuote === 1 && (
+          <SuccessPopUp
+            message={'¡Tú cotización ha sido creada con éxito!'}></SuccessPopUp>
+        )}
+        {successQuote === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
       </Portal>
     </>
   );

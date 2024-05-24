@@ -76,19 +76,24 @@
   background-size: cover;
   position: relative;
   z-index: 3;
-  background-color: #000000bf;
+  background-color: #00000055;
 }
 
 .descripcion {
-  width: 500px;
+  width: 30%;
   height: 100%;
-  right: 0;
+  right: -30%;
   display: flex;
   flex-direction: column;
   background-color: #343434;
   position: absolute;
   z-index: 5;
   color: #fff;
+  transition: all 0.35s ease-in-out;
+}
+
+.active .descripcion {
+  right: 0;
 }
 
 .title-descripcion {

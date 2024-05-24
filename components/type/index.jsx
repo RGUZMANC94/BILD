@@ -1,7 +1,10 @@
 // import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
 import { useDispatch } from 'react-redux';
-import { changeTypeSelected } from '../../redux/typeSelectedSlice';
+import {
+  changeTypeSelected,
+  updateImgTypeSelected,
+} from '../../redux/typeSelectedSlice';
 import { changeTypeEdit } from '../../redux/editObjectSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
 import Button from '../button';
@@ -39,6 +42,13 @@ const TypeCard = ({
         });
         itemsDrag[index].classList.add('active');
         dispatch(changeTypeSelected(index));
+        dispatch(
+          updateImgTypeSelected(
+            type.image[0] !== '' && type.image[0]
+              ? `${type.image[0].url}`
+              : '/images/tipo-1.png'
+          )
+        );
         console.log('Tipo seleccionado: ', type.Tipo);
         console.log('Index: ', index);
       }}>

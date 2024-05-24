@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../../redux/opportunitySelectedSlice';
 import { useState } from 'react';
 import Portal from '../../../HOC/portal';
+import { useRouter } from 'next/router';
+import { closePopUp } from '../../../redux/popUpOportunity';
 
 const PropertyConnected = ({ setIsCreated }) => {
+  const router = useRouter();
   const { id } = useSelector((state) => state.userState);
   const { contactSelected } = useSelector(
     (state) => state.contactOpportunityState
@@ -45,7 +48,7 @@ const PropertyConnected = ({ setIsCreated }) => {
       console.log('respuesta de creacion', oppCreated);
       console.log('hola paso creacio');
       const responseData = await oppCreated.json();
-
+      console.log(responseData);
       if (!oppCreated.ok) {
         document
           .querySelector(`.${styles.popError}`)
@@ -68,7 +71,12 @@ const PropertyConnected = ({ setIsCreated }) => {
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
         dispatch(changeOpportunitySelected(responseData.saleOpportunity));
-        setIsCreated(true);
+        // setIsCreated(true);
+        router.push({
+          pathname: '/opportunities',
+          hash: responseData.saleOpportunity,
+        });
+        dispatch(closePopUp());
       }, 2000);
     } catch (error) {
       console.error('Error al crear la oportunidad:', error);

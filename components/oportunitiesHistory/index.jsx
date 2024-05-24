@@ -10,6 +10,8 @@ import GenerateQuote from '../createOportunity/generateQuote';
 import BackgroundPopUp from '../backgroundPopUp';
 import AddEvents from '../createOportunity/addEvents';
 import BildContext from '../context/index';
+import SuccessPopUp from '../successPopUp';
+import ErrorPopUp from '../errorPopUp';
 
 const OportunitiesHistory = ({
   opportunitySelected,
@@ -27,6 +29,8 @@ const OportunitiesHistory = ({
   const [showAllEvents, setShowAllEvents] = useState(false);
   const [generateQuote, setGenerateQuote] = useState(false);
   const [addEvents, setAddEvents] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isOpportunityDeleted, setIsOpportunityDeleted] = useState(0);
   const [animateCloseGenerateQuote, setAnimateCloseGenerateQuote] =
     useState(false);
   console.log(quicksand);
@@ -214,9 +218,17 @@ const OportunitiesHistory = ({
       if (!oppCreated.ok) {
         throw new Error('Failed to delete opportunity');
       }
-
-      setRefreshFlag((prevState) => !prevState);
+      setIsOpportunityDeleted((prevState) => 1);
+      setTimeout(() => {
+        setRefreshFlag((prevState) => !prevState);
+        setIsOpportunityDeleted((prevState) => 0);
+      }, 2500);
     } catch (error) {
+      setErrorMessage((prevState) => error);
+      setIsOpportunityDeleted((prevState) => 2);
+      setTimeout(() => {
+        setIsOpportunityDeleted((prevState) => 0);
+      }, 2500);
       console.error('Error al eliminar la oportunidad:', error);
     }
     // setShowDeletedPop(false);
@@ -514,6 +526,18 @@ const OportunitiesHistory = ({
               setRefreshFlag={getEventsSelected}
             />
           </BackgroundPopUp>
+        </Portal>
+      )}
+      {isOpportunityDeleted !== 0 && (
+        <Portal>
+          {isOpportunityDeleted === 1 && (
+            <SuccessPopUp
+              message={'¡La oportunidad ha sido eliminada con éxtio!'}
+            />
+          )}
+          {isOpportunityDeleted === 2 && (
+            <ErrorPopUp errorMessage={errorMessage} />
+          )}
         </Portal>
       )}
       {addEvents && (

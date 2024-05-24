@@ -11,7 +11,9 @@ const AddContact = ({
   const dispatch = useDispatch();
   const [isShow, setIsShow] = useState(false);
   useEffect(() => {
-    setIsShow(true);
+    setTimeout(() => {
+      setIsShow(true);
+    }, 100);
   }, []);
   const [sortedContacts, setSortedContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');

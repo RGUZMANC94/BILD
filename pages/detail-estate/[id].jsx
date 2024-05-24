@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
 import InfoProject from '../../components/infoProject';
@@ -88,7 +88,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
     getProject();
   }, [refreshProjects]);
 
-  const getTypes = async () => {
+  const getTypes = useCallback(async () => {
     const response = await fetch('/api/types', {
       method: 'post',
       headers: {
@@ -105,9 +105,9 @@ const DetailState = ({ unitsInit, typesInit }) => {
     const typesResponse = await response.json();
     console.log('Otros tipos:', typesResponse);
     setTypes(typesResponse.length ? typesResponse : []);
-  };
+  }, []);
 
-  const getUnits = async () => {
+  const getUnits = useCallback(async () => {
     const response = await fetch('/api/units', {
       method: 'post',
       headers: {
@@ -124,7 +124,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
     const unitsResponse = await response.json();
     console.log('Otros unidades:', unitsResponse);
     setUnits(unitsResponse.length ? unitsResponse : []);
-  };
+  }, []);
 
   useEffect(() => {
     if (typeFlag) {

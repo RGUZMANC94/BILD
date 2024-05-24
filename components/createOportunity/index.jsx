@@ -21,6 +21,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
   const { unitSelected } = useSelector((state) => state.unitState);
   const [refreshFlag, setRefreshFlag] = useState(false);
   const dispatch = useDispatch();
+  const { imgTypeSelected } = useSelector((state) => state.typeState);
 
   console.log('---showPopUp', showPopUp);
   console.log('isConnected', isConnected);
@@ -81,7 +82,9 @@ const CreateOportunity = ({ created, recentContacts }) => {
           </div>
         </header>
 
-        <section className={styles.main}>
+        <section
+          className={styles.main}
+          style={{ backgroundImage: `url(${imgTypeSelected})` }}>
           {isCreated ? (
             <OportunityCreated
               setShowPopUp={setShowPopUp}
