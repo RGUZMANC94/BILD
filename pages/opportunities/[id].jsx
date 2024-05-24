@@ -27,9 +27,6 @@ export const getServerSideProps = async ({
       throw new Error('Bad response from server');
     }
     const oportunities = await response.json();
-    console.log(oportunities);
-    console.log(id);
-    console.log(userid);
     return {
       props: {
         oportunities,

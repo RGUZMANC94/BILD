@@ -3,12 +3,47 @@ import Link from 'next/link';
 import Button from '../../components/button';
 import styles from './styles.module.css';
 import { useSelector } from 'react-redux';
+import { parseCookies } from '../../utils/parseCookies';
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+  query: { id },
+}) => {
+  const { userid } = parseCookies(cookie);
 
-const Documentation = () => {
+  try {
+    const response = await fetch(
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${userid}`
+    );
+    if (!response.ok) {
+      throw new Error('Bad response from server');
+    }
+    const contact = await response.json();
+    console.log(contact);
+    contact[0].idCli = id;
+    return {
+      props: {
+        contact,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        error,
+      },
+    };
+  }
+};
+const Documentation = ({ contact }) => {
   const { id } = useSelector((state) => state.userState);
-  const { contactListSelected } = useSelector(
-    (state) => state.contactOpportunityState
-  );
+  const contactListSelected = contact[0];
+  console.log(contact);
+  console.log(contact[0]);
+  console.log(contactListSelected);
+  // const { contactListSelected } = useSelector(
+  //   (state) => state.contactOpportunityState
+  // );
 
   const [docSelected, setDocSelected] = useState('');
   const featuredProject = useRef(null);
@@ -249,7 +284,7 @@ const Documentation = () => {
           <div
             className={
               styles.title
-            }>{`Documentación de ${contactListSelected.name} ${contactListSelected.lastname}`}</div>
+            }>{`Documentación de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
         </div>
       </div>
       <div className={styles['doc-perfil']}>
@@ -267,20 +302,28 @@ const Documentation = () => {
           <span
             className={
               styles['name-perfil']
-            }>{`${contactListSelected.name} ${contactListSelected.lastname}`}</span>
+            }>{`${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</span>
           <div className={styles['id-perfil']}>
             <img src="/images/id.png" />
-            {`${contactListSelected.name}`} Bogotá D.C
+            {`${contactListSelected.firstNames}`} Bogotá D.C
           </div>
           <div className={styles['perfil-icons']}>
             <div className={styles['perfil-icon']}>
-              <img src="/images/phone-profile.png" />
+              <a href={`tel:+54${contactListSelected.phoneNumber}`}>
+                <img src="/images/phone-profile.png" />
+              </a>
             </div>
             <div className={styles['perfil-icon']}>
-              <img src="/images/mail-profile.png" />
+              <a href={`mailto:${contactListSelected.email}`}>
+                <img src="/images/mail-profile.png" />
+              </a>
             </div>
             <div className={styles['perfil-icon']}>
-              <img src="/images/whats-profile.png" />
+              <a
+                target="_blank"
+                href={`https://wa.me/${contactListSelected.phoneNumber}`}>
+                <img src="/images/whats-profile.png" />
+              </a>
             </div>
           </div>
         </div>
