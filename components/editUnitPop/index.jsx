@@ -4,6 +4,7 @@ import styles from './Edit-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
+import CurrencyInput from 'react-currency-input-field';
 
 const EditUnitPop = ({
   showEditUnit,
@@ -47,6 +48,13 @@ const EditUnitPop = ({
     propertyPrice: '',
     piso: '1',
   });
+
+  const handlePrice = (nuevoValor) => {
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      propertyPrice: nuevoValor,
+    }));
+  };
 
   useEffect(() => {
     if (unitEdit) {
@@ -270,12 +278,16 @@ const EditUnitPop = ({
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelInputTitle}>Precio:</span>
-                <input
-                  type="text"
+                <CurrencyInput
+                  className={styles.inputTypeForm}
+                  prefix="$ "
+                  decimalSeparator=","
+                  groupSeparator="."
                   name="propertyPrice"
                   value={datos.propertyPrice}
-                  className={styles.inputTypeForm}
-                  onChange={handleChange}
+                  placeholder={'$ 0'}
+                  decimalsLimit={0}
+                  onValueChange={(value) => handlePrice(value)}
                   required
                 />
               </label>

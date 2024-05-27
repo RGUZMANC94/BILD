@@ -4,6 +4,7 @@ import styles from './Add-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
+import CurrencyInput from 'react-currency-input-field';
 
 const AddUnitPop = ({
   showPopUpUnit,
@@ -44,9 +45,16 @@ const AddUnitPop = ({
     view: 'E',
     parkingPrice: '0.0',
     storageAreaPrice: '0.0',
-    propertyPrice: '',
+    propertyPrice: 0,
     piso: '1',
   });
+
+  const handlePrice = (nuevoValor) => {
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      propertyPrice: nuevoValor,
+    }));
+  };
 
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
@@ -232,6 +240,8 @@ const AddUnitPop = ({
     });
   };
 
+  console.log('Datos:', datos.propertyPrice);
+
   return (
     <>
       <div
@@ -277,12 +287,16 @@ const AddUnitPop = ({
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
                 <span className={styles.labelInputTitle}>Precio:</span>
-                <input
-                  type="text"
+                <CurrencyInput
+                  className={styles.inputTypeForm}
+                  prefix="$ "
+                  decimalSeparator=","
+                  groupSeparator="."
                   name="propertyPrice"
                   value={datos.propertyPrice}
-                  className={styles.inputTypeForm}
-                  onChange={handleChange}
+                  placeholder={'$ 0'}
+                  decimalsLimit={0}
+                  onValueChange={(value) => handlePrice(value)}
                   required
                 />
               </label>
