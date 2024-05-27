@@ -21,21 +21,34 @@ const PropertyConnected = ({ setIsCreated }) => {
       idProject: unitSelected.projectId,
       idClient: contactSelected.idCli,
       comment: '',
-      origin: '',
+      origin: '845001',
       cycleSale: '',
       stageSale: '',
       idAdviser: '',
   });
+  const [originTemp, setOriginTemp] = useState('');
+
+  console.log('originTemp: ', originTemp);
 
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
+  
+  const handleTemp = (e) => {
+    setOriginTemp(e.target.value);
+  };
 
+  useEffect(() => {
+    if (originTemp === 'other') {
+      setEnableTextarea(true);
+      document.querySelector(`.${styles.message_input}`).focus();
+    } else {
+      setEnableTextarea(false);
+    }
+  }, [originTemp]);
 
   const sendFormInfo = async (e) => {
     e.preventDefault();
-    
-  
 
     try {
       const oppCreated = await fetch('/api/createOpportunity', {
@@ -107,16 +120,6 @@ const PropertyConnected = ({ setIsCreated }) => {
     }
   };
 
-  useEffect(() => {
-    if (datos.origin === 'other') {
-      setEnableTextarea(true);
-      document.querySelector(`.${styles.message_input}`).focus();
-    } else {
-      setEnableTextarea(false);
-    }
-  }, [datos.origin]);
-
-
   return (
     <>
       <form className={styles['contacto-wrap']} onSubmit={sendFormInfo}>
@@ -144,11 +147,11 @@ const PropertyConnected = ({ setIsCreated }) => {
           <span className={styles['text-origen']}>Origen del contacto:</span>
           <div className={styles['elegir-origen']}>
             <select
-              onChange={handleChange}
               placeholder="Subject line"
-              name="origin"
               className={styles.subject_input}
-              value={datos.origin}
+              name="originTemp"
+              value={originTemp}
+              onChange={handleTemp}
               required>
               <option value={'None'} disabled hidden selected>
                 Seleccione origen
