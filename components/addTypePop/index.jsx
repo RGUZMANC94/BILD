@@ -26,7 +26,7 @@ const AddTypePop = ({
     bed: '',
     bath: '',
     privateArea: '',
-    terraceArea:'',
+    terraceArea: '',
     balconyArea: '',
     storageArea: '',
     priceStorage: '0',

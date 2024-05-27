@@ -1,7 +1,7 @@
 import styles from './property-connected.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../../redux/opportunitySelectedSlice';
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Portal from '../../../HOC/portal';
 import { useRouter } from 'next/router';
 import { closePopUp } from '../../../redux/popUpOportunity';
@@ -18,13 +18,13 @@ const PropertyConnected = ({ setIsCreated }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [datos, setDatos] = useState({
     idProperty: unitSelected.idProperty,
-      idProject: unitSelected.projectId,
-      idClient: contactSelected.idCli,
-      comment: '',
-      origin: '845001',
-      cycleSale: '',
-      stageSale: '',
-      idAdviser: '',
+    idProject: unitSelected.projectId,
+    idClient: contactSelected.idCli,
+    comment: '',
+    origin: '845001',
+    cycleSale: '',
+    stageSale: '',
+    idAdviser: '',
   });
   const [originTemp, setOriginTemp] = useState('');
 
@@ -33,7 +33,7 @@ const PropertyConnected = ({ setIsCreated }) => {
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
-  
+
   const handleTemp = (e) => {
     setOriginTemp(e.target.value);
   };
@@ -61,8 +61,7 @@ const PropertyConnected = ({ setIsCreated }) => {
           datos,
         }),
       });
-      
-      
+
       if (!oppCreated.ok) {
         const errorMessage = await oppCreated.text();
         console.log('Error FInal: ', errorMessage);
@@ -179,38 +178,38 @@ const PropertyConnected = ({ setIsCreated }) => {
         </div>
       </form>
       <Portal>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Su proyecto ha sido creado con éxito!
-              </span>
+        <div className={`${styles.popSuccessCreated}`}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup2}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/check-circle.png" />
+                <span className={styles['pop-text']}>
+                  ¡Su proyecto ha sido creado con éxito!
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
+        <div className={`${styles.popError} `}>
+          <div className={styles.bgPopUp}></div>
+          <div className={styles.popup3}>
+            <div className={styles.content}>
+              <div className={styles['icon-box']}>
+                <img src="/images/error-circle.png" />
+                <span className={styles['pop-text']}>
+                  <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+                  {`Algo no
                 está bien.${
                   errorMessage
                     ? `\n${errorMessage}`
                     : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
                 }.`}
-              </span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </Portal>
     </>
   );

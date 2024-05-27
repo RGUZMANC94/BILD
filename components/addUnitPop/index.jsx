@@ -371,11 +371,11 @@ const AddUnitPop = ({
                     />
                   </label>
 
-                  
-
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={styles.labelInputTitle}>Area terraza:</span>
+                    <span className={styles.labelInputTitle}>
+                      Area terraza:
+                    </span>
                     <input
                       type="text"
                       name="terraceArea"

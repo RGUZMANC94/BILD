@@ -353,20 +353,18 @@ const EditUnitPop = ({
                   />
                 </label>
 
-                
-
-              <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Area terraza:</span>
-                <input
-                  type="text"
-                  name="terraceArea"
-                  value={datos.terraceArea}
-                  className={styles.inputTypeForm}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
+                <label
+                  className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                  <span className={styles.labelInputTitle}>Area terraza:</span>
+                  <input
+                    type="text"
+                    name="terraceArea"
+                    value={datos.terraceArea}
+                    className={styles.inputTypeForm}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
