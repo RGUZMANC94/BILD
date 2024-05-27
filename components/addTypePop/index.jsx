@@ -26,6 +26,7 @@ const AddTypePop = ({
     bed: '',
     bath: '',
     privateArea: '',
+    terraceArea:'',
     balconyArea: '',
     storageArea: '',
     priceStorage: '0',
@@ -312,6 +313,19 @@ const AddTypePop = ({
                   type="text"
                   name="privateArea"
                   value={datos.privateArea}
+                  className={styles.inputTypeForm}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label
+                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                <span className={styles.labelInputTitle}>Area terraza:</span>
+                <input
+                  type="text"
+                  name="terraceArea"
+                  value={datos.terraceArea}
                   className={styles.inputTypeForm}
                   onChange={handleChange}
                   required
