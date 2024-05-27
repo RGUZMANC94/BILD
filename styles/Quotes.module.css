@@ -531,9 +531,9 @@
     margin-bottom: 150px;
   }
 
-  .submenu {
+  /* .submenu {
     bottom: 93px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 959px) {

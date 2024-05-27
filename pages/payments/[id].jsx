@@ -4,11 +4,41 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Button from '../../components/button';
+import { parseCookies } from '../../utils/parseCookies';
 
-const PaymentDetail = () => {
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+  query: { id },
+}) => {
+  const { userid } = parseCookies(cookie);
+  try {
+    const response = await fetch(
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPrice?username=${req.body.id}&idSaleOp=${req.body.idSaleOp}&iddpf=${req.body.iddpf}&idClient=${req.body.idClient}`
+    );
+    if (!response.ok) {
+      throw new Error('Bad response from server');
+    }
+    const resQuotes = await response.json();
+    return {
+      props: {
+        resQuotes,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        error: 'Error in request',
+      },
+    };
+  }
+};
+
+const PaymentDetail = ({ resQuotes }) => {
   const router = useRouter();
   const { id } = useSelector((state) => state.userState);
-  const [quotes, setQuotes] = useState(null);
+  const [quotes, setQuotes] = useState(resQuotes);
   const [updateFlag, setUpdateFlag] = useState(false);
   const [opportunitySelected, setOpportunitySelected] = useState(null);
   const [pdfURL, setPdfURL] = useState(null);
@@ -48,7 +78,7 @@ const PaymentDetail = () => {
   }, [updateFlag]);
 
   useEffect(() => {
-    getPrices();
+    // getPrices();
     getOpportunity();
   }, []);
 
@@ -236,23 +266,25 @@ const PaymentDetail = () => {
                         }}>
                         <img src="/images/pdf-icon-white.svg" />
                       </div>
-                      {opportunitySelected.stageCycleSaleOp ===
-                        'Separacion' && (
-                        <Button
-                          buttonType={'primary'}
-                          iconImage={false}
-                          label={'Pago'}
-                          inheritClass={styles.buttonPayment}
-                          clickFunction={() =>
-                            payment(
-                              quotes.separationValue,
-                              0,
-                              quotes.idPortfolio
-                            )
-                          }
-                        />
-                      )}
-                      <div className={styles.empty}></div>
+
+                      <div className={styles.empty}>
+                        {opportunitySelected.stageCycleSaleOp ===
+                          'Separacion' && (
+                          <Button
+                            buttonType={'primary'}
+                            iconImage={false}
+                            label={'Pago'}
+                            inheritClass={styles.buttonPayment}
+                            clickFunction={() =>
+                              payment(
+                                quotes.separationValue,
+                                0,
+                                quotes.idPortfolio
+                              )
+                            }
+                          />
+                        )}
+                      </div>
                     </div>
 
                     <div className={styles['blue-point']}></div>

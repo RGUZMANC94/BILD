@@ -83,6 +83,11 @@ i.fa-solid.fa-user {
   font-size: 16px;
   font-weight: 500;
 }
+
+.recientes .conecta-contacto{
+  margin-bottom: 12.5px;
+}
+
 .contact {
   display: flex;
   flex-direction: row;
@@ -91,24 +96,25 @@ i.fa-solid.fa-user {
   font-size: 12px;
   font-weight: 300;
   width: 100%;
-  margin-bottom: 15px;
+  padding: 7.5px;
   text-align: left;
   cursor: pointer;
   transform: translateX(0px);
   transition: all 0.25s ease-in-out;
 }
 
+.contact:hover {
+  /* transform: translateX(-10px); */
+  background-color: #262824;
+}
+
 .contact img {
   margin-right: 1vh;
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.contact:hover {
-  transform: translateX(-10px);
 }
 
 @media only screen and (max-width: 768px) {

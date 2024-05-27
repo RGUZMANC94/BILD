@@ -51,6 +51,7 @@
 .pagos-section > div {
   /*justify-content: space-around;*/
   gap: 40px;
+  flex-wrap: wrap;
 }
 
 .pagos-box {

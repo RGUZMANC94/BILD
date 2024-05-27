@@ -156,6 +156,10 @@ i.fa-solid.fa-angle-left {
   z-index: 2;
 }
 
+.wrap-right::-webkit-scrollbar{
+  display: none;
+}
+
 .card-unit-list {
   width: 100%;
   transition: all 0.5s linear;

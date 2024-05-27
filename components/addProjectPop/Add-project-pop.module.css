@@ -32,7 +32,7 @@
 
 .wrapperTypePopUp {
   position: relative;
-  width: 500px;
+  width: 30%;
   height: 100%;
   background-color: #343434;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
@@ -293,7 +293,7 @@
 }
 
 .buttonCreateType {
-  width: 195px;
+  width: calc(50% - 10px);
   height: 45px;
   font-size: 14px;
 }
@@ -719,6 +719,12 @@
 .activeZone.blue-border {
   transform: scale(1.01);
   border: 2px dashed #2466ff;
+}
+
+@media only screen and (max-width: 1380px){
+  .wrapperTypePopUp{
+    width: 40%;
+  }
 }
 
 @media only screen and (max-width: 768px) {

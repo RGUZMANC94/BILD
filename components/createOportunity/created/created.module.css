@@ -386,6 +386,7 @@
   background-image: url(/images/tipo-glass-pink.svg);
   width: 37px;
   height: 37px;
+  cursor: pointer;
 }
 
 /* popup*/

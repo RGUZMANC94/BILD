@@ -3,7 +3,7 @@
 }
 
 .perfil {
-  width: 90%;
+  width: 100%;
   max-width: 1600px;
   margin: 150px auto 0;
   height: auto;
@@ -25,9 +25,9 @@
 }
 
 .containerEditarPerfil {
-  width: 100%;
   margin: 0 auto;
   position: relative;
+  width: 100%;
 }
 
 .pendientes {
@@ -124,7 +124,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 80%;
+  width: auto;
   height: auto;
   margin: 0 auto;
   margin-top: 20px;
@@ -148,6 +148,9 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
+  width: calc(100% - 64px);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .admin-img-container {
@@ -156,12 +159,22 @@
   height: auto;
 }
 
+.admin-img-container img {
+  width: 22px;
+  height: 22px;
+}
+
 .admin-edit-container {
   width: 10%;
   height: auto;
   display: flex;
   align-items: center;
   flex-direction: row;
+}
+
+.admin-edit-container img {
+  width: 22px;
+  height: 22px;
 }
 
 .informacion-perfil {
@@ -413,8 +426,8 @@
 
 .perfil-img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto;
   margin-bottom: 20px;
 }

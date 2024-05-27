@@ -132,8 +132,13 @@ const Contacts = () => {
                   </div>
                   <div className={styles['reciente-col']}>{contact.email}</div>
                   <div className={styles.number}>
-                    {`+57 ${contact.phoneNumber}`}
-                    <img src="/images/whastapp-blue.png" />
+                    <a
+                      href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                      target="_blank"
+                      className={styles['whastapp-icon']}>
+                      {`+57 ${contact.phoneNumber}`}
+                      <img src="/images/whastapp-blue.png" />
+                    </a>
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>

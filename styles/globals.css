@@ -222,6 +222,13 @@ li {
   background-color: #2467ff;
   width: 25px;
   height: 25px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  transform: scale(1);
+}
+
+.editProjectDetailState:active {
+  transform: scale(0.8);
 }
 
 .selectFilterProject {
@@ -366,6 +373,7 @@ li {
   background-image: url(/images/tipo-glass-pink.svg);
   width: 37px;
   height: 37px;
+  cursor: pointer;
 }
 
 .tipo-info {
@@ -532,6 +540,12 @@ li {
   background-repeat: no-repeat;
   width: 50px;
   height: 30px;
+  transition: all 0.1s ease-in-out;
+  transform: scale(1);
+}
+
+.edit-type:active {
+  transform: scale(0.8);
 }
 
 .edit-unit {
@@ -545,6 +559,12 @@ li {
   background-image: url(/images/edit.svg);
   width: 25px;
   height: 25px;
+  transition: all 0.1s ease-in-out;
+  transform: scale(1);
+}
+
+.edit-unit:active {
+  transform: scale(0.8);
 }
 
 .editValues .edit-unit {
@@ -1173,8 +1193,9 @@ li.active button {
   .unidadesSide {
     margin-bottom: 0px;
   }
-  .outerTypes {
-    /*margin-bottom: 90px;*/
+  .top-donwload,
+  .top-upload {
+    width: calc(50% - 10px);
   }
 }
 @media only screen and (max-width: 990px) {

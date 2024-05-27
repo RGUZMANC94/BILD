@@ -66,6 +66,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-bottom: 30px;
 }
 
 .card-container {
@@ -151,6 +152,11 @@ i.fa-solid.fa-angle-left {
   padding-bottom: 30px;
   padding-right: 10px;
   height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.wrap-right::-webkit-scrollbar {
+  display: none;
 }
 
 .card-unit-list {
