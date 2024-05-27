@@ -128,6 +128,7 @@ const AddUnitPop = ({
     console.log('Datos a enviar:', updatedDatos);
 
     if (!optionalPop) {
+      delete updatedDatos.terraceArea;
       delete updatedDatos.privateArea;
       delete updatedDatos.balconyArea;
       delete updatedDatos.storageArea;
@@ -300,19 +301,6 @@ const AddUnitPop = ({
                   required
                 />
               </label>
-
-              <label
-                className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Area terraza:</span>
-                <input
-                  type="text"
-                  name="terraceArea"
-                  value={datos.terraceArea}
-                  className={styles.inputTypeForm}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
             </div>
 
             <div className={styles.squareInputContainer}>
@@ -380,6 +368,21 @@ const AddUnitPop = ({
                       value={datos.privateArea}
                       className={styles.inputTypeForm}
                       onChange={handleChange}
+                    />
+                  </label>
+
+                  
+
+                  <label
+                    className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
+                    <span className={styles.labelInputTitle}>Area terraza:</span>
+                    <input
+                      type="text"
+                      name="terraceArea"
+                      value={datos.terraceArea}
+                      className={styles.inputTypeForm}
+                      onChange={handleChange}
+                      required
                     />
                   </label>
 

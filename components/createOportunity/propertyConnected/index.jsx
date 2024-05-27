@@ -1,7 +1,7 @@
 import styles from './property-connected.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../../redux/opportunitySelectedSlice';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import Portal from '../../../HOC/portal';
 import { useRouter } from 'next/router';
 import { closePopUp } from '../../../redux/popUpOportunity';
@@ -15,24 +15,27 @@ const PropertyConnected = ({ setIsCreated }) => {
   const { unitSelected } = useSelector((state) => state.unitState);
   const dispatch = useDispatch();
   const [enableTextarea, setEnableTextarea] = useState(false);
-
-  const sendFormInfo = async (e) => {
-    e.preventDefault();
-    const datos = {
-      idProperty: unitSelected.idProperty,
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [datos, setDatos] = useState({
+    idProperty: unitSelected.idProperty,
       idProject: unitSelected.projectId,
       idClient: contactSelected.idCli,
+      comment: '',
+      origin: '',
       cycleSale: '',
       stageSale: '',
       idAdviser: '',
-    };
+  });
 
-    console.log(
-      JSON.stringify({
-        id,
-        datos,
-      })
-    );
+  const handleChange = (e) => {
+    setDatos({ ...datos, [e.target.name]: e.target.value });
+  };
+
+
+  const sendFormInfo = async (e) => {
+    e.preventDefault();
+    
+  
 
     try {
       const oppCreated = await fetch('/api/createOpportunity', {
@@ -45,22 +48,34 @@ const PropertyConnected = ({ setIsCreated }) => {
           datos,
         }),
       });
-      console.log('respuesta de creacion', oppCreated);
-      console.log('hola paso creacio');
-      const responseData = await oppCreated.json();
-      console.log(responseData);
+      
+      
       if (!oppCreated.ok) {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.add(styles.activePopUp);
-
-        setTimeout(() => {
-          document
-            .querySelector(`.${styles.popError}`)
-            .classList.remove(styles.activePopUp);
-        }, 2000);
-        throw new Error('Failed to create opportunity');
+        const errorMessage = await oppCreated.text();
+        console.log('Error FInal: ', errorMessage);
+        try {
+          const errorObj = JSON.parse(errorMessage);
+          if (errorObj && errorObj.error) {
+            const errorDescription = errorObj.error.match(
+              /"Description":"([^"]*)"/
+            )[1];
+            const decodedErrorDescription = errorDescription.replace(
+              /\\u[\dA-F]{4}/gi,
+              (match) =>
+                String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16))
+            );
+            console.log('Error Description:', decodedErrorDescription);
+            setErrorMessage(decodedErrorDescription);
+          } else {
+            console.log('Error object or error property not found');
+          }
+        } catch (error) {
+          console.log('Error parsing JSON:', error);
+        }
+        throw new Error(errorMessage);
       }
+
+      const responseData = await oppCreated.json();
 
       document
         .querySelector(`.${styles.popSuccessCreated}`)
@@ -79,19 +94,28 @@ const PropertyConnected = ({ setIsCreated }) => {
         dispatch(closePopUp());
       }, 2000);
     } catch (error) {
-      console.error('Error al crear la oportunidad:', error);
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 5000);
+      console.error('Error al crear el oportunidad:', error.message);
     }
   };
 
-  const toggleTextarea = (e) => {
-    if (e.target.value === 'other') {
-      console.log('first');
+  useEffect(() => {
+    if (datos.origin === 'other') {
       setEnableTextarea(true);
       document.querySelector(`.${styles.message_input}`).focus();
-      return;
+    } else {
+      setEnableTextarea(false);
     }
-    setEnableTextarea(false);
-  };
+  }, [datos.origin]);
+
 
   return (
     <>
@@ -120,23 +144,26 @@ const PropertyConnected = ({ setIsCreated }) => {
           <span className={styles['text-origen']}>Origen del contacto:</span>
           <div className={styles['elegir-origen']}>
             <select
-              onChange={(e) => toggleTextarea(e)}
+              onChange={handleChange}
               placeholder="Subject line"
-              name="subject"
+              name="origin"
               className={styles.subject_input}
+              value={datos.origin}
               required>
-              <option disabled hidden selected>
+              <option value={'None'} disabled hidden selected>
                 Seleccione origen
               </option>
-              <option>Sucesión de propiedad</option>
-              <option>Recomendación</option>
+              <option value={'Sucesion'}>Sucesión de propiedad</option>
+              <option value={'Recomendacion'}>Recomendación</option>
               <option value={'other'}>Otro</option>
             </select>
             <div className="name-field">
-              <span className={styles.label}>Descripción:</span>
+              <span className={`${styles.label}`}>Descripción:</span>
               <textarea
                 disabled={!enableTextarea}
-                name="message"
+                onChange={handleChange}
+                name="comment"
+                value={datos.comment}
                 placeholder=""
                 className={styles.message_input}></textarea>
             </div>
@@ -149,34 +176,38 @@ const PropertyConnected = ({ setIsCreated }) => {
         </div>
       </form>
       <Portal>
-        <div className={`${styles.popSuccessCreated}`}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup2}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/check-circle.png" />
-                <span className={styles['pop-text']}>
-                  ¡Tú oportunidad ha sido creada con éxito!
-                </span>
-              </div>
+      <div className={`${styles.popSuccessCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                ¡Su proyecto ha sido creado con éxito!
+              </span>
             </div>
           </div>
         </div>
-        <div className={`${styles.popError} `}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup3}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/error-circle.png" />
-                <span className={styles['pop-text']}>
-                  <span className={styles['pop-text-bold']}>¡Oops!</span> Algo
-                  no está bien. Parece que esta unidad ya tiene una oportunidad
-                  asignada.
-                </span>
-              </div>
+      </div>
+      <div className={`${styles.popError} `}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+                {`Algo no
+                está bien.${
+                  errorMessage
+                    ? `\n${errorMessage}`
+                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+                }.`}
+              </span>
             </div>
           </div>
         </div>
+      </div>
       </Portal>
     </>
   );
