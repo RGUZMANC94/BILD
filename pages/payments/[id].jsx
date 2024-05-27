@@ -21,9 +21,10 @@ export const getServerSideProps = async ({
       throw new Error('Bad response from server');
     }
     const resQuotes = await response.json();
+    const filterQuote = resQuotes.find((pago) => pago.type === 'IV');
     return {
       props: {
-        resQuotes,
+        filterQuote,
       },
     };
   } catch (error) {
@@ -35,10 +36,10 @@ export const getServerSideProps = async ({
   }
 };
 
-const PaymentDetail = ({ resQuotes }) => {
+const PaymentDetail = ({ filterQuote }) => {
   const router = useRouter();
   const { id } = useSelector((state) => state.userState);
-  const [quotes, setQuotes] = useState(resQuotes);
+  const [quotes, setQuotes] = useState(filterQuote);
   const [updateFlag, setUpdateFlag] = useState(false);
   const [opportunitySelected, setOpportunitySelected] = useState(null);
   const [pdfURL, setPdfURL] = useState(null);
