@@ -124,7 +124,7 @@ const GenerateQuote = ({
   const handleFeeChange = (value, index) => {
     const newFeesArray = [...feesArray];
     newFeesArray[index] = value;
-    setFeesArray(prevState => [...newFeesArray]);
+    setFeesArray((prevState) => [...newFeesArray]);
   };
 
   const renderDynamicInputs = () => {
@@ -156,8 +156,9 @@ const GenerateQuote = ({
     const feeValue = Math.floor(balanceInitialQuote / fees);
     const remainder = balanceInitialQuote % fees;
 
+    // eslint-disable-next-line no-confusing-arrow
     const initialFeesArray = Array.from({ length: fees }, (_, i) =>
-      (i < remainder ? feeValue + 1 : feeValue)
+      i < remainder ? feeValue + 1 : feeValue
     );
 
     setFeesArray(initialFeesArray);

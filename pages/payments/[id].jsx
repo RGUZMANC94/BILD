@@ -15,7 +15,7 @@ export const getServerSideProps = async ({
   const { userid } = parseCookies(cookie);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPrice?username=${req.body.id}&idSaleOp=${req.body.idSaleOp}&iddpf=${req.body.iddpf}&idClient=${req.body.idClient}`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPrice?username=${userid}&idSaleOp=${id}&iddpf=&idClient=`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');

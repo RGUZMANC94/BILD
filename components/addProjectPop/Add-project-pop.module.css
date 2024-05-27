@@ -720,8 +720,8 @@
   border: 2px dashed #2466ff;
 }
 
-@media only screen and (max-width: 1380px){
-  .wrapperTypePopUp{
+@media only screen and (max-width: 1380px) {
+  .wrapperTypePopUp {
     width: 40%;
   }
 }
