@@ -729,7 +729,7 @@ const CreateProject = () => {
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú proyecto ha sido creada con éxito!
+                ¡Tú proyecto ha sido creado con éxito!
               </span>
             </div>
           </div>

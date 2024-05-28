@@ -653,7 +653,7 @@ const EditProjectPop = ({
             <div className={styles['icon-box']}>
               <img src="/images/check-circle.png" />
               <span className={styles['pop-text']}>
-                ¡Tú unidad ha sido creada con éxito!
+                ¡El proyecto ha sido actualizado con éxito!
               </span>
             </div>
           </div>
@@ -671,7 +671,7 @@ const EditProjectPop = ({
                 está bien.${
                   errorMessage
                     ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+                    : '\nPor favor, revisa los datos ingresados e inténtalo de nuevo'
                 }.`}
               </span>
             </div>
