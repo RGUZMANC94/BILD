@@ -123,6 +123,7 @@ const GenerateQuote = ({
 
   const [totalModified, setTotalModified] = useState(0);
   const [nonModifiedValue, setNonModifiedValue] = useState(0);
+  const [lastModifiedIndex, setLastModifiedIndex] = useState(null);
 
   console.log('totalModified:', totalModified); 
   console.log('nonModifiedValue:', nonModifiedValue);
@@ -134,6 +135,7 @@ const GenerateQuote = ({
 
     if (event && event.target && event.target.id === 'unchanged') {
       event.target.id = 'modified';
+      setLastModifiedIndex(index);
     }
 
     setTotalModified(calculateTotalModified());
@@ -145,7 +147,11 @@ const GenerateQuote = ({
     setNonModifiedValue(calculateNonModifiedValue());
   }, [feesArray]);
 
-  
+  useEffect(() => {
+    if (lastModifiedIndex !== null) {
+      updateNonModifiedValues();
+    }
+  }, [lastModifiedIndex]);
 
   const renderDynamicInputs = () => {
     const inputs = [];
@@ -166,6 +172,7 @@ const GenerateQuote = ({
             onBlur={(event) => {
               if (event.target.id === 'unchanged') {
                 event.target.id = 'modified';
+                setLastModifiedIndex(i);
               }
               setTotalModified(calculateTotalModified());
               setNonModifiedValue(calculateNonModifiedValue());
@@ -205,6 +212,16 @@ const GenerateQuote = ({
     const nonModifiedCount = document.querySelectorAll('input#unchanged').length;
     if (nonModifiedCount === 0) {return 0;}
     return (balanceInitialQuote - totalModified) / nonModifiedCount;
+  };
+
+  const updateNonModifiedValues = () => {
+    const inputs = document.querySelectorAll('input#unchanged');
+    const newFeesArray = [...feesArray];
+    inputs.forEach((input, index) => {
+      const inputIndex = parseInt(input.name.split(' ')[1]) - 1;
+      newFeesArray[inputIndex] = nonModifiedValue;
+    });
+    setFeesArray(newFeesArray);
   };
 
   useEffect(() => {
