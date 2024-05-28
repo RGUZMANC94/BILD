@@ -125,14 +125,13 @@ const GenerateQuote = ({
   const [nonModifiedValue, setNonModifiedValue] = useState(0);
   const [lastModifiedIndex, setLastModifiedIndex] = useState(null);
 
-  console.log('totalModified:', totalModified); 
+  console.log('totalModified:', totalModified);
   console.log('nonModifiedValue:', nonModifiedValue);
 
   const handleFeeChange = (value, index, event) => {
     const newFeesArray = [...feesArray];
     newFeesArray[index] = value;
     setFeesArray((prevState) => [...newFeesArray]);
-
 
     if (event && event.target && event.target.id === 'unchanged') {
       event.target.id = 'modified';
@@ -170,7 +169,9 @@ const GenerateQuote = ({
             placeholder={`Cuota ${i + 1}`}
             value={feesArray[i]}
             decimalsLimit={0}
-            onValueChange={(value, name, event) => handleFeeChange(value, i, event)}
+            onValueChange={(value, name, event) =>
+              handleFeeChange(value, i, event)
+            }
             onBlur={(event) => {
               if (event.target.id === 'unchanged') {
                 event.target.id = 'modified';
@@ -202,7 +203,7 @@ const GenerateQuote = ({
   const calculateTotalModified = () => {
     const inputs = document.querySelectorAll('input#modified');
     let total = 0;
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       const value = parseFloat(input.value.replace(/[^0-9]/g, '')) || 0;
       total += value;
     });
@@ -211,8 +212,11 @@ const GenerateQuote = ({
 
   const calculateNonModifiedValue = () => {
     const totalModified = calculateTotalModified();
-    const nonModifiedCount = document.querySelectorAll('input#unchanged').length;
-    if (nonModifiedCount === 0) {return 0;}
+    const nonModifiedCount =
+      document.querySelectorAll('input#unchanged').length;
+    if (nonModifiedCount === 0) {
+      return 0;
+    }
     return (balanceInitialQuote - totalModified) / nonModifiedCount;
   };
 
