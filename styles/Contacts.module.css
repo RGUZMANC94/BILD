@@ -113,9 +113,8 @@
   flex-direction: column;
   transition: all 0.15s ease-in-out;
   background-color: #343434;
-  width: calc(100% + 20px);
+  width: 100%;
   padding: 0 10px;
-  margin-left: -10px;
 }
 
 .list-name:hover {
