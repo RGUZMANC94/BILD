@@ -133,10 +133,12 @@ const GenerateQuote = ({
     newFeesArray[index] = value;
     setFeesArray((prevState) => [...newFeesArray]);
 
+
     if (event && event.target && event.target.id === 'unchanged') {
       event.target.id = 'modified';
-      setLastModifiedIndex(index);
     }
+
+    setLastModifiedIndex(index);
 
     setTotalModified(calculateTotalModified());
     setNonModifiedValue(calculateNonModifiedValue());
@@ -151,7 +153,7 @@ const GenerateQuote = ({
     if (lastModifiedIndex !== null) {
       updateNonModifiedValues();
     }
-  }, [lastModifiedIndex]);
+  }, [totalModified, nonModifiedValue]);
 
   const renderDynamicInputs = () => {
     const inputs = [];
@@ -217,7 +219,7 @@ const GenerateQuote = ({
   const updateNonModifiedValues = () => {
     const inputs = document.querySelectorAll('input#unchanged');
     const newFeesArray = [...feesArray];
-    inputs.forEach((input, index) => {
+    inputs.forEach((input) => {
       const inputIndex = parseInt(input.name.split(' ')[1]) - 1;
       newFeesArray[inputIndex] = nonModifiedValue;
     });
