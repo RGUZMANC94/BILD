@@ -121,11 +121,31 @@ const GenerateQuote = ({
     }
   };
 
-  const handleFeeChange = (value, index) => {
+  const [totalModified, setTotalModified] = useState(0);
+  const [nonModifiedValue, setNonModifiedValue] = useState(0);
+
+  console.log('totalModified:', totalModified); 
+  console.log('nonModifiedValue:', nonModifiedValue);
+
+  const handleFeeChange = (value, index, event) => {
     const newFeesArray = [...feesArray];
     newFeesArray[index] = value;
     setFeesArray((prevState) => [...newFeesArray]);
+
+    if (event && event.target && event.target.id === 'unchanged') {
+      event.target.id = 'modified';
+    }
+
+    setTotalModified(calculateTotalModified());
+    setNonModifiedValue(calculateNonModifiedValue());
   };
+
+  useEffect(() => {
+    setTotalModified(calculateTotalModified());
+    setNonModifiedValue(calculateNonModifiedValue());
+  }, [feesArray]);
+
+  
 
   const renderDynamicInputs = () => {
     const inputs = [];
@@ -138,12 +158,19 @@ const GenerateQuote = ({
             prefix="$ "
             decimalSeparator=","
             groupSeparator="."
-            id={`Cuota ${i + 1}`}
             name={`downPayment ${i + 1}`}
             placeholder={`Cuota ${i + 1}`}
             value={feesArray[i]}
             decimalsLimit={0}
-            onValueChange={(value) => handleFeeChange(value, i)}
+            onValueChange={(value, name, event) => handleFeeChange(value, i, event)}
+            onBlur={(event) => {
+              if (event.target.id === 'unchanged') {
+                event.target.id = 'modified';
+              }
+              setTotalModified(calculateTotalModified());
+              setNonModifiedValue(calculateNonModifiedValue());
+            }}
+            id="unchanged"
             required
           />
         </div>
@@ -156,13 +183,29 @@ const GenerateQuote = ({
     const feeValue = Math.floor(balanceInitialQuote / fees);
     const remainder = balanceInitialQuote % fees;
 
-    // eslint-disable-next-line no-confusing-arrow
     const initialFeesArray = Array.from({ length: fees }, (_, i) =>
-      i < remainder ? feeValue + 1 : feeValue
+      (i < remainder ? feeValue + 1 : feeValue)
     );
 
     setFeesArray(initialFeesArray);
   }
+
+  const calculateTotalModified = () => {
+    const inputs = document.querySelectorAll('input#modified');
+    let total = 0;
+    inputs.forEach(input => {
+      const value = parseFloat(input.value.replace(/[^0-9]/g, '')) || 0;
+      total += value;
+    });
+    return total;
+  };
+
+  const calculateNonModifiedValue = () => {
+    const totalModified = calculateTotalModified();
+    const nonModifiedCount = document.querySelectorAll('input#unchanged').length;
+    if (nonModifiedCount === 0) {return 0;}
+    return (balanceInitialQuote - totalModified) / nonModifiedCount;
+  };
 
   useEffect(() => {
     initializeFeesArray();
