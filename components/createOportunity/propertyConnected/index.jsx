@@ -20,7 +20,7 @@ const PropertyConnected = ({ setIsCreated }) => {
     idProperty: unitSelected.idProperty,
     idProject: unitSelected.projectId,
     idClient: contactSelected.idCli,
-    comment: '',
+    comments: '',
     origin: '845001',
     cycleSale: '',
     stageSale: '',
@@ -38,14 +38,6 @@ const PropertyConnected = ({ setIsCreated }) => {
     setOriginTemp(e.target.value);
   };
 
-  useEffect(() => {
-    if (originTemp === 'other') {
-      setEnableTextarea(true);
-      document.querySelector(`.${styles.message_input}`).focus();
-    } else {
-      setEnableTextarea(false);
-    }
-  }, [originTemp]);
 
   const sendFormInfo = async (e) => {
     e.preventDefault();
@@ -157,15 +149,14 @@ const PropertyConnected = ({ setIsCreated }) => {
               </option>
               <option value={'Sucesion'}>Sucesión de propiedad</option>
               <option value={'Recomendacion'}>Recomendación</option>
-              <option value={'other'}>Otro</option>
+              <option value={'otro'}>Otro</option>
             </select>
             <div className="name-field">
               <span className={`${styles.label}`}>Descripción:</span>
               <textarea
-                disabled={!enableTextarea}
                 onChange={handleChange}
-                name="comment"
-                value={datos.comment}
+                name="comments"
+                value={datos.comments}
                 placeholder=""
                 className={styles.message_input}></textarea>
             </div>
