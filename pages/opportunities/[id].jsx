@@ -6,11 +6,13 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { getSessionToken } from '../../utils/getSessionToken';
-import opportunities from '../api/opportunities';
+// import { getSessionToken } from '../../utils/getSessionToken';
+// import opportunities from '../api/opportunities';
 import { closePopUp } from '../../redux/popUpOportunity';
 import ZoomImg from '../../components/zoomImg';
 import { parseCookies } from '../../utils/parseCookies';
+import { useFetch } from '../../hooks/useFetch';
+import Loader from '../../components/lodaer';
 
 export const getServerSideProps = async ({
   req: {
@@ -18,10 +20,12 @@ export const getServerSideProps = async ({
   },
   query: { id },
 }) => {
-  const { userid } = parseCookies(cookie);
+  const { user } = parseCookies(cookie);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${id}&idproject=&username=${userid}&page=1&rows=100&sorting=DESC`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${id}&idproject=&username=${
+        JSON.parse(user).userid
+      }&page=1&rows=100&sorting=DESC`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
@@ -30,6 +34,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         oportunities,
+        user: JSON.parse(user),
       },
     };
   } catch (error) {
@@ -41,10 +46,11 @@ export const getServerSideProps = async ({
   }
 };
 
-const Oportunities = ({ oportunities }) => {
+const Oportunities = ({ oportunities, user }) => {
+  const { userid: id } = user;
   const router = useRouter();
   const dispatch = useDispatch();
-  const { id } = useSelector((state) => state.userState);
+  // const { id } = useSelector((state) => state.userState);
   const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
   const [allOpportunities, setAllOpportunities] = useState(oportunities);
   const [closeFlag, setCloseFlag] = useState(true);
@@ -54,9 +60,9 @@ const Oportunities = ({ oportunities }) => {
   const { openPopUpOportunity } = useSelector(
     (state) => state.popUpOportunityState
   );
-  const { contactListSelected } = useSelector(
-    (state) => state.contactOpportunityState
-  );
+  // const { contactListSelected } = useSelector(
+  //   (state) => state.contactOpportunityState
+  // );
 
   if (closeFlag) {
     dispatch(closePopUp());
@@ -97,6 +103,26 @@ const Oportunities = ({ oportunities }) => {
     }
   }, [refreshFlag]);
 
+  const {
+    data: contactInfo,
+    isPending,
+    error,
+  } = useFetch({
+    url: '/api/getContactInfo',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+      idclient: router.query.id,
+    }),
+  });
+
+  if (isPending || !contactInfo || contactInfo.length === 0 || error) {
+    return <Loader />;
+  }
+
   return (
     <>
       <div className={styles['top-content']}>
@@ -105,7 +131,7 @@ const Oportunities = ({ oportunities }) => {
             href={`/buyer/${router.query.id}`}
             className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>
-            {`Oportunidades de ${contactListSelected.name} ${contactListSelected.lastname}`}{' '}
+            {`Oportunidades de ${contactInfo[0].firstNames} ${contactInfo[0].lastNames}`}{' '}
           </div>
         </div>
       </div>
@@ -115,6 +141,7 @@ const Oportunities = ({ oportunities }) => {
             oppList={allOpportunities}
             setOppIsSelected={setOppIsSelected}
             setRefreshFlag={setRefreshFlag}
+            id={id}
           />
         </div>
       </section>

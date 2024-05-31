@@ -31,8 +31,8 @@ const AllTypes = ({
       });
     }
   }, []);
-  console.log('Tipos Dentro de tipo', types);
-  console.log('unidaees Dentro de tipo', units);
+  // console.log('Tipos Dentro de tipo', types);
+  // console.log('unidaees Dentro de tipo', units);
 
   return (
     <div className="outerTypes">

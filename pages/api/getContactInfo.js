@@ -8,8 +8,11 @@ export default async function handler(req, res) {
       console.log('Error: ', errorText);
       throw new Error(`Bad response from server: Get Quotes - ${errorText}`);
     }
-
+    console.log('response');
+    console.log(response);
     const multimedia = await response.json();
+    console.log('first');
+    console.log(multimedia);
 
     if (multimedia) {
       res.status(200).json(multimedia);

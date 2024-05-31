@@ -10,17 +10,24 @@ export default async function handler(req, res) {
     }
     const user = await response.json();
 
-    const { userid, rol } = user;
+    // const { userid, rol } = user;
 
     if (user) {
-      const useridSerialized = serialize('userid', userid, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== 'development',
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 24,
-        path: '/',
-      });
-      const rolSerialized = serialize('rol', rol, {
+      // const useridSerialized = serialize('userid', userid, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV !== 'development',
+      //   sameSite: 'strict',
+      //   maxAge: 60 * 60 * 24,
+      //   path: '/',
+      // });
+      // const rolSerialized = serialize('rol', rol, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV !== 'development',
+      //   sameSite: 'strict',
+      //   maxAge: 60 * 60 * 24,
+      //   path: '/',
+      // });
+      const userSerialized = serialize('user', JSON.stringify(user), {
         httpOnly: true,
         secure: process.env.NODE_ENV !== 'development',
         sameSite: 'strict',
@@ -28,7 +35,7 @@ export default async function handler(req, res) {
         path: '/',
       });
 
-      res.setHeader('Set-Cookie', [useridSerialized, rolSerialized]);
+      res.setHeader('Set-Cookie', [userSerialized]);
       res.json(user);
     }
   } catch (error) {

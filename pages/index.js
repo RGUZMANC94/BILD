@@ -13,20 +13,24 @@ import { parseCookies } from '../utils/parseCookies';
 import Image from 'next/image';
 import AddProjectPop from '../components/addProjectPop';
 import EditProjectPop from '../components/editProjectPop';
+import { setUser } from '../redux/userSlice';
 
 export const getServerSideProps = async ({
   req: {
     headers: { cookie },
   },
 }) => {
-  const { userid, rol } = parseCookies(cookie);
-  return { props: { id: userid, user_rol: rol } };
+  const { user } = parseCookies(cookie);
+  return { props: { user: JSON.parse(user) } };
 };
 
-const Home = ({ id, user_rol }) => {
+const Home = ({ user }) => {
+  const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userState);
+  const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
 
-  const USDollar = new Intl.NumberFormat('en-US');
+  // const USDollar = new Intl.NumberFormat('en-US');
   // const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList, filteredList, isFiltered } = useSelector(
     (state) => state.projectState
@@ -72,14 +76,15 @@ const Home = ({ id, user_rol }) => {
       setOpenFlag(false);
     }
     dispatch(setFilteredList([]));
-    getProjects();
+    if (userInfoEmpty) {
+      dispatch(setUser(user));
+    }
+    // getProjects();
   }, []);
 
   useEffect(() => {
     getProjects();
   }, [refreshProjects]);
-
-  const { data, status } = useQuery('projects', getProjects);
 
   useEffect(() => {
     if (isFiltered) {
@@ -88,6 +93,8 @@ const Home = ({ id, user_rol }) => {
       setDisplayProjects(data);
     }
   }, [isFiltered]);
+
+  const { data, status } = useQuery('projects', getProjects);
 
   if (status === 'loading') {
     return <Loader />;
@@ -131,14 +138,23 @@ const Home = ({ id, user_rol }) => {
                         className={styles.anchorCards}
                         href={`/detail-estate/${project.projectId}`}></Link>
                       <div className={styles['img-proyect']}>
-                        <img
+                        <Image
+                          src={
+                            project.image[0] !== '' && project.image[0]
+                              ? `${project.image[0].url}`
+                              : '/images/defatult-2.jpg'
+                          }
+                          alt=""
+                          fill
+                        />
+                        {/* <img
                           alt=""
                           src={
                             project.image[0] !== '' && project.image[0]
                               ? `${project.image[0].url}`
                               : '/images/defatult-2.jpg'
                           }
-                        />
+                        /> */}
                       </div>
                       <div className={styles['proyect-info']}>
                         <p className={styles['proyect-title']}>

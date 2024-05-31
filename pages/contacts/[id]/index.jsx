@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import styles from './styles.module.css';
-import SideInfoProfile from '../../components/sideInfoProfile';
-import RightSideProfile from '../../components/rightSideInfoProfile';
+import SideInfoProfile from '../../../components/sideInfoProfile';
+import RightSideProfile from '../../../components/rightSideInfoProfile';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { parseCookies } from '../../utils/parseCookies';
+import { parseCookies } from '../../../utils/parseCookies';
 
 export const getServerSideProps = async ({
   req: {

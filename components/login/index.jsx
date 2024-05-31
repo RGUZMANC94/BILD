@@ -13,10 +13,7 @@ const LogInComponent = () => {
 
   const router = useRouter();
 
-  const getLoginData = async () => {
-    const userNameValueInput = username.current.value;
-    const passwordValueInput = password.current.value;
-
+  const validateInputs = (userNameValueInput, passwordValueInput) => {
     if (
       !userNameValueInput ||
       !passwordValueInput ||
@@ -26,6 +23,13 @@ const LogInComponent = () => {
       alert('llena todos los datos');
       return;
     }
+  };
+
+  const getLoginData = async () => {
+    const userNameValueInput = username.current.value;
+    const passwordValueInput = password.current.value;
+
+    validateInputs(userNameValueInput, passwordValueInput);
 
     const response = await fetch('/api/login', {
       method: 'POST',

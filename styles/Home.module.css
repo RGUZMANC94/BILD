@@ -63,11 +63,11 @@
 
 .img-proyect {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16/9;
   overflow: hidden;
+  position: relative;
 }
 .img-proyect img {
-  aspect-ratio: 16/9;
   width: 100%;
   height: auto;
   object-fit: cover;

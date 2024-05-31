@@ -4,7 +4,10 @@ import styles from './loader.module.css';
 const Loader = () => {
   return (
     <div className={styles.wrapperLoader}>
-      <span className={styles.lodaer}></span>
+      <div className={styles['lds-ripple']}>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 };

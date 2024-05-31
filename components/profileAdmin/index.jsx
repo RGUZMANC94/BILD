@@ -22,14 +22,14 @@ const ProfileOptions = () => {
         */}
 
         <Link href="/profile/admin" className={styles.btn}>
-          <div className="perfil">
+          <div className={styles.perfil}>
             <img src="/images/user-circle.svg" />
             <div className={styles['btn-text']}>Mi Perfil</div>
           </div>
         </Link>
 
         <Link href="/profile/login" className={styles.btn}>
-          <div className="perfil">
+          <div className={styles.perfil}>
             <img
               src="/images/close-white.svg"
               className={styles['close-session']}

@@ -4,12 +4,17 @@ import { openPopUp } from '../../redux/popUpOportunity';
 import styles from './oportunities-contact.module.css';
 import OportunitiesCard from '../../components/oportunitiesCard';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
-const OportunitiesContact = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
-  const { id } = useSelector((state) => state.userState);
+const OportunitiesContact = ({
+  oppList,
+  setOppIsSelected,
+  setRefreshFlag,
+  id,
+}) => {
+  // const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
   const [oppSelectedObject, setOppSelectedObject] = useState({});
@@ -172,6 +177,7 @@ const OportunitiesContact = ({ oppList, setOppIsSelected, setRefreshFlag }) => {
             setRefreshFlag={setRefreshFlag}
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}
+            id={id}
           />
         )}
       </div>

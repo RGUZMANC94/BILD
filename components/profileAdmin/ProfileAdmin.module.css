@@ -22,6 +22,11 @@
   flex-wrap: wrap;
 }
 
+.perfil img {
+  display: block;
+  margin: 0 auto;
+}
+
 .btn-text {
   margin-top: 10px;
   color: #fff;
