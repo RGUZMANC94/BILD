@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../styles/Profile.module.css';
 import SideInfoProfile from '../../components/sideInfoProfile';
 import RightSideProfile from '../../components/rightSideInfoProfile';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import ProfileOptions from '../../components/profileAdmin';
 import { parseCookies } from '../../utils/parseCookies';
 
@@ -11,8 +11,18 @@ export const getServerSideProps = async ({
     headers: { cookie },
   },
 }) => {
-  const { user } = parseCookies(cookie);
-  return { props: { user: JSON.parse(user) } };
+  if (cookie) {
+    const { user } = parseCookies(cookie);
+    return { props: { user: JSON.parse(user) } };
+  }
+
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/login',
+    },
+    props: {},
+  };
 };
 
 const Profile = ({ user }) => {
