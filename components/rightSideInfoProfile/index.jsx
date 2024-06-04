@@ -2,10 +2,11 @@ import React from 'react';
 import styles from './RightProfile.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const RightSideProfile = ({ contactInfo, typeViewer }) => {
   const [clientId, setClientId] = useState('');
-
+  const router = useRouter();
   useEffect(() => {
     if (contactInfo) {
       setClientId(contactInfo.idCli);
@@ -20,7 +21,9 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red}`}>2</span>
             Oportunidades
           </Link>
-          <Link href="/quotes" className={styles.opcion}>
+          <Link
+            href={`/contacts/${router.query.id}/quotes`}
+            className={styles.opcion}>
             <img src="/images/cotizaciones-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>5</span>
             Cotizaciones
@@ -30,7 +33,9 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red}`}>3</span>
             Documentación
           </Link>
-          <Link href="/payments" className={styles.opcion}>
+          <Link
+            href={`/contacts/${router.query.id}/payments`}
+            className={styles.opcion}>
             <img src="/images/payments-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
           </Link>

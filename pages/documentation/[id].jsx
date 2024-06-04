@@ -10,21 +10,23 @@ export const getServerSideProps = async ({
   },
   query: { id },
 }) => {
-  const { userid } = parseCookies(cookie);
+  const { user } = parseCookies(cookie);
 
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${userid}`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${
+        JSON.parse(user).userid
+      }`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
     }
     const contact = await response.json();
-    console.log(contact);
     contact[0].idCli = id;
     return {
       props: {
         contact,
+        user: JSON.parse(user),
       },
     };
   } catch (error) {
@@ -35,8 +37,8 @@ export const getServerSideProps = async ({
     };
   }
 };
-const Documentation = ({ contact }) => {
-  const { id } = useSelector((state) => state.userState);
+const Documentation = ({ contact, user }) => {
+  const { userid: id } = user;
   const contactListSelected = contact[0];
   console.log(contact);
   console.log(contact[0]);

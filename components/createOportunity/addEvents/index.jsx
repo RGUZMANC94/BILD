@@ -9,9 +9,10 @@ const AddEvents = ({
   setRefreshFlag,
   setAddEvents,
   updateEvents,
+  id,
 }) => {
   const { quicksand } = useContext(BildContext);
-  const { id } = useSelector((state) => state.userState);
+  // const { id } = useSelector((state) => state.userState);
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const { opportunitySelected } = useSelector(

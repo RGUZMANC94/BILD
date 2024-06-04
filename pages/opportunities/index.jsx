@@ -1,20 +1,29 @@
 import OportunitiesAll from '../../components/oportunitiesAll';
-import OportunitiesPending from '../../components/oportunitiesPending';
+// import OportunitiesPending from '../../components/oportunitiesPending';
 import OportunitiesClosed from '../../components/oportunitiesClosed';
 import styles from '../../styles/Oportunities-All.module.css';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CreateOportunity from '../../components/createOportunity';
-import { getSessionToken } from '../../utils/getSessionToken';
-import opportunities from '../api/opportunities';
+// import { getSessionToken } from '../../utils/getSessionToken';
+// import opportunities from '../api/opportunities';
 import { useDispatch } from 'react-redux';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 import ZoomImg from '../../components/zoomImg';
+import { parseCookies } from '../../utils/parseCookies';
 
-const OportunitiesAllFilter = () => {
-  const router = useRouter();
-  const { id } = useSelector((state) => state.userState);
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+}) => {
+  const { user } = parseCookies(cookie);
+  return { props: { user: JSON.parse(user) } };
+};
+const OportunitiesAllFilter = ({ user }) => {
+  // const router = useRouter();
+  const { userid: id } = user;
   const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
   const [showBar, setShowBar] = useState(false);
   const [showSection, setShowSection] = useState('all');
@@ -66,27 +75,27 @@ const OportunitiesAllFilter = () => {
     setRecentsContacts(recentsContacts);
   };
 
-  const getUnitSelected = async (idProperty, projectId) => {
-    const response = await fetch('/api/units', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id,
-        projectId,
-      }),
-    });
+  // const getUnitSelected = async (idProperty, projectId) => {
+  //   const response = await fetch('/api/units', {
+  //     method: 'post',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       id,
+  //       projectId,
+  //     }),
+  //   });
 
-    const units = await response.json();
-    console.log('Unidades:', units);
+  //   const units = await response.json();
+  //   console.log('Unidades:', units);
 
-    const unitSelected = units.find((unit) => unit.idProperty === idProperty);
+  //   const unitSelected = units.find((unit) => unit.idProperty === idProperty);
 
-    console.log('Unidad seleccionada:', unitSelected);
+  //   console.log('Unidad seleccionada:', unitSelected);
 
-    dispatch(changeUnitSelected(unitSelected));
-  };
+  //   dispatch(changeUnitSelected(unitSelected));
+  // };
 
   useEffect(() => {
     // if (!getSessionToken()) {
@@ -176,6 +185,7 @@ const OportunitiesAllFilter = () => {
               setOppIsSelected={setOppIsSelected}
               refreshFlag={refreshFlag}
               setRefreshFlag={setRefreshFlag}
+              id={id}
             />
           )}
           {/* showSection === 'pending' && (

@@ -10,8 +10,10 @@ export const useFetch = ({ url, method, headers, body }) => {
       try {
         const response = await fetch(url, {
           method,
-          headers,
-          body: JSON.stringify(body),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body,
         });
         if (!response.ok) {
           throw new Error(response.statusText);
@@ -19,7 +21,7 @@ export const useFetch = ({ url, method, headers, body }) => {
         const json = await response.json();
         console.log(json);
         setIsPending((prevState) => false);
-        setData(json);
+        setData((prevState) => json);
         setError((prevState) => null);
       } catch (error) {
         setError((prevState) => `${error} Could not Fetch Data `);

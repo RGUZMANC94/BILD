@@ -110,7 +110,8 @@ const TypeCard = ({
         <div className="tipo-icons">
           <div
             className="edit-type"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               dispatch(changeTypeEdit(type));
               setShowEditType(true);
             }}></div>

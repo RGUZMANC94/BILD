@@ -265,332 +265,310 @@ const EditContact = () => {
   };
 
   return (
-    <>
-      <div className={styles['wrap-datos']}>
-        <div
-          className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
-          <Link
-            href={`/buyer/${contactListSelected.idCli}`}
-            className={`${styles.close} bg-ct`}></Link>
-          <div className={styles['top-content']}>
-            <div className={styles['top-content-buttonsBar']}>
-              <div className="container flex j-s a-c">
-                <div className={styles['top-buttons-container']}>
-                  <div className={styles['top-content-container']}>
-                    <button
-                      className={styles['top-content-buttons']}
-                      onClick={() => setSelectedItem('contact')}>
-                      Datos de Contacto
-                    </button>
-                    <div
-                      className={`${styles['top-content-bar']} ${
-                        selectedPage === 'contact' && styles.active
-                      }`}></div>
-                  </div>
-                  <div className={styles['top-content-container']}>
-                    <button
-                      className={styles['top-content-buttons']}
-                      onClick={() => setSelectedItem('additional')}>
-                      Información Adicional
-                    </button>
-                    <div
-                      className={`${styles['top-content-bar']} ${
-                        selectedPage === 'additional' && styles.active
-                      }`}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`${styles['datos-left']} ${
-              styles[
-                `${
-                  selectedPage === 'contact' ? 'page-active' : 'page-disabled'
-                }`
-              ]
-            }`}>
-            <div className={styles['top-name']}>
-              <span>Edicion - Datos de Contacto</span>{' '}
-            </div>
-            <form onSubmit={sendFormInfo} className={styles.msform}>
-              <fieldset>
-                <label className={styles.label}>
-                  <span>Nombre:</span>
-                  <input
-                    type="text"
-                    name="firstNames"
-                    placeholder="Nombre"
-                    value={datos.firstNames}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label className={styles.label}>
-                  <span>Apellidos:</span>
-                  <input
-                    type="text"
-                    name="lastNames"
-                    placeholder="Apellidos"
-                    value={datos.lastNames}
-                    onChange={handleChange}
-                  />
-                </label>
+    <h1>Edit contact</h1>
+    // <>
+    //   <div className={styles['wrap-datos']}>
+    //     <div
+    //       className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
+    //       <Link
+    //         href={`/buyer/${contactListSelected.idCli}`}
+    //         className={`${styles.close} bg-ct`}></Link>
+    //       <div className={styles['top-content']}>
+    //         <div className={styles['top-content-buttonsBar']}>
+    //           <div className="container flex j-s a-c">
+    //             <div className={styles['top-buttons-container']}>
+    //               <div className={styles['top-content-container']}>
+    //                 <button
+    //                   className={styles['top-content-buttons']}
+    //                   onClick={() => setSelectedItem('contact')}>
+    //                   Datos de Contacto
+    //                 </button>
+    //                 <div
+    //                   className={`${styles['top-content-bar']} ${
+    //                     selectedPage === 'contact' && styles.active
+    //                   }`}></div>
+    //               </div>
+    //               <div className={styles['top-content-container']}>
+    //                 <button
+    //                   className={styles['top-content-buttons']}
+    //                   onClick={() => setSelectedItem('additional')}>
+    //                   Información Adicional
+    //                 </button>
+    //                 <div
+    //                   className={`${styles['top-content-bar']} ${
+    //                     selectedPage === 'additional' && styles.active
+    //                   }`}></div>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div
+    //         className={`${styles['datos-left']} ${
+    //           styles[
+    //             `${
+    //               selectedPage === 'contact' ? 'page-active' : 'page-disabled'
+    //             }`
+    //           ]
+    //         }`}>
+    //         <div className={styles['top-name']}>
+    //           <span>Edicion - Datos de Contacto</span>{' '}
+    //         </div>
+    //         <form onSubmit={sendFormInfo} className={styles.msform}>
+    //           <fieldset>
+    //             <label className={styles.label}>
+    //               <span>Nombre:</span>
+    //               <input
+    //                 type="text"
+    //                 name="firstNames"
+    //                 placeholder="Nombre"
+    //                 value={datos.firstNames}
+    //                 onChange={handleChange}
+    //               />
+    //             </label>
+    //             <label className={styles.label}>
+    //               <span>Apellidos:</span>
+    //               <input
+    //                 type="text"
+    //                 name="lastNames"
+    //                 placeholder="Apellidos"
+    //                 value={datos.lastNames}
+    //                 onChange={handleChange}
+    //               />
+    //             </label>
 
-                <label className={styles.label}>
-                  <span>Número de Documento:</span>
-                  <input
-                    type="text"
-                    name="documentNumber"
-                    placeholder="Número de Documento"
-                    value={datos.documentNumber}
-                    onChange={handleChange}
-                  />
-                </label>
+    //             <label className={styles.label}>
+    //               <span>Número de Documento:</span>
+    //               <input
+    //                 type="text"
+    //                 name="documentNumber"
+    //                 placeholder="Número de Documento"
+    //                 value={datos.documentNumber}
+    //                 onChange={handleChange}
+    //               />
+    //             </label>
 
-                <label className={styles.label}>
-                  <span>Email:</span>
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    value={datos.email}
-                    onChange={handleChange}
-                  />
-                </label>
+    //             <label className={styles.label}>
+    //               <span>Email:</span>
+    //               <input
+    //                 type="text"
+    //                 name="email"
+    //                 placeholder="Email"
+    //                 value={datos.email}
+    //                 onChange={handleChange}
+    //               />
+    //             </label>
 
-                <label className={styles.label}>
-                  <span>Celular:</span>
-                  <input
-                    type="text"
-                    name="phoneNumber"
-                    placeholder="Celular"
-                    value={datos.phoneNumber}
-                    onChange={handleChange}
-                  />
-                </label>
+    //             <label className={styles.label}>
+    //               <span>Celular:</span>
+    //               <input
+    //                 type="text"
+    //                 name="phoneNumber"
+    //                 placeholder="Celular"
+    //                 value={datos.phoneNumber}
+    //                 onChange={handleChange}
+    //               />
+    //             </label>
 
-                <div className={styles.foto}>
-                  <label
-                    htmlFor="imageInput"
-                    className={styles.imageInputLabel}>
-                    <div className={styles.outerImgWrapper}>
-                      {imagen ? (
-                        <img
-                          className={styles.photoImage}
-                          src={URL.createObjectURL(imagen)}
-                          alt="Preview"
-                        />
-                      ) : (
-                        <img
-                          className={styles.imagePlaceHolder}
-                          src="images/cam.svg"
-                          alt="Camera"
-                        />
-                      )}
-                    </div>
-                  </label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    accept="image/*"
-                    onChange={(e) => handleImageChange(e)}
-                    className={styles.inputFile}
-                  />
-                  Tomar Foto
-                </div>
+    //             <div className={styles.foto}>
+    //               <label
+    //                 htmlFor="imageInput"
+    //                 className={styles.imageInputLabel}>
+    //                 <div className={styles.outerImgWrapper}>
+    //                   {imagen ? (
+    //                     <img
+    //                       className={styles.photoImage}
+    //                       src={URL.createObjectURL(imagen)}
+    //                       alt="Preview"
+    //                     />
+    //                   ) : (
+    //                     <img
+    //                       className={styles.imagePlaceHolder}
+    //                       src="images/cam.svg"
+    //                       alt="Camera"
+    //                     />
+    //                   )}
+    //                 </div>
+    //               </label>
+    //               <input
+    //                 type="file"
+    //                 id="imageInput"
+    //                 accept="image/*"
+    //                 onChange={(e) => handleImageChange(e)}
+    //                 className={styles.inputFile}
+    //               />
+    //               Tomar Foto
+    //             </div>
 
-                <div className={styles.imageInputContainer}></div>
+    //             <div className={styles.imageInputContainer}></div>
 
-                <Link
-                  href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
-                  className={styles['crear-contacto']}>
-                  <i className="fa-solid fa-plus"></i>Crear oportunidad
-                </Link>
-                <button className={styles['contacto-existente']}>
-                  Guardar
-                </button>
-              </fieldset>
-            </form>
-          </div>
-          <div
-            className={`${styles['datos-right']} 
-            ${
-              styles[
-                `${
-                  selectedPage === 'additional'
-                    ? 'page-active'
-                    : 'page-disabled'
-                }`
-              ]
-            }`}>
-            <div className={`relative ${styles['top-name']}`}>
-              <span>Información Adicional</span>{' '}
-            </div>
-            <div className={styles['informacion-datos']}>
-              <span className={styles['sub-title']}>Situacion Familiar:</span>
-              <div className={styles.datos}>
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('C')}
-                  className={`${styles.campo} ${
-                    profileData.civilStatus === 'C' && styles.active
-                  }`}>
-                  Casado
-                </button>
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('S')}
-                  className={`${styles.campo} ${
-                    profileData.civilStatus === 'S' && styles.active
-                  }`}>
-                  Soltero
-                </button>
-                {/*
-                  
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('conHijos')}
-                  className={`${styles.campo} ${
-                    profileData.civilStatus === 'conHijos' && styles.active
-                  }`}>
-                  Con Hijos
-                </button>
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('sinHijos')}
-                  className={`${styles.campo} ${
-                    profileData.civilStatus === 'sinHijos' && styles.active
-                  }`}>
-                  Sin Hijos
-                </button>
-                  */}
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('UN')}
-                  className={`${styles.campo} ${
-                    profileData.civilStatus === 'UN' && styles.active
-                  }`}>
-                  Unión Libre
-                </button>
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('DI')}
-                  className={`${styles.campo} ${
-                    profileData.civilStatus === 'DI' && styles.active
-                  }`}>
-                  Divorciado
-                </button>
-              </div>
-            </div>
+    //             <Link
+    //               href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+    //               className={styles['crear-contacto']}>
+    //               <i className="fa-solid fa-plus"></i>Crear oportunidad
+    //             </Link>
+    //             <button className={styles['contacto-existente']}>
+    //               Guardar
+    //             </button>
+    //           </fieldset>
+    //         </form>
+    //       </div>
+    //       <div
+    //         className={`${styles['datos-right']}
+    //         ${
+    //           styles[
+    //             `${
+    //               selectedPage === 'additional'
+    //                 ? 'page-active'
+    //                 : 'page-disabled'
+    //             }`
+    //           ]
+    //         }`}>
+    //         <div className={`relative ${styles['top-name']}`}>
+    //           <span>Información Adicional</span>{' '}
+    //         </div>
+    //         <div className={styles['informacion-datos']}>
+    //           <span className={styles['sub-title']}>Situacion Familiar:</span>
+    //           <div className={styles.datos}>
+    //             <button
+    //               type="button"
+    //               onClick={() => changeTypeClient('C')}
+    //               className={`${styles.campo} ${
+    //                 profileData.civilStatus === 'C' && styles.active
+    //               }`}>
+    //               Casado
+    //             </button>
+    //             <button
+    //               type="button"
+    //               onClick={() => changeTypeClient('S')}
+    //               className={`${styles.campo} ${
+    //                 profileData.civilStatus === 'S' && styles.active
+    //               }`}>
+    //               Soltero
+    //             </button>
+    //             <button
+    //               type="button"
+    //               onClick={() => changeTypeClient('UN')}
+    //               className={`${styles.campo} ${
+    //                 profileData.civilStatus === 'UN' && styles.active
+    //               }`}>
+    //               Unión Libre
+    //             </button>
+    //             <button
+    //               type="button"
+    //               onClick={() => changeTypeClient('DI')}
+    //               className={`${styles.campo} ${
+    //                 profileData.civilStatus === 'DI' && styles.active
+    //               }`}>
+    //               Divorciado
+    //             </button>
+    //           </div>
+    //         </div>
 
-            <div className={styles['informacion-perfil']}>
-              <div className={styles['informacion-datos']}>
-                <span className={styles['sub-title']}>Numero de Hijos:</span>
-                <div className={styles.datos}>
-                  <button
-                    type="button"
-                    onClick={() => changeAmountChildren('0')}
-                    className={`${styles.campo} ${
-                      profileData.amountChildren === '0' && styles.active
-                    }`}>
-                    Sin Hijos
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changeAmountChildren('1')}
-                    className={`${styles.campo} ${
-                      profileData.amountChildren === '1' && styles.active
-                    }`}>
-                    Con Hijos
-                  </button>
-                </div>
-                <div className={styles['buttons-right']}>
-                  <Link
-                    href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
-                    className={styles['crear-contacto']}>
-                    <i className="fa-solid fa-plus"></i>Crear oportunidad
-                  </Link>
-                  <button className={styles['contacto-existente']}>
-                    Guardar
-                  </button>
-                </div>
-              </div>
-            </div>
+    //         <div className={styles['informacion-perfil']}>
+    //           <div className={styles['informacion-datos']}>
+    //             <span className={styles['sub-title']}>Numero de Hijos:</span>
+    //             <div className={styles.datos}>
+    //               <button
+    //                 type="button"
+    //                 onClick={() => changeAmountChildren('0')}
+    //                 className={`${styles.campo} ${
+    //                   profileData.amountChildren === '0' && styles.active
+    //                 }`}>
+    //                 Sin Hijos
+    //               </button>
+    //               <button
+    //                 type="button"
+    //                 onClick={() => changeAmountChildren('1')}
+    //                 className={`${styles.campo} ${
+    //                   profileData.amountChildren === '1' && styles.active
+    //                 }`}>
+    //                 Con Hijos
+    //               </button>
+    //             </div>
+    //             <div className={styles['buttons-right']}>
+    //               <Link
+    //                 href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+    //                 className={styles['crear-contacto']}>
+    //                 <i className="fa-solid fa-plus"></i>Crear oportunidad
+    //               </Link>
+    //               <button className={styles['contacto-existente']}>
+    //                 Guardar
+    //               </button>
+    //             </div>
+    //           </div>
+    //         </div>
 
-            <div className={styles['informacion-perfil']}>
-              <div className={styles['informacion-datos']}>
-                <span className={styles['sub-title']}>Tipo de Comprador:</span>
-                <div className={styles.datos}>
-                  <button
-                    type="button"
-                    onClick={() => changebusinessName('I')}
-                    className={`${styles.campo} ${
-                      profileData.housingInversion === 'I' && styles.active
-                    }`}>
-                    Inversionista
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changebusinessName('V')}
-                    className={`${styles.campo} ${
-                      profileData.housingInversion === 'V' && styles.active
-                    }`}>
-                    Familiar
-                  </button>
-                </div>
-                {/* <button className={styles["crear-contacto"]}>
-                <i className="fa-solid fa-plus"></i>Crear oportunidad
-                </button>
-              <button className={styles["contacto-existente"]}>Guardar</button> */}
-                <div className={styles['buttons-right']}>
-                  <Link
-                    href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
-                    className={styles['crear-contacto']}>
-                    <i className="fa-solid fa-plus"></i>Crear oportunidad
-                  </Link>
-                  <button className={styles['contacto-existente']}>
-                    Guardar
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    //         <div className={styles['informacion-perfil']}>
+    //           <div className={styles['informacion-datos']}>
+    //             <span className={styles['sub-title']}>Tipo de Comprador:</span>
+    //             <div className={styles.datos}>
+    //               <button
+    //                 type="button"
+    //                 onClick={() => changebusinessName('I')}
+    //                 className={`${styles.campo} ${
+    //                   profileData.housingInversion === 'I' && styles.active
+    //                 }`}>
+    //                 Inversionista
+    //               </button>
+    //               <button
+    //                 type="button"
+    //                 onClick={() => changebusinessName('V')}
+    //                 className={`${styles.campo} ${
+    //                   profileData.housingInversion === 'V' && styles.active
+    //                 }`}>
+    //                 Familiar
+    //               </button>
+    //             </div>
+    //             <div className={styles['buttons-right']}>
+    //               <Link
+    //                 href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
+    //                 className={styles['crear-contacto']}>
+    //                 <i className="fa-solid fa-plus"></i>Crear oportunidad
+    //               </Link>
+    //               <button className={styles['contacto-existente']}>
+    //                 Guardar
+    //               </button>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
 
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú contacto ha sido creado con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    //   <div className={`${styles.popSuccessCreated}`}>
+    //     <div className={styles.bgPopUp}></div>
+    //     <div className={styles.popup2}>
+    //       <div className={styles.content}>
+    //         <div className={styles['icon-box']}>
+    //           <img src="/images/check-circle.png" />
+    //           <span className={styles['pop-text']}>
+    //             ¡Tú contacto ha sido creado con éxito!
+    //           </span>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    //   <div className={`${styles.popError} `}>
+    //     <div className={styles.bgPopUp}></div>
+    //     <div className={styles.popup3}>
+    //       <div className={styles.content}>
+    //         <div className={styles['icon-box']}>
+    //           <img src="/images/error-circle.png" />
+    //           <span className={styles['pop-text']}>
+    //             <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
+    //             {`Algo no
+    //             está bien.${
+    //               errorMessage
+    //                 ? `\n${errorMessage}`
+    //                 : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
+    //             }.`}
+    //           </span>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </>
   );
 };
 

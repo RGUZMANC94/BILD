@@ -14,8 +14,9 @@ const OportunitiesAll = ({
   setOppIsSelected,
   refreshFlag,
   setRefreshFlag,
+  id,
 }) => {
-  const { id } = useSelector((state) => state.userState);
+  // const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [opportunitySelected, setOpportunitySelected] = useState(-1);
   const [oppSelectedObject, setOppSelectedObject] = useState({});
@@ -257,6 +258,7 @@ const OportunitiesAll = ({
             setRefreshFlag={setRefreshFlag}
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}
+            id={id}
           />
         )}
       </div>

@@ -1,19 +1,29 @@
 import Link from 'next/link';
-import styles from '../styles/Contacts.module.css';
-import recentsContacts from './api/recentsContacts';
-import { useRouter } from 'next/router';
-import { getSessionToken } from '../utils/getSessionToken';
+import styles from '../../styles/Contacts.module.css';
+import recentsContacts from '../api/recentsContacts';
+// import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { changeContactListSelected } from '../redux/contactSelectedSlice';
+import { changeContactListSelected } from '../../redux/contactSelectedSlice';
+import Image from 'next/image';
+import { parseCookies } from '../../utils/parseCookies';
 
-const Contacts = () => {
-  const router = useRouter();
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+}) => {
+  const { user } = parseCookies(cookie);
+  return { props: { user: JSON.parse(user) } };
+};
+
+const Contacts = ({ user }) => {
+  const { userid: id } = user;
+  // const router = useRouter();
   const dispatch = useDispatch();
   const [recentContacts, setRecentsContacts] = useState([]);
   const [sortedontacts, setSortedContacts] = useState([]);
-  const { id } = useSelector((state) => state.userState);
+  // const { id } = useSelector((state) => state.userState);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
@@ -62,16 +72,26 @@ const Contacts = () => {
                   onClick={() => {
                     dispatch(changeContactListSelected(recent));
                   }}
-                  href={`/buyer/${recent.idCli}`}
+                  href={`/contacts/${recent.idCli}`}
                   className={styles.contact}>
                   <div className={styles['contact-img-container']}>
-                    <img
+                    <Image
+                      width={40}
+                      height={40}
+                      alt=""
                       src={
                         recent.image[0] !== '' && recent.image[0]
                           ? `${recent.image[0].url}`
                           : '/images/tipo-1.png'
                       }
                     />
+                    {/* <img
+                      src={
+                        recent.image[0] !== '' && recent.image[0]
+                          ? `${recent.image[0].url}`
+                          : '/images/tipo-1.png'
+                      }
+                    /> */}
                   </div>
                   <span className={`${styles.badge} ${styles.red}`}>1</span>
                   {`${recent.name} ${recent.lastname}`}
@@ -80,7 +100,7 @@ const Contacts = () => {
                   onClick={() => {
                     dispatch(changeContactListSelected(recent));
                   }}
-                  href={`/buyer/${recent.idCli}`}
+                  href={`/contacts/${recent.idCli}`}
                   className={styles.contact}>
                   <div className={styles['reciente-col']}>{recent.email}</div>
                 </Link>
@@ -90,15 +110,33 @@ const Contacts = () => {
                     href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
                     target="_blank"
                     className={styles['whastapp-icon']}>
-                    <img src="/images/whastapp-blue.png" />
+                    <Image
+                      alt=""
+                      width={40}
+                      height={40}
+                      src="/images/whastapp-blue.png"
+                    />
+                    {/* <img  /> */}
                   </a>
                 </div>
                 <div className={styles['iconos-movil']}>
                   <div className={styles['phone-movil']}>
-                    <img src="/images/blue-phone-movil.png" />
+                    <Image
+                      alt=""
+                      width={40}
+                      height={40}
+                      src="/images/blue-phone-movil.png"
+                    />
+                    {/* <img src="/images/blue-phone-movil.png" /> */}
                   </div>
                   <div className={styles['wa-movil']}>
-                    <img src="/images/whatsapp-contacts.png" />
+                    <Image
+                      alt=""
+                      width={40}
+                      height={40}
+                      src="/images/whatsapp-contacts.png"
+                    />
+                    {/* <img src="/images/whatsapp-contacts.png" /> */}
                   </div>
                 </div>
               </div>
@@ -115,17 +153,27 @@ const Contacts = () => {
                 onClick={() => {
                   dispatch(changeContactListSelected(contact));
                 }}
-                href={`/buyer/${contact.idCli}`}>
+                href={`/contacts/${contact.idCli}`}>
                 <div className={styles['list-contact']}>
                   <div className={styles.contact}>
                     <div className={styles['contact-img-container']}>
-                      <img
+                      <Image
+                        alt=""
+                        width={40}
+                        height={40}
                         src={
                           contact.image[0] !== '' && contact.image[0]
                             ? `${contact.image[0].url}`
                             : '/images/tipo-1.png'
                         }
                       />
+                      {/* <img
+                        src={
+                          contact.image[0] !== '' && contact.image[0]
+                            ? `${contact.image[0].url}`
+                            : '/images/tipo-1.png'
+                        }
+                      /> */}
                     </div>
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
                     {`${contact.name} ${contact.lastname}`}
@@ -137,15 +185,33 @@ const Contacts = () => {
                       target="_blank"
                       className={styles['whastapp-icon']}>
                       {`+57 ${contact.phoneNumber}`}
-                      <img src="/images/whastapp-blue.png" />
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/whastapp-blue.png"
+                      />
+                      {/* <img src="/images/whastapp-blue.png" /> */}
                     </a>
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
-                      <img src="/images/blue-phone-movil.png" />
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/blue-phone-movil.png"
+                      />
+                      {/* <img src="/images/blue-phone-movil.png" /> */}
                     </div>
                     <div className={styles['wa-movil']}>
-                      <img src="/images/whatsapp-contacts.png" />
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/whatsapp-contacts.png"
+                      />
+                      {/* <img src="/images/whatsapp-contacts.png" /> */}
                     </div>
                   </div>
                 </div>

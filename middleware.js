@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export default function middleware(req) {
   const { cookies } = req;
 
-  const user = cookies.get('userid');
+  const user = cookies.get('user');
 
   const returnUrl = req.nextUrl.clone();
   returnUrl.pathname = '/login';
@@ -35,7 +35,11 @@ export const config = {
     // '/((?!api|_next/static|_next/image|favicon.ico).*)',
     '/',
     '/detail-estate/:detailId*',
-    '/contact',
+    '/contacts',
+    '/contacts/:contactId*',
+    '/contacts/:contactId*/payments',
+    '/contacts/:contactId*/payments/:paymentId*',
+    '/contacts/:contactId*/quotes',
     '/create-contact',
     '/create-project',
     '/dashboard',

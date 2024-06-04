@@ -1,16 +1,10 @@
 import React from 'react';
 import styles from './SideInfoProfile.module.css';
-import capitalizeFLetter from '../../utils/capitalizeFirstLetter';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { changeContactEdit } from '../../redux/editObjectSlice';
 
 const SideInfoProfile = ({ contactInfo, typeViewer }) => {
   const dispatch = useDispatch();
-  const { contactListSelected } = useSelector(
-    (state) => state.contactOpportunityState
-  );
 
   console.log('Informacion del contactIndo: ', contactInfo);
   return (
@@ -131,17 +125,17 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
 
                 <div className={styles['perfil-icons']}>
                   <a
-                    href={`tel:+57${contactListSelected.phoneNumber}`}
+                    href={`tel:+57${contactInfo.phoneNumber}`}
                     className={styles['perfil-buttons']}>
                     <img src="/images/profile-phone-icon.png" />
                   </a>
                   <a
-                    href={`mailto:${contactListSelected.email}?subject=BILD`}
+                    href={`mailto:${contactInfo.email}?subject=BILD`}
                     className={styles['perfil-buttons']}>
                     <img src="/images/profile-email-icon.png" />
                   </a>
                   <a
-                    href={`https://wa.me/${contactListSelected.phoneNumber}?subject=BILD`}
+                    href={`https://wa.me/${contactInfo.phoneNumber}?subject=BILD`}
                     target="_blank"
                     className={styles['perfil-buttons']}>
                     <img src="/images/profile-whatsapp-icon.png" />

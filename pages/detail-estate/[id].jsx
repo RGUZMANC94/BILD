@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
-import InfoProject from '../../components/infoProject';
+// import InfoProject from '../../components/infoProject';
 import AddTypePop from '../../components/addTypePop';
 import AddUnitPop from '../../components/addUnitPop';
-import { getSessionToken } from '../../utils/getSessionToken';
+// import { getSessionToken } from '../../utils/getSessionToken';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import LightBox from '../../components/lightbox';
@@ -15,11 +15,24 @@ import EditUnitPop from '../../components/editUnitPop';
 import { changeProjectEdit } from '../../redux/editObjectSlice';
 import ZoomImg from '../../components/zoomImg';
 import EditProjectPop from '../../components/editProjectPop';
-import AddProjectPop from '../../components/addProjectPop';
+// import AddProjectPop from '../../components/addProjectPop';
+import { parseCookies } from '../../utils/parseCookies';
+import { setUser } from '../../redux/userSlice';
+import { useFetch } from '../../hooks/useFetch';
+import Loader from '../../components/lodaer';
 
-const DetailState = ({ unitsInit, typesInit }) => {
+const DetailState = ({ unitsInit, typesInit, user }) => {
+  const { userid: id } = user;
   const dispatch = useDispatch();
-  const { id } = useSelector((state) => state.userState);
+  const userInfo = useSelector((state) => state.userState);
+  const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
+
+  // useMemo(() => {
+  //   if (userInfoEmpty) {
+  //     dispatch(setUser(user));
+  //   }
+  // }, []);
+
   const { isOnZoomImg, imgToZoom } = useSelector((state) => state.zoomImgState);
   const [lightboxImage, setLightboxImage] = useState('');
   const [viewEstate, setViewEstate] = useState('units');
@@ -42,7 +55,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const inputXlsx = useRef(null);
   const [showEditProject, setShowEditProject] = useState(false);
   const [refreshProjects, setRefreshProjects] = useState(false);
-  const [infoProject, setInfoProject] = useState(null);
+  // const [infoProject, setInfoProject] = useState(null);
 
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
@@ -62,30 +75,16 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
   useEffect(() => {
     getXlsxTemplate();
+    if (userInfoEmpty) {
+      dispatch(setUser(user));
+    }
   }, []);
-
-  const getProject = async () => {
-    const response = await fetch('/api/getProjectInfo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id,
-        projectId: router.query.id,
-      }),
-    });
-    const responseProject = await response.json();
-
-    setInfoProject(responseProject[0]);
-    console.log('Project actual: ', responseProject[0]);
-  };
 
   useEffect(() => {
     if (refreshProjects) {
       setRefreshProjects(false);
+      getProject();
     }
-    getProject();
   }, [refreshProjects]);
 
   const getTypes = useCallback(async () => {
@@ -103,7 +102,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
     });
 
     const typesResponse = await response.json();
-    console.log('Otros tipos:', typesResponse);
+    // console.log('Otros tipos:', typesResponse);
     setTypes(typesResponse.length ? typesResponse : []);
   }, []);
 
@@ -122,7 +121,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
     });
 
     const unitsResponse = await response.json();
-    console.log('Otros unidades:', unitsResponse);
+    // console.log('Otros unidades:', unitsResponse);
     setUnits(unitsResponse.length ? unitsResponse : []);
   }, []);
 
@@ -138,10 +137,10 @@ const DetailState = ({ unitsInit, typesInit }) => {
     getUnits();
   }, [typeFlag, unitFlag]);
 
-  useEffect(() => {
-    getTypes();
-    getUnits();
-  }, []);
+  // useEffect(() => {
+  //   getTypes();
+  //   getUnits();
+  // }, []);
 
   if (closeFlag) {
     dispatch(closePopUp());
@@ -158,9 +157,9 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
   const conectContact = router.query.contactId;
 
-  console.log('Unidades: ', units);
-  console.log('Tipos: ', types);
-  console.log('Proyecto: ', projectSelected);
+  // console.log('Unidades: ', units);
+  // console.log('Tipos: ', types);
+  // console.log('Proyecto: ', infoProject);
   useEffect(() => {
     getRecentsContacts();
   }, []);
@@ -246,6 +245,58 @@ const DetailState = ({ unitsInit, typesInit }) => {
     sendXlsx(xlsxData);
   }, [xlsxData]);
 
+  const {
+    data: dataProject,
+    isPending,
+    error,
+  } = useFetch({
+    url: '/api/getProjectInfo',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+      projectId: router.query.id,
+    }),
+  });
+  console.log(dataProject);
+  const [infoProject, setInfoProject] = useState(dataProject);
+
+  useEffect(() => {
+    if (dataProject[0]) {
+      setInfoProject((prevState) => dataProject[0]);
+    }
+  }, [dataProject]);
+
+  if (isPending || dataProject.length === 0) {
+    return <Loader />;
+  }
+
+  console.log(
+    'firstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirst'
+  );
+
+  console.log(infoProject);
+
+  const getProject = async () => {
+    const response = await fetch('/api/getProjectInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        projectId: router.query.id,
+      }),
+    });
+    const responseProject = await response.json();
+
+    setInfoProject((prevState) => responseProject[0]);
+
+    console.log('Project actual: ', responseProject[0]);
+  };
+
   return (
     <>
       <div className="top-content">
@@ -268,17 +319,14 @@ const DetailState = ({ unitsInit, typesInit }) => {
                 <Link href="/" className="back-arrow bg-ct"></Link>
 
                 <h1 className="topProjectName">
-                  {infoProject && infoProject.projectName
-                    ? infoProject.projectName
-                    : projectSelected && projectSelected.projectName
-                      ? projectSelected.projectName
-                      : infoProject.projectName}
+                  {(infoProject && infoProject.projectName) ??
+                    dataProject[0].projectName}
                 </h1>
 
                 <button
                   className={'editProjectDetailState'}
                   onClick={() => {
-                    dispatch(changeProjectEdit(projectSelected));
+                    dispatch(changeProjectEdit(infoProject ?? dataProject[0]));
                     setShowEditProject(true);
                   }}
                 />
@@ -304,32 +352,6 @@ const DetailState = ({ unitsInit, typesInit }) => {
                   Subir
                 </label>
               </div>
-
-              {/*
-              <li>
-                <a href="#">
-                  <i className="fa-solid fa-angle-left"></i>
-                </a>
-              </li>
-              <li
-                className={`itemTopContent ${
-                  viewEstate === 'units' ? 'active' : ''
-                }`}
-                onClick={() => {
-                  setViewEstate('units');
-                }}>
-                <button className="buttonTopDetailState">Unidades</button>
-              </li>
-              <li
-                className={`itemTopContent ${
-                  viewEstate === 'info' ? 'active' : ''
-                }`}
-                onClick={() => {
-                  setViewEstate('info');
-                }}>
-                <button className="buttonTopDetailState">{infoText}</button>
-              </li>
-              */}
             </>
           )}
         </div>
@@ -348,60 +370,44 @@ const DetailState = ({ unitsInit, typesInit }) => {
               setShowEditType={setShowEditType}
               setShowEditUnit={setShowEditUnit}
             />
-
-            {/*
-            <InfoProject
-              viewEstate={viewEstate}
-              info={projectSelected}
-              setLightboxImage={setLightboxImage}
-              projectId={router.query.id}
-            />
-            */}
           </div>
         </div>
       </section>
-
       {lightboxImage !== '' && (
         <LightBox image={lightboxImage} setLightboxImage={setLightboxImage} />
       )}
-
       <EditProjectPop
         showEditProject={showEditProject}
         setShowEditProject={setShowEditProject}
         setRefreshProjects={setRefreshProjects}
       />
-
       <AddTypePop
         setShowPopUpType={setShowPopUpType}
         showPopUpType={showPopUpType}
         setTypeFlag={setTypeFlag}
-        projectSelected={projectSelected}
+        projectSelected={infoProject ?? dataProject[0]}
       />
-
       <AddUnitPop
         setShowPopUpUnit={setShowPopUpUnit}
         showPopUpUnit={showPopUpUnit}
         types={types}
         setUnitFlag={setUnitFlag}
-        projectSelected={projectSelected}
+        projectSelected={infoProject ?? dataProject[0]}
       />
-
       <EditTypePop
         showEditType={showEditType}
         setShowEditType={setShowEditType}
         setTypeFlag={setTypeFlag}
         types={types}
-        projectSelected={projectSelected}
+        projectSelected={infoProject ?? dataProject[0]}
       />
-
       <EditUnitPop
         showEditUnit={showEditUnit}
         setShowEditUnit={setShowEditUnit}
         setUnitFlag={setUnitFlag}
         types={types}
-        projectSelected={projectSelected}
+        projectSelected={infoProject ?? dataProject[0]}
       />
-
       {openPopUpOportunity && (
         <CreateOportunity created={false} recentContacts={recentContacts} />
       )}
@@ -410,23 +416,33 @@ const DetailState = ({ unitsInit, typesInit }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+  query: { id },
+}) => {
+  const { user } = parseCookies(cookie);
   const response = await fetch(
-    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${context.params.id}&username=FDBILD&type=&page=1&rows=50`
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${id}&username=${
+      JSON.parse(user).userid
+    }&type=&page=1&rows=50`
   );
 
   const units = await response.json();
 
   const resp = await fetch(
-    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPropertyTypes?username=FDBILD&projectId=${context.params.id}`
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPropertyTypes?username=${
+      JSON.parse(user).userid
+    }&projectId=${id}`
   );
-
   const types = await resp.json();
 
   return {
     props: {
       unitsInit: units.length ? units : [],
       typesInit: types.length ? types : [],
+      user: JSON.parse(user),
     },
   };
 };

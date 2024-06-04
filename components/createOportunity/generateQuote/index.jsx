@@ -15,8 +15,9 @@ const GenerateQuote = ({
   setGenerateQuote,
   closePopUpPortal,
   setRefreshFlag,
+  id,
 }) => {
-  const { id } = useSelector((state) => state.userState);
+  // const { id } = useSelector((state) => state.userState);
   const dispatch = useDispatch();
   const router = useRouter();
   const [values, setValues] = useState([30]);
@@ -193,8 +194,9 @@ const GenerateQuote = ({
     const feeValue = Math.floor(balanceInitialQuote / fees);
     const remainder = balanceInitialQuote % fees;
 
+    // eslint-disable-next-line no-confusing-arrow
     const initialFeesArray = Array.from({ length: fees }, (_, i) =>
-      (i < remainder ? feeValue + 1 : feeValue)
+      i < remainder ? feeValue + 1 : feeValue
     );
 
     setFeesArray(initialFeesArray);

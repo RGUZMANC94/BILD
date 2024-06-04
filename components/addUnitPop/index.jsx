@@ -13,6 +13,7 @@ const AddUnitPop = ({
   setUnitFlag,
   projectSelected,
 }) => {
+  // console.log(types);
   const router = useRouter();
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -260,6 +261,7 @@ const AddUnitPop = ({
               </h1>
               <h2 className={`${styles.topContentSubTitle}`}>
                 {typeSelectedName !== -1 &&
+                  typeSelectedName !== '' &&
                   types.filter((type) => type.idType === typeSelectedName)[0]
                     .type}
               </h2>

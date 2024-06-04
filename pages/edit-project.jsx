@@ -5,8 +5,6 @@ import { addNewProject } from '../redux/projectSlice';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import ImageDummy from '../public/images/tipo-1.png';
-import { useFetch } from '../hooks/useFetch';
 
 const EditProject = () => {
   const dispatch = useDispatch();

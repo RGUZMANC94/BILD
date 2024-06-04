@@ -250,6 +250,7 @@ const EditUnitPop = ({
               </h1>
               <h2 className={`${styles.topContentSubTitle}`}>
                 {typeSelectedName !== -1 &&
+                  typeSelectedName !== '' &&
                   types.filter((type) => type.idType === typeSelectedName)[0]
                     .type}
               </h2>

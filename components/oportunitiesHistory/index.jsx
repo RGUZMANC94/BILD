@@ -19,11 +19,12 @@ const OportunitiesHistory = ({
   setRefreshFlag,
   setSelectedItemOpp,
   setOppIsSelected,
+  id,
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
   const { quicksand } = useContext(BildContext);
-  const { id } = useSelector((state) => state.userState);
+  // const { id } = useSelector((state) => state.userState);
   const { unitSelected } = useSelector((state) => state.unitState);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showAllEvents, setShowAllEvents] = useState(false);
@@ -524,6 +525,7 @@ const OportunitiesHistory = ({
             <GenerateQuote
               closePopUpPortal={animateClosePopUpQuote}
               setRefreshFlag={getEventsSelected}
+              id={id}
             />
           </BackgroundPopUp>
         </Portal>
@@ -545,6 +547,7 @@ const OportunitiesHistory = ({
           <AddEvents
             setAddEvents={setAddEvents}
             updateEvents={getEventsSelected}
+            id={id}
           />
         </Portal>
       )}

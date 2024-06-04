@@ -280,7 +280,7 @@ const CreateContact = () => {
   };
   return (
     <>
-      <div className={styles['wrap-datos']}>
+      {/* <div className={styles['wrap-datos']}>
         <div
           className={`container flex j-sb a-s wrap relative ${styles.contactContainer}`}>
           <Link href={'/contacts'} className={`${styles.close} bg-ct`}></Link>
@@ -457,25 +457,6 @@ const CreateContact = () => {
                   }`}>
                   Soltero
                 </button>
-                {/*
-                  
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('conHijos')}
-                  className={`${styles.campo} ${
-                    datos.civilStatus === 'conHijos' && styles.active
-                  }`}>
-                  Con Hijos
-                </button>
-                <button
-                  type="button"
-                  onClick={() => changeTypeClient('sinHijos')}
-                  className={`${styles.campo} ${
-                    datos.civilStatus === 'sinHijos' && styles.active
-                  }`}>
-                  Sin Hijos
-                </button>
-                  */}
                 <button
                   type="button"
                   onClick={() => changeTypeClient('UN')}
@@ -550,10 +531,6 @@ const CreateContact = () => {
                     Familiar
                   </button>
                 </div>
-                {/* <button className={styles["crear-contacto"]}>
-                <i className="fa-solid fa-plus"></i>Crear oportunidad
-                </button>
-              <button className={styles["contacto-existente"]}>Guardar</button> */}
                 <div className={styles['buttons-right']}>
                   <Link
                     href={`/detail-estate/${projectsList[0].projectId}?contactId=${77}`}
@@ -601,7 +578,8 @@ const CreateContact = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <h1>CreateContact</h1>
     </>
   );
 };
