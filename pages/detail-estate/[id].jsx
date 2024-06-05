@@ -273,10 +273,6 @@ const DetailState = ({ unitsInit, typesInit, user }) => {
     return <Loader />;
   }
 
-  console.log(
-    'firstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirstfirst'
-  );
-
   console.log(infoProject);
 
   const getProject = async () => {
@@ -422,27 +418,45 @@ export const getServerSideProps = async ({
   },
   query: { id },
 }) => {
-  const { user } = parseCookies(cookie);
+  console.time('All Get Server Side Props');
+
+  const { API_URL } = process.env;
+
+  console.time('Get Cookie');
+
+  const { user_tk } = parseCookies(cookie);
+
+  console.timeEnd('Get Cookie');
+
+  const { user } = JSON.parse(user_tk);
+
+  console.time('Get Units');
+
   const response = await fetch(
-    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${id}&username=${
-      JSON.parse(user).userid
-    }&type=&page=1&rows=50`
+    `${API_URL}projectDetails?projectId=${id}&username=${user.userid}&type=&page=1&rows=50`
   );
 
   const units = await response.json();
 
+  console.timeEnd('Get Units');
+
+  console.time('Get Types');
+
   const resp = await fetch(
-    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPropertyTypes?username=${
-      JSON.parse(user).userid
-    }&projectId=${id}`
+    `${API_URL}GetPropertyTypes?username=${user.userid}&projectId=${id}`
   );
+
   const types = await resp.json();
+
+  console.timeEnd('Get Types');
+
+  console.timeEnd('All Get Server Side Props');
 
   return {
     props: {
       unitsInit: units.length ? units : [],
       typesInit: types.length ? types : [],
-      user: JSON.parse(user),
+      user,
     },
   };
 };

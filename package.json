@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "chart.js": "^4.4.0",
     "cookie": "^0.6.0",
+    "cookies-next": "^4.2.1",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "jquery": "^3.7.1",

@@ -1,13 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import styles from './login.module.css';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/userSlice';
+import BildContext from '../context';
 
 const LogInComponent = () => {
   const dispatch = useDispatch();
   const username = useRef(null);
   const password = useRef(null);
+  const { setInitialState } = useContext(BildContext);
+  console.log(setInitialState);
 
   const [errorLogin, setErrorLogin] = useState(false);
 
@@ -39,6 +42,9 @@ const LogInComponent = () => {
       body: JSON.stringify({
         name: userNameValueInput,
         password: passwordValueInput,
+        grant_type: 'client_credentials',
+        client_id: 'BILD@DevelopmentClient',
+        client_secret: '0f64c95acb3a7fb93ee845d2d3d26c8e391d373e',
       }),
     });
     const loginData = await response.json();
@@ -50,6 +56,7 @@ const LogInComponent = () => {
     }
     dispatch(setUser(loginData));
     console.log(loginData);
+    setInitialState((prevState) => loginData);
     router.push('/');
   };
 

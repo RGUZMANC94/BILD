@@ -11,12 +11,11 @@ export const getServerSideProps = async ({
     headers: { cookie },
   },
 }) => {
-  const { user } = parseCookies(cookie);
+  const { user_tk } = parseCookies(cookie);
+  const { user } = JSON.parse(user_tk);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetRecentContacts?username=${
-        JSON.parse(user).userid
-      }&page=1&rows=100`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetRecentContacts?username=${user.userid}&page=1&rows=100`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');

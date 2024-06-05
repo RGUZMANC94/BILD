@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import Layout from '../components/layout';
-import { persistStore } from 'redux-persist';
+// import { persistStore } from 'redux-persist';
 import BildContext from '../components/context';
 import { Quicksand } from 'next/font/google';
 

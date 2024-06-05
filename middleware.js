@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export default function middleware(req) {
   const { cookies } = req;
 
-  const user = cookies.get('user');
+  const userInfo = cookies.get('user_tk');
 
   const returnUrl = req.nextUrl.clone();
   returnUrl.pathname = '/login';
@@ -13,8 +13,8 @@ export default function middleware(req) {
   const pathname = req.nextUrl.pathname;
 
   if (pathname.includes('/login')) {
-    if (user) {
-      if (user.value) {
+    if (userInfo) {
+      if (userInfo.value) {
         return NextResponse.redirect(new URL('/', req.url).toString());
       }
     }
@@ -22,7 +22,7 @@ export default function middleware(req) {
   }
 
   // if (protectedRoutes.includes(pathname)) {
-  if (user) {
+  if (userInfo) {
     return NextResponse.next();
   }
   console.log('Devolviendo a login');

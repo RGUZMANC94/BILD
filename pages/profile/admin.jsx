@@ -11,9 +11,9 @@ export const getServerSideProps = async ({
     headers: { cookie },
   },
 }) => {
-  const { user } = parseCookies(cookie);
-  console.log(user);
-  return { props: { user: JSON.parse(user) } };
+  const { user_tk } = parseCookies(cookie);
+  const { user } = JSON.parse(user_tk);
+  return { props: { user } };
 };
 
 const Admin = ({ user }) => {

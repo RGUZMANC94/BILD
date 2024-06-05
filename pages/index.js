@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Button from '../components/button';
 import { useSelector } from 'react-redux';
@@ -9,29 +9,21 @@ import { changeProjectEdit } from '../redux/editObjectSlice';
 import Link from 'next/link';
 import Loader from '../components/lodaer';
 import { useQuery } from 'react-query';
-import { parseCookies } from '../utils/parseCookies';
+// import { parseCookies } from '../utils/parseCookies';
 import Image from 'next/image';
 import AddProjectPop from '../components/addProjectPop';
 import EditProjectPop from '../components/editProjectPop';
 import { setUser } from '../redux/userSlice';
+import BildContext from '../components/context';
 
-export const getServerSideProps = async ({
-  req: {
-    headers: { cookie },
-  },
-}) => {
-  const { user } = parseCookies(cookie);
-  return { props: { user: JSON.parse(user) } };
-};
-
-const Home = ({ user }) => {
+const Home = () => {
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
   const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userState);
   const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
 
-  // const USDollar = new Intl.NumberFormat('en-US');
-  // const { user_rol, id } = useSelector((state) => state.userState);
   const { projectsList, filteredList, isFiltered } = useSelector(
     (state) => state.projectState
   );
@@ -118,7 +110,6 @@ const Home = ({ user }) => {
             <Button
               buttonType={'primary'}
               label="Crear Proyecto"
-              // link={'/create-project'}
               inheritClass={styles.createProjectButton}
               clickFunction={() => setShowAddProject(true)}
             />
@@ -147,14 +138,6 @@ const Home = ({ user }) => {
                           alt=""
                           fill
                         />
-                        {/* <img
-                          alt=""
-                          src={
-                            project.image[0] !== '' && project.image[0]
-                              ? `${project.image[0].url}`
-                              : '/images/defatult-2.jpg'
-                          }
-                        /> */}
                       </div>
                       <div className={styles['proyect-info']}>
                         <p className={styles['proyect-title']}>
