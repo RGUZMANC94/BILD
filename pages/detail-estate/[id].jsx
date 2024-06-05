@@ -420,7 +420,7 @@ export const getServerSideProps = async ({
 }) => {
   console.time('All Get Server Side Props');
 
-  const { API_URL } = process.env;
+  //const { API_URL } = process.env;
 
   console.time('Get Cookie');
 
@@ -433,7 +433,7 @@ export const getServerSideProps = async ({
   console.time('Get Units');
 
   const response = await fetch(
-    `${API_URL}projectDetails?projectId=${id}&username=${user.userid}&type=&page=1&rows=50`
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/projectDetails?projectId=${id}&username=${user.userid}&type=&page=1&rows=50`
   );
 
   const units = await response.json();
@@ -443,7 +443,7 @@ export const getServerSideProps = async ({
   console.time('Get Types');
 
   const resp = await fetch(
-    `${API_URL}GetPropertyTypes?username=${user.userid}&projectId=${id}`
+    `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPropertyTypes?username=${user.userid}&projectId=${id}`
   );
 
   const types = await resp.json();
