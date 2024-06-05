@@ -6,6 +6,8 @@ import SquareInput from '../../../../components/squareInput';
 import { parseCookies } from '../../../../utils/parseCookies';
 import { useFetch } from '../../../../hooks/useFetch';
 import Loader from '../../../../components/lodaer';
+import BildContext from '../../../../components/context';
+import { useContext } from 'react';
 
 export const getServerSideProps = async ({
   req: {
@@ -13,11 +15,13 @@ export const getServerSideProps = async ({
   },
   query: id,
 }) => {
-  const { user } = parseCookies(cookie);
-  return { props: { user: JSON.parse(user), queryId: id } };
+  const { user_tk } = parseCookies(cookie);
+  return { props: { user: JSON.parse(user_tk), queryId: id } };
 };
 
-const Quotes = ({ user, queryId }) => {
+const Quotes = ({ queryId }) => {
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
   const { userid: id } = user;
   const { id: idClient } = queryId;
   const { contactListSelected } = useSelector(

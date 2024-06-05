@@ -9,17 +9,21 @@ import Image from 'next/image';
 import { parseCookies } from '../../utils/parseCookies';
 import AddContactPop from '../../components/addContactPop';
 
+import { useContext } from 'react';
+import BildContext from '../../components/context';
 
 export const getServerSideProps = async ({
   req: {
     headers: { cookie },
   },
 }) => {
-  const { user } = parseCookies(cookie);
-  return { props: { user: JSON.parse(user) } };
+  const { user_tk } = parseCookies(cookie);
+  return { props: { user: JSON.parse(user_tk) } };
 };
 
-const Contacts = ({ user }) => {
+const Contacts = () => {
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
   const { userid: id } = user;
   // const router = useRouter();
   const dispatch = useDispatch();
@@ -39,7 +43,6 @@ const Contacts = ({ user }) => {
     });
 
     const recentsContactsres = await response.json();
-    console.log('dentrod e contactos:', recentsContacts);
     const sortedRecents = recentsContactsres.slice();
     sortedRecents.sort((a, b) => a.name.localeCompare(b.name));
     setRecentsContacts(recentsContactsres);

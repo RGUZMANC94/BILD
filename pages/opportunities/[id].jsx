@@ -20,12 +20,11 @@ export const getServerSideProps = async ({
   },
   query: { id },
 }) => {
-  const { user } = parseCookies(cookie);
+  const { user_tk } = parseCookies(cookie);
+  const { user } = JSON.parse(user_tk);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${id}&idproject=&username=${
-        JSON.parse(user).userid
-      }&page=1&rows=100&sorting=DESC`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetSaleOp?idcli=${id}&idproject=&username=${user.userid}&page=1&rows=100&sorting=DESC`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
@@ -34,7 +33,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         oportunities,
-        user: JSON.parse(user),
+        user,
       },
     };
   } catch (error) {
@@ -128,7 +127,7 @@ const Oportunities = ({ oportunities, user }) => {
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
           <Link
-            href={`/buyer/${router.query.id}`}
+            href={`/contacts/${router.query.id}`}
             className={`bg-ct ${styles.icon}`}></Link>
           <div className={styles.title}>
             {`Oportunidades de ${contactInfo[0].firstNames} ${contactInfo[0].lastNames}`}{' '}

@@ -12,8 +12,9 @@ export const getServerSideProps = async ({
   },
 }) => {
   if (cookie) {
-    const { user } = parseCookies(cookie);
-    return { props: { user: JSON.parse(user) } };
+    const { user_tk } = parseCookies(cookie);
+    const { user } = JSON.parse(user_tk);
+    return { props: { user } };
   }
 
   return {

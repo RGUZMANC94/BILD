@@ -10,13 +10,11 @@ export const getServerSideProps = async ({
   },
   query: { id },
 }) => {
-  const { user } = parseCookies(cookie);
-
+  const { user_tk } = parseCookies(cookie);
+  const { user } = JSON.parse(user_tk);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${
-        JSON.parse(user).userid
-      }`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${user.userid}`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
@@ -27,7 +25,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         contact,
-        user: JSON.parse(user),
+        user,
         idClient: id,
       },
     };
@@ -76,7 +74,7 @@ const Payments = ({ contact, user, idClient }) => {
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
           <Link
-            href={`/buyer/${contactListSelected.idCli}`}
+            href={`/contacts/${contactListSelected.idCli}`}
             className={`bg-ct ${styles.icon}`}></Link>
           <div
             className={

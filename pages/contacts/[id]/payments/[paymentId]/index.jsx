@@ -16,13 +16,11 @@ export const getServerSideProps = async ({
   },
   query: { id, paymentId },
 }) => {
-  const { user } = parseCookies(cookie);
-
+  const { user_tk } = parseCookies(cookie);
+  const { user } = JSON.parse(user_tk);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPrice?username=${
-        JSON.parse(user).userid
-      }&idSaleOp=${paymentId}&iddpf=&idClient=`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetPrice?username=${user.userid}&idSaleOp=${paymentId}&iddpf=&idClient=`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
@@ -30,9 +28,7 @@ export const getServerSideProps = async ({
     const resQuotes = await response.json();
     const filterQuote = resQuotes.find((pago) => pago.type === 'IV');
     const responseContact = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${
-        JSON.parse(user).userid
-      }`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${user.userid}`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
@@ -42,7 +38,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         filterQuote,
-        user: JSON.parse(user),
+        user,
         contact,
         idClient: id,
         paymentId,

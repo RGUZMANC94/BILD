@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Button from '../../components/button';
 import styles from './styles.module.css';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { parseCookies } from '../../utils/parseCookies';
 export const getServerSideProps = async ({
   req: {
@@ -10,12 +10,12 @@ export const getServerSideProps = async ({
   },
   query: { id },
 }) => {
-  const { user } = parseCookies(cookie);
-
+  const { user_tk } = parseCookies(cookie);
+  const { user } = JSON.parse(user_tk);
   try {
     const response = await fetch(
       `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${
-        JSON.parse(user).userid
+        user.userid
       }`
     );
     if (!response.ok) {
@@ -26,7 +26,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         contact,
-        user: JSON.parse(user),
+        user,
       },
     };
   } catch (error) {
@@ -281,7 +281,7 @@ const Documentation = ({ contact, user }) => {
       <div className={styles['top-content']}>
         <div className="container flex j-s a-c">
           <Link
-            href={`/buyer/${contactListSelected.idCli}`}
+            href={`/contacts/${contactListSelected.idCli}`}
             className={`bg-ct ${styles.icon}`}></Link>
           <div
             className={

@@ -5,10 +5,15 @@ import { useState, useEffect } from 'react';
 import Portal from '../../../HOC/portal';
 import { useRouter } from 'next/router';
 import { closePopUp } from '../../../redux/popUpOportunity';
+import { useContext } from 'react';
+import BildContext from '../../context';
 
 const PropertyConnected = ({ setIsCreated }) => {
   const router = useRouter();
-  const { id } = useSelector((state) => state.userState);
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id } = user;
+  // const { id } = useSelector((state) => state.userState);
   const { contactSelected } = useSelector(
     (state) => state.contactOpportunityState
   );
