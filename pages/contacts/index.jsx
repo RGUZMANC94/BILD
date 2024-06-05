@@ -39,7 +39,6 @@ const Contacts = () => {
     });
 
     const recentsContactsres = await response.json();
-    console.log('dentrod e contactos:', recentsContacts);
     const sortedRecents = recentsContactsres.slice();
     sortedRecents.sort((a, b) => a.name.localeCompare(b.name));
     setRecentsContacts(recentsContactsres);

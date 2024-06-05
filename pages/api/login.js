@@ -1,18 +1,19 @@
 import { serialize } from 'cookie';
 
 export default async function handler(req, res) {
-  const { API_URL } = process.env;
+  // const { API_URL } = process.env;
   try {
     const response = await fetch(
-      `${API_URL}login?username=${req.body.name}&password=${req.body.password}`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/login?username=${req.body.name}&password=${req.body.password}`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');
     }
+
     const user = await response.json();
 
     const responseToken = await fetch(
-      `${API_URL}OAuth?grant_type=${req.body.grant_type}&client_id=${req.body.client_id}&client_secret=${req.body.client_secret}`,
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/OAuth?grant_type=${req.body.grant_type}&client_id=${req.body.client_id}&client_secret=${req.body.client_secret}`,
       {
         method: 'post',
         headers: {
