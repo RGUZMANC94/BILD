@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import { changeContactListSelected } from '../../redux/contactSelectedSlice';
 import Image from 'next/image';
 import { parseCookies } from '../../utils/parseCookies';
+import AddContactPop from '../../components/addContactPop';
+
 
 export const getServerSideProps = async ({
   req: {
@@ -24,6 +26,8 @@ const Contacts = ({ user }) => {
   const [recentContacts, setRecentsContacts] = useState([]);
   const [sortedontacts, setSortedContacts] = useState([]);
   // const { id } = useSelector((state) => state.userState);
+  const [showAddContact, setShowAddContact] = useState(false);
+  const [refreshContacts, setRefreshContacts] = useState(false);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
@@ -46,7 +50,17 @@ const Contacts = ({ user }) => {
     getRecentsContacts();
   }, []);
 
+  useEffect(() => {
+    if (refreshContacts) {
+      setRefreshContacts(false);
+    }
+    getRecentsContacts();
+  }, [refreshContacts]);
+
+  console.log('recentsContacts:', showAddContact);
+
   return (
+    <>
     <section className={styles['main-contain-contact']}>
       <div className={styles['contact-top']}>
         <div className="container flex j-sb a-c">
@@ -56,9 +70,13 @@ const Contacts = ({ user }) => {
         </div>
       </div>
       <div className="container">
-        <Link className={styles['crear-contacto']} href="/create-contact">
+
+        <button
+              className={styles['crear-contacto']}
+              onClick={() => setShowAddContact(true)}
+        >
           Nuevo contacto
-        </Link>
+        </button>
 
         <div className={styles.listas}>
           <div className={styles.reciente}>
@@ -221,6 +239,13 @@ const Contacts = ({ user }) => {
         </div>
       </div>
     </section>
+    
+    <AddContactPop
+        showAddContact={showAddContact}
+        setShowAddContact={setShowAddContact}
+        setRefreshContacts={setRefreshContacts}
+      />
+    </>
   );
 };
 

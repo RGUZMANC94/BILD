@@ -20,6 +20,7 @@
   background-size: 25px;
   background-repeat: no-repeat;
   background-color: #2467ff;
+  color: #fff;
   padding: 0 10px 0 45px;
   width: 250px;
   height: 45px;
@@ -28,6 +29,7 @@
   line-height: 45px;
   text-align: center;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .crear-contacto-container {

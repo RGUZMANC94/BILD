@@ -5,6 +5,7 @@ import RightSideProfile from '../../../components/rightSideInfoProfile';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { parseCookies } from '../../../utils/parseCookies';
+import EditContactPop from '../../../components/editContactPop';
 
 export const getServerSideProps = async ({
   req: {
@@ -41,25 +42,39 @@ const BuyerProfile = ({ contacts }) => {
   const [recentContacts, setRecentsContacts] = useState(
     contacts.filter((res) => res.idCli === router.query.id)
   );
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [refreshContacts, setRefreshContacts] = useState(false);
 
   console.log(recentContacts);
 
   return (
-    <div className={styles.perfil}>
-      <Link
-        href="/contacts"
-        className={`${styles.closeContactSide} bg-ct`}></Link>
-      <SideInfoProfile contactInfo={recentContacts[0]} typeViewer={'buyer'} />
-      <div className={styles.pendientes}>
+    <>
+      <div className={styles.perfil}>
         <Link
           href="/contacts"
-          className={`${styles.closeContact} bg-ct`}></Link>
-        <RightSideProfile
-          contactInfo={recentContacts[0]}
-          typeViewer={'buyer'}
+          className={`${styles.closeContactSide} bg-ct`}></Link>
+        <SideInfoProfile 
+          contactInfo={recentContacts[0]} 
+          typeViewer={'buyer'} 
+          setShowEditContact={setShowEditContact}
         />
+        <div className={styles.pendientes}>
+          <Link
+            href="/contacts"
+            className={`${styles.closeContact} bg-ct`}></Link>
+          <RightSideProfile
+            contactInfo={recentContacts[0]}
+            typeViewer={'buyer'}
+          />
+        </div>
       </div>
-    </div>
+      <EditContactPop
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        setRefreshContacts={setRefreshContacts}
+      />
+    </>
+    
   );
 };
 export default BuyerProfile;

@@ -3,7 +3,7 @@ import styles from './SideInfoProfile.module.css';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
-const SideInfoProfile = ({ contactInfo, typeViewer }) => {
+const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   const dispatch = useDispatch();
 
   console.log('Informacion del contactIndo: ', contactInfo);
@@ -13,12 +13,10 @@ const SideInfoProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['editar-perfil']}>
           <div className={styles.containerEditarPerfil}>
             {typeViewer === 'buyer' && (
-              <Link
-                href={{
-                  pathname: '/edit-contact',
-                  query: { contact: contactInfo.idCli },
-                }}
-                className={`${styles.editar}`}></Link>
+              <button
+                className={`${styles.editar}`}
+                onClick={() => setShowEditContact(true)}
+              />
             )}
 
             <div className={styles['perfil-img']}>

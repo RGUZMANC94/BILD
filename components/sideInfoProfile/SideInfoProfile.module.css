@@ -52,6 +52,7 @@
   background-repeat: no-repeat;
   background-color: #2467ff;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .perfil-img {
