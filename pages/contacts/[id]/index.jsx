@@ -52,9 +52,9 @@ const BuyerProfile = ({ contacts }) => {
         <Link
           href="/contacts"
           className={`${styles.closeContactSide} bg-ct`}></Link>
-        <SideInfoProfile 
-          contactInfo={recentContacts[0]} 
-          typeViewer={'buyer'} 
+        <SideInfoProfile
+          contactInfo={recentContacts[0]}
+          typeViewer={'buyer'}
           setShowEditContact={setShowEditContact}
         />
         <div className={styles.pendientes}>
@@ -73,7 +73,6 @@ const BuyerProfile = ({ contacts }) => {
         setRefreshContacts={setRefreshContacts}
       />
     </>
-    
   );
 };
 export default BuyerProfile;

@@ -69,31 +69,31 @@ const AddContactPop = ({
   const cleanForm = () => {
     setDatos({
       firstNames: '',
-    lastNames: '',
-    email: '',
-    documentNumber: '',
-    phoneNumber: '',
-    gender: 'M',
-    idType: 'CE',
-    birthDay: '1990-01-01',
-    documentExpeditionDate: '1990-01-02',
-    countryExpedition: 'COL',
-    stateExpedition: '5',
-    cityExpedition: '1',
-    nacionality: 'Colombiana',
-    typeClient: 'J',
-    businessName: 'Cliente',
-    origin: '845002',
-    pointOfAttention: '3',
-    StatusClient: '1',
-    idAdviser: 'FDBILD',
-    dateRegister: '2023-12-03',
-    idProject: '85006',
-    isActive: 'A',
-    country: 'COL',
-    department: '5',
-    city: '1',
-    thirdDependency: 'N',
+      lastNames: '',
+      email: '',
+      documentNumber: '',
+      phoneNumber: '',
+      gender: 'M',
+      idType: 'CE',
+      birthDay: '1990-01-01',
+      documentExpeditionDate: '1990-01-02',
+      countryExpedition: 'COL',
+      stateExpedition: '5',
+      cityExpedition: '1',
+      nacionality: 'Colombiana',
+      typeClient: 'J',
+      businessName: 'Cliente',
+      origin: '845002',
+      pointOfAttention: '3',
+      StatusClient: '1',
+      idAdviser: 'FDBILD',
+      dateRegister: '2023-12-03',
+      idProject: '85006',
+      isActive: 'A',
+      country: 'COL',
+      department: '5',
+      city: '1',
+      thirdDependency: 'N',
     });
     setProfileData({
       clientId: '',
@@ -116,7 +116,6 @@ const AddContactPop = ({
   const [imagen, setImagen] = useState(null);
 
   const sendFormInfo = async () => {
-
     console.log(
       JSON.stringify({
         id,
@@ -261,12 +260,10 @@ const AddContactPop = ({
     setSelectedFile(event.target.files[0]);
   };
 
-
   function handleBloth(e) {
     handleFileChange(e);
     readURL(e);
   }
-
 
   useEffect(() => {
     if (profileData.clientId) {
@@ -379,7 +376,7 @@ const AddContactPop = ({
         className={`${styles.typePopUp} ${
           showAddContact ? styles.activePopUp : ''
         } flex j-e a-s`}>
-          <div
+        <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => {
             setShowAddContact(false);
@@ -401,79 +398,77 @@ const AddContactPop = ({
               }}
             />
           </div>
-        
 
-        <form className={styles.formType}>
+          <form className={styles.formType}>
+            <div className={styles.sectionTitle}>
+              <h2 className={styles.sectionTitleText}>Datos Personales</h2>
+            </div>
 
-          <div className={styles.sectionTitle}>
-            <h2 className={styles.sectionTitleText}>Datos Personales</h2>
-          </div>
-
-        <div className={styles.inputsGroup}>
+            <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Nombre:</span>
               <input
-                    type="text"
-                    name="firstNames"
-                    placeholder="Nombre"
-                    value={datos.firstNames}
-                    onChange={handleChange}
-                    className={styles.inputTypeForm}
-                    required
-                  />
+                type="text"
+                name="firstNames"
+                placeholder="Nombre"
+                value={datos.firstNames}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
             </div>
             <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Apellidos:</span>
               <input
-                    type="text"
-                    name="lastNames"
-                    placeholder="Apellidos"
-                    value={datos.lastNames}
-                    onChange={handleChange}
-                    className={styles.inputTypeForm}
-                    required
-                  />
+                type="text"
+                name="lastNames"
+                placeholder="Apellidos"
+                value={datos.lastNames}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
             </div>
             <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Número de Documento:</span>
               <input
-                     type="text"
-                     name="documentNumber"
-                     placeholder="Número de Documento"
-                     value={datos.documentNumber}
-                    onChange={handleChange}
-                    className={styles.inputTypeForm}
-                    required
-                  />
+                type="text"
+                name="documentNumber"
+                placeholder="Número de Documento"
+                value={datos.documentNumber}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
             </div>
             <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Email:</span>
               <input
-                     type="text"
-                     name="email"
-                     placeholder="Email"
-                     value={datos.email}
-                    onChange={handleChange}
-                    className={styles.inputTypeForm}
-                    required
-                  />
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={datos.email}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
             </div>
             <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Celular:</span>
               <input
-                     type="text"
-                     name="phoneNumber"
-                     placeholder="Celular"
-                     value={datos.phoneNumber}
-                    onChange={handleChange}
-                    className={styles.inputTypeForm}
-                    required
-                  />
+                type="text"
+                name="phoneNumber"
+                placeholder="Celular"
+                value={datos.phoneNumber}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
             </div>
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Subir foto:</span>
               <div className={styles['main-image']}>
-              <div
+                <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
                 <label
@@ -536,51 +531,50 @@ const AddContactPop = ({
                 </button>
               </div>
             </div>
-              <div className={styles.inputsGroup}>
-                <span className={styles.labelText}>Numero de Hijos:</span>
-                <div className={styles.datos}>
-                  <button
-                    type="button"
-                    onClick={() => changeAmountChildren('0')}
-                    className={`${styles.campo} ${
-                      profileData.amountChildren === '0' && styles.active
-                    }`}>
-                    Sin Hijos
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changeAmountChildren('1')}
-                    className={`${styles.campo} ${
-                      profileData.amountChildren === '1' && styles.active
-                    }`}>
-                    Con Hijos
-                  </button>
-                </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Numero de Hijos:</span>
+              <div className={styles.datos}>
+                <button
+                  type="button"
+                  onClick={() => changeAmountChildren('0')}
+                  className={`${styles.campo} ${
+                    profileData.amountChildren === '0' && styles.active
+                  }`}>
+                  Sin Hijos
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeAmountChildren('1')}
+                  className={`${styles.campo} ${
+                    profileData.amountChildren === '1' && styles.active
+                  }`}>
+                  Con Hijos
+                </button>
               </div>
-              <div className={styles.inputsGroup}>
-                <span className={styles.labelText}>Tipo de Comprador:</span>
-                <div className={styles.datos}>
-                  <button
-                    type="button"
-                    onClick={() => changebusinessName('I')}
-                    className={`${styles.campo} ${
-                      profileData.housingInversion === 'I' && styles.active
-                    }`}>
-                    Inversionista
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changebusinessName('V')}
-                    className={`${styles.campo} ${
-                      profileData.housingInversion === 'V' && styles.active
-                    }`}>
-                    Familiar
-                  </button>
-                </div>
+            </div>
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Tipo de Comprador:</span>
+              <div className={styles.datos}>
+                <button
+                  type="button"
+                  onClick={() => changebusinessName('I')}
+                  className={`${styles.campo} ${
+                    profileData.housingInversion === 'I' && styles.active
+                  }`}>
+                  Inversionista
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changebusinessName('V')}
+                  className={`${styles.campo} ${
+                    profileData.housingInversion === 'V' && styles.active
+                  }`}>
+                  Familiar
+                </button>
               </div>
-
-        </form>
-        <div className={`${styles.BottomContent}`}>
+            </div>
+          </form>
+          <div className={`${styles.BottomContent}`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}
@@ -600,9 +594,9 @@ const AddContactPop = ({
             />
           </div>
         </div>
-        </div>
+      </div>
 
-        <div className={`${styles.popSuccessCreated}`}>
+      <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>
         <div className={styles.popup2}>
           <div className={styles.content}>
@@ -633,7 +627,7 @@ const AddContactPop = ({
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
 };

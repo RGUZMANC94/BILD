@@ -184,7 +184,7 @@
 }
 
 .inputDate::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+  filter: invert(1);
 }
 
 .labelSelect {

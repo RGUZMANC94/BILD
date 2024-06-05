@@ -14,9 +14,7 @@ export const getServerSideProps = async ({
   const { user } = JSON.parse(user_tk);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${
-        user.userid
-      }`
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/GetContact?idclient=${id}&username=${user.userid}`
     );
     if (!response.ok) {
       throw new Error('Bad response from server');

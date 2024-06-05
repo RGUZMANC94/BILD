@@ -43,7 +43,6 @@ const PropertyConnected = ({ setIsCreated }) => {
     setOriginTemp(e.target.value);
   };
 
-
   const sendFormInfo = async (e) => {
     e.preventDefault();
 

@@ -64,186 +64,186 @@ const Contacts = () => {
 
   return (
     <>
-    <section className={styles['main-contain-contact']}>
-      <div className={styles['contact-top']}>
-        <div className="container flex j-sb a-c">
-          <div className={styles.nombre}>Nombre</div>
-          <div className={styles.mail}>Correo Electrónico</div>
-          <div className={styles.numero}>Número de contacto</div>
-        </div>
-      </div>
-      <div className="container">
-
-        <button
-              className={styles['crear-contacto']}
-              onClick={() => setShowAddContact(true)}
-        >
-          Nuevo contacto
-        </button>
-
-        <div className={styles.listas}>
-          <div className={styles.reciente}>
-            Creados Recientemente (
-            {recentContacts.length >= 3 ? '3' : recentContacts.length})
+      <section className={styles['main-contain-contact']}>
+        <div className={styles['contact-top']}>
+          <div className="container flex j-sb a-c">
+            <div className={styles.nombre}>Nombre</div>
+            <div className={styles.mail}>Correo Electrónico</div>
+            <div className={styles.numero}>Número de contacto</div>
           </div>
-          {recentContacts.slice(0, 3).map((recent, i) => (
-            <div className={styles['list-name']} key={i}>
-              <div className={styles['list-contact']}>
-                <Link
-                  onClick={() => {
-                    dispatch(changeContactListSelected(recent));
-                  }}
-                  href={`/contacts/${recent.idCli}`}
-                  className={styles.contact}>
-                  <div className={styles['contact-img-container']}>
-                    <Image
-                      width={40}
-                      height={40}
-                      alt=""
-                      src={
-                        recent.image[0] !== '' && recent.image[0]
-                          ? `${recent.image[0].url}`
-                          : '/images/tipo-1.png'
-                      }
-                    />
-                    {/* <img
+        </div>
+        <div className="container">
+          <button
+            className={styles['crear-contacto']}
+            onClick={() => setShowAddContact(true)}>
+            Nuevo contacto
+          </button>
+
+          <div className={styles.listas}>
+            <div className={styles.reciente}>
+              Creados Recientemente (
+              {recentContacts.length >= 3 ? '3' : recentContacts.length})
+            </div>
+            {recentContacts.slice(0, 3).map((recent, i) => (
+              <div className={styles['list-name']} key={i}>
+                <div className={styles['list-contact']}>
+                  <Link
+                    onClick={() => {
+                      dispatch(changeContactListSelected(recent));
+                    }}
+                    href={`/contacts/${recent.idCli}`}
+                    className={styles.contact}>
+                    <div className={styles['contact-img-container']}>
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src={
+                          recent.image[0] !== '' && recent.image[0]
+                            ? `${recent.image[0].url}`
+                            : '/images/tipo-1.png'
+                        }
+                      />
+                      {/* <img
                       src={
                         recent.image[0] !== '' && recent.image[0]
                           ? `${recent.image[0].url}`
                           : '/images/tipo-1.png'
                       }
                     /> */}
-                  </div>
-                  <span className={`${styles.badge} ${styles.red}`}>1</span>
-                  {`${recent.name} ${recent.lastname}`}
-                </Link>
-                <Link
-                  onClick={() => {
-                    dispatch(changeContactListSelected(recent));
-                  }}
-                  href={`/contacts/${recent.idCli}`}
-                  className={styles.contact}>
-                  <div className={styles['reciente-col']}>{recent.email}</div>
-                </Link>
-                <div className={styles.number}>
-                  {`+57 ${recent.phoneNumber}`}
-                  <a
-                    href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
-                    target="_blank"
-                    className={styles['whastapp-icon']}>
-                    <Image
-                      alt=""
-                      width={40}
-                      height={40}
-                      src="/images/whastapp-blue.png"
-                    />
-                    {/* <img  /> */}
-                  </a>
-                </div>
-                <div className={styles['iconos-movil']}>
-                  <div className={styles['phone-movil']}>
-                    <Image
-                      alt=""
-                      width={40}
-                      height={40}
-                      src="/images/blue-phone-movil.png"
-                    />
-                    {/* <img src="/images/blue-phone-movil.png" /> */}
-                  </div>
-                  <div className={styles['wa-movil']}>
-                    <Image
-                      alt=""
-                      width={40}
-                      height={40}
-                      src="/images/whatsapp-contacts.png"
-                    />
-                    {/* <img src="/images/whatsapp-contacts.png" /> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className={styles.listas}>
-          <div className={styles.reciente}>
-            Contactos ({recentContacts.length})
-          </div>
-          {sortedontacts.map((contact, i) => (
-            <div className={styles['list-name']} key={i}>
-              <Link
-                onClick={() => {
-                  dispatch(changeContactListSelected(contact));
-                }}
-                href={`/contacts/${contact.idCli}`}>
-                <div className={styles['list-contact']}>
-                  <div className={styles.contact}>
-                    <div className={styles['contact-img-container']}>
-                      <Image
-                        alt=""
-                        width={40}
-                        height={40}
-                        src={
-                          contact.image[0] !== '' && contact.image[0]
-                            ? `${contact.image[0].url}`
-                            : '/images/tipo-1.png'
-                        }
-                      />
-                      {/* <img
-                        src={
-                          contact.image[0] !== '' && contact.image[0]
-                            ? `${contact.image[0].url}`
-                            : '/images/tipo-1.png'
-                        }
-                      /> */}
                     </div>
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
-                    {`${contact.name} ${contact.lastname}`}
-                  </div>
-                  <div className={styles['reciente-col']}>{contact.email}</div>
+                    {`${recent.name} ${recent.lastname}`}
+                  </Link>
+                  <Link
+                    onClick={() => {
+                      dispatch(changeContactListSelected(recent));
+                    }}
+                    href={`/contacts/${recent.idCli}`}
+                    className={styles.contact}>
+                    <div className={styles['reciente-col']}>{recent.email}</div>
+                  </Link>
                   <div className={styles.number}>
+                    {`+57 ${recent.phoneNumber}`}
                     <a
-                      href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                      href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
                       target="_blank"
                       className={styles['whastapp-icon']}>
-                      {`+57 ${contact.phoneNumber}`}
                       <Image
+                        alt=""
                         width={40}
                         height={40}
-                        alt=""
                         src="/images/whastapp-blue.png"
                       />
-                      {/* <img src="/images/whastapp-blue.png" /> */}
+                      {/* <img  /> */}
                     </a>
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
                       <Image
+                        alt=""
                         width={40}
                         height={40}
-                        alt=""
                         src="/images/blue-phone-movil.png"
                       />
                       {/* <img src="/images/blue-phone-movil.png" /> */}
                     </div>
                     <div className={styles['wa-movil']}>
                       <Image
+                        alt=""
                         width={40}
                         height={40}
-                        alt=""
                         src="/images/whatsapp-contacts.png"
                       />
                       {/* <img src="/images/whatsapp-contacts.png" /> */}
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
+            ))}
+          </div>
+          <div className={styles.listas}>
+            <div className={styles.reciente}>
+              Contactos ({recentContacts.length})
             </div>
-          ))}
+            {sortedontacts.map((contact, i) => (
+              <div className={styles['list-name']} key={i}>
+                <Link
+                  onClick={() => {
+                    dispatch(changeContactListSelected(contact));
+                  }}
+                  href={`/contacts/${contact.idCli}`}>
+                  <div className={styles['list-contact']}>
+                    <div className={styles.contact}>
+                      <div className={styles['contact-img-container']}>
+                        <Image
+                          alt=""
+                          width={40}
+                          height={40}
+                          src={
+                            contact.image[0] !== '' && contact.image[0]
+                              ? `${contact.image[0].url}`
+                              : '/images/tipo-1.png'
+                          }
+                        />
+                        {/* <img
+                        src={
+                          contact.image[0] !== '' && contact.image[0]
+                            ? `${contact.image[0].url}`
+                            : '/images/tipo-1.png'
+                        }
+                      /> */}
+                      </div>
+                      <span className={`${styles.badge} ${styles.red}`}>1</span>
+                      {`${contact.name} ${contact.lastname}`}
+                    </div>
+                    <div className={styles['reciente-col']}>
+                      {contact.email}
+                    </div>
+                    <div className={styles.number}>
+                      <a
+                        href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                        target="_blank"
+                        className={styles['whastapp-icon']}>
+                        {`+57 ${contact.phoneNumber}`}
+                        <Image
+                          width={40}
+                          height={40}
+                          alt=""
+                          src="/images/whastapp-blue.png"
+                        />
+                        {/* <img src="/images/whastapp-blue.png" /> */}
+                      </a>
+                    </div>
+                    <div className={styles['iconos-movil']}>
+                      <div className={styles['phone-movil']}>
+                        <Image
+                          width={40}
+                          height={40}
+                          alt=""
+                          src="/images/blue-phone-movil.png"
+                        />
+                        {/* <img src="/images/blue-phone-movil.png" /> */}
+                      </div>
+                      <div className={styles['wa-movil']}>
+                        <Image
+                          width={40}
+                          height={40}
+                          alt=""
+                          src="/images/whatsapp-contacts.png"
+                        />
+                        {/* <img src="/images/whatsapp-contacts.png" /> */}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-    
-    <AddContactPop
+      </section>
+
+      <AddContactPop
         showAddContact={showAddContact}
         setShowAddContact={setShowAddContact}
         setRefreshContacts={setRefreshContacts}
