@@ -407,7 +407,7 @@ const GenerateQuote = ({
             </span>
           </div>
           <div className={styles['cotizacion-form']}>
-            <span className={styles.labelSide}>Separación:</span>
+            <span className={styles.labelSide}>Reserva:</span>
 
             <CurrencyInput
               className={styles.inputQuote}
@@ -424,7 +424,7 @@ const GenerateQuote = ({
             />
           </div>
           <div className={styles['cotizacion-form']}>
-            <span className={styles.labelSide}>Abono Inicial:</span>
+            <span className={styles.labelSide}>Separación:</span>
 
             <CurrencyInput
               className={styles.inputQuote}
@@ -437,7 +437,6 @@ const GenerateQuote = ({
               // defaultValue={1000000}
               decimalsLimit={2}
               onValueChange={(value) => setDownPayment(value)}
-              required
             />
           </div>
 

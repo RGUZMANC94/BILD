@@ -558,7 +558,7 @@ const EditProjectPop = ({
                 value={dateValue}
                 required
                 onChange={handleDateChange}
-                className={styles.inputTypeForm}
+                className={`${styles.inputTypeForm} ${styles.inputDate}`}
               />
             </div>
 

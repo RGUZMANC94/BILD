@@ -183,6 +183,20 @@
   color: #fff;
 }
 
+.inputTypeForm {
+  width: 100%;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid #fff;
+  padding: 0 10px;
+  height: 35px;
+  background-color: transparent;
+  color: #fff;
+}
+
 .labelSelect {
   background-color: #343434;
 }

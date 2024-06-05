@@ -183,6 +183,10 @@
   color: #fff;
 }
 
+.inputDate::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 .labelSelect {
   background-color: #343434;
 }
