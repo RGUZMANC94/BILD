@@ -32,8 +32,10 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
               />
             </div>
             <span className={styles['name-perfil']}>
-              {contactInfo.name && (`${contactInfo.name} ${contactInfo.lastname}`)}
-              {contactInfo.firstNames && (`${contactInfo.firstNames} ${contactInfo.lastNames}`)}
+              {contactInfo.name &&
+                `${contactInfo.name} ${contactInfo.lastname}`}
+              {contactInfo.firstNames &&
+                `${contactInfo.firstNames} ${contactInfo.lastNames}`}
             </span>
             {(typeViewer === 'adviser' || typeViewer === 'admin') && (
               <div className={styles['perfil-icons-admin']}>

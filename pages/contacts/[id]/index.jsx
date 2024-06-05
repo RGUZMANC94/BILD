@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import SideInfoProfile from '../../../components/sideInfoProfile';
 import RightSideProfile from '../../../components/rightSideInfoProfile';
 import { useRouter } from 'next/router';
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { parseCookies } from '../../../utils/parseCookies';
 import EditContactPop from '../../../components/editContactPop';
 
@@ -38,7 +38,7 @@ export const getServerSideProps = async ({
   }
 };
 
-const BuyerProfile = ({ contacts , user }) => {
+const BuyerProfile = ({ contacts, user }) => {
   const router = useRouter();
   const { userid: id } = user;
   const [recentContacts, setRecentsContacts] = useState(
@@ -72,7 +72,7 @@ const BuyerProfile = ({ contacts , user }) => {
     getContact();
   }, [refreshContacts]);
 
-  console.log('filtered: ',recentContacts[0]);
+  console.log('filtered: ', recentContacts[0]);
 
   return (
     <>
@@ -89,10 +89,7 @@ const BuyerProfile = ({ contacts , user }) => {
           <Link
             href="/contacts"
             className={`${styles.closeContact} bg-ct`}></Link>
-          <RightSideProfile
-            contactInfo={contactInfo}
-            typeViewer={'buyer'}
-          />
+          <RightSideProfile contactInfo={contactInfo} typeViewer={'buyer'} />
         </div>
       </div>
       <EditContactPop
