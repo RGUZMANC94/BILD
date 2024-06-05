@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import SideInfoProfile from '../../../components/sideInfoProfile';
 import RightSideProfile from '../../../components/rightSideInfoProfile';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { parseCookies } from '../../../utils/parseCookies';
 import EditContactPop from '../../../components/editContactPop';
 
@@ -25,26 +25,54 @@ export const getServerSideProps = async ({
     return {
       props: {
         contacts,
+        user,
       },
     };
   } catch (error) {
     return {
       props: {
         error: 'Error in request',
+        user,
       },
     };
   }
 };
 
-const BuyerProfile = ({ contacts }) => {
+const BuyerProfile = ({ contacts , user }) => {
   const router = useRouter();
+  const { userid: id } = user;
   const [recentContacts, setRecentsContacts] = useState(
     contacts.filter((res) => res.idCli === router.query.id)
   );
   const [showEditContact, setShowEditContact] = useState(false);
   const [refreshContacts, setRefreshContacts] = useState(false);
+  const [contactInfo, setContactInfo] = useState(recentContacts[0]);
 
-  console.log(recentContacts);
+  const getContact = async () => {
+    const response = await fetch('/api/getContactInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idclient: router.query.id,
+      }),
+    });
+    const responseContact = await response.json();
+
+    setContactInfo(responseContact[0]);
+    console.log('respuesta contacto: ', responseContact[0]);
+  };
+
+  useEffect(() => {
+    if (refreshContacts) {
+      setRefreshContacts(false);
+    }
+    getContact();
+  }, [refreshContacts]);
+
+  console.log('filtered: ',recentContacts[0]);
 
   return (
     <>
@@ -53,7 +81,7 @@ const BuyerProfile = ({ contacts }) => {
           href="/contacts"
           className={`${styles.closeContactSide} bg-ct`}></Link>
         <SideInfoProfile
-          contactInfo={recentContacts[0]}
+          contactInfo={contactInfo}
           typeViewer={'buyer'}
           setShowEditContact={setShowEditContact}
         />
@@ -62,7 +90,7 @@ const BuyerProfile = ({ contacts }) => {
             href="/contacts"
             className={`${styles.closeContact} bg-ct`}></Link>
           <RightSideProfile
-            contactInfo={recentContacts[0]}
+            contactInfo={contactInfo}
             typeViewer={'buyer'}
           />
         </div>

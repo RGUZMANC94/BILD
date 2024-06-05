@@ -248,7 +248,6 @@ const EditContactPop = ({
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        router.push('/contacts');
       }, 2000);
     } catch (error) {
       document
@@ -418,7 +417,7 @@ const EditContactPop = ({
           className={`${styles.bgTypePopUp}`}
           onClick={() => {
             setShowEditContact(false);
-            cleanForm();
+            getContact();
           }}></div>
 
         <div className={`${styles.wrapperTypePopUp}`}>
@@ -432,7 +431,7 @@ const EditContactPop = ({
               className={`${styles.closeIcon} bg-ct`}
               onClick={() => {
                 setShowEditContact(false);
-                cleanForm();
+                getContact();
               }}
             />
           </div>
@@ -620,7 +619,7 @@ const EditContactPop = ({
               inheritClass={styles.buttonCreateType}
               clickFunction={() => {
                 setShowEditContact(false);
-                cleanForm();
+                getContact();
               }}
             />
             <Button
