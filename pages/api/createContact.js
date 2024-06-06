@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   console.log('heyo:-', req.body.datos);
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/CreateContact?username=${req.body.id}`,
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/CreateContactV2?username=${req.body.id}`,
       {
         method: 'post',
         headers: {

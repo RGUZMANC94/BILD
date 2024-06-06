@@ -51,58 +51,7 @@ const EditContactPop = ({
     department: '5',
     city: '1',
     thirdDependency: 'N',
-  });
-
-  const [profileData, setProfileData] = useState({
-    clientId: '',
-    civilStatus: '',
-    amountChildren: '',
-    housingInversion: '',
-    timeDecision: '',
-    decision: '',
-    adjustTimeDelivery: '',
-    zoneInterest: '',
-    budget: '0.0',
-    amountBeds: '',
-    rangeAgeChildren: '',
-    profesion: '',
-    pets: '',
-    hobby: '',
-    habeas: '',
-  });
-  const cleanForm = () => {
-    setDatos({
-      firstNames: '',
-      lastNames: '',
-      email: '',
-      documentNumber: '',
-      phoneNumber: '',
-      gender: 'M',
-      idType: 'CE',
-      birthDay: '1990-01-01',
-      documentExpeditionDate: '1990-01-02',
-      countryExpedition: 'COL',
-      stateExpedition: '5',
-      cityExpedition: '1',
-      nacionality: 'Colombiana',
-      typeClient: 'J',
-      businessName: 'Cliente',
-      origin: '845002',
-      pointOfAttention: '3',
-      StatusClient: '1',
-      idAdviser: 'FDBILD',
-      dateRegister: '2023-12-03',
-      idProject: '85006',
-      isActive: 'A',
-      country: 'COL',
-      department: '5',
-      city: '1',
-      thirdDependency: 'N',
-    });
-    setProfileData({
-      clientId: '',
-      civilStatus: '',
-      amountChildren: '',
+    contactProfile: {
       housingInversion: '',
       timeDecision: '',
       decision: '',
@@ -110,13 +59,15 @@ const EditContactPop = ({
       zoneInterest: '',
       budget: '0.0',
       amountBeds: '',
+      civilStatus: '',
+      amountChildren: '',
       rangeAgeChildren: '',
       profesion: '',
       pets: '',
       hobby: '',
-      habeas: '',
-    });
-  };
+      habeas: ''
+  }
+  });
 
   const getContact = async () => {
     const response = await fetch('/api/getContactInfo', {
@@ -140,17 +91,6 @@ const EditContactPop = ({
   }, []);
 
   const [imagen, setImagen] = useState(null);
-  useEffect(() => {
-    if (infoContact) {
-      setDatos({ ...datos, ...infoContact });
-      if (infoContact.contactProfile) {
-        if (infoContact.contactProfile.length > 0) {
-          setProfileData({ ...profileData, ...infoContact.contactProfile[0] });
-        }
-      }
-      console.log('Datos: ', datos);
-    }
-  }, [infoContact]);
 
   const sendFormInfo = async () => {
     console.log(
@@ -231,13 +171,6 @@ const EditContactPop = ({
         }
       }
 
-      if (contactCreated.ok) {
-        setProfileData((prevProfileData) => ({
-          ...prevProfileData,
-          clientId: responseData.clientId,
-        }));
-      }
-
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -301,36 +234,7 @@ const EditContactPop = ({
     handleFileChange(e);
     readURL(e);
   }
-
-  useEffect(() => {
-    if (profileData.clientId) {
-      sendProfileData();
-    }
-  }, [profileData.clientId]);
-
-  const sendProfileData = async () => {
-    try {
-      const response = await fetch('/api/createProfile', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id,
-          profileData,
-        }),
-      });
-
-      if (!response.ok) {
-        console.error('Error de solicitud. Estado:', response.status);
-      } else {
-        console.log('Respuesta exitosa:', response);
-      }
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
-    }
-  };
-
+  
   const sendFormImage = async (e) => {
     e.preventDefault();
 
@@ -396,15 +300,33 @@ const EditContactPop = ({
   };
 
   const changebusinessName = (name) => {
-    setProfileData({ ...profileData, housingInversion: name });
+    setDatos(prevDatos => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        housingInversion: name
+      }
+    }));
   };
 
   const changeTypeClient = (type) => {
-    setProfileData({ ...profileData, civilStatus: type });
+    setDatos(prevDatos => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        civilStatus: type
+      }
+    }));
   };
 
   const changeAmountChildren = (amount) => {
-    setProfileData({ ...profileData, amountChildren: amount });
+    setDatos(prevDatos => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        amountChildren: amount
+      }
+    }));
   };
 
   return (
@@ -538,7 +460,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('C')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'C' && styles.active
+                    datos.contactProfile.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
                 </button>
@@ -546,7 +468,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('S')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'S' && styles.active
+                    datos.contactProfile.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
                 </button>
@@ -554,7 +476,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('UN')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'UN' && styles.active
+                    datos.contactProfile.civilStatus === 'UN' && styles.active
                   }`}>
                   Unión Libre
                 </button>
@@ -562,7 +484,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('DI')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'DI' && styles.active
+                    datos.contactProfile.civilStatus === 'DI' && styles.active
                   }`}>
                   Divorciado
                 </button>
@@ -575,7 +497,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('0')}
                   className={`${styles.campo} ${
-                    profileData.amountChildren === '0' && styles.active
+                    datos.contactProfile.amountChildren === '0' && styles.active
                   }`}>
                   Sin Hijos
                 </button>
@@ -583,7 +505,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('1')}
                   className={`${styles.campo} ${
-                    profileData.amountChildren === '1' && styles.active
+                    datos.contactProfile.amountChildren === '1' && styles.active
                   }`}>
                   Con Hijos
                 </button>
@@ -596,7 +518,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('I')}
                   className={`${styles.campo} ${
-                    profileData.housingInversion === 'I' && styles.active
+                    datos.contactProfile.housingInversion === 'I' && styles.active
                   }`}>
                   Inversionista
                 </button>
@@ -604,7 +526,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('V')}
                   className={`${styles.campo} ${
-                    profileData.housingInversion === 'V' && styles.active
+                    datos.contactProfile.housingInversion === 'V' && styles.active
                   }`}>
                   Familiar
                 </button>
