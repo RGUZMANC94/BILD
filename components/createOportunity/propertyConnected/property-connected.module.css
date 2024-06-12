@@ -33,6 +33,23 @@
   object-fit: cover;
 }
 
+.editar {
+  display: block;
+  background-image: url(/images/edit-icon.png);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 30px;
+  margin-left: auto;
+  background-position: center;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-color: #2467ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .clear {
   clear: both;
 }

@@ -10,6 +10,7 @@ const EditContactPop = ({
   showEditContact,
   setShowEditContact,
   setRefreshContacts,
+  contactId
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -20,9 +21,6 @@ const EditContactPop = ({
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [infoContact, setInfoContact] = useState(null);
-  const { contactListSelected } = useSelector(
-    (state) => state.contactOpportunityState
-  );
 
   const [datos, setDatos] = useState({
     firstNames: '',
@@ -77,7 +75,7 @@ const EditContactPop = ({
       },
       body: JSON.stringify({
         id,
-        idclient: contactListSelected.idCli,
+        idclient: contactId,
       }),
     });
     const responseContact = await response.json();
@@ -87,8 +85,17 @@ const EditContactPop = ({
   };
 
   useEffect(() => {
-    getContact();
-  }, []);
+    if (showEditContact) {  
+      getContact();
+    }
+  }, [showEditContact]);
+
+  useEffect(() => {
+    console.log('infoContact: ', infoContact);
+    if (infoContact) {
+      setDatos({ ...datos, ...infoContact });
+    }
+  }, [infoContact]);
 
   const [imagen, setImagen] = useState(null);
 
@@ -108,7 +115,7 @@ const EditContactPop = ({
         },
         body: JSON.stringify({
           id,
-          idclient: contactListSelected.idCli,
+          idclient: contactId,
           datos,
         }),
       });
@@ -148,7 +155,7 @@ const EditContactPop = ({
         const formData = new FormData();
         formData.append('type', 'CLI');
         formData.append('subType', 'PHOTO');
-        formData.append('idObject', contactListSelected.idCli);
+        formData.append('idObject', contactId);
         formData.append('file', selectedFile);
 
         try {
@@ -339,7 +346,7 @@ const EditContactPop = ({
           className={`${styles.bgTypePopUp}`}
           onClick={() => {
             setShowEditContact(false);
-            getContact();
+            // getContact();
           }}></div>
 
         <div className={`${styles.wrapperTypePopUp}`}>
@@ -353,7 +360,7 @@ const EditContactPop = ({
               className={`${styles.closeIcon} bg-ct`}
               onClick={() => {
                 setShowEditContact(false);
-                getContact();
+                // getContact();
               }}
             />
           </div>
@@ -541,7 +548,7 @@ const EditContactPop = ({
               inheritClass={styles.buttonCreateType}
               clickFunction={() => {
                 setShowEditContact(false);
-                getContact();
+                // getContact();
               }}
             />
             <Button

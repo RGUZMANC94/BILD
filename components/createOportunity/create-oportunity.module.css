@@ -19,6 +19,7 @@
     top 0s linear 0.5s;
   backdrop-filter: blur(2px);
   background-color: rgb(33 34 29 / 17%);
+  overflow-x: hidden;
 }
 
 .headerMainContainer {

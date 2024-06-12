@@ -96,6 +96,7 @@ const BuyerProfile = ({ contacts, user }) => {
         showEditContact={showEditContact}
         setShowEditContact={setShowEditContact}
         setRefreshContacts={setRefreshContacts}
+        contactId={router.query.id}
       />
     </>
   );

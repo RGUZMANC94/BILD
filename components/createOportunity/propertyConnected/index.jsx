@@ -7,6 +7,22 @@ import { useRouter } from 'next/router';
 import { closePopUp } from '../../../redux/popUpOportunity';
 import { useContext } from 'react';
 import BildContext from '../../context';
+import { parseCookies } from '../../../utils/parseCookies';
+import EditContactPop from '../../../components/editContactPop';
+
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  }
+}) => {
+  const { user_tk } = parseCookies(cookie);
+  return { 
+    props: { 
+      user: JSON.parse(user_tk)
+    } 
+  };
+};
+
 
 const PropertyConnected = ({ setIsCreated }) => {
   const router = useRouter();
@@ -32,6 +48,9 @@ const PropertyConnected = ({ setIsCreated }) => {
     idAdviser: '',
   });
   const [originTemp, setOriginTemp] = useState('');
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [refreshContacts, setRefreshContacts] = useState(false);
+  // const [contactInfo, setContactInfo] = useState(recentContacts[0]);
 
   console.log('originTemp: ', originTemp);
 
@@ -136,6 +155,10 @@ const PropertyConnected = ({ setIsCreated }) => {
             />
             {`${contactSelected.name} ${contactSelected.lastname}`}
           </div>
+          <button
+                className={`${styles.editar}`}
+                onClick={() => setShowEditContact(true)}
+              />
         </div>
         <div className={styles.clear}></div>
         <div className={styles.origen}>
@@ -206,6 +229,13 @@ const PropertyConnected = ({ setIsCreated }) => {
           </div>
         </div>
       </Portal>
+
+      <EditContactPop
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        setRefreshContacts={setRefreshContacts}
+        contactId={contactSelected.idCli}
+      />
     </>
   );
 };
