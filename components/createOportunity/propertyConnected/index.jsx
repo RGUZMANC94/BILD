@@ -156,6 +156,7 @@ const PropertyConnected = ({ setIsCreated }) => {
             {`${contactSelected.name} ${contactSelected.lastname}`}
           </div>
           <button
+                type="button"
                 className={`${styles.editar}`}
                 onClick={() => setShowEditContact(true)}
               />
@@ -188,7 +189,10 @@ const PropertyConnected = ({ setIsCreated }) => {
                 className={styles.message_input}></textarea>
             </div>
             <div className={styles.boton}>
-              <button className={styles['contacto-existente']}>
+              <button 
+              type="submit"
+              className={styles['contacto-existente']}
+              >
                 Crear oportunidad
               </button>
             </div>
