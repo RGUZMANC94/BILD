@@ -13,6 +13,8 @@ const OportunitiesClosed = ({
   setOppIsSelected,
   setSorting,
   setRefreshFlag,
+  setIdContactSelected,
+  setShowEditContact,
 }) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
@@ -59,6 +61,7 @@ const OportunitiesClosed = ({
       setOppIsSelected(false);
       setOpportunitySelected(-1);
       setOppSelectedObject({});
+      setIdContactSelected('');
     } else {
       setSelectedItem(index);
       dispatch(changeOpportunitySelected(oppId));
@@ -66,6 +69,7 @@ const OportunitiesClosed = ({
       setOpportunitySelected(oppId);
       getUnitSelected(idProperty, projectId);
       setOppSelectedObject(opp);
+      setIdContactSelected(opp.idClient.idClient);
     }
   };
 
@@ -186,6 +190,7 @@ const OportunitiesClosed = ({
             setRefreshFlag={setRefreshFlag}
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}
+            setShowEditContact={setShowEditContact}
           />
         )}
       </div>

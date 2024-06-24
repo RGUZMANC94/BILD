@@ -20,6 +20,7 @@ const OportunitiesHistory = ({
   setSelectedItemOpp,
   setOppIsSelected,
   id,
+  setShowEditContact,
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
@@ -268,6 +269,11 @@ const OportunitiesHistory = ({
                   <li>{oppSelectedObject.nameProject}</li>
                   <li>{`Tipo ${oppSelectedObject.propertyType.propertyType} : ${oppSelectedObject.idProperty}`}</li>
                 </ul>
+                <button
+                  type="button"
+                  className={`${styles.editar}`}
+                  onClick={() => setShowEditContact(true)}
+                />
               </div>
             )}
 

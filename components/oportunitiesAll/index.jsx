@@ -16,6 +16,8 @@ const OportunitiesAll = ({
   refreshFlag,
   setRefreshFlag,
   id,
+  setIdContactSelected,
+  setShowEditContact,
 }) => {
   // const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
@@ -27,8 +29,6 @@ const OportunitiesAll = ({
   const { asPath } = router;
   const URLHash = asPath.split('#')[1];
   console.log('opportunitySelected:', oppSelectedObject);
-  const [showEditContact, setShowEditContact] = useState(false);
-  const [refreshContacts, setRefreshContacts] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -122,6 +122,7 @@ const OportunitiesAll = ({
       setOppIsSelected(false);
       setOpportunitySelected(-1);
       setOppSelectedObject({});
+      setIdContactSelected('');
       setOpacityCards((prevState) => false);
     } else {
       setSelectedItem(index);
@@ -130,6 +131,7 @@ const OportunitiesAll = ({
       setOpportunitySelected(oppId);
       getUnitSelected(idProperty, projectId);
       setOppSelectedObject(opp);
+      setIdContactSelected(opp.idClient.idClient);
       if (!activeWithHash) {
         setOpacityCards((prevState) => false);
       }
@@ -262,17 +264,10 @@ const OportunitiesAll = ({
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}
             id={id}
+            setShowEditContact={setShowEditContact}
           />
         )}
       </div>
-      {selectedItem !== -1 && !isMobile && (
-          <EditContactPop
-          showEditContact={showEditContact}
-          setShowEditContact={setShowEditContact}
-          setRefreshContacts={setRefreshContacts}
-          contactId={oppSelectedObject.idClient.idClient}
-          />
-        )}
     </>
   );
 };
