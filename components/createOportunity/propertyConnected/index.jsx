@@ -28,8 +28,9 @@ const PropertyConnected = ({ setIsCreated }) => {
   const router = useRouter();
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
+  console.log('user: ', user);
   const { userid: id } = user;
-  // const { id } = useSelector((state) => state.userState);
+  console.log('user id: ', id);
   const { contactSelected } = useSelector(
     (state) => state.contactOpportunityState
   );
@@ -50,7 +51,31 @@ const PropertyConnected = ({ setIsCreated }) => {
   const [originTemp, setOriginTemp] = useState('');
   const [showEditContact, setShowEditContact] = useState(false);
   const [refreshContacts, setRefreshContacts] = useState(false);
-  // const [contactInfo, setContactInfo] = useState(recentContacts[0]);
+  const [infoContact, setInfoContact] = useState(null);
+
+  const getContact = async () => {
+    const response = await fetch('/api/getContactInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idclient: contactSelected.idCli,
+      }),
+    });
+    const responseContact = await response.json();
+
+    setInfoContact(responseContact[0]);
+    console.log('respuesta contacto: ', responseContact[0]);
+  };
+
+  useEffect(() => {
+    if (refreshContacts) {  
+      getContact();
+      refreshContacts(false);
+    }
+  }, [refreshContacts]);
 
   console.log('originTemp: ', originTemp);
 
@@ -113,7 +138,6 @@ const PropertyConnected = ({ setIsCreated }) => {
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
         dispatch(changeOpportunitySelected(responseData.saleOpportunity));
-        // setIsCreated(true);
         router.push({
           pathname: '/opportunities',
           hash: responseData.saleOpportunity,
@@ -153,7 +177,7 @@ const PropertyConnected = ({ setIsCreated }) => {
               }
               alt={`${contactSelected.name} ${contactSelected.lastname}`}
             />
-            {`${contactSelected.name} ${contactSelected.lastname}`}
+            {infoContact ? `${infoContact.firstNames} ${infoContact.lastNames}` : `${contactSelected.name} ${contactSelected.lastname}`}
           </div>
           <button
                 type="button"

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 import { useRouter } from 'next/router';
+import EditContactPop from '../../components/editContactPop';
 
 const OportunitiesAll = ({
   oppList,
@@ -25,7 +26,9 @@ const OportunitiesAll = ({
   const router = useRouter();
   const { asPath } = router;
   const URLHash = asPath.split('#')[1];
-  console.log('Lista de oportunidades:', oppList);
+  console.log('opportunitySelected:', oppSelectedObject);
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [refreshContacts, setRefreshContacts] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -262,6 +265,14 @@ const OportunitiesAll = ({
           />
         )}
       </div>
+      {selectedItem !== -1 && !isMobile && (
+          <EditContactPop
+          showEditContact={showEditContact}
+          setShowEditContact={setShowEditContact}
+          setRefreshContacts={setRefreshContacts}
+          contactId={oppSelectedObject.idClient.idClient}
+          />
+        )}
     </>
   );
 };

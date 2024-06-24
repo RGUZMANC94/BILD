@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useContext } from 'react';
+import BildContext from '../context';
 
 const EditContactPop = ({
   showEditContact,
@@ -14,13 +16,15 @@ const EditContactPop = ({
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [infoContact, setInfoContact] = useState(null);
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id } = user;
 
   const [datos, setDatos] = useState({
     firstNames: '',
