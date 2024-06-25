@@ -101,6 +101,21 @@ const EditContactPop = ({
     }
   }, [infoContact]);
 
+  useEffect(() => {
+    setDatos(prevDatos => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        budget: '0.0' ,
+        profesion: '',
+        pets: '',
+        hobby: '',
+        habeas: ''
+      }
+    }));
+  }, [datos.contactProfile.budget]);
+
+
   const [imagen, setImagen] = useState(null);
 
   const sendFormInfo = async () => {
