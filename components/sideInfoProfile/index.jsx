@@ -166,7 +166,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                     </Link>
                   </div>
                 </div>
-                {contactInfo.contactProfile.length > 0 && (
+                {contactInfo.contactProfile && (
                   <>
                     <div className={styles['informacion-perfil']}>
                       <span className={styles['info-perfil']}>
@@ -175,23 +175,23 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                       <div className={styles['campos-informacion']}>
                         <span className={styles['sub-title']}>Familiar:</span>
                         <div className={styles.campos}>
-                          {contactInfo.contactProfile[0].civilStatus && (
+                          {contactInfo.contactProfile.civilStatus && (
                             <button
                               type="button"
                               onClick="cambiarColor(this.parentNode)"
                               className={styles.campo}>
-                              {contactInfo.contactProfile[0].civilStatus ===
+                              {contactInfo.contactProfile.civilStatus ===
                                 'S' && 'Soltero'}
-                              {contactInfo.contactProfile[0].civilStatus ===
+                              {contactInfo.contactProfile.civilStatus ===
                                 'C' && 'Casado'}
-                              {contactInfo.contactProfile[0].civilStatus ===
+                              {contactInfo.contactProfile.civilStatus ===
                                 'DI' && 'Divorciado'}
-                              {contactInfo.contactProfile[0].civilStatus ===
+                              {contactInfo.contactProfile.civilStatus ===
                                 'UN' && 'Union Libre'}
                             </button>
                           )}
-                          {contactInfo.contactProfile[0].amountChildren &&
-                            (contactInfo.contactProfile[0].amountChildren ===
+                          {contactInfo.contactProfile.amountChildren &&
+                            (contactInfo.contactProfile.amountChildren ===
                             '0' ? (
                               <button
                                 type="button"
@@ -216,8 +216,8 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                           Tipo de comprador:
                         </span>
                         <div className={styles.campos}>
-                          {contactInfo.contactProfile[0].housingInversion &&
-                            (contactInfo.contactProfile[0].housingInversion ===
+                          {contactInfo.contactProfile.housingInversion &&
+                            (contactInfo.contactProfile.housingInversion ===
                             'I' ? (
                               <button
                                 type="button"

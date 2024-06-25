@@ -357,7 +357,7 @@ const EditContactPop = ({
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
-                Creacion de Contacto
+                Edicion de Contacto
               </h1>
             </div>
             <div

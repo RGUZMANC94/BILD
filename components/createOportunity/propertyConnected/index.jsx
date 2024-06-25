@@ -73,7 +73,7 @@ const PropertyConnected = ({ setIsCreated }) => {
   useEffect(() => {
     if (refreshContacts) {  
       getContact();
-      refreshContacts(false);
+      setRefreshContacts(false);
     }
   }, [refreshContacts]);
 
