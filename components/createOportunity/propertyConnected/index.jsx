@@ -7,13 +7,29 @@ import { useRouter } from 'next/router';
 import { closePopUp } from '../../../redux/popUpOportunity';
 import { useContext } from 'react';
 import BildContext from '../../context';
+import { parseCookies } from '../../../utils/parseCookies';
+import EditContactPop from '../../../components/editContactPop';
+
+export const getServerSideProps = async ({
+  req: {
+    headers: { cookie },
+  },
+}) => {
+  const { user_tk } = parseCookies(cookie);
+  return {
+    props: {
+      user: JSON.parse(user_tk),
+    },
+  };
+};
 
 const PropertyConnected = ({ setIsCreated }) => {
   const router = useRouter();
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
+  console.log('user: ', user);
   const { userid: id } = user;
-  // const { id } = useSelector((state) => state.userState);
+  console.log('user id: ', id);
   const { contactSelected } = useSelector(
     (state) => state.contactOpportunityState
   );
@@ -32,6 +48,33 @@ const PropertyConnected = ({ setIsCreated }) => {
     idAdviser: '',
   });
   const [originTemp, setOriginTemp] = useState('');
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [refreshContacts, setRefreshContacts] = useState(false);
+  const [infoContact, setInfoContact] = useState(null);
+
+  const getContact = async () => {
+    const response = await fetch('/api/getContactInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idclient: contactSelected.idCli,
+      }),
+    });
+    const responseContact = await response.json();
+
+    setInfoContact(responseContact[0]);
+    console.log('respuesta contacto: ', responseContact[0]);
+  };
+
+  useEffect(() => {
+    if (refreshContacts) {
+      getContact();
+      setRefreshContacts(false);
+    }
+  }, [refreshContacts]);
 
   console.log('originTemp: ', originTemp);
 
@@ -94,7 +137,6 @@ const PropertyConnected = ({ setIsCreated }) => {
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
         dispatch(changeOpportunitySelected(responseData.saleOpportunity));
-        // setIsCreated(true);
         router.push({
           pathname: '/opportunities',
           hash: responseData.saleOpportunity,
@@ -134,8 +176,15 @@ const PropertyConnected = ({ setIsCreated }) => {
               }
               alt={`${contactSelected.name} ${contactSelected.lastname}`}
             />
-            {`${contactSelected.name} ${contactSelected.lastname}`}
+            {infoContact
+              ? `${infoContact.firstNames} ${infoContact.lastNames}`
+              : `${contactSelected.name} ${contactSelected.lastname}`}
           </div>
+          <button
+            type="button"
+            className={`${styles.editar}`}
+            onClick={() => setShowEditContact(true)}
+          />
         </div>
         <div className={styles.clear}></div>
         <div className={styles.origen}>
@@ -165,7 +214,7 @@ const PropertyConnected = ({ setIsCreated }) => {
                 className={styles.message_input}></textarea>
             </div>
             <div className={styles.boton}>
-              <button className={styles['contacto-existente']}>
+              <button type="submit" className={styles['contacto-existente']}>
                 Crear oportunidad
               </button>
             </div>
@@ -206,6 +255,13 @@ const PropertyConnected = ({ setIsCreated }) => {
           </div>
         </div>
       </Portal>
+
+      <EditContactPop
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        setRefreshContacts={setRefreshContacts}
+        contactId={contactSelected.idCli}
+      />
     </>
   );
 };

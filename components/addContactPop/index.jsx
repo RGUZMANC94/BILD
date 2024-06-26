@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useContext } from 'react';
+import BildContext from '../context';
 
 const AddContactPop = ({
   showAddContact,
@@ -13,12 +15,14 @@ const AddContactPop = ({
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id } = user;
 
   const [datos, setDatos] = useState({
     firstNames: '',
@@ -47,24 +51,22 @@ const AddContactPop = ({
     department: '5',
     city: '1',
     thirdDependency: 'N',
-  });
-
-  const [profileData, setProfileData] = useState({
-    clientId: '',
-    civilStatus: '',
-    amountChildren: '',
-    housingInversion: '',
-    timeDecision: '',
-    decision: '',
-    adjustTimeDelivery: '',
-    zoneInterest: '',
-    budget: '0.0',
-    amountBeds: '',
-    rangeAgeChildren: '',
-    profesion: '',
-    pets: '',
-    hobby: '',
-    habeas: '',
+    contactProfile: {
+      housingInversion: '',
+      timeDecision: '',
+      decision: '',
+      adjustTimeDelivery: '',
+      zoneInterest: '',
+      budget: '0.0',
+      amountBeds: '',
+      civilStatus: '',
+      amountChildren: '',
+      rangeAgeChildren: '',
+      profesion: '',
+      pets: '',
+      hobby: '',
+      habeas: '',
+    },
   });
   const cleanForm = () => {
     setDatos({
@@ -94,23 +96,22 @@ const AddContactPop = ({
       department: '5',
       city: '1',
       thirdDependency: 'N',
-    });
-    setProfileData({
-      clientId: '',
-      civilStatus: '',
-      amountChildren: '',
-      housingInversion: '',
-      timeDecision: '',
-      decision: '',
-      adjustTimeDelivery: '',
-      zoneInterest: '',
-      budget: '0.0',
-      amountBeds: '',
-      rangeAgeChildren: '',
-      profesion: '',
-      pets: '',
-      hobby: '',
-      habeas: '',
+      contactProfile: {
+        housingInversion: '',
+        timeDecision: '',
+        decision: '',
+        adjustTimeDelivery: '',
+        zoneInterest: '',
+        budget: '0.0',
+        amountBeds: '',
+        civilStatus: '',
+        amountChildren: '',
+        rangeAgeChildren: '',
+        profesion: '',
+        pets: '',
+        hobby: '',
+        habeas: '',
+      },
     });
   };
   const [imagen, setImagen] = useState(null);
@@ -193,13 +194,6 @@ const AddContactPop = ({
         }
       }
 
-      if (contactCreated.ok) {
-        setProfileData((prevProfileData) => ({
-          ...prevProfileData,
-          clientId: responseData.clientId,
-        }));
-      }
-
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);
@@ -210,7 +204,6 @@ const AddContactPop = ({
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-        router.push('/contacts');
       }, 2000);
     } catch (error) {
       document
@@ -264,35 +257,6 @@ const AddContactPop = ({
     handleFileChange(e);
     readURL(e);
   }
-
-  useEffect(() => {
-    if (profileData.clientId) {
-      sendProfileData();
-    }
-  }, [profileData.clientId]);
-
-  const sendProfileData = async () => {
-    try {
-      const response = await fetch('/api/createProfile', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id,
-          profileData,
-        }),
-      });
-
-      if (!response.ok) {
-        console.error('Error de solicitud. Estado:', response.status);
-      } else {
-        console.log('Respuesta exitosa:', response);
-      }
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
-    }
-  };
 
   const sendFormImage = async (e) => {
     e.preventDefault();
@@ -359,15 +323,33 @@ const AddContactPop = ({
   };
 
   const changebusinessName = (name) => {
-    setProfileData({ ...profileData, housingInversion: name });
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        housingInversion: name,
+      },
+    }));
   };
 
   const changeTypeClient = (type) => {
-    setProfileData({ ...profileData, civilStatus: type });
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        civilStatus: type,
+      },
+    }));
   };
 
   const changeAmountChildren = (amount) => {
-    setProfileData({ ...profileData, amountChildren: amount });
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        amountChildren: amount,
+      },
+    }));
   };
 
   return (
@@ -501,7 +483,7 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('C')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'C' && styles.active
+                    datos.contactProfile.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
                 </button>
@@ -509,7 +491,7 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('S')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'S' && styles.active
+                    datos.contactProfile.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
                 </button>
@@ -517,7 +499,7 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('UN')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'UN' && styles.active
+                    datos.contactProfile.civilStatus === 'UN' && styles.active
                   }`}>
                   Unión Libre
                 </button>
@@ -525,7 +507,7 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('DI')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'DI' && styles.active
+                    datos.contactProfile.civilStatus === 'DI' && styles.active
                   }`}>
                   Divorciado
                 </button>
@@ -538,7 +520,7 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('0')}
                   className={`${styles.campo} ${
-                    profileData.amountChildren === '0' && styles.active
+                    datos.contactProfile.amountChildren === '0' && styles.active
                   }`}>
                   Sin Hijos
                 </button>
@@ -546,7 +528,7 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('1')}
                   className={`${styles.campo} ${
-                    profileData.amountChildren === '1' && styles.active
+                    datos.contactProfile.amountChildren === '1' && styles.active
                   }`}>
                   Con Hijos
                 </button>
@@ -559,7 +541,8 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('I')}
                   className={`${styles.campo} ${
-                    profileData.housingInversion === 'I' && styles.active
+                    datos.contactProfile.housingInversion === 'I' &&
+                    styles.active
                   }`}>
                   Inversionista
                 </button>
@@ -567,7 +550,8 @@ const AddContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('V')}
                   className={`${styles.campo} ${
-                    profileData.housingInversion === 'V' && styles.active
+                    datos.contactProfile.housingInversion === 'V' &&
+                    styles.active
                   }`}>
                   Familiar
                 </button>

@@ -5,24 +5,26 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useContext } from 'react';
+import BildContext from '../context';
 
 const EditContactPop = ({
   showEditContact,
   setShowEditContact,
   setRefreshContacts,
+  contactId,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { id } = useSelector((state) => state.userState);
   const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [infoContact, setInfoContact] = useState(null);
-  const { contactListSelected } = useSelector(
-    (state) => state.contactOpportunityState
-  );
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id } = user;
 
   const [datos, setDatos] = useState({
     firstNames: '',
@@ -51,58 +53,7 @@ const EditContactPop = ({
     department: '5',
     city: '1',
     thirdDependency: 'N',
-  });
-
-  const [profileData, setProfileData] = useState({
-    clientId: '',
-    civilStatus: '',
-    amountChildren: '',
-    housingInversion: '',
-    timeDecision: '',
-    decision: '',
-    adjustTimeDelivery: '',
-    zoneInterest: '',
-    budget: '0.0',
-    amountBeds: '',
-    rangeAgeChildren: '',
-    profesion: '',
-    pets: '',
-    hobby: '',
-    habeas: '',
-  });
-  const cleanForm = () => {
-    setDatos({
-      firstNames: '',
-      lastNames: '',
-      email: '',
-      documentNumber: '',
-      phoneNumber: '',
-      gender: 'M',
-      idType: 'CE',
-      birthDay: '1990-01-01',
-      documentExpeditionDate: '1990-01-02',
-      countryExpedition: 'COL',
-      stateExpedition: '5',
-      cityExpedition: '1',
-      nacionality: 'Colombiana',
-      typeClient: 'J',
-      businessName: 'Cliente',
-      origin: '845002',
-      pointOfAttention: '3',
-      StatusClient: '1',
-      idAdviser: 'FDBILD',
-      dateRegister: '2023-12-03',
-      idProject: '85006',
-      isActive: 'A',
-      country: 'COL',
-      department: '5',
-      city: '1',
-      thirdDependency: 'N',
-    });
-    setProfileData({
-      clientId: '',
-      civilStatus: '',
-      amountChildren: '',
+    contactProfile: {
       housingInversion: '',
       timeDecision: '',
       decision: '',
@@ -110,13 +61,15 @@ const EditContactPop = ({
       zoneInterest: '',
       budget: '0.0',
       amountBeds: '',
+      civilStatus: '',
+      amountChildren: '',
       rangeAgeChildren: '',
       profesion: '',
       pets: '',
       hobby: '',
       habeas: '',
-    });
-  };
+    },
+  });
 
   const getContact = async () => {
     const response = await fetch('/api/getContactInfo', {
@@ -126,7 +79,7 @@ const EditContactPop = ({
       },
       body: JSON.stringify({
         id,
-        idclient: contactListSelected.idCli,
+        idclient: contactId,
       }),
     });
     const responseContact = await response.json();
@@ -136,21 +89,33 @@ const EditContactPop = ({
   };
 
   useEffect(() => {
-    getContact();
-  }, []);
+    if (showEditContact) {
+      getContact();
+    }
+  }, [showEditContact]);
 
-  const [imagen, setImagen] = useState(null);
   useEffect(() => {
+    console.log('infoContact: ', infoContact);
     if (infoContact) {
       setDatos({ ...datos, ...infoContact });
-      if (infoContact.contactProfile) {
-        if (infoContact.contactProfile.length > 0) {
-          setProfileData({ ...profileData, ...infoContact.contactProfile[0] });
-        }
-      }
-      console.log('Datos: ', datos);
     }
   }, [infoContact]);
+
+  useEffect(() => {
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        budget: '0.0',
+        profesion: '',
+        pets: '',
+        hobby: '',
+        habeas: '',
+      },
+    }));
+  }, [datos.contactProfile.budget]);
+
+  const [imagen, setImagen] = useState(null);
 
   const sendFormInfo = async () => {
     console.log(
@@ -168,7 +133,7 @@ const EditContactPop = ({
         },
         body: JSON.stringify({
           id,
-          idclient: contactListSelected.idCli,
+          idclient: contactId,
           datos,
         }),
       });
@@ -208,7 +173,7 @@ const EditContactPop = ({
         const formData = new FormData();
         formData.append('type', 'CLI');
         formData.append('subType', 'PHOTO');
-        formData.append('idObject', contactListSelected.idCli);
+        formData.append('idObject', contactId);
         formData.append('file', selectedFile);
 
         try {
@@ -229,13 +194,6 @@ const EditContactPop = ({
         } catch (error) {
           console.error('Error al realizar la solicitud:', error);
         }
-      }
-
-      if (contactCreated.ok) {
-        setProfileData((prevProfileData) => ({
-          ...prevProfileData,
-          clientId: responseData.clientId,
-        }));
       }
 
       document
@@ -302,35 +260,6 @@ const EditContactPop = ({
     readURL(e);
   }
 
-  useEffect(() => {
-    if (profileData.clientId) {
-      sendProfileData();
-    }
-  }, [profileData.clientId]);
-
-  const sendProfileData = async () => {
-    try {
-      const response = await fetch('/api/createProfile', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id,
-          profileData,
-        }),
-      });
-
-      if (!response.ok) {
-        console.error('Error de solicitud. Estado:', response.status);
-      } else {
-        console.log('Respuesta exitosa:', response);
-      }
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
-    }
-  };
-
   const sendFormImage = async (e) => {
     e.preventDefault();
 
@@ -396,15 +325,33 @@ const EditContactPop = ({
   };
 
   const changebusinessName = (name) => {
-    setProfileData({ ...profileData, housingInversion: name });
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        housingInversion: name,
+      },
+    }));
   };
 
   const changeTypeClient = (type) => {
-    setProfileData({ ...profileData, civilStatus: type });
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        civilStatus: type,
+      },
+    }));
   };
 
   const changeAmountChildren = (amount) => {
-    setProfileData({ ...profileData, amountChildren: amount });
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      contactProfile: {
+        ...prevDatos.contactProfile,
+        amountChildren: amount,
+      },
+    }));
   };
 
   return (
@@ -417,21 +364,21 @@ const EditContactPop = ({
           className={`${styles.bgTypePopUp}`}
           onClick={() => {
             setShowEditContact(false);
-            getContact();
+            // getContact();
           }}></div>
 
         <div className={`${styles.wrapperTypePopUp}`}>
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
-                Creacion de Contacto
+                Edicion de Contacto
               </h1>
             </div>
             <div
               className={`${styles.closeIcon} bg-ct`}
               onClick={() => {
                 setShowEditContact(false);
-                getContact();
+                // getContact();
               }}
             />
           </div>
@@ -538,7 +485,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('C')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'C' && styles.active
+                    datos.contactProfile.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
                 </button>
@@ -546,7 +493,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('S')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'S' && styles.active
+                    datos.contactProfile.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
                 </button>
@@ -554,7 +501,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('UN')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'UN' && styles.active
+                    datos.contactProfile.civilStatus === 'UN' && styles.active
                   }`}>
                   Unión Libre
                 </button>
@@ -562,7 +509,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('DI')}
                   className={`${styles.campo} ${
-                    profileData.civilStatus === 'DI' && styles.active
+                    datos.contactProfile.civilStatus === 'DI' && styles.active
                   }`}>
                   Divorciado
                 </button>
@@ -575,7 +522,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('0')}
                   className={`${styles.campo} ${
-                    profileData.amountChildren === '0' && styles.active
+                    datos.contactProfile.amountChildren === '0' && styles.active
                   }`}>
                   Sin Hijos
                 </button>
@@ -583,7 +530,7 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('1')}
                   className={`${styles.campo} ${
-                    profileData.amountChildren === '1' && styles.active
+                    datos.contactProfile.amountChildren === '1' && styles.active
                   }`}>
                   Con Hijos
                 </button>
@@ -596,7 +543,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('I')}
                   className={`${styles.campo} ${
-                    profileData.housingInversion === 'I' && styles.active
+                    datos.contactProfile.housingInversion === 'I' &&
+                    styles.active
                   }`}>
                   Inversionista
                 </button>
@@ -604,7 +552,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('V')}
                   className={`${styles.campo} ${
-                    profileData.housingInversion === 'V' && styles.active
+                    datos.contactProfile.housingInversion === 'V' &&
+                    styles.active
                   }`}>
                   Familiar
                 </button>
@@ -619,7 +568,7 @@ const EditContactPop = ({
               inheritClass={styles.buttonCreateType}
               clickFunction={() => {
                 setShowEditContact(false);
-                getContact();
+                // getContact();
               }}
             />
             <Button

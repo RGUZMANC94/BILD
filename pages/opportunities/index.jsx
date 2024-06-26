@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 import ZoomImg from '../../components/zoomImg';
 import { parseCookies } from '../../utils/parseCookies';
+import EditContactPop from '../../components/editContactPop';
 
 export const getServerSideProps = async ({
   req: {
@@ -33,7 +34,9 @@ const OportunitiesAllFilter = ({ user }) => {
   const [oppIsSelected, setOppIsSelected] = useState(false);
   const [sorting, setSorting] = useState('DESC');
   const [refreshFlag, setRefreshFlag] = useState(false);
-  const dispatch = useDispatch();
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [refreshContacts, setRefreshContacts] = useState(false);
+  const [idContactSelected, setIdContactSelected] = useState('');
 
   const toggleShowBar = () => {
     setShowBar(!showBar);
@@ -187,6 +190,8 @@ const OportunitiesAllFilter = ({ user }) => {
               refreshFlag={refreshFlag}
               setRefreshFlag={setRefreshFlag}
               id={id}
+              setShowEditContact={setShowEditContact}
+              setIdContactSelected={setIdContactSelected}
             />
           )}
           {/* showSection === 'pending' && (
@@ -198,6 +203,8 @@ const OportunitiesAllFilter = ({ user }) => {
               setOppIsSelected={setOppIsSelected}
               setSorting={setSorting}
               setRefreshFlag={setRefreshFlag}
+              setShowEditContact={setShowEditContact}
+              setIdContactSelected={setIdContactSelected}
             />
           )}
         </div>
@@ -207,6 +214,12 @@ const OportunitiesAllFilter = ({ user }) => {
         <CreateOportunity created={true} recentContacts={recentContacts} />
       )}
       {isOnZoomImg && <ZoomImg imgToZoom={imgToZoom} />}
+      <EditContactPop
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        setRefreshContacts={setRefreshFlag}
+        contactId={idContactSelected}
+      />
     </>
   );
 };

@@ -3,7 +3,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/EditContact?idclient=${req.body.idclient}&username=${req.body.idclient}`,
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/EditContactV2?idclient=${req.body.idclient}&username=${req.body.idclient}`,
       {
         method: 'post',
         headers: {

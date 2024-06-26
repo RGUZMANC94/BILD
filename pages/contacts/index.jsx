@@ -124,19 +124,22 @@ const Contacts = () => {
                     <div className={styles['reciente-col']}>{recent.email}</div>
                   </Link>
                   <div className={styles.number}>
-                    {`+57 ${recent.phoneNumber}`}
-                    <a
-                      href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
-                      target="_blank"
-                      className={styles['whastapp-icon']}>
-                      <Image
-                        alt=""
-                        width={40}
-                        height={40}
-                        src="/images/whastapp-blue.png"
-                      />
-                      {/* <img  /> */}
-                    </a>
+                    {recent.phoneNumber && `+57 ${recent.phoneNumber}`}
+                    {recent.phoneNumber && (
+                      <>
+                        <a
+                          href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                          target="_blank"
+                          className={styles['whastapp-icon']}>
+                          <Image
+                            alt=""
+                            width={40}
+                            height={40}
+                            src="/images/whastapp-blue.png"
+                          />
+                        </a>
+                      </>
+                    )}
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
@@ -201,19 +204,23 @@ const Contacts = () => {
                       {contact.email}
                     </div>
                     <div className={styles.number}>
-                      <a
-                        href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
-                        target="_blank"
-                        className={styles['whastapp-icon']}>
-                        {`+57 ${contact.phoneNumber}`}
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/whastapp-blue.png"
-                        />
-                        {/* <img src="/images/whastapp-blue.png" /> */}
-                      </a>
+                      {contact.phoneNumber && (
+                        <>
+                          <a
+                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                            target="_blank"
+                            className={styles['whastapp-icon']}>
+                            {`+57 ${contact.phoneNumber}`}
+                            <Image
+                              width={40}
+                              height={40}
+                              alt=""
+                              src="/images/whastapp-blue.png"
+                            />
+                            {/* <img src="/images/whastapp-blue.png" /> */}
+                          </a>
+                        </>
+                      )}
                     </div>
                     <div className={styles['iconos-movil']}>
                       <div className={styles['phone-movil']}>

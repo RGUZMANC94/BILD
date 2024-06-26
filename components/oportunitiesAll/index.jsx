@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice';
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 import { useRouter } from 'next/router';
+import EditContactPop from '../../components/editContactPop';
 
 const OportunitiesAll = ({
   oppList,
@@ -15,6 +16,8 @@ const OportunitiesAll = ({
   refreshFlag,
   setRefreshFlag,
   id,
+  setIdContactSelected,
+  setShowEditContact,
 }) => {
   // const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
@@ -25,7 +28,7 @@ const OportunitiesAll = ({
   const router = useRouter();
   const { asPath } = router;
   const URLHash = asPath.split('#')[1];
-  console.log('Lista de oportunidades:', oppList);
+  console.log('opportunitySelected:', oppSelectedObject);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -119,6 +122,7 @@ const OportunitiesAll = ({
       setOppIsSelected(false);
       setOpportunitySelected(-1);
       setOppSelectedObject({});
+      setIdContactSelected('');
       setOpacityCards((prevState) => false);
     } else {
       setSelectedItem(index);
@@ -127,6 +131,7 @@ const OportunitiesAll = ({
       setOpportunitySelected(oppId);
       getUnitSelected(idProperty, projectId);
       setOppSelectedObject(opp);
+      setIdContactSelected(opp.idClient.idClient);
       if (!activeWithHash) {
         setOpacityCards((prevState) => false);
       }
@@ -259,6 +264,7 @@ const OportunitiesAll = ({
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}
             id={id}
+            setShowEditContact={setShowEditContact}
           />
         )}
       </div>
