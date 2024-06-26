@@ -38,7 +38,6 @@ const OportunitiesAllFilter = ({ user }) => {
   const [refreshContacts, setRefreshContacts] = useState(false);
   const [idContactSelected, setIdContactSelected] = useState('');
 
-
   const toggleShowBar = () => {
     setShowBar(!showBar);
   };
@@ -215,12 +214,12 @@ const OportunitiesAllFilter = ({ user }) => {
         <CreateOportunity created={true} recentContacts={recentContacts} />
       )}
       {isOnZoomImg && <ZoomImg imgToZoom={imgToZoom} />}
-          <EditContactPop
-          showEditContact={showEditContact}
-          setShowEditContact={setShowEditContact}
-          setRefreshContacts={setRefreshFlag}
-          contactId={idContactSelected}
-          />
+      <EditContactPop
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        setRefreshContacts={setRefreshFlag}
+        contactId={idContactSelected}
+      />
     </>
   );
 };

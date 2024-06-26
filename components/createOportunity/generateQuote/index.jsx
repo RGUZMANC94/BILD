@@ -219,7 +219,8 @@ const GenerateQuote = ({
     if (nonModifiedCount === 0) {
       return 0;
     }
-    const nonModifiedValue = (balanceInitialQuote - totalModified) / nonModifiedCount;
+    const nonModifiedValue =
+      (balanceInitialQuote - totalModified) / nonModifiedCount;
 
     if (nonModifiedValue < 0) {
       return 0;

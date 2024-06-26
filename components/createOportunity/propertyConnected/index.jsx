@@ -13,16 +13,15 @@ import EditContactPop from '../../../components/editContactPop';
 export const getServerSideProps = async ({
   req: {
     headers: { cookie },
-  }
+  },
 }) => {
   const { user_tk } = parseCookies(cookie);
-  return { 
-    props: { 
-      user: JSON.parse(user_tk)
-    } 
+  return {
+    props: {
+      user: JSON.parse(user_tk),
+    },
   };
 };
-
 
 const PropertyConnected = ({ setIsCreated }) => {
   const router = useRouter();
@@ -71,7 +70,7 @@ const PropertyConnected = ({ setIsCreated }) => {
   };
 
   useEffect(() => {
-    if (refreshContacts) {  
+    if (refreshContacts) {
       getContact();
       setRefreshContacts(false);
     }
@@ -177,13 +176,15 @@ const PropertyConnected = ({ setIsCreated }) => {
               }
               alt={`${contactSelected.name} ${contactSelected.lastname}`}
             />
-            {infoContact ? `${infoContact.firstNames} ${infoContact.lastNames}` : `${contactSelected.name} ${contactSelected.lastname}`}
+            {infoContact
+              ? `${infoContact.firstNames} ${infoContact.lastNames}`
+              : `${contactSelected.name} ${contactSelected.lastname}`}
           </div>
           <button
-                type="button"
-                className={`${styles.editar}`}
-                onClick={() => setShowEditContact(true)}
-              />
+            type="button"
+            className={`${styles.editar}`}
+            onClick={() => setShowEditContact(true)}
+          />
         </div>
         <div className={styles.clear}></div>
         <div className={styles.origen}>
@@ -213,10 +214,7 @@ const PropertyConnected = ({ setIsCreated }) => {
                 className={styles.message_input}></textarea>
             </div>
             <div className={styles.boton}>
-              <button 
-              type="submit"
-              className={styles['contacto-existente']}
-              >
+              <button type="submit" className={styles['contacto-existente']}>
                 Crear oportunidad
               </button>
             </div>

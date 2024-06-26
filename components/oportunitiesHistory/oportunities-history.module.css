@@ -628,7 +628,7 @@ li.pendiente-list {
 
 .editar {
   position: absolute;
-  top:5px;
+  top: 5px;
   right: 5px;
   background-image: url(/images/edit-icon.png);
   background-position: center center;

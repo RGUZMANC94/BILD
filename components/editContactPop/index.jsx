@@ -12,7 +12,7 @@ const EditContactPop = ({
   showEditContact,
   setShowEditContact,
   setRefreshContacts,
-  contactId
+  contactId,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -67,8 +67,8 @@ const EditContactPop = ({
       profesion: '',
       pets: '',
       hobby: '',
-      habeas: ''
-  }
+      habeas: '',
+    },
   });
 
   const getContact = async () => {
@@ -89,7 +89,7 @@ const EditContactPop = ({
   };
 
   useEffect(() => {
-    if (showEditContact) {  
+    if (showEditContact) {
       getContact();
     }
   }, [showEditContact]);
@@ -102,19 +102,18 @@ const EditContactPop = ({
   }, [infoContact]);
 
   useEffect(() => {
-    setDatos(prevDatos => ({
+    setDatos((prevDatos) => ({
       ...prevDatos,
       contactProfile: {
         ...prevDatos.contactProfile,
-        budget: '0.0' ,
+        budget: '0.0',
         profesion: '',
         pets: '',
         hobby: '',
-        habeas: ''
-      }
+        habeas: '',
+      },
     }));
   }, [datos.contactProfile.budget]);
-
 
   const [imagen, setImagen] = useState(null);
 
@@ -260,7 +259,7 @@ const EditContactPop = ({
     handleFileChange(e);
     readURL(e);
   }
-  
+
   const sendFormImage = async (e) => {
     e.preventDefault();
 
@@ -326,32 +325,32 @@ const EditContactPop = ({
   };
 
   const changebusinessName = (name) => {
-    setDatos(prevDatos => ({
+    setDatos((prevDatos) => ({
       ...prevDatos,
       contactProfile: {
         ...prevDatos.contactProfile,
-        housingInversion: name
-      }
+        housingInversion: name,
+      },
     }));
   };
 
   const changeTypeClient = (type) => {
-    setDatos(prevDatos => ({
+    setDatos((prevDatos) => ({
       ...prevDatos,
       contactProfile: {
         ...prevDatos.contactProfile,
-        civilStatus: type
-      }
+        civilStatus: type,
+      },
     }));
   };
 
   const changeAmountChildren = (amount) => {
-    setDatos(prevDatos => ({
+    setDatos((prevDatos) => ({
       ...prevDatos,
       contactProfile: {
         ...prevDatos.contactProfile,
-        amountChildren: amount
-      }
+        amountChildren: amount,
+      },
     }));
   };
 
@@ -544,7 +543,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('I')}
                   className={`${styles.campo} ${
-                    datos.contactProfile.housingInversion === 'I' && styles.active
+                    datos.contactProfile.housingInversion === 'I' &&
+                    styles.active
                   }`}>
                   Inversionista
                 </button>
@@ -552,7 +552,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changebusinessName('V')}
                   className={`${styles.campo} ${
-                    datos.contactProfile.housingInversion === 'V' && styles.active
+                    datos.contactProfile.housingInversion === 'V' &&
+                    styles.active
                   }`}>
                   Familiar
                 </button>

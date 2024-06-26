@@ -180,10 +180,10 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                               type="button"
                               onClick="cambiarColor(this.parentNode)"
                               className={styles.campo}>
-                              {contactInfo.contactProfile.civilStatus ===
-                                'S' && 'Soltero'}
-                              {contactInfo.contactProfile.civilStatus ===
-                                'C' && 'Casado'}
+                              {contactInfo.contactProfile.civilStatus === 'S' &&
+                                'Soltero'}
+                              {contactInfo.contactProfile.civilStatus === 'C' &&
+                                'Casado'}
                               {contactInfo.contactProfile.civilStatus ===
                                 'DI' && 'Divorciado'}
                               {contactInfo.contactProfile.civilStatus ===

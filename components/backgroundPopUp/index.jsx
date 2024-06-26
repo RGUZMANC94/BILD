@@ -27,9 +27,7 @@ const BackgroundPopUp = ({ children, closePopUp, closeAnimate }) => {
 
   return (
     <div
-      className={`${styles.backgroudnPopUp} ${
-        active ? styles.activePop : ''
-      }`}>
+      className={`${styles.backgroudnPopUp} ${active ? styles.activePop : ''}`}>
       <div className={styles.wrapperBackgroundPopUp} onClick={closePop}></div>
 
       <div className={styles['right-side']}>
