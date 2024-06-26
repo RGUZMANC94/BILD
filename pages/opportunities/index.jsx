@@ -218,7 +218,7 @@ const OportunitiesAllFilter = ({ user }) => {
           <EditContactPop
           showEditContact={showEditContact}
           setShowEditContact={setShowEditContact}
-          setRefreshContacts={setRefreshContacts}
+          setRefreshContacts={setRefreshFlag}
           contactId={idContactSelected}
           />
     </>

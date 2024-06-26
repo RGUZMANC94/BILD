@@ -219,7 +219,12 @@ const GenerateQuote = ({
     if (nonModifiedCount === 0) {
       return 0;
     }
-    return (balanceInitialQuote - totalModified) / nonModifiedCount;
+    const nonModifiedValue = (balanceInitialQuote - totalModified) / nonModifiedCount;
+
+    if (nonModifiedValue < 0) {
+      return 0;
+    }
+    return Math.floor(nonModifiedValue);
   };
 
   const updateNonModifiedValues = () => {
@@ -321,6 +326,12 @@ const GenerateQuote = ({
         'Error en la respuesta del servidor (Creacion de oportunidad)'
       );
       console.error('Error al crear la cotizacion:', error.errorMessage);
+    }
+  };
+  const handleFeesChange = (e) => {
+    const value = e.target.value;
+    if (value === '' || (Number(value) <= 36 && Number(value) >= 0)) {
+      setFees(value);
     }
   };
 
@@ -455,7 +466,7 @@ const GenerateQuote = ({
               type="text"
               name="fees"
               value={fees}
-              onChange={(e) => setFees(e.target.value)}
+              onChange={handleFeesChange}
               placeholder="2"
               required
             />
