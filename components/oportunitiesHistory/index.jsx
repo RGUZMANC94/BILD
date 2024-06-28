@@ -21,6 +21,7 @@ const OportunitiesHistory = ({
   setOppIsSelected,
   id,
   setShowEditContact,
+  setPdfURL,
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
@@ -320,6 +321,21 @@ const OportunitiesHistory = ({
                   <span className={styles.hour}>
                     {firstEvent.expirationDateTime.split(' ')[1]}
                   </span>
+                  <div className={styles.buttonsSec}>
+                  {
+                    (firstEvent.PricePdf && firstEvent.PricePdf.length > 0) && 
+                    <Button
+                      buttonType={'primary'}
+                      iconImage={false}
+                      label={'PDF'}
+                      inheritClass={styles.buttonQuote}
+                      clickFunction={() => {
+                        setPdfURL(firstEvent.PricePdf[0].url);
+                        console.log('PDF:', firstEvent.PricePdf[0].url);
+                      }
+                      }
+                    />
+                  }
                   {firstEvent.additionalInformation !== '' &&
                     firstEvent.additionalInformation !== '0' &&
                     (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
@@ -343,6 +359,7 @@ const OportunitiesHistory = ({
                         />
                       </div>
                     ))}
+                </div>
                 </div>
                 <div className={styles['blue-point']}></div>
               </div>
@@ -393,6 +410,23 @@ const OportunitiesHistory = ({
                               {eventItem.expirationDateTime.split(' ')[1]}
                             </span>
 
+                            <div className={styles.buttonsSec}>
+
+                            {
+                              (eventItem.PricePdf && eventItem.PricePdf.length > 0) && 
+                              <Button
+                                buttonType={'primary'}
+                                iconImage={false}
+                                label={'PDF'}
+                                inheritClass={styles.buttonQuote}
+                                clickFunction={() => {
+                                  setPdfURL(eventItem.PricePdf[0].url);
+                                  console.log('PDF:', eventItem.PricePdf[0].url);
+                                }
+                                }
+                              />
+                            }
+
                             {eventItem.additionalInformation !== '' &&
                               eventItem.additionalInformation !== '0' &&
                               (oppSelectedObject.stageCycleSaleOp ===
@@ -419,6 +453,7 @@ const OportunitiesHistory = ({
                                   />
                                 </div>
                               ))}
+                            </div>
                           </div>
 
                           <div className={styles['blue-point']}></div>

@@ -18,6 +18,7 @@ const OportunitiesAll = ({
   id,
   setIdContactSelected,
   setShowEditContact,
+  setPdfURL,
 }) => {
   // const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
@@ -265,6 +266,7 @@ const OportunitiesAll = ({
             setOppIsSelected={setOppIsSelected}
             id={id}
             setShowEditContact={setShowEditContact}
+            setPdfURL={setPdfURL}
           />
         )}
       </div>

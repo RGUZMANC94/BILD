@@ -91,7 +91,7 @@ const AddEvents = ({
 
   return (
     <section
-      className={`${quicksand.className} ${styles.main} ${
+      className={`${styles.main} ${
         show ? styles.active : ''
       }`}>
       <div

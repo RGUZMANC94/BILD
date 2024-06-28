@@ -15,6 +15,7 @@ const OportunitiesClosed = ({
   setRefreshFlag,
   setIdContactSelected,
   setShowEditContact,
+  setPdfURL,
 }) => {
   const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
@@ -191,6 +192,7 @@ const OportunitiesClosed = ({
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}
             setShowEditContact={setShowEditContact}
+            setPdfURL={setPdfURL}
           />
         )}
       </div>

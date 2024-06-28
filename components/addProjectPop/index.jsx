@@ -198,6 +198,7 @@ const AddProjectPop = ({
     setDatos((prevDatos) => ({
       ...prevDatos,
       startDate: formatDate(dateValue),
+      endDate: formatDate(endDate),
     }));
 
     console.log(
@@ -318,9 +319,14 @@ const AddProjectPop = ({
   }
 
   const [dateValue, setDateValue] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const handleDateChange = (event) => {
     setDateValue(event.target.value);
+  };
+
+  const handleEndDateChange = (event) => {
+    setEndDate(event.target.value);
   };
   const formatDate = (inputDate) => {
     const date = new Date(inputDate);
@@ -428,6 +434,7 @@ const AddProjectPop = ({
       location: '',
       neighborhoodId: '5',
       startDate: '',
+      endDate : '',
       pool: '',
       TurkishBath: '',
       sauna: '',
@@ -536,6 +543,17 @@ const AddProjectPop = ({
                 value={dateValue}
                 required
                 onChange={handleDateChange}
+                className={`${styles.inputTypeForm} ${styles.inputDate}`}
+              />
+            </div>
+            
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Fecha de Entrega:</span>
+              <input
+                type="date"
+                value={endDate}
+                required
+                onChange={handleEndDateChange}
                 className={`${styles.inputTypeForm} ${styles.inputDate}`}
               />
             </div>

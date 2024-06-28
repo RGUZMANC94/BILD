@@ -60,6 +60,7 @@ const EditProjectPop = ({
     if (infoProject) {
       setDatos({ ...datos, ...infoProject });
       setDateValue(infoProject.startDate);
+      setEndDate(infoProject.endDate);
       console.log('Datos: ', datos);
     }
   }, [infoProject]);
@@ -352,9 +353,14 @@ const EditProjectPop = ({
   }
 
   const [dateValue, setDateValue] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const handleDateChange = (event) => {
     setDateValue(event.target.value);
+  };
+
+  const handleEndDateChange = (event) => {
+    setEndDate(event.target.value);
   };
   const formatDate = (inputDate) => {
     const date = new Date(inputDate);
@@ -561,6 +567,18 @@ const EditProjectPop = ({
                 className={`${styles.inputTypeForm} ${styles.inputDate}`}
               />
             </div>
+
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Fecha de Entrega:</span>
+              <input
+                type="date"
+                value={endDate}
+                required
+                onChange={handleEndDateChange}
+                className={`${styles.inputTypeForm} ${styles.inputDate}`}
+              />
+            </div>
+
 
             {/* <div className={styles.inputsGroup}>
                   <span className={styles.labelText}>Etapas</span>

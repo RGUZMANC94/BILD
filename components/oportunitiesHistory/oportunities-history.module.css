@@ -456,12 +456,15 @@ li.pendiente-list {
 
 .buttonQuote {
   height: 35px;
+  width: 70px;
   padding: 0 10px;
   font-size: 10px;
 }
 
 .buttonQuoteAcepted {
   height: 35px;
+  
+  width: 70px;
   padding: 0 10px;
   font-size: 10px;
   background-color: #343434;
@@ -617,6 +620,14 @@ li.pendiente-list {
 .icon-box .subir {
   width: 30% !important;
   padding: 15px 10px;
+}
+
+.buttonsSec { 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 /* @media only screen and (max-width: 1380px) {
