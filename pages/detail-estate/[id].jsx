@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useContext , useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
 // import InfoProject from '../../components/infoProject';
@@ -20,9 +20,12 @@ import { parseCookies } from '../../utils/parseCookies';
 import { setUser } from '../../redux/userSlice';
 import { useFetch } from '../../hooks/useFetch';
 import Loader from '../../components/lodaer';
+import BildContext from '../../components/context';
 
-const DetailState = ({ unitsInit, typesInit, user }) => {
-  const { userid: id } = user;
+const DetailState = ({ unitsInit, typesInit}) => {
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userState);
   const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
@@ -319,13 +322,17 @@ const DetailState = ({ unitsInit, typesInit, user }) => {
                     dataProject[0].projectName}
                 </h1>
 
-                <button
+                {user_rol === 'ADMIN' && (
+                  <button
                   className={'editProjectDetailState'}
                   onClick={() => {
                     dispatch(changeProjectEdit(infoProject ?? dataProject[0]));
                     setShowEditProject(true);
                   }}
                 />
+                )}
+
+                
               </div>
 
               <div className={'top-buttons-container'}>
@@ -335,7 +342,8 @@ const DetailState = ({ unitsInit, typesInit, user }) => {
                   <div className={'top-download-icon'} />
                   Descargar
                 </a>
-                <label className={'top-upload'}>
+                {user_rol === 'ADMIN' && (
+                  <label className={'top-upload'}>
                   <input
                     type="file"
                     hidden
@@ -347,6 +355,8 @@ const DetailState = ({ unitsInit, typesInit, user }) => {
                   <div className={'top-upload-icon'} />
                   Subir
                 </label>
+          )}
+                
               </div>
             </>
           )}
@@ -422,14 +432,6 @@ export const getServerSideProps = async ({
 
   // const { API_URL } = process.env;
 
-  console.time('Get Cookie');
-
-  const { user_tk } = parseCookies(cookie);
-
-  console.timeEnd('Get Cookie');
-
-  const { user } = JSON.parse(user_tk);
-
   console.time('Get Units');
 
   const response = await fetch(
@@ -456,7 +458,6 @@ export const getServerSideProps = async ({
     props: {
       unitsInit: units.length ? units : [],
       typesInit: types.length ? types : [],
-      user,
     },
   };
 };

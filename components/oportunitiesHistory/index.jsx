@@ -25,6 +25,9 @@ const OportunitiesHistory = ({
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { rol: user_rol } = user;
   const { quicksand } = useContext(BildContext);
   // const { id } = useSelector((state) => state.userState);
   const { unitSelected } = useSelector((state) => state.unitState);
@@ -270,11 +273,14 @@ const OportunitiesHistory = ({
                   <li>{oppSelectedObject.nameProject}</li>
                   <li>{`Tipo ${oppSelectedObject.propertyType.propertyType} : ${oppSelectedObject.idProperty}`}</li>
                 </ul>
-                <button
-                  type="button"
-                  className={`${styles.editar}`}
-                  onClick={() => setShowEditContact(true)}
-                />
+                {user_rol === 'ADMIN' && (
+                  <button
+                    type="button"
+                    className={`${styles.editar}`}
+                    onClick={() => setShowEditContact(true)}
+                  />
+                )}
+                
               </div>
             )}
 

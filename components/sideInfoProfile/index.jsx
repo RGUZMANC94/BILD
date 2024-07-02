@@ -2,9 +2,14 @@ import React from 'react';
 import styles from './SideInfoProfile.module.css';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
+import BildContext from '../../components/context';
+import { useContext } from 'react';
 
 const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   const dispatch = useDispatch();
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id, rol: user_rol } = user;
 
   console.log('Informacion del contactIndo: ', contactInfo);
   return (
@@ -12,13 +17,13 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
       {contactInfo && (
         <div className={styles['editar-perfil']}>
           <div className={styles.containerEditarPerfil}>
-            {typeViewer === 'buyer' && (
-              <button
-                className={`${styles.editar}`}
-                onClick={() => setShowEditContact(true)}
-              />
-            )}
-
+          {user_rol === 'ADMIN' && (
+            <button
+              className={`${styles.editar}`}
+              onClick={() => setShowEditContact(true)}
+            />
+          )}
+              
             <div className={styles['perfil-img']}>
               <img
                 alt=""

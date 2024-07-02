@@ -1,5 +1,6 @@
 // import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
+import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   changeTypeSelected,
@@ -10,6 +11,7 @@ import { openPopUp } from '../../redux/popUpOportunity';
 import Button from '../button';
 import Image from 'next/image';
 import { openZoomImg } from '../../redux/zoomImg';
+import BildContext from '../../components/context';
 
 const TypeCard = ({
   units,
@@ -19,6 +21,9 @@ const TypeCard = ({
   setShowEditType,
   index,
 }) => {
+  const { initialState } = useContext(BildContext);
+  const { user } = initialState;
+  const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
   const USDollar = new Intl.NumberFormat('en-US');
   const activeZoomImg = (e, imgToZoom) => {
@@ -108,13 +113,16 @@ const TypeCard = ({
           </div>
         </div>
         <div className="tipo-icons">
-          <div
+        {user_rol === 'ADMIN' && (
+            <div
             className="edit-type"
             onClick={(e) => {
               e.stopPropagation();
               dispatch(changeTypeEdit(type));
               setShowEditType(true);
             }}></div>
+          )}
+          
           <div className="tipo-arrow"></div>
         </div>
 
