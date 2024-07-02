@@ -194,12 +194,28 @@ const AddProjectPop = ({
     console.log(e.target.value);
   };
 
-  const sendFormInfo = async () => {
+  const [sendFlag, setSendFlag] = useState(false);
+  
+  const dateFormatting = () => {
     setDatos((prevDatos) => ({
       ...prevDatos,
       startDate: formatDate(dateValue),
       endDate: formatDate(endDate),
     }));
+    setSendFlag(true);
+  };
+
+  useEffect(() => { 
+    if (sendFlag) { 
+      sendFormInfo();
+      setSendFlag(false);
+    }
+  }, [sendFlag]);
+
+
+
+  const sendFormInfo = async () => {
+    
 
     console.log(
       JSON.stringify({
@@ -207,6 +223,7 @@ const AddProjectPop = ({
         datos,
       })
     );
+
 
     try {
       const projectCreated = await fetch('/api/createProject', {
@@ -654,7 +671,7 @@ const AddProjectPop = ({
               iconImage={false}
               label={'Guardar'}
               inheritClass={styles.buttonCreateType}
-              clickFunction={sendFormInfo}
+              clickFunction={dateFormatting}
             />
           </div>
         </div>
