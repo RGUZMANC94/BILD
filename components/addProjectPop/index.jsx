@@ -195,7 +195,7 @@ const AddProjectPop = ({
   };
 
   const [sendFlag, setSendFlag] = useState(false);
-  
+
   const dateFormatting = () => {
     setDatos((prevDatos) => ({
       ...prevDatos,
@@ -205,25 +205,20 @@ const AddProjectPop = ({
     setSendFlag(true);
   };
 
-  useEffect(() => { 
-    if (sendFlag) { 
+  useEffect(() => {
+    if (sendFlag) {
       sendFormInfo();
       setSendFlag(false);
     }
   }, [sendFlag]);
 
-
-
   const sendFormInfo = async () => {
-    
-
     console.log(
       JSON.stringify({
         id,
         datos,
       })
     );
-
 
     try {
       const projectCreated = await fetch('/api/createProject', {
@@ -451,7 +446,7 @@ const AddProjectPop = ({
       location: '',
       neighborhoodId: '5',
       startDate: '',
-      endDate : '',
+      endDate: '',
       pool: '',
       TurkishBath: '',
       sauna: '',
@@ -563,7 +558,7 @@ const AddProjectPop = ({
                 className={`${styles.inputTypeForm} ${styles.inputDate}`}
               />
             </div>
-            
+
             <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Fecha de Entrega:</span>
               <input

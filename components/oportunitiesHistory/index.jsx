@@ -322,44 +322,42 @@ const OportunitiesHistory = ({
                     {firstEvent.expirationDateTime.split(' ')[1]}
                   </span>
                   <div className={styles.buttonsSec}>
-                  {
-                    (firstEvent.PricePdf && firstEvent.PricePdf.length > 0) && 
-                    <Button
-                      buttonType={'primary'}
-                      iconImage={false}
-                      label={'PDF'}
-                      inheritClass={styles.buttonQuote}
-                      clickFunction={() => {
-                        setPdfURL(firstEvent.PricePdf[0].url);
-                        console.log('PDF:', firstEvent.PricePdf[0].url);
-                      }
-                      }
-                    />
-                  }
-                  {firstEvent.additionalInformation !== '' &&
-                    firstEvent.additionalInformation !== '0' &&
-                    (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
-                      <div>
-                        <Button
-                          buttonType={'primary'}
-                          iconImage={false}
-                          label={'Aceptar'}
-                          inheritClass={styles.buttonQuote}
-                          clickFunction={() =>
-                            handleEventClick(firstEvent.additionalInformation)
-                          }
-                        />
-                      </div>
-                    ) : (
-                      <div>
-                        <Button
-                          iconImage={false}
-                          label={'Aceptada'}
-                          inheritClass={styles.buttonQuoteAcepted}
-                        />
-                      </div>
-                    ))}
-                </div>
+                    {firstEvent.PricePdf && firstEvent.PricePdf.length > 0 && (
+                      <Button
+                        buttonType={'primary'}
+                        iconImage={false}
+                        label={'PDF'}
+                        inheritClass={styles.buttonQuote}
+                        clickFunction={() => {
+                          setPdfURL(firstEvent.PricePdf[0].url);
+                          console.log('PDF:', firstEvent.PricePdf[0].url);
+                        }}
+                      />
+                    )}
+                    {firstEvent.additionalInformation !== '' &&
+                      firstEvent.additionalInformation !== '0' &&
+                      (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
+                        <div>
+                          <Button
+                            buttonType={'primary'}
+                            iconImage={false}
+                            label={'Aceptar'}
+                            inheritClass={styles.buttonQuote}
+                            clickFunction={() =>
+                              handleEventClick(firstEvent.additionalInformation)
+                            }
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          <Button
+                            iconImage={false}
+                            label={'Aceptada'}
+                            inheritClass={styles.buttonQuoteAcepted}
+                          />
+                        </div>
+                      ))}
+                  </div>
                 </div>
                 <div className={styles['blue-point']}></div>
               </div>
@@ -411,48 +409,49 @@ const OportunitiesHistory = ({
                             </span>
 
                             <div className={styles.buttonsSec}>
-
-                            {
-                              (eventItem.PricePdf && eventItem.PricePdf.length > 0) && 
-                              <Button
-                                buttonType={'primary'}
-                                iconImage={false}
-                                label={'PDF'}
-                                inheritClass={styles.buttonQuote}
-                                clickFunction={() => {
-                                  setPdfURL(eventItem.PricePdf[0].url);
-                                  console.log('PDF:', eventItem.PricePdf[0].url);
-                                }
-                                }
-                              />
-                            }
-
-                            {eventItem.additionalInformation !== '' &&
-                              eventItem.additionalInformation !== '0' &&
-                              (oppSelectedObject.stageCycleSaleOp ===
-                              'Oportunidad' ? (
-                                <div>
+                              {eventItem.PricePdf &&
+                                eventItem.PricePdf.length > 0 && (
                                   <Button
                                     buttonType={'primary'}
                                     iconImage={false}
-                                    label={'Aceptar'}
+                                    label={'PDF'}
                                     inheritClass={styles.buttonQuote}
-                                    clickFunction={() =>
-                                      handleEventClick(
-                                        eventItem.additionalInformation
-                                      )
-                                    }
+                                    clickFunction={() => {
+                                      setPdfURL(eventItem.PricePdf[0].url);
+                                      console.log(
+                                        'PDF:',
+                                        eventItem.PricePdf[0].url
+                                      );
+                                    }}
                                   />
-                                </div>
-                              ) : (
-                                <div>
-                                  <Button
-                                    iconImage={false}
-                                    label={'Aceptada'}
-                                    inheritClass={styles.buttonQuoteAcepted}
-                                  />
-                                </div>
-                              ))}
+                                )}
+
+                              {eventItem.additionalInformation !== '' &&
+                                eventItem.additionalInformation !== '0' &&
+                                (oppSelectedObject.stageCycleSaleOp ===
+                                'Oportunidad' ? (
+                                  <div>
+                                    <Button
+                                      buttonType={'primary'}
+                                      iconImage={false}
+                                      label={'Aceptar'}
+                                      inheritClass={styles.buttonQuote}
+                                      clickFunction={() =>
+                                        handleEventClick(
+                                          eventItem.additionalInformation
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                ) : (
+                                  <div>
+                                    <Button
+                                      iconImage={false}
+                                      label={'Aceptada'}
+                                      inheritClass={styles.buttonQuoteAcepted}
+                                    />
+                                  </div>
+                                ))}
                             </div>
                           </div>
 

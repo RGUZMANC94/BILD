@@ -224,16 +224,16 @@ const OportunitiesAllFilter = ({ user }) => {
         contactId={idContactSelected}
       />
       {pdfURL && (
-          <div className={styles['iframe-popup']}>
-            <div className={styles['iframe-popup-content']}>
-              <button
-                onClick={() => setPdfURL(null)}
-                className={styles['iframe-close']}
-              />
-              <iframe src={pdfURL} width="100%" height="100%" frameBorder="0" />
-            </div>
+        <div className={styles['iframe-popup']}>
+          <div className={styles['iframe-popup-content']}>
+            <button
+              onClick={() => setPdfURL(null)}
+              className={styles['iframe-close']}
+            />
+            <iframe src={pdfURL} width="100%" height="100%" frameBorder="0" />
           </div>
-        )}
+        </div>
+      )}
     </>
   );
 };

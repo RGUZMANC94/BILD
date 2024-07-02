@@ -90,10 +90,7 @@ const AddEvents = ({
   };
 
   return (
-    <section
-      className={`${styles.main} ${
-        show ? styles.active : ''
-      }`}>
+    <section className={`${styles.main} ${show ? styles.active : ''}`}>
       <div
         className={styles.banner}
         onClick={() => {

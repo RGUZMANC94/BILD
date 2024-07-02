@@ -226,7 +226,7 @@ const EditProjectPop = ({
     console.log(e.target.value);
   };
   const [sendFlag, setSendFlag] = useState(false);
-  
+
   const dateFormatting = () => {
     setDatos((prevDatos) => ({
       ...prevDatos,
@@ -236,17 +236,14 @@ const EditProjectPop = ({
     setSendFlag(true);
   };
 
-  useEffect(() => { 
-    if (sendFlag) { 
+  useEffect(() => {
+    if (sendFlag) {
       sendFormInfo();
       setSendFlag(false);
     }
   }, [sendFlag]);
 
-
-
   const sendFormInfo = async () => {
-
     console.log(
       JSON.stringify({
         id,
@@ -593,7 +590,6 @@ const EditProjectPop = ({
                 className={`${styles.inputTypeForm} ${styles.inputDate}`}
               />
             </div>
-
 
             {/* <div className={styles.inputsGroup}>
                   <span className={styles.labelText}>Etapas</span>

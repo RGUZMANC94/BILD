@@ -450,7 +450,6 @@ li.pendiente-list {
   margin: 0 auto;
 }
 
-
 /* PDF */
 
 .iframe-popup {
@@ -488,7 +487,6 @@ li.pendiente-list {
   width: 20px;
   height: 20px;
 }
-
 
 @media only screen and (max-width: 1024px) {
   /*.main {
