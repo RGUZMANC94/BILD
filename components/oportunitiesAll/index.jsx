@@ -287,6 +287,7 @@ const OportunitiesAll = ({
             id={id}
             setShowEditContact={setShowEditContact}
             setPdfURL={setPdfURL}
+            prePriceInfo={prePriceInfo}
           />
         )}
       </div>

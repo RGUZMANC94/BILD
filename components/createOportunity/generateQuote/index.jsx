@@ -16,6 +16,7 @@ const GenerateQuote = ({
   closePopUpPortal,
   setRefreshFlag,
   id,
+  prePriceInfo,
 }) => {
   // const { id } = useSelector((state) => state.userState);
   const dispatch = useDispatch();

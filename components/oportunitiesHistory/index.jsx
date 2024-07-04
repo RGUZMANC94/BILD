@@ -22,6 +22,7 @@ const OportunitiesHistory = ({
   id,
   setShowEditContact,
   setPdfURL,
+  prePriceInfo,
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
@@ -571,6 +572,7 @@ const OportunitiesHistory = ({
               closePopUpPortal={animateClosePopUpQuote}
               setRefreshFlag={getEventsSelected}
               id={id}
+              prePriceInfo={prePriceInfo}
             />
           </BackgroundPopUp>
         </Portal>
