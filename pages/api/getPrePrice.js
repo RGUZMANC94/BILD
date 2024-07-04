@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   try {
     const response = await fetch(
-      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/CreatePrePrice?username=${req.body.id}&idSaleOp=${req.body.idSaleOp}`,
+      `http://44.206.53.75/Sales-1.0/REST_Index.php/backend/CreatePrePrice?username=${req.body.id}&idSaleOp=${req.body.idSaleOp}`
     );
     if (!response.ok) {
       const errorText = await response.text();

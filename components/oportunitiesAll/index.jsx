@@ -82,9 +82,9 @@ const OportunitiesAll = ({
     },
   });
 
-  const [prePriceInfo, setPrePriceInfo ] = useState({});
+  const [prePriceInfo, setPrePriceInfo] = useState({});
 
-  const getPrePrice= async (idSaleOp) => {
+  const getPrePrice = async (idSaleOp) => {
     const response = await fetch('/api/getPrePrice', {
       method: 'post',
       headers: {
@@ -98,11 +98,9 @@ const OportunitiesAll = ({
 
     const prePriceResponse = await response.json();
     console.log('PrePrice:', prePriceResponse);
-    
+
     setPrePriceInfo(prePriceResponse);
   };
-
-
 
   const getUnitSelected = async (idProperty, projectId) => {
     const response = await fetch('/api/units', {

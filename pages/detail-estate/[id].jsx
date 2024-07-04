@@ -1,4 +1,11 @@
-import { useContext , useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  useContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import CreateOportunity from '../../components/createOportunity';
 import TypesSide from '../../components/typesSide';
 // import InfoProject from '../../components/infoProject';
@@ -22,7 +29,7 @@ import { useFetch } from '../../hooks/useFetch';
 import Loader from '../../components/lodaer';
 import BildContext from '../../components/context';
 
-const DetailState = ({ unitsInit, typesInit}) => {
+const DetailState = ({ unitsInit, typesInit }) => {
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id, rol: user_rol } = user;
@@ -324,15 +331,15 @@ const DetailState = ({ unitsInit, typesInit}) => {
 
                 {user_rol === 'ADMIN' && (
                   <button
-                  className={'editProjectDetailState'}
-                  onClick={() => {
-                    dispatch(changeProjectEdit(infoProject ?? dataProject[0]));
-                    setShowEditProject(true);
-                  }}
-                />
+                    className={'editProjectDetailState'}
+                    onClick={() => {
+                      dispatch(
+                        changeProjectEdit(infoProject ?? dataProject[0])
+                      );
+                      setShowEditProject(true);
+                    }}
+                  />
                 )}
-
-                
               </div>
 
               <div className={'top-buttons-container'}>
@@ -344,19 +351,18 @@ const DetailState = ({ unitsInit, typesInit}) => {
                 </a>
                 {user_rol === 'ADMIN' && (
                   <label className={'top-upload'}>
-                  <input
-                    type="file"
-                    hidden
-                    ref={inputXlsx}
-                    onChange={handleXlsxClick}
-                    accept=".xlsx, .xls, .csv"
-                    name="excel"
-                  />
-                  <div className={'top-upload-icon'} />
-                  Subir
-                </label>
-          )}
-                
+                    <input
+                      type="file"
+                      hidden
+                      ref={inputXlsx}
+                      onChange={handleXlsxClick}
+                      accept=".xlsx, .xls, .csv"
+                      name="excel"
+                    />
+                    <div className={'top-upload-icon'} />
+                    Subir
+                  </label>
+                )}
               </div>
             </>
           )}
@@ -432,7 +438,6 @@ export const getServerSideProps = async ({
 
   // const { API_URL } = process.env;
 
-  
   console.time('Get Cookie');
 
   const { user_tk } = parseCookies(cookie);

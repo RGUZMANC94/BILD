@@ -113,16 +113,16 @@ const TypeCard = ({
           </div>
         </div>
         <div className="tipo-icons">
-        {user_rol === 'ADMIN' && (
+          {user_rol === 'ADMIN' && (
             <div
-            className="edit-type"
-            onClick={(e) => {
-              e.stopPropagation();
-              dispatch(changeTypeEdit(type));
-              setShowEditType(true);
-            }}></div>
+              className="edit-type"
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatch(changeTypeEdit(type));
+                setShowEditType(true);
+              }}></div>
           )}
-          
+
           <div className="tipo-arrow"></div>
         </div>
 

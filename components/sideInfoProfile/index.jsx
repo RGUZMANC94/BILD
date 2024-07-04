@@ -17,13 +17,13 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
       {contactInfo && (
         <div className={styles['editar-perfil']}>
           <div className={styles.containerEditarPerfil}>
-          {user_rol === 'ADMIN' && (
-            <button
-              className={`${styles.editar}`}
-              onClick={() => setShowEditContact(true)}
-            />
-          )}
-              
+            {user_rol === 'ADMIN' && (
+              <button
+                className={`${styles.editar}`}
+                onClick={() => setShowEditContact(true)}
+              />
+            )}
+
             <div className={styles['perfil-img']}>
               <img
                 alt=""

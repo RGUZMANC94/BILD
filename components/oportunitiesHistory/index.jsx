@@ -280,7 +280,6 @@ const OportunitiesHistory = ({
                     onClick={() => setShowEditContact(true)}
                   />
                 )}
-                
               </div>
             )}
 
