@@ -498,7 +498,7 @@ const EditProjectPop = ({
         <div className={`${styles.wrapperTypePopUp}`}>
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
-              <h1 className={`${styles.topContentTitle}`}>Editar Projecto</h1>
+              <h1 className={`${styles.topContentTitle}`}>Editar Proyecto</h1>
             </div>
             <div
               className={`${styles.closeIcon} bg-ct`}
@@ -570,7 +570,7 @@ const EditProjectPop = ({
               </select>
             </div>
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de inicio:</span>
+              <span className={styles.labelText}>Fecha de Inicio:</span>
               <input
                 type="date"
                 value={dateValue}

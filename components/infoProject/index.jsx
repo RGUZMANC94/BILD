@@ -13,7 +13,7 @@ const InfoProject = ({ viewEstate, info, setLightboxImage, projectId }) => {
     '/images/galeria-tipo/galeria-tipo-06.jpg',
   ];
 
-  console.log('Projecto en info:', info);
+  console.log('Proyecto en info:', info);
 
   const getGalleryImages = async () => {
     const response = await fetch('/api/multimediaRequest', {

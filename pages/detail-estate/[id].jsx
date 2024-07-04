@@ -432,6 +432,15 @@ export const getServerSideProps = async ({
 
   // const { API_URL } = process.env;
 
+  
+  console.time('Get Cookie');
+
+  const { user_tk } = parseCookies(cookie);
+
+  console.timeEnd('Get Cookie');
+
+  const { user } = JSON.parse(user_tk);
+
   console.time('Get Units');
 
   const response = await fetch(

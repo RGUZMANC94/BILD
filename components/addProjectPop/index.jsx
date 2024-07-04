@@ -473,7 +473,7 @@ const AddProjectPop = ({
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
-                Creacion de Projecto
+                Creacion de Proyecto
               </h1>
             </div>
             <div
@@ -549,7 +549,7 @@ const AddProjectPop = ({
               </select>
             </div>
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de inicio:</span>
+              <span className={styles.labelText}>Fecha de Inicio:</span>
               <input
                 type="date"
                 value={dateValue}

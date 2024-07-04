@@ -82,9 +82,29 @@ const OportunitiesAll = ({
     },
   });
 
+  const [prePriceInfo, setPrePriceInfo ] = useState({});
+
+  const getPrePrice= async (idSaleOp) => {
+    const response = await fetch('/api/getPrePrice', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        idSaleOp,
+      }),
+    });
+
+    const prePriceResponse = await response.json();
+    console.log('PrePrice:', prePriceResponse);
+    
+    setPrePriceInfo(prePriceResponse);
+  };
+
+
+
   const getUnitSelected = async (idProperty, projectId) => {
-    console.log('id de la propiedad:', idProperty);
-    console.log('id del proyecto:', projectId);
     const response = await fetch('/api/units', {
       method: 'post',
       headers: {
@@ -124,6 +144,7 @@ const OportunitiesAll = ({
       setOpportunitySelected(-1);
       setOppSelectedObject({});
       setIdContactSelected('');
+      setPrePriceInfo({});
       setOpacityCards((prevState) => false);
     } else {
       setSelectedItem(index);
@@ -131,6 +152,7 @@ const OportunitiesAll = ({
       setOppIsSelected(true);
       setOpportunitySelected(oppId);
       getUnitSelected(idProperty, projectId);
+      getPrePrice(oppId);
       setOppSelectedObject(opp);
       setIdContactSelected(opp.idClient.idClient);
       if (!activeWithHash) {
