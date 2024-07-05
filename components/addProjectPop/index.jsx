@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Tooltip from '../toolTip';
 
 const AddProjectPop = ({
   showAddProject,
@@ -32,6 +33,15 @@ const AddProjectPop = ({
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [cities, setCities] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const getCurrentDate = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JS van de 0 a 11
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  };
 
   const getXlsxTemplate = async () => {
     const response = await fetch('/api/multimediaRequest', {
@@ -174,7 +184,7 @@ const AddProjectPop = ({
     projectType: 'E',
     location: '',
     neighborhoodId: '5',
-    startDate: '',
+    startDate: `${getCurrentDate()}`,
     pool: '',
     TurkishBath: '',
     sauna: '',
@@ -199,7 +209,6 @@ const AddProjectPop = ({
   const dateFormatting = () => {
     setDatos((prevDatos) => ({
       ...prevDatos,
-      startDate: formatDate(dateValue),
       endDate: formatDate(endDate),
     }));
     setSendFlag(true);
@@ -330,12 +339,7 @@ const AddProjectPop = ({
     readURL(e);
   }
 
-  const [dateValue, setDateValue] = useState('');
   const [endDate, setEndDate] = useState('');
-
-  const handleDateChange = (event) => {
-    setDateValue(event.target.value);
-  };
 
   const handleEndDateChange = (event) => {
     setEndDate(event.target.value);
@@ -522,7 +526,9 @@ const AddProjectPop = ({
             </div>
 
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Ubicación:</span>
+              <span className={styles.labelText}>
+                Ubicación: <Tooltip contentId={0} />
+              </span>
               <input
                 type="text"
                 name="location"
@@ -548,19 +554,11 @@ const AddProjectPop = ({
                 <option value="EC">Establecimiento comercial</option>
               </select>
             </div>
-            <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de Inicio:</span>
-              <input
-                type="date"
-                value={dateValue}
-                required
-                onChange={handleDateChange}
-                className={`${styles.inputTypeForm} ${styles.inputDate}`}
-              />
-            </div>
 
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de Entrega:</span>
+              <span className={styles.labelText}>
+                Fecha de Entrega: <Tooltip contentId={0} />
+              </span>
               <input
                 type="date"
                 value={endDate}

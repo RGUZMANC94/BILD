@@ -59,7 +59,6 @@ const EditProjectPop = ({
   useEffect(() => {
     if (infoProject) {
       setDatos({ ...datos, ...infoProject });
-      setDateValue(infoProject.startDate);
       setEndDate(infoProject.endDate);
       console.log('Datos: ', datos);
     }
@@ -230,7 +229,6 @@ const EditProjectPop = ({
   const dateFormatting = () => {
     setDatos((prevDatos) => ({
       ...prevDatos,
-      startDate: formatDate(dateValue),
       endDate: formatDate(endDate),
     }));
     setSendFlag(true);
@@ -364,12 +362,7 @@ const EditProjectPop = ({
     readURL(e);
   }
 
-  const [dateValue, setDateValue] = useState('');
   const [endDate, setEndDate] = useState('');
-
-  const handleDateChange = (event) => {
-    setDateValue(event.target.value);
-  };
 
   const handleEndDateChange = (event) => {
     setEndDate(event.target.value);
@@ -569,17 +562,6 @@ const EditProjectPop = ({
                 <option value="EC">Establecimiento comercial</option>
               </select>
             </div>
-            <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de Inicio:</span>
-              <input
-                type="date"
-                value={dateValue}
-                required
-                onChange={handleDateChange}
-                className={`${styles.inputTypeForm} ${styles.inputDate}`}
-              />
-            </div>
-
             <div className={styles.inputsGroup}>
               <span className={styles.labelText}>Fecha de Entrega:</span>
               <input

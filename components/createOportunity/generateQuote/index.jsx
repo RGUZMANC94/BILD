@@ -52,6 +52,8 @@ const GenerateQuote = ({
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const [feesTotal, setFeesTotal] = useState(0);
+  const [minDuePercentage, setMinDuePercentage] = useState(50);
+  const [minQuoteValue, setMinQuoteValue] = useState(0);
 
   console.log('fees', fees);
   console.log('monthlyQuote:', monthlyQuote);
@@ -107,6 +109,22 @@ const GenerateQuote = ({
     setMonthlyQuote(balanceInitialQuote / Number(fees));
   }, [fees, balanceInitialQuote, initialQuote, separation, downPayment]);
 
+  useEffect(() => {
+    setMinQuoteValue(monthlyQuote * (minDuePercentage / 100));
+  }, [monthlyQuote]);
+
+  console.log('minQuoteValue:', minQuoteValue);
+
+  const handleChangeFees = (e) => {
+    const value = Number(e.target.value);
+    const minQuoteValue = 10; // Reemplaza este valor con el valor deseado
+    if (value >= minQuoteValue) {
+      setFees(value);
+    } else {
+      setFees(minQuoteValue);
+    }
+  };
+
   function formatMoney(num) {
     return num.toLocaleString('es-CO', {
       style: 'currency',
@@ -132,7 +150,12 @@ const GenerateQuote = ({
 
   const handleFeeChange = (value, index, event) => {
     const newFeesArray = [...feesArray];
-    newFeesArray[index] = value;
+    if (value >= minQuoteValue) {
+      newFeesArray[index] = value;
+    } else {
+      newFeesArray[index] = minQuoteValue;
+    }
+
     setFeesArray((prevState) => [...newFeesArray]);
 
     if (event && event.target && event.target.id === 'unchanged') {
@@ -162,6 +185,12 @@ const GenerateQuote = ({
       inputs.push(
         <div key={i} className={styles['cotizacion-form']}>
           <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
+          {prePriceInfo && prePriceInfo.dues.length > 0 && (
+            <span
+              className={
+                styles.labelSide
+              }>{`${prePriceInfo.dues[i].paymentDate}`}</span>
+          )}
           <CurrencyInput
             className={styles.inputQuote}
             prefix="$ "
@@ -225,6 +254,10 @@ const GenerateQuote = ({
 
     if (nonModifiedValue < 0) {
       return 0;
+    }
+
+    if (nonModifiedValue < minQuoteValue) {
+      return Math.floor(minQuoteValue);
     }
     return Math.floor(nonModifiedValue);
   };
