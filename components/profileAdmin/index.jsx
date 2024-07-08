@@ -28,6 +28,13 @@ const ProfileOptions = () => {
           </div>
         </Link>
 
+        <Link href="/profile/consultants" className={styles.btn}>
+          <div className={styles.perfil}>
+            <img src="/images/profiles-icon.png" />
+            <div className={styles['btn-text']}>Asesores</div>
+          </div>
+        </Link>
+
         <Link href="/profile/login" className={styles.btn}>
           <div className={styles.perfil}>
             <img

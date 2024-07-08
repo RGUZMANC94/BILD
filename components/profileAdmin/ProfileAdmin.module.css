@@ -23,6 +23,8 @@
 }
 
 .perfil img {
+  height: 50px;
+  width: 50px;
   display: block;
   margin: 0 auto;
 }
