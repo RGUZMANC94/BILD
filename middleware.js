@@ -52,5 +52,6 @@ export const config = {
     '/opportunities',
     '/payments/:path*',
     '/profile/:path+',
+    
   ],
 };

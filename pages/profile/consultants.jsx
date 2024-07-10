@@ -34,6 +34,7 @@ const Consultants = () => {
   const [refreshContacts, setRefreshContacts] = useState(false);
   const [showEditContact, setShowEditContact] = useState(false);
   const [consultantSelected, setConsultantSelected] = useState(null);
+  const [projectList, setProjectList] = useState([]);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/consultants', {
@@ -98,9 +99,7 @@ const Consultants = () => {
     }
   };
 
-  useEffect(() => {
-    getRecentsContacts();
-  }, []);
+ 
 
   useEffect(() => {
     if (refreshContacts) {
@@ -109,8 +108,29 @@ const Consultants = () => {
     getRecentsContacts();
   }, [refreshContacts]);
 
-  console.log('recentsContacts:', showAddContact);
+  const getProjects = async () => {
+    const response = await fetch('/api/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+        page: 1,
+        rows: 100,
+      }),
+    });
+    const responseProjects = await response.json();
 
+    setProjectList(
+      responseProjects.filter((proj) => Object.keys(proj).length >= 3)
+    );
+  };
+  
+  useEffect(() => {
+      getRecentsContacts();
+      getProjects();
+    }, []);
   return (
     <>
       <section className={styles['main-contain-contact']}>
@@ -215,6 +235,7 @@ const Consultants = () => {
         showAddContact={showAddContact}
         setShowAddContact={setShowAddContact}
         setRefreshContacts={setRefreshContacts}
+        projectList={projectList}
       />
 
       <EditConsultantsPop
@@ -222,6 +243,7 @@ const Consultants = () => {
         setShowEditContact={setShowEditContact}
         setRefreshContacts={setRefreshContacts}
         consultantInfo={consultantSelected}
+        projectList={projectList}
       />
       <div className={`${styles.popSuccessCreated}`}>
         <div className={styles.bgPopUp}></div>

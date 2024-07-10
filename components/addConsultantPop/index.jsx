@@ -12,6 +12,7 @@ const AddConsultant = ({
   showAddContact,
   setShowAddContact,
   setRefreshContacts,
+  projectList,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -379,6 +380,32 @@ const AddConsultant = ({
               />
             </div>
 
+            <div className={`${styles.inputsGroup} flex a-st`}>
+              <span className={styles.labelText}>Subir foto:</span>
+              <div className={styles['main-image']}>
+                <div
+                  className={`bg-ct ${styles.deleteIcon}`}
+                  onClick={deleteImage}></div>
+                <label
+                  htmlFor="mainImgProject"
+                  className={styles.labelInputImage}>
+                  <input
+                    id="mainImgProject"
+                    type="file"
+                    hidden
+                    onChange={handleBloth}
+                    className={styles.inputTypeForm}
+                    accept="image/*"
+                    name="mainImage"
+                  />
+
+                  <div
+                    className={`${styles.imageSelected}`}
+                    ref={mainImage}></div>
+                </label>
+              </div>
+            </div>
+
             <div className={styles.sectionTitle}>
               <h2 className={styles.sectionTitleText}>Proyectos Asignados</h2>
             </div>
@@ -387,7 +414,7 @@ const AddConsultant = ({
                 Seleccione los Proyectos:
               </span>
               <div className={styles.datos}>
-                {projectsList.map((project, i) => (
+                {projectList.map((project, i) => (
                   <>
                     <button
                       type="button"

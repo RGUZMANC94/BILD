@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Tooltip from '../toolTip';
 
 const EditProjectPop = ({
   showEditProject,
@@ -213,6 +214,7 @@ const EditProjectPop = ({
     gym: '',
     coworking: 'X',
     laundry: '',
+    minPercentage: '',
   });
 
   const { id } = useSelector((state) => state.userState);
@@ -462,6 +464,13 @@ const EditProjectPop = ({
     }
   };
 
+  const handleMinQuoteChange= (e) => {
+    const value = e.target.value;
+    if (value === '' || (Number(value) <= 100 && Number(value) >= 0)) {
+      setDatos({ ...datos, minPercentage: e.target.value });
+    }
+  };
+
   const cleanForm = () => {
     setDatos({
       projectName: '',
@@ -562,8 +571,21 @@ const EditProjectPop = ({
                 <option value="EC">Establecimiento comercial</option>
               </select>
             </div>
+
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de Entrega:</span>
+              <span className={styles.labelText}>Porcentaje Minimo de Cuota: <Tooltip contentId={0} /></span>
+              <input
+                type="text"
+                name="minPercentage"
+                value={datos.minPercentage}
+                className={styles.inputTypeForm}
+                onChange={handleMinQuoteChange}
+                required
+              />
+            </div>
+
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Fecha de Entrega: <Tooltip contentId={1} /></span>
               <input
                 type="date"
                 value={endDate}

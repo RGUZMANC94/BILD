@@ -13,10 +13,10 @@ const EditConsultantsPop = ({
   setShowEditContact,
   setRefreshContacts,
   consultantInfo,
+  projectList,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { projectsList } = useSelector((state) => state.projectState);
   const [selectedPage, setSelectedItem] = useState('contact');
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
@@ -56,6 +56,7 @@ const EditConsultantsPop = ({
         lastNames: consultantInfo.lastNames,
         documentNumber: consultantInfo.documentNumber,
         email: consultantInfo.email,
+        projects: [...consultantInfo.projects],
       }));
     }
   }, [consultantInfo]);
@@ -84,6 +85,33 @@ const EditConsultantsPop = ({
       });
 
       console.log('Tipo creado: ', contactCreated);
+
+      if (contactCreated.ok) {
+        const formData = new FormData();
+        formData.append('type', 'ASR');
+        formData.append('subType', 'PHOTO');
+        formData.append('idObject', responseData.salesConsultantId);
+        formData.append('file', selectedFile);
+
+        try {
+          const response = await fetch(
+            'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
+            {
+              method: 'POST',
+              body: formData,
+              mode: 'no-cors',
+            }
+          );
+
+          if (!response.ok) {
+            console.error('Error de solicitud. Estado:', response.status);
+          } else {
+            console.log('Respuesta exitosa:', response);
+          }
+        } catch (error) {
+          console.error('Error al realizar la solicitud:', error);
+        }
+      }
 
       if (!contactCreated.ok) {
         const errorMessage = await contactCreated.text();
@@ -356,6 +384,32 @@ const EditConsultantsPop = ({
               />
             </div>
 
+            <div className={`${styles.inputsGroup} flex a-st`}>
+              <span className={styles.labelText}>Subir foto:</span>
+              <div className={styles['main-image']}>
+                <div
+                  className={`bg-ct ${styles.deleteIcon}`}
+                  onClick={deleteImage}></div>
+                <label
+                  htmlFor="mainImgProject"
+                  className={styles.labelInputImage}>
+                  <input
+                    id="mainImgProject"
+                    type="file"
+                    hidden
+                    onChange={handleBloth}
+                    className={styles.inputTypeForm}
+                    accept="image/*"
+                    name="mainImage"
+                  />
+
+                  <div
+                    className={`${styles.imageSelected}`}
+                    ref={mainImage}></div>
+                </label>
+              </div>
+            </div>
+
             <div className={styles.sectionTitle}>
               <h2 className={styles.sectionTitleText}>Proyectos Asignados</h2>
             </div>
@@ -364,14 +418,13 @@ const EditConsultantsPop = ({
                 Seleccione los Proyectos:
               </span>
               <div className={styles.datos}>
-                {projectsList.map((project, i) => (
+                {projectList.map((project, i) => (
                   <>
                     <button
                       type="button"
                       onClick={() => toggleProjectId(project.projectId)}
                       className={`${styles.campo} ${
-                        datos.projects.includes(project.projectId) &&
-                        styles.active
+                        datos.projects.some(proj => proj.idProject === project.projectId) && styles.active
                       }`}>
                       {`${project.projectName}`}
                     </button>
