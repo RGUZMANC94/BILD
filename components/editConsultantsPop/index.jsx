@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Button from '../button';
-import styles from './Add-contact-pop.module.css';
+import styles from './Edit-contact-pop.module.css';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -8,10 +8,11 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import BildContext from '../context';
 
-const AddConsultant = ({
-  showAddContact,
-  setShowAddContact,
+const EditConsultantsPop = ({
+  showEditContact,
+  setShowEditContact,
   setRefreshContacts,
+  consultantInfo,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -20,6 +21,7 @@ const AddConsultant = ({
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [infoContact, setInfoContact] = useState(null);
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
@@ -36,20 +38,6 @@ const AddConsultant = ({
     password: '',
     projects: [],
   });
-  const cleanForm = () => {
-    setDatos({
-      firstNames: '',
-      lastNames: '',
-      gender: 'M',
-      documentNumber: '',
-      idType: 'CC',
-      birthDay: '1985-02-01',
-      username: '',
-      password: '',
-      projects: [],
-    });
-  };
-  const [imagen, setImagen] = useState(null);
 
   const toggleProjectId = (id) => {
     setDatos((prevDatos) => {
@@ -60,6 +48,20 @@ const AddConsultant = ({
     });
   };
 
+  useEffect(() => {
+    if (consultantInfo) {
+      setDatos((prevDatos) => ({
+        ...prevDatos,
+        firstNames: consultantInfo.firstNames,
+        lastNames: consultantInfo.lastNames,
+        documentNumber: consultantInfo.documentNumber,
+        email: consultantInfo.email,
+      }));
+    }
+  }, [consultantInfo]);
+
+  const [imagen, setImagen] = useState(null);
+
   const sendFormInfo = async () => {
     console.log(
       JSON.stringify({
@@ -69,13 +71,14 @@ const AddConsultant = ({
     );
 
     try {
-      const contactCreated = await fetch('/api/createConsultans', {
+      const contactCreated = await fetch('/api/editConsultant', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           id,
+          salesConsultantId: consultantInfo.salesConsultantId,
           datos,
         }),
       });
@@ -116,7 +119,7 @@ const AddConsultant = ({
         .classList.add(styles.activePopUp);
 
       setTimeout(() => {
-        setShowAddContact(false);
+        setShowEditContact(false);
         setRefreshContacts(true);
         document
           .querySelector(`.${styles.popSuccessCreated}`)
@@ -273,27 +276,27 @@ const AddConsultant = ({
     <>
       <div
         className={`${styles.typePopUp} ${
-          showAddContact ? styles.activePopUp : ''
+          showEditContact ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => {
-            setShowAddContact(false);
-            cleanForm();
+            setShowEditContact(false);
+            // getContact();
           }}></div>
 
         <div className={`${styles.wrapperTypePopUp}`}>
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
-                Creacion de perfil de Asesor
+                Edicion de perfil de Asesor
               </h1>
             </div>
             <div
               className={`${styles.closeIcon} bg-ct`}
               onClick={() => {
-                setShowAddContact(false);
-                cleanForm();
+                setShowEditContact(false);
+                // getContact();
               }}
             />
           </div>
@@ -353,32 +356,6 @@ const AddConsultant = ({
               />
             </div>
 
-            <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Nombre de Usuario:</span>
-              <input
-                type="text"
-                name="username"
-                placeholder="Número de Documento"
-                value={datos.username}
-                onChange={handleChange}
-                className={styles.inputTypeForm}
-                required
-              />
-            </div>
-
-            <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Contraseña:</span>
-              <input
-                type="text"
-                name="password"
-                placeholder="Número de Documento"
-                value={datos.password}
-                onChange={handleChange}
-                className={styles.inputTypeForm}
-                required
-              />
-            </div>
-
             <div className={styles.sectionTitle}>
               <h2 className={styles.sectionTitleText}>Proyectos Asignados</h2>
             </div>
@@ -410,8 +387,8 @@ const AddConsultant = ({
               label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
               clickFunction={() => {
-                setShowAddContact(false);
-                cleanForm();
+                setShowEditContact(false);
+                // getContact();
               }}
             />
             <Button
@@ -461,4 +438,4 @@ const AddConsultant = ({
   );
 };
 
-export default AddConsultant;
+export default EditConsultantsPop;

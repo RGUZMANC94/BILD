@@ -8,7 +8,7 @@ import { changeContactListSelected } from '../../redux/contactSelectedSlice';
 import Image from 'next/image';
 import { parseCookies } from '../../utils/parseCookies';
 import AddConsultantPop from '../../components/addConsultantPop';
-
+import EditConsultantsPop from '../../components/editConsultantsPop';
 import { useContext } from 'react';
 import BildContext from '../../components/context';
 
@@ -32,6 +32,8 @@ const Consultants = () => {
   // const { id } = useSelector((state) => state.userState);
   const [showAddContact, setShowAddContact] = useState(false);
   const [refreshContacts, setRefreshContacts] = useState(false);
+  const [showEditContact, setShowEditContact] = useState(false);
+  const [consultantSelected, setConsultantSelected] = useState(null);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/consultants', {
@@ -47,6 +49,53 @@ const Consultants = () => {
     sortedRecents.sort((a, b) => a.firstNames.localeCompare(b.name));
     setRecentsContacts(recentsContactsres);
     setSortedContacts(sortedRecents);
+  };
+
+  const deleteConsultant = async (idCons) => {
+    try {
+      const quoteDeleted = await fetch('/api/deleteConsultan', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          salesConsultantId: idCons,
+        }),
+      });
+
+      console.log('Consultant deleted: ', quoteDeleted);
+
+      if (!quoteDeleted.ok) {
+        throw new Error('Failed to delete Consultant');
+      }
+
+      const responseData = await quoteDeleted.json();
+
+      console.log('Quote deleted:', responseData);
+
+      document
+        .querySelector(`.${styles.popSuccessCreated}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        setRefreshContacts((prevState) => !prevState);
+        document
+          .querySelector(`.${styles.popSuccessCreated}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
+    } catch (error) {
+      document
+        .querySelector(`.${styles.popError}`)
+        .classList.add(styles.activePopUp);
+
+      setTimeout(() => {
+        document
+          .querySelector(`.${styles.popError}`)
+          .classList.remove(styles.activePopUp);
+      }, 2000);
+      console.error('Error al Borrar asesor:', error);
+    }
   };
 
   useEffect(() => {
@@ -79,18 +128,13 @@ const Consultants = () => {
             Agregar asesor
           </button>
 
-         
           <div className={styles.listas}>
             <div className={styles.reciente}>
               Asesores ({recentContacts.length})
             </div>
             {sortedontacts.map((contact, i) => (
               <div className={styles['list-name']} key={i}>
-                <Link
-                  onClick={() => {
-                    dispatch(changeContactListSelected(contact));
-                  }}
-                  href={`/contacts/${contact.idCli}`}>
+                <div className={styles['consultant-obj']}>
                   <div className={styles['list-contact']}>
                     <div className={styles.contact}>
                       <div className={styles['contact-img-container']}>
@@ -121,30 +165,21 @@ const Consultants = () => {
                     <div className={styles.number}>
                       {true && (
                         <>
-                          <a
-                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
-                            target="_blank"
-                            className={styles['whastapp-icon']}>
-                            <Image
-                              width={20}
-                              height={20}
-                              alt=""
-                              src="/images/edit-icon.png"
-                            />
+                          <button
+                            onClick={() => {
+                              setConsultantSelected(contact);
+                              setShowEditContact(true);
+                            }}
+                            className={styles['edit-icon']}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
-                          </a>
-                          <a
-                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
-                            target="_blank"
-                            className={styles['whastapp-icon']}>
-                            <Image
-                              width={25}
-                              height={25}
-                              alt=""
-                              src="/images/delete.svg"
-                            />
+                          </button>
+                          <button
+                            onClick={() =>
+                              deleteConsultant(contact.salesConsultantId)
+                            }
+                            className={styles['delete-icon']}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
-                          </a>
+                          </button>
                         </>
                       )}
                     </div>
@@ -169,7 +204,7 @@ const Consultants = () => {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -181,6 +216,41 @@ const Consultants = () => {
         setShowAddContact={setShowAddContact}
         setRefreshContacts={setRefreshContacts}
       />
+
+      <EditConsultantsPop
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        setRefreshContacts={setRefreshContacts}
+        consultantInfo={consultantSelected}
+      />
+      <div className={`${styles.popSuccessCreated}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup2}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/check-circle.png" />
+              <span className={styles['pop-text']}>
+                ¡El asesor ha sido eliminado con éxito!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.popError}`}>
+        <div className={styles.bgPopUp}></div>
+        <div className={styles.popup3}>
+          <div className={styles.content}>
+            <div className={styles['icon-box']}>
+              <img src="/images/error-circle.png" />
+              <span className={styles['pop-text']}>
+                <span className={styles['pop-text-bold']}>¡Oops!</span> Algo no
+                está bien. Por favor, revisa los datos ingresados e inténtalo de
+                nuevo.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

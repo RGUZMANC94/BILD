@@ -15,7 +15,9 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log('Error: ', errorText);
-      throw new Error(`Bad response from server: Edit consultant - ${errorText}`);
+      throw new Error(
+        `Bad response from server: Edit consultant - ${errorText}`
+      );
     }
     console.log('Success: ', response.status);
 
