@@ -463,7 +463,7 @@ const AddProjectPop = ({
     });
   };
 
-  const handleMinQuoteChange= (e) => {
+  const handleMinQuoteChange = (e) => {
     const value = e.target.value;
     if (value === '' || (Number(value) <= 100 && Number(value) >= 0)) {
       setDatos({ ...datos, minPercentage: e.target.value });
@@ -535,9 +535,7 @@ const AddProjectPop = ({
             </div>
 
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>
-                Ubicación: 
-              </span>
+              <span className={styles.labelText}>Ubicación:</span>
               <input
                 type="text"
                 name="location"
@@ -565,8 +563,8 @@ const AddProjectPop = ({
             </div>
 
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Porcentaje Minimo de Cuota: <Tooltip contentId={0} />
-                
+              <span className={styles.labelText}>
+                Porcentaje Minimo de Cuota: <Tooltip contentId={0} />
               </span>
               <input
                 type="text"

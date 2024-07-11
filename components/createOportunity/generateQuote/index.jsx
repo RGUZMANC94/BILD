@@ -58,8 +58,8 @@ const GenerateQuote = ({
   console.log('fees', fees);
   console.log('monthlyQuote:', monthlyQuote);
   console.log('balanceInitialQuote:', balanceInitialQuote);
-  console.log('prePriceInfo',prePriceInfo);
-  console.log('oporunitySelected',opportunitySelected);
+  console.log('prePriceInfo', prePriceInfo);
+  console.log('oporunitySelected', opportunitySelected);
 
   useEffect(() => {
     if (feesArray.length !== 0) {

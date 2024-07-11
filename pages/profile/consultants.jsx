@@ -99,8 +99,6 @@ const Consultants = () => {
     }
   };
 
- 
-
   useEffect(() => {
     if (refreshContacts) {
       setRefreshContacts(false);
@@ -126,11 +124,11 @@ const Consultants = () => {
       responseProjects.filter((proj) => Object.keys(proj).length >= 3)
     );
   };
-  
+
   useEffect(() => {
-      getRecentsContacts();
-      getProjects();
-    }, []);
+    getRecentsContacts();
+    getProjects();
+  }, []);
   return (
     <>
       <section className={styles['main-contain-contact']}>

@@ -464,7 +464,7 @@ const EditProjectPop = ({
     }
   };
 
-  const handleMinQuoteChange= (e) => {
+  const handleMinQuoteChange = (e) => {
     const value = e.target.value;
     if (value === '' || (Number(value) <= 100 && Number(value) >= 0)) {
       setDatos({ ...datos, minPercentage: e.target.value });
@@ -573,7 +573,9 @@ const EditProjectPop = ({
             </div>
 
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Porcentaje Minimo de Cuota: <Tooltip contentId={0} /></span>
+              <span className={styles.labelText}>
+                Porcentaje Minimo de Cuota: <Tooltip contentId={0} />
+              </span>
               <input
                 type="text"
                 name="minPercentage"
@@ -585,7 +587,9 @@ const EditProjectPop = ({
             </div>
 
             <div className={styles.inputsGroup}>
-              <span className={styles.labelText}>Fecha de Entrega: <Tooltip contentId={1} /></span>
+              <span className={styles.labelText}>
+                Fecha de Entrega: <Tooltip contentId={1} />
+              </span>
               <input
                 type="date"
                 value={endDate}
