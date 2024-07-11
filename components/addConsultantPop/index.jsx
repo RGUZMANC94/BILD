@@ -112,6 +112,33 @@ const AddConsultant = ({
 
       console.log('Proyecto creado:', responseData);
 
+      if (contactCreated.ok) {
+        const formData = new FormData();
+        formData.append('type', 'ASR');
+        formData.append('subType', 'PHOTO');
+        formData.append('idObject', responseData.salesConsultantId);
+        formData.append('file', selectedFile);
+
+        try {
+          const response = await fetch(
+            'http://44.206.53.75/Sales-1.0/REST_Index.php/backend/UploadFile',
+            {
+              method: 'POST',
+              body: formData,
+              mode: 'no-cors',
+            }
+          );
+
+          if (!response.ok) {
+            console.error('Error de solicitud. Estado:', response.status);
+          } else {
+            console.log('Respuesta exitosa:', response);
+          }
+        } catch (error) {
+          console.error('Error al realizar la solicitud:', error);
+        }
+      }
+
       document
         .querySelector(`.${styles.popSuccessCreated}`)
         .classList.add(styles.activePopUp);

@@ -4,9 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 
 const Tooltip = ({ contentId }) => {
   const idContent = [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent arcu est, pharetra eget nunc eu, consectetur mattis leo. Donec tempus varius nisi. Suspendisse volutpat vel ex ac finibus. Curabitur viverra lobortis pharetra. Aenean efficitur elementum ligula, at ullamcorper est gravida vitae. Suspendisse porttitor non lorem id facilisis. Praesent bibendum facilisis lacus in tristique. Sed euismod mattis purus sit amet dignissim. Donec eget elit ante.',
-    'Contenido 2',
-    'Contenido 3',
+    'Porcentaje que denomina el valor minimo que se peude pagar por cuota inicial',
+    'Fecha en la que se espera se entregue el proyecto',
     'Contenido 4',
     'Contenido 5',
   ];
