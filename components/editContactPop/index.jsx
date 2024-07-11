@@ -23,8 +23,8 @@ const EditContactPop = ({
   const [selectedFile, setSelectedFile] = useState(null);
   const [infoContact, setInfoContact] = useState(null);
   const { initialState } = useContext(BildContext);
-  const { user } = initialState;
-  const { userid: id } = user;
+  /*const { user } = initialState;
+  const { userid: id } = user;*/
 
   const [datos, setDatos] = useState({
     firstNames: '',

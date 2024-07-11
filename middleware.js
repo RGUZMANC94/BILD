@@ -12,6 +12,8 @@ export default function middleware(req) {
 
   const pathname = req.nextUrl.pathname;
 
+  return NextResponse.next();
+  /*
   if (pathname.includes('/login')) {
     if (userInfo) {
       if (userInfo.value) {
@@ -21,13 +23,12 @@ export default function middleware(req) {
     return NextResponse.next();
   }
 
-  // if (protectedRoutes.includes(pathname)) {
   if (userInfo) {
     return NextResponse.next();
   }
   console.log('Devolviendo a login');
   return NextResponse.redirect(returnUrl);
-  // }
+  */
 }
 
 export const config = {
@@ -52,6 +53,5 @@ export const config = {
     '/opportunities',
     '/payments/:path*',
     '/profile/:path+',
-    
   ],
 };

@@ -8,8 +8,8 @@ import { useContext } from 'react';
 const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   const dispatch = useDispatch();
   const { initialState } = useContext(BildContext);
-  const { user } = initialState;
-  const { userid: id, rol: user_rol } = user;
+  //const { user } = initialState;
+  //const { userid: id, rol: user_rol } = user;
 
   console.log('Informacion del contactIndo: ', contactInfo);
   return (
@@ -17,7 +17,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
       {contactInfo && (
         <div className={styles['editar-perfil']}>
           <div className={styles.containerEditarPerfil}>
-            {user_rol === 'ADMIN' && (
+            {false && (
               <button
                 className={`${styles.editar}`}
                 onClick={() => setShowEditContact(true)}
@@ -29,7 +29,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                 alt=""
                 src={
                   typeViewer === 'buyer'
-                    ? contactInfo.image[0] !== '' && contactInfo.image[0]
+                    ? false
                       ? `${contactInfo.image[0].url}`
                       : '/images/henry.png'
                     : '/images/henry.png'
@@ -171,7 +171,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                     </Link>
                   </div>
                 </div>
-                {contactInfo.contactProfile && (
+                {true && (
                   <>
                     <div className={styles['informacion-perfil']}>
                       <span className={styles['info-perfil']}>
@@ -180,24 +180,17 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                       <div className={styles['campos-informacion']}>
                         <span className={styles['sub-title']}>Familiar:</span>
                         <div className={styles.campos}>
-                          {contactInfo.contactProfile.civilStatus && (
+                          {true && (
                             <button
                               type="button"
                               onClick="cambiarColor(this.parentNode)"
                               className={styles.campo}>
-                              {contactInfo.contactProfile.civilStatus === 'S' &&
+                              {true &&
                                 'Soltero'}
-                              {contactInfo.contactProfile.civilStatus === 'C' &&
-                                'Casado'}
-                              {contactInfo.contactProfile.civilStatus ===
-                                'DI' && 'Divorciado'}
-                              {contactInfo.contactProfile.civilStatus ===
-                                'UN' && 'Union Libre'}
                             </button>
                           )}
-                          {contactInfo.contactProfile.amountChildren &&
-                            (contactInfo.contactProfile.amountChildren ===
-                            '0' ? (
+                          {true &&
+                            (false  ? (
                               <button
                                 type="button"
                                 onClick="cambiarColor(this.parentNode)"
@@ -221,9 +214,8 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                           Tipo de comprador:
                         </span>
                         <div className={styles.campos}>
-                          {contactInfo.contactProfile.housingInversion &&
-                            (contactInfo.contactProfile.housingInversion ===
-                            'I' ? (
+                          {true &&
+                            (true ? (
                               <button
                                 type="button"
                                 onClick="cambiarColor(this.parentNode)"
@@ -243,25 +235,6 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                     </div>
                   </>
                 )}
-
-                <div className={styles.flag}>Pendientes:</div>
-                <div className={styles.listado}>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar Brochure del proyecto Fontana Campestre
-                  </label>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar cotización del proyecto La Florida
-                  </label>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar cotización a Zeta Bosio de Campo Alegre
-                  </label>
-                </div>
               </>
             )}
           </div>

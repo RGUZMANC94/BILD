@@ -12,19 +12,19 @@ import AddContactPop from '../../components/addContactPop';
 import { useContext } from 'react';
 import BildContext from '../../components/context';
 
-export const getServerSideProps = async ({
+/*export const getServerSideProps = async ({
   req: {
     headers: { cookie },
   },
 }) => {
   const { user_tk } = parseCookies(cookie);
   return { props: { user: JSON.parse(user_tk) } };
-};
+};*/
 
 const Contacts = () => {
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
-  const { userid: id } = user;
+  //const { userid: id } = user;
   // const router = useRouter();
   const dispatch = useDispatch();
   const [recentContacts, setRecentsContacts] = useState([]);
@@ -49,7 +49,7 @@ const Contacts = () => {
     setSortedContacts(sortedRecents);
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     getRecentsContacts();
   }, []);
 
@@ -60,7 +60,7 @@ const Contacts = () => {
     getRecentsContacts();
   }, [refreshContacts]);
 
-  console.log('recentsContacts:', showAddContact);
+  console.log('recentsContacts:', showAddContact);*/
 
   return (
     <>

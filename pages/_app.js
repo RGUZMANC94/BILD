@@ -10,9 +10,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Providers>
-        <BildContextProvider>
+        {/*<BildContextProvider>*/}
           <Component {...pageProps} />
-        </BildContextProvider>
+        {/*</BildContextProvider>*/}
       </Providers>
     </QueryClientProvider>
   );

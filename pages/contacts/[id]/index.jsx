@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { parseCookies } from '../../../utils/parseCookies';
 import EditContactPop from '../../../components/editContactPop';
-
+/*
 export const getServerSideProps = async ({
   req: {
     headers: { cookie },
@@ -36,17 +36,25 @@ export const getServerSideProps = async ({
       },
     };
   }
-};
+};*/
 
 const BuyerProfile = ({ contacts, user }) => {
   const router = useRouter();
-  const { userid: id } = user;
-  const [recentContacts, setRecentsContacts] = useState(
+  //const { userid: id } = user;
+  /*const [recentContacts, setRecentsContacts] = useState(
     contacts.filter((res) => res.idCli === router.query.id)
+  );*/
+  const [recentContacts, setRecentsContacts] = useState([]
   );
   const [showEditContact, setShowEditContact] = useState(false);
   const [refreshContacts, setRefreshContacts] = useState(false);
-  const [contactInfo, setContactInfo] = useState(recentContacts[0]);
+  const [contactInfo, setContactInfo] = useState({
+    firstNames: 'a',
+    lastNames: 'b',
+    email: 'c',
+    documentNumber: '2',
+    phoneNumber: '3',
+  });
 
   const getContact = async () => {
     const response = await fetch('/api/getContactInfo', {
@@ -65,12 +73,12 @@ const BuyerProfile = ({ contacts, user }) => {
     console.log('respuesta contacto: ', responseContact[0]);
   };
 
-  useEffect(() => {
+ /* useEffect(() => {
     if (refreshContacts) {
       setRefreshContacts(false);
     }
     getContact();
-  }, [refreshContacts]);
+  }, [refreshContacts]);*/
 
   console.log('filtered: ', recentContacts[0]);
 
