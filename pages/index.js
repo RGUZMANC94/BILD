@@ -17,9 +17,9 @@ import { setUser } from '../redux/userSlice';
 import BildContext from '../components/context';
 
 const Home = () => {
-  const { initialState } = useContext(BildContext);
-  const { user } = initialState;
-  const { userid: id, rol: user_rol } = user;
+  // const { initialState } = useContext(BildContext);
+  // const { user } = initialState;
+  // const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userState);
   const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
@@ -30,7 +30,101 @@ const Home = () => {
   const [pageProjects, setPageProjects] = useState(1);
   const [openFlag, setOpenFlag] = useState(true);
   const [displayProjects, setDisplayProjects] = useState(
-    projectsList.length ? projectsList : []
+    //projectsList.length ? projectsList : [] 
+    [
+      {
+        projectId: 1,
+        projectName: 'Proyecto 1',
+        minPrice: 100000,
+        maxPrice: 200000,
+        minBed: 1,
+        maxBed: 2,
+        minBath: 1,
+        maxBath: 2,
+        image: [
+          {
+            url: '/images/defatult-2.jpg',
+          },
+        ],
+      },
+      {
+        projectId: 2,
+        projectName: 'Proyecto 2',
+        minPrice: 200000,
+        maxPrice: 300000,
+        minBed: 2,
+        maxBed: 3,
+        minBath: 2,
+        maxBath: 3,
+        image: [
+          {
+            url: '/images/defatult-2.jpg',
+          },
+        ],
+      },
+      {
+        projectId: 3,
+        projectName: 'Proyecto 3',
+        minPrice: 300000,
+        maxPrice: 400000,
+        minBed: 3,
+        maxBed: 4,
+        minBath: 3,
+        maxBath: 4,
+        image: [
+          {
+            url: '/images/defatult-2.jpg',
+          },
+        ],
+      },
+      {
+        projectId: 4,
+        projectName: 'Proyecto 4',
+        minPrice: 400000,
+        maxPrice: 500000,
+        minBed: 4,
+        maxBed: 5,
+        minBath: 4,
+        maxBath: 5,
+        image: [
+          {
+            url: '/images/defatult-2.jpg',
+          },
+        ],
+      },
+      {
+        projectId: 5,
+        projectName: 'Proyecto 5',
+        minPrice: 500000,
+        maxPrice: 600000,
+        minBed: 5,
+        maxBed: 6,
+        minBath: 5,
+        maxBath: 6,
+        image: [
+          {
+            url: '/images/defatult-2.jpg',
+          },
+        ],
+      },
+      {
+        projectId: 6,
+        projectName: 'Proyecto 6',
+        minPrice: 600000,
+        maxPrice: 700000,
+        minBed: 6,
+        maxBed: 7,
+        minBath: 6,
+        maxBath:
+          7,
+        image: [
+          {
+            url: '/images/defatult-2.jpg',
+          },
+
+        ],
+      },
+    ]
   );
   const [showAddProject, setShowAddProject] = useState(false);
   const [showEditProject, setShowEditProject] = useState(false);
@@ -62,7 +156,7 @@ const Home = () => {
     return responseProjects;
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (openFlag) {
       dispatch(changeTypeSelectedName(-1));
       setOpenFlag(false);
@@ -100,13 +194,13 @@ const Home = () => {
   //   } else {
   //     getProjects();
   //   }
-  // }, [filteredList]);
+  // }, [filteredList]);*/
 
   return (
     <>
       <section className={styles.main}>
         <div className={styles['main-container']}>
-          {user_rol === 'ADMIN' && (
+          {true === 'ADMIN' && (
             <Button
               buttonType={'primary'}
               label="Crear Proyecto"
@@ -176,7 +270,7 @@ const Home = () => {
                               <p>{`${project.minBath}-${project.maxBath}`}</p>
                             </span>
                           )}
-                          {user_rol === 'ADMIN' && (
+                          {true === 'ADMIN' && (
                             <button
                               className={`bg-ct ${styles.editProject}`}
                               onClick={() => {
