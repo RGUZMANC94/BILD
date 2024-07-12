@@ -15,14 +15,14 @@ const AddContactPop = ({
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { projectsList } = useSelector((state) => state.projectState);
-  const [selectedPage, setSelectedItem] = useState('contact');
+  //const { projectsList } = useSelector((state) => state.projectState);
+  //const [selectedPage, setSelectedItem] = useState('contact');
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const { initialState } = useContext(BildContext);
-  const { user } = initialState;
-  const { userid: id } = user;
+ // const { initialState } = useContext(BildContext);
+ // const { user } = initialState;
+  //const { userid: id } = user;
 
   const [datos, setDatos] = useState({
     firstNames: '',

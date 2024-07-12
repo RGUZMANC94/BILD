@@ -22,13 +22,207 @@ import BildContext from '../../components/context';
 };*/
 
 const Contacts = () => {
-  const { initialState } = useContext(BildContext);
-  const { user } = initialState;
+  //const { initialState } = useContext(BildContext);
+  //const { user } = initialState;
   //const { userid: id } = user;
   // const router = useRouter();
   const dispatch = useDispatch();
-  const [recentContacts, setRecentsContacts] = useState([]);
-  const [sortedontacts, setSortedContacts] = useState([]);
+  const [recentContacts, setRecentsContacts] = useState([
+    {
+      idCli: 1,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'Prueba@a.co',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 2,
+      name: 'Pedro',
+      lastname: 'Perez',
+      email: 'a',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 3,
+      name: 'Maria',
+      lastname: 'Perez',
+      email: 'a',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 4,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'b',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+  ]);
+  const [sortedontacts, setSortedContacts] = useState([
+    {
+      idCli: 1,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'Prueba95849848922_asdasdf@a.co',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 2,
+      name: 'Pedro',
+      lastname: 'Perez',
+      email: 'asfffffffasfasa@hotmail.com',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 3,
+      name: 'Maria',
+      lastname: 'Perez',
+      email: 'manuthedavid@hotmail.com',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 4,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'b',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 1,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'Prueba95849848922_asdasdf@a.co',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 2,
+      name: 'Pedro',
+      lastname: 'Perez',
+      email: 'asfffffffasfasa@hotmail.com',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 3,
+      name: 'Maria',
+      lastname: 'Perez',
+      email: 'manuthedavid@hotmail.com',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 4,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'b',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 1,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'Prueba95849848922_asdasdf@a.co',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 2,
+      name: 'Pedro',
+      lastname: 'Perez',
+      email: 'asfffffffasfasa@hotmail.com',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 3,
+      name: 'Maria',
+      lastname: 'Perez',
+      email: 'manuthedavid@hotmail.com',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+    {
+      idCli: 4,
+      name: 'Juan',
+      lastname: 'Perez',
+      email: 'b',
+      phoneNumber: '1234567',
+      image: [
+        {
+          url: '/images/tipo-1.png',
+        },
+      ],
+    },
+  ]);
   // const { id } = useSelector((state) => state.userState);
   const [showAddContact, setShowAddContact] = useState(false);
   const [refreshContacts, setRefreshContacts] = useState(false);
@@ -62,6 +256,8 @@ const Contacts = () => {
 
   console.log('recentsContacts:', showAddContact);*/
 
+
+
   return (
     <>
       <section className={styles['main-contain-contact']}>
@@ -76,7 +272,7 @@ const Contacts = () => {
           <button
             className={styles['crear-contacto']}
             onClick={() => setShowAddContact(true)}>
-            Nuevo contacto
+             <span className={styles['hidden-text']}>Nuevo contacto</span>
           </button>
 
           <div className={styles.listas}>
@@ -86,18 +282,18 @@ const Contacts = () => {
             </div>
             {recentContacts.slice(0, 3).map((recent, i) => (
               <div className={styles['list-name']} key={i}>
+              <Link
+                onClick={() => {
+                  dispatch(changeContactListSelected(recent));
+                }}
+                href={`/contacts/${recent.idCli}`}>
                 <div className={styles['list-contact']}>
-                  <Link
-                    onClick={() => {
-                      dispatch(changeContactListSelected(recent));
-                    }}
-                    href={`/contacts/${recent.idCli}`}
-                    className={styles.contact}>
+                  <div className={styles.contact}>
                     <div className={styles['contact-img-container']}>
                       <Image
+                        alt=""
                         width={40}
                         height={40}
-                        alt=""
                         src={
                           recent.image[0] !== '' && recent.image[0]
                             ? `${recent.image[0].url}`
@@ -114,29 +310,25 @@ const Contacts = () => {
                     </div>
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
                     {`${recent.name} ${recent.lastname}`}
-                  </Link>
-                  <Link
-                    onClick={() => {
-                      dispatch(changeContactListSelected(recent));
-                    }}
-                    href={`/contacts/${recent.idCli}`}
-                    className={styles.contact}>
-                    <div className={styles['reciente-col']}>{recent.email}</div>
-                  </Link>
+                  </div>
+                  <div className={styles['reciente-col']}>
+                    {recent.email}
+                  </div>
                   <div className={styles.number}>
-                    {recent.phoneNumber && `+57 ${recent.phoneNumber}`}
                     {recent.phoneNumber && (
                       <>
                         <a
                           href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
                           target="_blank"
                           className={styles['whastapp-icon']}>
+                          {`+57 ${recent.phoneNumber}`}
                           <Image
-                            alt=""
                             width={40}
                             height={40}
+                            alt=""
                             src="/images/whastapp-blue.png"
                           />
+                          {/* <img src="/images/whastapp-blue.png" /> */}
                         </a>
                       </>
                     )}
@@ -144,25 +336,26 @@ const Contacts = () => {
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
                       <Image
-                        alt=""
                         width={40}
                         height={40}
+                        alt=""
                         src="/images/blue-phone-movil.png"
                       />
                       {/* <img src="/images/blue-phone-movil.png" /> */}
                     </div>
                     <div className={styles['wa-movil']}>
                       <Image
-                        alt=""
                         width={40}
                         height={40}
+                        alt=""
                         src="/images/whatsapp-contacts.png"
                       />
                       {/* <img src="/images/whatsapp-contacts.png" /> */}
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
+            </div>
             ))}
           </div>
           <div className={styles.listas}>
