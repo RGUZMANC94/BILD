@@ -105,23 +105,6 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                 </div>
               </div>
             )}
-            {typeViewer === 'admin' && (
-              <div className={styles.pendientes}>
-                <div className={styles.flag}>Pendientes</div>
-                <div className={styles.listado}>
-                  <label className={styles.penlist}>
-                    <div className={styles.checkMask}></div>
-                    <input className={styles.check} type="checkbox" required />
-                    Enviar Brochure del proyecto Fontana Campestre
-                  </label>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar cotización del proyecto La Florida
-                  </label>
-                </div>
-              </div>
-            )}
             {typeViewer === 'buyer' && (
               <>
                 <div className={styles['id-perfil']}>
@@ -244,24 +227,6 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                   </>
                 )}
 
-                <div className={styles.flag}>Pendientes:</div>
-                <div className={styles.listado}>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar Brochure del proyecto Fontana Campestre
-                  </label>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar cotización del proyecto La Florida
-                  </label>
-                  <label className={styles.penlist}>
-                    <input className={styles.check} type="checkbox" required />
-                    <div className={styles.checkMask}></div>
-                    Enviar cotización a Zeta Bosio de Campo Alegre
-                  </label>
-                </div>
               </>
             )}
           </div>

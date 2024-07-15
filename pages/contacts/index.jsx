@@ -73,10 +73,10 @@ const Contacts = () => {
           </div>
         </div>
         <div className="container">
-          <button
+        <button
             className={styles['crear-contacto']}
             onClick={() => setShowAddContact(true)}>
-            Nuevo contacto
+             <span className={styles['hidden-text']}>Nuevo contacto</span>
           </button>
 
           <div className={styles.listas}>
@@ -86,18 +86,18 @@ const Contacts = () => {
             </div>
             {recentContacts.slice(0, 3).map((recent, i) => (
               <div className={styles['list-name']} key={i}>
+              <Link
+                onClick={() => {
+                  dispatch(changeContactListSelected(recent));
+                }}
+                href={`/contacts/${recent.idCli}`}>
                 <div className={styles['list-contact']}>
-                  <Link
-                    onClick={() => {
-                      dispatch(changeContactListSelected(recent));
-                    }}
-                    href={`/contacts/${recent.idCli}`}
-                    className={styles.contact}>
+                  <div className={styles.contact}>
                     <div className={styles['contact-img-container']}>
                       <Image
+                        alt=""
                         width={40}
                         height={40}
-                        alt=""
                         src={
                           recent.image[0] !== '' && recent.image[0]
                             ? `${recent.image[0].url}`
@@ -114,29 +114,25 @@ const Contacts = () => {
                     </div>
                     <span className={`${styles.badge} ${styles.red}`}>1</span>
                     {`${recent.name} ${recent.lastname}`}
-                  </Link>
-                  <Link
-                    onClick={() => {
-                      dispatch(changeContactListSelected(recent));
-                    }}
-                    href={`/contacts/${recent.idCli}`}
-                    className={styles.contact}>
-                    <div className={styles['reciente-col']}>{recent.email}</div>
-                  </Link>
+                  </div>
+                  <div className={styles['reciente-col']}>
+                    {recent.email}
+                  </div>
                   <div className={styles.number}>
-                    {recent.phoneNumber && `+57 ${recent.phoneNumber}`}
                     {recent.phoneNumber && (
                       <>
                         <a
                           href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
                           target="_blank"
                           className={styles['whastapp-icon']}>
+                          {`+57 ${recent.phoneNumber}`}
                           <Image
-                            alt=""
                             width={40}
                             height={40}
+                            alt=""
                             src="/images/whastapp-blue.png"
                           />
+                          {/* <img src="/images/whastapp-blue.png" /> */}
                         </a>
                       </>
                     )}
@@ -144,25 +140,26 @@ const Contacts = () => {
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
                       <Image
-                        alt=""
                         width={40}
                         height={40}
+                        alt=""
                         src="/images/blue-phone-movil.png"
                       />
                       {/* <img src="/images/blue-phone-movil.png" /> */}
                     </div>
                     <div className={styles['wa-movil']}>
                       <Image
-                        alt=""
                         width={40}
                         height={40}
+                        alt=""
                         src="/images/whatsapp-contacts.png"
                       />
                       {/* <img src="/images/whatsapp-contacts.png" /> */}
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
+            </div>
             ))}
           </div>
           <div className={styles.listas}>

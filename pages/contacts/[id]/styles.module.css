@@ -317,6 +317,11 @@
 }
 
 @media only screen and (max-width: 1190px) {
+  .closeContact {
+    width: 25px;
+    height: 25px;
+  }
+
   .opc-pendiente {
     width: 100%;
     justify-content: space-around;
@@ -370,8 +375,8 @@
   .closeContactSide {
     display: block;
     position: absolute;
-    top: 85px;
-    right: 10px;
+    top: 90px;
+    right: 5%;
     width: 20px;
     height: 20px;
     z-index: 5;
