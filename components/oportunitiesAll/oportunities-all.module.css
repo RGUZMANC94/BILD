@@ -171,6 +171,7 @@ i.fa-solid.fa-angle-left {
 @media only screen and (max-width: 1024px) {
   .oportunidades {
     width: 100%;
+    padding-bottom: 40px;
   }
 
   .card-container {

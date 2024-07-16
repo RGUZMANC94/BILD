@@ -273,7 +273,7 @@
     height: 50px;
   }
 
-  .card-unit {
-    /*padding: 17px 10px;*/
+  .card-state-active.card-unit {
+    left: unset;
   }
 }

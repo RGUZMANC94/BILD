@@ -557,17 +557,36 @@ li.pendiente-list {
 }
 
 @media only screen and (max-width: 768px) {
+  .main {
+    margin-top: 0;
+    height: auto;
+    display: block;
+    padding-top: 0;
+  }
+  .top-content-buttonsBar {
+    padding: 60px 0 0;
+        top: unset;
+        height: unset;
+        
+    position: relative;
+    background-color: transparent;
+  }
+
   .filter_input {
     width: fill-available;
   }
-}
 
+  .filter_container {
+    padding: 10px 0;
+    margin: 0;
+  }
+}
+/*
 @media only screen and (max-width: 568px) {
   .main {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    padding: 90px 5px 100px;
   }
 
   .top-content-buttons {
@@ -584,4 +603,4 @@ li.pendiente-list {
     line-height: 0.81;
     font-style: normal;
   }
-}
+}*/
