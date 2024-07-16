@@ -132,22 +132,30 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                 </div>
                 <div className={styles['pendientes-movil']}>
                   <div className={styles['opc-pendiente']}>
-                    <Link href="/opportunities/0" className={styles.opcion}>
+                    <Link
+                      href={`/opportunities/${contactInfo.contactProfile.clientId}`}
+                      className={styles.opcion}>
                       <img src="/images/key-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>2</span>
                       Oportunidades
                     </Link>
-                    <Link href="/quotes" className={styles.opcion}>
+                    <Link
+                      href={`/contacts/${contactInfo.contactProfile.clientId}/quotes`}
+                      className={styles.opcion}>
                       <img src="/images/cotizaciones-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>5</span>
                       Cotizaciones
                     </Link>
-                    <Link href="/documentation/1" className={styles.opcion}>
+                    <Link
+                      href={`/documentation/${contactInfo.contactProfile.clientId}`}
+                      className={styles.opcion}>
                       <img src="/images/docs-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>3</span>
                       Documentación
                     </Link>
-                    <Link href="/payments" className={styles.opcion}>
+                    <Link
+                      href={`/contacts/${contactInfo.contactProfile.clientId}/payments`}
+                      className={styles.opcion}>
                       <img src="/images/payments-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>7</span>
                       Pagos
@@ -226,7 +234,6 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                     </div>
                   </>
                 )}
-
               </>
             )}
           </div>

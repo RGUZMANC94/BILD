@@ -41,9 +41,12 @@ const EditConsultantsPop = ({
 
   const toggleProjectId = (id) => {
     setDatos((prevDatos) => {
-      const projects = prevDatos.projects.includes(id)
-        ? prevDatos.projects.filter((projectId) => projectId !== id)
-        : [...prevDatos.projects, id];
+      const projectExists = prevDatos.projects.some(
+        (project) => project.idProject === id
+      );
+      const projects = projectExists
+        ? prevDatos.projects.filter((project) => project.idProject !== id)
+        : [...prevDatos.projects, { idProject: id }];
       return { ...prevDatos, projects };
     });
   };
@@ -56,6 +59,7 @@ const EditConsultantsPop = ({
         lastNames: consultantInfo.lastNames,
         documentNumber: consultantInfo.documentNumber,
         email: consultantInfo.email,
+        username: consultantInfo.username,
         projects: [...consultantInfo.projects],
       }));
     }
@@ -90,7 +94,7 @@ const EditConsultantsPop = ({
         const formData = new FormData();
         formData.append('type', 'ASR');
         formData.append('subType', 'PHOTO');
-        formData.append('idObject', responseData.salesConsultantId);
+        formData.append('idObject', consultantInfo.salesConsultantId);
         formData.append('file', selectedFile);
 
         try {
@@ -172,7 +176,7 @@ const EditConsultantsPop = ({
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        if (event.target.id === 'mainImgProject') {
+        if (event.target.id === 'mainImgProjectEdit') {
           mainImage.current.style.backgroundImage = `url(${e.target.result})`;
           mainImage.current.parentNode.parentNode.classList.add(styles.active);
           return;
@@ -310,7 +314,6 @@ const EditConsultantsPop = ({
           className={`${styles.bgTypePopUp}`}
           onClick={() => {
             setShowEditContact(false);
-            // getContact();
           }}></div>
 
         <div className={`${styles.wrapperTypePopUp}`}>
@@ -324,7 +327,6 @@ const EditConsultantsPop = ({
               className={`${styles.closeIcon} bg-ct`}
               onClick={() => {
                 setShowEditContact(false);
-                // getContact();
               }}
             />
           </div>
@@ -384,6 +386,19 @@ const EditConsultantsPop = ({
               />
             </div>
 
+            <div className={styles.inputsGroup}>
+              <span className={styles.labelText}>Nombre de Usuario:</span>
+              <input
+                type="text"
+                name="username"
+                placeholder="Número de Documento"
+                value={datos.username}
+                onChange={handleChange}
+                className={styles.inputTypeForm}
+                required
+              />
+            </div>
+
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Subir foto:</span>
               <div className={styles['main-image']}>
@@ -391,10 +406,10 @@ const EditConsultantsPop = ({
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
                 <label
-                  htmlFor="mainImgProject"
+                  htmlFor="mainImgProjectEdit"
                   className={styles.labelInputImage}>
                   <input
-                    id="mainImgProject"
+                    id="mainImgProjectEdit"
                     type="file"
                     hidden
                     onChange={handleBloth}

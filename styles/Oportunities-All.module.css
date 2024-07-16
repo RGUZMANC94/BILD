@@ -565,9 +565,9 @@ li.pendiente-list {
   }
   .top-content-buttonsBar {
     padding: 60px 0 0;
-        top: unset;
-        height: unset;
-        
+    top: unset;
+    height: unset;
+
     position: relative;
     background-color: transparent;
   }

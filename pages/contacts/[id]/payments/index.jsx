@@ -86,7 +86,7 @@ const Payments = ({ contact, user, idClient }) => {
 
       <div className={styles['pagos-section']}>
         <div className="container flex j-c a-s">
-          <div className={styles['sub-title-movil']}>John Lennon </div>
+          <div className={styles['sub-title-movil']}> </div>
 
           {allOpportunities && allOpportunities.length > 0 ? (
             allOpportunities.map(

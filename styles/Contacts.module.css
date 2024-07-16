@@ -450,9 +450,8 @@
 }
 
 @media only screen and (max-width: 768px) {
-
-  .contact-top.contact-top  { 
-    top:0;
+  .contact-top.contact-top {
+    top: 0;
   }
 
   .hidden-text {
@@ -513,20 +512,17 @@
     text-align: center;
   }
 
-  .phone-movil  img,
-  .wa-movil img{
-    
+  .phone-movil img,
+  .wa-movil img {
     margin: auto;
   }
 
   .contact {
     width: 70%;
   }
-  
 
-  .numero,.mail {
+  .numero,
+  .mail {
     display: none;
   }
-
-
 }

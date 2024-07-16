@@ -61,7 +61,20 @@ const AddConsultant = ({
     });
   };
 
-  const sendFormInfo = async () => {
+  const prepareProjects = () => {
+    const transformedProjects = datos.projects.map((project) => ({
+      idProject: project,
+    }));
+
+    const newObject = {
+      ...datos,
+      projects: transformedProjects,
+    };
+    console.log('newObject:', newObject);
+    sendFormInfo(newObject);
+  };
+
+  const sendFormInfo = async (data) => {
     console.log(
       JSON.stringify({
         id,
@@ -77,7 +90,7 @@ const AddConsultant = ({
         },
         body: JSON.stringify({
           id,
-          datos,
+          datos: data,
         }),
       });
 
@@ -473,7 +486,7 @@ const AddConsultant = ({
               iconImage={false}
               label={'Guardar'}
               inheritClass={styles.buttonCreateType}
-              clickFunction={sendFormInfo}
+              clickFunction={prepareProjects}
             />
           </div>
         </div>

@@ -1209,9 +1209,6 @@ li.active button {
 }
 
 @media only screen and (max-width: 768px) {
-  .top-content {
-    top: 63px;
-  }
   .addTypeButton {
     margin-top: 20px;
   }
@@ -1221,6 +1218,23 @@ li.active button {
 
   .top-content {
     width: 100%;
+    top: 60px;
+    margin: 0;
+    font-size: 16px;
+    background-color: rgba(33, 34, 29, 0.7);
+  }
+
+  .top-content ul li button {
+    float: left;
+    margin-right: 30px;
+    width: auto;
+    height: auto;
+    color: #c7c7c7;
+    font-weight: 300;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
   }
 
   .mail,
@@ -1244,19 +1258,6 @@ li.active button {
 
   .infoContainer {
     padding-right: 0px;
-  }
-
-  .top-content ul li button {
-    float: left;
-    margin-right: 50px;
-    width: auto;
-    height: auto;
-    color: #c7c7c7;
-    font-weight: 300;
-    font-size: 12px;
-    text-align: left;
-    text-decoration: none;
-    text-transform: uppercase;
   }
 
   .contact {
@@ -1303,35 +1304,62 @@ li.active button {
   .main {
     display: flex;
     position: relative;
-    top: 70px;
+    top: 60px;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     z-index: 2;
-    /*padding: 0 20px 50px;*/
     padding: 0;
     width: 100%;
     height: auto;
   }
 
+  .draggable {
+    display: none;
+  }
+
   .containerEstate {
-    padding-bottom: 180px;
     width: 100%;
     max-height: unset;
+    height: auto;
+    padding-bottom: 150px;
   }
 
   .outerTypes {
     width: 100%;
+    padding: 0;
   }
 
-  .top-content {
-    font-size: 16px;
+  .topInfo-container {
+    width: 100%;
+    margin: 0;
+    padding: 5%;
   }
 
-  .top-content ul li button {
-    margin-right: 30px;
-    font-size: 16px;
+  .top-infoContainer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .top-buttons-container {
+    display: none;
+  }
+  .topProjectName {
+    margin: auto;
+  }
+
+  .top-tabla:last-of-type {
+    text-align: center;
+  }
+
+  .price-table.detalle-tabla {
+    justify-content: center;
+  }
+
+  .itemDrag {
+    margin-top: 20px;
   }
 
   .unidades {
@@ -1472,6 +1500,9 @@ li.active button {
     text-transform: uppercase;
   }
 
+  .editProjectDetailState {
+  }
+
   .detalle-tabla {
     display: flex;
     justify-content: center;
@@ -1482,13 +1513,12 @@ li.active button {
   }
 
   .llave-tabla {
+    right: 5px;
     transition: none;
     background-image: url(/images/key.svg);
     background-position: center;
     background-size: 28px 28px;
     background-repeat: no-repeat;
-    /* width: 100%;
-    height: 40px; */
   }
 
   .clearfix {
@@ -1549,16 +1579,12 @@ li.active button {
   .back-arrow {
     width: 20px;
     height: 22px;
+    margin: 0;
   }
 
   .unidadesSide.active {
     width: 100%;
   }
-
-  .itemDrag {
-    margin-bottom: 20px;
-  }
-
   .itemDrag:hover .tipo-unit,
   .itemDrag.active .tipo-unit {
     left: 0;
@@ -1580,6 +1606,8 @@ li.active button {
     background-size: contain;
     width: 32px;
     height: 32px;
+    top: 5px;
+    right: 5px;
   }
 
   .itemDrag.active .tipo-title {
@@ -1594,21 +1622,6 @@ li.active button {
   .itemDrag.active .detalles {
     display: none;
   }
-
-  /* .itemDrag.active .img-tipo {
-    width: 40px;
-    height: 40px;
-  } */
-
-  .itemDrag.active .img-tipo-glass {
-    width: 18px;
-    height: 18px;
-  }
-
-  /* .itemDrag.active .tipo-icons {
-    flex-direction: row;
-    gap: 20px;
-  } */
 
   .tipo-icons {
     gap: 35px 0;
@@ -1640,18 +1653,6 @@ li.active button {
 .selectFilterFlex p {
   font-weight: 600;
   font-size: 16px;
-}
-
-@media only screen and (max-width: 480px) {
-  .itemDrag {
-    gap: 10px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .itemDrag {
-    gap: 10px;
-  }
 }
 
 /* Inmuebel detail */

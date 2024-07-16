@@ -973,10 +973,9 @@ h3.user {
 }
 
 @media only screen and (max-width: 768px) {
-  
-.containerEditarPerfil {
-  margin-bottom: 80px;
-}
+  .containerEditarPerfil {
+    margin-bottom: 80px;
+  }
   section.main {
     width: 100%;
     height: auto;
@@ -1147,7 +1146,7 @@ h3.user {
     margin: 0;
   }
 
-  .sub-title { 
+  .sub-title {
     margin-bottom: 10px;
   }
 
@@ -1161,7 +1160,6 @@ h3.user {
   }
 
   .name-perfil {
-
     margin-bottom: 5px;
   }
 }

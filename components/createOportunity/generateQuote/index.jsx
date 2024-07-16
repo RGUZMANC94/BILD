@@ -52,7 +52,7 @@ const GenerateQuote = ({
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const [feesTotal, setFeesTotal] = useState(0);
-  const [minDuePercentage, setMinDuePercentage] = useState(50);
+  const [minDuePercentage, setMinDuePercentage] = useState(prePriceInfo ? prePriceInfo.minPercentage : 1);
   const [minQuoteValue, setMinQuoteValue] = useState(0);
 
   console.log('fees', fees);
