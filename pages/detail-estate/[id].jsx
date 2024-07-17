@@ -367,32 +367,31 @@ const DetailState = ({ unitsInit, typesInit }) => {
             </>
           )}
         </div>
-        
       </div>
-      
+
       <section className="main">
-      <div className={'top-buttons-container-movil'}>
-                <a
-                  className={'top-donwload'}
-                  href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
-                  <div className={'top-download-icon'} />
-                  Descargar
-                </a>
-                {user_rol === 'ADMIN' && (
-                  <label className={'top-upload'}>
-                    <input
-                      type="file"
-                      hidden
-                      ref={inputXlsx}
-                      onChange={handleXlsxClick}
-                      accept=".xlsx, .xls, .csv"
-                      name="excel"
-                    />
-                    <div className={'top-upload-icon'} />
-                    Subir
-                  </label>
-                )}
-              </div>
+        <div className={'top-buttons-container-movil'}>
+          <a
+            className={'top-donwload'}
+            href={xlsxTemplate ? xlsxTemplate[0].url : '#'}>
+            <div className={'top-download-icon'} />
+            Descargar
+          </a>
+          {user_rol === 'ADMIN' && (
+            <label className={'top-upload'}>
+              <input
+                type="file"
+                hidden
+                ref={inputXlsx}
+                onChange={handleXlsxClick}
+                accept=".xlsx, .xls, .csv"
+                name="excel"
+              />
+              <div className={'top-upload-icon'} />
+              Subir
+            </label>
+          )}
+        </div>
         <div className="container">
           <div className={'containerEstate'} ref={containerEstate}>
             <TypesSide
