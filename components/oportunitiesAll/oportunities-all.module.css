@@ -190,7 +190,7 @@ i.fa-solid.fa-angle-left {
 
 @media only screen and (max-width: 768px) {
   .card-container {
-    width: 90%;
+    width: 100%;
     margin: auto;
   }
 }

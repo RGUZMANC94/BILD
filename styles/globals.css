@@ -914,6 +914,10 @@ li {
   height: 100%;
 }
 
+.top-buttons-container-movil {
+  display: none;
+}
+
 .top-donwload,
 .top-upload {
   position: relative;
@@ -1212,9 +1216,6 @@ li.active button {
   .addTypeButton {
     margin-top: 20px;
   }
-  .main {
-    width: 100%;
-  }
 
   .top-content {
     width: 100%;
@@ -1345,6 +1346,17 @@ li.active button {
 
   .top-buttons-container {
     display: none;
+  }
+
+  .top-buttons-container-movil {
+    display: flex;
+    right: 0;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    height: 100%;
+    margin: 10px auto 0;
   }
   .topProjectName {
     margin: auto;
