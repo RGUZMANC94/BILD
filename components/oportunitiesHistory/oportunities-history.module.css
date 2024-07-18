@@ -656,23 +656,101 @@ li.pendiente-list {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 1024px) {
-  .card-container {
-    width: 100%;
+.deleteButton {
+  position: relative;
+  display: block;
+  z-index: 1;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  margin: 0 auto;
+  padding: 0px 10px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .pendientes {
+    width: calc(100% - 30px);
+  }
+  .line {
+    width: 30px;
   }
 
-  .right {
-    position: relative;
-    width: 100%;
-    margin-right: 20px;
-    padding-top: 0px;
+  .box-dotted {
+    left: -39px;
+    width: calc(100% + 20px);
   }
 
-  .wrap-right {
-    width: 100%;
+  .line img {
+    width: 30px;
+    height: 30px;
   }
 
-  .ver-oportunidad {
-    width: 80%;
+  .pendiente-top {
+    margin-left: 10px;
   }
+
+  .tipo-sub {
+    margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 16px;
+  }
+
+  .ulNode li {
+    font-weight: 300;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  .editar {
+    top: 0;
+    right: 0;
+  }
+
+  .containerButtonsEvents {
+    width: 100%;
+    margin: 0 0 10px 10px;
+  }
+
+  .buttonEventHistory {
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    padding: 0 ;
+    width: calc(50% - 5px);
+
+  }
+
+
+  .greybox {
+    padding: 10px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+  }
+
+  .hour {
+    font-size: 10px;
+  }
+
+  .blue-point {
+    left: -19px;
+  }
+  
+ .top-content li {
+    font-size: 12px;
+ }
+
+ .buttonQuoteAcepted {
+  font-size: 10px !important;
+  padding: 0;
+  width: 65px;
+ }
+ .buttonQuote {
+  font-size: 10px !important;
+  padding: 0;
+  width: 40px;
+ }
+
+ .innerDottedContainer {
+  padding-left: 14px;
+ }
+
 }

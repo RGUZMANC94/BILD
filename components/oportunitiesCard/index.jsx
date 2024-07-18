@@ -21,6 +21,10 @@ const OportunitiesCard = ({
   setRefreshFlag,
   setSelectedItemOpp,
   setOppIsSelected,
+  id,
+  setShowEditContact,
+  setPdfURL,
+  prePriceInfo,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [openFlag, setOpenFlag] = useState(false);
@@ -74,11 +78,15 @@ const OportunitiesCard = ({
         <div className={styles['card-history-container']}>
           {isMobile && (
             <OportunitiesHistory
-              opportunitySelected={opportunitySelected}
-              oppSelectedObject={oppSelectedObject}
-              setRefreshFlag={setRefreshFlag}
-              setSelectedItemOpp={setSelectedItemOpp}
-              setOppIsSelected={setOppIsSelected}
+            opportunitySelected={opportunitySelected}
+            oppSelectedObject={oppSelectedObject}
+            setRefreshFlag={setRefreshFlag}
+            setSelectedItemOpp={setSelectedItemOpp}
+            setOppIsSelected={setOppIsSelected}
+            id={id}
+            setShowEditContact={setShowEditContact}
+            setPdfURL={setPdfURL}
+            prePriceInfo={prePriceInfo}
             />
           )}
         </div>

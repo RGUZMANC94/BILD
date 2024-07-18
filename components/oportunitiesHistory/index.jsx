@@ -529,8 +529,9 @@ const OportunitiesHistory = ({
             <div onClick={deleteOpportunity}>
               <Button
                 buttonType={'primary'}
-                classNameInherit={'align-center'}
-                label={'Eliminar oportunidad'}></Button>
+                inheritClass={styles.deleteButton}
+                label={'Eliminar oportunidad'}
+                ></Button>
             </div>
           </div>
         </div>

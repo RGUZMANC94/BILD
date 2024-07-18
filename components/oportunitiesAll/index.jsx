@@ -269,6 +269,10 @@ const OportunitiesAll = ({
                         setRefreshFlag={setRefreshFlag}
                         setSelectedItemOpp={setSelectedItem}
                         setOppIsSelected={setOppIsSelected}
+                        id={id}
+            setShowEditContact={setShowEditContact}
+            setPdfURL={setPdfURL}
+            prePriceInfo={prePriceInfo}
                       />
                     </div>
                   )
