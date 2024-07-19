@@ -19,6 +19,7 @@ const OportunitiesAll = ({
   setIdContactSelected,
   setShowEditContact,
   setPdfURL,
+  isContact,
 }) => {
   // const { id } = useSelector((state) => state.userState);
   const [selectedItem, setSelectedItem] = useState(-1);
@@ -221,14 +222,15 @@ const OportunitiesAll = ({
     <>
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-          {console.log('')}
+          
           {oppList && oppList.length > 0
             ? oppList.map(
                 (oportunity, i) =>
                   Object.keys(oportunity).length > 3 &&
                   (oportunity.stageCycleSaleOp === 'Oportunidad' ||
                     oportunity.stageCycleSaleOp === 'Prospecto' ||
-                    oportunity.stageCycleSaleOp === 'Separacion') && (
+                    oportunity.stageCycleSaleOp === 'Separacion' ||
+                    isContact) && (
                     <div
                       style={{
                         opacity: opacityCards
@@ -271,9 +273,9 @@ const OportunitiesAll = ({
                         setSelectedItemOpp={setSelectedItem}
                         setOppIsSelected={setOppIsSelected}
                         id={id}
-            setShowEditContact={setShowEditContact}
-            setPdfURL={setPdfURL}
-            prePriceInfo={prePriceInfo}
+                        setShowEditContact={setShowEditContact}
+                        setPdfURL={setPdfURL}
+                        prePriceInfo={prePriceInfo}
                       />
                     </div>
                   )
