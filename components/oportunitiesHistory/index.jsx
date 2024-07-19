@@ -530,8 +530,7 @@ const OportunitiesHistory = ({
               <Button
                 buttonType={'primary'}
                 inheritClass={styles.deleteButton}
-                label={'Eliminar oportunidad'}
-                ></Button>
+                label={'Eliminar oportunidad'}></Button>
             </div>
           </div>
         </div>

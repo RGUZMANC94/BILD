@@ -16,7 +16,9 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
     <>
       {typeViewer === 'buyer' && (
         <div className={styles['opc-pendiente']}>
-          <Link href={`/opportunities/${router.query.id}`} className={styles.opcion}>
+          <Link
+            href={`/opportunities/${router.query.id}`}
+            className={styles.opcion}>
             <img src="/images/key-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>2</span>
             Oportunidades
@@ -28,7 +30,9 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red}`}>5</span>
             Cotizaciones
           </Link>
-          <Link href={`/documentation/${router.query.id}`} className={styles.opcion}>
+          <Link
+            href={`/documentation/${router.query.id}`}
+            className={styles.opcion}>
             <img src="/images/docs-white.png" />
             <span className={`${styles.badge} ${styles.red}`}>3</span>
             Documentación

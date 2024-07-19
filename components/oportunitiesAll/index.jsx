@@ -271,9 +271,9 @@ const OportunitiesAll = ({
                         setSelectedItemOpp={setSelectedItem}
                         setOppIsSelected={setOppIsSelected}
                         id={id}
-            setShowEditContact={setShowEditContact}
-            setPdfURL={setPdfURL}
-            prePriceInfo={prePriceInfo}
+                        setShowEditContact={setShowEditContact}
+                        setPdfURL={setPdfURL}
+                        prePriceInfo={prePriceInfo}
                       />
                     </div>
                   )

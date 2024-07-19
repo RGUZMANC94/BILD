@@ -82,11 +82,9 @@
   border-radius: 0px;
 }
 
-
 @media only screen and (max-width: 768px) {
-    .right-side
-    {
-        width: 100%;
-        overflow-x: hidden;
-    }
+  .right-side {
+    width: 100%;
+    overflow-x: hidden;
+  }
 }

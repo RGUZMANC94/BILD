@@ -667,7 +667,6 @@ li.pendiente-list {
 }
 
 @media only screen and (max-width: 768px) {
-
   .pendientes {
     width: calc(100% - 30px);
   }
@@ -691,8 +690,8 @@ li.pendiente-list {
 
   .tipo-sub {
     margin-bottom: 10px;
-        font-weight: 400;
-        font-size: 16px;
+    font-weight: 400;
+    font-size: 16px;
   }
 
   .ulNode li {
@@ -714,11 +713,9 @@ li.pendiente-list {
   .buttonEventHistory {
     font-size: 12px !important;
     font-weight: 300 !important;
-    padding: 0 ;
+    padding: 0;
     width: calc(50% - 5px);
-
   }
-
 
   .greybox {
     padding: 10px;
@@ -733,24 +730,23 @@ li.pendiente-list {
   .blue-point {
     left: -19px;
   }
-  
- .top-content li {
+
+  .top-content li {
     font-size: 12px;
- }
+  }
 
- .buttonQuoteAcepted {
-  font-size: 10px !important;
-  padding: 0;
-  width: 65px;
- }
- .buttonQuote {
-  font-size: 10px !important;
-  padding: 0;
-  width: 40px;
- }
+  .buttonQuoteAcepted {
+    font-size: 10px !important;
+    padding: 0;
+    width: 65px;
+  }
+  .buttonQuote {
+    font-size: 10px !important;
+    padding: 0;
+    width: 40px;
+  }
 
- .innerDottedContainer {
-  padding-left: 14px;
- }
-
+  .innerDottedContainer {
+    padding-left: 14px;
+  }
 }

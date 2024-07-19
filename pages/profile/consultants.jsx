@@ -202,21 +202,21 @@ const Consultants = () => {
                       )}
                     </div>
                     <div className={styles['iconos-movil']}>
-                    <button
-                            onClick={() => {
-                              setConsultantSelected(contact);
-                              setShowEditContact(true);
-                            }}
-                            className={styles['edit-icon']}>
-                            {/* <img src="/images/whastapp-blue.png" /> */}
-                          </button>
-                          <button
-                            onClick={() =>
-                              deleteConsultant(contact.salesConsultantId)
-                            }
-                            className={styles['delete-icon']}>
-                            {/* <img src="/images/whastapp-blue.png" /> */}
-                          </button>
+                      <button
+                        onClick={() => {
+                          setConsultantSelected(contact);
+                          setShowEditContact(true);
+                        }}
+                        className={styles['edit-icon']}>
+                        {/* <img src="/images/whastapp-blue.png" /> */}
+                      </button>
+                      <button
+                        onClick={() =>
+                          deleteConsultant(contact.salesConsultantId)
+                        }
+                        className={styles['delete-icon']}>
+                        {/* <img src="/images/whastapp-blue.png" /> */}
+                      </button>
                     </div>
                   </div>
                 </div>
