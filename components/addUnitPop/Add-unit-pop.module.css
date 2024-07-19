@@ -613,14 +613,9 @@
 @media only screen and (max-width: 768px) {
   .wrapperTypePopUp {
     width: 100%;
-    height: 100%;
     border: none;
     box-shadow: none;
     overflow-y: hidden;
-  }
-
-  .activePopUp.typePopUp {
-    padding: 0;
   }
 
   .imgType {
@@ -638,8 +633,8 @@
   .inputsGroup {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 2px;
+    margin-bottom: 15px;
   }
 
   .typeFeatures {
@@ -648,8 +643,12 @@
 
   .labelText {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     text-align: start;
+  }
+
+  .formType {
+    padding: 100px 25px 55px;
   }
 
   .manyTypeLabels .inputTypeForm {
@@ -685,15 +684,6 @@
     width: 100%;
   }
 
-  .labelInputTitle {
-    width: 50%;
-  }
-
-  .inputTypeForm,
-  .subject_input {
-    width: 50%;
-  }
-
   /*image*/
 
   .file {
@@ -717,7 +707,7 @@
 
   span.label {
     text-transform: uppercase;
-    margin: 0px 0 10px;
+    margin: 40px 0 20px;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -730,5 +720,13 @@
     background-size: 42px 35px;
     border-radius: 5px;
     border: 1px solid #fff;
+  } 
+
+  .typeLabel {
+    margin-bottom: 15px;
+  }
+
+  .squareInputContainer {
+    margin: 5px 0 20px 0;
   }
 }

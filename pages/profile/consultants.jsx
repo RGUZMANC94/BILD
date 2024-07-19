@@ -143,7 +143,7 @@ const Consultants = () => {
           <button
             className={styles['crear-contacto']}
             onClick={() => setShowAddContact(true)}>
-            Agregar asesor
+            <span className={styles['hidden-text']}>Nuevo contacto</span>
           </button>
 
           <div className={styles.listas}>
@@ -202,24 +202,21 @@ const Consultants = () => {
                       )}
                     </div>
                     <div className={styles['iconos-movil']}>
-                      <div className={styles['phone-movil']}>
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/blue-phone-movil.png"
-                        />
-                        {/* <img src="/images/blue-phone-movil.png" /> */}
-                      </div>
-                      <div className={styles['wa-movil']}>
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/whatsapp-contacts.png"
-                        />
-                        {/* <img src="/images/whatsapp-contacts.png" /> */}
-                      </div>
+                    <button
+                            onClick={() => {
+                              setConsultantSelected(contact);
+                              setShowEditContact(true);
+                            }}
+                            className={styles['edit-icon']}>
+                            {/* <img src="/images/whastapp-blue.png" /> */}
+                          </button>
+                          <button
+                            onClick={() =>
+                              deleteConsultant(contact.salesConsultantId)
+                            }
+                            className={styles['delete-icon']}>
+                            {/* <img src="/images/whastapp-blue.png" /> */}
+                          </button>
                     </div>
                   </div>
                 </div>

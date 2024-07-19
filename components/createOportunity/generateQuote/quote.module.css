@@ -299,7 +299,7 @@
   color: #fff;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -526,10 +526,19 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .topContent {
+    margin-bottom: 0;
+  }
+
   .generar-cotizacion {
-    margin: 60px 30px 30px 30px;
+    margin: 0 30px 30px 30px;
     padding: 0;
   }
+
+  .infoContainer {
+    padding: 120px 25px 0;
+  }
+  /*
   .seleccion > div span {
     font-style: normal;
     font-weight: 400;
@@ -549,13 +558,13 @@
     font-weight: 400;
     font-size: 10px;
     line-height: 1.1;
-  }
+  }*/
 
   .inputQuote {
     margin-bottom: 0px;
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.1;
   }
 
@@ -569,7 +578,7 @@
   .subject_input {
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.1;
   }
   .lado-a {
