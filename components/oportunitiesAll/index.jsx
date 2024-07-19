@@ -30,6 +30,7 @@ const OportunitiesAll = ({
   const { asPath } = router;
   const URLHash = asPath.split('#')[1];
   console.log('opportunitySelected:', oppSelectedObject);
+  console.log('oppList', oppList);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -277,7 +278,7 @@ const OportunitiesAll = ({
                     </div>
                   )
               )
-            : ''}
+            : 'No se encuentran oportunidades para este usuario'}
         </div>
       </div>
       <div className={styles['wrap-right']}>
