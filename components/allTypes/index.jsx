@@ -11,6 +11,7 @@ const AllTypes = ({
   types,
   setCreateOportunity,
   setShowEditType,
+  setShowEditUnit,
 }) => {
   const { user_rol } = useSelector((state) => state.userState);
   const [flag, setFlag] = useState(false);
@@ -49,6 +50,7 @@ const AllTypes = ({
               type={type}
               units={units.filter((unit) => unit.type === type.idType)}
               setShowEditType={setShowEditType}
+              setShowEditUnit={setShowEditUnit}
             />
           ))}
         </ul>

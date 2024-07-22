@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   changeTypeSelected,
-  updateImgTypeSelected,
+  updateImgTypeSelected
 } from '../../redux/typeSelectedSlice';
 import { changeTypeEdit } from '../../redux/editObjectSlice';
 import { openPopUp } from '../../redux/popUpOportunity';
@@ -12,6 +12,7 @@ import Button from '../button';
 import Image from 'next/image';
 import { openZoomImg } from '../../redux/zoomImg';
 import BildContext from '../../components/context';
+import { changeUnitEdit } from '../../redux/editObjectSlice';
 
 const TypeCard = ({
   units,
@@ -19,6 +20,7 @@ const TypeCard = ({
   setCreateOportunity,
   setShowPopUpUnit,
   setShowEditType,
+  setShowEditUnit,
   index,
 }) => {
   const { initialState } = useContext(BildContext);
@@ -137,6 +139,12 @@ const TypeCard = ({
 
           {units.map((unit, i) => (
             <div className="info-tabla" key={i}>
+              <div
+                className={'edit-unit-mobile bg-ct'}
+                onClick={() => {
+                  dispatch(changeUnitEdit(unit));
+                  setShowEditUnit(true);
+                }}></div>
               <div className="detalle-tabla">{unit.idProperty}</div>
               <div className="detalle-tabla">{unit.bedrooms}</div>
               <div className="detalle-tabla">{unit.baths}</div>

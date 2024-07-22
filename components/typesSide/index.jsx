@@ -64,6 +64,7 @@ const TypesSide = ({
         setCreateOportunity={setCreateOportunity}
         units={units}
         setShowEditType={setShowEditType}
+        setShowEditUnit={setShowEditUnit}
       />
       <div className="outerUnits">
         {typeSelected !== -1 && (

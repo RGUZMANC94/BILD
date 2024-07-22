@@ -150,6 +150,11 @@
 }
 
 @media only screen and (max-width: 768px) {
+
+  .top-content {
+    top: 60px;
+  }
+  
   .title {
     display: none;
   }

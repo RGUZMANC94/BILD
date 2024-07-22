@@ -336,6 +336,7 @@ const Quotes = ({ queryId }) => {
 
       {fileIndex.length > 0 && (
         <div className={styles.submenu}>
+          <div className={styles.submenuInner}>
           <div
             className={styles['sub-close']}
             onClick={() => {
@@ -370,6 +371,7 @@ const Quotes = ({ queryId }) => {
                 <img src="/images/delete-quote-white.svg" />
               </div>
             </div>
+          </div>
           </div>
         </div>
       )}
