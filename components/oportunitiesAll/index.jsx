@@ -280,7 +280,11 @@ const OportunitiesAll = ({
                     </div>
                   )
               )
-            : 'No se encuentran oportunidades para este usuario'}
+            : 
+            <span className={styles['no-content-message']}>
+              {isContact ? 'No se han encontrado oportunidades para este usuario' : 'No se han oportunidades en el sistema' }
+            </span>
+            }
         </div>
       </div>
       <div className={styles['wrap-right']}>

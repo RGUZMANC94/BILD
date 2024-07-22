@@ -102,13 +102,6 @@ const EditProjectPop = ({
     getCities();
   }, []);
 
-  useEffect(() => {
-    if (xlsxTemplate && cities) {
-      console.log('Template:', xlsxTemplate[0].url);
-      console.log('cities:', cities);
-    }
-  }, [cities, xlsxTemplate]);
-
   const readURL = (event) => {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
