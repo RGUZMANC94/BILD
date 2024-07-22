@@ -436,7 +436,7 @@ button.cancelar {
 
 .buttonPayment {
   right: 0;
-  margin-left:30px;
+  margin-left: 30px;
   font-size: 12px;
   padding: 4px 20px;
   height: 30px;
@@ -631,7 +631,6 @@ button.cancelar {
 }
 
 @media only screen and (max-width: 768px) {
-
   .pagos-section {
     padding-top: 110px;
   }

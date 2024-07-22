@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   changeTypeSelected,
-  updateImgTypeSelected
+  updateImgTypeSelected,
 } from '../../redux/typeSelectedSlice';
 import { changeTypeEdit } from '../../redux/editObjectSlice';
 import { openPopUp } from '../../redux/popUpOportunity';

@@ -551,7 +551,7 @@
   .top-content {
     top: 60px;
   }
-  
+
   .submenu {
     display: flex;
     position: fixed;
@@ -567,7 +567,6 @@
   .submenuInner {
     width: 100%;
     max-width: unset;
-
   }
 
   .listas-cotizaciones {

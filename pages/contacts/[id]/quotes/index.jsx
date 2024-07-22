@@ -337,41 +337,41 @@ const Quotes = ({ queryId }) => {
       {fileIndex.length > 0 && (
         <div className={styles.submenu}>
           <div className={styles.submenuInner}>
-          <div
-            className={styles['sub-close']}
-            onClick={() => {
-              setSelectCheckboxes(false);
-              setFileIndex((prevFiles) => (prevFiles = []));
-              const checkboxInputsQuotes = document.querySelectorAll(
-                '.checkboxInputQuotes'
-              );
-              if (checkboxInputsQuotes.length) {
-                checkboxInputsQuotes.forEach((checkboxInput) => {
-                  console.log(checkboxInput);
-                  checkboxInput.checked = false;
-                });
-              }
-            }}
-          />
-          <div className={styles['sub-text']}>
-            {fileIndex.length} elemento seleccionado
-          </div>
-          <div className={styles['sub-icons']}>
-            <div className={styles['sub-upload']}>
-              <div
-                className={styles.deleteContainer}
-                onClick={() => downloadAllFiles()}>
-                <img src="/images/upload-documentation-white.svg" />
+            <div
+              className={styles['sub-close']}
+              onClick={() => {
+                setSelectCheckboxes(false);
+                setFileIndex((prevFiles) => (prevFiles = []));
+                const checkboxInputsQuotes = document.querySelectorAll(
+                  '.checkboxInputQuotes'
+                );
+                if (checkboxInputsQuotes.length) {
+                  checkboxInputsQuotes.forEach((checkboxInput) => {
+                    console.log(checkboxInput);
+                    checkboxInput.checked = false;
+                  });
+                }
+              }}
+            />
+            <div className={styles['sub-text']}>
+              {fileIndex.length} elemento seleccionado
+            </div>
+            <div className={styles['sub-icons']}>
+              <div className={styles['sub-upload']}>
+                <div
+                  className={styles.deleteContainer}
+                  onClick={() => downloadAllFiles()}>
+                  <img src="/images/upload-documentation-white.svg" />
+                </div>
+              </div>
+              <div className={styles['sub-delete']}>
+                <div
+                  className={styles.deleteContainer}
+                  onClick={() => chainedDelete(fileIndex)}>
+                  <img src="/images/delete-quote-white.svg" />
+                </div>
               </div>
             </div>
-            <div className={styles['sub-delete']}>
-              <div
-                className={styles.deleteContainer}
-                onClick={() => chainedDelete(fileIndex)}>
-                <img src="/images/delete-quote-white.svg" />
-              </div>
-            </div>
-          </div>
           </div>
         </div>
       )}
