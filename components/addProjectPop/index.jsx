@@ -636,7 +636,11 @@ const AddProjectPop = ({
               <div className={styles.uploadButtons}>
                 <a
                   className={`${styles.buttonProyect} ${styles.buttonDownload}`}
-                  href={(xlsxTemplate && xlsxTemplate.length > 0) ? xlsxTemplate[0].url : '#'}>
+                  href={
+                    xlsxTemplate && xlsxTemplate.length > 0
+                      ? xlsxTemplate[0].url
+                      : '#'
+                  }>
                   <img src="/images/download.svg" />
                   Descargar Excel Base
                 </a>

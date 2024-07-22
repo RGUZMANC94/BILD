@@ -488,7 +488,6 @@ li.pendiente-list {
   height: 20px;
 }
 
-
 .top-content-backarrow {
   position: absolute;
   width: 25px;
@@ -499,7 +498,6 @@ li.pendiente-list {
   left: 35px;
   background-size: 25px 25px;
 }
-
 
 @media only screen and (max-width: 1024px) {
   /*.main {

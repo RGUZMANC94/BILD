@@ -345,7 +345,11 @@ const DetailState = ({ unitsInit, typesInit }) => {
               <div className={'top-buttons-container'}>
                 <a
                   className={'top-donwload'}
-                  href={(xlsxTemplate && xlsxTemplate.length > 0) ? xlsxTemplate[0].url : '#'}>
+                  href={
+                    xlsxTemplate && xlsxTemplate.length > 0
+                      ? xlsxTemplate[0].url
+                      : '#'
+                  }>
                   <div className={'top-download-icon'} />
                   Descargar
                 </a>
@@ -373,7 +377,11 @@ const DetailState = ({ unitsInit, typesInit }) => {
         <div className={'top-buttons-container-movil'}>
           <a
             className={'top-donwload'}
-            href={(xlsxTemplate && xlsxTemplate.length > 0) ? xlsxTemplate[0].url : '#'}>
+            href={
+              xlsxTemplate && xlsxTemplate.length > 0
+                ? xlsxTemplate[0].url
+                : '#'
+            }>
             <div className={'top-download-icon'} />
             Descargar
           </a>

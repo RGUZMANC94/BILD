@@ -75,8 +75,6 @@ const Oportunities = ({ user }) => {
 
   console.log('allOpportunities:', allOpportunities);
 
- 
-
   const getRecentsContacts = async () => {
     const response = await fetch('/api/recentsContacts', {
       method: 'post',
@@ -91,7 +89,7 @@ const Oportunities = ({ user }) => {
     setRecentsContacts(recentsContacts);
   };
 
- useEffect(() => {
+  useEffect(() => {
     getAllOpportunities();
     getRecentsContacts();
   }, [sorting]);
@@ -100,7 +98,7 @@ const Oportunities = ({ user }) => {
     getAllOpportunities();
     console.log('reset');
   }, [refreshFlag]);
-  
+
   const {
     data: contactInfo,
     isPending,
@@ -124,9 +122,8 @@ const Oportunities = ({ user }) => {
   return (
     <>
       <div className={styles['top-content-buttonsBar']}>
-      
-            <div className="container flex j-s a-c">
-            <div className={styles['top-buttons-container']}>
+        <div className="container flex j-s a-c">
+          <div className={styles['top-buttons-container']}>
             <div className={styles['top-content-container']}>
               <Link
                 href={`/contacts/${router.query.id}`}
@@ -140,22 +137,20 @@ const Oportunities = ({ user }) => {
       </div>
       <section className={styles.main}>
         <div className="container flex j-sb a-s wrap">
-        <OportunitiesAll
-              oppList={allOpportunities}
-              setOppIsSelected={setOppIsSelected}
-              refreshFlag={refreshFlag}
-              setRefreshFlag={setRefreshFlag}
-              id={id}
-              setShowEditContact={setShowEditContact}
-              setIdContactSelected={setIdContactSelected}
-              setPdfURL={setPdfURL}
-              isContact={true}
-            />
+          <OportunitiesAll
+            oppList={allOpportunities}
+            setOppIsSelected={setOppIsSelected}
+            refreshFlag={refreshFlag}
+            setRefreshFlag={setRefreshFlag}
+            id={id}
+            setShowEditContact={setShowEditContact}
+            setIdContactSelected={setIdContactSelected}
+            setPdfURL={setPdfURL}
+            isContact={true}
+          />
         </div>
       </section>
-      {openPopUpOportunity && (
-        <CreateOportunity created={true} />
-      )}
+      {openPopUpOportunity && <CreateOportunity created={true} />}
       {isOnZoomImg && <ZoomImg imgToZoom={imgToZoom} />}
       <EditContactPop
         showEditContact={showEditContact}
