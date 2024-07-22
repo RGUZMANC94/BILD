@@ -168,6 +168,18 @@ i.fa-solid.fa-angle-left {
 .card-unit-list {
 }
 
+.top-content-backarrow {
+  width: 35%;
+  height: 25px;
+}
+
+.no-content-message {
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+}
+
 @media only screen and (max-width: 1024px) {
   .oportunidades {
     width: 100%;
