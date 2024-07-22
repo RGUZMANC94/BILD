@@ -107,7 +107,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         id,
         projectId: `${router.query.id}`,
         page: '1',
-        rows: '50',
+        rows: '10000',
       }),
     });
 
@@ -126,7 +126,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         id,
         projectId: `${router.query.id}`,
         page: '1',
-        rows: '50',
+        rows: '10000',
       }),
     });
 

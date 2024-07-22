@@ -33,7 +33,7 @@ const OportunitiesContact = ({
         id,
         projectId,
         page: 1,
-        rows: 100,
+        rows: 10000,
       }),
     });
     console.log('Unidades:', response);

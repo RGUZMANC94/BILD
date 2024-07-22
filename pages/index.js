@@ -45,7 +45,7 @@ const Home = () => {
       body: JSON.stringify({
         id,
         page: pageProjects,
-        rows: 100,
+        rows: 10000,
       }),
     });
     const responseProjects = await response.json();

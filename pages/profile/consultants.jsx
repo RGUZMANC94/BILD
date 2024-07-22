@@ -115,7 +115,7 @@ const Consultants = () => {
       body: JSON.stringify({
         id,
         page: 1,
-        rows: 100,
+        rows: 10000,
       }),
     });
     const responseProjects = await response.json();
