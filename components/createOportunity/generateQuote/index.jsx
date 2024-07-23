@@ -30,6 +30,15 @@ const GenerateQuote = ({
   const { opportunitySelected } = useSelector(
     (state) => state.opportunityState
   );
+
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const [popQuotes, setPopQuotes] = useState(false);
   const [sentLink, setSentLink] = useState(false);
   const [initialQuote, setInitialQuote] = useState(0);
@@ -47,21 +56,69 @@ const GenerateQuote = ({
     percentageToPay: null,
     numberDues: null,
     separationValue: null,
-    paymentStartDate: null,
     payments: [],
+    paymentStartDate: formatDate(new Date()),
   });
+  console.log('dayToday:', datos);
   const [errorMessage, setErrorMessage] = useState(null);
   const [feesTotal, setFeesTotal] = useState(0);
   const [minDuePercentage, setMinDuePercentage] = useState(
     prePriceInfo ? prePriceInfo.minPercentage : 1
   );
   const [minQuoteValue, setMinQuoteValue] = useState(0);
+const [maxNumberDues, setMaxNumberDues] = useState(
+    prePriceInfo ? prePriceInfo.numberDues : 2
+  );
 
+ /* const [startDate, setStartDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    setStartDate(formatDate(today));
+  }, []);
+
+  const handleStartDateChange = (event) => {
+    setStartDate(event.target.value);
+  };
+
+  const getMaxDate = () => {
+    const today = new Date();
+    let futureDate = new Date(today.setMonth(today.getMonth() + maxNumberDues));
+    if (futureDate.getDate() !== today.getDate()) {
+      futureDate = new Date(today.getFullYear(), today.getMonth() + maxNumberDues + 1, 0);
+    }
+    console.log('futureDate:', formatDate(futureDate));
+    return formatDate(futureDate);
+  };
+
+  const getCurrentDate = () => {
+    const today = new Date();
+    return formatDate(today);
+  };
+  const [sendFlag, setSendFlag] = useState(false);
+
+
+  const dateFormatting = () => {
+    setDatos((prevDatos) => ({
+      ...prevDatos,
+      paymentStartDate: formatDate(startDate),
+    }));
+    setSendFlag(true);
+  };
+
+  useEffect(() => {
+    if (sendFlag) {
+      sendFormInfo();
+      setSendFlag(false);
+    }
+  }, [sendFlag]);
+*/
+  /* console.log('maxNumberDues:', maxNumberDues);
   console.log('fees', fees);
   console.log('monthlyQuote:', monthlyQuote);
   console.log('balanceInitialQuote:', balanceInitialQuote);
   console.log('prePriceInfo', prePriceInfo);
-  console.log('oporunitySelected', opportunitySelected);
+  console.log('oporunitySelected', opportunitySelected);*/
 
   useEffect(() => {
     if (feesArray.length !== 0) {
@@ -80,7 +137,6 @@ const GenerateQuote = ({
       percentageToPay: values[0],
       numberDues: fees,
       separationValue: `${Number(separation) + Number(downPayment)}.0`,
-      paymentStartDate: '2024-12-30',
       payments: popQuotes ? [...formattedPayments] : [],
     }));
   }, [
@@ -369,7 +425,7 @@ const GenerateQuote = ({
   };
   const handleFeesChange = (e) => {
     const value = e.target.value;
-    if (value === '' || (Number(value) <= 36 && Number(value) >= 0)) {
+    if (value === '' || (Number(value) <= maxNumberDues && Number(value) >= 1)) {
       setFees(value);
     }
   };
@@ -510,6 +566,22 @@ const GenerateQuote = ({
               required
             />
           </div>
+          {/*
+          <div className={styles['cotizacion-form']}>
+            <span className={styles.labelSide}>Fecha inicio de pago:</span>
+              <input
+                type="date"
+                value={startDate}
+                required
+                onChange={handleStartDateChange}
+                className={styles.subject_input}
+                max={getMaxDate()}
+                min={getCurrentDate()}
+              />
+          </div>
+          */}
+          
+
 
           <div className={styles.squareInputContainer}>
             <SquareInput onChangeFunct={handlePopQuotes} />

@@ -188,11 +188,13 @@ const OportunitiesHistory = ({
 
       setTimeout(() => {
         // getEventsSelected();
-        setRefreshEvents((prevState) => !prevState);
+        // setRefreshEvents((prevState) => !prevState);
+
+        setRefreshFlag(true);
         document
           .querySelector(`.${styles.popSuccessCreated}`)
           .classList.remove(styles.activePopUp);
-      }, 2000);
+      }, 4000);
     } catch (error) {
       document
         .querySelector(`.${styles.popError}`)
