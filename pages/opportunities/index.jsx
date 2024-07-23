@@ -116,7 +116,11 @@ const OportunitiesAllFilter = ({ user }) => {
     // if (refreshFlag) {
     //   setRefreshFlag(false);
     // }
-    getAllOpportunities();
+    if (refreshFlag) {
+      getAllOpportunities();
+      setRefreshFlag(false);
+    }
+    
     console.log('reset');
   }, [refreshFlag]);
 

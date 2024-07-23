@@ -66,10 +66,10 @@ const OportunitiesAll = ({
     }
   }, [oppList]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     console.log('UpdateIndex');
     setSelectedItem((prevState) => -1);
-  }, [refreshFlag]);
+  }, [refreshFlag]);*/
 
   const [propsHistory, setPropsHistory] = useState({
     opportunitySelected,
@@ -303,6 +303,7 @@ const OportunitiesAll = ({
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
             oppSelectedObject={oppSelectedObject}
+            refreshFlag={refreshFlag}
             setRefreshFlag={setRefreshFlag}
             setSelectedItemOpp={setSelectedItem}
             setOppIsSelected={setOppIsSelected}

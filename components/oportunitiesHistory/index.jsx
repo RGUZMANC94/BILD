@@ -17,6 +17,7 @@ const OportunitiesHistory = ({
   opportunitySelected,
   oppSelectedObject,
   setRefreshFlag,
+  refreshFlag,
   setSelectedItemOpp,
   setOppIsSelected,
   id,
@@ -136,7 +137,7 @@ const OportunitiesHistory = ({
     if (opportunitySelected !== -1 && opportunitySelected) {
       getEventsSelected();
     }
-  }, [opportunitySelected, refreshEvents]);
+  }, [opportunitySelected, refreshEvents, refreshFlag]);
 
   const handleEventClick = (e) => {
     console.log('Evento :', e);
@@ -229,7 +230,7 @@ const OportunitiesHistory = ({
       setTimeout(() => {
         setRefreshFlag((prevState) => !prevState);
         setIsOpportunityDeleted((prevState) => 0);
-      }, 2500);
+      }, 5000);
     } catch (error) {
       setErrorMessage((prevState) => error);
       setIsOpportunityDeleted((prevState) => 2);
@@ -570,7 +571,7 @@ const OportunitiesHistory = ({
             closeAnimate={animateCloseGenerateQuote}>
             <GenerateQuote
               closePopUpPortal={animateClosePopUpQuote}
-              setRefreshFlag={getEventsSelected}
+              setRefreshFlag={setRefreshFlag}
               id={id}
               prePriceInfo={prePriceInfo}
             />
