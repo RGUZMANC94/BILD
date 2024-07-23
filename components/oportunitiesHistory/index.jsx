@@ -345,7 +345,7 @@ const OportunitiesHistory = ({
                     )}
                     {firstEvent.additionalInformation !== '' &&
                       firstEvent.additionalInformation !== '0' &&
-                      (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
+                      ((firstEvent.cycleSaleOp === '1' && firstEvent.stageCycleSaleOp === '2') ? (
                         <div>
                           <Button
                             buttonType={'primary'}
@@ -437,8 +437,7 @@ const OportunitiesHistory = ({
 
                               {eventItem.additionalInformation !== '' &&
                                 eventItem.additionalInformation !== '0' &&
-                                (oppSelectedObject.stageCycleSaleOp ===
-                                'Oportunidad' ? (
+                                ((eventItem.cycleSaleOp === '1' && eventItem.stageCycleSaleOp === '2') ? (
                                   <div>
                                     <Button
                                       buttonType={'primary'}
@@ -502,7 +501,7 @@ const OportunitiesHistory = ({
                   </span>
                   {lastEvent.additionalInformation !== '' &&
                     lastEvent.additionalInformation !== '0' &&
-                    (oppSelectedObject.stageCycleSaleOp === 'Oportunidad' ? (
+                    ((lastEvent.cycleSaleOp === '1' && lastEvent.stageCycleSaleOp === '2') ? (
                       <div>
                         <Button
                           buttonType={'primary'}
