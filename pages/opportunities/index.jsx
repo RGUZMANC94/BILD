@@ -161,7 +161,7 @@ const OportunitiesAllFilter = ({ user }) => {
                 }`}></div>
             </div>
           </div>
-          {showSection === 'all' && (
+          
             <div className={styles.filter_container}>
               <label htmlFor="sorting"></label>
               <select
@@ -179,7 +179,6 @@ const OportunitiesAllFilter = ({ user }) => {
               </select>
               <span className={styles.label_filter}>Ordenar por:</span>
             </div>
-          )}
         </div>
       </div>
       <section className={styles.main}>
@@ -194,21 +193,24 @@ const OportunitiesAllFilter = ({ user }) => {
               setShowEditContact={setShowEditContact}
               setIdContactSelected={setIdContactSelected}
               setPdfURL={setPdfURL}
+              isClosed={false}
             />
           )}
           {/* showSection === 'pending' && (
             <OportunitiesPending oppList={allOpportunities} />
           )*/}
           {showSection === 'closed' && (
-            <OportunitiesClosed
-              oppList={allOpportunities}
-              setOppIsSelected={setOppIsSelected}
-              setSorting={setSorting}
-              setRefreshFlag={setRefreshFlag}
-              setShowEditContact={setShowEditContact}
-              setIdContactSelected={setIdContactSelected}
-              setPdfURL={setPdfURL}
-            />
+            <OportunitiesAll
+            oppList={allOpportunities}
+            setOppIsSelected={setOppIsSelected}
+            refreshFlag={refreshFlag}
+            setRefreshFlag={setRefreshFlag}
+            id={id}
+            setShowEditContact={setShowEditContact}
+            setIdContactSelected={setIdContactSelected}
+            setPdfURL={setPdfURL}
+            isClosed={true}
+          />
           )}
         </div>
       </section>
