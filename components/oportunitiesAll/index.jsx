@@ -223,77 +223,79 @@ const OportunitiesAll = ({
     <>
       <div className={styles.oportunidades}>
         <div className={styles['card-container']}>
-        {oppList && oppList.length > 0 ? (
-  oppList.map((oportunity, i) => {
-    const condition = !isClosed
-      ? (oportunity.stageCycleSaleOp === 'Oportunidad' ||
-         oportunity.stageCycleSaleOp === 'Prospecto' ||
-         oportunity.stageCycleSaleOp === 'Separacion' ||
-         isContact)
-      : !(oportunity.stageCycleSaleOp === 'Oportunidad' ||
-           oportunity.stageCycleSaleOp === 'Prospecto' ||
-           oportunity.stageCycleSaleOp === 'Separacion');
+          {oppList && oppList.length > 0 ? (
+            oppList.map((oportunity, i) => {
+              const condition = !isClosed
+                ? oportunity.stageCycleSaleOp === 'Oportunidad' ||
+                  oportunity.stageCycleSaleOp === 'Prospecto' ||
+                  oportunity.stageCycleSaleOp === 'Separacion' ||
+                  isContact
+                : !(
+                    oportunity.stageCycleSaleOp === 'Oportunidad' ||
+                    oportunity.stageCycleSaleOp === 'Prospecto' ||
+                    oportunity.stageCycleSaleOp === 'Separacion'
+                  );
 
-    if (Object.keys(oportunity).length > 3 && condition) {
-      return (
-        <div
-          style={{
-            opacity: opacityCards
-              ? Number(URLHash === oportunity.idSaleOp)
-                ? '1'
-                : '0.6'
-              : '1',
-          }}
-          className={styles['card-unit-list']}
-          key={oportunity.idSaleOp}
-          onClick={() =>
-            handleItemClick(
-              i,
-              oportunity.idSaleOp,
-              oportunity.idProperty,
-              oportunity.idProject,
-              oportunity
-            )
-          }>
-          <OportunitiesCard
-            closed={oportunity.image}
-            estimatedProgress={oportunity.estimatedProgress}
-            state={selectedItem === i}
-            image={
-              oportunity.idClient.image &&
-              (oportunity.idClient.image[0] &&
-              oportunity.idClient.image[0] !== ''
-                ? `${oportunity.idClient.image[0].url}`
-                : '/images/default-2.jpg')
-            }
-            name={oportunity.nameCustomer}
-            location={oportunity.nameProject}
-            type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
-            followingDate={oportunity.createdDate}
-            progress={oportunity.temperature / 100}
-            temperature={'cold'} // hot warm cold
-            opportunitySelected={opportunitySelected}
-            oppSelectedObject={oppSelectedObject}
-            setRefreshFlag={setRefreshFlag}
-            setSelectedItemOpp={setSelectedItem}
-            setOppIsSelected={setOppIsSelected}
-            id={id}
-            setShowEditContact={setShowEditContact}
-            setPdfURL={setPdfURL}
-            prePriceInfo={prePriceInfo}
-          />
-        </div>
-      );
-    }
-    return null;
-  })
-) : (
-  <span className={styles['no-content-message']}>
-    {isContact
-      ? 'No se han encontrado oportunidades para este usuario'
-      : 'No se han encontrado oportunidades en el sistema'}
-  </span>
-)}
+              if (Object.keys(oportunity).length > 3 && condition) {
+                return (
+                  <div
+                    style={{
+                      opacity: opacityCards
+                        ? Number(URLHash === oportunity.idSaleOp)
+                          ? '1'
+                          : '0.6'
+                        : '1',
+                    }}
+                    className={styles['card-unit-list']}
+                    key={oportunity.idSaleOp}
+                    onClick={() =>
+                      handleItemClick(
+                        i,
+                        oportunity.idSaleOp,
+                        oportunity.idProperty,
+                        oportunity.idProject,
+                        oportunity
+                      )
+                    }>
+                    <OportunitiesCard
+                      closed={oportunity.image}
+                      estimatedProgress={oportunity.estimatedProgress}
+                      state={selectedItem === i}
+                      image={
+                        oportunity.idClient.image &&
+                        (oportunity.idClient.image[0] &&
+                        oportunity.idClient.image[0] !== ''
+                          ? `${oportunity.idClient.image[0].url}`
+                          : '/images/default-2.jpg')
+                      }
+                      name={oportunity.nameCustomer}
+                      location={oportunity.nameProject}
+                      type={`Tipo ${oportunity.propertyType.propertyType} - ${oportunity.idProperty}`}
+                      followingDate={oportunity.createdDate}
+                      progress={oportunity.temperature / 100}
+                      temperature={'cold'} // hot warm cold
+                      opportunitySelected={opportunitySelected}
+                      oppSelectedObject={oppSelectedObject}
+                      setRefreshFlag={setRefreshFlag}
+                      setSelectedItemOpp={setSelectedItem}
+                      setOppIsSelected={setOppIsSelected}
+                      id={id}
+                      setShowEditContact={setShowEditContact}
+                      setPdfURL={setPdfURL}
+                      prePriceInfo={prePriceInfo}
+                    />
+                  </div>
+                );
+              }
+              return null;
+            })
+          ) : (
+            <span className={styles['no-content-message']}>
+              {isContact
+                ? 'No se han encontrado oportunidades para este usuario'
+                : 'No se han encontrado oportunidades en el sistema'}
+            </span>
+          )}
         </div>
       </div>
       <div className={styles['wrap-right']}>

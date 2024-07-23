@@ -161,24 +161,24 @@ const OportunitiesAllFilter = ({ user }) => {
                 }`}></div>
             </div>
           </div>
-          
-            <div className={styles.filter_container}>
-              <label htmlFor="sorting"></label>
-              <select
-                placeholder="Subject line"
-                name="sorting"
-                value={sorting}
-                className={styles.filter_input}
-                onChange={(e) => setSorting(e.target.value)}>
-                <option value="HOT">MAS CALIENTE</option>
-                <option value="COLD">MAS FRÍA</option>
-                <option value="DESC" selected>
-                  MAS RECIENTE
-                </option>
-                <option value="ASC">MENOS RECIENTE</option>
-              </select>
-              <span className={styles.label_filter}>Ordenar por:</span>
-            </div>
+
+          <div className={styles.filter_container}>
+            <label htmlFor="sorting"></label>
+            <select
+              placeholder="Subject line"
+              name="sorting"
+              value={sorting}
+              className={styles.filter_input}
+              onChange={(e) => setSorting(e.target.value)}>
+              <option value="HOT">MAS CALIENTE</option>
+              <option value="COLD">MAS FRÍA</option>
+              <option value="DESC" selected>
+                MAS RECIENTE
+              </option>
+              <option value="ASC">MENOS RECIENTE</option>
+            </select>
+            <span className={styles.label_filter}>Ordenar por:</span>
+          </div>
         </div>
       </div>
       <section className={styles.main}>
@@ -201,16 +201,16 @@ const OportunitiesAllFilter = ({ user }) => {
           )*/}
           {showSection === 'closed' && (
             <OportunitiesAll
-            oppList={allOpportunities}
-            setOppIsSelected={setOppIsSelected}
-            refreshFlag={refreshFlag}
-            setRefreshFlag={setRefreshFlag}
-            id={id}
-            setShowEditContact={setShowEditContact}
-            setIdContactSelected={setIdContactSelected}
-            setPdfURL={setPdfURL}
-            isClosed={true}
-          />
+              oppList={allOpportunities}
+              setOppIsSelected={setOppIsSelected}
+              refreshFlag={refreshFlag}
+              setRefreshFlag={setRefreshFlag}
+              id={id}
+              setShowEditContact={setShowEditContact}
+              setIdContactSelected={setIdContactSelected}
+              setPdfURL={setPdfURL}
+              isClosed={true}
+            />
           )}
         </div>
       </section>
