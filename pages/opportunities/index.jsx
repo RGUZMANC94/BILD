@@ -120,7 +120,7 @@ const OportunitiesAllFilter = ({ user }) => {
       getAllOpportunities();
       setRefreshFlag(false);
     }
-    
+
     console.log('reset');
   }, [refreshFlag]);
 

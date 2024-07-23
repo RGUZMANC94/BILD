@@ -66,11 +66,11 @@ const GenerateQuote = ({
     prePriceInfo ? prePriceInfo.minPercentage : 1
   );
   const [minQuoteValue, setMinQuoteValue] = useState(0);
-const [maxNumberDues, setMaxNumberDues] = useState(
+  const [maxNumberDues, setMaxNumberDues] = useState(
     prePriceInfo ? prePriceInfo.numberDues : 2
   );
 
- /* const [startDate, setStartDate] = useState('');
+  /* const [startDate, setStartDate] = useState('');
 
   useEffect(() => {
     const today = new Date();
@@ -425,7 +425,10 @@ const [maxNumberDues, setMaxNumberDues] = useState(
   };
   const handleFeesChange = (e) => {
     const value = e.target.value;
-    if (value === '' || (Number(value) <= maxNumberDues && Number(value) >= 1)) {
+    if (
+      value === '' ||
+      (Number(value) <= maxNumberDues && Number(value) >= 1)
+    ) {
       setFees(value);
     }
   };
@@ -580,8 +583,6 @@ const [maxNumberDues, setMaxNumberDues] = useState(
               />
           </div>
           */}
-          
-
 
           <div className={styles.squareInputContainer}>
             <SquareInput onChangeFunct={handlePopQuotes} />

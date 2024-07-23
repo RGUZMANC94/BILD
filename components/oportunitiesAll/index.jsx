@@ -66,7 +66,7 @@ const OportunitiesAll = ({
     }
   }, [oppList]);
 
-  /*useEffect(() => {
+  /* useEffect(() => {
     console.log('UpdateIndex');
     setSelectedItem((prevState) => -1);
   }, [refreshFlag]);*/
