@@ -24,6 +24,7 @@ const OportunitiesHistory = ({
   setShowEditContact,
   setPdfURL,
   prePriceInfo,
+  setHardRefreshFlag,
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
