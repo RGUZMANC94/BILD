@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 *::-webkit-scrollbar {
   border-radius: 10px;
@@ -13,7 +16,7 @@
   background-color: #565555;
 }
 * {
-  font-family: 'Quicksand', sans-serif;
+  /* font-family: 'Quicksand', sans-serif; */
 }
 
 .container {

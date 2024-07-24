@@ -14,7 +14,7 @@ const Header = () => {
   const { user_rol } = useSelector((state) => state.userState);
   return (
     <>
-      <header className={styles.siteHeader}>
+      <header className={`bg-light-4 dark:bg-dark-1 ${styles.siteHeader} shadow-md shadow-dark-4/10`}>
         <div className={`${styles.containerHeader}`}>
           <div className={styles.logo}>
             {pathname !== '/' && (
@@ -31,7 +31,7 @@ const Header = () => {
             <div className={styles.menuPpal}>
               <Link
                 href={pathname === '/' ? '' : '/'}
-                className={pathname === '/' ? styles.active : ''}>
+                className={`${pathname === '/' ? `${styles.active} border-light-1 text-light-1 dark:border-bild-1` : 'border-transparent'} hover:text-light-1 hover:border-light-1 dark:hover:border-bild-1 border-b-[3px] border-solid`}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/building.png" />
                 </div>
@@ -39,7 +39,7 @@ const Header = () => {
               </Link>
               <Link
                 href={pathname === '/contacts' ? '' : '/contacts'}
-                className={pathname === '/contacts' ? styles.active : ''}>
+                className={`${pathname === '/contacts' ? `${styles.active} border-light-1 text-light-1 dark:border-bild-1` : 'border-transparent'} hover:text-light-1 hover:border-light-1 dark:hover:border-bild-1 border-b-[3px] border-solid`}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/phone.png" />
                 </div>
@@ -48,7 +48,7 @@ const Header = () => {
               {/*  
               <Link
                 href={pathname === '/dashboard' ? '' : '/dashboard'}
-                className={pathname === '/dashboard' ? styles.active : ''}>
+                className={`${pathname === '/dashboard' ? `${styles.active} border-light-1 text-light-1 dark:border-bild-1` : 'border-transparent'} hover:text-light-1 hover:border-light-1 dark:hover:border-bild-1 border-b-[3px] border-solid`}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/dashboard.png" />
                 </div>
@@ -58,7 +58,7 @@ const Header = () => {
 
               <Link
                 href={pathname === '/opportunities' ? '' : '/opportunities'}
-                className={pathname === '/opportunities' ? styles.active : ''}>
+                className={`${pathname === '/opportunities' ? `${styles.active} border-light-1 text-light-1 dark:border-bild-1` : 'border-transparent'} hover:text-light-1 hover:border-light-1 dark:hover:border-bild-1 border-b-[3px] border-solid`}>
                 <div className={styles.imageMenu}>
                   <img alt="" src="/images/header/key.png" />
                 </div>
@@ -67,7 +67,7 @@ const Header = () => {
               </Link>
               <Link
                 href={pathname === '/profile' ? '' : '/profile'}
-                className={pathname === '/profile' ? styles.active : ''}>
+                className={`${pathname === '/profile' ? `${styles.active} border-light-1 text-light-1 dark:border-bild-1` : 'border-transparent'} hover:text-light-1 hover:border-light-1 dark:hover:border-bild-1 border-b-[3px] border-solid`}>
                 <div className={styles.imageMenu}>
                   <img
                     alt=""
