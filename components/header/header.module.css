@@ -17,8 +17,8 @@
   align-items: center;
   z-index: 8;
   margin: 0 auto;
-  box-shadow: -3px 0px 8px #1c1c1c;
-  background-color: #1c1c1c;
+  /* box-shadow: -3px 0px 8px #1c1c1c; */
+  /* background-color: #1c1c1c; */
   padding: 0 30px;
   width: 100%;
 }
@@ -106,7 +106,7 @@
   align-items: center;
   transition: all 0.15s ease-in-out;
   padding: 0 10px 0;
-  color: #fff;
+  /* color: #fff; */
   font-weight: 300;
   font-size: 12px;
   text-align: center;
@@ -123,18 +123,18 @@
 
 .menuPpal a:hover,
 .menuPpal a.active {
-  border-bottom: 3px solid #2467ff;
-  color: #fff;
+  /* border-bottom: 3px solid #2467ff; */
+  /* color: #fff; */
 }
 
 .menuPpal a > div img {
   transition: all 0.15s linear;
   width: 100%;
 }
-.menuPpal a:hover > div img,
+/* .menuPpal a:hover > div img,
 .menuPpal a.active > div img {
   margin-top: -34px;
-}
+} */
 
 .smallNumber {
   display: flex;
