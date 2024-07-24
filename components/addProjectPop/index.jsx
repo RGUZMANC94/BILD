@@ -475,8 +475,10 @@ const AddProjectPop = ({
             setShowAddProject(false);
             cleanForm();
           }}></div>
-        <div className={`${styles.wrapperTypePopUp} dark:bg-dark-4 shadow-md bg-light-2`}>
-          <div className={`${styles.topContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md`}>
+        <div
+          className={`${styles.wrapperTypePopUp} dark:bg-dark-4 shadow-md bg-light-2`}>
+          <div
+            className={`${styles.topContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 Creacion de Proyecto
@@ -666,7 +668,8 @@ const AddProjectPop = ({
               }
             </div>
           </form>
-          <div className={`${styles.BottomContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-3xl`}>
+          <div
+            className={`${styles.BottomContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-3xl`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

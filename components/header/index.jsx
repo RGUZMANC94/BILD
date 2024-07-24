@@ -141,8 +141,12 @@ const Header = () => {
                     alt=""
                     src={
                       user_rol === 'ADMIN'
-                        ? isDark ? '/images/header/settings.svg' : '/images/header/settings-light.png'
-                        : isDark ? '/images/header/person.png' : '/images/header/person-light.png'
+                        ? isDark
+                          ? '/images/header/settings.svg'
+                          : '/images/header/settings-light.png'
+                        : isDark
+                          ? '/images/header/person.png'
+                          : '/images/header/person-light.png'
                     }
                   />
                 </div>

@@ -129,7 +129,9 @@ const Home = () => {
                   Object.keys(project).length >= 3 && (
                     <div
                       key={project.projectId}
-                      className={`${styles.proyectos} shadow-lg hover:shadow-2xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl home_projects_cards ${
+                      className={`${
+                        styles.proyectos
+                      } shadow-lg hover:shadow-2xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl home_projects_cards ${
                         displayProjects.length < 3 && styles.proyectosDual
                       }`}>
                       <Link
