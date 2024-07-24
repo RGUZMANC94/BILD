@@ -116,7 +116,11 @@ const Home = () => {
           )}
 
           <div
-            className={`${styles.containerEstates} home_container_projects_cards`}>
+            className={`${
+              styles.containerEstates
+            } home_container_projects_cards ${
+              displayProjects.length < 3 && styles.containerEstatesDual
+            }`}>
             {displayProjects &&
               displayProjects.length &&
               displayProjects.map(
@@ -124,7 +128,9 @@ const Home = () => {
                   Object.keys(project).length >= 3 && (
                     <div
                       key={project.projectId}
-                      className={`${styles.proyectos} home_projects_cards`}>
+                      className={`${styles.proyectos} home_projects_cards ${
+                        displayProjects.length < 3 && styles.proyectosDual
+                      }`}>
                       <Link
                         className={styles.anchorCards}
                         href={`/detail-estate/${project.projectId}`}></Link>

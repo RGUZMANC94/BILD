@@ -34,6 +34,11 @@
   left: calc(0% - 15px);
 }
 
+.containerEstatesDual {
+  width: 100%;
+  left: unset;
+}
+
 .proyectos {
   display: flex;
   position: relative;
@@ -47,6 +52,10 @@
   min-height: 300px;
   overflow: hidden;
   text-align: left;
+}
+
+.proyectosDual {
+  width: calc(50% - 10px);
 }
 
 .anchorCards {
