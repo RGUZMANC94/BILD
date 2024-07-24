@@ -131,10 +131,10 @@
   transition: all 0.15s linear;
   width: 100%;
 }
-.menuPpal a:hover > div img,
+/* .menuPpal a:hover > div img,
 .menuPpal a.active > div img {
   margin-top: -34px;
-}
+} */
 
 .smallNumber {
   display: flex;

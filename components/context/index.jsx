@@ -2,12 +2,14 @@ import { createContext, useEffect, useState } from 'react';
 import Loader from '../lodaer';
 import { useRouter } from 'next/router';
 import { getCookie } from 'cookies-next';
+import Layout from '../layout';
 
 const BildContext = createContext();
 
 export const BildContextProvider = ({ children }) => {
   const userTkCookie = getCookie('user_tk');
   const [initialState, setInitialState] = useState({});
+  const [isDark, setIsDark] = useState(false);
   const router = useRouter();
   const { pathname } = router;
   useEffect(() => {
@@ -30,8 +32,9 @@ export const BildContextProvider = ({ children }) => {
   }
 
   return (
-    <BildContext.Provider value={{ initialState, setInitialState }}>
-      {children}
+    <BildContext.Provider
+      value={{ initialState, setInitialState, isDark, setIsDark }}>
+      <Layout>{children}</Layout>
     </BildContext.Provider>
   );
 };

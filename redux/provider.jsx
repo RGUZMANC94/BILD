@@ -16,11 +16,7 @@ const Providers = ({ children }) => {
   // const persistor = persistStore(store);
   return (
     // <PersistGate persistor={persistor}>
-    <Provider store={store}>
-      <BildContext.Provider value={{ quicksand }}>
-        <Layout>{children}</Layout>
-      </BildContext.Provider>
-    </Provider>
+    <Provider store={store}>{children}</Provider>
     // </PersistGate>
   );
 };

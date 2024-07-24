@@ -475,8 +475,8 @@ const AddProjectPop = ({
             setShowAddProject(false);
             cleanForm();
           }}></div>
-        <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.topContent}`}>
+        <div className={`${styles.wrapperTypePopUp} dark:bg-dark-4 shadow-md bg-light-2`}>
+          <div className={`${styles.topContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 Creacion de Proyecto
@@ -512,7 +512,7 @@ const AddProjectPop = ({
                 name="neighborhoodId"
                 value={datos.neighborhoodId}
                 onChange={handleChange}
-                className={`${styles.inputTypeForm} ${styles.labelSelect}`}
+                className={`${styles.inputTypeForm} ${styles.labelSelect} `}
                 required>
                 <option disabled defaultValue={0} hidden selected></option>
                 {cities &&
@@ -546,7 +546,7 @@ const AddProjectPop = ({
                 name="projectType"
                 value={datos.projectType}
                 onChange={handleChange}
-                className={`${styles.inputTypeForm} ${styles.labelSelect}`}
+                className={`${styles.inputTypeForm} ${styles.labelSelect} `}
                 required>
                 <option disabled defaultValue={0} hidden selected></option>
                 <option value="C">Casa</option>
@@ -666,7 +666,7 @@ const AddProjectPop = ({
               }
             </div>
           </form>
-          <div className={`${styles.BottomContent}`}>
+          <div className={`${styles.BottomContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-3xl`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}
