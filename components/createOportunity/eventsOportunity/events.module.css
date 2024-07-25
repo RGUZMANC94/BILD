@@ -12,10 +12,10 @@
   color: #fff;
   font-weight: 500;
   font-size: 12px;
-  
+
   text-align: center;
   text-decoration: none;
-  
+
   margin-bottom: 20px;
 }
 
@@ -109,7 +109,6 @@
   letter-spacing: 1.26px;
 
   text-align: center;
-  
 }
 
 .oportunidades {
@@ -159,7 +158,6 @@ i.fa-solid.fa-angle-left {
   font-weight: 500;
   font-size: 18px;
   line-height: 1.38;
-  
 }
 
 .back {
@@ -435,7 +433,6 @@ li.pendiente-list {
   letter-spacing: 1.12px;
   text-align: center;
   text-decoration: none;
-  
 }
 
 .card-progress-bar-container {

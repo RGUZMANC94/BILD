@@ -79,7 +79,9 @@ const LogInComponent = () => {
           }}>
           <div
             className={`text-dark-4 ${styles['user-box']} border-b-[1px] border-solid border-b-light-4/40`}>
-            <label className='font-bold' htmlFor="text">Usuario</label>
+            <label className="font-bold" htmlFor="text">
+              Usuario
+            </label>
             <input
               ref={username}
               className={`placeholder-light-4/40 bg-transparent ${styles['input-form']}`}
@@ -90,7 +92,9 @@ const LogInComponent = () => {
             />
           </div>
           <div className={`text-dark-4 ${styles['user-box']}`}>
-            <label className='font-bold' htmlFor="psw">Password</label>
+            <label className="font-bold" htmlFor="psw">
+              Password
+            </label>
             <input
               ref={password}
               className={`placeholder-light-4/40 bg-transparent ${styles['input-password']}`}
@@ -102,7 +106,9 @@ const LogInComponent = () => {
             />
           </div>
           <div className={styles['login-button']}>
-            <button className={`font-black bg-bild-1 text-light-1 ${styles.login}`} type="submit">
+            <button
+              className={`font-black bg-bild-1 text-light-1 ${styles.login}`}
+              type="submit">
               Ingreso
             </button>
             <div className={styles.arrow}>

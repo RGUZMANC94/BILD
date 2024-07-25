@@ -24,7 +24,7 @@ const Home = () => {
   const userInfo = useSelector((state) => state.userState);
   const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
 
-  const {isDark} = useContext(BildContext);
+  const { isDark } = useContext(BildContext);
 
   const { projectsList, filteredList, isFiltered } = useSelector(
     (state) => state.projectState
@@ -165,10 +165,15 @@ const Home = () => {
 
                         <div className={styles.detalles}>
                           {project.minBed !== 0 && project.maxBed !== 0 && (
-                            <span className={`font-bold ${styles.detailsGroup}`}>
+                            <span
+                              className={`font-bold ${styles.detailsGroup}`}>
                               <Image
                                 alt=""
-                                src={isDark ? '/images/cards/bed.png' : '/images/light/bed.png'}
+                                src={
+                                  isDark
+                                    ? '/images/cards/bed.png'
+                                    : '/images/light/bed.png'
+                                }
                                 width="15"
                                 height="15"
                               />
@@ -176,10 +181,15 @@ const Home = () => {
                             </span>
                           )}
                           {project.minBath !== 0 && project.maxBath !== 0 && (
-                            <span className={`font-bold ${styles.detailsGroup}`}>
+                            <span
+                              className={`font-bold ${styles.detailsGroup}`}>
                               <Image
                                 alt=""
-                                src={isDark ? '/images/cards/bath.png' : '/images/light/bath.png'}
+                                src={
+                                  isDark
+                                    ? '/images/cards/bath.png'
+                                    : '/images/light/bath.png'
+                                }
                                 width="15"
                                 height="15"
                               />

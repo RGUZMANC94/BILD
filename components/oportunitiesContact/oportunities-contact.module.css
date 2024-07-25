@@ -51,7 +51,6 @@
   font-weight: 300;
   /*line-height: 0.5;*/
   letter-spacing: 1.26px;
-  
 
   cursor: pointer;
   background-image: url(/images/arrow_filter.svg);
@@ -105,7 +104,7 @@ i.fa-solid.fa-angle-left {
   font-weight: 500;
   line-height: 1.38;
   color: #fff;
-  
+
   width: 100%;
   margin-top: 15px;
 }

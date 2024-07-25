@@ -4,37 +4,36 @@
 
 @layer utilities {
   .title-card {
-    @apply mb-0 font-extrabold
+    @apply mb-0 font-extrabold;
   }
 
-  .bg-card{
-    @apply  shadow-lg hover:shadow-2xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl
+  .bg-card {
+    @apply shadow-lg hover:shadow-2xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl;
   }
 
-  .bg-blur{
-    @apply backdrop-blur-bild bg-white/50
+  .bg-blur {
+    @apply backdrop-blur-bild bg-white/50;
   }
 
-  .header-popup{
-    @apply h-[70px] transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md
+  .header-popup {
+    @apply h-[70px] transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md;
   }
 
-  .bg-popup{
-    @apply dark:bg-dark-4 shadow-md bg-light-2
+  .bg-popup {
+    @apply dark:bg-dark-4 shadow-md bg-light-2;
   }
 
-  .footer-popup{
+  .footer-popup {
     @apply transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-3xl;
   }
 
-  .bg-sub-header{
-    @apply dark:bg-dark-3 bg-light-2
+  .bg-sub-header {
+    @apply dark:bg-dark-3 bg-light-2;
   }
 
-  .secondary{
-    @apply bg-light-3 text-light-1 border-[1px] border-solid border-light-1
+  .secondary {
+    @apply bg-light-3 text-light-1 border-[1px] border-solid border-light-1;
   }
-
 }
 
 *::-webkit-scrollbar {
@@ -171,10 +170,9 @@
   color: #c7c7c7;
   font-weight: 500;
   font-size: 20px;
-  
+
   text-align: left;
   text-decoration: none;
-  
 }
 
 .itemTopContent.active .buttonTopDetailState {
@@ -192,7 +190,6 @@
 
   text-align: left;
   text-decoration: none;
-  
 }
 
 /* .itemTopContent,
@@ -316,7 +313,7 @@ li {
   display: inline-block;
   vertical-align: top;
   width: calc(50% - 50px);
-  height: 100%;  
+  height: 100%;
   padding: 70px 0 0;
 }
 
@@ -346,7 +343,6 @@ li {
   font-weight: 700;
   font-size: 12px;
   line-height: 1.38;
-  
 }
 
 .tipo-unit {
@@ -435,7 +431,6 @@ li {
   /* color: #fff; */
   font-weight: 700;
   font-size: 18px;
-  
 }
 
 .llave {
@@ -537,7 +532,6 @@ li {
   line-height: 45px;
   text-align: center;
   text-decoration: none;
-  
 }
 
 .descargar img {
@@ -567,7 +561,6 @@ li {
   width: 100%;
   height: auto;
   text-align: center;
-  
 }
 
 .edit-type {
@@ -688,10 +681,9 @@ button.agregar {
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  
+
   text-align: center;
   text-decoration: none;
-  
 }
 
 i.fa-solid.fa-plus {
@@ -895,7 +887,6 @@ input[type='number'] {
   font-size: 20px;
   text-align: left;
   text-decoration: none;
-  
 }
 
 /* .top-content ul {
@@ -973,7 +964,6 @@ li {
   line-height: 45px;
   text-align: center;
   cursor: pointer;
-  
 }
 
 /* .top-donwload {
@@ -1092,7 +1082,6 @@ li.active button {
   font-weight: 500;
   font-weight: 700;
   font-size: 18px;
-  
 }
 
 .crear-usuario {
@@ -1277,7 +1266,6 @@ li.active button {
     font-size: 16px;
     text-align: left;
     text-decoration: none;
-    
   }
 
   .mail,
@@ -1554,7 +1542,6 @@ li.active button {
     width: 100%;
     height: auto;
     text-align: center;
-    
   }
 
   .editProjectDetailState {

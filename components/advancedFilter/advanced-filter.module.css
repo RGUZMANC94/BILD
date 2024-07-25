@@ -87,7 +87,6 @@
 }
 
 .labelText {
-  
   width: 100%;
   text-align: left;
   margin-bottom: 25px;
@@ -149,7 +148,7 @@
   font-weight: 400;
   color: #d9d9d9;
   line-height: 1.20115;
-  
+
   text-align: center;
   padding: 10px 15px;
   align-items: center;
@@ -251,7 +250,6 @@
 }
 
 .advancedLabelText {
-  
   width: 100%;
   text-align: left;
   margin-bottom: 40px;

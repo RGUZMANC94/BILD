@@ -367,9 +367,8 @@ const EditContactPop = ({
             // getContact();
           }}></div>
 
-      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-
-          <div className={`${styles.topContent}`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 Edicion de Contacto
@@ -397,7 +396,7 @@ const EditContactPop = ({
                 placeholder="Nombre"
                 value={datos.firstNames}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -409,7 +408,7 @@ const EditContactPop = ({
                 placeholder="Apellidos"
                 value={datos.lastNames}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -421,7 +420,7 @@ const EditContactPop = ({
                 placeholder="Número de Documento"
                 value={datos.documentNumber}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -433,7 +432,7 @@ const EditContactPop = ({
                 placeholder="Email"
                 value={datos.email}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -445,7 +444,7 @@ const EditContactPop = ({
                 placeholder="Celular"
                 value={datos.phoneNumber}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -464,7 +463,7 @@ const EditContactPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />

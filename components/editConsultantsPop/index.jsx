@@ -316,9 +316,8 @@ const EditConsultantsPop = ({
             setShowEditContact(false);
           }}></div>
 
-      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-
-          <div className={`${styles.topContent}`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 Edicion de perfil de Asesor
@@ -345,7 +344,7 @@ const EditConsultantsPop = ({
                 placeholder="Nombre"
                 value={datos.firstNames}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -357,7 +356,7 @@ const EditConsultantsPop = ({
                 placeholder="Apellidos"
                 value={datos.lastNames}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -369,7 +368,7 @@ const EditConsultantsPop = ({
                 placeholder="Número de Documento"
                 value={datos.documentNumber}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -382,7 +381,7 @@ const EditConsultantsPop = ({
                 placeholder="Número de Documento"
                 value={datos.email}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -395,7 +394,7 @@ const EditConsultantsPop = ({
                 placeholder="Número de Documento"
                 value={datos.username}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -414,7 +413,7 @@ const EditConsultantsPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />

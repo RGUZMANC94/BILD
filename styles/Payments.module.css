@@ -12,7 +12,6 @@
   position: fixed;
   top: 70px;
   z-index: 3;
-  
 }
 
 .top-content .icon {
@@ -85,7 +84,7 @@
 
 .box-title {
   font-size: 18px;
-  
+
   color: #fff;
   font-weight: 700;
   text-align: left;
@@ -170,7 +169,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 0.78;
-    
+
     text-align: center;
     margin-bottom: 15px;
   }

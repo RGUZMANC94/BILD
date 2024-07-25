@@ -256,9 +256,8 @@ const EditTypePop = ({
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditType(false)}></div>
-      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-
-          <div className={`${styles.topContent} header-popup`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 {projectSelected.projectName}
@@ -280,7 +279,7 @@ const EditTypePop = ({
                 type="text"
                 name="typeDescription"
                 value={datos.typeDescription}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 onChange={handleChange}
                 required
               />
@@ -314,12 +313,12 @@ const EditTypePop = ({
             <div className={`${styles.inputsGroup}`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Habitaciones:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Habitaciones:</span>
                 <input
                   type="text"
                   name="bed"
                   value={datos.bed}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -327,12 +326,12 @@ const EditTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Baños:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Baños:</span>
                 <input
                   type="text"
                   name="bath"
                   value={datos.bath}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -340,12 +339,12 @@ const EditTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Área Priv:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Área Priv:</span>
                 <input
                   type="text"
                   name="size"
                   value={datos.size}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -353,12 +352,12 @@ const EditTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Área Constr:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Área Constr:</span>
                 <input
                   type="text"
                   name="privateArea"
                   value={datos.privateArea}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -366,12 +365,12 @@ const EditTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Area terraza:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Area terraza:</span>
                 <input
                   type="text"
                   name="terraceArea"
                   value={datos.terraceArea}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -379,12 +378,12 @@ const EditTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Área Balcón:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Área Balcón:</span>
                 <input
                   type="text"
                   name="balconyArea"
                   value={datos.balconyArea}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -392,12 +391,12 @@ const EditTypePop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Depósito Área:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Depósito Área:</span>
                 <input
                   type="text"
                   name="storageArea"
                   value={datos.storageArea}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />

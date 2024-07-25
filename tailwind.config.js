@@ -30,8 +30,8 @@ module.exports = {
         '4xl': '0px 0px 10px 10px rgba(0, 0, 0, 0.4)',
       },
       backdropBlur: {
-       bild: '10px'
-      }
+        bild: '10px',
+      },
     },
   },
   plugins: [],

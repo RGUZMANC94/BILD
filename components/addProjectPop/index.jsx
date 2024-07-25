@@ -477,10 +477,8 @@ const AddProjectPop = ({
             setShowAddProject(false);
             cleanForm();
           }}></div>
-        <div
-          className={`${styles.wrapperTypePopUp} bg-popup`}>
-          <div
-            className={`${styles.topContent} header-popup`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup header-popup`}>
             <div className={`${styles.topContentInfo} `}>
               <h1 className={`${styles.topContentTitle}`}>
                 Creacion de Proyecto
@@ -508,7 +506,7 @@ const AddProjectPop = ({
                 type="text"
                 name="projectName"
                 value={datos.projectName}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 onChange={handleChange}
                 required
               />
@@ -544,7 +542,7 @@ const AddProjectPop = ({
                 name="location"
                 value={datos.location}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -573,7 +571,7 @@ const AddProjectPop = ({
                 type="text"
                 name="minPercentage"
                 value={datos.minPercentage}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 onChange={handleMinQuoteChange}
                 required
               />
@@ -615,7 +613,12 @@ const AddProjectPop = ({
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Imágen del Proyecto:</span>
-              <div className={`${styles['main-image']} ${isDark ? 'bg-[url(/images/photo-icon.png)]' : 'bg-[url(/images/photo-icon.png)]'} `}>
+              <div
+                className={`${styles['main-image']} ${
+                  isDark
+                    ? 'bg-[url(/images/photo-icon.png)]'
+                    : 'bg-[url(/images/photo-icon.png)]'
+                } `}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
@@ -627,7 +630,7 @@ const AddProjectPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />
@@ -662,7 +665,7 @@ const AddProjectPop = ({
                     hidden
                     ref={inputXlsx}
                     onChange={handleXlsxClick}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     accept=".xlsx, .xls, .csv"
                     name="excel"
                   />
@@ -676,8 +679,7 @@ const AddProjectPop = ({
               }
             </div>
           </form>
-          <div
-            className={`${styles.BottomContent} footer-popup footer-popup`}>
+          <div className={`${styles.BottomContent} footer-popup footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

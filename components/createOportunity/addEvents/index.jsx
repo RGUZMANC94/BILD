@@ -149,7 +149,7 @@ const AddEvents = ({
         </div> */}
           </form>
         </div>
-        <div className={styles.bottomContent}>
+        <div className={`${styles.BottomContent} footer-popup`}>
           <Button
             buttonType={'secondary'}
             iconImage={false}

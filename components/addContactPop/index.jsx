@@ -365,9 +365,8 @@ const AddContactPop = ({
             cleanForm();
           }}></div>
 
-      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-
-          <div className={`${styles.topContent}`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 Creacion de Contacto
@@ -395,7 +394,7 @@ const AddContactPop = ({
                 placeholder="Nombre"
                 value={datos.firstNames}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -407,7 +406,7 @@ const AddContactPop = ({
                 placeholder="Apellidos"
                 value={datos.lastNames}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -419,7 +418,7 @@ const AddContactPop = ({
                 placeholder="Número de Documento"
                 value={datos.documentNumber}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -431,7 +430,7 @@ const AddContactPop = ({
                 placeholder="Email"
                 value={datos.email}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -443,7 +442,7 @@ const AddContactPop = ({
                 placeholder="Celular"
                 value={datos.phoneNumber}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -462,7 +461,7 @@ const AddContactPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />

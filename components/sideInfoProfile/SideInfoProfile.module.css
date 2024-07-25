@@ -243,7 +243,7 @@
 .flag {
   color: #fff;
   font-size: 22px;
-  
+
   text-align: left;
   padding-top: 20px;
   /* margin-top: 100px;
@@ -317,7 +317,7 @@
   font-size: 16px;
   font-weight: 400;
   color: #fff;
-  
+
   flex-wrap: wrap;
   border-radius: 20px;
   background: #565555;
@@ -525,7 +525,7 @@
   color: #fff;
   font-size: 18px;
   font-weight: 400;
-  
+
   text-align: center;
   padding-top: 20px;
   border-top-right-radius: 20px;
@@ -567,7 +567,7 @@
   font-size: 16px;
   font-weight: 400;
   color: #4d4d4d;
-  
+
   flex-wrap: wrap;
 }
 
@@ -668,7 +668,7 @@ span.badge {
   height: auto;
   font-size: 18px;
   color: #4d4d4d;
-  
+
   margin: 0 auto;
   display: flex;
   justify-content: start;
@@ -857,7 +857,6 @@ h3.user {
     font-size: 16px;
     font-weight: 400;
     color: #4d4d4d;
-    
   }
 
   .opcion img {
@@ -1054,7 +1053,7 @@ h3.user {
     color: #fff;
     font-size: 18px;
     font-weight: 400;
-    
+
     text-align: left;
     padding: 15px;
     border-top-right-radius: 20px;
@@ -1091,7 +1090,7 @@ h3.user {
     font-size: 16px;
     font-weight: 400;
     color: #fff;
-    
+
     margin-bottom: 20px;
   }
 

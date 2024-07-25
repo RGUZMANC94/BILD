@@ -242,9 +242,8 @@ const EditUnitPop = ({
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditUnit(false)}></div>
-      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-
-          <div className={`${styles.topContent}`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 {projectSelected.projectName}
@@ -266,12 +265,12 @@ const EditUnitPop = ({
             <div className={`${styles.inputsGroup} flex j-sb a-st`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>ID:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>ID:</span>
                 <input
                   type="text"
                   name="nuimb"
                   value={datos.nuimb}
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -279,9 +278,9 @@ const EditUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={styles.labelInputTitle}>Precio:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>Precio:</span>
                 <CurrencyInput
-                  className={styles.inputTypeForm}
+                  className={` ${styles.inputTypeForm}`}
                   prefix="$ "
                   decimalSeparator=","
                   groupSeparator="."
@@ -296,73 +295,73 @@ const EditUnitPop = ({
             </div>
 
             <>
-              <div className={`${styles.sectionTitle} flex j-sb a-c`}>
+              <div className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
                 <h2 className={`${styles.sectionTitleText}`}>Datos:</h2>
               </div>
 
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Habitaciones:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Habitaciones:</span>
                   <input
                     type="text"
                     name="bedrooms"
                     value={datos.bedrooms}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                   />
                 </label>
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Baños:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Baños:</span>
                   <input
                     type="text"
                     name="baths"
                     value={datos.baths}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                   />
                 </label>
               </div>
 
-              <div className={`${styles.sectionTitle} flex j-sb a-c`}>
+              <div className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
                 <h2 className={`${styles.sectionTitleText}`}>Áreas</h2>
               </div>
 
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Area Const:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Area Const:</span>
                   <input
                     type="text"
                     name="builtArea"
                     value={datos.builtArea}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                   />
                 </label>
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Área Priv:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Área Priv:</span>
                   <input
                     type="text"
                     name="privateArea"
                     value={datos.privateArea}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                   />
                 </label>
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Area terraza:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Area terraza:</span>
                   <input
                     type="text"
                     name="terraceArea"
                     value={datos.terraceArea}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                     required
                   />
@@ -370,24 +369,24 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Área Bálcon:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Área Bálcon:</span>
                   <input
                     type="text"
                     name="balconyArea"
                     value={datos.balconyArea}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                   />
                 </label>
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={styles.labelInputTitle}>Área Deposito:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>Área Deposito:</span>
                   <input
                     type="text"
                     name="storageArea"
                     value={datos.storageArea}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     onChange={handleChange}
                   />
                 </label>
@@ -399,12 +398,12 @@ const EditUnitPop = ({
                       
                        <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                      <span className={styles.labelInputTitle}>N° PARQU.</span>
+                      <span className={`${styles.labelInputTitle} font-black`}>N° PARQU.</span>
                       <input
                         type="text"
                         name="parkingAmount"
                         value={datos.parkingAmount}
-                        className={styles.inputTypeForm}
+                        className={` ${styles.inputTypeForm}`}
                         onChange={handleChange}
                         required
                       />
@@ -412,7 +411,7 @@ const EditUnitPop = ({
 
                     <label
                       className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                      <span className={styles.labelInputTitle}>TIPO PARQU.</span>
+                      <span className={`${styles.labelInputTitle} font-black`}>TIPO PARQU.</span>
                       <label htmlFor="subject"></label>
                       <select
                         type="text"
@@ -436,7 +435,7 @@ const EditUnitPop = ({
                */}
             </>
           </form>
-          <div className={`${styles.BottomContent} footer-popup`}>
+          <div className={`${styles.BottomContent}`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

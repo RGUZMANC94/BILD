@@ -106,7 +106,6 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
-  
 }
 .proyect-form .action-button:hover,
 .proyect-form .action-button:focus {
@@ -118,7 +117,6 @@
   margin-bottom: 10px;
   color: #2c3e50;
   font-size: 15px;
-  
 }
 .fs-subtitle {
   margin-bottom: 20px;
@@ -166,7 +164,6 @@
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-  
 }
 
 .descargar img {
@@ -204,7 +201,6 @@
   align-items: flex-start;
   height: auto;
   text-align: left;
-  
 }
 
 .fa-plus {
@@ -328,7 +324,7 @@
   color: #ffffff;
   color: #777777;
   font-size: 14px;
-  
+
   text-align: center;
   text-decoration: none;
 }
@@ -372,7 +368,7 @@
   height: auto;
   color: #ffffff;
   font-size: 14px;
-  
+
   text-align: center;
   text-decoration: none;
 }
@@ -385,7 +381,6 @@
   width: 100%;
   height: auto;
   color: #c7c7c7;
-  
 }
 
 .contacto {
@@ -419,9 +414,8 @@
   padding: 10px 30px;
   width: calc(50% - 10px);
   font-size: 15px;
-  
+
   text-decoration: none;
-  
 }
 
 .inner-cancelar {
@@ -429,7 +423,6 @@
   font-weight: 500;
   font-size: 12px;
   text-align: center;
-  
 }
 
 .crear {
@@ -445,15 +438,13 @@
   color: #fff;
   font-weight: 500;
   font-size: 15px;
-  
+
   text-align: center;
   text-decoration: none;
-  
 }
 
 .text-origen {
   color: #fff;
-  
 }
 
 /* .elegir-origen {
@@ -578,10 +569,9 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  
+
   text-align: center;
   text-decoration: none;
-  
 }
 .cancelarpop {
   display: flex;
@@ -600,10 +590,9 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  
+
   text-align: center;
   text-decoration: none;
-  
 }
 
 .popup2 {
@@ -707,7 +696,6 @@
 .contactName {
   color: #fff;
   font-weight: 300;
-  
 }
 
 /* popup*/

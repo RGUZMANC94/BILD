@@ -50,7 +50,6 @@
   font-weight: 300;
   /*line-height: 0.5;*/
   letter-spacing: 1.26px;
-  
 
   cursor: pointer;
   background-image: url(/images/arrow_filter.svg);
@@ -103,7 +102,7 @@ i.fa-solid.fa-angle-left {
   font-style: normal;
   font-weight: 500;
   color: #fff;
-  
+
   width: 100%;
   display: block;
   margin-bottom: 5px;
@@ -391,7 +390,7 @@ li.pendiente-list {
   font-weight: 100;
   line-height: 1;
   letter-spacing: 1.12px;
-  
+
   margin-top: 30px;
   padding: 20px 30px;
   text-align: center;

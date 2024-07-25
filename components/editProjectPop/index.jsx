@@ -494,7 +494,7 @@ const EditProjectPop = ({
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditProject(false)}></div>
         <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-          <div className={`${styles.topContent} header-popup`}>
+          <div className={`${styles.topContent} header-popup header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>Editar Proyecto</h1>
             </div>
@@ -517,7 +517,7 @@ const EditProjectPop = ({
                 type="text"
                 name="projectName"
                 value={datos.projectName}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 onChange={handleChange}
                 required
               />
@@ -553,7 +553,7 @@ const EditProjectPop = ({
                 name="location"
                 value={datos.location}
                 onChange={handleChange}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -582,7 +582,7 @@ const EditProjectPop = ({
                 type="text"
                 name="minPercentage"
                 value={datos.minPercentage}
-                className={styles.inputTypeForm}
+                className={` ${styles.inputTypeForm}`}
                 onChange={handleMinQuoteChange}
                 required
               />
@@ -636,7 +636,7 @@ const EditProjectPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={styles.inputTypeForm}
+                    className={` ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />

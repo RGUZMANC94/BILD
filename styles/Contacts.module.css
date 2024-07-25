@@ -28,7 +28,7 @@
   font-size: 15px;
   line-height: 45px;
   text-align: center;
-  
+
   cursor: pointer;
   content: '';
 }
@@ -57,7 +57,6 @@
   color: #fff;
   font-weight: 500;
   font-size: 18px;
-  
 }
 
 .nombre {
@@ -108,7 +107,6 @@
   color: #fff;
   font-weight: 700;
   font-size: 18px;
-  
 }
 
 .list-name {

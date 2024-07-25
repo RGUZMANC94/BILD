@@ -84,7 +84,7 @@
   height: 100px;
   font-size: 18px;
   color: #fff;
-  
+
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -135,7 +135,7 @@
   margin: 10px 5px;
   text-decoration: none;
   font-size: 14px;
-  
+
   border-radius: 10px;
   text-align: center;
 }
@@ -146,10 +146,10 @@
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  
+
   border-radius: 10px;
   border: 1px solid #fff;
-  
+
   padding: 10px 30px;
   text-align: center;
   cursor: pointer;
@@ -168,10 +168,10 @@
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  
+
   border-radius: 10px;
   border: 1px solid #2467ff;
-  
+
   padding: 10px 0px;
   text-align: center;
   cursor: pointer;
@@ -243,7 +243,7 @@
 .top-content {
   width: 100%;
   height: auto;
-  
+
   color: #4d4d4d;
   font-weight: 500;
   font-size: 20px;
@@ -260,7 +260,7 @@
 
 .top-content-buttonsBar {
   width: 100%;
-  
+
   color: #4d4d4d;
   font-weight: 500;
   font-size: 20px;
@@ -469,7 +469,7 @@
   align-items: center;
   font-size: 18px;
   color: #fff;
-  
+
   margin: 20px 0px 50px 0;
   font-weight: 500;
 }
