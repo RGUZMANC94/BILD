@@ -142,6 +142,7 @@ const OportunitiesAll = ({
     activeWithHash = false
   ) => {
     if (selectedItem === index && !activeWithHash) {
+      console.log('pasa');
       setSelectedItem(-1);
       dispatch(changeOpportunitySelected(-1));
       setOppIsSelected(false);
@@ -297,7 +298,7 @@ const OportunitiesAll = ({
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        {selectedItem !== -1 && !isMobile && (
+        {(selectedItem !== -1 && !isMobile && !hardRefreshFlag) && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
             oppSelectedObject={oppSelectedObject}
