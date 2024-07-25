@@ -36,6 +36,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userState);
   const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
+  const { isDark } = useContext(BildContext);
 
   // useMemo(() => {
   //   if (userInfoEmpty) {
@@ -305,7 +306,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
   return (
     <>
-      <div className="top-content">
+      <div className="top-content shadow-md shadow-dark-4/10">
         {conectContact && (
           <li className="selectFilterFlex j-s a-c">
             <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
@@ -322,9 +323,15 @@ const DetailState = ({ unitsInit, typesInit }) => {
           {!conectContact && (
             <>
               <div className="top-infoContainer">
-                <Link href="/" className="back-arrow bg-ct"></Link>
+                <Link
+                  href="/"
+                  className={`back-arrow bg-ct ${
+                    isDark
+                      ? 'bg-[url(/images/back.svg)]'
+                      : 'bg-[url(/images/light/back.png)] bg-[length:150%]'
+                  }`}></Link>
 
-                <h1 className="topProjectName">
+                <h1 className="topProjectName font-extrabold">
                   {(infoProject && infoProject.projectName) ??
                     dataProject[0].projectName}
                 </h1>
@@ -344,7 +351,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
               <div className={'top-buttons-container'}>
                 <a
-                  className={'top-donwload'}
+                  className={'top-donwload font-bold secondary'}
                   href={
                     xlsxTemplate && xlsxTemplate.length > 0
                       ? xlsxTemplate[0].url
@@ -354,7 +361,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
                   Descargar
                 </a>
                 {user_rol === 'ADMIN' && (
-                  <label className={'top-upload'}>
+                  <label className={'top-upload font-bold text-light-1'}>
                     <input
                       type="file"
                       hidden

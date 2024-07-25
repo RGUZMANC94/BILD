@@ -17,16 +17,26 @@ const Header = () => {
   return (
     <>
       <header
-        className={`bg-light-2 dark:bg-dark-1 ${styles.siteHeader} shadow-md shadow-dark-4/10 transition`}>
+        className={`bg-light-2 dark:bg-dark-1 ${styles.siteHeader} shadow-md shadow-dark-4/10 transition font-black`}>
         <div className={`${styles.containerHeader}`}>
           <div className={styles.logo}>
             {pathname !== '/' && (
               <Link href="/">
-                <img src="/images/logo-white.png" alt="Logo BILD" />
+                <img
+                  src={`${
+                    isDark ? '/images/logo-white.png' : '/images/light/logo.png'
+                  }`}
+                  alt="Logo BILD"
+                />
               </Link>
             )}
             {pathname === '/' && (
-              <img src="/images/logo-white.png" alt="Logo BILD" />
+              <img
+                src={`${
+                  isDark ? '/images/logo-white.png' : '/images/light/logo.png'
+                }`}
+                alt="Logo BILD"
+              />
             )}
           </div>
 
@@ -38,7 +48,7 @@ const Header = () => {
                   pathname === '/'
                     ? `${styles.active} border-light-4 text-light-4 dark:border-bild-1 dark:text-light-1`
                     : 'border-transparent group'
-                }  hover:border-light-4 dark:hover:border-bild-1  border-b-[3px] border-solid group transition`}>
+                }  hover:border-light-4 dark:hover:border-bild-1  border-b-[3px] border-solid group transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
                     className={`${
@@ -64,7 +74,7 @@ const Header = () => {
                   pathname === '/contacts'
                     ? `${styles.active} border-light-4 text-light-4 dark:border-bild-1 dark:text-light-1`
                     : 'border-transparent group'
-                }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition`}>
+                }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
                     className={`${
@@ -101,7 +111,7 @@ const Header = () => {
                   pathname === '/opportunities'
                     ? `${styles.active} border-light-4 text-light-4 dark:border-bild-1 dark:text-light-1`
                     : 'border-transparent group'
-                }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition`}>
+                }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
                     className={`${
@@ -128,7 +138,7 @@ const Header = () => {
                   pathname === '/profile'
                     ? `${styles.active} border-light-4 text-light-4 dark:border-bild-1 dark:text-light-1`
                     : 'border-transparent group'
-                }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition`}>
+                }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
                     className={`${

@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .title-card {
+    @apply mb-0 font-extrabold
+  }
+
+  .bg-card{
+    @apply  shadow-lg hover:shadow-2xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl
+  }
+
+  .bg-blur{
+    @apply backdrop-blur-bild bg-white/50
+  }
+
+  .header-popup{
+    @apply h-[70px] transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md
+  }
+
+  .bg-popup{
+    @apply dark:bg-dark-4 shadow-md bg-light-2
+  }
+
+  .footer-popup{
+    @apply transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-3xl;
+  }
+
+  .bg-sub-header{
+    @apply dark:bg-dark-3 bg-light-2
+  }
+
+  .secondary{
+    @apply bg-light-4/35 text-light-1 border-[1px] border-solid border-light-1
+  }
+
+}
+
 *::-webkit-scrollbar {
   border-radius: 10px;
   background-color: #c7c7c7;
@@ -50,13 +85,13 @@
   backdrop-filter: blur(3.5px);
   margin-top: 70px;
   margin-bottom: 20px;
-  background: rgba(33, 34, 29, 0.3);
+  /* background: #2424244d; */
   width: 100%;
   height: 60px;
   font-weight: 500;
   font-size: 20px;
   text-align: left;
-  text-transform: uppercase;
+  
 }
 
 /* 
@@ -87,7 +122,7 @@
 .top-content {
   width: 100%;
   min-height: 77px;
-  text-transform: uppercase;
+  
   color: #4d4d4d;
   font-weight: 500;
   font-size: 20px;
@@ -120,7 +155,7 @@
 .back-arrow {
   display: block;
   margin-right: 50px;
-  background-image: url(/images/back.svg);
+  /* background-image: url(/images/back.svg); */
   width: 15px;
   height: 25px;
 }
@@ -135,10 +170,10 @@
   color: #c7c7c7;
   font-weight: 500;
   font-size: 20px;
-  letter-spacing: 1px;
+  
   text-align: left;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .itemTopContent.active .buttonTopDetailState {
@@ -152,13 +187,11 @@
   margin-right: 15px;
   width: auto;
   height: auto;
-  color: #fff;
-  font-weight: 500;
   font-size: 20px;
-  letter-spacing: 1px;
+
   text-align: left;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .itemTopContent,
@@ -309,7 +342,7 @@ li {
   font-weight: 700;
   font-size: 12px;
   line-height: 1.38;
-  text-transform: uppercase;
+  
 }
 
 .tipo-unit {
@@ -320,10 +353,10 @@ li {
   justify-content: space-between;
   align-items: flex-start;
   transition: all 0.25s ease-in-out;
-  box-shadow: 2px 7px 10px 0px #00000026;
+  /* box-shadow: 2px 7px 10px 0px #00000026; */
   border: 1px solid #ff556700;
   border-radius: 15px;
-  background-color: #2e2e2c;
+  /* background-color: #2e2e2c; */
   padding: 20px;
   width: 100%;
   height: auto;
@@ -395,10 +428,10 @@ li {
 .tipo-title {
   margin-bottom: 5px;
   width: 100%;
-  color: #fff;
+  /* color: #fff; */
   font-weight: 700;
   font-size: 18px;
-  text-transform: uppercase;
+  
 }
 
 .llave {
@@ -419,7 +452,7 @@ li {
 .valor {
   margin-top: 3px;
   width: 100%;
-  color: #fff;
+  /* color: #fff; */
   font-weight: 400;
   /* padding-top: 33px; */
   font-size: 15px;
@@ -438,7 +471,7 @@ li {
   align-items: center;
   align-self: flex-end;
   margin-top: 5px;
-  color: #fff;
+  /* color: #fff; */
   font-weight: 400;
   font-size: 14px;
   line-height: 2.29;
@@ -500,7 +533,7 @@ li {
   line-height: 45px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .descargar img {
@@ -530,7 +563,7 @@ li {
   width: 100%;
   height: auto;
   text-align: center;
-  text-transform: uppercase;
+  
 }
 
 .edit-type {
@@ -651,10 +684,10 @@ button.agregar {
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 i.fa-solid.fa-plus {
@@ -839,7 +872,7 @@ input[type='number'] {
   font-family: "Lexend", sans-serif;
   text-align: left;
   justify-content: start;
-  text-transform: uppercase;
+  
   font-weight: 500;
   font-size: 20px;
   position: relative;
@@ -858,7 +891,7 @@ input[type='number'] {
   font-size: 20px;
   text-align: left;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 /* .top-content ul {
@@ -932,17 +965,16 @@ li {
   padding: 0 55px;
   width: calc(35% - 10px);
   height: 45px;
-  color: #fff;
   font-size: 14px;
   line-height: 45px;
   text-align: center;
   cursor: pointer;
-  text-transform: uppercase;
+  
 }
 
-.top-donwload {
+/* .top-donwload {
   border: 1px solid #fff;
-}
+} */
 
 .top-upload {
   background-color: #2467ff;
@@ -1056,7 +1088,7 @@ li.active button {
   font-weight: 500;
   font-weight: 700;
   font-size: 18px;
-  text-transform: uppercase;
+  
 }
 
 .crear-usuario {
@@ -1241,7 +1273,7 @@ li.active button {
     font-size: 16px;
     text-align: left;
     text-decoration: none;
-    text-transform: uppercase;
+    
   }
 
   .mail,
@@ -1518,7 +1550,7 @@ li.active button {
     width: 100%;
     height: auto;
     text-align: center;
-    text-transform: uppercase;
+    
   }
 
   .editProjectDetailState {

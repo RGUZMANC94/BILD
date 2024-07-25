@@ -286,7 +286,7 @@
   color: #fff;
   font-style: normal;
   font-weight: 700;
-  text-transform: uppercase;
+  
   margin-bottom: 20px;
 }
 
@@ -482,7 +482,7 @@
 .images {
   height: auto;
   text-align: left;
-  text-transform: uppercase;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -593,7 +593,7 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .buttonDownload {
@@ -683,7 +683,7 @@
   height: auto;
   color: #ffffff;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
 }
@@ -696,7 +696,7 @@
   width: 100%;
   height: auto;
   color: #c7c7c7;
-  text-transform: uppercase;
+  
 }
 
 .upload {
@@ -886,7 +886,7 @@
   }
 
   span.label {
-    text-transform: uppercase;
+    
     margin: 40px 0 20px;
     font-size: 15px;
     font-style: normal;

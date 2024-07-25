@@ -22,7 +22,7 @@
 .top-content {
   width: 100%;
   height: auto;
-  text-transform: uppercase;
+  
   color: #4d4d4d;
   font-weight: 500;
   font-size: 20px;
@@ -36,7 +36,7 @@
 
 .top-content-buttonsBar {
   width: 100%;
-  text-transform: uppercase;
+  
   color: #4d4d4d;
   font-weight: 500;
   font-size: 18px;
@@ -77,7 +77,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  text-transform: uppercase;
+  
   cursor: pointer;
 }
 .top-content-bar.active {
@@ -157,7 +157,7 @@
   font-size: 18px;
   font-weight: 500;
   color: #4d4d4d;
-  text-transform: uppercase;
+  
 }
 
 .tipo-unit {
@@ -193,14 +193,14 @@
   font-size: 18px;
   font-weight: 500;
   color: #4d4d4d;
-  text-transform: uppercase;
+  
 }
 
 .tipo-sub {
   font-size: 12px;
   font-weight: 500;
   color: #4d4d4d;
-  text-transform: uppercase;
+  
   width: 100%;
   margin-top: 15px;
 }
@@ -241,7 +241,7 @@ i.fa-solid.fa-angle-left {
   font-size: 12px;
   font-weight: 500;
   color: #4d4d4d;
-  text-transform: uppercase;
+  
   width: 100%;
   margin-top: 15px;
 }
@@ -432,8 +432,8 @@ li.pendiente-list {
   color: #2467ff;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  
+  
   margin-top: 30px;
   padding: 10px 30px;
   text-align: center;

@@ -70,37 +70,30 @@ const LogInComponent = () => {
           Usuario o contraseña incorrectos, intente nuevamente.
         </p>
       )}
-      <div className={styles.form}>
+      <div className={`${styles.form} bg-blur`}>
         <form
           onSubmit={(event) => {
             event.preventDefault();
             logInFn(event);
             return false;
           }}>
-          <div className={styles['user-box']}>
-            <label
-              htmlFor="text"
-              onClick={() => {
-                console.log('first');
-              }}>
-              Usuario
-            </label>
+          <div
+            className={`text-dark-4 ${styles['user-box']} border-b-[1px] border-solid border-b-light-4/40`}>
+            <label className='font-bold' htmlFor="text">Usuario</label>
             <input
               ref={username}
-              className={styles['input-form']}
+              className={`placeholder-light-4/40 bg-transparent ${styles['input-form']}`}
               type="text"
               id="text"
               name="text"
               placeholder="mail@address.com"
             />
           </div>
-          <div className={styles['user-box']}>
-            <label htmlFor="psw">
-              <b>Password</b>
-            </label>
+          <div className={`text-dark-4 ${styles['user-box']}`}>
+            <label className='font-bold' htmlFor="psw">Password</label>
             <input
               ref={password}
-              className={styles['input-password']}
+              className={`placeholder-light-4/40 bg-transparent ${styles['input-password']}`}
               type="password"
               placeholder="**********"
               name="psw"
@@ -109,8 +102,8 @@ const LogInComponent = () => {
             />
           </div>
           <div className={styles['login-button']}>
-            <button className={styles.login} type="submit">
-              INGRESO
+            <button className={`font-black bg-bild-1 text-light-1 ${styles.login}`} type="submit">
+              Ingreso
             </button>
             <div className={styles.arrow}>
               <i className={styles['fa-solid fa-chevron-right']}></i>

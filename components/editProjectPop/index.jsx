@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import Button from '../button';
 import styles from './Edit-project-pop.module.css';
 import { useDispatch } from 'react-redux';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Tooltip from '../toolTip';
+import BildContext from '../context';
 
 const EditProjectPop = ({
   showEditProject,
@@ -14,6 +15,8 @@ const EditProjectPop = ({
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const { isDark } = useContext(BildContext);
 
   const mainImage = useRef(null);
   const firstImage = useRef(null);
@@ -490,13 +493,19 @@ const EditProjectPop = ({
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditProject(false)}></div>
-        <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.topContent}`}>
+        <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+          <div className={`${styles.topContent} header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>Editar Proyecto</h1>
             </div>
             <div
-              className={`${styles.closeIcon} bg-ct`}
+              className={`${styles.closeIcon} bg-ct 
+              ${
+                isDark
+                  ? 'bg-[url(/images/close-white.svg)]'
+                  : 'bg-[url(/images/light/back.png)]'
+              }
+            `}
               onClick={() => setShowEditProject(false)}
             />
           </div>
@@ -658,7 +667,7 @@ const EditProjectPop = ({
               }
             </div>
           </form>
-          <div className={`${styles.BottomContent}`}>
+          <div className={`${styles.BottomContent} footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

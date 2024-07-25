@@ -60,7 +60,7 @@
   font-weight: 500;
   font-size: 18px;
   text-align: center;
-  text-transform: uppercase;
+  
 }
 
 .searchInput {
@@ -107,7 +107,7 @@
   transition: all 0.15s ease-in-out;
   padding: 0 10px 0;
   /* color: #fff; */
-  font-weight: 300;
+  /* font-weight: 300; */
   font-size: 12px;
   text-align: center;
   text-decoration: none;

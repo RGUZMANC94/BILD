@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import Button from '../button';
 import styles from './Add-project-pop.module.css';
 import { useDispatch } from 'react-redux';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Tooltip from '../toolTip';
+import BildContext from '../context';
 
 const AddProjectPop = ({
   showAddProject,
@@ -15,6 +16,7 @@ const AddProjectPop = ({
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const { isDark } = useContext(BildContext);
   const mainImage = useRef(null);
   const firstImage = useRef(null);
   const secondImage = useRef(null);
@@ -476,16 +478,22 @@ const AddProjectPop = ({
             cleanForm();
           }}></div>
         <div
-          className={`${styles.wrapperTypePopUp} dark:bg-dark-4 shadow-md bg-light-2`}>
+          className={`${styles.wrapperTypePopUp} bg-popup`}>
           <div
-            className={`${styles.topContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-md`}>
-            <div className={`${styles.topContentInfo}`}>
+            className={`${styles.topContent} header-popup`}>
+            <div className={`${styles.topContentInfo} `}>
               <h1 className={`${styles.topContentTitle}`}>
                 Creacion de Proyecto
               </h1>
             </div>
             <div
-              className={`${styles.closeIcon} bg-ct`}
+              className={`${styles.closeIcon} bg-ct 
+                ${
+                  isDark
+                    ? 'bg-[url(/images/close-white.svg)]'
+                    : 'bg-[url(/images/light/back.png)]'
+                }
+              `}
               onClick={() => {
                 setShowAddProject(false);
                 cleanForm();
@@ -669,7 +677,7 @@ const AddProjectPop = ({
             </div>
           </form>
           <div
-            className={`${styles.BottomContent} transition dark:bg-dark-3 dark:shadow-none bg-light-2 shadow-3xl`}>
+            className={`${styles.BottomContent} footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

@@ -100,7 +100,7 @@
   font-weight: 400;
   font-size: 16px;
   text-align: left;
-  text-transform: uppercase;
+  
 }
 
 .name-field .label {
@@ -129,10 +129,10 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 45px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .origen {

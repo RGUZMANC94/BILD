@@ -97,11 +97,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 5px;
-  /* color: #fff; */
-  font-weight: 500;
   font-size: 18px;
-  text-transform: uppercase;
 }
 
 .valor {
@@ -329,7 +325,7 @@
     font-size: 14px;
     font-weight: 500;
     color: #fff;
-    text-transform: uppercase;
+    
   }
 
   .valor {

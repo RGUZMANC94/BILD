@@ -107,7 +107,7 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 .proyect-form .action-button:hover,
 .proyect-form .action-button:focus {
@@ -119,7 +119,7 @@
   margin-bottom: 10px;
   color: #2c3e50;
   font-size: 15px;
-  text-transform: uppercase;
+  
 }
 .fs-subtitle {
   margin-bottom: 20px;
@@ -166,7 +166,7 @@
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .descargar img {
@@ -203,7 +203,7 @@
   align-items: flex-start;
   height: auto;
   text-align: left;
-  text-transform: uppercase;
+  
 }
 
 .fa-plus {
@@ -292,7 +292,7 @@
   cursor: pointer;
   width: 100%;
   height: 100%;
-  text-transform: uppercase;
+  
 }
 
 .upload {
@@ -328,7 +328,7 @@
   color: #ffffff;
   color: #777777;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
 }
@@ -372,7 +372,7 @@
   height: auto;
   color: #ffffff;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
 }
@@ -385,7 +385,7 @@
   width: 100%;
   height: auto;
   color: #c7c7c7;
-  text-transform: uppercase;
+  
 }
 
 .contacto {
@@ -418,10 +418,10 @@
   background: #343434;
   padding: 10px 0;
   width: calc(50% - 10px);
-  letter-spacing: 1px;
+  
   text-decoration: none;
   font-size: 15px;
-  text-transform: uppercase;
+  
   height: 45px;
   line-height: 45px;
 }
@@ -431,7 +431,7 @@
   font-weight: 500;
   font-size: 12px;
   text-align: center;
-  text-transform: uppercase;
+  
 }
 
 .crear {
@@ -447,17 +447,17 @@
   color: #fff;
   font-weight: 500;
   font-size: 15px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
   height: 45px;
   line-height: 45px;
 }
 
 .text-origen {
   color: #fff;
-  text-transform: uppercase;
+  
 }
 
 .image-movil,
@@ -578,10 +578,10 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 .cancelarpop {
   display: flex;
@@ -600,10 +600,10 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .popup2 {
@@ -707,7 +707,7 @@
 .contactName {
   color: #fff;
   font-weight: 300;
-  text-transform: uppercase;
+  
 }
 
 /* popup*/

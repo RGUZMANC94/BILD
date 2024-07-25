@@ -106,7 +106,7 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 .proyect-form .action-button:hover,
 .proyect-form .action-button:focus {
@@ -118,7 +118,7 @@
   margin-bottom: 10px;
   color: #2c3e50;
   font-size: 15px;
-  text-transform: uppercase;
+  
 }
 .fs-subtitle {
   margin-bottom: 20px;
@@ -166,7 +166,7 @@
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .descargar img {
@@ -204,7 +204,7 @@
   align-items: flex-start;
   height: auto;
   text-align: left;
-  text-transform: uppercase;
+  
 }
 
 .fa-plus {
@@ -328,7 +328,7 @@
   color: #ffffff;
   color: #777777;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
 }
@@ -372,7 +372,7 @@
   height: auto;
   color: #ffffff;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
 }
@@ -385,7 +385,7 @@
   width: 100%;
   height: auto;
   color: #c7c7c7;
-  text-transform: uppercase;
+  
 }
 
 .contacto {
@@ -419,9 +419,9 @@
   padding: 10px 30px;
   width: calc(50% - 10px);
   font-size: 15px;
-  letter-spacing: 1px;
+  
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .inner-cancelar {
@@ -429,7 +429,7 @@
   font-weight: 500;
   font-size: 12px;
   text-align: center;
-  text-transform: uppercase;
+  
 }
 
 .crear {
@@ -445,15 +445,15 @@
   color: #fff;
   font-weight: 500;
   font-size: 15px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .text-origen {
   color: #fff;
-  text-transform: uppercase;
+  
 }
 
 /* .elegir-origen {
@@ -578,10 +578,10 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 .cancelarpop {
   display: flex;
@@ -600,10 +600,10 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 1px;
+  
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  
 }
 
 .popup2 {
@@ -707,7 +707,7 @@
 .contactName {
   color: #fff;
   font-weight: 300;
-  text-transform: uppercase;
+  
 }
 
 /* popup*/

@@ -12,7 +12,7 @@ import BildContext from '../context';
 //   subsets: ['latin'],
 // });
 const inter = Inter({
-  weight: ['300', '700', '900'],
+  weight: ['300', '500', '900'],
   style: ['normal'],
   subsets: ['latin'],
 });

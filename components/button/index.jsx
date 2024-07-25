@@ -17,7 +17,7 @@ const Button = ({
       {link && (
         <Link
           href={link}
-          className={`${styles[buttonType]} ${styles.siteButton} ${
+          className={`${buttonType} ${styles.siteButton} ${
             styles[classNameInherit]
           } ${inheritClass ?? ''}`}>
           {iconImage ? (

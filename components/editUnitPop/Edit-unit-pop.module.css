@@ -266,7 +266,7 @@
   color: #fff;
   font-style: normal;
   font-weight: 700;
-  text-transform: uppercase;
+  
   margin-bottom: 20px;
 }
 
@@ -466,7 +466,7 @@
 .images {
   height: auto;
   text-align: left;
-  text-transform: uppercase;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -706,7 +706,7 @@
   }
 
   span.label {
-    text-transform: uppercase;
+    
     margin: 40px 0 20px;
     font-size: 15px;
     font-style: normal;

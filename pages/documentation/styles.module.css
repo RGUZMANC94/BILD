@@ -112,7 +112,7 @@
   font-weight: 700;
   text-align: center;
   color: #fff;
-  text-transform: uppercase;
+  
 }
 
 .doc-wrap {
@@ -161,7 +161,7 @@ button.upload-file {
   font-size: 14px;
   padding: 10px 20px;
   color: #fff;
-  text-transform: uppercase;
+  
   text-align: center;
   border: 1px solid #2467ff;
   border-radius: 5px;
@@ -283,8 +283,8 @@ button.upload-file {
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  
+  
   margin-top: 30px;
   padding: 10px 30px;
   text-align: center;
@@ -306,10 +306,10 @@ button.upload-file {
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
+  
   border-radius: 10px;
   border: 1px solid #2467ff;
-  text-transform: uppercase;
+  
   margin-top: 30px;
   padding: 10px 30px;
   text-align: center;
@@ -335,7 +335,7 @@ button.upload-file {
   position: fixed;
   top: 70px;
   z-index: 3;
-  text-transform: uppercase;
+  
 }
 
 .top-content .icon {
@@ -372,7 +372,7 @@ button.upload-file {
 }
 
 .text-origen {
-  text-transform: uppercase;
+  
   font-size: 16px;
   color: #fff;
 }
@@ -386,7 +386,7 @@ button.upload-file {
   border-radius: 5px;
   color: #ffffff;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-decoration: none;
   text-align: center;
   cursor: pointer;
@@ -401,7 +401,7 @@ button.upload-file {
   border-radius: 5px;
   color: #ffffff;
   font-size: 14px;
-  letter-spacing: 1px;
+  
   text-decoration: none;
   text-align: center;
   cursor: pointer;
