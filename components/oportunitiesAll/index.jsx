@@ -66,7 +66,7 @@ const OportunitiesAll = ({
   }, [oppList]);
 
   useEffect(() => {
-    if(hardRefreshFlag) {
+    if (hardRefreshFlag) {
       setSelectedItem(-1);
       dispatch(changeOpportunitySelected(-1));
       setOppIsSelected(false);
@@ -167,7 +167,6 @@ const OportunitiesAll = ({
   };
 
   function ClientById(array, clientId) {
-    
     return array.find((elem) => elem.idCli === clientId);
   }
 
@@ -298,7 +297,7 @@ const OportunitiesAll = ({
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        {(selectedItem !== -1 && !isMobile && !hardRefreshFlag) && (
+        {selectedItem !== -1 && !isMobile && !hardRefreshFlag && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
             oppSelectedObject={oppSelectedObject}

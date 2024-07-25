@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import styles from './ProfileAdmin.module.css';
 import { useRouter } from 'next/router';
 
-
 const ProfileOptions = () => {
   const router = useRouter();
 
@@ -16,7 +15,7 @@ const ProfileOptions = () => {
       if (response.ok) {
         const result = await response.json();
         console.log(result.message); // "Cookie deleted"
-        
+
         // Redireccionar a la página de login u otra página
         router.push('/login');
       } else {
