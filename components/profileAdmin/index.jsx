@@ -1,8 +1,32 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import styles from './ProfileAdmin.module.css';
+import { useRouter } from 'next/router';
+
 
 const ProfileOptions = () => {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/logOut', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result.message); // "Cookie deleted"
+        
+        // Redireccionar a la página de login u otra página
+        router.push('/login');
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('An error occurred while logging out:', error);
+    }
+  };
+
   return (
     <>
       <div className={`${styles.optionsProfileAdmin} flex j-c a-c`}>
@@ -35,7 +59,7 @@ const ProfileOptions = () => {
           </div>
         </Link>
 
-        <Link href="/profile/login" className={styles.btn}>
+        <button onClick={handleLogout} className={styles.btn}>
           <div className={styles.perfil}>
             <img
               src="/images/close-white.svg"
@@ -43,7 +67,7 @@ const ProfileOptions = () => {
             />
             <div className={styles['btn-text']}>Cerrar Sesión</div>
           </div>
-        </Link>
+        </button>
       </div>
     </>
   );
