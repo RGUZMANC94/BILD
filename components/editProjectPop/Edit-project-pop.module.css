@@ -91,7 +91,6 @@
 .topContentSubTitle {
   width: 100%;
   text-align: start;
-  color: #fff;
   font-size: 14px;
   font-weight: 400;
 }
@@ -159,11 +158,9 @@
 }
 
 .labelInputTitle {
-  color: #fff;
   width: 50%;
   font-size: 15px;
   font-style: normal;
-  font-weight: 400;
   line-height: 2.13;
   text-align: left;
 }

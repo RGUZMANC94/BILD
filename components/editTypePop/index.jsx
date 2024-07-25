@@ -256,8 +256,9 @@ const EditTypePop = ({
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowEditType(false)}></div>
-        <div className={`${styles.wrapperTypePopUp}`}>
-          <div className={`${styles.topContent}`}>
+      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+
+          <div className={`${styles.topContent} header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 {projectSelected.projectName}
@@ -414,7 +415,7 @@ const EditTypePop = ({
           </label>
           */}
           </form>
-          <div className={`${styles.BottomContent}`}>
+          <div className={`${styles.BottomContent} footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

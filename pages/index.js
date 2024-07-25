@@ -19,11 +19,12 @@ import BildContext from '../components/context';
 const Home = () => {
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
-  console.log(initialState);
   const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userState);
   const userInfoEmpty = Object.values(userInfo).some((x) => x === '');
+
+  const {isDark} = useContext(BildContext);
 
   const { projectsList, filteredList, isFiltered } = useSelector(
     (state) => state.projectState
@@ -164,10 +165,10 @@ const Home = () => {
 
                         <div className={styles.detalles}>
                           {project.minBed !== 0 && project.maxBed !== 0 && (
-                            <span className={styles.detailsGroup}>
+                            <span className={`font-bold ${styles.detailsGroup}`}>
                               <Image
                                 alt=""
-                                src="/images/cards/bed.png"
+                                src={isDark ? '/images/cards/bed.png' : '/images/light/bed.png'}
                                 width="15"
                                 height="15"
                               />
@@ -175,10 +176,10 @@ const Home = () => {
                             </span>
                           )}
                           {project.minBath !== 0 && project.maxBath !== 0 && (
-                            <span className={styles.detailsGroup}>
+                            <span className={`font-bold ${styles.detailsGroup}`}>
                               <Image
                                 alt=""
-                                src="/images/cards/bath.png"
+                                src={isDark ? '/images/cards/bath.png' : '/images/light/bath.png'}
                                 width="15"
                                 height="15"
                               />

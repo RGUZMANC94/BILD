@@ -615,7 +615,7 @@ const AddProjectPop = ({
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Imágen del Proyecto:</span>
-              <div className={styles['main-image']}>
+              <div className={`${styles['main-image']} ${isDark ? 'bg-[url(/images/photo-icon.png)]' : 'bg-[url(/images/photo-icon.png)]'} `}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
@@ -677,7 +677,7 @@ const AddProjectPop = ({
             </div>
           </form>
           <div
-            className={`${styles.BottomContent} footer-popup`}>
+            className={`${styles.BottomContent} footer-popup footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

@@ -56,7 +56,11 @@ const Unit = ({ unit, setCreateOportunity, setShowEditUnit }) => {
         />
       </div>
       <div
-        className={unit.status === 'R' ? 'llave-tabla-desabled' : 'llave-tabla'}
+        className={
+          unit.status === 'R'
+            ? 'llave-tabla-desabled'
+            : 'llave-tabla hover:bg-[url(/images/light/key-full.png)] dark:hover:bg-[url(/images/key-dark.svg)]'
+        }
         onClick={() => handleDispatch()}></div>
     </div>
   );

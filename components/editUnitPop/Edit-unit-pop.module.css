@@ -34,8 +34,6 @@
   position: relative;
   width: 30%;
   height: 100%;
-  background-color: #343434;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   z-index: 11;
   transform: translateX(100%);
   transition: all 0.35s linear;
@@ -83,7 +81,6 @@
 .topContentTitle {
   width: 100%;
   text-align: start;
-  color: #fff;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
@@ -92,7 +89,6 @@
 .topContentSubTitle {
   width: 100%;
   text-align: start;
-  color: #fff;
   font-size: 14px;
   font-weight: 400;
 }
@@ -149,7 +145,6 @@
 }
 
 .labelText {
-  color: #fff;
   width: 100%;
   font-size: 15px;
   font-style: normal;
@@ -160,11 +155,9 @@
 }
 
 .labelInputTitle {
-  color: #fff;
   width: 50%;
   font-size: 15px;
   font-style: normal;
-  font-weight: 400;
   line-height: 2.13;
   text-align: left;
 }
@@ -555,7 +548,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  border: 1px dashed #fff;
+  border: 1px dashed;
 }
 
 .deleteIcon {

@@ -212,7 +212,8 @@ const AddTypePop = ({
         <div
           className={`${styles.bgTypePopUp}`}
           onClick={() => setShowPopUpType(false)}></div>
-        <div className={`${styles.wrapperTypePopUp}`}>
+      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
@@ -370,7 +371,7 @@ const AddTypePop = ({
             </label>
             */}
           </form>
-          <div className={`${styles.BottomContent}`}>
+          <div className={`${styles.BottomContent} footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

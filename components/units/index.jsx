@@ -142,7 +142,7 @@ const Units = ({
             </a>
           </label>
         </div> */}
-        <div className="caracteristicas-top">
+        <div className="caracteristicas-top bg-light-2 dark:bg-dark-3 shadow-md">
           <div className="top-tabla">ID</div>
           <div className="top-tabla">Alcobas</div>
           <div className="top-tabla">Baños</div>

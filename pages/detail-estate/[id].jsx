@@ -306,7 +306,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
   return (
     <>
-      <div className="top-content shadow-md shadow-dark-4/10">
+      <div className="top-content shadow-md shadow-dark-4/10 dark:bg-dark-3">
         {conectContact && (
           <li className="selectFilterFlex j-s a-c">
             <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}
@@ -380,7 +380,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
         </div>
       </div>
 
-      <section className="main">
+      <section className="main pt-[0px] h-screen">
         <div className={'top-buttons-container-movil'}>
           <a
             className={'top-donwload'}

@@ -5,7 +5,7 @@
   font-size: 16px;
   border-radius: 3px;
   border: 1px solid #fff;
-  color: #fff;
+  /* color: #fff; */
   background-color: transparent;
   transition: all 0.25s ease-in-out;
 }

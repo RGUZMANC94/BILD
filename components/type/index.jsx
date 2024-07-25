@@ -23,7 +23,7 @@ const TypeCard = ({
   setShowEditUnit,
   index,
 }) => {
-  const { initialState } = useContext(BildContext);
+  const { initialState, isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id, rol: user_rol } = user;
   const dispatch = useDispatch();
@@ -90,10 +90,10 @@ const TypeCard = ({
             ).toLocaleString('es-ES')} `}
           </span>
           <div className="detalles">
-            <div className="detailsGroup">
+            <div className="detailsGroup font-bold">
               <Image
                 alt=""
-                src="/images/cards/bed.png"
+                src={isDark ? '/images/cards/bed.png' : '/images/light/bed.png'}
                 width="15"
                 height="15"
               />
@@ -101,10 +101,10 @@ const TypeCard = ({
                 {type.minBed}-{type.maxBed}
               </span>
             </div>
-            <div className="detailsGroup">
+            <div className="detailsGroup font-bold">
               <Image
                 alt=""
-                src="/images/cards/bath.png"
+                src={isDark ? '/images/cards/bath.png' : '/images/light/bath.png'}
                 width="15"
                 height="15"
               />

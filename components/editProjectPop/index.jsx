@@ -667,7 +667,7 @@ const EditProjectPop = ({
               }
             </div>
           </form>
-          <div className={`${styles.BottomContent} footer-popup`}>
+          <div className={`${styles.BottomContent} footer-popup footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

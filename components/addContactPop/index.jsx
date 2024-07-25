@@ -365,7 +365,8 @@ const AddContactPop = ({
             cleanForm();
           }}></div>
 
-        <div className={`${styles.wrapperTypePopUp}`}>
+      <div className={`${styles.wrapperTypePopUp} bg-popup`}>
+
           <div className={`${styles.topContent}`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
@@ -558,7 +559,7 @@ const AddContactPop = ({
               </div>
             </div>
           </form>
-          <div className={`${styles.BottomContent}`}>
+          <div className={`${styles.BottomContent} footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}
