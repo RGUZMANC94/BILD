@@ -125,6 +125,7 @@
   height: 10px;
   position: relative;
    border-radius: 10px;
+   background-color: #efefef;
 }
 
 .innerProgressBar {

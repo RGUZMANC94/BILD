@@ -192,7 +192,7 @@ const PropertyConnected = ({ setIsCreated }) => {
           <div className={styles['elegir-origen']}>
             <select
               placeholder="Subject line"
-              className={`${styles.subject_input}  bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)]`}
+              className={`${styles.subject_input} border-solid border border-dark-3 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)]`}
               name="originTemp"
               value={originTemp}
               onChange={handleTemp}
@@ -211,7 +211,7 @@ const PropertyConnected = ({ setIsCreated }) => {
                 name="comments"
                 value={datos.comments}
                 placeholder=""
-                className={styles.message_input}></textarea>
+                className={`${styles.message_input} border-solid border border-dark-3`}></textarea>
             </div>
             <div className={styles.boton}>
               <button type="submit" className={styles['contacto-existente']}>

@@ -139,7 +139,7 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  border: 1px solid;
+  
   padding: 0 10px;
   background-color: transparent;
   margin-bottom: 20px;
@@ -201,7 +201,7 @@
 
 .message_input {
   padding: 15px;
-  border: 1px solid;
+  
   border-radius: 5px;
   margin-bottom: 10px;
   width: 100%;

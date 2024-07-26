@@ -65,9 +65,9 @@ const AddContact = ({
         </div>
 
         <div className={styles['agregar-wrapper']}>
-          <div className={styles['search-wrapper']}>
+          <div className={`${styles['search-wrapper']} border-input`}>
             <input
-              className={styles['search-input']}
+              className={`${styles['search-input']} `}
               type="text"
               placeholder="Buscar Nombre"
               value={searchTerm}

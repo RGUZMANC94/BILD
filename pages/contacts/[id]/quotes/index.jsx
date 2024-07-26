@@ -20,7 +20,7 @@ export const getServerSideProps = async ({
 };
 
 const Quotes = ({ queryId }) => {
-  const { initialState } = useContext(BildContext);
+  const { initialState, isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
   const { id: idClient } = queryId;
@@ -214,15 +214,13 @@ const Quotes = ({ queryId }) => {
 
   return (
     <>
-      <div className={styles['top-content']}>
+      <div className={`${styles['top-content']} bg-sub-header`}>
         <div className="container flex j-s a-c">
           <Link
             href={`/contacts/${idClient}`}
-            className={`bg-ct ${styles.icon}`}></Link>
+            className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
           <div
-            className={
-              styles.title
-            }>{`Cotizaciones de ${contactInfo[0].firstNames} ${contactInfo[0].lastNames}`}</div>
+            className={`${styles.title} font-black`}>{`Cotizaciones de ${contactInfo[0].firstNames} ${contactInfo[0].lastNames}`}</div>
           <div className={styles['title-movil']}>Cotizaciones</div>
         </div>
       </div>
@@ -235,16 +233,19 @@ const Quotes = ({ queryId }) => {
           />
         </div>
         <div className={styles['top-cotizaciones']}>
-          <div className={styles.nombre}>Nombre</div>
-          <div className={styles.fecha}>Fecha de modificación</div>
-          <div className={styles['tamaño']}>Tamaño</div>
+          <div className={`font-black ${styles.nombre}`}>Nombre</div>
+          <div className={`font-black ${styles.fecha}`}>
+            Fecha de modificación
+          </div>
+          <div className={`font-black ${styles['tamaño']}`}>Tamaño</div>
         </div>
         <div className={styles['listas-cotizaciones']}>
           <div className={styles['nombre-lista']}>
             {seleccion &&
               seleccion.map((project, i) => (
                 <details className={styles.accordion} key={i}>
-                  <summary className={styles['accordion-btn']}>
+                  <summary
+                    className={`${styles['accordion-btn']} dark:after:bg-[url(/images/arrow-tipo-down.svg)] after:bg-[url(/images/arrow_select.png)]  bg-light-2 shadow-md dark:bg-dark-2`}>
                     {`${project.projectName}`}
                   </summary>
                   <div className={styles['accordion-content']}>
@@ -263,7 +264,13 @@ const Quotes = ({ queryId }) => {
                             />
                           </div>
 
-                          <img src="/images/pdf-icon-white.svg" />
+                          <img
+                            src={
+                              isDark
+                                ? '/images/pdf-icon-white.svg'
+                                : '/images/pdf.png'
+                            }
+                          />
                           <span
                             className={styles.nameQuote}
                             onClick={() => {
@@ -297,14 +304,26 @@ const Quotes = ({ queryId }) => {
                                   ? setPdfURL(payment.pdf[0].url)
                                   : setPdfURL(null);
                               }}>
-                              <img src="/images/upload-documentation-white.svg" />
+                              <img
+                                src={
+                                  isDark
+                                    ? '/images/upload-documentation-white.svg'
+                                    : '/images/upload.png'
+                                }
+                              />
                             </div>
                           </div>
                           <div className={styles.delete}>
                             <div
                               className={styles.deleteContainer}
                               onClick={() => deleteQuote(payment.idPortfolio)}>
-                              <img src="/images/delete-quote-white.svg" />
+                              <img
+                                src={
+                                  isDark
+                                    ? '/images/delete-quote-white.svg'
+                                    : '/images/delete.png'
+                                }
+                              />
                             </div>
                           </div>
                         </div>
@@ -335,7 +354,7 @@ const Quotes = ({ queryId }) => {
       </div>
 
       {fileIndex.length > 0 && (
-        <div className={styles.submenu}>
+        <div className={`bg-sub-header ${styles.submenu}`}>
           <div className={styles.submenuInner}>
             <div
               className={styles['sub-close']}

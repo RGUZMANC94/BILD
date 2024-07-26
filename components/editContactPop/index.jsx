@@ -22,7 +22,7 @@ const EditContactPop = ({
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [infoContact, setInfoContact] = useState(null);
-  const { initialState } = useContext(BildContext);
+  const { initialState, isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
 
@@ -396,7 +396,7 @@ const EditContactPop = ({
                 placeholder="Nombre"
                 value={datos.firstNames}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -408,7 +408,7 @@ const EditContactPop = ({
                 placeholder="Apellidos"
                 value={datos.lastNames}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -420,7 +420,7 @@ const EditContactPop = ({
                 placeholder="Número de Documento"
                 value={datos.documentNumber}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -432,7 +432,7 @@ const EditContactPop = ({
                 placeholder="Email"
                 value={datos.email}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -444,14 +444,14 @@ const EditContactPop = ({
                 placeholder="Celular"
                 value={datos.phoneNumber}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Subir foto:</span>
-              <div className={styles['main-image']}>
+              <div className={`${styles['main-image']} ${isDark ? 'bg-url(/images/photo-icon.png)':'bg-[url(/images/light/photos.png)]'}`}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
@@ -463,7 +463,7 @@ const EditContactPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={` ${styles.inputTypeForm}`}
+                    className={`border-input ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />
@@ -484,32 +484,32 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('C')}
-                  className={`${styles.campo} ${
-                    datos.contactProfile.civilStatus === 'C' && styles.active
+                  className={`${styles.campo} hover:text-light-1 ${
+                    datos.contactProfile.civilStatus === 'C' && `${styles.active} text-light-1`
                   }`}>
                   Casado
                 </button>
                 <button
                   type="button"
                   onClick={() => changeTypeClient('S')}
-                  className={`${styles.campo} ${
-                    datos.contactProfile.civilStatus === 'S' && styles.active
+                  className={`${styles.campo} hover:text-light-1 ${
+                    datos.contactProfile.civilStatus === 'S' && `${styles.active} text-light-1`
                   }`}>
                   Soltero
                 </button>
                 <button
                   type="button"
                   onClick={() => changeTypeClient('UN')}
-                  className={`${styles.campo} ${
-                    datos.contactProfile.civilStatus === 'UN' && styles.active
+                  className={`${styles.campo} hover:text-light-1 ${
+                    datos.contactProfile.civilStatus === 'UN' && `${styles.active} text-light-1`
                   }`}>
                   Unión Libre
                 </button>
                 <button
                   type="button"
                   onClick={() => changeTypeClient('DI')}
-                  className={`${styles.campo} ${
-                    datos.contactProfile.civilStatus === 'DI' && styles.active
+                  className={`${styles.campo} hover:text-light-1 ${
+                    datos.contactProfile.civilStatus === 'DI' && `${styles.active} text-light-1`
                   }`}>
                   Divorciado
                 </button>
@@ -521,16 +521,16 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeAmountChildren('0')}
-                  className={`${styles.campo} ${
-                    datos.contactProfile.amountChildren === '0' && styles.active
+                  className={`${styles.campo} hover:text-light-1 ${
+                    datos.contactProfile.amountChildren === '0' && `${styles.active} text-light-1`
                   }`}>
                   Sin Hijos
                 </button>
                 <button
                   type="button"
                   onClick={() => changeAmountChildren('1')}
-                  className={`${styles.campo} ${
-                    datos.contactProfile.amountChildren === '1' && styles.active
+                  className={`${styles.campo} hover:text-light-1 ${
+                    datos.contactProfile.amountChildren === '1' && `${styles.active} text-light-1`
                   }`}>
                   Con Hijos
                 </button>
@@ -542,18 +542,18 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changebusinessName('I')}
-                  className={`${styles.campo} ${
+                  className={`${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.housingInversion === 'I' &&
-                    styles.active
+                    `${styles.active} text-light-1`
                   }`}>
                   Inversionista
                 </button>
                 <button
                   type="button"
                   onClick={() => changebusinessName('V')}
-                  className={`${styles.campo} ${
+                  className={`${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.housingInversion === 'V' &&
-                    styles.active
+                    `${styles.active} text-light-1`
                   }`}>
                   Familiar
                 </button>

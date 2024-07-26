@@ -100,7 +100,7 @@
 
 .msform input,
 .msform textarea {
-  border: 1px solid;
+  
   border-radius: 5px;
   margin-bottom: 20px;
   width: 100%;
@@ -148,7 +148,7 @@
   font-weight: 500;
 
   border-radius: 10px;
-  border: 1px solid;
+  
 
   padding: 10px 30px;
   text-align: center;
@@ -189,7 +189,6 @@
   width: auto;
   padding: 0px 10px;
   height: 35px;
-  border: 1px solid;
   border-radius: 5px;
   font-size: 14px;
   font-weight: 400;
@@ -200,17 +199,18 @@
   background-color: transparent;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
+  font-weight: 900;
 }
 
 .campo:hover {
   background-color: #2467ff;
-  
+  color:  #fff;
   border: 1px solid #2467ff;
 }
 
 .campo.active {
   background-color: #2467ff;
-  
+  color:  #fff;
   border: 1px solid #2467ff;
 }
 

@@ -506,7 +506,7 @@ const AddProjectPop = ({
                 type="text"
                 name="projectName"
                 value={datos.projectName}
-                className={` ${styles.inputTypeForm}`}
+                className={`${styles.inputTypeForm} border-input`}
                 onChange={handleChange}
                 required
               />
@@ -520,7 +520,7 @@ const AddProjectPop = ({
                 name="neighborhoodId"
                 value={datos.neighborhoodId}
                 onChange={handleChange}
-                className={`${styles.inputTypeForm} ${styles.labelSelect} `}
+                className={`${styles.inputTypeForm} border-input ${styles.labelSelect} `}
                 required>
                 <option disabled defaultValue={0} hidden selected></option>
                 {cities &&
@@ -542,7 +542,7 @@ const AddProjectPop = ({
                 name="location"
                 value={datos.location}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={` ${styles.inputTypeForm} border-input`}
                 required
               />
             </div>
@@ -554,7 +554,7 @@ const AddProjectPop = ({
                 name="projectType"
                 value={datos.projectType}
                 onChange={handleChange}
-                className={`${styles.inputTypeForm} ${styles.labelSelect} `}
+                className={`${styles.inputTypeForm} border-input ${styles.labelSelect} `}
                 required>
                 <option disabled defaultValue={0} hidden selected></option>
                 <option value="C">Casa</option>
@@ -571,7 +571,7 @@ const AddProjectPop = ({
                 type="text"
                 name="minPercentage"
                 value={datos.minPercentage}
-                className={` ${styles.inputTypeForm}`}
+                className={` ${styles.inputTypeForm} border-input`}
                 onChange={handleMinQuoteChange}
                 required
               />
@@ -586,7 +586,7 @@ const AddProjectPop = ({
                 value={endDate}
                 required
                 onChange={handleEndDateChange}
-                className={`${styles.inputTypeForm} ${styles.inputDate}`}
+                className={`${styles.inputTypeForm} border-input ${styles.inputDate}`}
               />
             </div>
 
@@ -606,7 +606,7 @@ const AddProjectPop = ({
               <textarea
                 name="message"
                 placeholder=""
-                className={styles.descriptionTypeForm}
+                className={`${styles.descriptionTypeForm} border-input`}
                 // required
                 ref={inputProjectDescription}></textarea>
             </div>
@@ -617,7 +617,7 @@ const AddProjectPop = ({
                 className={`${styles['main-image']} ${
                   isDark
                     ? 'bg-[url(/images/photo-icon.png)]'
-                    : 'bg-[url(/images/photo-icon.png)]'
+                    : 'bg-[url(/images/light/photos.png)]'
                 } `}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
@@ -630,7 +630,7 @@ const AddProjectPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={` ${styles.inputTypeForm}`}
+                    className={` ${styles.inputTypeForm} border-input`}
                     accept="image/*"
                     name="mainImage"
                   />
@@ -665,7 +665,7 @@ const AddProjectPop = ({
                     hidden
                     ref={inputXlsx}
                     onChange={handleXlsxClick}
-                    className={` ${styles.inputTypeForm}`}
+                    className={` ${styles.inputTypeForm} border-input`}
                     accept=".xlsx, .xls, .csv"
                     name="excel"
                   />

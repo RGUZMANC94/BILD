@@ -154,7 +154,7 @@
 
 .checkboxMask {
   margin-right: 10px;
-  border: 1px solid;
+  
   width: 25px;
   height: 25px;
 }
@@ -192,7 +192,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid;
+  
   border-radius: 5px;
   padding: 10px 0;
   width: 50px;
@@ -204,7 +204,7 @@
 .proyect-form input,
 .subject_input {
   appearance: none;
-  border: 1px solid;
+  
   border-radius: 5px;
   background-color: unset;
   padding: 10px 10px;
@@ -296,7 +296,7 @@
 
 .inputQuote {
   box-sizing: border-box;
-  border: 1px solid;
+  
   border-radius: 5px;
   background-color: unset;
   width: 60%;

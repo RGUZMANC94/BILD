@@ -310,13 +310,10 @@ i.fa-solid.fa-plus {
 button.contacto-existente {
   width: 70%;
   height: 50px;
-  
   font-size: 12px;
   font-weight: 500;
-
   border-radius: 10px;
   border: 1px solid #2467ff;
-
   margin-top: 30px;
   padding: 10px 30px;
   text-align: center;
@@ -325,6 +322,8 @@ button.contacto-existente {
    display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 900;
+  color: #fff;
 }
 
 i.fa-solid.fa-user {

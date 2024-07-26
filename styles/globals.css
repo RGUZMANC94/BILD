@@ -36,15 +36,19 @@
   }
 
   .secondary {
-    @apply bg-light-3 text-light-1 border-[1px] border-solid border-light-1 dark:bg-light-4/35 font-black;
+    @apply bg-light-3 text-light-1 border-[1px] dark:border-solid dark:border-light-1 dark:bg-light-4/35 font-black;
   }
 
-  .divisorPopup{
+  .divisorPopup {
     @apply font-extrabold bg-light-2 shadow-md dark:bg-dark-3;
   }
 
-  .bg-backg-popup{
+  .bg-backg-popup {
     @apply backdrop-blur-lg bg-light-1/70 dark:bg-dark-1/40;
+  }
+
+  .border-input {
+    @apply border border-solid border-light-3;
   }
 }
 
@@ -187,7 +191,7 @@
 
 .itemTopContent.active .buttonTopDetailState {
   border-bottom: 3px solid #2467ff;
-  
+
   font-weight: 700;
 }
 
@@ -279,12 +283,11 @@ li {
 .selectFilterProject {
   appearance: none;
   margin-left: 30px;
-  border: 1px solid;
+  
   border-radius: 5px;
   background-color: rgba(33, 34, 29, 0.3);
   padding: 10px 20px;
   padding-right: 50px;
-  
 }
 
 .selectFilterFlex {
@@ -349,7 +352,6 @@ li {
 }
 
 .add-unit-movil span {
-  
   font-weight: 700;
   font-size: 12px;
   line-height: 1.38;
@@ -415,13 +417,18 @@ li {
 
 .img-tipo-glass {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 10px;
+  border-radius: 10px;
+  right: 10px;
   z-index: 2;
-  background-image: url(/images/tipo-glass-pink.svg);
+  background-image: url(/images/light/search.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
   width: 37px;
   height: 37px;
   cursor: pointer;
+  background-color: #333333;
 }
 
 .tipo-info {
@@ -530,12 +537,12 @@ li {
   justify-content: center;
   align-items: center;
   float: right;
-  border: 1px solid;
+  
   border-radius: 5px;
   background-color: transparent;
   padding: 10px 20px;
   height: 45px;
-  
+
   font-size: 15px;
   font-size: 16px;
   line-height: 45px;
@@ -667,7 +674,6 @@ li {
   right: 0;
   cursor: not-allowed;
   margin-top: -16px;
-  background-image: url(/images/key-dark.svg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -687,7 +693,7 @@ button.agregar {
   padding: 10px 30px;
   width: 40%;
   height: 50px;
-  
+
   font-weight: 500;
   font-size: 16px;
 
@@ -975,9 +981,9 @@ li {
   cursor: pointer;
 }
 
-/* .top-donwload {
-  border: 1px solid;
-} */
+.top-donwload {
+ border: none; 
+}
 
 .top-upload {
   background-color: #2467ff;
@@ -1024,7 +1030,6 @@ li.active button {
 .contact {
   gap: 10px;
   width: 30%;
-  
 }
 
 .user-data {
@@ -1033,7 +1038,7 @@ li.active button {
   justify-content: center;
   align-items: center;
   width: 20%;
-  
+
   text-align: center;
 }
 
@@ -1044,7 +1049,7 @@ li.active button {
   justify-content: center;
   align-items: center;
   width: 20%;
-  
+
   text-align: center;
 }
 
@@ -1087,7 +1092,7 @@ li.active button {
   padding-bottom: 35px;
   width: 100%;
   height: auto;
-  
+
   font-weight: 500;
   font-weight: 700;
   font-size: 18px;
@@ -1114,13 +1119,11 @@ li.active button {
 .react-datepicker__header.react-datepicker__header {
   border: none;
   background-color: #1c1c1c;
-  
 }
 .react-datepicker__current-month.react-datepicker__current-month,
 .react-datepicker-time__header.react-datepicker-time__header,
 .react-datepicker-year-header.react-datepicker-year-header {
   margin: 0px 0 20px;
-  
 }
 
 .react-datepicker.react-datepicker {
@@ -1145,7 +1148,6 @@ li.active button {
   border-radius: 15px 15px 0 0;
   padding: 2.5px 0;
   width: 35px;
-  
 }
 .react-datepicker__month.react-datepicker__month,
 .react-datepicker__month-container.react-datepicker__month-container {
@@ -1212,7 +1214,7 @@ li.active button {
 }
 
 .tipo-arrow {
-  background-image: url(/images/oportunities-card-right-arrow.svg);
+  background-image: url(/images/light/next.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1220,7 +1222,14 @@ li.active button {
   height: 20px;
 }
 
+.dark .tipo-arrow{
+  background-image: url(/images/oportunities-card-right-arrow.svg);
+}
+
 .itemDrag.active .tipo-arrow {
+  background-image: url(/images/light/back.png);
+}
+.dark .itemDrag.active .tipo-arrow {
   background-image: url(/images/oportunities-card-left-arrow.svg);
 }
 

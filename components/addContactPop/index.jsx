@@ -20,7 +20,7 @@ const AddContactPop = ({
   const [errorMessage, setErrorMessage] = useState(null);
   const mainImage = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const { initialState } = useContext(BildContext);
+  const { initialState, isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
 
@@ -394,7 +394,7 @@ const AddContactPop = ({
                 placeholder="Nombre"
                 value={datos.firstNames}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -406,7 +406,7 @@ const AddContactPop = ({
                 placeholder="Apellidos"
                 value={datos.lastNames}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -418,7 +418,7 @@ const AddContactPop = ({
                 placeholder="Número de Documento"
                 value={datos.documentNumber}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -430,7 +430,7 @@ const AddContactPop = ({
                 placeholder="Email"
                 value={datos.email}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -442,14 +442,14 @@ const AddContactPop = ({
                 placeholder="Celular"
                 value={datos.phoneNumber}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Subir foto:</span>
-              <div className={styles['main-image']}>
+              <div className={`${styles['main-image']} ${isDark ? 'bg-url(/images/photo-icon.png)':'bg-[url(/images/light/photos.png)]'}`}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
@@ -461,7 +461,7 @@ const AddContactPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={` ${styles.inputTypeForm}`}
+                    className={`border-input ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />

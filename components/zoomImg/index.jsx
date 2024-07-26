@@ -16,8 +16,8 @@ const ZoomImg = ({ imgToZoom }) => {
   }, []);
   return (
     <div
-      className={`${styles.wrapperZoomImg} ${showPopUp ? styles.active : ''}`}>
-      <header className={`${styles.headerMainContainer}`}>
+      className={`${styles.wrapperZoomImg} bg-backg-popup ${showPopUp ? styles.active : ''}`}>
+      <header className={`${styles.headerMainContainer} `}>
         <div
           className={`${styles.closePopUp}`}
           onClick={() => {

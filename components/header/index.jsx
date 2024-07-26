@@ -24,7 +24,7 @@ const Header = () => {
               <Link href="/">
                 <img
                   src={`${
-                    isDark ? '/images/logo-white.png' : '/images/light/logo.png'
+                    isDark ? '/images/logo-white.png' : '/images/logo-azul.png'
                   }`}
                   alt="Logo BILD"
                 />

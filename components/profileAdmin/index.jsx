@@ -43,7 +43,7 @@ const ProfileOptions = () => {
               src={
                 isDark
                   ? '/images/profiles-icon.png'
-                  : '/images/profiles-icon.png'
+                  : '/images/light/people.png'
               }
             />
             <div className={styles['btn-text']}>Asesores</div>

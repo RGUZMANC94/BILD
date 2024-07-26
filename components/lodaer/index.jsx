@@ -3,7 +3,7 @@ import styles from './loader.module.css';
 
 const Loader = () => {
   return (
-    <div className={styles.wrapperLoader}>
+    <div className={`${styles.wrapperLoader} bg-light-3 dark:bg-dark-4`}>
       <div className={styles['lds-ripple']}>
         <div></div>
         <div></div>

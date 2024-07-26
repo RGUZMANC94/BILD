@@ -168,7 +168,7 @@ const Contacts = () => {
             </div>
             {sortedontacts.map((contact, i) => (
               <div
-                className={`${styles['list-name']} bg-light-2 hover:bg-light-3 dark:bg-dark-4 hover:dark:bg-dark-2`}
+                className={`${styles['list-name']} hover:bg-light-3 dark:bg-dark-4 hover:dark:bg-dark-2`}
                 key={i}>
                 <Link
                   onClick={() => {

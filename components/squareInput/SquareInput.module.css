@@ -2,7 +2,7 @@
   display: inline-block;
   width: 20px; /* Ancho deseado para el checkbox */
   height: 20px; /* Alto deseado para el checkbox */
-  border: 1px solid;
+  
   padding: 2px;
   cursor: pointer;
 }

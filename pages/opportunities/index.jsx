@@ -126,7 +126,7 @@ const OportunitiesAllFilter = ({ user }) => {
 
   return (
     <>
-      <div className={`${styles['top-content-buttonsBar']} bg-sub-header`}>
+      <div className={`${styles['top-content-buttonsBar']} font-black bg-sub-header`}>
         <div className="container flex j-s a-c">
           <div className={styles['top-buttons-container']}>
             <div className={styles['top-content-container']}>

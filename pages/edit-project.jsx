@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import styles from '../styles/Edit-project.module.css';
 import { useDispatch } from 'react-redux';
 import { addNewProject } from '../redux/projectSlice';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import BildContext from '../components/context';
 
 const EditProject = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const EditProject = () => {
   const inputProjectStage = useRef(null);
   const inputProjectDescription = useRef(null);
   const { projectEdit } = useSelector((state) => state.editObjectState);
-
+  const { isDark } = useContext(BildContext);
   const [xlsxFileName, setXlsxFileName] = useState(null);
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [cities, setCities] = useState(null);
@@ -449,7 +450,12 @@ const EditProject = () => {
           <div className={styles['proyect-left']}>
             <div className={styles['image-movil']}>
               <span className={styles.label}>Imagen del Proyecto:</span>
-              <div className={styles['main-image']}></div>
+              <div
+                className={`${styles['main-image']} ${
+                  isDark
+                    ? 'bg-url(/images/photo-icon.png)'
+                    : 'bg-[url(/images/light/photos.png)]'
+                }`}></div>
             </div>
             <div className={styles['proyect-form']}>
               <fieldset>
@@ -548,7 +554,12 @@ const EditProject = () => {
           <div className={styles['proyect-right']}>
             <div className={styles.image}>
               <span className={styles.label}>Imagen del Proyecto:</span>
-              <div className={styles['main-image']}>
+              <div
+                className={`${styles['main-image']} ${
+                  isDark
+                    ? 'bg-url(/images/photo-icon.png)'
+                    : 'bg-[url(/images/light/photos.png)]'
+                }`}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>

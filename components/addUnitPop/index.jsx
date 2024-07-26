@@ -283,7 +283,7 @@ const AddUnitPop = ({
                   type="text"
                   name="nuimb"
                   value={datos.nuimb}
-                  className={` ${styles.inputTypeForm}`}
+                  className={`border-input ${styles.inputTypeForm}`}
                   onChange={handleChange}
                   required
                 />
@@ -295,7 +295,7 @@ const AddUnitPop = ({
                   Precio:
                 </span>
                 <CurrencyInput
-                  className={` ${styles.inputTypeForm}`}
+                  className={`border-input ${styles.inputTypeForm}`}
                   prefix="$ "
                   decimalSeparator=","
                   groupSeparator="."
@@ -331,7 +331,7 @@ const AddUnitPop = ({
                       type="text"
                       name="bedrooms"
                       value={datos.bedrooms}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                     />
                   </label>
@@ -345,7 +345,7 @@ const AddUnitPop = ({
                       type="text"
                       name="baths"
                       value={datos.baths}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                     />
                   </label>
@@ -366,7 +366,7 @@ const AddUnitPop = ({
                       type="text"
                       name="builtArea"
                       value={datos.builtArea}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                     />
                   </label>
@@ -380,7 +380,7 @@ const AddUnitPop = ({
                       type="text"
                       name="privateArea"
                       value={datos.privateArea}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                     />
                   </label>
@@ -394,7 +394,7 @@ const AddUnitPop = ({
                       type="text"
                       name="terraceArea"
                       value={datos.terraceArea}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                       required
                     />
@@ -409,7 +409,7 @@ const AddUnitPop = ({
                       type="text"
                       name="balconyArea"
                       value={datos.balconyArea}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                     />
                   </label>
@@ -423,7 +423,7 @@ const AddUnitPop = ({
                       type="text"
                       name="storageArea"
                       value={datos.storageArea}
-                      className={` ${styles.inputTypeForm}`}
+                      className={`border-input ${styles.inputTypeForm}`}
                       onChange={handleChange}
                     />
                   </label>
@@ -439,7 +439,7 @@ const AddUnitPop = ({
                         type="text"
                         name="parkingAmount"
                         value={datos.parkingAmount}
-                        className={` ${styles.inputTypeForm}`}
+                        className={`border-input ${styles.inputTypeForm}`}
                         onChange={handleChange}
                         required
                       />

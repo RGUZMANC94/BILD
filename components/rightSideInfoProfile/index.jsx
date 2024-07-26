@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './RightProfile.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import BildContext from '../context';
 
 const RightSideProfile = ({ contactInfo, typeViewer }) => {
   const [clientId, setClientId] = useState('');
+  const { isDark } = useContext(BildContext);
   const router = useRouter();
   useEffect(() => {
     if (contactInfo) {
@@ -18,30 +20,63 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['opc-pendiente']}>
           <Link
             href={`/opportunities/${router.query.id}`}
-            className={styles.opcion}>
-            <img src="/images/key-white.png" />
-            <span className={`${styles.badge} ${styles.red}`}>2</span>
+            className={`bg-card ${styles.opcion}`}>
+            <img
+              className="w-12 h-12 object-contain"
+              src={isDark ? '/images/key-white.png' : '/images/light/key.png'}
+            />
+            <span className={`${styles.badge} ${styles.red} font-black`}>
+              2
+            </span>
             Oportunidades
           </Link>
           <Link
             href={`/contacts/${router.query.id}/quotes`}
-            className={styles.opcion}>
-            <img src="/images/cotizaciones-white.png" />
-            <span className={`${styles.badge} ${styles.red}`}>5</span>
+            className={`bg-card ${styles.opcion}`}>
+            <img
+              className="w-12 h-12 object-contain"
+              src={
+                isDark
+                  ? '/images/cotizaciones-white.png'
+                  : '/images/light/dashboard.png'
+              }
+            />
+            <span className={`${styles.badge} ${styles.red} font-black`}>
+              5
+            </span>
             Cotizaciones
           </Link>
           <Link
             href={`/documentation/${router.query.id}`}
-            className={styles.opcion}>
-            <img src="/images/docs-white.png" />
-            <span className={`${styles.badge} ${styles.red}`}>3</span>
+            className={`bg-card ${styles.opcion}`}>
+            <img
+              className="w-12 h-12 object-contain"
+              src={
+                isDark
+                  ? '/images/docs-white.png'
+                  : '/images/light/documentos.png'
+              }
+            />
+            <span className={`${styles.badge} ${styles.red} font-black`}>
+              3
+            </span>
             Documentación
           </Link>
           <Link
             href={`/contacts/${router.query.id}/payments`}
-            className={styles.opcion}>
-            <img src="/images/payments-white.png" />
-            <span className={`${styles.badge} ${styles.red}`}>7</span>Pagos
+            className={`bg-card ${styles.opcion}`}>
+            <img
+              className="w-12 h-12 object-contain"
+              src={
+                isDark
+                  ? '/images/payments-white.png'
+                  : '/images/light/money.png'
+              }
+            />
+            <span className={`${styles.badge} ${styles.red} font-black`}>
+              7
+            </span>
+            Pagos
           </Link>
         </div>
       )}

@@ -121,14 +121,15 @@ const Oportunities = ({ user }) => {
 
   return (
     <>
-      <div className={styles['top-content-buttonsBar']}>
+      <div className={`${styles['top-content-buttonsBar']} bg-sub-header`}>
         <div className="container flex j-s a-c">
           <div className={styles['top-buttons-container']}>
             <div className={styles['top-content-container']}>
               <Link
                 href={`/contacts/${router.query.id}`}
-                className={styles['top-content-backarrow']}></Link>
-              <div className={styles['top-content-buttons']}>
+                className={`bg-[url(/images/light/back.png)] dark:bg-[url(/images/back-oportunity-icon.svg)] ${styles['top-content-backarrow']}`}></Link>
+              <div
+                className={`font-black ${styles['top-content-buttons']}`}>
                 {`Oportunidades de ${contactInfo[0].firstNames} ${contactInfo[0].lastNames}`}{' '}
               </div>
             </div>

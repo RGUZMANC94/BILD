@@ -15,7 +15,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   return (
     <>
       {contactInfo && (
-        <div className={styles['editar-perfil']}>
+        <div className={`${styles['editar-perfil']} bg-light-2 shadow-lg dark:bg-dark-3`}>
           <div className={styles.containerEditarPerfil}>
             {user_rol === 'ADMIN' && (
               <button
@@ -36,7 +36,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                 }
               />
             </div>
-            <span className={styles['name-perfil']}>
+            <span className={`${styles['name-perfil']} font-extra`}>
               {contactInfo.name &&
                 `${contactInfo.name} ${contactInfo.lastname}`}
               {contactInfo.firstNames &&
@@ -134,28 +134,28 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                   <div className={styles['opc-pendiente']}>
                     <Link
                       href={`/opportunities/${contactInfo.contactProfile.clientId}`}
-                      className={styles.opcion}>
+                      className={`${styles.opcion} bg-card`}>
                       <img src="/images/key-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>2</span>
                       Oportunidades
                     </Link>
                     <Link
                       href={`/contacts/${contactInfo.contactProfile.clientId}/quotes`}
-                      className={styles.opcion}>
+                      className={`${styles.opcion} bg-card`}>
                       <img src="/images/cotizaciones-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>5</span>
                       Cotizaciones
                     </Link>
                     <Link
                       href={`/documentation/${contactInfo.contactProfile.clientId}`}
-                      className={styles.opcion}>
+                      className={`${styles.opcion} bg-card`}>
                       <img src="/images/docs-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>3</span>
                       Documentación
                     </Link>
                     <Link
                       href={`/contacts/${contactInfo.contactProfile.clientId}/payments`}
-                      className={styles.opcion}>
+                      className={`${styles.opcion} bg-card`}>
                       <img src="/images/payments-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>7</span>
                       Pagos

@@ -24,7 +24,7 @@ const SquareInput = ({ onChangeFunct, selectCheckboxes }) => {
         // }}
       />
       <div
-        className={`${styles.checkboxWrapper} /*
+        className={`${styles.checkboxWrapper} border-input /*
         isChecked ? styles.checkboxChecked : ''*/
       `}
         onClick={handleCheckboxChange}></div>

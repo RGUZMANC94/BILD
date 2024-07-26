@@ -99,7 +99,7 @@
 
 .filter_input {
   padding: 0 15px;
-  border: 1px solid;
+  
   border-radius: 5px;
   height: 45px;
   width: 285px;
@@ -481,7 +481,7 @@ li.pendiente-list {
   width: 25px;
   height: 25px;
   z-index: 62;
-  background-image: url(/images/back-oportunity-icon.svg);
+  /* background-image: url(/images/back-oportunity-icon.svg); */
   background-repeat: no-repeat;
   left: 35px;
   background-size: 25px 25px;

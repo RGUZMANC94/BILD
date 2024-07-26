@@ -517,7 +517,7 @@ const EditProjectPop = ({
                 type="text"
                 name="projectName"
                 value={datos.projectName}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 onChange={handleChange}
                 required
               />
@@ -531,7 +531,7 @@ const EditProjectPop = ({
                 name="neighborhoodId"
                 value={datos.neighborhoodId}
                 onChange={handleChange}
-                className={`${styles.inputTypeForm} ${styles.labelSelect}`}
+                className={`${styles.inputTypeForm} border-input ${styles.labelSelect}`}
                 required>
                 <option disabled defaultValue={0} hidden selected></option>
                 {cities &&
@@ -553,7 +553,7 @@ const EditProjectPop = ({
                 name="location"
                 value={datos.location}
                 onChange={handleChange}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 required
               />
             </div>
@@ -565,7 +565,7 @@ const EditProjectPop = ({
                 name="projectType"
                 value={datos.projectType}
                 onChange={handleChange}
-                className={`${styles.inputTypeForm} ${styles.labelSelect}`}
+                className={`${styles.inputTypeForm} border-input ${styles.labelSelect}`}
                 required>
                 <option disabled defaultValue={0} hidden selected></option>
                 <option value="C">Casa</option>
@@ -582,7 +582,7 @@ const EditProjectPop = ({
                 type="text"
                 name="minPercentage"
                 value={datos.minPercentage}
-                className={` ${styles.inputTypeForm}`}
+                className={`border-input ${styles.inputTypeForm}`}
                 onChange={handleMinQuoteChange}
                 required
               />
@@ -597,7 +597,7 @@ const EditProjectPop = ({
                 value={endDate}
                 required
                 onChange={handleEndDateChange}
-                className={`${styles.inputTypeForm} ${styles.inputDate}`}
+                className={`${styles.inputTypeForm} border-input ${styles.inputDate}`}
               />
             </div>
 
@@ -617,14 +617,14 @@ const EditProjectPop = ({
               <textarea
                 name="message"
                 placeholder=""
-                className={styles.descriptionTypeForm}
+                className={`${styles.descriptionTypeForm} border-input`}
                 // required
                 ref={inputProjectDescription}></textarea>
             </div>
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Imágen del Proyecto:</span>
-              <div className={styles['main-image']}>
+              <div className={`${styles['main-image']} ${isDark ? 'bg-url(/images/photo-icon.png)':'bg-[url(/images/light/photos.png)]'}`}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
@@ -636,7 +636,7 @@ const EditProjectPop = ({
                     type="file"
                     hidden
                     onChange={handleBloth}
-                    className={` ${styles.inputTypeForm}`}
+                    className={`border-input ${styles.inputTypeForm}`}
                     accept="image/*"
                     name="mainImage"
                   />

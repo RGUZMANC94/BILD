@@ -659,7 +659,6 @@ li.pendiente-list {
   position: relative;
   display: block;
   z-index: 1;
-  font-size: 12px;
   margin: 0 auto;
   padding: 0px 10px;
 }

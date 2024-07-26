@@ -58,7 +58,7 @@ const Unit = ({ unit, setCreateOportunity, setShowEditUnit }) => {
       <div
         className={
           unit.status === 'R'
-            ? 'llave-tabla-desabled'
+            ? 'llave-tabla-desabled bg-[url(/images/light/key-full.png)] dark:bg-[url(/images/key-dark.svg)]'
             : 'llave-tabla hover:bg-[url(/images/light/key-full.png)] dark:hover:bg-[url(/images/key-dark.svg)]'
         }
         onClick={() => handleDispatch()}></div>
