@@ -24,6 +24,7 @@ const OportunitiesHistory = ({
   setShowEditContact,
   setPdfURL,
   prePriceInfo,
+  setHardRefreshFlag,
 }) => {
   console.log('ID oportinidad enviada', opportunitySelected);
   const dispatch = useDispatch();
@@ -231,6 +232,7 @@ const OportunitiesHistory = ({
       setIsOpportunityDeleted((prevState) => 1);
       setTimeout(() => {
         setRefreshFlag((prevState) => !prevState);
+        setHardRefreshFlag((prevState) => !prevState);
         setIsOpportunityDeleted((prevState) => 0);
       }, 5000);
     } catch (error) {

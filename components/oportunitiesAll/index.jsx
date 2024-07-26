@@ -31,8 +31,7 @@ const OportunitiesAll = ({
   const router = useRouter();
   const { asPath } = router;
   const URLHash = asPath.split('#')[1];
-  console.log('opportunitySelected:', oppSelectedObject);
-  console.log('oppList', oppList);
+  const [hardRefreshFlag, setHardRefreshFlag] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -66,10 +65,20 @@ const OportunitiesAll = ({
     }
   }, [oppList]);
 
-  /* useEffect(() => {
-    console.log('UpdateIndex');
-    setSelectedItem((prevState) => -1);
-  }, [refreshFlag]);*/
+  useEffect(() => {
+    if (hardRefreshFlag) {
+      setSelectedItem(-1);
+      dispatch(changeOpportunitySelected(-1));
+      setOppIsSelected(false);
+      setOpportunitySelected(-1);
+      setOppSelectedObject({});
+      setIdContactSelected('');
+      setPrePriceInfo({});
+      setOpacityCards((prevState) => false);
+      setRefreshFlag(true);
+      setHardRefreshFlag(false);
+    }
+  }, [hardRefreshFlag]);
 
   const [propsHistory, setPropsHistory] = useState({
     opportunitySelected,
@@ -100,7 +109,6 @@ const OportunitiesAll = ({
     });
 
     const prePriceResponse = await response.json();
-    console.log('PrePrice:', prePriceResponse);
 
     setPrePriceInfo(prePriceResponse);
   };
@@ -118,14 +126,9 @@ const OportunitiesAll = ({
         rows: 10000,
       }),
     });
-    console.log('Unidades:', response);
-
     const units = await response.json();
-    console.log('Unidadesaaaa:', units);
 
     const unitSelected = units.find((unit) => unit.idProperty === idProperty);
-
-    console.log('Unidad seleccionada:', unitSelected);
 
     dispatch(changeUnitSelected(unitSelected));
   };
@@ -139,6 +142,7 @@ const OportunitiesAll = ({
     activeWithHash = false
   ) => {
     if (selectedItem === index && !activeWithHash) {
+      console.log('pasa');
       setSelectedItem(-1);
       dispatch(changeOpportunitySelected(-1));
       setOppIsSelected(false);
@@ -162,17 +166,11 @@ const OportunitiesAll = ({
     }
   };
 
-  console.log('elemento seleccionado', selectedItem);
-
   function ClientById(array, clientId) {
-    console.log('Clientes:', array);
-    console.log('Clientes:', clientId);
-    console.log(
-      'Cliente encontrado:',
-      array.find((elem) => elem.idCli === clientId)
-    );
     return array.find((elem) => elem.idCli === clientId);
   }
+
+  console.log('opportunitieSelected', opportunitySelected);
 
   const oportunities = [
     {
@@ -299,7 +297,7 @@ const OportunitiesAll = ({
         </div>
       </div>
       <div className={styles['wrap-right']}>
-        {selectedItem !== -1 && !isMobile && (
+        {selectedItem !== -1 && !isMobile && !hardRefreshFlag && (
           <OportunitiesHistory
             opportunitySelected={opportunitySelected}
             oppSelectedObject={oppSelectedObject}
@@ -311,6 +309,7 @@ const OportunitiesAll = ({
             setShowEditContact={setShowEditContact}
             setPdfURL={setPdfURL}
             prePriceInfo={prePriceInfo}
+            setHardRefreshFlag={setHardRefreshFlag}
           />
         )}
       </div>
