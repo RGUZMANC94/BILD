@@ -151,10 +151,18 @@ const GenerateQuote = ({
   ]);
 
   useEffect(() => {
-    setInitialQuote((unitSelected.propertyPrice * values[0]) / 100);
+    if (sliderFlag) {
+      setInitialQuote((unitSelected.propertyPrice * values[0]) / 100);
+    }
   }, [values]);
 
-  console.log(initialQuote, separation, downPayment);
+  /*useEffect(() => {
+    setValues([(initialQuote / unitSelected.propertyPrice) * 100]);
+  }, [initialQuote]);*/
+
+  console.log('initialQuote',initialQuote, typeof initialQuote);
+
+  // console.log(initialQuote, separation, downPayment);
   useEffect(() => {
     setBalanceInitialQuote(
       initialQuote - (Number(separation) + Number(downPayment))
@@ -186,7 +194,7 @@ const GenerateQuote = ({
   };
 
   function formatMoney(num) {
-    return num.toLocaleString('es-CO', {
+    return Number(num).toLocaleString('es-CO', {
       style: 'currency',
       currency: 'COP',
       minimumFractionDigits: 0,
@@ -433,6 +441,22 @@ const GenerateQuote = ({
     }
   };
 
+  const [sliderFlag, setSliderFlag] = useState(true);
+
+  const handleInitialQuoteChange = (num) => {
+    setSliderFlag(false);
+
+    let tempNum = num;
+
+    if (num < 0) {
+      tempNum = 0;
+    } else if(num > unitSelected.propertyPrice) {
+      tempNum = unitSelected.propertyPrice;
+    }
+    setInitialQuote(tempNum);
+    setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]); 
+  };
+
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
@@ -462,7 +486,9 @@ const GenerateQuote = ({
               min={0}
               max={100}
               // rtl={rtl}
-              onChange={(values) => setValues(values)}
+              onChange={(values) => {
+                setSliderFlag(true);
+                setValues(values);}}
               renderTrack={({ props, children }) => (
                 <div
                   onMouseDown={props.onMouseDown}
@@ -507,6 +533,23 @@ const GenerateQuote = ({
               )}
             />
             <div className={styles.labelRangePercenth}>{`${values}%`}</div>
+          </div>
+
+          <div className={styles.infoSection}>
+            <span className={styles.labelSimple}>Total Cuota Inicial:</span>
+            <CurrencyInput
+              className={styles.inputQuote}
+              prefix="$ "
+              decimalSeparator=","
+              groupSeparator="."
+              id="initialQuote-input"
+              name="initialQuote"
+              placeholder={`${initialQuote}`}
+              // defaultValue={1000000}
+              decimalsLimit={2}
+              value={initialQuote}
+              onValueChange={(value) => handleInitialQuoteChange(value)}
+            />
           </div>
 
           <div className={styles.infoSection}>
