@@ -7,8 +7,8 @@
   flex-direction: column;
   flex-wrap: nowrap;
   border-radius: 24px;
-  background: #2e2e2c;
-  box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15);
+  /* background: #2e2e2c;
+  box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.15); */
   text-align: left;
   padding: 25px 25px 29.5px 25px;
   position: relative;
@@ -96,15 +96,13 @@
 
 .card-state-disabled {
   border-radius: 15px;
-  background: #2e2e2c;
-  box-shadow: 0px -3px 7px 0px rgba(0, 0, 0, 0.15);
 }
 
 .card-state-active.card-unit {
   left: 20px;
   border-radius: 15px;
-  background: #2e2e2c;
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
+  /* background: #2e2e2c;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15); */
 }
 
 .card-info {
@@ -112,51 +110,36 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  padding: 10px 0 0;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .card-title {
   font-size: 18px;
-  color: #fff;
   font-style: normal;
-  font-weight: 700;
-  margin-bottom: 20px;
 }
 
 .card-location {
   font-size: 18px;
-  color: #fff;
   font-style: normal;
   font-style: normal;
-  font-weight: 500;
-  margin-bottom: 5px;
 }
 
 .card-sub {
   font-size: 14px;
-  font-weight: 400;
-  color: #fff;
-
   width: 100%;
-  margin: 0px 0 20px;
 }
 
 .card-detalles {
   display: flex;
-  color: #fff;
   flex-direction: row;
   justify-content: start;
   align-items: start;
   font-size: 14px;
   font-style: normal;
-  font-weight: 300;
 }
 
 .card-sub {
   font-size: 14px;
-  font-weight: 500;
-  color: #fff;
 
   width: 100%;
   font-weight: 500;
@@ -187,7 +170,7 @@
   height: 20px;
   background-size: contain;
   margin: 0;
-  background-image: url(/images/oportunities-card-left-arrow.svg);
+  /* background-image: url(/images/oportunities-card-left-arrow.svg); */
   background-repeat: no-repeat;
   background-position: center center;
   position: absolute;
@@ -196,7 +179,7 @@
 }
 
 .card-state-active .card-right-arrow-icon {
-  background-image: url(/images/oportunities-card-right-arrow.svg);
+  /* background-image: url(/images/oportunities-card-right-arrow.svg); */
   width: 20px;
   height: 20px;
   background-size: contain;
@@ -204,8 +187,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   position: absolute;
-  top: 20px;
-  right: 17px;
+  /* top: 20px;
+  right: 17px; */
 }
 
 @media only screen and (max-width: 1024px) {

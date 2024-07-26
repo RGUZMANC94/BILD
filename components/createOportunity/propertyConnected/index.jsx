@@ -192,7 +192,7 @@ const PropertyConnected = ({ setIsCreated }) => {
           <div className={styles['elegir-origen']}>
             <select
               placeholder="Subject line"
-              className={styles.subject_input}
+              className={`${styles.subject_input}  bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)]`}
               name="originTemp"
               value={originTemp}
               onChange={handleTemp}
@@ -254,14 +254,13 @@ const PropertyConnected = ({ setIsCreated }) => {
             </div>
           </div>
         </div>
+        <EditContactPop
+          showEditContact={showEditContact}
+          setShowEditContact={setShowEditContact}
+          setRefreshContacts={setRefreshContacts}
+          contactId={contactSelected.idCli}
+        />
       </Portal>
-
-      <EditContactPop
-        showEditContact={showEditContact}
-        setShowEditContact={setShowEditContact}
-        setRefreshContacts={setRefreshContacts}
-        contactId={contactSelected.idCli}
-      />
     </>
   );
 };

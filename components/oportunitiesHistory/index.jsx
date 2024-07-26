@@ -264,13 +264,13 @@ const OportunitiesHistory = ({
         <div className={styles.right}>
           <div className={styles.line}>
             <img src="/images/Ellipse 81.png" />
-            <div className={styles['ver-line']}></div>
+            <div className={`${styles['ver-line']} border-r-[1px] border-solid border-light-3`}></div>
           </div>
 
           <div className={styles.pendientes}>
             {oppSelectedObject && Object.keys(oppSelectedObject).length > 0 && (
               <div className={styles['pendiente-top']}>
-                <span className={styles['tipo-sub']}>
+                <span className={`${styles['tipo-sub']} font-black`}>
                   {oppSelectedObject.nameCustomer}
                 </span>
                 <ul className={styles.ulNode}>
@@ -305,7 +305,7 @@ const OportunitiesHistory = ({
             </div>
 
             {Object.keys(firstEvent).length > 0 && (
-              <div className={styles.greybox}>
+              <div className={`bg-card ${styles.greybox}`}>
                 <div className={styles.info}>
                   <div>
                     {
@@ -369,7 +369,7 @@ const OportunitiesHistory = ({
                       ))}
                   </div>
                 </div>
-                <div className={styles['blue-point']}></div>
+                <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
               </div>
             )}
 
@@ -387,7 +387,7 @@ const OportunitiesHistory = ({
                   {eventsSelected.reverse().map(
                     (eventItem, i) =>
                       Object.keys(eventItem).length > 3 && (
-                        <div className={styles.greybox} key={eventItem.id}>
+                        <div className={`bg-card ${styles.greybox}`} key={eventItem.id}>
                           <div className={styles.info}>
                             <div>
                               {
@@ -474,7 +474,7 @@ const OportunitiesHistory = ({
             )}
 
             {Object.keys(lastEvent).length > 0 && (
-              <div className={styles.greybox}>
+              <div className={`bg-card ${styles.greybox}`}>
                 <div className={styles.info}>
                   <div>
                     {

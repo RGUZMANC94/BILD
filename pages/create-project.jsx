@@ -447,7 +447,7 @@ const CreateProject = () => {
                     name="neighborhoodId"
                     value={datos.neighborhoodId}
                     onChange={handleChange}
-                    className={styles.subject_input}
+                    className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
                     required>
                     <option disabled defaultValue={0} hidden selected></option>
                     {cities &&
@@ -480,7 +480,7 @@ const CreateProject = () => {
                     name="projectType"
                     value={datos.projectType}
                     onChange={handleChange}
-                    className={styles.subject_input}
+                    className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
                     required>
                     <option disabled defaultValue={0} hidden selected></option>
                     <option value="C">Casa</option>

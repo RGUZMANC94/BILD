@@ -73,7 +73,7 @@
 .name-perfil {
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  
   text-align: center;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -85,7 +85,7 @@
   display: block;
   font-size: 18px;
   font-weight: 300;
-  color: #fff;
+  
   text-align: center;
   margin-bottom: 20px;
   margin: 0 auto;
@@ -96,7 +96,7 @@
   height: auto;
   font-size: 18px;
   font-weight: 200;
-  color: #fff;
+  
   margin: 0 auto 20px;
   text-align: center;
   display: flex;
@@ -145,7 +145,7 @@
 .admin-text-container {
   width: fill-available;
   height: auto;
-  color: #fff;
+  
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
@@ -191,14 +191,14 @@
   font-size: 18px;
   font-weight: 500;
   text-align: left;
-  color: #fff;
+  
   align-self: flex-start;
   margin: 0 0 20px 0;
 }
 
 .sub-title {
   font-size: 14px;
-  color: #fff;
+  
   margin: 0px 0px 20px;
 }
 
@@ -226,9 +226,9 @@
 .campo {
   width: auto;
   height: 35px;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 5px;
-  color: #fff;
+  
   font-size: 14px;
   font-weight: 400;
   text-align: center;
@@ -241,7 +241,7 @@
 }
 
 .flag {
-  color: #fff;
+  
   font-size: 22px;
 
   text-align: left;
@@ -258,7 +258,7 @@
 .checkMask {
   min-width: 25px;
   min-height: 25px;
-  border: 1px solid #fff;
+  border: 1px solid;
   margin-right: 10px;
 }
 
@@ -269,7 +269,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  
   background-color: #d9d9d915;
   font-weight: 300;
 }
@@ -290,7 +290,7 @@
   font-weight: 300;
   font-size: 16px;
   margin-bottom: 20px;
-  color: #fff;
+  
 }
 
 .opc-pendiente {
@@ -316,7 +316,7 @@
   padding: 20px;
   font-size: 16px;
   font-weight: 400;
-  color: #fff;
+  
 
   flex-wrap: wrap;
   border-radius: 20px;
@@ -325,7 +325,7 @@
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7.5px);
-  color: #fff;
+  
 }
 
 .opcion img {
@@ -338,7 +338,7 @@
   left: 5px;
   position: absolute;
   top: -10px;
-  color: #fff;
+  
   padding: 4px;
   width: 25px;
   height: 25px;
@@ -461,7 +461,7 @@
   height: auto;
   font-size: 18px;
   font-weight: 200;
-  color: #fff;
+  
   margin: 0 auto;
   margin-top: 30px;
   text-align: left;
@@ -522,7 +522,7 @@
   width: 185px;
   height: 55px;
   background-color: #2467ff;
-  color: #fff;
+  
   font-size: 18px;
   font-weight: 400;
 
@@ -546,7 +546,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  
   background-color: #d9d9d915;
   font-weight: 300;
 }
@@ -581,7 +581,7 @@
   left: 5px;
   position: absolute;
   top: -10px;
-  color: #fff;
+  
   padding: 4px;
   width: 25px;
   height: 25px;
@@ -1050,7 +1050,7 @@ h3.user {
     width: auto;
     height: auto;
     background-color: unset;
-    color: #fff;
+    
     font-size: 18px;
     font-weight: 400;
 
@@ -1089,7 +1089,7 @@ h3.user {
     align-items: center;
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    
 
     margin-bottom: 20px;
   }

@@ -20,7 +20,7 @@
   background-size: 25px;
   background-repeat: no-repeat;
   background-color: #2467ff;
-  color: #fff;
+  
   padding: 0 10px 0 45px;
   width: 250px;
   height: 45px;
@@ -185,7 +185,7 @@
   justify-content: space-between;
   width: 100%;
   height: auto;
-  /* color: #fff; */
+  /*  */
   text-align: left;
 }
 
@@ -208,7 +208,7 @@
   padding: 4px;
   width: 25px;
   height: 25px;
-  color: #fff;
+  
   text-align: center;
 }
 
@@ -356,7 +356,7 @@
 
 .popup h2 {
   margin-top: 0;
-  color: #fff;
+  
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
@@ -364,7 +364,7 @@
 
 .pop-text {
   margin-top: 20px;
-  color: #fff;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -381,13 +381,13 @@
   top: 0;
   right: 30px;
   transition: all 200ms;
-  color: #fff;
+  
   font-weight: 100;
   font-size: 50px;
   text-decoration: none;
 }
 .popup .close:hover {
-  color: #fff;
+  
 }
 .popup .content {
   overflow: auto;

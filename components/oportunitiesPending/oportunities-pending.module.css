@@ -32,7 +32,7 @@
   width: fit-content;
   padding: 50px 0px 90px 70px;
 
-  color: #fff;
+  
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -74,7 +74,7 @@
 }
 
 .pending-buttons {
-  color: #fff;
+  
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -361,8 +361,7 @@ li.pendiente-list {
     flex-direction: row;
     justify-content: start;
     align-items: start;
-    background-color: #fff;
-    box-shadow: 2px 2px 6px #c7c7c7;
+       box-shadow: 2px 2px 6px #c7c7c7;
     border-radius: 15px;
     margin-top: 40px;
     text-align: left;

@@ -105,7 +105,7 @@
   align-items: center;
   transition: all 0.15s ease-in-out;
   padding: 0 10px 0;
-  /* color: #fff; */
+  /*  */
   /* font-weight: 300; */
   font-size: 12px;
   text-align: center;
@@ -123,7 +123,7 @@
 .menuPpal a:hover,
 .menuPpal a.active {
   /* border-bottom: 3px solid #2467ff; */
-  /* color: #fff; */
+  /*  */
 }
 
 .menuPpal a > div img {
@@ -147,7 +147,7 @@
   background-color: #ff5567;
   width: 20px;
   height: 20px;
-  color: #fff;
+  
   font-size: 13px;
 }
 
@@ -240,7 +240,7 @@
   .menuPpal a {
     padding: 5px 5px 10px;
     width: 20%;
-    color: #fff;
+    
     font-size: 10px;
   }
 
@@ -251,7 +251,7 @@
 
   .menuPpal a:hover {
     border-bottom: 3px solid #2467ff;
-    color: #fff;
+    
   }
 
   .menuPpal a:hover > div img {

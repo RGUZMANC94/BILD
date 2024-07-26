@@ -48,17 +48,18 @@ const OportunitiesCard = ({
   return (
     <>
       <div
-        className={`${styles['card-unit']} ${
+        className={`${styles['card-unit']} bg-card ${
           styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]
         }`}>
-        <div className={styles['card-right-arrow-icon']}></div>
+        <div
+          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)]`}></div>
         <div className={styles['card-info-container']}>
           <div className={styles['img-card']}>
             <img className={styles['image-card-circle']} src={image} />
           </div>
 
           <div className={styles['card-info']}>
-            <span className={styles['card-title']}>{name}</span>
+            <span className={`${styles['card-title']} title-card`}>{name}</span>
             <span className={styles['card-location']}>{location}</span>
             <span className={styles['card-sub']}>{type}</span>
             <div className={styles['card-detalles']}>

@@ -92,7 +92,7 @@ const AddEvents = ({
   return (
     <section className={`${styles.main} ${show ? styles.active : ''}`}>
       <div
-        className={styles.banner}
+        className={`${styles.banner} bg-backg-popup`}
         onClick={() => {
           setShow(false);
           setTimeout(() => {
@@ -100,8 +100,8 @@ const AddEvents = ({
             setAddEvents ? setAddEvents(false) : null;
           }, 500);
         }}></div>
-      <div className={styles.descripcion}>
-        <div className={styles.topContent}>
+      <div className={`${styles.descripcion} bg-popup`}>
+        <div className={`${styles.topContent} header-popup`}>
           <span className={styles['title-descripcion']}>Añadir Evento</span>
           <div
             className={`${styles.close} bg-ct`}
@@ -120,7 +120,7 @@ const AddEvents = ({
               <select
                 placeholder="Subject line"
                 name="subject"
-                className={styles.subject_input}
+                className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
                 required>
                 <option disabled hidden selected>
                   Seleccionar tipo de evento

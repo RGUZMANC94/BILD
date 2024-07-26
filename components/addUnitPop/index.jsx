@@ -276,7 +276,9 @@ const AddUnitPop = ({
             <div className={`${styles.inputsGroup}`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={`${styles.labelInputTitle} font-black`}>ID:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>
+                  ID:
+                </span>
                 <input
                   type="text"
                   name="nuimb"
@@ -289,7 +291,9 @@ const AddUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={`${styles.labelInputTitle} font-black`}>Precio:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>
+                  Precio:
+                </span>
                 <CurrencyInput
                   className={` ${styles.inputTypeForm}`}
                   prefix="$ "
@@ -313,7 +317,8 @@ const AddUnitPop = ({
             </div>
             {optionalPop && (
               <>
-                <div className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
+                <div
+                  className={`${styles.sectionTitle} divisorPopup flex j-sb a-c `}>
                   <h2 className={`${styles.sectionTitleText}`}>Datos:</h2>
                 </div>
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
@@ -333,7 +338,9 @@ const AddUnitPop = ({
 
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={`${styles.labelInputTitle} font-black`}>Baños:</span>
+                    <span className={`${styles.labelInputTitle} font-black`}>
+                      Baños:
+                    </span>
                     <input
                       type="text"
                       name="baths"
@@ -344,14 +351,17 @@ const AddUnitPop = ({
                   </label>
                 </div>
 
-                <div className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
+                <div
+                  className={`${styles.sectionTitle} divisorPopup flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
                   <h2 className={`${styles.sectionTitleText}`}>Áreas:</h2>
                 </div>
 
                 <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={`${styles.labelInputTitle} font-black`}>Area Const:</span>
+                    <span className={`${styles.labelInputTitle} font-black`}>
+                      Area Const:
+                    </span>
                     <input
                       type="text"
                       name="builtArea"
@@ -363,7 +373,9 @@ const AddUnitPop = ({
 
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={`${styles.labelInputTitle} font-black`}>Área Priv:</span>
+                    <span className={`${styles.labelInputTitle} font-black`}>
+                      Área Priv:
+                    </span>
                     <input
                       type="text"
                       name="privateArea"
@@ -390,7 +402,9 @@ const AddUnitPop = ({
 
                   <label
                     className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                    <span className={`${styles.labelInputTitle} font-black`}>Área Bálcon:</span>
+                    <span className={`${styles.labelInputTitle} font-black`}>
+                      Área Bálcon:
+                    </span>
                     <input
                       type="text"
                       name="balconyArea"
@@ -440,7 +454,7 @@ const AddUnitPop = ({
                         name="parkingType"
                         value={datos.parkingType}
                         onChange={handleChange}
-                        className={styles.subject_input}
+                        className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
                         required>
                         <option disabled defaultValue={0} hidden selected></option>
                         <option value="S">sencillo</option>

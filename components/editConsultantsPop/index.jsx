@@ -332,7 +332,7 @@ const EditConsultantsPop = ({
           </div>
 
           <form className={styles.formType}>
-            <div className={styles.sectionTitle}>
+            <div className={`${styles.sectionTitle} divisorPopup`}>
               <h2 className={styles.sectionTitleText}>Datos Personales</h2>
             </div>
 
@@ -425,7 +425,7 @@ const EditConsultantsPop = ({
               </div>
             </div>
 
-            <div className={styles.sectionTitle}>
+            <div className={`${styles.sectionTitle} divisorPopup`}>
               <h2 className={styles.sectionTitleText}>Proyectos Asignados</h2>
             </div>
             <div className={styles.inputsGroup}>

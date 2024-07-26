@@ -43,7 +43,7 @@
   align-items: center;
   /*background: #2E2E2C;*/
 
-  color: #fff;
+  
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -93,7 +93,7 @@
 .calendar-card-text-hour {
   padding-bottom: 3px;
   height: fit-content;
-  color: #fff;
+  
   font-size: 10px;
   font-style: normal;
   font-weight: 300;
@@ -101,7 +101,7 @@
 }
 
 .calendar-card-text-message {
-  color: #fff;
+  
   height: fit-content;
   font-size: 12px;
   font-style: normal;
@@ -378,8 +378,7 @@ li.pendiente-list {
     flex-direction: row;
     justify-content: start;
     align-items: start;
-    background-color: #fff;
-    box-shadow: 2px 2px 6px #c7c7c7;
+       box-shadow: 2px 2px 6px #c7c7c7;
     border-radius: 15px;
     margin-top: 40px;
     text-align: left;

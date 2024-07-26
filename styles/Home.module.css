@@ -102,7 +102,7 @@
 
 .valor {
   margin: 0px;
-  /* color: #fff; */
+  /*  */
   font-weight: 400;
   font-size: 14px;
 }
@@ -118,7 +118,7 @@
   gap: 15px;
   padding: 0 20px;
   width: 100%;
-  /* color: #fff; */
+  /*  */
   font-weight: 400;
   font-size: 14px;
   text-align: left;
@@ -324,13 +324,13 @@
   .proyect-title {
     font-size: 14px;
     font-weight: 500;
-    color: #fff;
+    
     
   }
 
   .valor {
     font-size: 10px;
-    color: #fff;
+    
     font-weight: 500;
     margin-top: 20px;
   }
@@ -341,7 +341,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     font-size: 11px;
-    color: #fff;
+    
     font-weight: 300;
     text-align: left;
     margin-top: 10px;

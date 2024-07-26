@@ -90,7 +90,7 @@
 
 .popup h2 {
   margin-top: 0;
-  color: #fff;
+  
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
@@ -98,7 +98,7 @@
 
 .pop-text {
   margin-top: 20px;
-  color: #fff;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -115,13 +115,13 @@
   top: 0;
   right: 30px;
   transition: all 200ms;
-  color: #fff;
+  
   font-weight: 100;
   font-size: 50px;
   text-decoration: none;
 }
 .popup .close:hover {
-  color: #fff;
+  
 }
 .popup .content {
   overflow: auto;

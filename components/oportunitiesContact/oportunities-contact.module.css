@@ -27,7 +27,6 @@
 
 .label_filter {
   margin: 20px 0 20px;
-  color: #fff;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -103,7 +102,7 @@ i.fa-solid.fa-angle-left {
   font-style: normal;
   font-weight: 500;
   line-height: 1.38;
-  color: #fff;
+  
 
   width: 100%;
   margin-top: 15px;

@@ -31,8 +31,20 @@
     @apply bg-light-2/50 shadow-md shadow-dark-4/10 dark:bg-dark-3 backdrop-blur-sm;
   }
 
+  .primary {
+    @apply bg-bild-1 text-light-1 font-black;
+  }
+
   .secondary {
-    @apply bg-light-3 text-light-1 border-[1px] border-solid border-light-1 dark:bg-light-4/35 ;
+    @apply bg-light-3 text-light-1 border-[1px] border-solid border-light-1 dark:bg-light-4/35 font-black;
+  }
+
+  .divisorPopup{
+    @apply font-extrabold bg-light-2 shadow-md dark:bg-dark-3;
+  }
+
+  .bg-backg-popup{
+    @apply backdrop-blur-lg bg-light-1/70 dark:bg-dark-1/40;
   }
 }
 
@@ -175,7 +187,7 @@
 
 .itemTopContent.active .buttonTopDetailState {
   border-bottom: 3px solid #2467ff;
-  color: #fff;
+  
   font-weight: 700;
 }
 
@@ -267,12 +279,12 @@ li {
 .selectFilterProject {
   appearance: none;
   margin-left: 30px;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 5px;
   background-color: rgba(33, 34, 29, 0.3);
   padding: 10px 20px;
   padding-right: 50px;
-  color: #fff;
+  
 }
 
 .selectFilterFlex {
@@ -337,7 +349,7 @@ li {
 }
 
 .add-unit-movil span {
-  color: #fff;
+  
   font-weight: 700;
   font-size: 12px;
   line-height: 1.38;
@@ -425,7 +437,7 @@ li {
 
 .tipo-title {
   width: 100%;
-  /* color: #fff; */
+  /*  */
   font-weight: 700;
   font-size: 18px;
 }
@@ -448,7 +460,7 @@ li {
 .valor {
   margin-top: 3px;
   width: 100%;
-  /* color: #fff; */
+  /*  */
   font-weight: 400;
   /* padding-top: 33px; */
   font-size: 15px;
@@ -467,7 +479,7 @@ li {
   align-items: center;
   align-self: flex-end;
   margin-top: 5px;
-  /* color: #fff; */
+  /*  */
   font-weight: 400;
   font-size: 14px;
   line-height: 2.29;
@@ -492,7 +504,7 @@ li {
   padding: 20px 42px 20px 50px;
   width: 100%;
   height: auto;
-  /* color: #fff; */
+  /*  */
   font-weight: 600;
   font-size: 18px;
   text-align: center;
@@ -518,12 +530,12 @@ li {
   justify-content: center;
   align-items: center;
   float: right;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 5px;
   background-color: transparent;
   padding: 10px 20px;
   height: 45px;
-  color: #fff;
+  
   font-size: 15px;
   font-size: 16px;
   line-height: 45px;
@@ -675,7 +687,7 @@ button.agregar {
   padding: 10px 30px;
   width: 40%;
   height: 50px;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 16px;
 
@@ -964,7 +976,7 @@ li {
 }
 
 /* .top-donwload {
-  border: 1px solid #fff;
+  border: 1px solid;
 } */
 
 .top-upload {
@@ -1012,7 +1024,7 @@ li.active button {
 .contact {
   gap: 10px;
   width: 30%;
-  color: #fff;
+  
 }
 
 .user-data {
@@ -1021,7 +1033,7 @@ li.active button {
   justify-content: center;
   align-items: center;
   width: 20%;
-  color: #fff;
+  
   text-align: center;
 }
 
@@ -1032,7 +1044,7 @@ li.active button {
   justify-content: center;
   align-items: center;
   width: 20%;
-  color: #fff;
+  
   text-align: center;
 }
 
@@ -1075,7 +1087,7 @@ li.active button {
   padding-bottom: 35px;
   width: 100%;
   height: auto;
-  color: #fff;
+  
   font-weight: 500;
   font-weight: 700;
   font-size: 18px;
@@ -1102,13 +1114,13 @@ li.active button {
 .react-datepicker__header.react-datepicker__header {
   border: none;
   background-color: #1c1c1c;
-  color: #fff;
+  
 }
 .react-datepicker__current-month.react-datepicker__current-month,
 .react-datepicker-time__header.react-datepicker-time__header,
 .react-datepicker-year-header.react-datepicker-year-header {
   margin: 0px 0 20px;
-  color: #fff;
+  
 }
 
 .react-datepicker.react-datepicker {
@@ -1133,7 +1145,7 @@ li.active button {
   border-radius: 15px 15px 0 0;
   padding: 2.5px 0;
   width: 35px;
-  color: #fff;
+  
 }
 .react-datepicker__month.react-datepicker__month,
 .react-datepicker__month-container.react-datepicker__month-container {

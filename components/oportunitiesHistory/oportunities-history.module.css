@@ -26,7 +26,6 @@
 
 .label_filter {
   margin: 20px 0 20px;
-  color: #fff;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -100,12 +99,8 @@ i.fa-solid.fa-angle-left {
 .tipo-sub {
   font-size: 18px;
   font-style: normal;
-  font-weight: 500;
-  color: #fff;
-
   width: 100%;
   display: block;
-  margin-bottom: 5px;
 }
 
 .back {
@@ -173,7 +168,7 @@ i.fa-solid.fa-angle-left {
 }
 
 .ver-line {
-  border-right: 1px solid #fff;
+  /* border-right: 1px solid; */
   height: calc(100% - 60px);
 }
 
@@ -187,8 +182,7 @@ i.fa-solid.fa-angle-left {
   content: "";
   width: 2px;
   height: calc(100% - 132px);
-  background-color: #fff;
-  position: absolute;
+   position: absolute;
   top: 0;
   left: -33px;
 } */
@@ -202,8 +196,8 @@ i.fa-solid.fa-angle-left {
 
 .greybox {
   border-radius: 10px;
-  background: #2e2e2c;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  /* background: #2e2e2c;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
   padding: 20px;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -212,7 +206,18 @@ i.fa-solid.fa-angle-left {
   justify-content: flex-start;
   align-items: start;
   position: relative;
-  color: #fff;
+  /*  */
+}
+
+.greybox:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 239 239 / var(--tw-bg-opacity));
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .info {
@@ -228,12 +233,12 @@ i.fa-solid.fa-angle-left {
   font-size: 10px;
   margin-bottom: 10px;
   font-weight: 300;
-  color: #fff;
+  /*  */
 }
 
 li.pendiente-list {
   font-size: 16px !important;
-  color: #fff;
+  /*  */
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -248,10 +253,9 @@ li.pendiente-list {
 }
 
 .ulNode li {
-  margin: 0px 0 5px;
+  margin: 0px 0 0px;
   font-size: 14px !important;
   font-weight: 200;
-  color: #fff;
 }
 
 .containerButtonsEvents {
@@ -271,8 +275,6 @@ li.pendiente-list {
   justify-content: flex-end;
   align-items: flex-end;
   font-size: 10px;
-  font-weight: 300;
-  color: #fff;
 }
 
 .hour {
@@ -335,7 +337,6 @@ li.pendiente-list {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #fff;
   position: absolute;
   top: 50%;
   left: -55px;
@@ -346,7 +347,7 @@ li.pendiente-list {
   height: 25px;
   border-radius: 50%;
   background-color: #ff5567;
-  color: #fff;
+  
   font-size: 14px;
   font-weight: 300;
   position: absolute;
@@ -384,7 +385,7 @@ li.pendiente-list {
 .ver-oportunidad {
   width: 50%;
   height: fit-content;
-  color: #fff;
+  
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
@@ -412,8 +413,7 @@ li.pendiente-list {
   display: flex;
   margin-top: 50px;
   position: relative;
-  background-color: #fff;
-  flex-direction: column;
+   flex-direction: column;
   justify-content: center;
   border-radius: 10px;
 }
@@ -564,14 +564,14 @@ li.pendiente-list {
 
 .popup h2 {
   margin-top: 0;
-  color: #fff;
+  
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  color: #fff;
+  
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -592,10 +592,10 @@ li.pendiente-list {
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  color: #fff;
+  
 }
 .popup .close:hover {
-  color: #fff;
+  
 }
 .popup .content {
   overflow: auto;
@@ -659,8 +659,7 @@ li.pendiente-list {
   position: relative;
   display: block;
   z-index: 1;
-  font-weight: 400 !important;
-  font-size: 12px !important;
+  font-size: 12px;
   margin: 0 auto;
   padding: 0px 10px;
 }

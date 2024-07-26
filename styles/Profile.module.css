@@ -42,7 +42,7 @@
 .editar {
   font-size: 18px;
   font-weight: 500;
-  color: #fff;
+  
   text-align: right;
   border-bottom: 2px solid #fff;
   margin: 25px 25px 0 0;
@@ -66,7 +66,7 @@
 .name-perfil {
   font-size: 20px;
   font-weight: 500;
-  color: #fff;
+  
   text-align: center;
   margin-bottom: 20px;
   margin: 0 auto;
@@ -74,7 +74,7 @@
 .sub-name {
   font-size: 18px;
   font-weight: 300;
-  color: #fff;
+  
   text-align: center;
   margin-bottom: 30px;
   margin: 0 auto;
@@ -87,7 +87,7 @@
   margin-top: 50px;
   font-size: 18px;
   font-weight: 200;
-  color: #fff;
+  
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -125,14 +125,14 @@
   font-size: 18px;
   font-weight: 600;
   text-align: left;
-  color: #fff;
+  
   align-self: flex-start;
   margin-left: 10%;
 }
 
 .sub-title {
   font-size: 18px;
-  color: #fff;
+  
   margin: 50px 0 0px;
 }
 
@@ -159,9 +159,9 @@
   width: auto;
   min-width: 100px;
   margin: 30px 10px 0;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 30px;
-  color: #fff;
+  
   font-size: 16px;
   font-weight: 400;
   text-align: center;
@@ -176,11 +176,11 @@
 .campo:hover {
   background-color: #2467ff;
   border-color: #2467ff;
-  color: #fff;
+  
 }
 
 .flag {
-  color: #fff;
+  
   font-size: 22px;
 
   text-align: left;
@@ -203,7 +203,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  
   background-color: #d9d9d915;
   font-weight: 300;
 }
@@ -226,7 +226,7 @@
   font-weight: 300;
   font-size: 16px;
   margin-bottom: 40px;
-  color: #fff;
+  
 }
 
 .opc-pendiente {
@@ -252,7 +252,7 @@
   padding: 20px;
   font-size: 16px;
   font-weight: 400;
-  color: #fff;
+  
 
   flex-wrap: wrap;
   border-radius: 20px;
@@ -261,7 +261,7 @@
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7.5px);
-  color: #fff;
+  
 }
 
 .opcion img {
@@ -274,7 +274,7 @@
   left: 5px;
   position: absolute;
   top: -10px;
-  color: #fff;
+  
   padding: 4px;
   width: 25px;
   height: 25px;
@@ -446,8 +446,7 @@
   .flag {
     width: auto;
     height: auto;
-    background-color: #fff;
-    color: #fff;
+       
     font-size: 18px;
     font-weight: 400;
 
@@ -486,7 +485,7 @@
     align-items: center;
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    
   }
 
   .opcion img {
@@ -515,8 +514,7 @@
   }
   button.campo {
     width: 40%;
-    background-color: #fff;
-    color: white;
+       color: white;
     border-radius: 15px;
   }
 

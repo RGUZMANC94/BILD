@@ -36,7 +36,7 @@ const Button = ({
             preventDefault ? e.preventDefault() : null;
             clickFunction ? clickFunction() : '';
           }}
-          className={`${styles[buttonType]} ${styles.siteButton} ${
+          className={`${[buttonType]} ${styles.siteButton} ${
             styles[classNameInherit]
           } ${inheritClass ?? ''}`}>
           {iconImage ? (

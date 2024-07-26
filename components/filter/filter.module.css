@@ -95,7 +95,7 @@
   margin-bottom: 25px;
   display: block;
   font-weight: 700;
-  color: #fff;
+  
 }
 
 .labelTextRange {
@@ -115,14 +115,14 @@
   background-position: 98% 50%;
   background-repeat: no-repeat;
   display: block;
-  color: #fff;
+  
   font-style: normal;
   font-weight: 400;
   line-height: 1;
 }
 
 .ubicationSelect option {
-  color: #fff;
+  
   background-color: #343434;
   backdrop-filter: blur(10px);
 }
@@ -143,7 +143,7 @@
 }
 
 .labelsRangeSlider {
-  color: #fff;
+  
 }
 
 .filter-buttons-bottom {
@@ -151,7 +151,7 @@
 }
 
 .maxLabel {
-  color: #fff;
+  
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -159,7 +159,7 @@
 }
 
 .minLabel {
-  color: #fff;
+  
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

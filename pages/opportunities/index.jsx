@@ -131,7 +131,7 @@ const OportunitiesAllFilter = ({ user }) => {
           <div className={styles['top-buttons-container']}>
             <div className={styles['top-content-container']}>
               <button
-                className={styles['top-content-buttons']}
+                className={`${styles['top-content-buttons']} font-black`}
                 onClick={() => setShowSection('all')}>
                 TODAS
               </button>
@@ -143,7 +143,7 @@ const OportunitiesAllFilter = ({ user }) => {
             {/*
             <div className={styles['top-content-container']}>
               <button
-                className={styles['top-content-buttons']}
+                className={`${styles['top-content-buttons']} font-black`}
                 onClick={() => setShowSection('pending')}>
                 PENDIENTES
               </button>
@@ -155,7 +155,7 @@ const OportunitiesAllFilter = ({ user }) => {
               */}
             <div className={styles['top-content-container']}>
               <button
-                className={styles['top-content-buttons']}
+                className={`${styles['top-content-buttons']} font-black`}
                 onClick={() => setShowSection('closed')}>
                 CERRADAS
               </button>
@@ -172,16 +172,16 @@ const OportunitiesAllFilter = ({ user }) => {
               placeholder="Subject line"
               name="sorting"
               value={sorting}
-              className={styles.filter_input}
+              className={`${styles.filter_input} bg-transparent bg-[url(/images/arrow_select.png)] dark:bg-[url(/images/oportunities-card-down-arrow.svg)]`}
               onChange={(e) => setSorting(e.target.value)}>
-              <option value="HOT">MAS CALIENTE</option>
-              <option value="COLD">MAS FRÍA</option>
+              <option value="HOT">Mas caliente</option>
+              <option value="COLD">Mas fría</option>
               <option value="DESC" selected>
-                MAS RECIENTE
+                Mas reciente
               </option>
-              <option value="ASC">MENOS RECIENTE</option>
+              <option value="ASC">Menos reciente</option>
             </select>
-            <span className={styles.label_filter}>Ordenar por:</span>
+            <span className={`${styles.label_filter} font-black`}>Ordenar por:</span>
           </div>
         </div>
       </div>

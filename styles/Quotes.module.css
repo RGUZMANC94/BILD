@@ -20,7 +20,7 @@
   margin: 0 auto;
   outline: none;
   border: 1px solid #d9d9d9;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 10px;
   background-color: transparent;
   width: 100%;
@@ -38,7 +38,7 @@
   padding: 10px 35px;
   width: 100%;
   height: 50px;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 18px;
 }
@@ -49,7 +49,7 @@
   padding: 15px 20px 15px;
   width: 100%;
   height: auto;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 18px;
 }
@@ -82,7 +82,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #d9d9d91a;
-  color: #fff;
+  
 }
 
 .accordion-btn {
@@ -93,7 +93,7 @@
   border: none;
   background-color: #2e2e2c;
   padding: 10px 20px;
-  color: #fff;
+  
   font-weight: bold;
   list-style: none;
   list-style-image: none;
@@ -116,7 +116,7 @@
   width: 20px;
   height: 20px;
   content: '';
-  color: #fff;
+  
   font-weight: normal;
   font-size: 40px;
   text-align: center;
@@ -162,7 +162,7 @@
 }
 
 .top-content {
-  color: #fff;
+  
   font-weight: 500;
   font-size: 20px;
   text-align: left;
@@ -191,7 +191,7 @@
 .bottom-content {
   padding: 10px 0;
   width: 100%;
-  color: #fff;
+  
   font-weight: 400;
   font-size: 16px;
   text-align: center;
@@ -310,7 +310,7 @@
 
 .sub-text {
   margin-left: 15px;
-  color: #fff;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -432,7 +432,7 @@
 
 .popup h2 {
   margin-top: 0;
-  color: #fff;
+  
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
@@ -440,7 +440,7 @@
 
 .pop-text {
   margin-top: 20px;
-  color: #fff;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -457,13 +457,13 @@
   top: 0;
   right: 30px;
   transition: all 200ms;
-  color: #fff;
+  
   font-weight: 100;
   font-size: 50px;
   text-decoration: none;
 }
 .popup .close:hover {
-  color: #fff;
+  
 }
 .popup .content {
   overflow: auto;
@@ -529,7 +529,7 @@
 
 .error {
   width: 100%;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 18px;
   text-align: center;
@@ -645,7 +645,7 @@
   }
 
   .separator-movil {
-    color: #fff;
+    
     font-style: normal;
     font-weight: 300;
     font-size: 10px;

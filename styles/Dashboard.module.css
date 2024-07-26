@@ -49,7 +49,7 @@
 .welcome {
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  
   text-align: center;
   display: flex;
   align-items: center;
@@ -61,7 +61,7 @@
 .welcome-tit {
   font-size: 20px;
   font-weight: 500;
-  color: #fff;
+  
   text-align: center;
   margin-bottom: 10px;
   width: 100%;
@@ -79,7 +79,7 @@
 .profile {
   font-size: 18px;
   font-weight: 200;
-  color: #fff;
+  
   text-align: center;
   width: 100%;
   display: flex;
@@ -102,7 +102,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  
   font-size: 18px;
   gap: 5px;
 
@@ -134,8 +134,7 @@
 
 .download {
   width: 60%;
-  background-color: #fff;
-  color: #fff;
+   
   font-size: 16px;
   font-weight: 300;
   text-align: center;
@@ -196,7 +195,7 @@
 }
 
 .pop-text {
-  color: #fff;
+  
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -224,7 +223,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  
   font-family: 'Lexend', sans-serif;
   margin-top: 50px;
   display: flex;
@@ -252,7 +251,7 @@
 }
 .text-cat {
   font-size: 18px;
-  color: #fff;
+  
   font-weight: 400;
 }
 
@@ -277,7 +276,7 @@
 .pop2-text {
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  
 }
 
 .proyecto-pop {
@@ -292,7 +291,7 @@
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  
   font-size: 18px;
   appearance: none;
   background-image: url(/images/arrow-select.png);
@@ -360,14 +359,14 @@
 
 .titleChart {
   text-align: center;
-  color: #fff;
+  
   margin-bottom: 20px;
 }
 
 .input-date {
   background-color: transparent;
   border: none;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 0.5px;
@@ -381,13 +380,12 @@
 .separator {
   width: 20px;
   height: 2px;
-  background-color: #fff;
-  margin: 0 20px;
+   margin: 0 20px;
 }
 
 .table {
   padding: 10px;
-  color: #fff;
+  
 }
 
 .title-table {

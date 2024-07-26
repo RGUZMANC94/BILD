@@ -436,8 +436,8 @@ const GenerateQuote = ({
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
-        <div className={styles.topContent}>
-          <span className={styles.title}>GENERAR COTIZACIÓN</span>
+        <div className={`${styles.topContent} header-popup`}>
+          <span className={`${styles.title} font-black`}>GENERAR COTIZACIÓN</span>
           <div className={styles.seleccion}>
             <div className={styles.origen}>
               <span className={styles.labelSimple}>Tipo:</span>
@@ -509,7 +509,7 @@ const GenerateQuote = ({
             <div className={styles.labelRangePercenth}>{`${values}%`}</div>
           </div>
 
-          <div className={styles.infoSection}>
+          <div className={`divisorPopup ${styles.infoSection}`}>
             <span className={styles.labelSimple}>Total Cuota Inicial:</span>
             <span className={styles.labelFocus}>
               {formatMoney(initialQuote)}
@@ -549,7 +549,7 @@ const GenerateQuote = ({
             />
           </div>
 
-          <div className={styles.infoSection}>
+          <div className={`divisorPopup ${styles.infoSection}`}>
             <span className={styles.labelSimple}>Saldo Cuota Inicial:</span>
             <span className={styles.labelFocus}>
               {formatMoney(balanceInitialQuote)}
@@ -560,7 +560,7 @@ const GenerateQuote = ({
             <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
 
             <input
-              className={styles.subject_input}
+              className={`${styles.subject_input} dark:bg-dark-4 bg-transparent`}
               type="text"
               name="fees"
               value={fees}
@@ -577,7 +577,7 @@ const GenerateQuote = ({
                 value={startDate}
                 required
                 onChange={handleStartDateChange}
-                className={styles.subject_input}
+                className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
                 max={getMaxDate()}
                 min={getCurrentDate()}
               />
@@ -596,7 +596,7 @@ const GenerateQuote = ({
             <>
               {renderDynamicInputs()}
 
-              <div className={styles.infoSection}>
+              <div className={`divisorPopup ${styles.infoSection}`}>
                 <span className={styles.labelSimple}>Total de Cuotas:</span>
                 <span className={styles.labelFocus}>
                   {formatMoney(feesTotal)}
@@ -606,7 +606,7 @@ const GenerateQuote = ({
           )}
 
           {!popQuotes && (
-            <div className={styles.infoSection}>
+            <div className={`divisorPopup ${styles.infoSection}`}>
               <span className={styles.labelSimple}>Valor Cuota Mensual:</span>
               <span className={styles.labelFocus}>
                 {formatMoney(monthlyQuote)}
@@ -616,7 +616,7 @@ const GenerateQuote = ({
 
           <span className={styles.infoSectionDivider} />
 
-          <div className={styles.infoSection}>
+          <div className={`divisorPopup ${styles.infoSection}`}>
             <span className={styles.labelSimple}>Saldo Apartamento:</span>
             <span className={styles.labelFocus}>
               {formatMoney(unitBalance)}

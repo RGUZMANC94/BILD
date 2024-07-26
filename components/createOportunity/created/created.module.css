@@ -7,7 +7,7 @@
   background-color: transparent;
   width: 85%;
   height: auto;
-  color: #fff;
+  
 }
 
 .creacion-oportunidad {
@@ -138,7 +138,7 @@
 }
 
 .tipo-title {
-  color: #fff;
+  
   font-weight: 700;
   font-size: 20px;
 }
@@ -160,7 +160,7 @@
   padding: 10px;
   width: 50%;
   height: 80px;
-  color: #fff;
+  
   font-weight: 300;
   font-size: 18px;
   text-align: center;
@@ -173,7 +173,7 @@
 
 .valor {
   margin-top: 10px;
-  color: #fff;
+  
   font-weight: 200;
   font-size: 14px;
 }
@@ -187,7 +187,7 @@
   align-items: center;
   gap: 10px;
   margin-top: 10px;
-  color: #fff;
+  
   font-weight: 200;
   font-size: 14px;
   text-align: left;
@@ -282,7 +282,7 @@
   padding: 10px 0px;
   width: 70%;
   height: 50px;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 12px;
 
@@ -329,14 +329,14 @@
   align-items: center;
   cursor: pointer;
   margin: 0 0;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 5px;
   border-radius: 5px;
   background-color: #41434300;
   padding: 10px 0px;
   width: calc(50% - 10px);
   height: 45px;
-  color: #fff;
+  
   font-weight: 500;
   font-size: 12px;
 
@@ -473,7 +473,7 @@
 
 .popup h2 {
   margin-top: 0;
-  color: #fff;
+  
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
@@ -481,7 +481,7 @@
 
 .pop-text {
   margin-top: 20px;
-  color: #fff;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -498,13 +498,13 @@
   top: 0;
   right: 30px;
   transition: all 200ms;
-  color: #fff;
+  
   font-weight: 100;
   font-size: 50px;
   text-decoration: none;
 }
 .popup .close:hover {
-  color: #fff;
+  
 }
 .popup .content {
   overflow: auto;

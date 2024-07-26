@@ -32,7 +32,7 @@
 }
 
 .pop-text {
-  color: #fff;
+  
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -60,7 +60,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  color: #c7c7c7ce;
+  
   font-family: 'Lexend', sans-serif;
   margin-top: 50px;
   display: flex;
@@ -88,7 +88,7 @@
 }
 .text-cat {
   font-size: 18px;
-  color: #fff;
+  
   font-weight: 400;
 }
 
