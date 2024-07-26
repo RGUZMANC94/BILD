@@ -20,21 +20,21 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['opc-pendiente']}>
           <Link
             href={`/opportunities/${router.query.id}`}
-            className={`bg-card ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-1.jpg)] ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain relative"
               src={isDark ? '/images/key-white.png' : '/images/light/key.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               2
             </span>
-            Oportunidades
+            <p className='relative'>Oportunidades</p>
           </Link>
           <Link
             href={`/contacts/${router.query.id}/quotes`}
-            className={`bg-card ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-2.jpg)] ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain relative"
               src={
                 isDark
                   ? '/images/cotizaciones-white.png'
@@ -44,13 +44,13 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red} font-black`}>
               5
             </span>
-            Cotizaciones
+            <p className='relative'>Cotizaciones</p>
           </Link>
           <Link
             href={`/documentation/${router.query.id}`}
-            className={`bg-card ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-3.jpg)] ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain relative"
               src={
                 isDark
                   ? '/images/docs-white.png'
@@ -60,13 +60,13 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red} font-black`}>
               3
             </span>
-            Documentación
+            <p className='relative'>Documentación</p>
           </Link>
           <Link
             href={`/contacts/${router.query.id}/payments`}
-            className={`bg-card ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-4.jpg)] ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain relative"
               src={
                 isDark
                   ? '/images/payments-white.png'
@@ -76,7 +76,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             <span className={`${styles.badge} ${styles.red} font-black`}>
               7
             </span>
-            Pagos
+            <p className='relative'>Pagos</p>
           </Link>
         </div>
       )}

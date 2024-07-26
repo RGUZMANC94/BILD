@@ -71,15 +71,15 @@ const Payments = ({ contact, user, idClient }) => {
 
   return (
     <>
-      <div className={styles['top-content']}>
+      <div className={`${styles['top-content']} bg-sub-header`}>
         <div className="container flex j-s a-c">
           <Link
             href={`/contacts/${contactListSelected.idCli}`}
-            className={`bg-ct ${styles.icon}`}></Link>
+            className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
           <div
             className={
-              styles.title
-            }>{`Oportunidades de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
+              `${styles.title} font-black`
+            }>{`Pagos de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
           <div className={styles['title-movil']}>Pagos</div>
         </div>
       </div>

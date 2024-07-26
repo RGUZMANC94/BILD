@@ -357,7 +357,7 @@ const Quotes = ({ queryId }) => {
         <div className={`bg-sub-header ${styles.submenu}`}>
           <div className={styles.submenuInner}>
             <div
-              className={styles['sub-close']}
+              className={`${styles['sub-close']} dark:bg-[url(/images/close-white.svg)] bg-[url(/images/close.png)]`}
               onClick={() => {
                 setSelectCheckboxes(false);
                 setFileIndex((prevFiles) => (prevFiles = []));
@@ -372,7 +372,7 @@ const Quotes = ({ queryId }) => {
                 }
               }}
             />
-            <div className={styles['sub-text']}>
+            <div className={`${styles['sub-text']} font-bold`}>
               {fileIndex.length} elemento seleccionado
             </div>
             <div className={styles['sub-icons']}>
@@ -380,14 +380,26 @@ const Quotes = ({ queryId }) => {
                 <div
                   className={styles.deleteContainer}
                   onClick={() => downloadAllFiles()}>
-                  <img src="/images/upload-documentation-white.svg" />
+                  <img
+                    src={
+                      isDark
+                        ? '/images/upload-documentation-white.svg'
+                        : '/images/upload.png'
+                    }
+                  />
                 </div>
               </div>
               <div className={styles['sub-delete']}>
                 <div
                   className={styles.deleteContainer}
                   onClick={() => chainedDelete(fileIndex)}>
-                  <img src="/images/delete-quote-white.svg" />
+                  <img
+                    src={
+                      isDark
+                        ? '/images/delete-quote-white.svg'
+                        : '/images/delete.png'
+                    }
+                  />
                 </div>
               </div>
             </div>

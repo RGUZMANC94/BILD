@@ -172,7 +172,7 @@ const OportunitiesAllFilter = ({ user }) => {
               placeholder="Subject line"
               name="sorting"
               value={sorting}
-              className={`${styles.filter_input} bg-transparent bg-[url(/images/arrow_select.png)] dark:bg-[url(/images/oportunities-card-down-arrow.svg)]`}
+              className={`${styles.filter_input} border-input bg-transparent bg-[url(/images/arrow_select.png)] dark:bg-[url(/images/oportunities-card-down-arrow.svg)]`}
               onChange={(e) => setSorting(e.target.value)}>
               <option value="HOT">Mas caliente</option>
               <option value="COLD">Mas fría</option>

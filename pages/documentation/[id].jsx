@@ -276,19 +276,17 @@ const Documentation = ({ contact, user }) => {
 
   return (
     <>
-      <div className={styles['top-content']}>
+      <div className={`${styles['top-content']} bg-sub-header`}>
         <div className="container flex j-s a-c">
           <Link
             href={`/contacts/${contactListSelected.idCli}`}
-            className={`bg-ct ${styles.icon}`}></Link>
+            className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
           <div
-            className={
-              styles.title
-            }>{`Documentación de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
+            className={`${styles.title} font-black`}>{`Documentación de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
         </div>
       </div>
       <div className={styles['doc-perfil']}>
-        <div className={styles['editar-perfil']}>
+        <div className={`${styles['editar-perfil']} bg-light-2 shadow-md`}>
           <div className={styles['perfil-img']}>
             <img
               src={
@@ -300,9 +298,7 @@ const Documentation = ({ contact, user }) => {
             />
           </div>
           <span
-            className={
-              styles['name-perfil']
-            }>{`${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</span>
+            className={`${styles['name-perfil']} font-black`}>{`${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</span>
           <div className={styles['id-perfil']}>
             <img src="/images/id.png" />
             {`${contactListSelected.firstNames}`} Bogotá D.C
@@ -328,13 +324,16 @@ const Documentation = ({ contact, user }) => {
           </div>
         </div>
 
-        <div className={styles['documentacion-requerida']}>
-          <div className={styles['doc-top']}>
+        <div className={`${styles['documentacion-requerida']} border-input`}>
+          <div
+            className={`${styles['doc-top']} border-b border-b-light-3 border-solid`}>
             <span
               className={
                 styles['doc-title-movil']
               }>{`${contactListSelected.name} ${contactListSelected.lastname}`}</span>
-            <span className={styles['doc-title']}>DOCUMENTACIÓN REQUERIDA</span>
+            <span className={`${styles['doc-title']} font-black`}>
+              Documentación Requerida
+            </span>
           </div>
           <div className={styles['doc-wrap']}>
             <div className={styles.archivo}>
@@ -390,7 +389,8 @@ const Documentation = ({ contact, user }) => {
               </div>
             </div>
             <div className={styles['doc-list']}>
-              <div className={styles.certificado}>
+              <div
+                className={`${styles.certificado} border-b border-b-light-3 border-solid`}>
                 <div className={styles['certificado-top']}>
                   <div
                     className={`${styles['check-mark']} ${
@@ -423,7 +423,8 @@ const Documentation = ({ contact, user }) => {
                   ))}
               </div>
 
-              <div className={styles.certificado}>
+              <div
+                className={`${styles.certificado} border-b border-b-light-3 border-solid`}>
                 <div className={styles['certificado-top']}>
                   <div
                     className={`${styles['check-mark']} ${
@@ -456,7 +457,8 @@ const Documentation = ({ contact, user }) => {
                   ))}
               </div>
 
-              <div className={styles.certificado}>
+              <div
+                className={`${styles.certificado} border-b border-b-light-3 border-solid`}>
                 <div className={styles['certificado-top']}>
                   <div
                     className={`${styles['check-mark']} ${
@@ -489,7 +491,8 @@ const Documentation = ({ contact, user }) => {
                   ))}
               </div>
 
-              <div className={styles.certificado}>
+              <div
+                className={`${styles.certificado} border-b border-b-light-3 border-solid`}>
                 <div className={styles['certificado-top']}>
                   <div
                     className={`${styles['check-mark']} ${

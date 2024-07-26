@@ -20,10 +20,10 @@
   margin-top: 20px;
   padding-top: 20px;
   border-radius: 35px;
-  background: #2e2e2c;
+  /* background: #2e2e2c;
   box-shadow:
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
-    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
   backdrop-filter: blur(7.5px);
 }
 
@@ -60,8 +60,6 @@
 
 .name-perfil {
   font-size: 20px;
-  font-weight: 500;
-  
   text-align: center;
   margin: 0 auto 20px;
 }
@@ -92,14 +90,12 @@
 .documentacion-requerida {
   width: calc(70% - 25px);
   border-radius: 20px;
-  border: 1px solid #b8b8b8;
   height: auto;
   margin-top: 20px;
 }
 
 .doc-top {
   width: 95%;
-  border-bottom: 1px solid #4d4d4d;
   text-align: center;
   padding: 20px 0;
   margin: 0 auto;
@@ -109,9 +105,7 @@
 .doc-title {
   font-size: 20px;
   line-height: 40px;
-  font-weight: 700;
-  text-align: center;
-  
+  text-align: center;  
 }
 
 .doc-wrap {
@@ -183,7 +177,6 @@ button.upload-file {
   display: flex;
   flex-direction: column;
   width: 90%;
-  border-bottom: 1px solid #4d4d4d;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -319,11 +312,9 @@ button.upload-file {
 }
 
 .top-content {
-  
-  font-weight: 500;
   font-size: 20px;
   text-align: left;
-  background-color: #282624;
+  /* background-color: #282624; */
   height: 60px;
   display: flex;
   justify-content: center;
@@ -335,7 +326,7 @@ button.upload-file {
 }
 
 .top-content .icon {
-  background-image: url(/images/back.svg);
+  /* background-image: url(/images/back.svg); */
   width: 30px;
   height: 30px;
   margin-right: 20px;
@@ -381,10 +372,10 @@ button.upload-file {
   border-radius: 5px;
   color: #ffffff;
   font-size: 14px;
-
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+  font-weight: 900;
 }
 
 .disabledButton {
@@ -392,18 +383,16 @@ button.upload-file {
   height: auto;
   padding: 10px;
   border: 1px solid #2467ff;
-  background-color: #2467ff;
   border-radius: 5px;
-  color: #ffffff;
   font-size: 14px;
-
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  background-color: #343434;
-  color: #777777;
-  border-color: #777777;
+  background-color: #cccccc;
+  border-color: #cccccccc;
+  color: #fff;
   cursor: not-allowed;
+  font-weight: 900;
 }
 
 .icon-box .subir {
@@ -651,7 +640,7 @@ button.upload-file {
 .blue-border {
   width: 100%;
   height: 200px;
-  border: 1px dashed #fff;
+  border: 1px dashed #ccc;
   border-radius: 10px;
   padding: 30px 50px;
   text-align: center;

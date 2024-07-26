@@ -132,7 +132,7 @@ const Consultants = () => {
   return (
     <>
       <section className={styles['main-contain-contact']}>
-        <div className={styles['contact-top']}>
+        <div className={`${styles['contact-top']} bg-sub-header`}>
           <div className="container flex j-sb a-c">
             <div className={styles.nombre}>Nombre</div>
             <div className={styles.mail}>Correo Electrónico</div>
@@ -147,7 +147,7 @@ const Consultants = () => {
           </button>
 
           <div className={styles.listas}>
-            <div className={styles.reciente}>
+            <div className={`${styles.reciente} font-black`}>
               Asesores ({recentContacts.length})
             </div>
             {sortedontacts.map((contact, i) => (
@@ -188,7 +188,7 @@ const Consultants = () => {
                               setConsultantSelected(contact);
                               setShowEditContact(true);
                             }}
-                            className={styles['edit-icon']}>
+                            className={`${styles['edit-icon']} bg-[url(/images/edit-icon.png)] dark:bg-[url(/images/edit-icon.png)]`}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
                           </button>
                           <button
@@ -207,7 +207,7 @@ const Consultants = () => {
                           setConsultantSelected(contact);
                           setShowEditContact(true);
                         }}
-                        className={styles['edit-icon']}>
+                        className={`${styles['edit-icon']}`}>
                         {/* <img src="/images/whastapp-blue.png" /> */}
                       </button>
                       <button

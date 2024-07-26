@@ -224,11 +224,11 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
 
   return (
     <>
-      <div className={styles['top-content']}>
+      <div className={`${styles['top-content']} bg-sub-header`}>
         <div className="container flex j-s a-c">
           <Link
             href={`/contacts/${idClient}/payments`}
-            className={`bg-ct ${styles.icon}`}></Link>
+            className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
           <div className={styles.title}>Pagos </div>
         </div>
       </div>
