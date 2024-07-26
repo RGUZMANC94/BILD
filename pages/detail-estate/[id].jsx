@@ -383,7 +383,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
       <section className="main pt-[0px] h-screen">
         <div className={'top-buttons-container-movil'}>
           <a
-            className={'top-donwload'}
+            className={'top-donwload secondary'}
             href={
               xlsxTemplate && xlsxTemplate.length > 0
                 ? xlsxTemplate[0].url
@@ -393,7 +393,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
             Descargar
           </a>
           {user_rol === 'ADMIN' && (
-            <label className={'top-upload'}>
+            <label className={'top-upload primary'}>
               <input
                 type="file"
                 hidden

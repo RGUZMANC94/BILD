@@ -40,7 +40,7 @@ const Header = () => {
             )}
           </div>
 
-          <div className={`${styles['menu-top']} `}>
+          <div className={`${styles['menu-top']} max-sm:bg-sub-header max-sm:shadow-4xl`}>
             <div className={styles.menuPpal}>
               <Link
                 href={pathname === '/' ? '' : '/'}

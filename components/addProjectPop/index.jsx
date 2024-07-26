@@ -654,7 +654,7 @@ const AddProjectPop = ({
                       ? xlsxTemplate[0].url
                       : '#'
                   }>
-                  <img src="/images/download.svg" />
+                  <img src="/images/light/download.png" className='w-5 h-5' />
                   Descargar Excel Base
                 </a>
                 <label

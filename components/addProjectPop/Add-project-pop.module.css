@@ -569,12 +569,15 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
+  color: #fff;
+  font-weight: 900;
 }
 
 .buttonDownload {
-  border: 1px solid #343434;
-  background-color: #d9d9d9;
+  background-color: #cccccc;
   cursor: pointer;
+  display: flex;
+  gap: 10px;
 }
 
 .buttonUpload {
@@ -829,5 +832,14 @@
     background-size: 42px 35px;
     border-radius: 5px;
     
+  }
+}
+
+@media only screen and (max-width: 520px){
+  .uploadButtons{
+    flex-wrap: wrap;
+  }
+  .buttonProyect{
+    width: 100%;
   }
 }

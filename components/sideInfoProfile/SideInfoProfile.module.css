@@ -825,16 +825,14 @@ h3.user {
     height: auto;
     position: relative;
     padding: 5px 30px;
-    background-color: white;
-    box-shadow: 0px 9px 9px #c7c7c7e0;
+    /* background-color: white;
+    box-shadow: 0px 9px 9px #c7c7c7e0; */
     border-radius: 40px;
     display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: center;
     font-size: 16px;
-    font-weight: 400;
-    color: #4d4d4d;
   }
 
   .opcion img {
@@ -1059,16 +1057,11 @@ h3.user {
     position: relative;
     padding: 5px 15px;
     border-radius: 35px;
-    background: #565555;
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     font-size: 16px;
-    font-weight: 400;
-    
-
     margin-bottom: 20px;
   }
 
@@ -1102,7 +1095,6 @@ h3.user {
   }
   button.campo {
     width: 40%;
-    background-color: transparent;
     color: white;
     border-radius: 15px;
   }

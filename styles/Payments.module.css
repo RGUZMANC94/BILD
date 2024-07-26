@@ -53,7 +53,6 @@
   width: 29%;
   height: auto;
   border-radius: 28px;
-  background: #21221d;
   box-shadow:
     0px 0px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -185,7 +184,6 @@
     margin: 0px;
     text-align: center;
     border-radius: 10px;
-    background: #2e2e2c;
     box-shadow:
       2px 2px 7px 0px rgba(0, 0, 0, 0.15),
       -2px -2px 7px 0px rgba(0, 0, 0, 0.15);
