@@ -73,7 +73,7 @@ const ProfileOptions = () => {
           </div>
         </Link>
 
-        <button onClick={handleLogout} className={styles.btn}>
+        <button onClick={handleLogout} className={`${styles.btn} bg-card`}>
           <div className={styles.perfil}>
             <img
               alt=""
