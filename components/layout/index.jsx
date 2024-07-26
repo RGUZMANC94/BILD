@@ -36,9 +36,9 @@ const Layout = ({ children }) => {
         {pathname !== '/login' && <Header />}
         {children}
       </div>
-      <div
+      {/* <div
         onClick={toogleDarkMode}
-        className="fixed bottom-4 transition left-4 rounded-full bg-dark-1 dark:bg-light-2 z-10 cursor-pointer w-8 h-8 max-sm:bottom-24 max-sm:right-2 max-sm:left-auto max-sm:w-6 max-sm:h-6"></div>
+        className="fixed bottom-4 transition left-4 rounded-full bg-dark-1 dark:bg-light-2 z-10 cursor-pointer w-8 h-8 max-sm:bottom-24 max-sm:right-2 max-sm:left-auto max-sm:w-6 max-sm:h-6"></div> */}
     </main>
   );
 };
