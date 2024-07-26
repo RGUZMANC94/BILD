@@ -120,7 +120,7 @@ const AddEvents = ({
               <select
                 placeholder="Subject line"
                 name="subject"
-                className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
+                className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat `}
                 required>
                 <option disabled hidden selected>
                   Seleccionar tipo de evento

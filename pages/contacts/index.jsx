@@ -74,7 +74,7 @@ const Contacts = () => {
         </div>
         <div className="container">
           <button
-            className={styles['crear-contacto']}
+            className={`${styles['crear-contacto']} font-black`}
             onClick={() => setShowAddContact(true)}>
             <span className={styles['hidden-text']}>Nuevo contacto</span>
           </button>

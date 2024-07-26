@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styles from './ProfileAdmin.module.css';
+import BildContext from '../context';
 
 const ProfileOptions = () => {
+  const { isDark } = useContext(BildContext);
+  console.log(isDark);
   return (
     <>
       <div className={`${styles.optionsProfileAdmin} flex j-c a-c`}>
@@ -21,24 +24,37 @@ const ProfileOptions = () => {
         </Link> 
         */}
 
-        <Link href="/profile/admin" className={styles.btn}>
+        <Link href="/profile/admin" className={`${styles.btn} bg-card`}>
           <div className={styles.perfil}>
-            <img src="/images/user-circle.svg" />
+            <img
+              alt=""
+              src={
+                isDark ? '/images/user-circle.svg' : '/images/light/profile.png'
+              }
+            />
             <div className={styles['btn-text']}>Mi Perfil</div>
           </div>
         </Link>
 
-        <Link href="/profile/consultants" className={styles.btn}>
+        <Link href="/profile/consultants" className={`${styles.btn} bg-card`}>
           <div className={styles.perfil}>
-            <img src="/images/profiles-icon.png" />
+            <img
+              alt=""
+              src={
+                isDark
+                  ? '/images/profiles-icon.png'
+                  : '/images/profiles-icon.png'
+              }
+            />
             <div className={styles['btn-text']}>Asesores</div>
           </div>
         </Link>
 
-        <Link href="/profile/login" className={styles.btn}>
+        <Link href="/profile/login" className={`${styles.btn} bg-card`}>
           <div className={styles.perfil}>
             <img
-              src="/images/close-white.svg"
+              alt=""
+              src={isDark ? '/images/close-white.svg' : '/images/close.svg'}
               className={styles['close-session']}
             />
             <div className={styles['btn-text']}>Cerrar Sesión</div>
