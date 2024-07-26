@@ -97,11 +97,11 @@ const OportunityCreated = ({
   return (
     <>
       <div className={styles['wrap-crear']}>
-        <div className={styles.crear}>
+        <div className={`${styles.crear} bg-blur`}>
           <div className={styles['left-side']}>
             <div className={styles['crear-tipo']}>
               <div className={styles['creacion-title']}>
-                <span className={styles['tipo-title']}>
+                <span className={`${styles['tipo-title']} font-black`}>
                   {
                     projectsList.find(
                       (objeto) => objeto.projectId === unit.projectId
@@ -120,20 +120,20 @@ const OportunityCreated = ({
                       activeZoomImg(e, '/images/crear-tipo.png');
                     }}></div>
                 </div>
-                <div className={styles['tipo-info']}>
-                  <div className={styles.tipos}>
+                <div className={`${styles['tipo-info']}`}>
+                  <div className={`${styles.tipos} font-black`}>
                     <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
                   </div>
                   <span className={styles.valor}>{`$ ${parseInt(
                     unit.propertyPrice
                   ).toLocaleString('es-ES')}`}</span>
                   <div className={styles.detalles}>
-                    <div className={styles['details-group']}>
+                    <div className={`${styles['details-group']} font-bold`}>
                       <img src="/images/cards/bed.svg" />
                       <span>{`${unit.bedrooms}`}</span>
                     </div>
                     -
-                    <div className={styles['details-group']}>
+                    <div className={`${styles['details-group']} font-bold`}>
                       <img src="/images/cards/bath.svg" />
                       <span>{`${unit.baths}`}</span>
                     </div>
@@ -146,7 +146,7 @@ const OportunityCreated = ({
               <div className={styles.contacto}>
                 <div className={styles.conecta}>
                   <button
-                    className={styles['contacto-existente']}
+                    className={`${styles['contacto-existente']}`}
                     onClick={() => {
                       deleteOpportunity();
                     }}>

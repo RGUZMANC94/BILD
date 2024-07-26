@@ -14,7 +14,7 @@ const ConectProperty = ({
   return (
     <div className={styles.contacto}>
       <div className={styles.conecta}>
-        <span className={styles['conecta-contacto']}>
+        <span className={`${styles['conecta-contacto']} font-bold`}>
           Conecta el inmueble a un contacto:
         </span>
         <button
@@ -23,18 +23,18 @@ const ConectProperty = ({
           Crear un contacto
         </button>
         <button
-          className={styles['contacto-existente']}
+          className={`${styles['contacto-existente']} text-light-1 font-black`}
           onClick={() => setShowPopUpAddContact(true)}>
           Elegir contacto
         </button>
       </div>
       <div className={styles.recientes}>
-        <span className={styles['conecta-contacto']}>Contactos recientes:</span>
+        <span className={`${styles['conecta-contacto']} font-bold`}>Contactos recientes:</span>
         {recentContacts &&
           recentContacts.length > 0 &&
           recentContacts.slice(0, 3).map((recent, i) => (
             <div
-              className={styles.contact}
+              className={`${styles.contact} hover:bg-light-2 dark:hover:bg-dark-2`}
               key={recent.idCli}
               data-email={recent.email}
               data-phone-number={recent.phoneNumber}

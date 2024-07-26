@@ -65,7 +65,7 @@ const Contacts = () => {
   return (
     <>
       <section className={styles['main-contain-contact']}>
-        <div className={styles['contact-top']}>
+        <div className={`${styles['contact-top']} bg-sub-header`}>
           <div className="container flex j-sb a-c">
             <div className={styles.nombre}>Nombre</div>
             <div className={styles.mail}>Correo Electrónico</div>
@@ -80,12 +80,14 @@ const Contacts = () => {
           </button>
 
           <div className={styles.listas}>
-            <div className={styles.reciente}>
+            <div className={`${styles.reciente} font-black`}>
               Creados Recientemente (
               {recentContacts.length >= 3 ? '3' : recentContacts.length})
             </div>
             {recentContacts.slice(0, 3).map((recent, i) => (
-              <div className={styles['list-name']} key={i}>
+              <div
+                className={`${styles['list-name']}  hover:bg-light-3  hover:dark:bg-dark-2`}
+                key={i}>
                 <Link
                   onClick={() => {
                     dispatch(changeContactListSelected(recent));
@@ -161,11 +163,13 @@ const Contacts = () => {
             ))}
           </div>
           <div className={styles.listas}>
-            <div className={styles.reciente}>
+            <div className={`${styles.reciente} font-black`}>
               Contactos ({recentContacts.length})
             </div>
             {sortedontacts.map((contact, i) => (
-              <div className={styles['list-name']} key={i}>
+              <div
+                className={`${styles['list-name']} bg-light-2 hover:bg-light-3 dark:bg-dark-4 hover:dark:bg-dark-2`}
+                key={i}>
                 <Link
                   onClick={() => {
                     dispatch(changeContactListSelected(contact));

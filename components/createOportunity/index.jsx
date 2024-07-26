@@ -65,7 +65,8 @@ const CreateOportunity = ({ created, recentContacts }) => {
                   }}></div>
               )}
 
-              <div className={styles['creacion-oportunidad']}>
+              <div
+                className={`${styles['creacion-oportunidad']} bg-blur font-black`}>
                 {isCreated
                   ? 'Oportunidades de John Lennon'
                   : 'Crear Oportunidad'}
@@ -82,9 +83,12 @@ const CreateOportunity = ({ created, recentContacts }) => {
           </div>
         </header>
 
-        <section
-          className={styles.main}
-          style={{ backgroundImage: `url(${imgTypeSelected})` }}>
+        <section className={`${styles.main} relative`}>
+          <div
+            className={
+              'absolute top-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover blur-sm'
+            }
+            style={{ backgroundImage: `url(${imgTypeSelected})` }}></div>
           {isCreated ? (
             <OportunityCreated
               setShowPopUp={setShowPopUp}

@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './add-contact.module.css';
 import { useDispatch } from 'react-redux';
 import { changeContactSelected } from '../../redux/contactSelectedSlice';
+import BildContext from '../context';
 
 const AddContact = ({
   setShowPopUpAddContact,
   setIsConnected,
   recentContacts,
 }) => {
+  const { isDark } = useContext(BildContext);
   const dispatch = useDispatch();
   const [isShow, setIsShow] = useState(false);
   useEffect(() => {
@@ -41,15 +43,19 @@ const AddContact = ({
             setShowPopUpAddContact(false);
           }, 500);
         }}></div>
-      <div className={styles['popup-window']}>
-        <div className={styles['top-content']}>
+      <div className={`${styles['popup-window']} bg-popup`}>
+        <div className={`${styles['top-content']} header-popup`}>
           <div className={styles['top-name']}>
-            <h1 className={styles['top-content-title']}>
+            <h1 className={`${styles['top-content-title']} font-black`}>
               Seleccionar Contacto
             </h1>
           </div>
           <div
-            className={styles['close-icon']}
+            className={`${styles['close-icon']} ${
+              isDark
+                ? 'bg-[url(/images/close-white.svg)]'
+                : 'bg-[url(/images/light/back.png)]'
+            }`}
             onClick={() => {
               setIsShow(false);
               setTimeout(() => {
@@ -72,7 +78,7 @@ const AddContact = ({
             {filteredContacts.length > 0 ? (
               filteredContacts.map((recent, i) => (
                 <div
-                  className={styles.contact}
+                  className={`${styles.contact} hover:bg-light-3 dark:hover:bg-dark-2`}
                   key={i}
                   onClick={() => {
                     setIsConnected(true);

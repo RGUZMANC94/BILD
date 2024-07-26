@@ -6,6 +6,8 @@ import { closePopUp } from '../../../redux/popUpOportunity';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { openZoomImg } from '../../../redux/zoomImg';
+import { useContext } from 'react';
+import BildContext from '../../context';
 
 const CreateStep = ({
   setShowPopUpAddContact,
@@ -23,13 +25,13 @@ const CreateStep = ({
     e.stopPropagation();
     dispatch(openZoomImg(imgToZoom));
   };
-
+  const { isDark } = useContext(BildContext);
   console.log('contactos en creacion de oportunidada', recentContacts);
   return (
-    <div className={styles.crear}>
+    <div className={`${styles.crear} bg-blur`}>
       <div className={styles['crear-tipo']}>
         <div className={styles['creacion-title']}>
-          <span className={styles['tipo-title']}>
+          <span className={`${styles['tipo-title']} font-black`}>
             {
               projectsList.find((objeto) => objeto.projectId === unit.projectId)
                 .projectName
@@ -46,27 +48,29 @@ const CreateStep = ({
               }}></div>
           </div>
           <div className={styles['tipo-info']}>
-            <div className={styles.tipos}>
+            <div className={`${styles.tipos} font-black`}>
               <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
             </div>
             <span className={styles.valor}>{`$ ${parseInt(
               unit.propertyPrice
             ).toLocaleString('es-ES')}`}</span>
             <div className={styles.detalles}>
-              <div className={styles['details-group']}>
+              <div className={`${styles['details-group']} font-bold`}>
                 <Image
                   alt=""
-                  src="/images/cards/bed.png"
+                  src={
+                    isDark ? '/images/cards/bed.png' : '/images/light/bed.png'
+                  }
                   width="15"
                   height="15"
                 />
                 <span>{`${unit.bedrooms}`}</span>
               </div>
               -
-              <div className={styles['details-group']}>
+              <div className={`${styles['details-group']} font-bold`}>
                 <Image
                   alt=""
-                  src="/images/cards/bath.png"
+                  src={isDark ? '/images/cards/bath.png' : '/images/light/bath.png'}
                   width="15"
                   height="15"
                 />

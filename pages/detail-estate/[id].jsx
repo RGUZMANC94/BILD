@@ -306,7 +306,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
 
   return (
     <>
-      <div className="top-content shadow-md shadow-dark-4/10 dark:bg-dark-3">
+      <div className="top-content bg-sub-header ">
         {conectContact && (
           <li className="selectFilterFlex j-s a-c">
             <p>CONECTA EL CONTACTO CON UN TIPO O UNIDAD:</p>{' '}

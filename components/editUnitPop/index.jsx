@@ -435,7 +435,7 @@ const EditUnitPop = ({
                */}
             </>
           </form>
-          <div className={`${styles.BottomContent}`}>
+          <div className={`${styles.BottomContent} footer-popup`}>
             <Button
               buttonType={'secondary'}
               iconImage={false}

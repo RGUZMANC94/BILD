@@ -55,13 +55,9 @@ i.fa-solid.fa-plus {
 
 .contacto-existente {
   width: 70%;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-
+  font-size: 14px;
   border-radius: 5px;
   border: 1px solid #2467ff;
-
   padding: 10px 0px;
   text-align: center;
   cursor: pointer;
@@ -81,7 +77,6 @@ i.fa-solid.fa-user {
 .conecta-contacto {
   margin-bottom: 20px;
   font-size: 16px;
-  font-weight: 500;
 }
 
 .recientes .conecta-contacto {
@@ -103,10 +98,10 @@ i.fa-solid.fa-user {
   transition: all 0.25s ease-in-out;
 }
 
-.contact:hover {
-  /* transform: translateX(-10px); */
+/* .contact:hover {
+  transform: translateX(-10px);
   background-color: #262824;
-}
+} */
 
 .contact img {
   margin-right: 1vh;
