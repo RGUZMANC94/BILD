@@ -59,7 +59,6 @@ const GenerateQuote = ({
     payments: [],
     paymentStartDate: formatDate(new Date()),
   });
-  console.log('dayToday:', datos);
   const [errorMessage, setErrorMessage] = useState(null);
   const [feesTotal, setFeesTotal] = useState(0);
   const [minDuePercentage, setMinDuePercentage] = useState(
@@ -156,11 +155,7 @@ const GenerateQuote = ({
     }
   }, [values]);
 
-  /*useEffect(() => {
-    setValues([(initialQuote / unitSelected.propertyPrice) * 100]);
-  }, [initialQuote]);*/
-
-  console.log('initialQuote',initialQuote, typeof initialQuote);
+  // console.log('initialQuote',initialQuote, typeof initialQuote);
 
   // console.log(initialQuote, separation, downPayment);
   useEffect(() => {
@@ -181,7 +176,6 @@ const GenerateQuote = ({
     setMinQuoteValue(monthlyQuote * (minDuePercentage / 100));
   }, [monthlyQuote]);
 
-  console.log('minQuoteValue:', minQuoteValue);
 
   const handleChangeFees = (e) => {
     const value = Number(e.target.value);
@@ -212,9 +206,6 @@ const GenerateQuote = ({
   const [totalModified, setTotalModified] = useState(0);
   const [nonModifiedValue, setNonModifiedValue] = useState(0);
   const [lastModifiedIndex, setLastModifiedIndex] = useState(null);
-
-  console.log('totalModified:', totalModified);
-  console.log('nonModifiedValue:', nonModifiedValue);
 
   const handleFeeChange = (value, index, event) => {
     const newFeesArray = [...feesArray];
@@ -443,9 +434,12 @@ const GenerateQuote = ({
 
   const [sliderFlag, setSliderFlag] = useState(true);
 
-  const handleInitialQuoteChange = (num) => {
+  const handleInitialQuoteChange = (val) => {
     setSliderFlag(false);
+    
+    const num = Number(val);
 
+    console.log('num:', num); 
     let tempNum = num;
 
     if (num < 0) {
@@ -453,6 +447,7 @@ const GenerateQuote = ({
     } else if(num > unitSelected.propertyPrice) {
       tempNum = unitSelected.propertyPrice;
     }
+     console.log('tempNum:', tempNum);
     setInitialQuote(tempNum);
     setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]); 
   };
@@ -535,8 +530,7 @@ const GenerateQuote = ({
             <div className={styles.labelRangePercenth}>{`${values}%`}</div>
           </div>
 
-          <div className={styles.infoSection}>
-            <span className={styles.labelSimple}>Total Cuota Inicial:</span>
+          <div className={styles['cotizacion-form']}>
             <CurrencyInput
               className={styles.inputQuote}
               prefix="$ "
@@ -634,7 +628,6 @@ const GenerateQuote = ({
               Ver detalle de cuotas
             </span>
           </div>
-          {console.log('fessArray:', feesArray)}
           {popQuotes && (
             <>
               {renderDynamicInputs()}
