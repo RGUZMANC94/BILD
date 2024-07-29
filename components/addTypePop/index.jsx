@@ -254,9 +254,9 @@ const AddTypePop = ({
                 <div
                   className={`${styles['main-image']} ${
                     isDark
-                      ? 'bg-url(/images/photo-icon.png)'
+                      ? 'bg-[url(/images/photo-icon.png)]'
                       : 'bg-[url(/images/light/photos.png)]'
-                  }`}>
+                  } `}>
                   <div
                     className={`bg-ct ${styles.deleteIcon}`}
                     onClick={deleteImage}></div>

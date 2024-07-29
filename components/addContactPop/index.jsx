@@ -377,7 +377,7 @@ const AddContactPop = ({
               ${
                 isDark
                   ? 'bg-[url(/images/close-white.svg)]'
-                  : 'bg-[url(/images/close.svg)] !important'
+                  : 'bg-[url(/images/close.svg)]'
               }
             `}
               onClick={() => {
