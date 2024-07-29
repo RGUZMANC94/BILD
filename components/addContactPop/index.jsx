@@ -488,7 +488,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('C')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.civilStatus === 'C' && styles.active
                   }`}>
                   Casado
@@ -496,7 +496,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('S')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.civilStatus === 'S' && styles.active
                   }`}>
                   Soltero
@@ -504,7 +504,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('UN')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.civilStatus === 'UN' && styles.active
                   }`}>
                   Unión Libre
@@ -512,7 +512,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('DI')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.civilStatus === 'DI' && styles.active
                   }`}>
                   Divorciado
@@ -525,7 +525,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeAmountChildren('0')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.amountChildren === '0' && styles.active
                   }`}>
                   Sin Hijos
@@ -533,7 +533,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeAmountChildren('1')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.amountChildren === '1' && styles.active
                   }`}>
                   Con Hijos
@@ -546,7 +546,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changebusinessName('I')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.housingInversion === 'I' &&
                     styles.active
                   }`}>
@@ -555,7 +555,7 @@ const AddContactPop = ({
                 <button
                   type="button"
                   onClick={() => changebusinessName('V')}
-                  className={`${styles.campo} ${
+                  className={`campo-select ${styles.campo} ${
                     datos.contactProfile.housingInversion === 'V' &&
                     styles.active
                   }`}>

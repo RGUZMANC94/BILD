@@ -261,7 +261,7 @@ li.pendiente-list {
 .containerButtonsEvents {
   margin-bottom: 20px;
   margin-left: 20px;
-  width: calc(100% - 20px);
+  width: 100%;
 }
 
 .buttonEventHistory {

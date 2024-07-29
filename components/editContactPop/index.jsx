@@ -490,7 +490,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('C')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.civilStatus === 'C' && `${styles.active} text-light-1`
                   }`}>
                   Casado
@@ -498,7 +498,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('S')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.civilStatus === 'S' && `${styles.active} text-light-1`
                   }`}>
                   Soltero
@@ -506,7 +506,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('UN')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.civilStatus === 'UN' && `${styles.active} text-light-1`
                   }`}>
                   Unión Libre
@@ -514,7 +514,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeTypeClient('DI')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.civilStatus === 'DI' && `${styles.active} text-light-1`
                   }`}>
                   Divorciado
@@ -527,7 +527,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeAmountChildren('0')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.amountChildren === '0' && `${styles.active} text-light-1`
                   }`}>
                   Sin Hijos
@@ -535,7 +535,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changeAmountChildren('1')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.amountChildren === '1' && `${styles.active} text-light-1`
                   }`}>
                   Con Hijos
@@ -548,7 +548,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changebusinessName('I')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.housingInversion === 'I' &&
                     `${styles.active} text-light-1`
                   }`}>
@@ -557,7 +557,7 @@ const EditContactPop = ({
                 <button
                   type="button"
                   onClick={() => changebusinessName('V')}
-                  className={`${styles.campo} hover:text-light-1 ${
+                  className={`campo-select ${styles.campo} hover:text-light-1 ${
                     datos.contactProfile.housingInversion === 'V' &&
                     `${styles.active} text-light-1`
                   }`}>

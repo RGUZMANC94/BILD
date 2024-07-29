@@ -444,7 +444,7 @@ const EditConsultantsPop = ({
                     <button
                       type="button"
                       onClick={() => toggleProjectId(project.projectId)}
-                      className={`${styles.campo} ${
+                      className={`campo-select ${styles.campo} ${
                         datos.projects.some(
                           (proj) => proj.idProject === project.projectId
                         ) && styles.active

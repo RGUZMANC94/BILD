@@ -465,7 +465,7 @@ const AddConsultant = ({
                     <button
                       type="button"
                       onClick={() => toggleProjectId(project.projectId)}
-                      className={`${styles.campo} ${
+                      className={`campo-select ${styles.campo} ${
                         datos.projects.includes(project.projectId) &&
                         styles.active
                       }`}>

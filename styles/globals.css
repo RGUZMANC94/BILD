@@ -59,6 +59,11 @@
   .point-dotted {
     @apply  dark:bg-light-1;
   }
+
+  .campo-select { @apply border-[1px] border-solid dark:border-light-1;
+  
+    border-color: #999;
+  } 
 }
 /* tailwindcss */
 .dark .point-dotted {
@@ -267,23 +272,23 @@ li {
   top: 0;
   right: 0;
   border-radius: 5px;
-  background-image: url(/images/edit-icon.svg);
-  background-size: 60% !important;
-  background-color: #2467ff;
+  background-image: url(/images/edit.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 50px;
-  height: 50px;
+  height: 30px;
 }
 
 .editProjectDetailState {
   display: block;
   border-radius: 15%;
-  background-image: url(/images/edit-icon.svg);
+  background-image: url(/images/edit.svg);
   background-position: center center;
-  background-size: 65%;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-color: #2467ff;
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 30px;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   transform: scale(1);
