@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Tooltip.module.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect , useContext } from 'react';
+import BildContext from '../context';
 
 const Tooltip = ({ contentId }) => {
   const idContent = [
@@ -12,6 +13,7 @@ const Tooltip = ({ contentId }) => {
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState('bottom');
   const tooltipRef = useRef(null);
+  const { isDark } = useContext(BildContext);
 
   useEffect(() => {
     const handleMouseEnter = () => {
@@ -42,7 +44,7 @@ const Tooltip = ({ contentId }) => {
   }, []);
 
   return (
-    <div ref={tooltipRef} className={styles.tooltipWrapper}>
+    <div ref={tooltipRef} className={`${!isDark && 'invert-filter'} ${styles.tooltipWrapper}`}>
       <div className={styles.tooltipButton}></div>
       {visible && (
         <div className={`${styles.tooltip} ${styles[position]}`}>

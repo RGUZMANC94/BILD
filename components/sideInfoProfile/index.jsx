@@ -10,6 +10,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   const { initialState } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id, rol: user_rol } = user;
+  const { isDark } = useContext(BildContext);
 
   console.log('Informacion del contactIndo: ', contactInfo);
   return (
@@ -107,7 +108,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
             )}
             {typeViewer === 'buyer' && (
               <>
-                <div className={styles['id-perfil']}>
+                <div className={`${!isDark && 'black-filter'} ${styles['id-perfil']}`}>
                   <img src="/images/id.png" />
                   {contactInfo.documentNumber}
                 </div>

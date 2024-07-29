@@ -176,7 +176,7 @@
   /*  */
 }
 
-.inputDate::-webkit-calendar-picker-indicator {
+.inputDateWhite::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 

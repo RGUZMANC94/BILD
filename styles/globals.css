@@ -70,6 +70,14 @@
   color: #343434;
 }
 
+.black-filter {
+  filter: brightness(0%);
+}
+
+.invert-filter {
+  filter: invert(1);
+}
+
 *::-webkit-scrollbar {
   border-radius: 10px;
   background-color: #ccc;
