@@ -34,11 +34,11 @@
 
 .closeBackgroundPopUp {
   position: absolute;
-  top: 39px;
+  top: 22px;
   right: 25px;
   z-index: 2;
   cursor: pointer;
-  background-image: url(/images/close-white.svg);
+  /*background-image: url(/images/close-white.svg);*/
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;

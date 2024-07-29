@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect , useContext } from 'react';
 import Button from '../button';
 import styles from './Edit-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
 import CurrencyInput from 'react-currency-input-field';
+import BildContext from '../context';
 
 const EditUnitPop = ({
   showEditUnit,
@@ -23,6 +24,7 @@ const EditUnitPop = ({
   const { projectsList } = useSelector((state) => state.projectState);
   const [errorMessage, setErrorMessage] = useState(null);
   const { unitEdit } = useSelector((state) => state.editObjectState);
+  const { isDark } = useContext(BildContext);
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -256,7 +258,13 @@ const EditUnitPop = ({
               </h2>
             </div>
             <div
-              className={`${styles.closeIcon} bg-ct`}
+              className={`${styles.closeIcon} bg-ct 
+              ${
+                isDark
+                  ? 'bg-[url(/images/close-white.svg)]'
+                  : 'bg-[url(/images/close.svg)]'
+              }
+            `}
               onClick={() => setShowEditUnit(false)}
             />
           </div>

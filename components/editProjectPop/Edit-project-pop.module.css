@@ -59,6 +59,7 @@
 .closeIcon {
   width: 22px;
   height: 22px;
+  /*background-image: url(/images/close-white.svg);*/
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;

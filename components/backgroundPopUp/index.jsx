@@ -6,6 +6,7 @@ import BildContext from '../context';
 const BackgroundPopUp = ({ children, closePopUp, closeAnimate }) => {
   const { quicksand } = useContext(BildContext);
   const [active, setActive] = useState(false);
+  const { initialState, isDark } = useContext(BildContext);
   useEffect(() => {
     setTimeout(() => {
       setActive((prevState) => true);
@@ -32,7 +33,15 @@ const BackgroundPopUp = ({ children, closePopUp, closeAnimate }) => {
 
       <div className={`bg-popup ${styles['right-side']}`}>
         {' '}
-        <div className={styles.closeBackgroundPopUp} onClick={closePop}></div>
+        <div 
+        className={`${styles.closeBackgroundPopUp} bg-ct 
+        ${
+          isDark
+            ? 'bg-[url(/images/close-white.svg)]'
+            : 'bg-[url(/images/close.svg)]'
+        }
+      `}
+        onClick={closePop}></div>
         {children}
       </div>
     </div>

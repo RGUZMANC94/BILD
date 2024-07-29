@@ -489,7 +489,7 @@ const AddProjectPop = ({
                 ${
                   isDark
                     ? 'bg-[url(/images/close-white.svg)]'
-                    : 'bg-[url(/images/light/back.png)]'
+                    : 'bg-[url(/images/close.svg)]'
                 }
               `}
               onClick={() => {

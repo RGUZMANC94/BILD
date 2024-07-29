@@ -20,7 +20,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['opc-pendiente']}>
           <Link
             href={`/opportunities/${router.query.id}`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-1.jpg)] ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile1.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
               src={isDark ? '/images/key-white.png' : '/images/light/key.png'}
@@ -32,7 +32,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
           </Link>
           <Link
             href={`/contacts/${router.query.id}/quotes`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-2.jpg)] ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile2.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
               src={
@@ -48,7 +48,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
           </Link>
           <Link
             href={`/documentation/${router.query.id}`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-3.jpg)] ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile3.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
               src={
@@ -64,7 +64,7 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
           </Link>
           <Link
             href={`/contacts/${router.query.id}/payments`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/image-4.jpg)] ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile4.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
               src={

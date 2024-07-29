@@ -373,7 +373,13 @@ const AddContactPop = ({
               </h1>
             </div>
             <div
-              className={`${styles.closeIcon} bg-ct`}
+              className={`${styles.closeIcon} bg-ct 
+              ${
+                isDark
+                  ? 'bg-[url(/images/close-white.svg)]'
+                  : 'bg-[url(/images/close.svg)] !important'
+              }
+            `}
               onClick={() => {
                 setShowAddContact(false);
                 cleanForm();

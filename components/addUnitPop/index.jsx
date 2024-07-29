@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import Button from '../button';
 import styles from './Add-unit-pop.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
 import CurrencyInput from 'react-currency-input-field';
+import BildContext from '../context';
 
 const AddUnitPop = ({
   showPopUpUnit,
@@ -24,6 +25,7 @@ const AddUnitPop = ({
   const { projectsList } = useSelector((state) => state.projectState);
   const [optionalPop, setOptionalPop] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const { isDark } = useContext(BildContext);
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -267,7 +269,13 @@ const AddUnitPop = ({
               </h2>
             </div>
             <div
-              className={`${styles.closeIcon} bg-ct`}
+              className={`${styles.closeIcon} bg-ct 
+              ${
+                isDark
+                  ? 'bg-[url(/images/close-white.svg)]'
+                  : 'bg-[url(/images/close.svg)]'
+              }
+            `}
               onClick={() => setShowPopUpUnit(false)}
             />
           </div>

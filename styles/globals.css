@@ -362,7 +362,7 @@ li {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  transition: left 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   /* box-shadow: 2px 7px 10px 0px #00000026; */
   border: 1px solid #ff556700;
   border-radius: 15px;
