@@ -578,10 +578,11 @@
 }
 
 .buttonUpload {
-  width: 225px;
   border: 1px solid #2467ff;
   background-color: #2467ff;
-  
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
   cursor: pointer;
 }
 

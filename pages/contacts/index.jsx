@@ -86,7 +86,7 @@ const Contacts = () => {
             </div>
             {recentContacts.slice(0, 3).map((recent, i) => (
               <div
-                className={`${styles['list-name']}  hover:bg-light-3  hover:dark:bg-dark-2`}
+                className={`${styles['list-name']}  hover:dark:bg-dark-2`}
                 key={i}>
                 <Link
                   onClick={() => {

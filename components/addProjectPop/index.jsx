@@ -654,11 +654,12 @@ const AddProjectPop = ({
                       ? xlsxTemplate[0].url
                       : '#'
                   }>
-                  <img src="/images/light/download.png" className='w-5 h-5' />
+                  <img src="/images/downloadExcel-icon.png" className='w-5 h-5' />
                   Descargar Excel Base
                 </a>
                 <label
                   className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
+                  <img src="/images/uploadExcel-icon.png" className='w-5 h-5' />
                   Subir Excel de Inventario
                   <input
                     type="file"
