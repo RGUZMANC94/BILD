@@ -59,7 +59,6 @@ const GenerateQuote = ({
     payments: [],
     paymentStartDate: formatDate(new Date()),
   });
-  console.log('dayToday:', datos);
   const [errorMessage, setErrorMessage] = useState(null);
   const [feesTotal, setFeesTotal] = useState(0);
   const [minDuePercentage, setMinDuePercentage] = useState(
@@ -151,10 +150,14 @@ const GenerateQuote = ({
   ]);
 
   useEffect(() => {
-    setInitialQuote((unitSelected.propertyPrice * values[0]) / 100);
+    if (sliderFlag) {
+      setInitialQuote((unitSelected.propertyPrice * values[0]) / 100);
+    }
   }, [values]);
 
-  console.log(initialQuote, separation, downPayment);
+  // console.log('initialQuote',initialQuote, typeof initialQuote);
+
+  // console.log(initialQuote, separation, downPayment);
   useEffect(() => {
     setBalanceInitialQuote(
       initialQuote - (Number(separation) + Number(downPayment))
@@ -173,7 +176,6 @@ const GenerateQuote = ({
     setMinQuoteValue(monthlyQuote * (minDuePercentage / 100));
   }, [monthlyQuote]);
 
-  console.log('minQuoteValue:', minQuoteValue);
 
   const handleChangeFees = (e) => {
     const value = Number(e.target.value);
@@ -186,7 +188,7 @@ const GenerateQuote = ({
   };
 
   function formatMoney(num) {
-    return num.toLocaleString('es-CO', {
+    return Number(num).toLocaleString('es-CO', {
       style: 'currency',
       currency: 'COP',
       minimumFractionDigits: 0,
@@ -204,9 +206,6 @@ const GenerateQuote = ({
   const [totalModified, setTotalModified] = useState(0);
   const [nonModifiedValue, setNonModifiedValue] = useState(0);
   const [lastModifiedIndex, setLastModifiedIndex] = useState(null);
-
-  console.log('totalModified:', totalModified);
-  console.log('nonModifiedValue:', nonModifiedValue);
 
   const handleFeeChange = (value, index, event) => {
     const newFeesArray = [...feesArray];
@@ -433,6 +432,45 @@ const GenerateQuote = ({
     }
   };
 
+  const [sliderFlag, setSliderFlag] = useState(true);
+
+  const handleInitialQuoteChange = (val) => {
+    setSliderFlag(false);
+    
+    const num = Number(val);
+
+    console.log('num:', num); 
+    let tempNum = num;
+
+    if (num < 0) {
+      tempNum = 0;
+    } else if(num > unitSelected.propertyPrice) {
+      tempNum = unitSelected.propertyPrice;
+    }
+     console.log('tempNum:', tempNum);
+    setInitialQuote(tempNum);
+    setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]); 
+  };
+
+  /* const [minDate, setMinDate] = useState('');
+  const [maxDate, setMaxDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const day = today.getDate();
+
+    const minDateString = new Date(year, month, day).toISOString().split('T')[0];
+    setMinDate(minDateString);
+    console.log('minDateString:', minDateString);
+
+    const maxDateValue = new Date(year, month + maxNumberDues, day);
+    const maxDateString = maxDateValue.toISOString().split('T')[0];
+    console.log('maxDateString:', maxDateString);
+    setMaxDate(maxDateString);
+  }, [maxNumberDues]);*/
+
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
@@ -451,6 +489,7 @@ const GenerateQuote = ({
         </div>
 
         <div className={styles.infoContainer}>
+
           <span className={styles.labelSubtitle}>
             Porcentaje de Cuota Inicial
           </span>
@@ -462,7 +501,9 @@ const GenerateQuote = ({
               min={0}
               max={100}
               // rtl={rtl}
-              onChange={(values) => setValues(values)}
+              onChange={(values) => {
+                setSliderFlag(true);
+                setValues(values);}}
               renderTrack={({ props, children }) => (
                 <div
                   onMouseDown={props.onMouseDown}
@@ -509,12 +550,24 @@ const GenerateQuote = ({
             <div className={styles.labelRangePercenth}>{`${values}%`}</div>
           </div>
 
-          <div className={`divisorPopup ${styles.infoSection}`}>
-            <span className={styles.labelSimple}>Total Cuota Inicial:</span>
-            <span className={styles.labelFocus}>
-              {formatMoney(initialQuote)}
-            </span>
+          <div className={styles['cotizacion-form']}>
+            <span className={styles.labelSide}>Valor Cuota Inicial:</span>
+
+            <CurrencyInput
+              className={styles.inputQuote}
+              prefix="$ "
+              decimalSeparator=","
+              groupSeparator="."
+              id="initialQuote-input"
+              name="initialQuote"
+              placeholder={`${initialQuote}`}
+              // defaultValue={1000000}
+              decimalsLimit={2}
+              value={initialQuote}
+              onValueChange={(value) => handleInitialQuoteChange(value)}
+            />
           </div>
+
           <div className={styles['cotizacion-form']}>
             <span className={styles.labelSide}>Reserva:</span>
 
@@ -532,6 +585,7 @@ const GenerateQuote = ({
               required
             />
           </div>
+
           <div className={styles['cotizacion-form']}>
             <span className={styles.labelSide}>Separación:</span>
 
@@ -577,9 +631,9 @@ const GenerateQuote = ({
                 value={startDate}
                 required
                 onChange={handleStartDateChange}
-                className={`${styles.subject_input} dark:bg-dark-4 bg-transparent dark:bg-[url(/images/arrow-select-white.svg)] bg-[url(/images/arrow_select.png)] bg-contain bg-no-repeat`}
-                max={getMaxDate()}
-                min={getCurrentDate()}
+                className={styles.subject_input}
+                min={minDate}
+                max={maxDate}
               />
           </div>
           */}
@@ -591,7 +645,6 @@ const GenerateQuote = ({
               Ver detalle de cuotas
             </span>
           </div>
-          {console.log('fessArray:', feesArray)}
           {popQuotes && (
             <>
               {renderDynamicInputs()}
