@@ -452,6 +452,25 @@ const GenerateQuote = ({
     setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]); 
   };
 
+  /* const [minDate, setMinDate] = useState('');
+  const [maxDate, setMaxDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const day = today.getDate();
+
+    const minDateString = new Date(year, month, day).toISOString().split('T')[0];
+    setMinDate(minDateString);
+    console.log('minDateString:', minDateString);
+
+    const maxDateValue = new Date(year, month + maxNumberDues, day);
+    const maxDateString = maxDateValue.toISOString().split('T')[0];
+    console.log('maxDateString:', maxDateString);
+    setMaxDate(maxDateString);
+  }, [maxNumberDues]);*/
+
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
@@ -470,6 +489,7 @@ const GenerateQuote = ({
         </div>
 
         <div className={styles.infoContainer}>
+
           <span className={styles.labelSubtitle}>
             Porcentaje de Cuota Inicial
           </span>
@@ -531,6 +551,8 @@ const GenerateQuote = ({
           </div>
 
           <div className={styles['cotizacion-form']}>
+            <span className={styles.labelSide}>Valor Cuota Inicial:</span>
+
             <CurrencyInput
               className={styles.inputQuote}
               prefix="$ "
@@ -546,12 +568,6 @@ const GenerateQuote = ({
             />
           </div>
 
-          <div className={styles.infoSection}>
-            <span className={styles.labelSimple}>Total Cuota Inicial:</span>
-            <span className={styles.labelFocus}>
-              {formatMoney(initialQuote)}
-            </span>
-          </div>
           <div className={styles['cotizacion-form']}>
             <span className={styles.labelSide}>Reserva:</span>
 
@@ -569,6 +585,7 @@ const GenerateQuote = ({
               required
             />
           </div>
+
           <div className={styles['cotizacion-form']}>
             <span className={styles.labelSide}>Separación:</span>
 
@@ -615,8 +632,8 @@ const GenerateQuote = ({
                 required
                 onChange={handleStartDateChange}
                 className={styles.subject_input}
-                max={getMaxDate()}
-                min={getCurrentDate()}
+                min={minDate}
+                max={maxDate}
               />
           </div>
           */}
