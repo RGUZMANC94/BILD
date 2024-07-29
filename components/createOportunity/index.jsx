@@ -59,7 +59,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
             <div className={styles['banner-oportunidad']}>
               {(isConnected || isCreated) && (
                 <div
-                  className={styles.prevStep}
+                  className={`${styles.prevStep} dark:bg-light-2`}
                   onClick={() => {
                     returnPrevStep();
                   }}></div>
@@ -72,7 +72,7 @@ const CreateOportunity = ({ created, recentContacts }) => {
                   : 'Crear Oportunidad'}
               </div>
               <div
-                className={`${styles.closePopUp} bg-ct`}
+                className={`${styles.closePopUp} dark:bg-light-2 bg-ct`}
                 onClick={() => {
                   setShowPopUp(false);
                   setTimeout(() => {

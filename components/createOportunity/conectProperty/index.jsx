@@ -34,7 +34,7 @@ const ConectProperty = ({
           recentContacts.length > 0 &&
           recentContacts.slice(0, 3).map((recent, i) => (
             <div
-              className={`${styles.contact} hover:bg-light-2 dark:hover:bg-dark-2`}
+              className={`${styles.contact}  dark:hover:bg-dark-2`}
               key={recent.idCli}
               data-email={recent.email}
               data-phone-number={recent.phoneNumber}

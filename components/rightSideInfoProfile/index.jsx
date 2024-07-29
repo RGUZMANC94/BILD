@@ -23,60 +23,51 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
             className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile1.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={isDark ? '/images/key-white.png' : '/images/light/key.png'}
+              src={'/images/light/key.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               2
             </span>
-            <p className='relative'>Oportunidades</p>
+            <p className={`${styles.blackText} relative`}>Oportunidades</p>
           </Link>
           <Link
             href={`/contacts/${router.query.id}/quotes`}
             className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile2.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={
-                isDark
-                  ? '/images/cotizaciones-white.png'
-                  : '/images/light/dashboard.png'
+              src={'/images/light/dashboard.png'
               }
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               5
             </span>
-            <p className='relative'>Cotizaciones</p>
+            <p className={`${styles.blackText} relative`}>Cotizaciones</p>
           </Link>
           <Link
             href={`/documentation/${router.query.id}`}
             className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile3.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={
-                isDark
-                  ? '/images/docs-white.png'
-                  : '/images/light/documentos.png'
+              src={'/images/light/documentos.png'
               }
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               3
             </span>
-            <p className='relative'>Documentación</p>
+            <p className={`${styles.blackText} relative`}>Documentación</p>
           </Link>
           <Link
             href={`/contacts/${router.query.id}/payments`}
             className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center bg-[url(/images/profile4.jpg)] ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={
-                isDark
-                  ? '/images/payments-white.png'
-                  : '/images/light/money.png'
+              src={'/images/light/money.png'
               }
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               7
             </span>
-            <p className='relative'>Pagos</p>
+            <p className={`${styles.blackText} relative`}>Pagos</p>
           </Link>
         </div>
       )}

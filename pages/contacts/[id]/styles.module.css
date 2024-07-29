@@ -34,6 +34,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  padding-bottom: 40px;
 }
 
 .editar {

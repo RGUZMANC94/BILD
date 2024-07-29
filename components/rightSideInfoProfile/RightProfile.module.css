@@ -2,6 +2,13 @@
   background-color: #565555;
 }
 
+
+
+.blackText {
+  color: #343434 !important;
+}
+
+
 .perfil {
   width: 90%;
   max-width: 1600px;

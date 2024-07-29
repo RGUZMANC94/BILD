@@ -58,6 +58,7 @@
 }
 
 .text-origen {
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
@@ -82,6 +83,7 @@
   height: auto;
   /*  */
   font-size: 12px;
+  border-color: #999;
 }
 
 .subject_input {
@@ -157,6 +159,7 @@
   padding: 15px;
   width: 100%;
   height: 150px;
+  border-color: #999;
 }
 
 .message_input:disabled {
@@ -167,6 +170,7 @@
   display: block;
   position: relative;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .label-select {

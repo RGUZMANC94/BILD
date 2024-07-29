@@ -98,10 +98,11 @@ i.fa-solid.fa-user {
   transition: all 0.25s ease-in-out;
 }
 
-/* .contact:hover {
-  transform: translateX(-10px);
-  background-color: #262824;
-} */
+.contact:hover {
+  opacity: 1;
+  background-color: rgba(239, 239, 239, 0.5);
+  border-radius: 5px;
+}
 
 .contact img {
   margin-right: 1vh;
