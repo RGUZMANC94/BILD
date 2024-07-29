@@ -303,8 +303,8 @@ li.pendiente-list {
   width: calc(100% + 40px);
   position: relative;
   left: -55px;
-  border-top: 2px dashed #fff;
-  border-bottom: 2px dashed #fff;
+  border-top: 2px dashed #343434;
+  border-bottom: 2px dashed #343434;
   transition: all 0.25s ease-in-out;
 }
 

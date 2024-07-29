@@ -133,7 +133,7 @@ const OportunitiesAllFilter = ({ user }) => {
               <button
                 className={`${styles['top-content-buttons']} font-black`}
                 onClick={() => setShowSection('all')}>
-                TODAS
+                Todas
               </button>
               <div
                 className={`${styles['top-content-bar']} ${
@@ -157,7 +157,7 @@ const OportunitiesAllFilter = ({ user }) => {
               <button
                 className={`${styles['top-content-buttons']} font-black`}
                 onClick={() => setShowSection('closed')}>
-                CERRADAS
+                Cerradas
               </button>
               <div
                 className={`${styles['top-content-bar']} ${

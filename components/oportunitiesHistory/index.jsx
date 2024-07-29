@@ -377,11 +377,11 @@ const OportunitiesHistory = ({
 
             {eventsSelected.length > 0 && (
               <div
-                className={`${styles['box-dotted']} ${
+                className={`dotted-lines ${styles['box-dotted']} ${
                   showAllEvents ? styles.active : ''
                 } relative`}>
                 <div
-                  className={styles['blue-point-plus']}
+                  className={`point-dotted ${styles['blue-point-plus']}`}
                   onClick={() => setShowAllEvents(true)}>
                   {eventsSelected.length}+
                 </div>
@@ -467,7 +467,7 @@ const OportunitiesHistory = ({
                             </div>
                           </div>
 
-                          <div className={styles['blue-point']}></div>
+                          <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
                         </div>
                       )
                   )}
@@ -528,7 +528,7 @@ const OportunitiesHistory = ({
                       </div>
                     ))}
                 </div>
-                <div className={styles['blue-point']}></div>
+                <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
               </div>
             )}
           </div>

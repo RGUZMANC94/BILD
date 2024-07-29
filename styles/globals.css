@@ -40,7 +40,8 @@
   }
 
   .divisorPopup {
-    @apply font-extrabold bg-light-2 shadow-md dark:bg-dark-3;
+    @apply font-extrabold shadow-md dark:bg-dark-3;
+    background-color: #f6f6f6;
   }
 
   .bg-backg-popup {
@@ -50,6 +51,18 @@
   .border-input {
     @apply border border-solid border-light-3;
   }
+
+  .dotted-lines {
+    @apply  dark:border-dashed dark:border-light-1;
+  }
+
+  .point-dotted {
+    @apply  dark:bg-light-1;
+  }
+}
+/* tailwindcss */
+.dark .point-dotted {
+  color: #343434;
 }
 
 *::-webkit-scrollbar {

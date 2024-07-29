@@ -251,7 +251,7 @@ const GenerateQuote = ({
               }>{`${prePriceInfo.dues[i].paymentDate}`}</span>
           )}
           <CurrencyInput
-            className={styles.inputQuote}
+            className={`border-input ${styles.inputQuote}`}
             prefix="$ "
             decimalSeparator=","
             groupSeparator="."
@@ -554,7 +554,7 @@ const GenerateQuote = ({
             <span className={styles.labelSide}>Valor Cuota Inicial:</span>
 
             <CurrencyInput
-              className={styles.inputQuote}
+              className={`border-input ${styles.inputQuote}`}
               prefix="$ "
               decimalSeparator=","
               groupSeparator="."
@@ -572,7 +572,7 @@ const GenerateQuote = ({
             <span className={styles.labelSide}>Reserva:</span>
 
             <CurrencyInput
-              className={styles.inputQuote}
+              className={`border-input ${styles.inputQuote}`}
               prefix="$ "
               decimalSeparator=","
               groupSeparator="."
@@ -590,7 +590,7 @@ const GenerateQuote = ({
             <span className={styles.labelSide}>Separación:</span>
 
             <CurrencyInput
-              className={styles.inputQuote}
+              className={`border-input ${styles.inputQuote}`}
               prefix="$ "
               decimalSeparator=","
               groupSeparator="."
@@ -614,7 +614,7 @@ const GenerateQuote = ({
             <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
 
             <input
-              className={`${styles.subject_input} dark:bg-dark-4 bg-transparent`}
+              className={`border-input ${styles.subject_input} dark:bg-dark-4 bg-transparent`}
               type="text"
               name="fees"
               value={fees}
