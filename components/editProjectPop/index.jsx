@@ -597,7 +597,7 @@ const EditProjectPop = ({
                 value={endDate}
                 required
                 onChange={handleEndDateChange}
-                className={`${styles.inputTypeForm} border-input ${styles.inputDate}`}
+                className={`${styles.inputTypeForm} border-input ${isDark && styles.inputDateWhite}`}
               />
             </div>
 
