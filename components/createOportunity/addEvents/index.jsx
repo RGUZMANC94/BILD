@@ -3,6 +3,13 @@ import styles from './add-events.module.css';
 import Button from '../../button';
 import { useSelector } from 'react-redux';
 import BildContext from '../../context';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  weight: ['300', '700', '900'],
+  style: ['normal'],
+  subsets: ['latin'],
+});
 
 const AddEvents = ({
   setShowPopEvents,
@@ -11,8 +18,8 @@ const AddEvents = ({
   updateEvents,
   id,
 }) => {
-  const { quicksand } = useContext(BildContext);
   // const { id } = useSelector((state) => state.userState);
+  const { isDark } = useContext(BildContext);
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const { opportunitySelected } = useSelector(
@@ -90,7 +97,7 @@ const AddEvents = ({
   };
 
   return (
-    <section className={`${styles.main} ${show ? styles.active : ''}`}>
+    <section className={`${inter.className}  ${styles.main} ${show ? styles.active : ''}`}>
       <div
         className={`${styles.banner} bg-backg-popup`}
         onClick={() => {
@@ -104,7 +111,13 @@ const AddEvents = ({
         <div className={`${styles.topContent} header-popup`}>
           <span className={styles['title-descripcion']}>Añadir Evento</span>
           <div
-            className={`${styles.close} bg-ct`}
+            className={`${styles.closeIcon} bg-ct 
+            ${
+              isDark
+                ? 'bg-[url(/images/close-white.svg)]'
+                : 'bg-[url(/images/close.svg)]'
+            }
+          `}
             onClick={() => {
               setShow(false);
               setTimeout(() => {
@@ -153,7 +166,7 @@ const AddEvents = ({
           <Button
             buttonType={'secondary'}
             iconImage={false}
-            label={'CANCELAR'}
+            label={'Cancelar'}
             inheritClass={styles.buttonCreateType}
             clickFunction={() => {
               setShow(false);

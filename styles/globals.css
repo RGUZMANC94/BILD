@@ -1159,10 +1159,6 @@ li.active button {
   padding: 20px;
 }
 
-.react-datepicker.react-datepicker {
-  font-family: 'Quicksand', sans-serif;
-}
-
 .react-datepicker__navigation.react-datepicker__navigation {
   top: 25px;
 }

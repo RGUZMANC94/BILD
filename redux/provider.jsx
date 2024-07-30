@@ -6,12 +6,6 @@ import Layout from '../components/layout';
 import BildContext from '../components/context';
 import { Quicksand } from 'next/font/google';
 
-const quicksand = Quicksand({
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal'],
-  subsets: ['latin'],
-});
-
 const Providers = ({ children }) => {
   // const persistor = persistStore(store);
   return (
