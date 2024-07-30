@@ -4,7 +4,8 @@ import styles from './error.module.css';
 const ErrorPopUp = (errorMessage, render) => {
   const [activePopUp, setActivePopUp] = useState(false);
 
-  /*useEffect(() => {
+  /*
+  useEffect(() => {
     setActivePopUp((prevState) => true);
     setTimeout(() => {
       setActivePopUp((prevState) => false);
