@@ -1,3 +1,41 @@
+.top-content {  
+  font-weight: 500;
+  font-size: 20px;
+  text-align: left;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 70px;
+  z-index: 3;
+}
+
+.top-content .icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.title {
+  width: calc(100% - 40px);
+}
+
+.search {
+  width: 30%;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #565555;
+}
+
+.icon {
+  width: 35%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .search {
   background-color: #565555;
 }
@@ -10,7 +48,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 90px;
+  padding-top: 160px;
 }
 
 .editar-perfil {

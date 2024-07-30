@@ -72,23 +72,36 @@ const BuyerProfile = ({ contacts, user }) => {
     getContact();
   }, [refreshContacts]);
 
-  console.log('filtered: ', recentContacts[0]);
+  console.log('contactInfo de eprfil: ', contactInfo);
 
   return (
     <>
+       <div className={`${styles['top-content']} bg-sub-header`}>
+        <div className="container flex j-s a-c">
+          <Link
+            href={'/contacts'}
+            className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
+          <div className={`${styles.title} title-card `}> {`Perfil de ${contactInfo.firstNames} ${contactInfo.lastNames}`} </div>
+        </div>
+      </div>
       <div className={styles.perfil}>
+        {/*
         <Link
           href="/contacts"
-          className={`${styles.closeContactSide} bg-ct`}></Link>
+          className={`${styles.closeContactSide} bg-ct`}>
+        </Link>
+        */}
         <SideInfoProfile
           contactInfo={contactInfo}
           typeViewer={'buyer'}
           setShowEditContact={setShowEditContact}
         />
         <div className={styles.pendientes}>
+          {/*
           <Link
             href="/contacts"
             className={`${styles.closeContact} bg-ct bg-[url(/images/close.svg)] dark:bg-[url(/images/close-white.svg)]`}></Link>
+          */}
           <RightSideProfile contactInfo={contactInfo} typeViewer={'buyer'} />
         </div>
       </div>
