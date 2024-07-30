@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useContext } from 'react';
 import { createPortal } from 'react-dom';
+import BildContext from '../components/context';
 
 const Portal = ({ children }) => {
   const [moutend, setMounted] = useState(false);
+  const { isDark } = useContext(BildContext);
 
   useEffect(() => {
     setMounted(true);
@@ -11,7 +13,13 @@ const Portal = ({ children }) => {
   }, []);
 
   return moutend
-    ? createPortal(children, document.getElementById('portal'))
+    ? createPortal(
+      <div className={`${isDark && 'dark'}`}>
+        <div className={'text-dark-4 dark:text-light-1'}>
+          {children}
+        </div>
+      </div>
+      , document.getElementById('portal'))
     : null;
 };
 

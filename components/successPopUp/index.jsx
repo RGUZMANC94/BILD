@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useContext } from 'react';
 import styles from './success.module.css';
+import BildContext from '../context';
 
 const SuccessPopUp = ({ message }) => {
   const [activePopUp, setActivePopUp] = useState(false);
+  const { isDark } = useContext(BildContext);
 
   useEffect(() => {
     setActivePopUp((prevState) => true);
@@ -15,8 +17,8 @@ const SuccessPopUp = ({ message }) => {
       className={`${styles.popSuccessCreated} ${
         activePopUp ? styles.activePopUp : ''
       }`}>
-      <div className={styles.bgPopUp}></div>
-      <div className={styles.popup2}>
+      <div className={`bg-blur  ${styles.bgPopUp}`}></div>
+      <div className={`${styles.popup2} bg-popup`}>
         <div className={styles.content}>
           <div className={styles['icon-box']}>
             <img src="/images/check-circle.png" />
