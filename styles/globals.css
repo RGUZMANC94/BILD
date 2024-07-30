@@ -78,6 +78,10 @@
   filter: invert(1);
 }
 
+.brightness-filter {
+  filter: brightness(10);
+}
+
 *::-webkit-scrollbar {
   border-radius: 10px;
   background-color: #ccc;

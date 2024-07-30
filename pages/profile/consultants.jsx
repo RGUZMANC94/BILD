@@ -2,14 +2,13 @@ import Link from 'next/link';
 import styles from '../../styles/Contacts.module.css';
 import recentsContacts from '../api/recentsContacts';
 // import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeContactListSelected } from '../../redux/contactSelectedSlice';
 import Image from 'next/image';
 import { parseCookies } from '../../utils/parseCookies';
 import AddConsultantPop from '../../components/addConsultantPop';
 import EditConsultantsPop from '../../components/editConsultantsPop';
-import { useContext } from 'react';
 import BildContext from '../../components/context';
 
 export const getServerSideProps = async ({
@@ -35,6 +34,7 @@ const Consultants = () => {
   const [showEditContact, setShowEditContact] = useState(false);
   const [consultantSelected, setConsultantSelected] = useState(null);
   const [projectList, setProjectList] = useState([]);
+  const { isDark } = useContext(BildContext);
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/consultants', {
@@ -141,7 +141,7 @@ const Consultants = () => {
         </div>
         <div className="container">
           <button
-            className={styles['crear-contacto']}
+            className={`${styles['crear-contacto']} font-black`}
             onClick={() => setShowAddContact(true)}>
             <span className={styles['hidden-text']}>Nuevo contacto</span>
           </button>
@@ -188,14 +188,14 @@ const Consultants = () => {
                               setConsultantSelected(contact);
                               setShowEditContact(true);
                             }}
-                            className={`${styles['edit-icon']} bg-[url(/images/edit-icon.png)] dark:bg-[url(/images/edit-icon.png)]`}>
+                            className={`${styles['edit-icon']} ${!isDark && 'invert-filter'} bg-[url(/images/edit-icon.png)] dark:bg-[url(/images/edit-icon.png)]`}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
                           </button>
                           <button
                             onClick={() =>
                               deleteConsultant(contact.salesConsultantId)
                             }
-                            className={styles['delete-icon']}>
+                            className={`${styles['delete-icon']} ${isDark && 'brightness-filter'} `}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
                           </button>
                         </>
