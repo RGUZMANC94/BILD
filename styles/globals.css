@@ -78,6 +78,19 @@
   filter: brightness(0%);
 }
 
+.mode-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 20px;
+  left: 135px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 10;
+  cursor: pointer;
+}
+
 .invert-filter {
   filter: invert(1);
 }
@@ -1289,6 +1302,12 @@ li.active button {
 }
 
 @media only screen and (max-width: 768px) {
+  .mode-button {
+    top:15px;
+    left: unset;
+    right: 20px;
+  }
+
   .addTypeButton {
     margin-top: 20px;
   }

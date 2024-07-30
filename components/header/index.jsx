@@ -53,9 +53,7 @@ const Header = () => {
                   <img
                     className={`${
                       isDark
-                        ? pathname === '/'
-                          ? 'mt-[-34px]'
-                          : 'mt-0 group-hover:mt-[-34px]'
+                        ? 'mt-0'
                         : 'mt-0'
                     }`}
                     alt=""
@@ -79,9 +77,7 @@ const Header = () => {
                   <img
                     className={`${
                       isDark
-                        ? pathname === '/contacts'
-                          ? 'mt-[-34px]'
-                          : 'mt-0 group-hover:mt-[-34px]'
+                        ? 'mt-0'
                         : 'mt-0'
                     }`}
                     alt=""
@@ -116,9 +112,7 @@ const Header = () => {
                   <img
                     className={`${
                       isDark
-                        ? pathname === '/opportunities'
-                          ? 'mt-[-34px]'
-                          : 'mt-0 group-hover:mt-[-34px]'
+                        ? 'mt-0'
                         : 'mt-0'
                     }`}
                     alt=""
@@ -143,9 +137,7 @@ const Header = () => {
                   <img
                     className={`${
                       isDark
-                        ? pathname === '/profile'
-                          ? 'mt-[-34px]'
-                          : 'mt-0 group-hover:mt-[-34px]'
+                        ? 'mt-0'
                         : 'mt-0'
                     }`}
                     alt=""
