@@ -16,7 +16,6 @@
   height: auto;
   border-radius: 5px;
   backdrop-filter: blur(7.5px);
-  margin-top: 20px;
   padding-bottom: 60px;
 }
 
@@ -391,7 +390,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: end;
-  margin-top: 20px;
   padding: 20px;
 }
 

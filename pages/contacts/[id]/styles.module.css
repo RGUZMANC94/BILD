@@ -2,7 +2,7 @@
   font-weight: 500;
   font-size: 20px;
   text-align: left;
-  height: 70px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,9 @@
 }
 
 .title {
-  width: calc(100% - 40px);
+  width: auto;
+  margin-right: 20px;
+  font-size: 20px;
 }
 
 .search {
