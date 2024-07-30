@@ -27,6 +27,7 @@ const CreateStep = ({
   };
   const { isDark } = useContext(BildContext);
   console.log('contactos en creacion de oportunidada', recentContacts);
+  console.log('unidad en creacion de oportunidad', unit);
   return (
     <div className={`${styles.crear} bg-blur`}>
       <div className={styles['crear-tipo']}>
@@ -49,7 +50,7 @@ const CreateStep = ({
           </div>
           <div className={styles['tipo-info']}>
             <div className={`${styles.tipos} font-black`}>
-              <span>{`TIPO ${unit.type} - ${unit.idProperty}`}</span>
+              <span>{`TIPO ${unit.type} - Unidad ${unit.nuimb}`}</span>
             </div>
             <span className={styles.valor}>{`$ ${parseInt(
               unit.propertyPrice
