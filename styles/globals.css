@@ -4,7 +4,11 @@
 
 @layer utilities {
   .title-card {
-    @apply mb-0 font-extrabold;
+    @apply mb-0 font-black;
+  }
+
+  .subtitle-card {
+    @apply font-bold;
   }
 
   .bg-card {
