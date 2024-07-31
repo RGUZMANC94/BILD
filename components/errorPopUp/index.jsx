@@ -4,20 +4,20 @@ import styles from './error.module.css';
 const ErrorPopUp = (errorMessage, render) => {
   const [activePopUp, setActivePopUp] = useState(false);
 
-  /*
+  
   useEffect(() => {
     setActivePopUp((prevState) => true);
     setTimeout(() => {
       setActivePopUp((prevState) => false);
     }, 2000);
-  }, [render]);*/
+  }, []);
 
   return (
     <div
-      className={`${styles.popError} ${styles.activePopUp} ${
+      className={`${styles.popError} ${
         activePopUp ? styles.activePopUp : ''
       }`}>
-      <div className={`bg-blur  ${styles.bgPopUp}`}></div>
+      <div className={`bg-blur ${styles.bgPopUp}`}></div>
       <div className={`${styles.popup2} bg-popup`}>
         <div className={styles.content}>
           <div className={styles['icon-box']}>
