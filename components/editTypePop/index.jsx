@@ -256,7 +256,7 @@ const EditTypePop = ({
           showEditType ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div
-          className={`${styles.bgTypePopUp}`}
+          className={`bg-backg-popup ${styles.bgTypePopUp}`}
           onClick={() => setShowEditType(false)}></div>
         <div className={`${styles.wrapperTypePopUp} bg-popup`}>
           <div className={`${styles.topContent} header-popup header-popup`}>

@@ -361,7 +361,7 @@ const EditContactPop = ({
           showEditContact ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div
-          className={`${styles.bgTypePopUp}`}
+          className={`bg-backg-popup ${styles.bgTypePopUp}`}
           onClick={() => {
             setShowEditContact(false);
             // getContact();

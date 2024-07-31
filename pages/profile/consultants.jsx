@@ -151,7 +151,7 @@ const Consultants = () => {
               Asesores ({recentContacts.length})
             </div>
             {sortedontacts.map((contact, i) => (
-              <div className={styles['list-name']} key={i}>
+              <div className={`${styles['list-name']}  hover:dark:bg-dark-2`} key={i}>
                 <div className={styles['consultant-obj']}>
                   <div className={styles['list-contact']}>
                     <div className={styles.contact}>

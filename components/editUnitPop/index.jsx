@@ -242,7 +242,7 @@ const EditUnitPop = ({
           showEditUnit ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div
-          className={`${styles.bgTypePopUp}`}
+          className={`bg-backg-popup ${styles.bgTypePopUp}`}
           onClick={() => setShowEditUnit(false)}></div>
         <div className={`${styles.wrapperTypePopUp} bg-popup`}>
           <div className={`${styles.topContent} header-popup`}>

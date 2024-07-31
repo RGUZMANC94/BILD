@@ -313,7 +313,7 @@ const AddConsultant = ({
   return (
     <>
       <div
-        className={`${styles.typePopUp} ${
+        className={`bg-backg-popup ${styles.typePopUp} ${
           showAddContact ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div

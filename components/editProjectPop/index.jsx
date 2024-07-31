@@ -491,7 +491,7 @@ const EditProjectPop = ({
           showEditProject ? styles.activePopUp : ''
         } flex j-e a-s`}>
         <div
-          className={`${styles.bgTypePopUp}`}
+          className={`bg-backg-popup ${styles.bgTypePopUp}`}
           onClick={() => setShowEditProject(false)}></div>
         <div className={`${styles.wrapperTypePopUp} bg-popup`}>
           <div className={`${styles.topContent} header-popup header-popup`}>
