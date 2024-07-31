@@ -712,7 +712,7 @@ const GenerateQuote = ({
           <Button
             buttonType={'secondary'}
             iconImage={false}
-            label={'CANCELAR'}
+            label={'Cancelar'}
             inheritClass={styles.buttonCreateOpportunity}
             clickFunction={closePopUpPortal ?? null}
             preventDefault={true}

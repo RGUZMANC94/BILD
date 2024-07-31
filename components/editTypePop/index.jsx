@@ -445,7 +445,7 @@ const EditTypePop = ({
             <Button
               buttonType={'secondary'}
               iconImage={false}
-              label={'CANCELAR'}
+              label={'Cancelar'}
               inheritClass={styles.buttonCreateType}
               clickFunction={cancelInfo}
             />
