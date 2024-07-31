@@ -76,17 +76,20 @@ const BuyerProfile = ({ contacts, user }) => {
 
   return (
     <>
-       <div className={`${styles['top-content']} bg-sub-header`}>
+      <div className={`${styles['top-content']} bg-sub-header`}>
         <div className="container flex j-s a-c">
           <Link
             href={'/contacts'}
             className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
-          <div className={`${styles.title} title-card `}> {`Perfil de ${contactInfo.firstNames} ${contactInfo.lastNames}`} </div>
+          <div className={`${styles.title} title-card `}>
+            {' '}
+            {`Perfil de ${contactInfo.firstNames} ${contactInfo.lastNames}`}{' '}
+          </div>
           <button
-                    className={'editProjectDetailState'}
-                    onClick={() => {
-                      setShowEditContact(true);
-                    }}
+            className={'editProjectDetailState'}
+            onClick={() => {
+              setShowEditContact(true);
+            }}
           />
         </div>
       </div>

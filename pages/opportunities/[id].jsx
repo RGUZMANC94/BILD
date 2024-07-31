@@ -128,8 +128,7 @@ const Oportunities = ({ user }) => {
               <Link
                 href={`/contacts/${router.query.id}`}
                 className={`bg-[url(/images/light/back.png)] dark:bg-[url(/images/back-oportunity-icon.svg)] ${styles['top-content-backarrow']}`}></Link>
-              <div
-                className={`font-black ${styles['top-content-buttons']}`}>
+              <div className={`font-black ${styles['top-content-buttons']}`}>
                 {`Oportunidades de ${contactInfo[0].firstNames} ${contactInfo[0].lastNames}`}{' '}
               </div>
             </div>

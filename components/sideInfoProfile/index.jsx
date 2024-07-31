@@ -16,7 +16,8 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   return (
     <>
       {contactInfo && (
-        <div className={`${styles['editar-perfil']} bg-light-2 shadow-lg lg:dark:bg-dark-3 `}>
+        <div
+          className={`${styles['editar-perfil']} bg-light-2 shadow-lg lg:dark:bg-dark-3 `}>
           <div className={styles.containerEditarPerfil}>
             {/*
             user_rol === 'ADMIN' && (
@@ -110,7 +111,10 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
             )}
             {typeViewer === 'buyer' && (
               <>
-                <div className={`${!isDark && 'black-filter'} ${styles['id-perfil']}`}>
+                <div
+                  className={`${!isDark && 'black-filter'} ${
+                    styles['id-perfil']
+                  }`}>
                   <img src="/images/id.png" />
                   {contactInfo.documentNumber}
                 </div>

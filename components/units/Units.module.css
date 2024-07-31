@@ -32,8 +32,7 @@
 
 .inputFormUnit {
   border-radius: 3px;
-  
-  
+
   background-color: transparent;
   text-align: center;
   padding: 10px 0;
@@ -71,7 +70,6 @@
 
 .text-origen {
   font-size: 16px;
-  
 }
 
 .subir {
@@ -279,14 +277,13 @@
 
 .popup h2 {
   margin-top: 0;
-  
+
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -307,10 +304,8 @@
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  
 }
 .popup .close:hover {
-  
 }
 .popup .content {
   overflow: auto;
@@ -337,7 +332,6 @@
 }
 
 .bottom-content {
-  
   font-weight: 400;
   font-size: 16px;
   text-align: center;

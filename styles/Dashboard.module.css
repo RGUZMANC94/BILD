@@ -49,7 +49,7 @@
 .welcome {
   font-size: 20px;
   font-weight: 700;
-  
+
   text-align: center;
   display: flex;
   align-items: center;
@@ -61,7 +61,7 @@
 .welcome-tit {
   font-size: 20px;
   font-weight: 500;
-  
+
   text-align: center;
   margin-bottom: 10px;
   width: 100%;
@@ -79,7 +79,7 @@
 .profile {
   font-size: 18px;
   font-weight: 200;
-  
+
   text-align: center;
   width: 100%;
   display: flex;
@@ -102,7 +102,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   font-size: 18px;
   gap: 5px;
 
@@ -134,7 +134,7 @@
 
 .download {
   width: 60%;
-   
+
   font-size: 16px;
   font-weight: 300;
   text-align: center;
@@ -195,7 +195,6 @@
 }
 
 .pop-text {
-  
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -223,7 +222,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  
+
   font-family: 'Lexend', sans-serif;
   margin-top: 50px;
   display: flex;
@@ -251,7 +250,7 @@
 }
 .text-cat {
   font-size: 18px;
-  
+
   font-weight: 400;
 }
 
@@ -276,7 +275,6 @@
 .pop2-text {
   font-size: 20px;
   font-weight: 700;
-  
 }
 
 .proyecto-pop {
@@ -291,7 +289,7 @@
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  
+
   font-size: 18px;
   appearance: none;
   background-image: url(/images/arrow-select.png);
@@ -359,14 +357,14 @@
 
 .titleChart {
   text-align: center;
-  
+
   margin-bottom: 20px;
 }
 
 .input-date {
   background-color: transparent;
   border: none;
-  
+
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 0.5px;
@@ -380,12 +378,11 @@
 .separator {
   width: 20px;
   height: 2px;
-   margin: 0 20px;
+  margin: 0 20px;
 }
 
 .table {
   padding: 10px;
-  
 }
 
 .title-table {

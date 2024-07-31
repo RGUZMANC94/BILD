@@ -14,7 +14,9 @@ const ErrorPopUp = (errorMessage, render) => {
 
   return (
     <div
-      className={`${styles.popError} ${styles.activePopUp} ${activePopUp ? styles.activePopUp : ''}`}>
+      className={`${styles.popError} ${styles.activePopUp} ${
+        activePopUp ? styles.activePopUp : ''
+      }`}>
       <div className={`bg-blur  ${styles.bgPopUp}`}></div>
       <div className={`${styles.popup2} bg-popup`}>
         <div className={styles.content}>

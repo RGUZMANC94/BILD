@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import BildContext from '../context';
 
-const Header = ({toogleDarkMode}) => {
+const Header = ({ toogleDarkMode }) => {
   // const [showFilter, setShowFilter] = useState(false);
   // const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
   const { initialState } = useContext(BildContext);
@@ -41,13 +41,12 @@ const Header = ({toogleDarkMode}) => {
               />
             )}
             <div
-            onClick={toogleDarkMode}
-            className="mode-button bg-[url(/images/modo-oscuro.png)] dark:bg-[url(/images/modo-claro.png)]"></div>
+              onClick={toogleDarkMode}
+              className="mode-button bg-[url(/images/modo-oscuro.png)] dark:bg-[url(/images/modo-claro.png)]"></div>
           </div>
 
-          
-
-          <div className={`${styles['menu-top']} max-sm:bg-sub-header max-sm:shadow-4xl`}>
+          <div
+            className={`${styles['menu-top']} max-sm:bg-sub-header max-sm:shadow-4xl`}>
             <div className={styles.menuPpal}>
               <Link
                 href={pathname === '/' ? '' : '/'}
@@ -58,11 +57,7 @@ const Header = ({toogleDarkMode}) => {
                 }  hover:border-light-4 dark:hover:border-bild-1  border-b-[3px] border-solid group transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
-                    className={`${
-                      isDark
-                        ? 'mt-0'
-                        : 'mt-0'
-                    }`}
+                    className={`${isDark ? 'mt-0' : 'mt-0'}`}
                     alt=""
                     src={`${
                       isDark
@@ -82,11 +77,7 @@ const Header = ({toogleDarkMode}) => {
                 }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
-                    className={`${
-                      isDark
-                        ? 'mt-0'
-                        : 'mt-0'
-                    }`}
+                    className={`${isDark ? 'mt-0' : 'mt-0'}`}
                     alt=""
                     src={`${
                       isDark
@@ -117,11 +108,7 @@ const Header = ({toogleDarkMode}) => {
                 }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
-                    className={`${
-                      isDark
-                        ? 'mt-0'
-                        : 'mt-0'
-                    }`}
+                    className={`${isDark ? 'mt-0' : 'mt-0'}`}
                     alt=""
                     src={`${
                       isDark
@@ -142,11 +129,7 @@ const Header = ({toogleDarkMode}) => {
                 }  hover:border-light-4 dark:hover:border-bild-1 border-b-[3px] border-solid transition font-black`}>
                 <div className={styles.imageMenu}>
                   <img
-                    className={`${
-                      isDark
-                        ? 'mt-0'
-                        : 'mt-0'
-                    }`}
+                    className={`${isDark ? 'mt-0' : 'mt-0'}`}
                     alt=""
                     src={
                       user_rol === 'ADMIN'

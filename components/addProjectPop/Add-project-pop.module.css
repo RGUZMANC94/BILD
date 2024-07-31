@@ -204,7 +204,6 @@
 .inputQuantityForm {
   width: 55px;
   border-radius: 5px;
-  
 }
 
 .inputsGroup {
@@ -221,7 +220,7 @@
   width: 60%;
   box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  
+
   background-color: #fafafa;
   overflow: hidden;
   background-color: transparent;
@@ -256,7 +255,6 @@
 }
 
 .labelTextGroup {
-  
   font-style: normal;
   font-weight: 700;
 
@@ -265,12 +263,12 @@
 
 .targetInputGroup {
   border-radius: 5px;
-  
+
   padding: 10px 10px;
   width: 100%;
   appearance: none;
   background-color: #2e2e2c;
-  
+
   text-align: center;
 }
 
@@ -388,14 +386,13 @@
 
 .popup h2 {
   margin-top: 0;
-  
+
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -416,10 +413,8 @@
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  
 }
 .popup .close:hover {
-  
 }
 .popup .content {
   overflow: auto;
@@ -493,7 +488,6 @@
   margin: 52px 0 20px;
   display: flex;
   align-items: center;
-  
 }
 
 .labelInputText {
@@ -501,7 +495,6 @@
   margin: auto 0;
   display: flex;
   align-items: center;
-  
 }
 
 .labelInputImage {
@@ -735,7 +728,7 @@
     width: 90%;
     min-height: 100px;
     box-shadow: none;
-    
+
     background-color: #fafafa;
     overflow: hidden;
     background-color: transparent;
@@ -763,7 +756,6 @@
   .formType {
     padding: 100px 25px 55px;
   }
-
 
   .labelGroup {
     width: 100%;
@@ -829,15 +821,14 @@
     height: 200px;
     background-size: 42px 35px;
     border-radius: 5px;
-    
   }
 }
 
-@media only screen and (max-width: 520px){
-  .uploadButtons{
+@media only screen and (max-width: 520px) {
+  .uploadButtons {
     flex-wrap: wrap;
   }
-  .buttonProyect{
+  .buttonProyect {
     width: 100%;
   }
 }

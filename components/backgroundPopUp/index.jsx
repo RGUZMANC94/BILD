@@ -29,19 +29,21 @@ const BackgroundPopUp = ({ children, closePopUp, closeAnimate }) => {
   return (
     <div
       className={`${styles.backgroudnPopUp} ${active ? styles.activePop : ''}`}>
-      <div className={`bg-backg-popup ${styles.wrapperBackgroundPopUp}`} onClick={closePop}></div>
+      <div
+        className={`bg-backg-popup ${styles.wrapperBackgroundPopUp}`}
+        onClick={closePop}></div>
 
       <div className={`bg-popup ${styles['right-side']}`}>
         {' '}
-        <div 
-        className={`${styles.closeBackgroundPopUp} bg-ct 
+        <div
+          className={`${styles.closeBackgroundPopUp} bg-ct 
         ${
           isDark
             ? 'bg-[url(/images/close-white.svg)]'
             : 'bg-[url(/images/close.svg)]'
         }
       `}
-        onClick={closePop}></div>
+          onClick={closePop}></div>
         {children}
       </div>
     </div>

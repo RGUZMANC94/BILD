@@ -586,7 +586,9 @@ const AddProjectPop = ({
                 value={endDate}
                 required
                 onChange={handleEndDateChange}
-                className={`${styles.inputTypeForm} border-input ${isDark && styles.inputDateWhite}`}
+                className={`${styles.inputTypeForm} border-input ${
+                  isDark && styles.inputDateWhite
+                }`}
               />
             </div>
 
@@ -654,12 +656,15 @@ const AddProjectPop = ({
                       ? xlsxTemplate[0].url
                       : '#'
                   }>
-                  <img src="/images/downloadExcel-icon.png" className='w-5 h-5' />
+                  <img
+                    src="/images/downloadExcel-icon.png"
+                    className="w-5 h-5"
+                  />
                   Descargar Excel Base
                 </a>
                 <label
                   className={`${styles.buttonProyect} ${styles.buttonUpload}`}>
-                  <img src="/images/uploadExcel-icon.png" className='w-5 h-5' />
+                  <img src="/images/uploadExcel-icon.png" className="w-5 h-5" />
                   Subir Excel de Inventario
                   <input
                     type="file"

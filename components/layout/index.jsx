@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
         isDark ? 'dark' : ''
       }`}>
       <div className="transition text-dark-4 dark:text-light-1 min-h-screen bg-[url(/images/bg.jpg)] dark:bg-none dark:bg-dark-4 bg-cover bg-no-repeat bg-center w-full">
-        {pathname !== '/login' && <Header toogleDarkMode={toogleDarkMode}/>}
+        {pathname !== '/login' && <Header toogleDarkMode={toogleDarkMode} />}
         {children}
       </div>
     </main>

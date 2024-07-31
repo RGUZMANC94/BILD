@@ -385,7 +385,7 @@ li.pendiente-list {
 .ver-oportunidad {
   width: 50%;
   height: fit-content;
-  
+
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
@@ -413,7 +413,7 @@ li.pendiente-list {
   display: flex;
   margin-top: 50px;
   position: relative;
-   flex-direction: column;
+  flex-direction: column;
   justify-content: center;
   border-radius: 10px;
 }
@@ -564,14 +564,13 @@ li.pendiente-list {
 
 .popup h2 {
   margin-top: 0;
-  
+
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -592,10 +591,8 @@ li.pendiente-list {
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  
 }
 .popup .close:hover {
-  
 }
 .popup .content {
   overflow: auto;

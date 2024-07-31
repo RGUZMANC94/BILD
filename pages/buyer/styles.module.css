@@ -39,7 +39,7 @@
 .editar {
   font-size: 18px;
   font-weight: 500;
-  
+
   text-align: right;
   border-bottom: 2px solid #fff;
   margin: 25px 25px 0 0;
@@ -63,7 +63,7 @@
 .name-perfil {
   font-size: 20px;
   font-weight: 500;
-  
+
   text-align: center;
   margin-bottom: 20px;
   margin: 0 auto;
@@ -71,7 +71,7 @@
 .sub-name {
   font-size: 18px;
   font-weight: 300;
-  
+
   text-align: center;
   margin-bottom: 30px;
   margin: 0 auto;
@@ -84,7 +84,7 @@
   margin-top: 50px;
   font-size: 18px;
   font-weight: 200;
-  
+
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -122,14 +122,14 @@
   font-size: 18px;
   font-weight: 600;
   text-align: left;
-  
+
   align-self: flex-start;
   margin-left: 10%;
 }
 
 .sub-title {
   font-size: 18px;
-  
+
   margin: 50px 0 0px;
 }
 
@@ -156,9 +156,9 @@
   width: auto;
   min-width: 100px;
   margin: 30px 10px 0;
-  
+
   border-radius: 30px;
-  
+
   font-size: 16px;
   font-weight: 400;
   text-align: center;
@@ -171,11 +171,9 @@
 }
 
 .campo:hover {
-   
 }
 
 .flag {
-  
   font-size: 22px;
 
   text-align: left;
@@ -198,7 +196,7 @@
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  
+
   background-color: #d9d9d915;
   font-weight: 300;
 }
@@ -221,7 +219,6 @@
   font-weight: 300;
   font-size: 16px;
   margin-bottom: 40px;
-  
 }
 
 .opc-pendiente {
@@ -247,7 +244,6 @@
   padding: 20px;
   font-size: 16px;
   font-weight: 400;
-  
 
   flex-wrap: wrap;
   border-radius: 20px;
@@ -256,7 +252,6 @@
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7.5px);
-  
 }
 
 .opcion img {
@@ -269,7 +264,7 @@
   left: 5px;
   position: absolute;
   top: -10px;
-  
+
   padding: 4px;
   width: 25px;
   height: 25px;
@@ -459,7 +454,7 @@
   .flag {
     width: auto;
     height: auto;
-       
+
     font-size: 18px;
     font-weight: 400;
 
@@ -498,7 +493,6 @@
     align-items: center;
     font-size: 16px;
     font-weight: 400;
-    
   }
 
   .opcion img {
@@ -527,7 +521,7 @@
   }
   button.campo {
     width: 40%;
-       color: white;
+    color: white;
     border-radius: 15px;
   }
 

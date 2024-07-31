@@ -1,4 +1,4 @@
-import { useEffect, useState , useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import BildContext from '../components/context';
 
@@ -14,12 +14,11 @@ const Portal = ({ children }) => {
 
   return moutend
     ? createPortal(
-      <div className={`${isDark && 'dark'}`}>
-        <div className={'text-dark-4 dark:text-light-1'}>
-          {children}
-        </div>
-      </div>
-      , document.getElementById('portal'))
+        <div className={`${isDark && 'dark'}`}>
+          <div className={'text-dark-4 dark:text-light-1'}>{children}</div>
+        </div>,
+        document.getElementById('portal')
+      )
     : null;
 };
 

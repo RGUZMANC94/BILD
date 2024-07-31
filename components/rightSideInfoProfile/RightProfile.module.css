@@ -2,12 +2,9 @@
   background-color: #565555;
 }
 
-
-
 .blackText {
   color: #343434 !important;
 }
-
 
 .perfil {
   width: 90%;
@@ -279,7 +276,6 @@
   padding-bottom: 15px;
 }
 
-
 .badge {
   display: inline-block;
 }
@@ -545,7 +541,7 @@ button.campo:hover {
     box-shadow 0.15s ease-in-out;
 }
 
-.dark .badge.red{
+.dark .badge.red {
   background-color: #cccccc;
   color: #333333;
 }

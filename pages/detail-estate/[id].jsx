@@ -304,7 +304,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
     console.log('Project actual: ', responseProject[0]);
   };
 
-  console.log('xlsxTemplate',xlsxTemplate);
+  console.log('xlsxTemplate', xlsxTemplate);
 
   return (
     <>

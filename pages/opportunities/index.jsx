@@ -126,7 +126,8 @@ const OportunitiesAllFilter = ({ user }) => {
 
   return (
     <>
-      <div className={`${styles['top-content-buttonsBar']} font-black bg-sub-header`}>
+      <div
+        className={`${styles['top-content-buttonsBar']} font-black bg-sub-header`}>
         <div className="container flex j-s a-c">
           <div className={styles['top-buttons-container']}>
             <div className={styles['top-content-container']}>
@@ -181,7 +182,9 @@ const OportunitiesAllFilter = ({ user }) => {
               </option>
               <option value="ASC">Menos reciente</option>
             </select>
-            <span className={`${styles.label_filter} font-black`}>Ordenar por:</span>
+            <span className={`${styles.label_filter} font-black`}>
+              Ordenar por:
+            </span>
           </div>
         </div>
       </div>

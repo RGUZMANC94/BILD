@@ -597,7 +597,9 @@ const EditProjectPop = ({
                 value={endDate}
                 required
                 onChange={handleEndDateChange}
-                className={`${styles.inputTypeForm} border-input ${isDark && styles.inputDateWhite}`}
+                className={`${styles.inputTypeForm} border-input ${
+                  isDark && styles.inputDateWhite
+                }`}
               />
             </div>
 
@@ -624,7 +626,8 @@ const EditProjectPop = ({
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Imágen del Proyecto:</span>
-              <div className={`${styles['main-image']} ${
+              <div
+                className={`${styles['main-image']} ${
                   isDark
                     ? 'bg-[url(/images/photo-icon.png)]'
                     : 'bg-[url(/images/light/photos.png)]'

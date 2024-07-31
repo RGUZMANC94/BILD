@@ -77,9 +77,7 @@ const Payments = ({ contact, user, idClient }) => {
             href={`/contacts/${contactListSelected.idCli}`}
             className={`bg-ct ${styles.icon} bg-[url(/images/light/back.png)] dark:bg-[url(/images/back.svg)]`}></Link>
           <div
-            className={
-              `${styles.title} font-black`
-            }>{`Pagos de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
+            className={`${styles.title} font-black`}>{`Pagos de ${contactListSelected.firstNames} ${contactListSelected.lastNames}`}</div>
           <div className={styles['title-movil']}>Pagos</div>
         </div>
       </div>

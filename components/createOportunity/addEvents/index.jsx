@@ -97,7 +97,10 @@ const AddEvents = ({
   };
 
   return (
-    <section className={`${inter.className}  ${styles.main} ${show ? styles.active : ''}`}>
+    <section
+      className={`${inter.className}  ${styles.main} ${
+        show ? styles.active : ''
+      }`}>
       <div
         className={`${styles.banner} bg-backg-popup`}
         onClick={() => {

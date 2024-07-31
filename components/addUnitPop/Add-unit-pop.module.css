@@ -167,7 +167,7 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  
+
   padding: 0 10px;
   height: 35px;
   background-color: transparent;
@@ -184,7 +184,6 @@
 .inputQuantityForm {
   width: 55px;
   border-radius: 5px;
-  
 }
 
 .inputsGroup {
@@ -223,7 +222,7 @@
   width: 60%;
   box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  
+
   background-color: #fafafa;
   overflow: hidden;
   background-color: transparent;
@@ -248,7 +247,6 @@
 }
 
 .labelTextGroup {
-  
   font-style: normal;
   font-weight: 700;
 
@@ -257,12 +255,12 @@
 
 .targetInputGroup {
   border-radius: 5px;
-  
+
   padding: 10px 10px;
   width: 100%;
   appearance: none;
   background-color: #2e2e2c;
-  
+
   text-align: center;
 }
 
@@ -384,14 +382,13 @@
 
 .popup h2 {
   margin-top: 0;
-  
+
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -412,10 +409,8 @@
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  
 }
 .popup .close:hover {
-  
 }
 .popup .content {
   overflow: auto;
@@ -494,7 +489,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 1.46;
-  
 }
 
 .labelSubtitle {
@@ -507,7 +501,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.25;
-  
 }
 
 .labelInputText {
@@ -515,7 +508,6 @@
   margin: auto 0;
   display: flex;
   align-items: center;
-  
 }
 
 .labelInputImage {
@@ -572,7 +564,6 @@
 }
 
 .labelQuotesSelect {
-  
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -606,7 +597,7 @@
     width: 90%;
     min-height: 100px;
     box-shadow: none;
-    
+
     background-color: #fafafa;
     overflow: hidden;
     background-color: transparent;
@@ -702,7 +693,6 @@
     height: 200px;
     background-size: 42px 35px;
     border-radius: 5px;
-    
   }
 
   .typeLabel {

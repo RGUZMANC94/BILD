@@ -428,7 +428,12 @@ const AddConsultant = ({
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Subir foto:</span>
-              <div className={`${styles['main-image']} ${isDark ? 'bg-url(/images/photo-icon.png)':'bg-[url(/images/light/photos.png)]'}`}>
+              <div
+                className={`${styles['main-image']} ${
+                  isDark
+                    ? 'bg-url(/images/photo-icon.png)'
+                    : 'bg-[url(/images/light/photos.png)]'
+                }`}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>

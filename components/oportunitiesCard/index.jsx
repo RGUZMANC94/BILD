@@ -60,7 +60,9 @@ const OportunitiesCard = ({
 
           <div className={styles['card-info']}>
             <span className={`${styles['card-title']} title-card`}>{name}</span>
-            <span className={`${styles['card-location']} subtitle-card`}>{location}</span>
+            <span className={`${styles['card-location']} subtitle-card`}>
+              {location}
+            </span>
             <span className={styles['card-sub']}>{type}</span>
             <div className={styles['card-detalles']}>
               Seguimiento: {followingDate}

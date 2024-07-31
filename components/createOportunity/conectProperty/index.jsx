@@ -29,7 +29,9 @@ const ConectProperty = ({
         </button>
       </div>
       <div className={styles.recientes}>
-        <span className={`${styles['conecta-contacto']} font-bold`}>Contactos recientes:</span>
+        <span className={`${styles['conecta-contacto']} font-bold`}>
+          Contactos recientes:
+        </span>
         {recentContacts &&
           recentContacts.length > 0 &&
           recentContacts.slice(0, 3).map((recent, i) => (

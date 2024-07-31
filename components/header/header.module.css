@@ -147,7 +147,7 @@
   background-color: #ff5567;
   width: 20px;
   height: 20px;
-  
+
   font-size: 13px;
 }
 
@@ -250,9 +250,7 @@
 
   .menuPpal a:hover {
     border-bottom: 3px solid #2467ff;
-    
   }
-
 
   .logo img {
     width: 70px;

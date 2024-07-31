@@ -1,5 +1,4 @@
 .siteButton {
-  
   border-radius: 5px;
   padding: 10px 30px;
   display: flex;
@@ -52,7 +51,6 @@
 }
 
 .primary {
-  
   background-color: rgba(60, 64, 67, 0.35);
   border-color: #2467ff;
 }
@@ -76,7 +74,6 @@
 
 .secondary {
   background-color: rgba(60, 64, 67, 0.35);
-  
 }
 
 /* .secondary:hover {
@@ -90,7 +87,6 @@
 }
 
 .gradient {
-  
   font-size: 12px;
   font-weight: 500;
 

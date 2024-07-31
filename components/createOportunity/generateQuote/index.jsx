@@ -176,7 +176,6 @@ const GenerateQuote = ({
     setMinQuoteValue(monthlyQuote * (minDuePercentage / 100));
   }, [monthlyQuote]);
 
-
   const handleChangeFees = (e) => {
     const value = Number(e.target.value);
     const minQuoteValue = 10; // Reemplaza este valor con el valor deseado
@@ -436,20 +435,20 @@ const GenerateQuote = ({
 
   const handleInitialQuoteChange = (val) => {
     setSliderFlag(false);
-    
+
     const num = Number(val);
 
-    console.log('num:', num); 
+    console.log('num:', num);
     let tempNum = num;
 
     if (num < 0) {
       tempNum = 0;
-    } else if(num > unitSelected.propertyPrice) {
+    } else if (num > unitSelected.propertyPrice) {
       tempNum = unitSelected.propertyPrice;
     }
-     console.log('tempNum:', tempNum);
+    console.log('tempNum:', tempNum);
     setInitialQuote(tempNum);
-    setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]); 
+    setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]);
   };
 
   /* const [minDate, setMinDate] = useState('');
@@ -475,7 +474,9 @@ const GenerateQuote = ({
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
         <div className={`${styles.topContent} header-popup`}>
-          <span className={`${styles.title} font-black`}>GENERAR COTIZACIÓN</span>
+          <span className={`${styles.title} font-black`}>
+            GENERAR COTIZACIÓN
+          </span>
           <div className={styles.seleccion}>
             <div className={styles.origen}>
               <span className={styles.labelSimple}>Tipo:</span>
@@ -489,7 +490,6 @@ const GenerateQuote = ({
         </div>
 
         <div className={styles.infoContainer}>
-
           <span className={styles.labelSubtitle}>
             Porcentaje de Cuota Inicial
           </span>
@@ -503,7 +503,8 @@ const GenerateQuote = ({
               // rtl={rtl}
               onChange={(values) => {
                 setSliderFlag(true);
-                setValues(values);}}
+                setValues(values);
+              }}
               renderTrack={({ props, children }) => (
                 <div
                   onMouseDown={props.onMouseDown}

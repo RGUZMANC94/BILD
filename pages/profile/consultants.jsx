@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from '../../styles/Contacts.module.css';
 import recentsContacts from '../api/recentsContacts';
 // import { useRouter } from 'next/router';
-import { useEffect, useState , useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeContactListSelected } from '../../redux/contactSelectedSlice';
 import Image from 'next/image';
@@ -188,14 +188,18 @@ const Consultants = () => {
                               setConsultantSelected(contact);
                               setShowEditContact(true);
                             }}
-                            className={`${styles['edit-icon']} ${!isDark && 'invert-filter'} bg-[url(/images/edit-icon.png)] dark:bg-[url(/images/edit-icon.png)]`}>
+                            className={`${styles['edit-icon']} ${
+                              !isDark && 'invert-filter'
+                            } bg-[url(/images/edit-icon.png)] dark:bg-[url(/images/edit-icon.png)]`}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
                           </button>
                           <button
                             onClick={() =>
                               deleteConsultant(contact.salesConsultantId)
                             }
-                            className={`${styles['delete-icon']} ${isDark && 'brightness-filter'} `}>
+                            className={`${styles['delete-icon']} ${
+                              isDark && 'brightness-filter'
+                            } `}>
                             {/* <img src="/images/whastapp-blue.png" /> */}
                           </button>
                         </>

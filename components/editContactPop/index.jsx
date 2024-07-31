@@ -457,7 +457,12 @@ const EditContactPop = ({
 
             <div className={`${styles.inputsGroup} flex a-st`}>
               <span className={styles.labelText}>Subir foto:</span>
-              <div className={`${styles['main-image']} ${isDark ? 'bg-url(/images/photo-icon.png)':'bg-[url(/images/light/photos.png)]'}`}>
+              <div
+                className={`${styles['main-image']} ${
+                  isDark
+                    ? 'bg-url(/images/photo-icon.png)'
+                    : 'bg-[url(/images/light/photos.png)]'
+                }`}>
                 <div
                   className={`bg-ct ${styles.deleteIcon}`}
                   onClick={deleteImage}></div>
@@ -491,7 +496,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('C')}
                   className={`campo-select ${styles.campo} hover:text-light-1 ${
-                    datos.contactProfile.civilStatus === 'C' && `${styles.active} text-light-1`
+                    datos.contactProfile.civilStatus === 'C' &&
+                    `${styles.active} text-light-1`
                   }`}>
                   Casado
                 </button>
@@ -499,7 +505,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('S')}
                   className={`campo-select ${styles.campo} hover:text-light-1 ${
-                    datos.contactProfile.civilStatus === 'S' && `${styles.active} text-light-1`
+                    datos.contactProfile.civilStatus === 'S' &&
+                    `${styles.active} text-light-1`
                   }`}>
                   Soltero
                 </button>
@@ -507,7 +514,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('UN')}
                   className={`campo-select ${styles.campo} hover:text-light-1 ${
-                    datos.contactProfile.civilStatus === 'UN' && `${styles.active} text-light-1`
+                    datos.contactProfile.civilStatus === 'UN' &&
+                    `${styles.active} text-light-1`
                   }`}>
                   Unión Libre
                 </button>
@@ -515,7 +523,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeTypeClient('DI')}
                   className={`campo-select ${styles.campo} hover:text-light-1 ${
-                    datos.contactProfile.civilStatus === 'DI' && `${styles.active} text-light-1`
+                    datos.contactProfile.civilStatus === 'DI' &&
+                    `${styles.active} text-light-1`
                   }`}>
                   Divorciado
                 </button>
@@ -528,7 +537,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('0')}
                   className={`campo-select ${styles.campo} hover:text-light-1 ${
-                    datos.contactProfile.amountChildren === '0' && `${styles.active} text-light-1`
+                    datos.contactProfile.amountChildren === '0' &&
+                    `${styles.active} text-light-1`
                   }`}>
                   Sin Hijos
                 </button>
@@ -536,7 +546,8 @@ const EditContactPop = ({
                   type="button"
                   onClick={() => changeAmountChildren('1')}
                   className={`campo-select ${styles.campo} hover:text-light-1 ${
-                    datos.contactProfile.amountChildren === '1' && `${styles.active} text-light-1`
+                    datos.contactProfile.amountChildren === '1' &&
+                    `${styles.active} text-light-1`
                   }`}>
                   Con Hijos
                 </button>

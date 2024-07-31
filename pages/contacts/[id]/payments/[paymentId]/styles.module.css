@@ -1,4 +1,4 @@
-.top-content {  
+.top-content {
   font-weight: 500;
   font-size: 20px;
   text-align: left;
@@ -118,7 +118,7 @@
   width: 100%;
   font-size: 18px;
   font-weight: 700;
-  
+
   margin-bottom: 10px;
 }
 .tipo-direccion,
@@ -126,7 +126,7 @@
   width: 100%;
   font-size: 15px;
   font-weight: 500;
-  
+
   margin-bottom: 10px;
 }
 
@@ -167,14 +167,13 @@
   width: 25%;
   font-size: 16px;
   font-weight: 400;
-  
 }
 
 .aceptada {
   width: 45%;
   font-size: 16px;
   font-weight: 700;
-  
+
   display: flex;
   align-items: center;
 }
@@ -187,7 +186,6 @@
   width: 25%;
   font-size: 16px;
   font-weight: 400;
-  
 }
 
 .pdf img {
@@ -202,7 +200,7 @@
   width: 35%;
   font-size: 16px;
   font-weight: 400;
-  
+
   gap: 25%;
   align-items: center;
   justify-content: space-between;
@@ -211,7 +209,7 @@
 .estado {
   font-size: 16px;
   font-weight: 700;
-  
+
   padding: 0 3.5% 0 0;
 }
 
@@ -219,7 +217,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-   position: absolute;
+  position: absolute;
   top: calc(50% - 10px);
   left: -42px;
 }
@@ -237,7 +235,7 @@
 .seguimiento {
   width: calc(50% - 20px);
   background-color: rgba(60, 64, 67, 0.35);
-  
+
   font-size: 15px;
   font-family: 'Lexend', sans-serif;
   font-weight: 400;
@@ -304,14 +302,13 @@
 
 .popup h2 {
   margin-top: 0;
-  
+
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -329,7 +326,6 @@
   color: #333;
 }
 .popup .close:hover {
-  
 }
 .popup .content {
   overflow: auto;
@@ -345,7 +341,7 @@
 
 button.confirmar {
   width: 45%;
-  
+
   font-size: 16px;
   font-weight: 500;
 
@@ -357,7 +353,7 @@ button.confirmar {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -374,7 +370,7 @@ button.confirmar {
 
 button.cancelar {
   width: 40%;
-  
+
   font-size: 16px;
   font-weight: 500;
 
@@ -395,7 +391,7 @@ button.cancelar {
 
 .transferir {
   width: calc(50% - 20px);
-  
+
   font-size: 15px;
   font-weight: 500;
 
@@ -525,14 +521,13 @@ button.cancelar {
 
 .popup h2 {
   margin-top: 0;
-  
+
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 
 .pop-text {
-  
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -553,10 +548,8 @@ button.cancelar {
   font-size: 50px;
   font-weight: 100;
   text-decoration: none;
-  
 }
 .popup .close:hover {
-  
 }
 .popup .content {
   overflow: auto;

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect , useContext } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import Button from '../button';
 import styles from './Edit-unit-pop.module.css';
 import { useSelector } from 'react-redux';
@@ -273,7 +273,9 @@ const EditUnitPop = ({
             <div className={`${styles.inputsGroup} flex j-sb a-st`}>
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={`${styles.labelInputTitle} font-black`}>ID:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>
+                  ID:
+                </span>
                 <input
                   type="text"
                   name="nuimb"
@@ -286,7 +288,9 @@ const EditUnitPop = ({
 
               <label
                 className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                <span className={`${styles.labelInputTitle} font-black`}>Precio:</span>
+                <span className={`${styles.labelInputTitle} font-black`}>
+                  Precio:
+                </span>
                 <CurrencyInput
                   className={`border-input ${styles.inputTypeForm}`}
                   prefix="$ "
@@ -303,14 +307,17 @@ const EditUnitPop = ({
             </div>
 
             <>
-              <div className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
+              <div
+                className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
                 <h2 className={`${styles.sectionTitleText}`}>Datos:</h2>
               </div>
 
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Habitaciones:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Habitaciones:
+                  </span>
                   <input
                     type="text"
                     name="bedrooms"
@@ -322,7 +329,9 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Baños:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Baños:
+                  </span>
                   <input
                     type="text"
                     name="baths"
@@ -333,14 +342,17 @@ const EditUnitPop = ({
                 </label>
               </div>
 
-              <div className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
+              <div
+                className={`${styles.sectionTitle} flex j-sb a-c font-extrabold bg-light-2 shadow-md dark:bg-dark-3`}>
                 <h2 className={`${styles.sectionTitleText}`}>Áreas</h2>
               </div>
 
               <div className={`${styles.inputsGroup} flex j-sb a-st`}>
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Area Const:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Area Const:
+                  </span>
                   <input
                     type="text"
                     name="builtArea"
@@ -352,7 +364,9 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Área Priv:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Área Priv:
+                  </span>
                   <input
                     type="text"
                     name="privateArea"
@@ -364,7 +378,9 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Area terraza:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Area terraza:
+                  </span>
                   <input
                     type="text"
                     name="terraceArea"
@@ -377,7 +393,9 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Área Bálcon:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Área Bálcon:
+                  </span>
                   <input
                     type="text"
                     name="balconyArea"
@@ -389,7 +407,9 @@ const EditUnitPop = ({
 
                 <label
                   className={`${styles.typeLabel} ${styles.manyTypeLabels} flex j-sb a-c`}>
-                  <span className={`${styles.labelInputTitle} font-black`}>Área Deposito:</span>
+                  <span className={`${styles.labelInputTitle} font-black`}>
+                    Área Deposito:
+                  </span>
                   <input
                     type="text"
                     name="storageArea"

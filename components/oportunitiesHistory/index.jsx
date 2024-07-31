@@ -266,7 +266,8 @@ const OportunitiesHistory = ({
         <div className={styles.right}>
           <div className={styles.line}>
             <img src="/images/Ellipse 81.png" />
-            <div className={`${styles['ver-line']} border-r-[1px] border-solid border-light-3`}></div>
+            <div
+              className={`${styles['ver-line']} border-r-[1px] border-solid border-light-3`}></div>
           </div>
 
           <div className={styles.pendientes}>
@@ -371,7 +372,8 @@ const OportunitiesHistory = ({
                       ))}
                   </div>
                 </div>
-                <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
+                <div
+                  className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
               </div>
             )}
 
@@ -389,7 +391,9 @@ const OportunitiesHistory = ({
                   {eventsSelected.reverse().map(
                     (eventItem, i) =>
                       Object.keys(eventItem).length > 3 && (
-                        <div className={`bg-card ${styles.greybox}`} key={eventItem.id}>
+                        <div
+                          className={`bg-card ${styles.greybox}`}
+                          key={eventItem.id}>
                           <div className={styles.info}>
                             <div>
                               {
@@ -467,7 +471,8 @@ const OportunitiesHistory = ({
                             </div>
                           </div>
 
-                          <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
+                          <div
+                            className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
                         </div>
                       )
                   )}
@@ -528,7 +533,8 @@ const OportunitiesHistory = ({
                       </div>
                     ))}
                 </div>
-                <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
+                <div
+                  className={`${styles['blue-point']} bg-light-3 dark:bg-light-1`}></div>
               </div>
             )}
           </div>

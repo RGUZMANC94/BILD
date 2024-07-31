@@ -71,7 +71,9 @@ const CreateStep = ({
               <div className={`${styles['details-group']} font-bold`}>
                 <Image
                   alt=""
-                  src={isDark ? '/images/cards/bath.png' : '/images/light/bath.png'}
+                  src={
+                    isDark ? '/images/cards/bath.png' : '/images/light/bath.png'
+                  }
                   width="15"
                   height="15"
                 />

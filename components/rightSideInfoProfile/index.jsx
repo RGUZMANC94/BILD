@@ -20,7 +20,11 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['opc-pendiente']}>
           <Link
             href={`/opportunities/${router.query.id}`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${isDark ? 'bg-[url(/images/profile1a.jpg)]' : 'bg-[url(/images/profile1.jpg)] transition-all '}  ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+              isDark
+                ? 'bg-[url(/images/profile1a.jpg)]'
+                : 'bg-[url(/images/profile1.jpg)] transition-all '
+            }  ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
               src={'/images/light/key.png'}
@@ -32,11 +36,14 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
           </Link>
           <Link
             href={`/contacts/${router.query.id}/quotes`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${isDark ? 'bg-[url(/images/profile2a.jpg)]' : 'bg-[url(/images/profile2.jpg)] transition-all '}  ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+              isDark
+                ? 'bg-[url(/images/profile2a.jpg)]'
+                : 'bg-[url(/images/profile2.jpg)] transition-all '
+            }  ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={'/images/light/dashboard.png'
-              }
+              src={'/images/light/dashboard.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               5
@@ -45,11 +52,14 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
           </Link>
           <Link
             href={`/documentation/${router.query.id}`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${isDark ? 'bg-[url(/images/profile3a.jpg)]' : 'bg-[url(/images/profile3.jpg)] transition-all '} ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+              isDark
+                ? 'bg-[url(/images/profile3a.jpg)]'
+                : 'bg-[url(/images/profile3.jpg)] transition-all '
+            } ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={'/images/light/documentos.png'
-              }
+              src={'/images/light/documentos.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               3
@@ -58,11 +68,14 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
           </Link>
           <Link
             href={`/contacts/${router.query.id}/payments`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${isDark ? 'bg-[url(/images/profile4a.jpg)]' : 'bg-[url(/images/profile4.jpg)] transition-all '}  ${styles.opcion}`}>
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+              isDark
+                ? 'bg-[url(/images/profile4a.jpg)]'
+                : 'bg-[url(/images/profile4.jpg)] transition-all '
+            }  ${styles.opcion}`}>
             <img
               className="w-12 h-12 object-contain relative"
-              src={'/images/light/money.png'
-              }
+              src={'/images/light/money.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               7
