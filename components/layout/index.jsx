@@ -33,12 +33,9 @@ const Layout = ({ children }) => {
         isDark ? 'dark' : ''
       }`}>
       <div className="transition text-dark-4 dark:text-light-1 min-h-screen bg-[url(/images/bg.jpg)] dark:bg-none dark:bg-dark-4 bg-cover bg-no-repeat bg-center w-full">
-        {pathname !== '/login' && <Header />}
+        {pathname !== '/login' && <Header toogleDarkMode={toogleDarkMode}/>}
         {children}
       </div>
-      {<div
-        onClick={toogleDarkMode}
-        className="mode-button bg-[url(/images/modo-oscuro.png)] dark:bg-[url(/images/modo-claro.png)]"></div>}
     </main>
   );
 };

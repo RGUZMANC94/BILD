@@ -7,13 +7,15 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import BildContext from '../context';
 
-const Header = () => {
+const Header = ({toogleDarkMode}) => {
   // const [showFilter, setShowFilter] = useState(false);
   // const [showAdvancedFilter, setShowAdvancedFilter] = useState(false);
+  const { initialState } = useContext(BildContext);
   const { isDark } = useContext(BildContext);
   const router = useRouter();
   const { pathname } = router;
-  const { user_rol } = useSelector((state) => state.userState);
+  const { user } = initialState;
+  const { rol: user_rol } = user;
   return (
     <>
       <header
@@ -38,7 +40,12 @@ const Header = () => {
                 alt="Logo BILD"
               />
             )}
+            <div
+            onClick={toogleDarkMode}
+            className="mode-button bg-[url(/images/modo-oscuro.png)] dark:bg-[url(/images/modo-claro.png)]"></div>
           </div>
+
+          
 
           <div className={`${styles['menu-top']} max-sm:bg-sub-header max-sm:shadow-4xl`}>
             <div className={styles.menuPpal}>

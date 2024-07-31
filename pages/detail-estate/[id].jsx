@@ -304,6 +304,8 @@ const DetailState = ({ unitsInit, typesInit }) => {
     console.log('Project actual: ', responseProject[0]);
   };
 
+  console.log('xlsxTemplate',xlsxTemplate);
+
   return (
     <>
       <div className="top-content bg-sub-header ">
