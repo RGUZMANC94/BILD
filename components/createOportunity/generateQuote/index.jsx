@@ -726,7 +726,7 @@ const GenerateQuote = ({
         </div>
       </form>
       <Portal>
-        {true && (
+        {successQuote === 1 && (
           <SuccessPopUp
             message={'¡Tú cotización ha sido creada con éxito!'}></SuccessPopUp>
         )}
