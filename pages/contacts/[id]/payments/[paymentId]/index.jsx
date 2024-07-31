@@ -3,12 +3,13 @@ import styles from './styles.module.css';
 // import { useSelector } from 'react-redux';
 import Loader from '../../../../../components/lodaer';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useContext } from 'react';
 import Button from '../../../../../components/button';
 import { parseCookies } from '../../../../../utils/parseCookies';
 import Portal from '../../../../../HOC/portal';
 import SuccessPopUp from '../../../../../components/successPopUp';
 import ErrorPopUp from '../../../../../components/errorPopUp';
+import BildContext from '../../../../../components/context/index';
 
 export const getServerSideProps = async ({
   req: {
@@ -64,6 +65,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [succesPayment, setSuccesPayment] = useState(0);
+  const { isDark } = useContext(BildContext);
 
   console.log(router);
 
@@ -255,7 +257,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                       : '/images/Ellipse 81.png')
                   }
                 />
-                <div className={styles['ver-line']}></div>
+                <div className={`${styles['ver-line']} border-r-[1px] border-solid border-light-3`}></div>
               </div>
 
               <div className={styles.pendientes}>
@@ -277,17 +279,17 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
 
                 {opportunitySelected && (
                   <div
-                    className={
-                      opportunitySelected.stageCycleSaleOp === 'Separacion'
+                    className={`bg-card ${ opportunitySelected.stageCycleSaleOp === 'Separacion'
                         ? styles.box
-                        : styles.greybox
+                        : styles.greybox}`
+                     
                     }>
                     <div className={styles.info}>
                       <div className={styles.date}>
                         {quotes ? `${quotes.updatedDate.split(' ')[0]}` : ''}
                       </div>
                       <div className={styles.aceptada}>
-                        <img src="/images/confirmed-deed.svg" />
+                        <img className={`${!isDark && 'invert-filter'}`} src="/images/confirmed-deed.svg" />
                         {opportunitySelected.stageCycleSaleOp === 'Separacion'
                           ? 'Cotización Pendiente'
                           : 'Cotización Aceptada'}
@@ -299,7 +301,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                             ? setPdfURL(quotes.pdf[0].url)
                             : setPdfURL(null);
                         }}>
-                        <img src="/images/pdf-icon-white.svg" />
+                        <img className={`${!isDark && 'invert-filter'}`} src="/images/pdf-icon-white.svg" />
                       </div>
 
                       <div className={styles.empty}>
@@ -322,7 +324,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                       </div>
                     </div>
 
-                    <div className={styles['blue-point']}></div>
+                    <div className={`${styles['blue-point']} bg-light-4 dark:bg-light-1`}></div>
                   </div>
                 )}
 
@@ -337,7 +339,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                                 styles.date
                               }>{`${quote.expirationDate}`}</div>
                             <div className={styles.aceptada}>
-                              <img src="/images/card.svg" />
+                              <img className={`${!isDark && 'invert-filter'}`} src="/images/card.svg" />
                               {`Pago cuota N°${quote.dueNumber}`}
                             </div>
                             <div
@@ -350,7 +352,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                             </div>
                           </div>
 
-                          <div className={styles['blue-point']}></div>
+                          <div className={`${styles['blue-point']} bg-light-3 dark:bg-light-4`}></div>
                         </div>
                       ) : (
                         <div className={styles.box} key={i}>
@@ -360,7 +362,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                                 styles.date
                               }>{`${quote.expirationDate}`}</div>
                             <div className={styles.aceptada}>
-                              <img src="/images/card.svg" />
+                              <img className={`${!isDark && 'invert-filter'}`} src="/images/card.svg" />
                               {`Pago cuota N°${quote.dueNumber}`}
                             </div>
                             <div
@@ -389,7 +391,7 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
                             </div>
                           </div>
 
-                          <div className={styles['grey-point']}></div>
+                          <div className={`${styles['grey-point']} bg-light-3 dark:bg-light-1`}></div>
                         </div>
                       )
                     )
@@ -413,12 +415,18 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
               )}
             </div>
             <div className={styles['pendientes-bottom']}>
-              <a button className={styles.transferir} href="#popup1">
-                Transferir compra
-              </a>
-              <a button className={styles.seguimiento} href="#popup2">
-                Ver Seguimiento
-              </a>
+              <Button
+                buttonType={'secondary'}
+                iconImage={false}
+                label={'Transferir compra'}
+                inheritClass={styles.transferir}
+                clickFunction={console.log('')}></Button>
+              <Button
+                buttonType={'primary'}
+                iconImage={false}
+                label={'Ver Seguimiento'}
+                inheritClass={styles.transferir}
+                clickFunction={console.log('')}></Button>
             </div>
           </div>
           {/* movil anterior*/}
