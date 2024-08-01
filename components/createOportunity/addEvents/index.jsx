@@ -4,6 +4,9 @@ import Button from '../../button';
 import { useSelector } from 'react-redux';
 import BildContext from '../../context';
 import { Inter } from 'next/font/google';
+import Portal from '../../../HOC/portal';
+import SuccessPopUp from '../../successPopUp';
+import ErrorPopUp from '../../errorPopUp';
 
 const inter = Inter({
   weight: ['300', '700', '900'],
@@ -22,6 +25,7 @@ const AddEvents = ({
   const { isDark } = useContext(BildContext);
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
+  const [successPopUp, setSuccessPopUp] = useState(0);
   const { opportunitySelected } = useSelector(
     (state) => state.opportunityState
   );
@@ -67,6 +71,7 @@ const AddEvents = ({
           datos,
         }),
       });
+      setSuccessPopUp((preState) => 1);
 
       console.log('Tipo creado: ', typeCreated);
 
@@ -78,25 +83,33 @@ const AddEvents = ({
 
       console.log('Proyecto creado:', responseData);
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
+      
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
         setShowPopEvents ? setShowPopEvents(false) : null;
         setAddEvents ? setAddEvents(false) : null;
         setRefreshFlag ? setRefreshFlag((prevState) => !prevState) : null;
         updateEvents ? updateEvents() : null;
       }, 2000);
-    } catch (error) {
+    } catch (error) { 
+      setSuccessPopUp((preState) => 2);
+      setTimeout(() => {
+      setTimeout(() => {
+        setSuccessPopUp((preState) => 0);
+      }, 1000);
+      
+    }, 2000);
+
       console.error('Error al crear el proyecto:', error);
     }
   };
 
   return (
+    <>
     <section
       className={`${inter.className}  ${styles.main} ${
         show ? styles.active : ''
@@ -188,35 +201,17 @@ const AddEvents = ({
           />
         </div>
       </div>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú Evento ha sido creado con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span> Algo no
-                está bien. Por favor, revisa los datos ingresados e inténtalo de
-                nuevo.
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Tú Evento ha sido creado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp ></ErrorPopUp>
+        )}
+      
     </section>
+    
+    </>
   );
 };
 

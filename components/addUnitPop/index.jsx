@@ -6,6 +6,9 @@ import { useRouter } from 'next/router';
 import SquareInput from '../squareInput';
 import CurrencyInput from 'react-currency-input-field';
 import BildContext from '../context';
+import Portal from '../../HOC/portal';
+import SuccessPopUp from '../successPopUp';
+import ErrorPopUp from '../errorPopUp';
 
 const AddUnitPop = ({
   showPopUpUnit,
@@ -26,6 +29,8 @@ const AddUnitPop = ({
   const [optionalPop, setOptionalPop] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const { isDark } = useContext(BildContext);
+  const [successPopUp, setSuccessPopUp] = useState(0);
+
 
   const [datos, setDatos] = useState({
     projectId: router.query.id,
@@ -191,27 +196,25 @@ const AddUnitPop = ({
 
       console.log('Proyecto creado:', responseData);
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
 
       setTimeout(() => {
         setUnitFlag(true);
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
+
         cleanForm();
         setShowPopUpUnit(false);
       }, 4000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
+
       }, 4000);
       console.error('Error al crear el proyecto:', error);
     }
@@ -498,38 +501,16 @@ const AddUnitPop = ({
           </div>
         </div>
       </div>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú unidad ha sido creada con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Tú contacto ha sido creado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
+</Portal>   
+
     </>
   );
 };

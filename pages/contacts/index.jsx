@@ -11,6 +11,7 @@ import AddContactPop from '../../components/addContactPop';
 
 import { useContext } from 'react';
 import BildContext from '../../components/context';
+import Portal from '../../HOC/portal';
 
 export const getServerSideProps = async ({
   req: {
@@ -249,11 +250,14 @@ const Contacts = () => {
         </div>
       </section>
 
-      <AddContactPop
-        showAddContact={showAddContact}
-        setShowAddContact={setShowAddContact}
-        setRefreshContacts={setRefreshContacts}
-      />
+      <Portal>
+
+        <AddContactPop
+          showAddContact={showAddContact}
+          setShowAddContact={setShowAddContact}
+          setRefreshContacts={setRefreshContacts}
+        />
+      </Portal>
     </>
   );
 };

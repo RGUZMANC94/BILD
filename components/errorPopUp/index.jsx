@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styles from './error.module.css';
 
-const ErrorPopUp = (errorMessage, render) => {
+const ErrorPopUp = (errorMessage) => {
   const [activePopUp, setActivePopUp] = useState(false);
 
   
-  useEffect(() => {
-    setActivePopUp((prevState) => true);
+ useEffect(() => {
+    setTimeout(() => {
+      setActivePopUp((prevState) => true);
+    }, 250);
     setTimeout(() => {
       setActivePopUp((prevState) => false);
-    }, 2000);
+    }, 2500);
   }, []);
 
   return (

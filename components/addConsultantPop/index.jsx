@@ -7,6 +7,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useContext } from 'react';
 import BildContext from '../context';
+import Portal from '../../HOC/portal';
+import SuccessPopUp from '../successPopUp';
+import ErrorPopUp from '../errorPopUp';
 
 const AddConsultant = ({
   showAddContact,
@@ -24,6 +27,8 @@ const AddConsultant = ({
   const { initialState, isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
+  const [successPopUp, setSuccessPopUp] = useState(0);
+
 
   const [datos, setDatos] = useState({
     firstNames: '',
@@ -152,28 +157,23 @@ const AddConsultant = ({
         }
       }
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
 
       setTimeout(() => {
         setShowAddContact(false);
         setRefreshContacts(true);
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 2000);
-      console.error('Error al crear el proyecto:', error);
     }
   };
 
@@ -245,25 +245,21 @@ const AddConsultant = ({
 
       console.log('Proyecto creado:', responseData);
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
         router.push('/contacts');
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 2000);
       console.error('Error al crear el proyecto:', error.messge);
     }
@@ -503,38 +499,16 @@ const AddConsultant = ({
         </div>
       </div>
 
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tú contacto ha sido creado con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+      <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Tú contacto ha sido creado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
+      </Portal>  
     </>
   );
 };

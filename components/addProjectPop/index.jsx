@@ -7,6 +7,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Tooltip from '../toolTip';
 import BildContext from '../context';
+import Portal from '../../HOC/portal';
+import SuccessPopUp from '../successPopUp';
+import ErrorPopUp from '../errorPopUp';
 
 const AddProjectPop = ({
   showAddProject,
@@ -35,6 +38,7 @@ const AddProjectPop = ({
   const [xlsxTemplate, setXlsxTemplate] = useState(null);
   const [cities, setCities] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [successPopUp, setSuccessPopUp] = useState(0);
 
   const getCurrentDate = () => {
     const date = new Date();
@@ -297,26 +301,23 @@ const AddProjectPop = ({
         }
       }
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
         setShowAddProject(false);
         setRefreshProjects(true);
         cleanForm();
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
+        
       }, 5000);
       console.error('Error al crear el proyecto:', error.message);
     }
@@ -380,25 +381,19 @@ const AddProjectPop = ({
           console.log('Error Data: ', errorDta);
         }
 
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.add(styles.activePopUp);
+        setSuccessPopUp((preState) => 1);
         setTimeout(() => {
-          document
-            .querySelector(`.${styles.popSuccessCreated}`)
-            .classList.remove(styles.activePopUp);
+          setTimeout(() => {
+            setSuccessPopUp((preState) => 0);
+          }, 1000);
         }, 2000);
       } catch (error) {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.add(styles.activePopUp);
+        setSuccessPopUp((preState) => 2);
         setTimeout(() => {
-          document
-            .querySelector(`.${styles.popError}`)
-            .classList.remove(styles.activePopUp);
+          setTimeout(() => {
+            setSuccessPopUp((preState) => 0);
+          }, 1000);
         }, 2000);
-        console.error(error.message);
-        console.error('Error al realizar la solicitud:', error.message);
       }
     } else {
       console.error('No se ha seleccionado ningún archivo.');
@@ -738,6 +733,15 @@ const AddProjectPop = ({
           </div>
         </div>
       </div>
+      <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Tú proyecto ha sido creado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
+</Portal>   
     </>
   );
 };
