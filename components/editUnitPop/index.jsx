@@ -245,7 +245,7 @@ const EditUnitPop = ({
           className={`bg-backg-popup ${styles.bgTypePopUp}`}
           onClick={() => setShowEditUnit(false)}></div>
         <div className={`${styles.wrapperTypePopUp} bg-popup`}>
-          <div className={`${styles.topContent} header-popup`}>
+          <div className={`${styles.topContent} header-popup header-popup`}>
             <div className={`${styles.topContentInfo}`}>
               <h1 className={`${styles.topContentTitle}`}>
                 {projectSelected.projectName}
