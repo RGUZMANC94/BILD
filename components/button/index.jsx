@@ -17,7 +17,7 @@ const Button = ({
       {link && (
         <Link
           href={link}
-          className={`${buttonType} ${styles.siteButton} ${
+          className={`bg-button ${buttonType} ${styles.siteButton} ${
             styles[classNameInherit]
           } ${inheritClass ?? ''}`}>
           {iconImage ? (
@@ -36,7 +36,7 @@ const Button = ({
             preventDefault ? e.preventDefault() : null;
             clickFunction ? clickFunction() : '';
           }}
-          className={`${[buttonType]} ${styles.siteButton} ${
+          className={`bg-button ${[buttonType]} ${styles.siteButton} ${
             styles[classNameInherit]
           } ${inheritClass ?? ''}`}>
           {iconImage ? (

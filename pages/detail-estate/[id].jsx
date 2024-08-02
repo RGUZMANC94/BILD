@@ -372,7 +372,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
                       accept=".xlsx, .xls, .csv"
                       name="excel"
                     />
-                    <div className={'top-upload-icon'} />
+                    <div className={'bg-button top-upload-icon'} />
                     Subir
                   </label>
                 )}
@@ -404,7 +404,7 @@ const DetailState = ({ unitsInit, typesInit }) => {
                 accept=".xlsx, .xls, .csv"
                 name="excel"
               />
-              <div className={'top-upload-icon'} />
+              <div className={'bg-button top-upload-icon'} />
               Subir
             </label>
           )}

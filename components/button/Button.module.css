@@ -7,9 +7,9 @@
   gap: 10px;
   /*  */
   cursor: pointer;
-  transition:
+  /*transition:
     all 0.25s ease-in-out,
-    border 0.25s ease-in 0s;
+    border 0.25s ease-in 0s;*/
   overflow: hidden;
   position: relative;
   height: 45px;
@@ -18,9 +18,9 @@
 }
 
 .siteButton:hover {
-  transition:
+ /* transition:
     all 0.25s ease-in-out,
-    border 0.25s ease-in-out 0.1s;
+    border 0.25s ease-in-out 0.1s;*/
 }
 
 .siteButton span {
@@ -38,7 +38,7 @@
   width: 120%;
   height: 100%;
   transform: translateY(-100%);
-  transition: all 0.25s ease-in-out;
+  /*transition: all 0.25s ease-in-out;*/
 }
 
 /* .siteButton:hover:before {

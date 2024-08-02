@@ -110,25 +110,30 @@
   transition: all 0.15s ease-in-out;
   /* background-color: #343434; */
   width: 100%;
-  padding: 0 10px;
+  padding: 10px 10px;
 }
 
 .list-name:hover {
   background-color: #ececec;
 }
 
-.list-name > a,
-.list-name > div > a {
-  padding: 10px 0;
+.contact-Infocont {
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: auto;
 }
-
 .contact {
   display: flex;
   position: relative;
   justify-content: flex-start;
   align-items: center;
-  width: 40%;
+  width: 50%;
 }
+
+
 
 .contact-img-container {
   position: relative;
@@ -150,7 +155,7 @@
 }
 .list-mail {
   padding-top: 20px;
-  width: 40%;
+  width: 50%;
 }
 
 .list-mail ul li {
@@ -222,11 +227,21 @@
   position: relative;
 }
 
-.whastapp-icon {
+.phone-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
+}
+.whatsapp-container {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+  background-image: url(/images/whastapp-blue.png);
+  margin-left: 20px;
 }
 
 /* Consultants */

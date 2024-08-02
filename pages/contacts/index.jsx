@@ -89,12 +89,14 @@ const Contacts = () => {
               <div
                 className={`${styles['list-name']}  hover:dark:bg-dark-2`}
                 key={i}>
-                <Link
-                  onClick={() => {
+                  <div className={styles['list-contact']}>
+                  <Link onClick={() => {
                     dispatch(changeContactListSelected(recent));
                   }}
-                  href={`/contacts/${recent.idCli}`}>
-                  <div className={styles['list-contact']}>
+                  href={`/contacts/${recent.idCli}`}
+                  className={`${styles['contact-Infocont']} `}
+                  
+                  >
                     <div className={styles.contact}>
                       <div className={styles['contact-img-container']}>
                         <Image
@@ -119,22 +121,28 @@ const Contacts = () => {
                       {`${recent.name} ${recent.lastname}`}
                     </div>
                     <div className={styles['reciente-col']}>{recent.email}</div>
+                    
+                  </Link>
+                    
                     <div className={styles.number}>
                       {recent.phoneNumber && (
                         <>
-                          <a
-                            href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
-                            target="_blank"
-                            className={styles['whastapp-icon']}>
-                            {`+57 ${recent.phoneNumber}`}
-                            <Image
-                              width={40}
-                              height={40}
-                              alt=""
-                              src="/images/whastapp-blue.png"
-                            />
-                            {/* <img src="/images/whastapp-blue.png" /> */}
-                          </a>
+                          <div
+                           
+                            className={styles['phone-container']}>
+                            <Link  
+                            href={`tel:+57${recent.phoneNumber}`}
+                            target="_blank">
+                              {`+57 ${recent.phoneNumber}`}
+                            </Link>
+                            
+                            <Link
+                              href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                              target="_blank"
+                              className={styles['whatsapp-container']}
+                            >
+                            </Link>
+                          </div>
                         </>
                       )}
                     </div>
@@ -159,8 +167,7 @@ const Contacts = () => {
                       </div>
                     </div>
                   </div>
-                </Link>
-              </div>
+                </div>
             ))}
           </div>
           <div className={styles.listas}>
@@ -169,14 +176,16 @@ const Contacts = () => {
             </div>
             {sortedontacts.map((contact, i) => (
               <div
-                className={`${styles['list-name']} hover:bg-light-3 dark:bg-dark-4 hover:dark:bg-dark-2`}
+                className={`${styles['list-name']}  hover:dark:bg-dark-2`}
                 key={i}>
-                <Link
-                  onClick={() => {
+                  <div className={styles['list-contact']}>
+                  <Link onClick={() => {
                     dispatch(changeContactListSelected(contact));
                   }}
-                  href={`/contacts/${contact.idCli}`}>
-                  <div className={styles['list-contact']}>
+                  href={`/contacts/${contact.idCli}`}
+                  className={`${styles['contact-Infocont']} `}
+                  
+                  >
                     <div className={styles.contact}>
                       <div className={styles['contact-img-container']}>
                         <Image
@@ -190,35 +199,39 @@ const Contacts = () => {
                           }
                         />
                         {/* <img
-                        src={
-                          contact.image[0] !== '' && contact.image[0]
-                            ? `${contact.image[0].url}`
-                            : '/images/tipo-1.png'
-                        }
-                      /> */}
+                      src={
+                        contact.image[0] !== '' && contact.image[0]
+                          ? `${contact.image[0].url}`
+                          : '/images/tipo-1.png'
+                      }
+                    /> */}
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
                       {`${contact.name} ${contact.lastname}`}
                     </div>
-                    <div className={styles['reciente-col']}>
-                      {contact.email}
-                    </div>
+                    <div className={styles['reciente-col']}>{contact.email}</div>
+                    
+                  </Link>
+                    
                     <div className={styles.number}>
                       {contact.phoneNumber && (
                         <>
-                          <a
-                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
-                            target="_blank"
-                            className={styles['whastapp-icon']}>
-                            {`+57 ${contact.phoneNumber}`}
-                            <Image
-                              width={40}
-                              height={40}
-                              alt=""
-                              src="/images/whastapp-blue.png"
-                            />
-                            {/* <img src="/images/whastapp-blue.png" /> */}
-                          </a>
+                          <div
+                           
+                            className={styles['phone-container']}>
+                            <Link  
+                            href={`tel:+57${contact.phoneNumber}`}
+                            target="_blank">
+                              {`+57 ${contact.phoneNumber}`}
+                            </Link>
+                            
+                            <Link
+                              href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                              target="_blank"
+                              className={styles['whatsapp-container']}
+                            >
+                            </Link>
+                          </div>
                         </>
                       )}
                     </div>
@@ -243,8 +256,7 @@ const Contacts = () => {
                       </div>
                     </div>
                   </div>
-                </Link>
-              </div>
+                </div>
             ))}
           </div>
         </div>
