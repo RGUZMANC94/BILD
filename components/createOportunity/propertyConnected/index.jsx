@@ -9,6 +9,8 @@ import { useContext } from 'react';
 import BildContext from '../../context';
 import { parseCookies } from '../../../utils/parseCookies';
 import EditContactPop from '../../../components/editContactPop';
+import SuccessPopUp from '../../successPopUp';
+import ErrorPopUp from '../../errorPopUp';
 
 export const getServerSideProps = async ({
   req: {
@@ -51,6 +53,7 @@ const PropertyConnected = ({ setIsCreated }) => {
   const [showEditContact, setShowEditContact] = useState(false);
   const [refreshContacts, setRefreshContacts] = useState(false);
   const [infoContact, setInfoContact] = useState(null);
+  const [successPopUp, setSuccessPopUp] = useState(0);
 
   const getContact = async () => {
     const response = await fetch('/api/getContactInfo', {
@@ -128,14 +131,12 @@ const PropertyConnected = ({ setIsCreated }) => {
 
       const responseData = await oppCreated.json();
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
-
+      setSuccessPopUp((preState) => 1);
+      
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
         dispatch(changeOpportunitySelected(responseData.saleOpportunity));
         router.push({
           pathname: '/opportunities',
@@ -144,14 +145,12 @@ const PropertyConnected = ({ setIsCreated }) => {
         dispatch(closePopUp());
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 5000);
       console.error('Error al crear el oportunidad:', error.message);
     }
@@ -222,38 +221,6 @@ const PropertyConnected = ({ setIsCreated }) => {
         </div>
       </form>
       <Portal>
-        <div className={`${styles.popSuccessCreated}`}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup2}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/check-circle.png" />
-                <span className={styles['pop-text']}>
-                  ¡Su proyecto ha sido creado con éxito!
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={`${styles.popError} `}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup3}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/error-circle.png" />
-                <span className={styles['pop-text']}>
-                  <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                  {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo denuevo'
-                }.`}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
         <EditContactPop
           showEditContact={showEditContact}
           setShowEditContact={setShowEditContact}
@@ -261,6 +228,16 @@ const PropertyConnected = ({ setIsCreated }) => {
           contactId={contactSelected.idCli}
         />
       </Portal>
+      
+      <Portal>
+              {successPopUp === 1 && (
+                <SuccessPopUp
+                  message={'¡Su proyecto ha sido creado con éxito!'}></SuccessPopUp>
+              )}
+              {successPopUp === 2 && (
+                <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+              )}
+      </Portal>   
     </>
   );
 };

@@ -387,14 +387,8 @@ const GenerateQuote = ({
       const responseData = await quoteCreated.json();
       console.log('respuesta de la cotizacion', responseData);
       setSuccessQuote((prevState) => 1);
-      // document
-      //   .querySelector(`.${styles.popSuccessCreated}`)
-      //   .classList.add(styles.activePopUp);
 
       setTimeout(() => {
-        // document
-        //   .querySelector(`.${styles.popSuccessCreated}`)
-        //   .classList.remove(styles.activePopUp);
         if (setRefreshFlag) {
           setRefreshFlag((prevState) => true);
           closePopUpPortal();
@@ -405,12 +399,8 @@ const GenerateQuote = ({
         setTimeout(() => {
           setSuccessQuote((prevState) => 0);
         }, 500);
-        // window.location.reload();
       }, 2000);
     } catch (error) {
-      // document
-      //   .querySelector(`.${styles.popError}`)
-      //   .classList.add(styles.activePopUp);
       setSuccessQuote((prevState) => 2);
       setTimeout(() => {
         setSuccessQuote((prevState) => 0);
