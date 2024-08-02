@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 import Button from '../../components/button';
 import { parseCookies } from '../../utils/parseCookies';
 import Portal from '../../HOC/portal';
-import SuccessPopUp from '../successPopUp';
-import ErrorPopUp from '../errorPopUp';
+import SuccessPopUp from '../../components/successPopUp';
+import ErrorPopUp from '../../components/errorPopUp';
 
 export const getServerSideProps = async ({
   req: {
