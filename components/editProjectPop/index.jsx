@@ -7,6 +7,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Tooltip from '../toolTip';
 import BildContext from '../context';
+import Portal from '../../HOC/portal';
+import SuccessPopUp from '../successPopUp';
+import ErrorPopUp from '../errorPopUp';
 
 const EditProjectPop = ({
   showEditProject,
@@ -38,6 +41,8 @@ const EditProjectPop = ({
   const [errorMessage, setErrorMessage] = useState(null);
   const { projectEdit } = useSelector((state) => state.editObjectState);
   const [infoProject, setInfoProject] = useState(null);
+  const [successPopUp, setSuccessPopUp] = useState(0);
+
 
   const getProject = async () => {
     const response = await fetch('/api/getProjectInfo', {
@@ -319,13 +324,11 @@ const EditProjectPop = ({
         }
       }
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
         setShowEditProject(false);
         setRefreshProjects(true);
         cleanForm();
@@ -334,14 +337,11 @@ const EditProjectPop = ({
         setRefreshProjects(true);
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
-
+      setSuccessPopUp((preState) => 2);
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 5000);
       console.error('Error al crear el proyecto:', error.message);
     }
@@ -405,22 +405,18 @@ const EditProjectPop = ({
           console.log('Error Data: ', errorDta);
         }
 
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.add(styles.activePopUp);
+        setSuccessPopUp((preState) => 1);
         setTimeout(() => {
-          document
-            .querySelector(`.${styles.popSuccessCreated}`)
-            .classList.remove(styles.activePopUp);
+          setTimeout(() => {
+            setSuccessPopUp((preState) => 0);
+          }, 1000);
         }, 2000);
       } catch (error) {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.add(styles.activePopUp);
+        setSuccessPopUp((preState) => 2);
         setTimeout(() => {
-          document
-            .querySelector(`.${styles.popError}`)
-            .classList.remove(styles.activePopUp);
+          setTimeout(() => {
+            setSuccessPopUp((preState) => 0);
+          }, 1000);
         }, 2000);
         console.error(error.message);
         console.error('Error al realizar la solicitud:', error.message);
@@ -692,38 +688,15 @@ const EditProjectPop = ({
           </div>
         </div>
       </div>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡El proyecto ha sido actualizado con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span>{' '}
-                {`Algo no
-                está bien.${
-                  errorMessage
-                    ? `\n${errorMessage}`
-                    : '\nPor favor, revisa los datos ingresados e inténtalo de nuevo'
-                }.`}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡El proyecto ha sido actualizado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
+      </Portal>  
     </>
   );
 };

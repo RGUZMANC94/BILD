@@ -10,6 +10,9 @@ import { parseCookies } from '../../utils/parseCookies';
 import AddConsultantPop from '../../components/addConsultantPop';
 import EditConsultantsPop from '../../components/editConsultantsPop';
 import BildContext from '../../components/context';
+import Portal from '../../HOC/portal';
+import SuccessPopUp from '../../components/successPopUp';
+import ErrorPopUp from '../../components/errorPopUp';
 
 export const getServerSideProps = async ({
   req: {
@@ -35,6 +38,8 @@ const Consultants = () => {
   const [consultantSelected, setConsultantSelected] = useState(null);
   const [projectList, setProjectList] = useState([]);
   const { isDark } = useContext(BildContext);
+  const [successPopUp, setSuccessPopUp] = useState(0);
+
 
   const getRecentsContacts = async () => {
     const response = await fetch('/api/consultants', {
@@ -73,29 +78,22 @@ const Consultants = () => {
 
       const responseData = await quoteDeleted.json();
 
-      console.log('Quote deleted:', responseData);
-
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
 
       setTimeout(() => {
         setRefreshContacts((prevState) => !prevState);
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 2000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 2000);
-      console.error('Error al Borrar asesor:', error);
     }
   };
 
@@ -244,34 +242,15 @@ const Consultants = () => {
         consultantInfo={consultantSelected}
         projectList={projectList}
       />
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡El asesor ha sido eliminado con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span> Algo no
-                está bien. Por favor, revisa los datos ingresados e inténtalo de
-                nuevo.
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡El asesor ha sido eliminado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={'Por favor, revisa los datos ingresados e inténtalo de nuevo.'}></ErrorPopUp>
+        )}
+      </Portal>   
     </>
   );
 };

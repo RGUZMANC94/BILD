@@ -83,6 +83,8 @@ const OportunitiesHistory = ({
   const [lastEvent, setLastEvent] = useState({});
   const [idPortafolio, setIdPortafolio] = useState('');
   const [refreshEvents, setRefreshEvents] = useState(false);
+  const [successPopUp, setSuccessPopUp] = useState(0);
+
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
@@ -183,28 +185,25 @@ const OportunitiesHistory = ({
 
       console.log('Opportunity updated:', responseData);
 
-      document
-        .querySelector(`.${styles.popSuccessCreated}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 1);
+
 
       setTimeout(() => {
         // getEventsSelected();
         // setRefreshEvents((prevState) => !prevState);
 
         setRefreshFlag(true);
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 4000);
     } catch (error) {
-      document
-        .querySelector(`.${styles.popError}`)
-        .classList.add(styles.activePopUp);
+      setSuccessPopUp((preState) => 2);
 
       setTimeout(() => {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccessPopUp((preState) => 0);
+        }, 1000);
       }, 2000);
       console.error('Error al crear el proyecto:', error);
     }
@@ -547,34 +546,15 @@ const OportunitiesHistory = ({
             </div>
           </div>
         </div>
-        <div className={`${styles.popSuccessCreated}`}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup2}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/check-circle.png" />
-                <span className={styles['pop-text']}>
-                  ¡Tú Cotización ha sido aceptada con éxito!
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={`${styles.popError}`}>
-          <div className={styles.bgPopUp}></div>
-          <div className={styles.popup3}>
-            <div className={styles.content}>
-              <div className={styles['icon-box']}>
-                <img src="/images/error-circle.png" />
-                <span className={styles['pop-text']}>
-                  <span className={styles['pop-text-bold']}>¡Oops!</span> Algo
-                  no está bien. Por favor, revisa los datos ingresados e
-                  inténtalo de nuevo.
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Tú contacto ha sido creado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
+</Portal>   
       </>
       {generateQuote && (
         <Portal>

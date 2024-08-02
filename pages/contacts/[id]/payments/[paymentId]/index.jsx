@@ -162,30 +162,20 @@ const PaymentDetail = ({ filterQuote, user, contact, idClient, paymentId }) => {
       const responseData = await oppUpdated.json();
       setLoading((prevState) => false);
       console.log('Payment updated:', responseData);
-
-      // document
-      //   .querySelector(`.${styles.popSuccessCreated}`)
-      //   .classList.add(styles.activePopUp);
       setSuccesPayment((preState) => 1);
 
       setTimeout(() => {
-        // window.location.reload();
         setUpdateFlag((prevState) => true);
-        setSuccesPayment((preState) => 0);
-        // document
-        //   .querySelector(`.${styles.popSuccessCreated}`)
-        //   .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccesPayment((preState) => 0);
+        }, 1000);
       }, 2000);
     } catch (error) {
-      // document
-      //   .querySelector(`.${styles.popError}`)
-      //   .classList.add(styles.activePopUp);
       setSuccesPayment((preState) => 2);
       setTimeout(() => {
-        setSuccesPayment((preState) => 0);
-        // document
-        //   .querySelector(`.${styles.popError}`)
-        //   .classList.remove(styles.activePopUp);
+        setTimeout(() => {
+          setSuccesPayment((preState) => 0);
+        }, 1000);
       }, 2000);
       console.error('Error al crear el proyecto:', error);
     }

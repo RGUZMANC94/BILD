@@ -3,6 +3,9 @@ import Button from '../button';
 import styles from './Units.module.css';
 import { useSelector } from 'react-redux';
 import Unit from '../unit';
+import Portal from '../../HOC/portal';
+import SuccessPopUp from '../successPopUp';
+import ErrorPopUp from '../errorPopUp';
 
 const Units = ({
   setCreateOportunity,
@@ -17,7 +20,7 @@ const Units = ({
   const featuredProject = useRef(null);
   const [xlsxFileName, setXlsxFileName] = useState(null);
   const inputXlsx = useRef(null);
-  console.log('units', units);
+  const [successPopUp, setSuccessPopUp] = useState(0);
 
   const changeXlsx = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -85,25 +88,21 @@ const Units = ({
           console.log('Error: ', errorDta);
         }
 
-        document
-          .querySelector(`.${styles.popSuccessCreated}`)
-          .classList.add(styles.activePopUp);
+        setSuccessPopUp((preState) => 1);
 
         setTimeout(() => {
           setUnitFlag(true);
-          document
-            .querySelector(`.${styles.popSuccessCreated}`)
-            .classList.remove(styles.activePopUp);
+          setTimeout(() => {
+            setSuccessPopUp((preState) => 0);
+          }, 1000);
         }, 2000);
       } catch (error) {
-        document
-          .querySelector(`.${styles.popError}`)
-          .classList.add(styles.activePopUp);
+        setSuccessPopUp((preState) => 2);
 
         setTimeout(() => {
-          document
-            .querySelector(`.${styles.popError}`)
-            .classList.remove(styles.activePopUp);
+          setTimeout(() => {
+            setSuccessPopUp((preState) => 0);
+          }, 1000);
         }, 2000);
         console.error(error.message);
         console.error('Error al realizar la solicitud:', error.message);
@@ -245,34 +244,15 @@ const Units = ({
           </div>
         )}
       </div>
-      <div className={`${styles.popSuccessCreated}`}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup2}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/check-circle.png" />
-              <span className={styles['pop-text']}>
-                ¡Tús Unidades han sido creadas con éxito!
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.popError} `}>
-        <div className={styles.bgPopUp}></div>
-        <div className={styles.popup3}>
-          <div className={styles.content}>
-            <div className={styles['icon-box']}>
-              <img src="/images/error-circle.png" />
-              <span className={styles['pop-text']}>
-                <span className={styles['pop-text-bold']}>¡Oops!</span> Algo no
-                está bien. Por favor, revisa los datos ingresados e inténtalo de
-                nuevo.
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Portal>
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Tús Unidades han sido creadas con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp></ErrorPopUp>
+        )}
+</Portal>   
     </>
   );
 };
