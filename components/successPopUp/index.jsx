@@ -7,7 +7,6 @@ const SuccessPopUp = ({ message }) => {
   const { isDark } = useContext(BildContext);
 
   useEffect(() => {
-    
     setTimeout(() => {
       setActivePopUp((prevState) => true);
     }, 250);

@@ -29,7 +29,6 @@ const AddConsultant = ({
   const { userid: id } = user;
   const [successPopUp, setSuccessPopUp] = useState(0);
 
-
   const [datos, setDatos] = useState({
     firstNames: '',
     lastNames: '',
@@ -499,7 +498,6 @@ const AddConsultant = ({
         </div>
       </div>
 
-      
       <Portal>
         {successPopUp === 1 && (
           <SuccessPopUp
@@ -508,7 +506,7 @@ const AddConsultant = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-      </Portal>  
+      </Portal>
     </>
   );
 };

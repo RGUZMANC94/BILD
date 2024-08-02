@@ -317,7 +317,6 @@ const AddProjectPop = ({
         setTimeout(() => {
           setSuccessPopUp((preState) => 0);
         }, 1000);
-        
       }, 5000);
       console.error('Error al crear el proyecto:', error.message);
     }
@@ -741,7 +740,7 @@ const AddProjectPop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-</Portal>   
+      </Portal>
     </>
   );
 };

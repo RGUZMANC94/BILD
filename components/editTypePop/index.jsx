@@ -465,7 +465,7 @@ const EditTypePop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-      </Portal>  
+      </Portal>
     </>
   );
 };

@@ -177,7 +177,10 @@ const OportunityCreated = ({
             message={'¡Tú contacto ha sido creado con éxito!'}></SuccessPopUp>
         )}
         {successPopUp === 2 && (
-          <ErrorPopUp errorMessage={'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.' }></ErrorPopUp>
+          <ErrorPopUp
+            errorMessage={
+              'Algo no está bien. Por favor, revisa los datos ingresados e inténtalo de nuevo.'
+            }></ErrorPopUp>
         )}
       </Portal>
     </>

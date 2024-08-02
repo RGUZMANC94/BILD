@@ -85,7 +85,6 @@ const OportunitiesHistory = ({
   const [refreshEvents, setRefreshEvents] = useState(false);
   const [successPopUp, setSuccessPopUp] = useState(0);
 
-
   const handleItemClick = (index) => {
     setSelectedItem(index);
   };
@@ -186,7 +185,6 @@ const OportunitiesHistory = ({
       console.log('Opportunity updated:', responseData);
 
       setSuccessPopUp((preState) => 1);
-
 
       setTimeout(() => {
         // getEventsSelected();
@@ -547,14 +545,14 @@ const OportunitiesHistory = ({
           </div>
         </div>
         <Portal>
-        {successPopUp === 1 && (
-          <SuccessPopUp
-            message={'¡Tú contacto ha sido creado con éxito!'}></SuccessPopUp>
-        )}
-        {successPopUp === 2 && (
-          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
-        )}
-</Portal>   
+          {successPopUp === 1 && (
+            <SuccessPopUp
+              message={'¡Tú contacto ha sido creado con éxito!'}></SuccessPopUp>
+          )}
+          {successPopUp === 2 && (
+            <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+          )}
+        </Portal>
       </>
       {generateQuote && (
         <Portal>

@@ -43,7 +43,6 @@ const EditProjectPop = ({
   const [infoProject, setInfoProject] = useState(null);
   const [successPopUp, setSuccessPopUp] = useState(0);
 
-
   const getProject = async () => {
     const response = await fetch('/api/getProjectInfo', {
       method: 'POST',
@@ -691,12 +690,14 @@ const EditProjectPop = ({
       <Portal>
         {successPopUp === 1 && (
           <SuccessPopUp
-            message={'¡El proyecto ha sido actualizado con éxito!'}></SuccessPopUp>
+            message={
+              '¡El proyecto ha sido actualizado con éxito!'
+            }></SuccessPopUp>
         )}
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-      </Portal>  
+      </Portal>
     </>
   );
 };

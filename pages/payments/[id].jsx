@@ -398,7 +398,7 @@ const PaymentDetail = ({ filterQuote }) => {
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-</Portal>   
+      </Portal>
     </>
   );
 };

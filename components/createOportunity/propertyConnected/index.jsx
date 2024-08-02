@@ -132,7 +132,7 @@ const PropertyConnected = ({ setIsCreated }) => {
       const responseData = await oppCreated.json();
 
       setSuccessPopUp((preState) => 1);
-      
+
       setTimeout(() => {
         setTimeout(() => {
           setSuccessPopUp((preState) => 0);
@@ -228,16 +228,16 @@ const PropertyConnected = ({ setIsCreated }) => {
           contactId={contactSelected.idCli}
         />
       </Portal>
-      
+
       <Portal>
-              {successPopUp === 1 && (
-                <SuccessPopUp
-                  message={'¡Su proyecto ha sido creado con éxito!'}></SuccessPopUp>
-              )}
-              {successPopUp === 2 && (
-                <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
-              )}
-      </Portal>   
+        {successPopUp === 1 && (
+          <SuccessPopUp
+            message={'¡Su proyecto ha sido creado con éxito!'}></SuccessPopUp>
+        )}
+        {successPopUp === 2 && (
+          <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
+        )}
+      </Portal>
     </>
   );
 };

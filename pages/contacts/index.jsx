@@ -89,14 +89,13 @@ const Contacts = () => {
               <div
                 className={`${styles['list-name']}  hover:dark:bg-dark-2`}
                 key={i}>
-                  <div className={styles['list-contact']}>
-                  <Link onClick={() => {
-                    dispatch(changeContactListSelected(recent));
-                  }}
-                  href={`/contacts/${recent.idCli}`}
-                  className={`${styles['contact-Infocont']} `}
-                  
-                  >
+                <div className={styles['list-contact']}>
+                  <Link
+                    onClick={() => {
+                      dispatch(changeContactListSelected(recent));
+                    }}
+                    href={`/contacts/${recent.idCli}`}
+                    className={`${styles['contact-Infocont']} `}>
                     <div className={styles.contact}>
                       <div className={styles['contact-img-container']}>
                         <Image
@@ -121,53 +120,48 @@ const Contacts = () => {
                       {`${recent.name} ${recent.lastname}`}
                     </div>
                     <div className={styles['reciente-col']}>{recent.email}</div>
-                    
                   </Link>
-                    
-                    <div className={styles.number}>
-                      {recent.phoneNumber && (
-                        <>
-                          <div
-                           
-                            className={styles['phone-container']}>
-                            <Link  
+
+                  <div className={styles.number}>
+                    {recent.phoneNumber && (
+                      <>
+                        <div className={styles['phone-container']}>
+                          <Link
                             href={`tel:+57${recent.phoneNumber}`}
                             target="_blank">
-                              {`+57 ${recent.phoneNumber}`}
-                            </Link>
-                            
-                            <Link
-                              href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
-                              target="_blank"
-                              className={styles['whatsapp-container']}
-                            >
-                            </Link>
-                          </div>
-                        </>
-                      )}
+                            {`+57 ${recent.phoneNumber}`}
+                          </Link>
+
+                          <Link
+                            href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                            target="_blank"
+                            className={styles['whatsapp-container']}></Link>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  <div className={styles['iconos-movil']}>
+                    <div className={styles['phone-movil']}>
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/blue-phone-movil.png"
+                      />
+                      {/* <img src="/images/blue-phone-movil.png" /> */}
                     </div>
-                    <div className={styles['iconos-movil']}>
-                      <div className={styles['phone-movil']}>
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/blue-phone-movil.png"
-                        />
-                        {/* <img src="/images/blue-phone-movil.png" /> */}
-                      </div>
-                      <div className={styles['wa-movil']}>
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/whatsapp-contacts.png"
-                        />
-                        {/* <img src="/images/whatsapp-contacts.png" /> */}
-                      </div>
+                    <div className={styles['wa-movil']}>
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/whatsapp-contacts.png"
+                      />
+                      {/* <img src="/images/whatsapp-contacts.png" /> */}
                     </div>
                   </div>
                 </div>
+              </div>
             ))}
           </div>
           <div className={styles.listas}>
@@ -178,14 +172,13 @@ const Contacts = () => {
               <div
                 className={`${styles['list-name']}  hover:dark:bg-dark-2`}
                 key={i}>
-                  <div className={styles['list-contact']}>
-                  <Link onClick={() => {
-                    dispatch(changeContactListSelected(contact));
-                  }}
-                  href={`/contacts/${contact.idCli}`}
-                  className={`${styles['contact-Infocont']} `}
-                  
-                  >
+                <div className={styles['list-contact']}>
+                  <Link
+                    onClick={() => {
+                      dispatch(changeContactListSelected(contact));
+                    }}
+                    href={`/contacts/${contact.idCli}`}
+                    className={`${styles['contact-Infocont']} `}>
                     <div className={styles.contact}>
                       <div className={styles['contact-img-container']}>
                         <Image
@@ -209,61 +202,57 @@ const Contacts = () => {
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
                       {`${contact.name} ${contact.lastname}`}
                     </div>
-                    <div className={styles['reciente-col']}>{contact.email}</div>
-                    
+                    <div className={styles['reciente-col']}>
+                      {contact.email}
+                    </div>
                   </Link>
-                    
-                    <div className={styles.number}>
-                      {contact.phoneNumber && (
-                        <>
-                          <div
-                           
-                            className={styles['phone-container']}>
-                            <Link  
+
+                  <div className={styles.number}>
+                    {contact.phoneNumber && (
+                      <>
+                        <div className={styles['phone-container']}>
+                          <Link
                             href={`tel:+57${contact.phoneNumber}`}
                             target="_blank">
-                              {`+57 ${contact.phoneNumber}`}
-                            </Link>
-                            
-                            <Link
-                              href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
-                              target="_blank"
-                              className={styles['whatsapp-container']}
-                            >
-                            </Link>
-                          </div>
-                        </>
-                      )}
+                            {`+57 ${contact.phoneNumber}`}
+                          </Link>
+
+                          <Link
+                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                            target="_blank"
+                            className={styles['whatsapp-container']}></Link>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  <div className={styles['iconos-movil']}>
+                    <div className={styles['phone-movil']}>
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/blue-phone-movil.png"
+                      />
+                      {/* <img src="/images/blue-phone-movil.png" /> */}
                     </div>
-                    <div className={styles['iconos-movil']}>
-                      <div className={styles['phone-movil']}>
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/blue-phone-movil.png"
-                        />
-                        {/* <img src="/images/blue-phone-movil.png" /> */}
-                      </div>
-                      <div className={styles['wa-movil']}>
-                        <Image
-                          width={40}
-                          height={40}
-                          alt=""
-                          src="/images/whatsapp-contacts.png"
-                        />
-                        {/* <img src="/images/whatsapp-contacts.png" /> */}
-                      </div>
+                    <div className={styles['wa-movil']}>
+                      <Image
+                        width={40}
+                        height={40}
+                        alt=""
+                        src="/images/whatsapp-contacts.png"
+                      />
+                      {/* <img src="/images/whatsapp-contacts.png" /> */}
                     </div>
                   </div>
                 </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       <Portal>
-
         <AddContactPop
           showAddContact={showAddContact}
           setShowAddContact={setShowAddContact}

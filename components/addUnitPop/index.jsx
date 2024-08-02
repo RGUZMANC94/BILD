@@ -31,7 +31,6 @@ const AddUnitPop = ({
   const { isDark } = useContext(BildContext);
   const [successPopUp, setSuccessPopUp] = useState(0);
 
-
   const [datos, setDatos] = useState({
     projectId: router.query.id,
     nuimb: '',
@@ -214,7 +213,6 @@ const AddUnitPop = ({
         setTimeout(() => {
           setSuccessPopUp((preState) => 0);
         }, 1000);
-
       }, 4000);
       console.error('Error al crear el proyecto:', error);
     }
@@ -509,8 +507,7 @@ const AddUnitPop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-</Portal>   
-
+      </Portal>
     </>
   );
 };

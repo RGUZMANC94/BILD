@@ -206,7 +206,6 @@ const AddContactPop = ({
         setTimeout(() => {
           setSuccessPopUp((preState) => 0);
         }, 1000);
-
       }, 2000);
     } catch (error) {
       setSuccessPopUp((preState) => 2);
@@ -215,7 +214,6 @@ const AddContactPop = ({
         setTimeout(() => {
           setSuccessPopUp((preState) => 0);
         }, 1000);
-        
       }, 2000);
     }
   };
@@ -545,7 +543,7 @@ const AddContactPop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-      </Portal>      
+      </Portal>
     </>
   );
 };

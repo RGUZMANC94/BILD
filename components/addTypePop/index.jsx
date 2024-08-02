@@ -25,7 +25,6 @@ const AddTypePop = ({
   const { isDark } = useContext(BildContext);
   const [successPopUp, setSuccessPopUp] = useState(0);
 
-
   const [datos, setDatos] = useState({
     projectId: router.query.id,
     typeDescription: '',
@@ -182,7 +181,6 @@ const AddTypePop = ({
       }, 2000);
     } catch (error) {
       setSuccessPopUp((preState) => 2);
-
 
       setTimeout(() => {
         setTimeout(() => {
@@ -425,7 +423,7 @@ const AddTypePop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-</Portal>
+      </Portal>
     </>
   );
 };

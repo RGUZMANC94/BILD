@@ -40,7 +40,6 @@ const Consultants = () => {
   const { isDark } = useContext(BildContext);
   const [successPopUp, setSuccessPopUp] = useState(0);
 
-
   const getRecentsContacts = async () => {
     const response = await fetch('/api/consultants', {
       method: 'post',
@@ -149,7 +148,9 @@ const Consultants = () => {
               Asesores ({recentContacts.length})
             </div>
             {sortedontacts.map((contact, i) => (
-              <div className={`${styles['list-name']}  hover:dark:bg-dark-2`} key={i}>
+              <div
+                className={`${styles['list-name']}  hover:dark:bg-dark-2`}
+                key={i}>
                 <div className={styles['consultant-obj']}>
                   <div className={styles['list-contact']}>
                     <div className={styles.contact}>
@@ -248,9 +249,12 @@ const Consultants = () => {
             message={'¡El asesor ha sido eliminado con éxito!'}></SuccessPopUp>
         )}
         {successPopUp === 2 && (
-          <ErrorPopUp errorMessage={'Por favor, revisa los datos ingresados e inténtalo de nuevo.'}></ErrorPopUp>
+          <ErrorPopUp
+            errorMessage={
+              'Por favor, revisa los datos ingresados e inténtalo de nuevo.'
+            }></ErrorPopUp>
         )}
-      </Portal>   
+      </Portal>
     </>
   );
 };

@@ -119,11 +119,11 @@
 
 .contact-Infocont {
   display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 80%;
-    height: auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: auto;
 }
 .contact {
   display: flex;
@@ -132,8 +132,6 @@
   align-items: center;
   width: 50%;
 }
-
-
 
 .contact-img-container {
   position: relative;
@@ -238,7 +236,7 @@
   height: 40px;
   width: 40px;
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size: contain;
   background-position: center;
   background-image: url(/images/whastapp-blue.png);
   margin-left: 20px;

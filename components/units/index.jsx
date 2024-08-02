@@ -247,12 +247,12 @@ const Units = ({
       <Portal>
         {successPopUp === 1 && (
           <SuccessPopUp
-            message={'¡Tús Unidades han sido creadas con éxito!'}></SuccessPopUp>
+            message={
+              '¡Tús Unidades han sido creadas con éxito!'
+            }></SuccessPopUp>
         )}
-        {successPopUp === 2 && (
-          <ErrorPopUp></ErrorPopUp>
-        )}
-</Portal>   
+        {successPopUp === 2 && <ErrorPopUp></ErrorPopUp>}
+      </Portal>
     </>
   );
 };

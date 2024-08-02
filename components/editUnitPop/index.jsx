@@ -489,7 +489,7 @@ const EditUnitPop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-</Portal>   
+      </Portal>
     </>
   );
 };

@@ -208,7 +208,6 @@ const EditConsultantsPop = ({
     readURL(e);
   }
 
-
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
@@ -436,7 +435,7 @@ const EditConsultantsPop = ({
         {successPopUp === 2 && (
           <ErrorPopUp errorMessage={errorMessage}></ErrorPopUp>
         )}
-</Portal>   
+      </Portal>
     </>
   );
 };
