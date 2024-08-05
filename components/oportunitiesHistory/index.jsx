@@ -305,7 +305,7 @@ const OportunitiesHistory = ({
             </div>
 
             {Object.keys(firstEvent).length > 0 && (
-              <div className={`bg-card ${styles.greybox}`}>
+              <div className={`bg-card-event ${styles.greybox}`}>
                 <div className={styles.info}>
                   <div>
                     {
@@ -389,7 +389,7 @@ const OportunitiesHistory = ({
                     (eventItem, i) =>
                       Object.keys(eventItem).length > 3 && (
                         <div
-                          className={`bg-card ${styles.greybox}`}
+                          className={`bg-card-event ${styles.greybox}`}
                           key={eventItem.id}>
                           <div className={styles.info}>
                             <div>
@@ -478,7 +478,7 @@ const OportunitiesHistory = ({
             )}
 
             {Object.keys(lastEvent).length > 0 && (
-              <div className={`bg-card ${styles.greybox}`}>
+              <div className={`bg-card-event ${styles.greybox}`}>
                 <div className={styles.info}>
                   <div>
                     {

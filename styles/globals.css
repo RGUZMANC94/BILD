@@ -16,6 +16,10 @@
     @apply shadow-lg hover:shadow-2xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl;
   }
 
+  .bg-card-event {
+    @apply shadow-lg hover:shadow-xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl;
+  }
+
   .bg-button {
     @apply shadow-xl hover:shadow-2xl dark:shadow-3xl dark:hover:shadow-4xl;
     transition: all 0.25s ease-in-out;
