@@ -120,6 +120,12 @@ const GenerateQuote = ({
   console.log('oporunitySelected', opportunitySelected);*/
 
   useEffect(() => {
+    if (fees !== maxNumberDues) {
+      setFees(maxNumberDues);
+    }
+  }, [maxNumberDues]);
+
+  useEffect(() => {
     if (feesArray.length !== 0) {
       setFeesTotal(feesArray.reduce((acc, fee) => acc + Number(fee), 0));
     }
@@ -258,6 +264,7 @@ const GenerateQuote = ({
             placeholder={`Cuota ${i + 1}`}
             value={feesArray[i]}
             decimalsLimit={0}
+            allowDecimals={false}
             onValueChange={(value, name, event) =>
               handleFeeChange(value, i, event)
             }
@@ -555,6 +562,7 @@ const GenerateQuote = ({
               // defaultValue={1000000}
               decimalsLimit={2}
               value={initialQuote}
+              allowDecimals={false}
               onValueChange={(value) => handleInitialQuoteChange(value)}
             />
           </div>
@@ -572,6 +580,7 @@ const GenerateQuote = ({
               placeholder="$0"
               // defaultValue={1000000}
               decimalsLimit={2}
+              allowDecimals={false}
               onValueChange={(value) => setSeparation(value)}
               required
             />
@@ -590,6 +599,7 @@ const GenerateQuote = ({
               placeholder="$0"
               // defaultValue={1000000}
               decimalsLimit={2}
+              allowDecimals={false}
               onValueChange={(value) => setDownPayment(value)}
             />
           </div>
