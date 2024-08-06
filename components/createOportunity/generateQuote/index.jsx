@@ -184,7 +184,7 @@ const GenerateQuote = ({
 
   const handleChangeFees = (e) => {
     const value = Number(e.target.value);
-    const minQuoteValue = 10; // Reemplaza este valor con el valor deseado
+    const minQuoteValue = 10; 
     if (value >= minQuoteValue) {
       setFees(value);
     } else {
@@ -204,7 +204,7 @@ const GenerateQuote = ({
   const [totalModified, setTotalModified] = useState(0);
   const [nonModifiedValue, setNonModifiedValue] = useState(0);
   const [lastModifiedIndex, setLastModifiedIndex] = useState(null);
-  const [alerts, setAlerts] = useState([]); // Array para manejar las alertas
+  const [alerts, setAlerts] = useState([]); 
 
   const handlePopQuotes = () => {
     setPopQuotes(!popQuotes);
@@ -222,13 +222,13 @@ const GenerateQuote = ({
     if (parseFloat(value) < minQuoteValue || parseFloat(value) > initialQuote) {
       setAlerts((prev) => {
         const newAlerts = [...prev];
-        newAlerts[index] = true; // Mostrar alerta si el valor es menor que minQuoteValue o mayor que initialQuote
+        newAlerts[index] = true; 
         return newAlerts;
       });
     } else {
       setAlerts((prev) => {
         const newAlerts = [...prev];
-        newAlerts[index] = false; // Quitar alerta si el valor es válido
+        newAlerts[index] = false;
         return newAlerts;
       });
       setTotalModified(calculateTotalModified());
