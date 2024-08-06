@@ -79,27 +79,42 @@
   width: 100%;
 }
 
+
 .cotizacion-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  margin: 0 0 20px;
+  padding: 0;
   width: 100%;
-  position: relative;
+}
+
+
+.cotizacion-input-form {
+  width: 100%;
+  height: auto;
+  margin: 0 0 20px;
+}
+
+.inner-cotizacion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  height: auto;
 }
 
 .alert-input {
   padding: 10px;
   border-radius: 5px;
   width: 100%;
-  top: -42px;
-  right: 0px;
-  position: absolute;
   font-size: 12px;
   text-align: center;
+  margin-top: 5px;
 }
-
 .lado-a {
   display: flex;
   flex-direction: column;
@@ -288,15 +303,6 @@
   padding: 10px 0;
 }
 
-.cotizacion-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 20px;
-  padding: 0;
-  width: 100%;
-}
 
 .labelSide {
   font-style: normal;
