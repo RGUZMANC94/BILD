@@ -24,8 +24,7 @@ const SquareInput = ({ onChangeFunct, selectCheckboxes, isDisable }) => {
         className={`${styles.checkboxWrapper} border-input ${
           selectCheckboxes ? styles.checkboxChecked : ''
         } ${isDisable ? 'cursor-not-allowed opacity-50' : ''}`} // Añadir estilos para indicar que está deshabilitado
-        onClick={() =>handleCheckboxChange()}
-      ></div>
+        onClick={() => handleCheckboxChange()}></div>
     </label>
   );
 };

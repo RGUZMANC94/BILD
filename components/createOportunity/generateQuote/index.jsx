@@ -121,7 +121,7 @@ const GenerateQuote = ({
 
   useEffect(() => {
     if (fees !== maxNumberDues) {
-      setFees(maxNumberDues - 1);
+      setFees(maxNumberDues);
     }
   }, [maxNumberDues]);
 
@@ -257,63 +257,69 @@ const GenerateQuote = ({
     const inputs = [];
     for (let i = 0; i < fees; i++) {
       inputs.push(
-          <div key={i} className={styles['cotizacion-input-form']}>
-            <div className={styles['inner-cotizacion']}>
-              <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
-              {prePriceInfo && prePriceInfo.dues.length > 0 && (
-                <span className={styles.labelSide}>
-                  {`${prePriceInfo.dues[i].paymentDate}`}
-                </span>
-              )}
-              <CurrencyInput
-                className={`border-input ${styles.inputQuote} ${
-                  alerts[i] ? 'bg-red-100' : ''
-                }`}
-                prefix="$ "
-                decimalSeparator=","
-                groupSeparator="."
-                name={`downPayment ${i + 1}`}
-                placeholder={`Cuota ${i + 1}`}
-                value={feesArray[i]}
-                decimalsLimit={0}
-                allowDecimals={false}
-                onValueChange={(value, name, event) =>
-                  handleFeeChange(value, i, event)
+        <div key={i} className={styles['cotizacion-input-form']}>
+          <div className={styles['inner-cotizacion']}>
+            <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
+            {prePriceInfo && prePriceInfo.dues.length > 0 && (
+              <span className={styles.labelSideDate}>
+                {`${prePriceInfo.dues[i].paymentDate}`}
+              </span>
+            )}
+            <CurrencyInput
+              className={`border-input ${styles.inputQuote} ${
+                alerts[i] ? 'bg-red-100' : ''
+              }`}
+              prefix="$ "
+              decimalSeparator=","
+              groupSeparator="."
+              name={`downPayment ${i + 1}`}
+              placeholder={`Cuota ${i + 1}`}
+              value={feesArray[i]}
+              decimalsLimit={0}
+              allowDecimals={false}
+              onValueChange={(value, name, event) =>
+                handleFeeChange(value, i, event)
+              }
+              onBlur={(event) => {
+                if (event.target.id === 'unchanged') {
+                  event.target.id = 'modified';
+                  setLastModifiedIndex(i);
                 }
-                onBlur={(event) => {
-                  if (event.target.id === 'unchanged') {
-                    event.target.id = 'modified';
-                    setLastModifiedIndex(i);
-                  }
-                  if (!alerts[i]) {
-                    setTotalModified(calculateTotalModified());
-                    setNonModifiedValue(calculateNonModifiedValue());
-                  }
-                }}
-                id="unchanged"
-                required
-              />
-            </div>
+                if (!alerts[i]) {
+                  setTotalModified(calculateTotalModified());
+                  setNonModifiedValue(calculateNonModifiedValue());
+                }
+              }}
+              id="unchanged"
+              required
+            />
+          </div>
 
-            {alerts[i] && (
-              <div className={`${styles['alert-input']} bg-alert`}>
-                <p>
+          {alerts[i] && (
+            <div className={`${styles['alert-input']} bg-alert`}>
+              <p>
+                {parseFloat(feesArray[i]) < minQuoteValue
+                  ? 'El valor mínimo permitido es'
+                  : 'El valor máximo permitido es'}
+                <a
+                  href="#"
+                  onClick={() =>
+                    handleFeeChange(
+                      parseFloat(feesArray[i]) < minQuoteValue
+                        ? Math.floor(Number(minQuoteValue))
+                        : Math.floor(Number(initialQuote)),
+                      i
+                    )
+                  }
+                  className="font-bold text-dark-2 dark:text-light-1 underline">
                   {parseFloat(feesArray[i]) < minQuoteValue
-                    ? 'El valor mínimo permitido es'
-                    : 'El valor máximo permitido es'}
-                  <a
-                    href="#"
-                    onClick={() => handleFeeChange(parseFloat(feesArray[i]) < minQuoteValue ? Math.floor(Number(minQuoteValue)) : Math.floor(Number(initialQuote)), i)}
-                    className="font-bold text-dark-2 dark:text-light-1 underline"
-                  >
-                    {parseFloat(feesArray[i]) < minQuoteValue
                     ? ` $${Math.floor(Number(minQuoteValue))}.`
                     : ` $${Math.floor(Number(initialQuote))}.`}
-                  </a>{' '}
-                </p>
-              </div>
-            )}
-          </div>
+                </a>{' '}
+              </p>
+            </div>
+          )}
+        </div>
       );
     }
     return inputs;
@@ -342,8 +348,8 @@ const GenerateQuote = ({
 
   const calculateNonModifiedValue = () => {
     const totalModified = calculateTotalModified();
-    const nonModifiedCount = document.querySelectorAll('input#unchanged')
-      .length;
+    const nonModifiedCount =
+      document.querySelectorAll('input#unchanged').length;
     if (nonModifiedCount === 0) {
       return 0;
     }
@@ -638,22 +644,22 @@ const GenerateQuote = ({
           </div>
 
           <div className={styles['cotizacion-input-form']}>
-          <div className={styles['inner-cotizacion']}>
-            <span className={styles.labelSide}>Valor Cuota Inicial:</span>
+            <div className={styles['inner-cotizacion']}>
+              <span className={styles.labelSide}>Valor Cuota Inicial:</span>
 
-            <CurrencyInput
-              className={`border-input ${styles.inputQuote}`}
-              prefix="$ "
-              decimalSeparator=","
-              groupSeparator="."
-              id="initialQuote-input"
-              name="initialQuote"
-              placeholder={`${initialQuote}`}
-              // defaultValue={1000000}
-              value={initialQuote}
-              allowDecimals={false}
-              onValueChange={(value) => handleInitialQuoteChange(value)}
-            />
+              <CurrencyInput
+                className={`border-input ${styles.inputQuote}`}
+                prefix="$ "
+                decimalSeparator=","
+                groupSeparator="."
+                id="initialQuote-input"
+                name="initialQuote"
+                placeholder={`${initialQuote}`}
+                // defaultValue={1000000}
+                value={initialQuote}
+                allowDecimals={false}
+                onValueChange={(value) => handleInitialQuoteChange(value)}
+              />
             </div>
             {showInitialAlert && (
               <div className={`${styles['alert-input']} bg-alert`}>
@@ -673,25 +679,24 @@ const GenerateQuote = ({
           </div>
 
           <div className={styles['cotizacion-input-form']}>
-          <div className={styles['inner-cotizacion']}>
-            <span className={styles.labelSide}>Reserva:</span>
+            <div className={styles['inner-cotizacion']}>
+              <span className={styles.labelSide}>Reserva:</span>
 
-            <CurrencyInput
-              className={`border-input ${styles.inputQuote}`}
-              prefix="$ "
-              decimalSeparator=","
-              groupSeparator="."
-              id="separation-input"
-              name="separation"
-              placeholder="$0"
-              // defaultValue={1000000}
-              allowDecimals={false}
-              value={separation}
-              onValueChange={(value) => handleSeparation(value)}
-              required
-            />
-
-          </div>
+              <CurrencyInput
+                className={`border-input ${styles.inputQuote}`}
+                prefix="$ "
+                decimalSeparator=","
+                groupSeparator="."
+                id="separation-input"
+                name="separation"
+                placeholder="$0"
+                // defaultValue={1000000}
+                allowDecimals={false}
+                value={separation}
+                onValueChange={(value) => handleSeparation(value)}
+                required
+              />
+            </div>
             {showAlertSeparation && (
               <div className={`${styles['alert-input']} bg-alert`}>
                 <p>
@@ -708,24 +713,23 @@ const GenerateQuote = ({
           </div>
 
           <div className={styles['cotizacion-input-form']}>
-          <div className={styles['inner-cotizacion']}>
-            <span className={styles.labelSide}>Separación:</span>
+            <div className={styles['inner-cotizacion']}>
+              <span className={styles.labelSide}>Separación:</span>
 
-            <CurrencyInput
-              className={`border-input ${styles.inputQuote}`}
-              prefix="$ "
-              decimalSeparator=","
-              groupSeparator="."
-              id="downPayment-input"
-              name="downPayment"
-              placeholder="$0"
-              // defaultValue={1000000}
-              decimalsLimit={2}
-              allowDecimals={false}
-              onValueChange={(value) => handleDownPayment(value)}
-              value={downPayment}
-            />
-
+              <CurrencyInput
+                className={`border-input ${styles.inputQuote}`}
+                prefix="$ "
+                decimalSeparator=","
+                groupSeparator="."
+                id="downPayment-input"
+                name="downPayment"
+                placeholder="$0"
+                // defaultValue={1000000}
+                decimalsLimit={2}
+                allowDecimals={false}
+                onValueChange={(value) => handleDownPayment(value)}
+                value={downPayment}
+              />
             </div>
 
             {showAlertDownPayment && (
@@ -751,18 +755,18 @@ const GenerateQuote = ({
           </div>
 
           <div className={styles['cotizacion-input-form']}>
-          <div className={styles['inner-cotizacion']}>
-            <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
+            <div className={styles['inner-cotizacion']}>
+              <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
 
-            <input
-              className={`border-input ${styles.subject_input} dark:bg-dark-4 bg-transparent`}
-              type="text"
-              name="fees"
-              value={fees}
-              onChange={handleFeesChange}
-              placeholder="2"
-              required
-            />
+              <input
+                className={`border-input ${styles.subject_input} dark:bg-dark-4 bg-transparent`}
+                type="text"
+                name="fees"
+                value={fees}
+                onChange={handleFeesChange}
+                placeholder="2"
+                required
+              />
             </div>
 
             {showAlert && (
@@ -795,7 +799,10 @@ const GenerateQuote = ({
           */}
 
           <div className={styles.squareInputContainer}>
-            <SquareInput isDisable={showAlert} onChangeFunct={handlePopQuotes} />
+            <SquareInput
+              isDisable={showAlert}
+              onChangeFunct={handlePopQuotes}
+            />
 
             <span className={styles.labelQuotesSelect}>
               Ver detalle de cuotas

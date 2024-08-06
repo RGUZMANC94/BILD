@@ -79,7 +79,6 @@
   width: 100%;
 }
 
-
 .cotizacion-form {
   display: flex;
   flex-direction: row;
@@ -89,7 +88,6 @@
   padding: 0;
   width: 100%;
 }
-
 
 .cotizacion-input-form {
   width: 100%;
@@ -303,14 +301,18 @@
   padding: 10px 0;
 }
 
-
 .labelSide {
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 1;
 }
-
+.labelSideDate {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+}
 .inputQuote {
   box-sizing: border-box;
 
