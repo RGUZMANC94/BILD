@@ -30,6 +30,12 @@
   /* font-weight: 500; */
 }
 
+.diabledButton {
+  background-color: rgba(60, 64, 67, 0.35);
+  border-color: rgba(60, 64, 67, 0.35);
+  cursor: not-allowed;
+}
+
 .siteButton:before {
   content: '';
   position: absolute;

@@ -121,7 +121,7 @@ const GenerateQuote = ({
 
   useEffect(() => {
     if (fees !== maxNumberDues) {
-      setFees(maxNumberDues);
+      setFees(maxNumberDues - 1);
     }
   }, [maxNumberDues]);
 
@@ -418,34 +418,90 @@ const GenerateQuote = ({
       console.error('Error al crear la cotizacion:', error.errorMessage);
     }
   };
+
+  // Alert No. Cuota
+  const [showAlert, setShowAlert] = useState(false);
+
   const handleFeesChange = (e) => {
     const value = e.target.value;
-    if (
-      value === '' ||
-      (Number(value) <= maxNumberDues && Number(value) >= 1)
-    ) {
-      setFees(value);
+    setFees(value);
+    if (parseInt(value) > maxNumberDues) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
     }
   };
 
+  const handleSetMaxDues = () => {
+    setFees(maxNumberDues);
+    setShowAlert(false);
+  };
+
+  // Alert Reserva / separacion
+
+  const [showAlertSeparation, setShowAlertSeparation] = useState(false);
+
+  const handleSeparation = (val) => {
+    const value = Number(val);
+    setSeparation(value);
+    if (parseInt(value) > initialQuote) {
+      setShowAlertSeparation(true);
+    } else {
+      setShowAlertSeparation(false);
+    }
+  };
+
+  const handleSetSeparation = () => {
+    setSeparation(initialQuote);
+    setShowAlertSeparation(false);
+  };
+
+  // Alert Separacion / downpayment
+
+  const [showAlertDownPayment, setShowAlertDownPayment] = useState(false);
+
+  const handleDownPayment = (val) => {
+    const value = Number(val);
+    setDownPayment(value);
+    if (parseInt(value) > initialQuote) {
+      setShowAlertDownPayment(true);
+    } else {
+      setShowAlertDownPayment(false);
+    }
+  };
+
+  const handleSetDownPayment = () => {
+    setDownPayment(initialQuote);
+    setShowAlertDownPayment(false);
+  };
+
+  // Alerta de cuota inicial
+
   const [sliderFlag, setSliderFlag] = useState(true);
+
+  const [showInitialAlert, setShowInitialAlert] = useState(false);
 
   const handleInitialQuoteChange = (val) => {
     setSliderFlag(false);
 
     const num = Number(val);
 
-    console.log('num:', num);
     let tempNum = num;
 
     if (num < 0) {
       tempNum = 0;
+      setShowInitialAlert(false);
+      setInitialQuote(tempNum);
+      setValues([0]);
     } else if (num > unitSelected.propertyPrice) {
-      tempNum = unitSelected.propertyPrice;
+      setShowInitialAlert(true);
+      setInitialQuote(tempNum);
+      setValues([100]);
+    } else {
+      setShowInitialAlert(false);
+      setInitialQuote(tempNum);
+      setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]);
     }
-    console.log('tempNum:', tempNum);
-    setInitialQuote(tempNum);
-    setValues([Math.floor((tempNum / unitSelected.propertyPrice) * 100)]);
   };
 
   /* const [minDate, setMinDate] = useState('');
@@ -560,11 +616,26 @@ const GenerateQuote = ({
               name="initialQuote"
               placeholder={`${initialQuote}`}
               // defaultValue={1000000}
-              decimalsLimit={2}
               value={initialQuote}
               allowDecimals={false}
               onValueChange={(value) => handleInitialQuoteChange(value)}
             />
+
+            {showInitialAlert && (
+              <div className={`${styles['alert-input']} bg-alert`}>
+                <p>
+                  Por favor introduzca un valor menor al precio total.{' '}
+                  <a
+                    href="#"
+                    onClick={() =>
+                      handleInitialQuoteChange(unitSelected.propertyPrice)
+                    }
+                    className="font-bold text-dark-2 dark:text-light-1 underline">
+                    Valor sugerido.
+                  </a>{' '}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className={styles['cotizacion-form']}>
@@ -579,11 +650,25 @@ const GenerateQuote = ({
               name="separation"
               placeholder="$0"
               // defaultValue={1000000}
-              decimalsLimit={2}
               allowDecimals={false}
-              onValueChange={(value) => setSeparation(value)}
+              value={separation}
+              onValueChange={(value) => handleSeparation(value)}
               required
             />
+
+            {showAlertSeparation && (
+              <div className={`${styles['alert-input']} bg-alert`}>
+                <p>
+                  Por favor introduzca un valor menor al de la Cuota Inicial.{' '}
+                  <a
+                    href="#"
+                    onClick={handleSetSeparation}
+                    className="font-bold text-dark-2 dark:text-light-1 underline">
+                    Valor sugerido.
+                  </a>{' '}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className={styles['cotizacion-form']}>
@@ -600,8 +685,23 @@ const GenerateQuote = ({
               // defaultValue={1000000}
               decimalsLimit={2}
               allowDecimals={false}
-              onValueChange={(value) => setDownPayment(value)}
+              onValueChange={(value) => handleDownPayment(value)}
+              value={downPayment}
             />
+
+            {showAlertDownPayment && (
+              <div className={`${styles['alert-input']} bg-alert`}>
+                <p>
+                  Por favor introduzca un valor menor al de la Cuota Inicial.{' '}
+                  <a
+                    href="#"
+                    onClick={handleSetDownPayment}
+                    className="font-bold text-dark-2 dark:text-light-1 underline">
+                    Valor sugerido.
+                  </a>{' '}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className={`divisorPopup ${styles.infoSection}`}>
@@ -623,6 +723,20 @@ const GenerateQuote = ({
               placeholder="2"
               required
             />
+
+            {showAlert && (
+              <div className={`${styles['alert-input']} bg-alert`}>
+                <p>
+                  El número máximo de cuotas mensuales es {maxNumberDues}.{' '}
+                  <a
+                    href="#"
+                    onClick={handleSetMaxDues}
+                    className="font-bold text-dark-2 dark:text-light-1 underline">
+                    Valor sugerido.
+                  </a>{' '}
+                </p>
+              </div>
+            )}
           </div>
           {/*
           <div className={styles['cotizacion-form']}>
@@ -723,6 +837,14 @@ const GenerateQuote = ({
             iconImage={false}
             label={'Guardar'}
             inheritClass={styles.buttonCreateOpportunity}
+            isDisabled={
+              showAlert ||
+              showInitialAlert ||
+              showAlertSeparation ||
+              showAlertDownPayment ||
+              separation === 0 ||
+              fees < 1
+            }
           />
         </div>
       </form>

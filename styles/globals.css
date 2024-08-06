@@ -20,9 +20,17 @@
     @apply shadow-lg hover:shadow-xl bg-light-2 dark:bg-dark-5 dark:shadow-3xl dark:hover:shadow-4xl;
   }
 
+  .bg-alert {
+    @apply shadow-lg  bg-light-3 dark:bg-dark-5;
+  }
+
   .bg-button {
     @apply shadow-xl hover:shadow-2xl dark:shadow-3xl dark:hover:shadow-4xl;
     transition: all 0.25s ease-in-out;
+  }
+
+  .button-disabled {
+    @apply cursor-not-allowed bg-transparent;
   }
 
   .bg-blur {

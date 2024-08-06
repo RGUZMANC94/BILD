@@ -11,6 +11,7 @@ const Button = ({
   link,
   clickFunction,
   preventDefault,
+  isDisabled,
 }) => {
   return (
     <>
@@ -36,9 +37,12 @@ const Button = ({
             preventDefault ? e.preventDefault() : null;
             clickFunction ? clickFunction() : '';
           }}
-          className={`bg-button ${[buttonType]} ${styles.siteButton} ${
-            styles[classNameInherit]
-          } ${inheritClass ?? ''}`}>
+          className={`bg-button ${isDisabled && styles.diabledButton} ${[
+            buttonType,
+          ]} ${styles.siteButton} ${styles[classNameInherit]} ${
+            inheritClass ?? ''
+          }`}
+          disabled={isDisabled}>
           {iconImage ? (
             <span className={`${styles.iconImage} bg-ct`}></span>
           ) : (
