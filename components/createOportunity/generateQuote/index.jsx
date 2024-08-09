@@ -211,7 +211,7 @@ const GenerateQuote = ({
             {prePriceInfo && prePriceInfo.dues.length > 0 && (
               <span className={styles.labelSideDate}>
                 {`${prePriceInfo.dues[i].paymentDate}`}
-                {/*`${prePriceInfo.dues[i + ((maxNumberDues - (monthsRemaining - 1)) - 1)].paymentDate}`*/}
+                {/* `${prePriceInfo.dues[i + ((maxNumberDues - (monthsRemaining - 1)) - 1)].paymentDate}` */}
               </span>
             )}
             <CurrencyInput
@@ -519,7 +519,7 @@ const GenerateQuote = ({
     } else {
       setDateAlert(''); 
     }
-    
+
     setDateValue(event.target.value); 
     
     if (selectedDate < todayDate) {
