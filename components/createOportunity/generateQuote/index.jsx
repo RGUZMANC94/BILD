@@ -71,6 +71,15 @@ const GenerateQuote = ({
   const [monthsRemaining, setMonthsRemaining] = useState(maxNumberDues); 
 
   useEffect(() => {
+    if (monthsRemaining < fees) {
+      
+      setFees(monthsRemaining);
+      console.log('monthsRemaining dentro', monthsRemaining, 'fees dentro', fees);
+    }
+  }, [monthsRemaining]);
+
+
+  useEffect(() => {
     if (fees !== maxNumberDues) {
       setFees(maxNumberDues);
     }
@@ -203,15 +212,20 @@ const GenerateQuote = ({
 
   const renderDynamicInputs = () => {
     const inputs = [];
-    for (let i = 0; i < fees; i++) {
+    let tempQuote = fees;
+    if (monthsRemaining < fees) {
+      tempQuote = monthsRemaining;
+    }
+    for (let i = 0; i < tempQuote; i++) {
       inputs.push(
         <div key={i} className={styles['cotizacion-input-form']}>
           <div className={styles['inner-cotizacion']}>
             <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
+            {console.log('resta: ',i + (maxNumberDues - monthsRemaining))}
             {prePriceInfo && prePriceInfo.dues.length > 0 && (
               <span className={styles.labelSideDate}>
-                {`${prePriceInfo.dues[i].paymentDate}`}
-                {/* `${prePriceInfo.dues[i + ((maxNumberDues - (monthsRemaining - 1)) - 1)].paymentDate}` */}
+                {/* `${prePriceInfo.dues[i].paymentDate}`*/}
+                {`${prePriceInfo.dues[i + (maxNumberDues - monthsRemaining)].paymentDate}`}
               </span>
             )}
             <CurrencyInput
@@ -523,9 +537,9 @@ const GenerateQuote = ({
     setDateValue(event.target.value); 
     
     if (selectedDate < todayDate) {
-      setMonthsRemaining(1);
-    } else if (selectedDate > maxDate) {
       setMonthsRemaining(maxNumberDues);
+    } else if (selectedDate > maxDate) {
+      setMonthsRemaining(1);
     } else {
       const diffInMonths = maxNumberDues - ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 + selectedDate.getMonth() - todayDate.getMonth());
     setMonthsRemaining(diffInMonths); 
@@ -553,8 +567,7 @@ const GenerateQuote = ({
       }
     }
   }, [dateAlert]);
-
-  console.log('monthsRemaining', monthsRemaining);
+  console.log('monthsRemaining', monthsRemaining, 'fees', fees, 'maxNumberDues - monthsRemaining', maxNumberDues - monthsRemaining);
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
