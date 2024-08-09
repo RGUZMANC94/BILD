@@ -68,16 +68,19 @@ const GenerateQuote = ({
   const [maxNumberDues, setMaxNumberDues] = useState(
     prePriceInfo ? prePriceInfo.numberDues : 2
   );
-  const [monthsRemaining, setMonthsRemaining] = useState(maxNumberDues); 
+  const [monthsRemaining, setMonthsRemaining] = useState(maxNumberDues);
 
   useEffect(() => {
     if (monthsRemaining < fees) {
-      
       setFees(monthsRemaining);
-      console.log('monthsRemaining dentro', monthsRemaining, 'fees dentro', fees);
+      console.log(
+        'monthsRemaining dentro',
+        monthsRemaining,
+        'fees dentro',
+        fees
+      );
     }
   }, [monthsRemaining]);
-
 
   useEffect(() => {
     if (fees !== maxNumberDues) {
@@ -141,7 +144,7 @@ const GenerateQuote = ({
 
   const handleChangeFees = (e) => {
     const value = Number(e.target.value);
-    const minQuoteValue = 10; 
+    const minQuoteValue = 10;
     if (value >= minQuoteValue) {
       setFees(value);
     } else {
@@ -161,7 +164,7 @@ const GenerateQuote = ({
   const [totalModified, setTotalModified] = useState(0);
   const [nonModifiedValue, setNonModifiedValue] = useState(0);
   const [lastModifiedIndex, setLastModifiedIndex] = useState(null);
-  const [alerts, setAlerts] = useState([]); 
+  const [alerts, setAlerts] = useState([]);
 
   const handlePopQuotes = () => {
     setPopQuotes(!popQuotes);
@@ -179,7 +182,7 @@ const GenerateQuote = ({
     if (parseFloat(value) < minQuoteValue || parseFloat(value) > initialQuote) {
       setAlerts((prev) => {
         const newAlerts = [...prev];
-        newAlerts[index] = true; 
+        newAlerts[index] = true;
         return newAlerts;
       });
     } else {
@@ -221,11 +224,14 @@ const GenerateQuote = ({
         <div key={i} className={styles['cotizacion-input-form']}>
           <div className={styles['inner-cotizacion']}>
             <span className={styles.labelSide}>{`Cuota ${i + 1}:`}</span>
-            {console.log('resta: ',i + (maxNumberDues - monthsRemaining))}
+            {console.log('resta: ', i + (maxNumberDues - monthsRemaining))}
             {prePriceInfo && prePriceInfo.dues.length > 0 && (
               <span className={styles.labelSideDate}>
                 {/* `${prePriceInfo.dues[i].paymentDate}`*/}
-                {`${prePriceInfo.dues[i + (maxNumberDues - monthsRemaining)].paymentDate}`}
+                {`${
+                  prePriceInfo.dues[i + (maxNumberDues - monthsRemaining)]
+                    .paymentDate
+                }`}
               </span>
             )}
             <CurrencyInput
@@ -512,51 +518,63 @@ const GenerateQuote = ({
 
   // Fecha
 
-  const today = new Date().toISOString().split('T')[0]; 
-  const [dateValue, setDateValue] = useState(today); 
-  const [dateAlert, setDateAlert] = useState(''); 
-  const [suggestedDate, setSuggestedDate] = useState(''); 
+  const today = new Date().toISOString().split('T')[0];
+  const [dateValue, setDateValue] = useState(today);
+  const [dateAlert, setDateAlert] = useState('');
+  const [suggestedDate, setSuggestedDate] = useState('');
 
   const handleDateChange = (event) => {
     const selectedDate = new Date(event.target.value);
     const todayDate = new Date();
-    todayDate.setHours(0, 0, 0, 0); 
+    todayDate.setHours(0, 0, 0, 0);
     const maxDate = new Date();
     maxDate.setMonth(todayDate.getMonth() + (maxNumberDues - 1));
 
     if (selectedDate < todayDate) {
-      setDateAlert(`La fecha mínima permitida es ${todayDate.toISOString().split('T')[0]}.`);
+      setDateAlert(
+        `La fecha mínima permitida es ${todayDate.toISOString().split('T')[0]}.`
+      );
       setSuggestedDate(todayDate.toISOString().split('T')[0]);
     } else if (selectedDate > maxDate) {
-      setDateAlert(`La fecha máxima permitida es ${maxDate.toISOString().split('T')[0]}.`);
-      setSuggestedDate(maxDate.toISOString().split('T')[0]); 
+      setDateAlert(
+        `La fecha máxima permitida es ${maxDate.toISOString().split('T')[0]}.`
+      );
+      setSuggestedDate(maxDate.toISOString().split('T')[0]);
     } else {
-      setDateAlert(''); 
+      setDateAlert('');
     }
 
-    setDateValue(event.target.value); 
-    
+    setDateValue(event.target.value);
+
     if (selectedDate < todayDate) {
       setMonthsRemaining(maxNumberDues);
     } else if (selectedDate > maxDate) {
       setMonthsRemaining(1);
     } else {
-      const diffInMonths = maxNumberDues - ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 + selectedDate.getMonth() - todayDate.getMonth());
-    setMonthsRemaining(diffInMonths); 
+      const diffInMonths =
+        maxNumberDues -
+        ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 +
+          selectedDate.getMonth() -
+          todayDate.getMonth());
+      setMonthsRemaining(diffInMonths);
     }
   };
 
   const handleSuggestedDateClick = (event) => {
     event.preventDefault();
     setDateValue(suggestedDate);
-    setDateAlert(''); 
+    setDateAlert('');
 
     const selectedDate = new Date(suggestedDate);
     const todayDate = new Date();
     todayDate.setHours(0, 0, 0, 0);
-    
-    const diffInMonths = maxNumberDues - ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 + selectedDate.getMonth() - todayDate.getMonth());
-    setMonthsRemaining(diffInMonths); 
+
+    const diffInMonths =
+      maxNumberDues -
+      ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 +
+        selectedDate.getMonth() -
+        todayDate.getMonth());
+    setMonthsRemaining(diffInMonths);
   };
 
   useEffect(() => {
@@ -567,7 +585,14 @@ const GenerateQuote = ({
       }
     }
   }, [dateAlert]);
-  console.log('monthsRemaining', monthsRemaining, 'fees', fees, 'maxNumberDues - monthsRemaining', maxNumberDues - monthsRemaining);
+  console.log(
+    'monthsRemaining',
+    monthsRemaining,
+    'fees',
+    fees,
+    'maxNumberDues - monthsRemaining',
+    maxNumberDues - monthsRemaining
+  );
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
@@ -760,39 +785,40 @@ const GenerateQuote = ({
             </span>
           </div>
 
-
           <div className={styles['cotizacion-input-form']}>
             <div className={styles['inner-cotizacion']}>
-    <span className={styles.labelSide}>Fecha inicio de pago:</span>
-      <input
-        type="date"
-        id="date-input"
-        className={`border-input ${styles.inputQuote}`}
-        value={dateValue}
-        onChange={handleDateChange}
-      />
-      </div>
-      {dateAlert && (
-        <div className={`${styles['alert-input']} bg-alert`}>
-          <p>
-            {dateAlert}{' '}
-            <a
-              href="#"
-              onClick={handleSuggestedDateClick}
-              className="font-bold text-dark-2 dark:text-light-1 underline">
+              <span className={styles.labelSide}>Fecha inicio de pago:</span>
+              <input
+                type="date"
+                id="date-input"
+                className={`border-input ${styles.inputQuote}`}
+                value={dateValue}
+                onChange={handleDateChange}
+              />
+            </div>
+            {dateAlert && (
+              <div className={`${styles['alert-input']} bg-alert`}>
+                <p>
+                  {dateAlert}{' '}
+                  <a
+                    href="#"
+                    onClick={handleSuggestedDateClick}
+                    className="font-bold text-dark-2 dark:text-light-1 underline">
                     Fecha sugerida.
-            </a>{' '}
-          </p>
-        </div>
-      )}
-    </div>
+                  </a>{' '}
+                </p>
+              </div>
+            )}
+          </div>
 
           <div className={styles['cotizacion-input-form']}>
             <div className={styles['inner-cotizacion']}>
               <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
 
               <input
-                className={`border-input ${styles.subject_input} ${dateAlert && 'text-light-3 dark:text-light-4 '} dark:bg-dark-4 bg-transparent`}
+                className={`border-input ${styles.subject_input} ${
+                  dateAlert && 'text-light-3 dark:text-light-4 '
+                } dark:bg-dark-4 bg-transparent`}
                 type="text"
                 name="fees"
                 value={fees}
@@ -831,9 +857,6 @@ const GenerateQuote = ({
               />
           </div>
           */}
-
-
-
 
           <div className={styles.squareInputContainer}>
             <SquareInput

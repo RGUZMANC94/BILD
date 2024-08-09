@@ -1,4 +1,4 @@
-import { useEffect, useState , useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styles from './conect-property.module.css';
 import { useDispatch } from 'react-redux';
 import { changeContactSelected } from '../../../redux/contactSelectedSlice';
@@ -53,7 +53,11 @@ const ConectProperty = ({
                 src={
                   recent.image[0] !== '' && recent.image[0]
                     ? `${recent.image[0].url}`
-                    : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
+                    : `${
+                        isDark
+                          ? '/images/profile-wh.png'
+                          : '/images/profile-bl.png'
+                      }`
                 }
               />{' '}
               {`${recent.name} ${recent.lastname}`}

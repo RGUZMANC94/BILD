@@ -23,7 +23,7 @@ export const getServerSideProps = async ({
 };
 
 const Contacts = () => {
-  const { initialState , isDark } = useContext(BildContext);
+  const { initialState, isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
   // const router = useRouter();
@@ -105,7 +105,11 @@ const Contacts = () => {
                           src={
                             recent.image[0] !== '' && recent.image[0]
                               ? `${recent.image[0].url}`
-                              : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
+                              : `${
+                                  isDark
+                                    ? '/images/profile-wh.png'
+                                    : '/images/profile-bl.png'
+                                }`
                           }
                         />
                       </div>
@@ -181,7 +185,11 @@ const Contacts = () => {
                           src={
                             contact.image[0] !== '' && contact.image[0]
                               ? `${contact.image[0].url}`
-                              : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
+                              : `${
+                                  isDark
+                                    ? '/images/profile-wh.png'
+                                    : '/images/profile-bl.png'
+                                }`
                           }
                         />
                       </div>
