@@ -162,7 +162,7 @@ const Consultants = () => {
                           src={
                             contact.image[0] !== '' && contact.image[0]
                               ? `${contact.image[0].url}`
-                              : '/images/tipo-1.png'
+                              : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
                           }
                         />
                         {/* <img

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useContext } from 'react';
 import styles from './conect-property.module.css';
 import { useDispatch } from 'react-redux';
 import { changeContactSelected } from '../../../redux/contactSelectedSlice';
+import BildContext from '../../../components/context';
 
 const ConectProperty = ({
   setShowPopUpCreateContact,
@@ -10,6 +11,7 @@ const ConectProperty = ({
   recentContacts,
 }) => {
   const dispatch = useDispatch();
+  const { isDark } = useContext(BildContext);
 
   return (
     <div className={styles.contacto}>
@@ -51,7 +53,7 @@ const ConectProperty = ({
                 src={
                   recent.image[0] !== '' && recent.image[0]
                     ? `${recent.image[0].url}`
-                    : '/images/tipo-1.png'
+                    : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
                 }
               />{' '}
               {`${recent.name} ${recent.lastname}`}

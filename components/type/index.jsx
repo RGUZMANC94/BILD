@@ -53,7 +53,7 @@ const TypeCard = ({
           updateImgTypeSelected(
             type.image[0] !== '' && type.image[0]
               ? `${type.image[0].url}`
-              : '/images/tipo-1.png'
+              : '/images/no-image.jpg'
           )
         );
         console.log('Tipo seleccionado: ', type.Tipo);
@@ -68,7 +68,7 @@ const TypeCard = ({
             src={
               type.image[0] !== '' && type.image[0]
                 ? `${type.image[0].url}`
-                : '/images/tipo-1.png'
+                : '/images/no-image.jpg'
             }
           />
           <div
@@ -78,7 +78,7 @@ const TypeCard = ({
                 e,
                 type.image[0] !== '' && type.image[0]
                   ? `${type.image[0].url}`
-                  : '/images/tipo-1.png'
+                  : '/images/no-image.jpg'
               );
             }}></div>
         </div>

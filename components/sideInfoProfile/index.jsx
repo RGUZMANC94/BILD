@@ -35,8 +35,8 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                   typeViewer === 'buyer'
                     ? contactInfo.image[0] !== '' && contactInfo.image[0]
                       ? `${contactInfo.image[0].url}`
-                      : '/images/henry.png'
-                    : '/images/henry.png'
+                      : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
+                    : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
                 }
               />
             </div>

@@ -23,7 +23,7 @@ export const getServerSideProps = async ({
 };
 
 const Contacts = () => {
-  const { initialState } = useContext(BildContext);
+  const { initialState , isDark } = useContext(BildContext);
   const { user } = initialState;
   const { userid: id } = user;
   // const router = useRouter();
@@ -105,16 +105,9 @@ const Contacts = () => {
                           src={
                             recent.image[0] !== '' && recent.image[0]
                               ? `${recent.image[0].url}`
-                              : '/images/tipo-1.png'
+                              : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
                           }
                         />
-                        {/* <img
-                      src={
-                        recent.image[0] !== '' && recent.image[0]
-                          ? `${recent.image[0].url}`
-                          : '/images/tipo-1.png'
-                      }
-                    /> */}
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
                       {`${recent.name} ${recent.lastname}`}
@@ -188,16 +181,9 @@ const Contacts = () => {
                           src={
                             contact.image[0] !== '' && contact.image[0]
                               ? `${contact.image[0].url}`
-                              : '/images/tipo-1.png'
+                              : `${isDark ? '/images/profile-wh.png' : '/images/profile-bl.png'}`
                           }
                         />
-                        {/* <img
-                      src={
-                        contact.image[0] !== '' && contact.image[0]
-                          ? `${contact.image[0].url}`
-                          : '/images/tipo-1.png'
-                      }
-                    /> */}
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
                       {`${contact.name} ${contact.lastname}`}
