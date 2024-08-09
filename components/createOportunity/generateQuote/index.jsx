@@ -68,56 +68,7 @@ const GenerateQuote = ({
   const [maxNumberDues, setMaxNumberDues] = useState(
     prePriceInfo ? prePriceInfo.numberDues : 2
   );
-
-  /* const [startDate, setStartDate] = useState('');
-
-  useEffect(() => {
-    const today = new Date();
-    setStartDate(formatDate(today));
-  }, []);
-
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
-  };
-
-  const getMaxDate = () => {
-    const today = new Date();
-    let futureDate = new Date(today.setMonth(today.getMonth() + maxNumberDues));
-    if (futureDate.getDate() !== today.getDate()) {
-      futureDate = new Date(today.getFullYear(), today.getMonth() + maxNumberDues + 1, 0);
-    }
-    console.log('futureDate:', formatDate(futureDate));
-    return formatDate(futureDate);
-  };
-
-  const getCurrentDate = () => {
-    const today = new Date();
-    return formatDate(today);
-  };
-  const [sendFlag, setSendFlag] = useState(false);
-
-
-  const dateFormatting = () => {
-    setDatos((prevDatos) => ({
-      ...prevDatos,
-      paymentStartDate: formatDate(startDate),
-    }));
-    setSendFlag(true);
-  };
-
-  useEffect(() => {
-    if (sendFlag) {
-      sendFormInfo();
-      setSendFlag(false);
-    }
-  }, [sendFlag]);
-*/
-  /* console.log('maxNumberDues:', maxNumberDues);
-  console.log('fees', fees);
-  console.log('monthlyQuote:', monthlyQuote);
-  console.log('balanceInitialQuote:', balanceInitialQuote);
-  console.log('prePriceInfo', prePriceInfo);
-  console.log('oporunitySelected', opportunitySelected);*/
+  const [monthsRemaining, setMonthsRemaining] = useState(maxNumberDues); 
 
   useEffect(() => {
     if (fees !== maxNumberDues) {
@@ -161,9 +112,6 @@ const GenerateQuote = ({
     }
   }, [values]);
 
-  // console.log('initialQuote',initialQuote, typeof initialQuote);
-
-  // console.log(initialQuote, separation, downPayment);
   useEffect(() => {
     setBalanceInitialQuote(
       initialQuote - (Number(separation) + Number(downPayment))
@@ -263,6 +211,7 @@ const GenerateQuote = ({
             {prePriceInfo && prePriceInfo.dues.length > 0 && (
               <span className={styles.labelSideDate}>
                 {`${prePriceInfo.dues[i].paymentDate}`}
+                {/*`${prePriceInfo.dues[i + ((maxNumberDues - (monthsRemaining - 1)) - 1)].paymentDate}`*/}
               </span>
             )}
             <CurrencyInput
@@ -464,15 +413,19 @@ const GenerateQuote = ({
   const handleFeesChange = (e) => {
     const value = e.target.value;
     setFees(value);
-    if (parseInt(value) > maxNumberDues) {
+    if (parseInt(value) > monthsRemaining) {
       setShowAlert(true);
+      setPopQuotes(false);
+      if (popQuotes) {
+        setFeesArray([]);
+      }
     } else {
       setShowAlert(false);
     }
   };
 
   const handleSetMaxDues = () => {
-    setFees(maxNumberDues);
+    setFees(monthsRemaining);
     setShowAlert(false);
   };
 
@@ -543,25 +496,65 @@ const GenerateQuote = ({
     }
   };
 
-  /* const [minDate, setMinDate] = useState('');
-  const [maxDate, setMaxDate] = useState('');
+  // Fecha
+
+  const today = new Date().toISOString().split('T')[0]; 
+  const [dateValue, setDateValue] = useState(today); 
+  const [dateAlert, setDateAlert] = useState(''); 
+  const [suggestedDate, setSuggestedDate] = useState(''); 
+
+  const handleDateChange = (event) => {
+    const selectedDate = new Date(event.target.value);
+    const todayDate = new Date();
+    todayDate.setHours(0, 0, 0, 0); 
+    const maxDate = new Date();
+    maxDate.setMonth(todayDate.getMonth() + (maxNumberDues - 1));
+
+    if (selectedDate < todayDate) {
+      setDateAlert(`La fecha mínima permitida es ${todayDate.toISOString().split('T')[0]}.`);
+      setSuggestedDate(todayDate.toISOString().split('T')[0]);
+    } else if (selectedDate > maxDate) {
+      setDateAlert(`La fecha máxima permitida es ${maxDate.toISOString().split('T')[0]}.`);
+      setSuggestedDate(maxDate.toISOString().split('T')[0]); 
+    } else {
+      setDateAlert(''); 
+    }
+    
+    setDateValue(event.target.value); 
+    
+    if (selectedDate < todayDate) {
+      setMonthsRemaining(1);
+    } else if (selectedDate > maxDate) {
+      setMonthsRemaining(maxNumberDues);
+    } else {
+      const diffInMonths = maxNumberDues - ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 + selectedDate.getMonth() - todayDate.getMonth());
+    setMonthsRemaining(diffInMonths); 
+    }
+  };
+
+  const handleSuggestedDateClick = (event) => {
+    event.preventDefault();
+    setDateValue(suggestedDate);
+    setDateAlert(''); 
+
+    const selectedDate = new Date(suggestedDate);
+    const todayDate = new Date();
+    todayDate.setHours(0, 0, 0, 0);
+    
+    const diffInMonths = maxNumberDues - ((selectedDate.getFullYear() - todayDate.getFullYear()) * 12 + selectedDate.getMonth() - todayDate.getMonth());
+    setMonthsRemaining(diffInMonths); 
+  };
 
   useEffect(() => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth();
-    const day = today.getDate();
+    if (dateAlert) {
+      setPopQuotes(false);
+      if (popQuotes) {
+        setFeesArray([]);
+      }
+    }
+  }, [dateAlert]);
 
-    const minDateString = new Date(year, month, day).toISOString().split('T')[0];
-    setMinDate(minDateString);
-    console.log('minDateString:', minDateString);
-
-    const maxDateValue = new Date(year, month + maxNumberDues, day);
-    const maxDateString = maxDateValue.toISOString().split('T')[0];
-    console.log('maxDateString:', maxDateString);
-    setMaxDate(maxDateString);
-  }, [maxNumberDues]);*/
-
+  console.log('monthsRemaining', monthsRemaining);
   return (
     <>
       <form className={styles['generar-cotizacion']} onSubmit={sendFormInfo}>
@@ -754,25 +747,53 @@ const GenerateQuote = ({
             </span>
           </div>
 
+
+          <div className={styles['cotizacion-input-form']}>
+            <div className={styles['inner-cotizacion']}>
+    <span className={styles.labelSide}>Fecha inicio de pago:</span>
+      <input
+        type="date"
+        id="date-input"
+        className={`border-input ${styles.inputQuote}`}
+        value={dateValue}
+        onChange={handleDateChange}
+      />
+      </div>
+      {dateAlert && (
+        <div className={`${styles['alert-input']} bg-alert`}>
+          <p>
+            {dateAlert}{' '}
+            <a
+              href="#"
+              onClick={handleSuggestedDateClick}
+              className="font-bold text-dark-2 dark:text-light-1 underline">
+                    Fecha sugerida.
+            </a>{' '}
+          </p>
+        </div>
+      )}
+    </div>
+
           <div className={styles['cotizacion-input-form']}>
             <div className={styles['inner-cotizacion']}>
               <span className={styles.labelSide}>No. Cuotas Mensuales:</span>
 
               <input
-                className={`border-input ${styles.subject_input} dark:bg-dark-4 bg-transparent`}
+                className={`border-input ${styles.subject_input} ${dateAlert && 'text-light-3 dark:text-light-4 '} dark:bg-dark-4 bg-transparent`}
                 type="text"
                 name="fees"
                 value={fees}
                 onChange={handleFeesChange}
                 placeholder="2"
                 required
+                disabled={dateAlert}
               />
             </div>
 
             {showAlert && (
               <div className={`${styles['alert-input']} bg-alert`}>
                 <p>
-                  El número máximo de cuotas mensuales es {maxNumberDues}.{' '}
+                  El número máximo de cuotas mensuales es {monthsRemaining}.{' '}
                   <a
                     href="#"
                     onClick={handleSetMaxDues}
@@ -798,9 +819,12 @@ const GenerateQuote = ({
           </div>
           */}
 
+
+
+
           <div className={styles.squareInputContainer}>
             <SquareInput
-              isDisable={showAlert}
+              isDisable={showAlert || dateAlert}
               onChangeFunct={handlePopQuotes}
             />
 
