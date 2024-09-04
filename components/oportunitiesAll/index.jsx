@@ -244,7 +244,7 @@ const OportunitiesAll = ({
                           : '0.6'
                         : '1',
                     }}
-                    className={styles['card-unit-list']}
+                    className={`${styles['card-unit-list']} ${selectedItem === i ? styles['disable-click'] : ''}`}
                     key={oportunity.idSaleOp}
                     onClick={() =>
                       handleItemClick(
@@ -265,6 +265,15 @@ const OportunitiesAll = ({
                         oportunity.idClient.image[0] !== ''
                           ? `${oportunity.idClient.image[0].url}`
                           : '/images/default-2.jpg')
+                      }
+                      setClose={() =>
+                        handleItemClick(
+                          i,
+                          oportunity.idSaleOp,
+                          oportunity.idProperty,
+                          oportunity.idProject,
+                          oportunity
+                        )
                       }
                       name={oportunity.nameCustomer}
                       location={oportunity.nameProject}

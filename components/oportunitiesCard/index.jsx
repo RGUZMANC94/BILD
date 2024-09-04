@@ -6,6 +6,7 @@ import OportunitiesHistory from '../../components/oportunitiesHistory';
 
 const OportunitiesCard = ({
   closed,
+  setClose,
   estimatedProgress,
   state,
   name,
@@ -52,7 +53,9 @@ const OportunitiesCard = ({
           styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]
         }`}>
         <div
-          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)]`}></div>
+          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)]`} onClick={() => {setClose();
+            console.log('close');}
+          }></div>
         <div className={styles['card-info-container']}>
           <div className={styles['img-card']}>
             <img className={styles['image-card-circle']} src={image} />

@@ -178,6 +178,7 @@ i.fa-solid.fa-angle-left {
   font-size: 18px;
 }
 
+
 @media only screen and (max-width: 1024px) {
   .oportunidades {
     width: 100%;
@@ -202,5 +203,10 @@ i.fa-solid.fa-angle-left {
   .card-container {
     width: 100%;
     margin: auto;
+  }
+
+  
+  .disable-click {
+    pointer-events: none;
   }
 }

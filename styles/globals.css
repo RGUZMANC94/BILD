@@ -50,7 +50,7 @@
   }
 
   .bg-sub-header {
-    @apply bg-light-2/50 shadow-md shadow-dark-4/10 dark:bg-dark-3 backdrop-blur-sm;
+    @apply bg-light-2/50 shadow-md shadow-dark-4/10 dark:bg-dark-3/50 backdrop-blur-sm;
   }
 
   .primary {
@@ -1736,7 +1736,7 @@ li.active button {
   }
 
   .img-tipo-glass {
-    background-size: contain;
+    background-size: 70%;
     width: 32px;
     height: 32px;
     top: 5px;
