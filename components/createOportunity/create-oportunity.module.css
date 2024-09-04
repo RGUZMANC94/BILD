@@ -701,12 +701,12 @@ select.subject_input {
   }
 
   .closePopUp {
-    background-image: url(/images/close-oportunity-icon.svg);
+    /*background-image: url(/images/close-oportunity-icon.svg);*/
     background-color: unset;
   }
 
   .prevStep {
-    background-image: url(/images/back-oportunity-icon.svg);
+   /* background-image: url(/images/back-oportunity-icon.svg);*/
     background-color: unset;
   }
 }

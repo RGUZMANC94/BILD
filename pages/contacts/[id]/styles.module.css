@@ -406,9 +406,10 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .perfil {
-    padding-top: 0;
+  .top-content {
+    top: 60px;
   }
+
   .closeContactSide {
     display: block;
     position: absolute;
@@ -440,7 +441,7 @@
     width: 100%;
     flex-direction: column;
     margin: 60px auto 0;
-    padding-top: 20px;
+    padding-top: 60px;
   }
 
   .editar-perfil {

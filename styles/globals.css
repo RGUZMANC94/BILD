@@ -1648,7 +1648,13 @@ li.active button {
   .llave-tabla {
     right: 5px;
     transition: none;
-    background-image: url(/images/key.svg);
+    background-position: center;
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+  }
+
+  .llave-tabla-desabled {
+    right: 5px;
     background-position: center;
     background-size: 28px 28px;
     background-repeat: no-repeat;

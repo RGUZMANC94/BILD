@@ -354,3 +354,20 @@
   padding: 15px 10px;
   width: 30% !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .conecta-dos {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .conectado{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .subject_input {
+    width: 100%;
+  }
+  
+}

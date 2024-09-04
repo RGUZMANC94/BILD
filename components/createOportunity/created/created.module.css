@@ -619,8 +619,10 @@
   }
 
   .img-tipo-glass {
-    background-size: contain;
+    background-size: 70%;
     width: 32px;
     height: 32px;
+    top: 5px;
+    right: 5px;
   }
 }

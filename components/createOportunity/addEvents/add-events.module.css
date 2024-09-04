@@ -367,7 +367,7 @@
 /*Image*/
 
 @media only screen and (max-width: 992px) {
-  .descripcion {
+  /*.descripcion {
     width: 80%;
     height: auto;
     right: auto;
@@ -382,7 +382,7 @@
     top: 80px;
     border-radius: 15px;
     overflow: auto;
-  }
+  }*/
 
   .top-title {
     width: 100%;
@@ -408,7 +408,6 @@
 
 @media only screen and (max-width: 480px) {
   .descripcion {
-    top: 50px;
     border-radius: 0px;
     width: 100%;
   }

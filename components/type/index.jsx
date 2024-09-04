@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { openZoomImg } from '../../redux/zoomImg';
 import BildContext from '../../components/context';
 import { changeUnitEdit } from '../../redux/editObjectSlice';
+import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 
 const TypeCard = ({
   units,
@@ -32,6 +33,10 @@ const TypeCard = ({
     e.stopPropagation();
     dispatch(openZoomImg(imgToZoom));
   };
+  function handleDispatch(unit) {
+    dispatch(openPopUp(true));
+    dispatch(changeUnitSelected(unit));
+  }
   return (
     <li
       id={type.nuimb}
@@ -152,8 +157,14 @@ const TypeCard = ({
               <div className="detalle-tabla">{unit.baths}</div>
               <div className="detalle-tabla price-table">{`$${unit.propertyPrice}`}</div>
               <div
-                className="llave-tabla"
-                onClick={() => setCreateOportunity(true)}></div>
+                className={
+                  unit.status === 'R'
+                    ? 'llave-tabla-desabled bg-[url(/images/light/key-full.png)] dark:bg-[url(/images/key-dark.svg)]'
+                    : 'llave-tabla hover:bg-[url(/images/light/key-full.png)] dark:hover:bg-[url(/images/key-dark.svg)]'
+                }
+                onClick={() => {handleDispatch(unit);
+                  console.log('Unit selected: ', unit);
+                } }></div>
             </div>
           ))}
 
