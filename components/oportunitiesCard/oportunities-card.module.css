@@ -283,7 +283,7 @@
     height: 30px;
     top: 15px;
     right: 15px;
-    background-size: 40%;
+    background-size: 75%;
     background-position: center center;
     pointer-events: all;
   }
@@ -291,6 +291,8 @@
   .card-state-active .card-right-arrow-icon {
     width: 30px;
     height: 30px;
+    top: 15px;
+    right: 15px;
     background-size: 75%;
     background-position: center center;
   }

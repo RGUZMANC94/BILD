@@ -257,7 +257,7 @@
   }
 
   .proyectos {
-    min-height: unset;
+    min-height: 110px;
     padding-bottom: 0;
     margin: 0px 0 20px;
     padding: 10px;

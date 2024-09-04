@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import BildContext from '../../components/context';
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 
 const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
   const { user } = initialState;
   const { userid: id, rol: user_rol } = user;
   const { isDark } = useContext(BildContext);
+  const router = useRouter();
 
   console.log('Informacion del contactIndo: ', contactInfo);
   return (
@@ -148,31 +150,33 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                 <div className={styles['pendientes-movil']}>
                   <div className={styles['opc-pendiente']}>
                     <Link
-                      href={`/opportunities/${contactInfo.contactProfile.clientId}`}
+                      href={`/opportunities/${router.query.id}`}
                       className={`${styles.opcion} bg-card`}>
-                      <img src="/images/key-white.png" />
+                      <img className={`${!isDark && 'black-filter'}`} src="/images/key-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>2</span>
                       Oportunidades
                     </Link>
                     <Link
-                      href={`/contacts/${contactInfo.contactProfile.clientId}/quotes`}
+                      href={`/contacts/${router.query.id}/quotes`}
                       className={`${styles.opcion} bg-card`}>
-                      <img src="/images/cotizaciones-white.png" />
+                      <img className={`${!isDark && 'black-filter'}`} src="/images/cotizaciones-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>5</span>
                       Cotizaciones
                     </Link>
                     <Link
-                      href={`/documentation/${contactInfo.contactProfile.clientId}`}
+                      href={`/documentation/${router.query.id}`}
                       className={`${styles.opcion} bg-card`}>
-                      <img src="/images/docs-white.png" />
+                      <img className={`${!isDark && 'black-filter'}`} src="/images/docs-white.png" />
                       <span className={`${styles.badge} ${styles.red}`}>3</span>
                       Documentación
                     </Link>
                     <Link
-                      href={`/contacts/${contactInfo.contactProfile.clientId}/payments`}
+                      href={`/contacts/${router.query.id}/payments`}
                       className={`${styles.opcion} bg-card`}>
-                      <img src="/images/payments-white.png" />
-                      <span className={`${styles.badge} ${styles.red}`}>7</span>
+                      <img className={`${!isDark && 'black-filter'}`} src="/images/payments-white.png" />
+                      <span className={`${styles.badge} ${styles.red}`}>
+                        5
+                      </span>
                       Pagos
                     </Link>
                   </div>

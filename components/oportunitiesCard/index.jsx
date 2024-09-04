@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './oportunities-card.module.css';
 import OportunitiesBar from '../../components/oportunitiesBar';
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useContext } from 'react';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
+import BildContext from '../../components/context';
 
 const OportunitiesCard = ({
   closed,
@@ -29,6 +30,8 @@ const OportunitiesCard = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [openFlag, setOpenFlag] = useState(false);
+  const { isDark } = useContext(BildContext);
+
   const handleResize = () => {
     setIsMobile(window.innerWidth < 1024);
   };
@@ -53,7 +56,7 @@ const OportunitiesCard = ({
           styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]
         }`}>
         <div
-          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)]`} onClick={() => {setClose();
+          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)] ${!isDark && 'black-filter'}`} onClick={() => {setClose();
             console.log('close');}
           }></div>
         <div className={styles['card-info-container']}>
