@@ -114,7 +114,9 @@ const Contacts = () => {
                         />
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
-                      {`${recent.name} ${recent.lastname}`}
+                      <p>
+                        {`${recent.name} ${recent.lastname}`}
+                      </p>
                     </div>
                     <div className={styles['reciente-col']}>{recent.email}</div>
                   </Link>
@@ -138,23 +140,17 @@ const Contacts = () => {
                     )}
                   </div>
                   <div className={styles['iconos-movil']}>
-                    <div className={styles['phone-movil']}>
-                      <Image
-                        width={40}
-                        height={40}
-                        alt=""
-                        src="/images/blue-phone-movil.png"
-                      />
-                      {/* <img src="/images/blue-phone-movil.png" /> */}
+                  <div className={styles['phone-movil']}>
+                    <Link
+                            href={`tel:+57${recent.phoneNumber}`}
+                            target="_blank">
+                          </Link>
                     </div>
                     <div className={styles['wa-movil']}>
-                      <Image
-                        width={40}
-                        height={40}
-                        alt=""
-                        src="/images/whatsapp-contacts.png"
-                      />
-                      {/* <img src="/images/whatsapp-contacts.png" /> */}
+                      <Link
+                            href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                            target="_blank"
+                            className={styles['whatsapp-container']}></Link>
                     </div>
                   </div>
                 </div>
@@ -194,7 +190,9 @@ const Contacts = () => {
                         />
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
-                      {`${contact.name} ${contact.lastname}`}
+                      <p>
+                        {`${contact.name} ${contact.lastname}`}
+                      </p>
                     </div>
                     <div className={styles['reciente-col']}>
                       {contact.email}
@@ -221,22 +219,16 @@ const Contacts = () => {
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
-                      <Image
-                        width={40}
-                        height={40}
-                        alt=""
-                        src="/images/blue-phone-movil.png"
-                      />
-                      {/* <img src="/images/blue-phone-movil.png" /> */}
+                    <Link
+                            href={`tel:+57${contact.phoneNumber}`}
+                            target="_blank">
+                          </Link>
                     </div>
                     <div className={styles['wa-movil']}>
-                      <Image
-                        width={40}
-                        height={40}
-                        alt=""
-                        src="/images/whatsapp-contacts.png"
-                      />
-                      {/* <img src="/images/whatsapp-contacts.png" /> */}
+                      <Link
+                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                            target="_blank"
+                            className={styles['whatsapp-container']}></Link>
                     </div>
                   </div>
                 </div>

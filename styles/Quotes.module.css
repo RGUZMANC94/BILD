@@ -544,11 +544,10 @@
   .submenu {
     display: flex;
     position: fixed;
-    bottom: 78px;
+    bottom: 74px;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    background-color: rgba(34, 34, 34, 0.95);
     padding: 15px;
     width: 100%;
   }

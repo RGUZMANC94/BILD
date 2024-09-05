@@ -480,6 +480,7 @@
 
   .list-name {
     margin-bottom: 5px;
+    padding: 10px 0;
   }
 
   .crear-contacto {
@@ -513,20 +514,44 @@
   .phone-movil,
   .wa-movil {
     width: 50%;
-    text-align: center;
-  }
-
-  .phone-movil img,
-  .wa-movil img {
-    margin: auto;
   }
 
   .contact {
-    width: 70%;
+    width: 100%;
+    padding-right: 10px;
+  }
+
+  .contact p {
+    width: calc(100% - 50px);
+    line-height: 1.2;
+    overflow: hidden; 
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  max-height: 40px;
+  font-size: 14px;
   }
 
   .numero,
   .mail {
     display: none;
   }
+
+  .whatsapp-container {
+    background-image: url(/images/whatsapp-contacts.png);
+    margin-left: 0px;
+    margin: auto;
+  }
+
+  .phone-movil a {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(/images/blue-phone-movil.png);
+    margin-left: 0px;
+    margin: auto;
+  }  
+
 }

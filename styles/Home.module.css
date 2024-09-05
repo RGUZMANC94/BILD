@@ -169,6 +169,8 @@
   .containerEstates {
     gap: 0px;
     margin-bottom: 80px;
+    width: 100%;
+    left: unset;
   }
   .proyectos {
     flex-direction: row;

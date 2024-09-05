@@ -1451,7 +1451,7 @@ li.active button {
   .topInfo-container {
     width: 100%;
     margin: 0;
-    padding: 5%;
+    padding: 5% 80px 5% 5%;
   }
 
   .top-infoContainer {
@@ -1633,6 +1633,13 @@ li.active button {
   }
 
   .editProjectDetailState {
+    position: absolute;
+    right: 20px;
+
+  }
+
+  .topContentMobile {
+    padding-right: 80px;
   }
 
   .detalle-tabla {
@@ -1799,6 +1806,12 @@ li.active button {
     width: 30px;
     height: 30px;
     transition: all 0.1s ease-in-out;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 }
 

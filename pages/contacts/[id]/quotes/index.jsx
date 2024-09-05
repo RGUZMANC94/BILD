@@ -260,7 +260,6 @@ const Quotes = ({ queryId }) => {
                                   payment.pdf.length ? payment.pdf[0].url : ''
                                 )
                               }
-                              selectCheckboxes={selectCheckboxes}
                             />
                           </div>
 

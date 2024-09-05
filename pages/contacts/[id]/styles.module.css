@@ -421,6 +421,13 @@
     background-image: url(/images/close-white.svg);
   }
 
+  .title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+  }
+
   section.main {
     width: 100%;
     height: auto;
