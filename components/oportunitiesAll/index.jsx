@@ -33,18 +33,41 @@ const OportunitiesAll = ({
   const URLHash = asPath.split('#')[1];
   const [hardRefreshFlag, setHardRefreshFlag] = useState(false);
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 768);
     };
+
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, []); 
+
+  const handleConditionalClick = (i,
+    idSaleOp,
+    idProperty,
+    idProject,
+    oportunity,isActive) => {
+    if (isMobile && isActive) {
+      console.log('entra halo');
+      return; 
+    } 
+    console.log('pasa halo');
+    handleItemClick(
+      i,
+      idSaleOp,
+      idProperty,
+      idProject,
+      oportunity
+    );
+  };
+
+  
   useEffect(() => {
     if (URLHash) {
       const recentOppCreated = oppList.find(
@@ -244,15 +267,16 @@ const OportunitiesAll = ({
                           : '0.6'
                         : '1',
                     }}
-                    className={`${styles['card-unit-list']} ${selectedItem === i ? styles['disable-click'] : ''}`}
+                    className={`${styles['card-unit-list']} `}
                     key={oportunity.idSaleOp}
                     onClick={() =>
-                      handleItemClick(
+                      handleConditionalClick(
                         i,
                         oportunity.idSaleOp,
                         oportunity.idProperty,
                         oportunity.idProject,
-                        oportunity
+                        oportunity,
+                        selectedItem === i
                       )
                     }>
                     <OportunitiesCard

@@ -206,7 +206,7 @@ i.fa-solid.fa-angle-left {
   }
 
   
-  .disable-click {
+  /*.disable-click {
     pointer-events: none;
-  }
+  }*/
 }

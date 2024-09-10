@@ -56,9 +56,8 @@ const OportunitiesCard = ({
           styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]
         }`}>
         <div
-          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)] ${!isDark && 'black-filter'}`} onClick={() => {setClose();
-            console.log('close');}
-          }></div>
+          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)] ${!isDark && 'black-filter'}`} 
+          onClick={() => setClose()}></div>
         <div className={styles['card-info-container']}>
           <div className={styles['img-card']}>
             <img className={styles['image-card-circle']} src={image} />
