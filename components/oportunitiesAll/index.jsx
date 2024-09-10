@@ -314,6 +314,7 @@ const OportunitiesAll = ({
                       setShowEditContact={setShowEditContact}
                       setPdfURL={setPdfURL}
                       prePriceInfo={prePriceInfo}
+                      setHardRefreshFlag={setHardRefreshFlag}
                     />
                   </div>
                 );

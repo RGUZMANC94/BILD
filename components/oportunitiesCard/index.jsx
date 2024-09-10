@@ -27,6 +27,7 @@ const OportunitiesCard = ({
   setShowEditContact,
   setPdfURL,
   prePriceInfo,
+  setHardRefreshFlag
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [openFlag, setOpenFlag] = useState(false);
@@ -95,6 +96,7 @@ const OportunitiesCard = ({
               setShowEditContact={setShowEditContact}
               setPdfURL={setPdfURL}
               prePriceInfo={prePriceInfo}
+              setHardRefreshFlag={setHardRefreshFlag}
             />
           )}
         </div>
