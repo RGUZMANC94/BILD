@@ -717,3 +717,9 @@ button.upload-file {
     width: 90%;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .iframe-popup-content {
+    width: 90%;
+  }
+}

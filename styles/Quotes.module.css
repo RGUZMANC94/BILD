@@ -680,4 +680,8 @@
   .accordion-btn::after {
     left: unset;
   }
+
+  .iframe-popup-content {
+    width: 90%;
+  }
 }

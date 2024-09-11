@@ -536,12 +536,12 @@ const OportunitiesHistory = ({
             )}
           </div>
           <div className={styles['pendientes-bottom']}>
-            <div onClick={deleteOpportunity}>
               <Button
+                clickFunction={deleteOpportunity}
                 buttonType={'primary'}
                 inheritClass={styles.deleteButton}
-                label={'Eliminar oportunidad'}></Button>
-            </div>
+                label={'Eliminar oportunidad'}
+                needConfirmation={true}></Button>
           </div>
         </div>
         <Portal>

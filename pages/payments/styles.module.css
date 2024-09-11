@@ -734,4 +734,8 @@ button.cancelar {
     letter-spacing: 0.77px;
     margin-top: 0px;
   }
+
+  .iframe-popup-content {
+    width: 90%;
+  }
 }
