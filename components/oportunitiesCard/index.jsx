@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './oportunities-card.module.css';
 import OportunitiesBar from '../../components/oportunitiesBar';
-import { useState, useEffect , useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import OportunitiesHistory from '../../components/oportunitiesHistory';
 import BildContext from '../../components/context';
 
@@ -27,7 +27,7 @@ const OportunitiesCard = ({
   setShowEditContact,
   setPdfURL,
   prePriceInfo,
-  setHardRefreshFlag
+  setHardRefreshFlag,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [openFlag, setOpenFlag] = useState(false);
@@ -57,7 +57,11 @@ const OportunitiesCard = ({
           styles[`${state ? 'card-state-active' : 'card-state-disabled'}`]
         }`}>
         <div
-          className={`${styles['card-right-arrow-icon']} bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)] ${!isDark && 'black-filter'}`} 
+          className={`${
+            styles['card-right-arrow-icon']
+          } bg-[url(/images/light/next.png)] dark:bg-[url(/images/oportunities-card-left-arrow.svg)] ${
+            !isDark && 'black-filter'
+          }`}
           onClick={() => setClose()}></div>
         <div className={styles['card-info-container']}>
           <div className={styles['img-card']}>

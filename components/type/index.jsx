@@ -162,9 +162,10 @@ const TypeCard = ({
                     ? 'llave-tabla-desabled bg-[url(/images/light/key-full.png)] dark:bg-[url(/images/key-dark.svg)]'
                     : 'llave-tabla hover:bg-[url(/images/light/key-full.png)] dark:hover:bg-[url(/images/key-dark.svg)]'
                 }
-                onClick={() => {handleDispatch(unit);
+                onClick={() => {
+                  handleDispatch(unit);
                   console.log('Unit selected: ', unit);
-                } }></div>
+                }}></div>
             </div>
           ))}
 

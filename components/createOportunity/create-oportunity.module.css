@@ -706,7 +706,7 @@ select.subject_input {
   }
 
   .prevStep {
-   /* background-image: url(/images/back-oportunity-icon.svg);*/
+    /* background-image: url(/images/back-oportunity-icon.svg);*/
     background-color: unset;
   }
 }

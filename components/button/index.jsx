@@ -18,7 +18,9 @@ const Button = ({
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleButtonClick = (e) => {
-    if (preventDefault) {e.preventDefault();} 
+    if (preventDefault) {
+      e.preventDefault();
+    }
     if (needConfirmation) {
       setShowConfirmation(true); // Mostrar el popup de confirmación
     } else {
@@ -40,22 +42,25 @@ const Button = ({
       {link ? (
         <Link
           href={link}
-          className={`bg-button ${buttonType} ${styles.siteButton} ${styles[classNameInherit]} ${inheritClass ?? ''}`}
-        >
+          className={`bg-button ${buttonType} ${styles.siteButton} ${
+            styles[classNameInherit]
+          } ${inheritClass ?? ''}`}>
           {iconImage && (
             <span
               className={`${styles.iconImage} bg-ct`}
-              style={{ backgroundImage: `url(${iconImage})` }}
-            ></span>
+              style={{ backgroundImage: `url(${iconImage})` }}></span>
           )}
           <span>{label}</span>
         </Link>
       ) : (
         <button
           onClick={handleButtonClick}
-          className={`bg-button ${isDisabled && styles.disabledButton} ${buttonType} ${styles.siteButton} ${styles[classNameInherit]} ${inheritClass ?? ''}`}
-          disabled={isDisabled}
-        >
+          className={`bg-button ${
+            isDisabled && styles.disabledButton
+          } ${buttonType} ${styles.siteButton} ${styles[classNameInherit]} ${
+            inheritClass ?? ''
+          }`}
+          disabled={isDisabled}>
           {iconImage && <span className={`${styles.iconImage} bg-ct`}></span>}
           <span>{label}</span>
         </button>
@@ -63,20 +68,28 @@ const Button = ({
 
       {showConfirmation && (
         <Portal>
-        <div 
-          className={`bg-backg-popup ${styles.confirmationOverlay}`}
-          onClick={cancelAction}
-        >
-          <div className={`bg-popup ${styles.confirmationDialog}`}>
-            <p className={`${styles.confirmationText}`}>¿Desea eliminar esta oportunidad?</p>
+          <div
+            className={`bg-backg-popup ${styles.confirmationOverlay}`}
+            onClick={cancelAction}>
+            <div className={`bg-popup ${styles.confirmationDialog}`}>
+              <p className={`${styles.confirmationText}`}>
+                ¿Desea eliminar esta oportunidad?
+              </p>
 
-            <div className={styles.buttonsSection}>
-              <button className={`bg-button secondary ${styles.confirmationButton} ${styles.siteButton}`}  onClick={cancelAction}>Volver</button>
-              <button className={`bg-button primary ${styles.confirmationButton} ${styles.siteButton}`}  onClick={confirmAction}>Confirmar</button>
+              <div className={styles.buttonsSection}>
+                <button
+                  className={`bg-button secondary ${styles.confirmationButton} ${styles.siteButton}`}
+                  onClick={cancelAction}>
+                  Volver
+                </button>
+                <button
+                  className={`bg-button primary ${styles.confirmationButton} ${styles.siteButton}`}
+                  onClick={confirmAction}>
+                  Confirmar
+                </button>
+              </div>
             </div>
           </div>
-            
-        </div>
         </Portal>
       )}
     </>

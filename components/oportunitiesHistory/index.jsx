@@ -323,7 +323,9 @@ const OportunitiesHistory = ({
                         <b>{firstEvent.title}</b>
                       </li>
                     )}
-                    <li>{firstEvent.activity}</li>
+                    <li className={styles['pendiente-description']}>
+                      {firstEvent.activity}
+                    </li>
                   </ul>
                 </div>
                 <div className={styles.time}>
@@ -412,7 +414,9 @@ const OportunitiesHistory = ({
                                   <b>{eventItem.title}</b>
                                 </li>
                               )}
-                              <li>{eventItem.activity}</li>
+                              <li className={styles['pendiente-description']}>
+                                {eventItem.activity}
+                              </li>
                             </ul>
                           </div>
 
@@ -498,7 +502,9 @@ const OportunitiesHistory = ({
                         </li>
                       )}
                     </li>
-                    <li>{lastEvent.activity}</li>
+                    <li className={styles['pendiente-description']}>
+                      {lastEvent.activity}
+                    </li>
                   </ul>
                 </div>
                 <div className={styles.time}>
@@ -536,12 +542,12 @@ const OportunitiesHistory = ({
             )}
           </div>
           <div className={styles['pendientes-bottom']}>
-              <Button
-                clickFunction={deleteOpportunity}
-                buttonType={'primary'}
-                inheritClass={styles.deleteButton}
-                label={'Eliminar oportunidad'}
-                needConfirmation={true}></Button>
+            <Button
+              clickFunction={deleteOpportunity}
+              buttonType={'primary'}
+              inheritClass={styles.deleteButton}
+              label={'Eliminar oportunidad'}
+              needConfirmation={true}></Button>
           </div>
         </div>
         <Portal>

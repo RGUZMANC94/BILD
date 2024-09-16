@@ -34,7 +34,6 @@ const OportunitiesAll = ({
   const [hardRefreshFlag, setHardRefreshFlag] = useState(false);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,28 +45,24 @@ const OportunitiesAll = ({
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); 
+  }, []);
 
-  const handleConditionalClick = (i,
+  const handleConditionalClick = (
+    i,
     idSaleOp,
     idProperty,
     idProject,
-    oportunity,isActive) => {
+    oportunity,
+    isActive
+  ) => {
     if (isMobile && isActive) {
       console.log('entra halo');
-      return; 
-    } 
+      return;
+    }
     console.log('pasa halo');
-    handleItemClick(
-      i,
-      idSaleOp,
-      idProperty,
-      idProject,
-      oportunity
-    );
+    handleItemClick(i, idSaleOp, idProperty, idProject, oportunity);
   };
 
-  
   useEffect(() => {
     if (URLHash) {
       const recentOppCreated = oppList.find(

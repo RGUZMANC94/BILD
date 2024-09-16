@@ -732,4 +732,11 @@ li.pendiente-list {
   .innerDottedContainer {
     padding-left: 14px;
   }
+
+  .pendiente-description {
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+  }
 }

@@ -361,7 +361,7 @@
     flex-wrap: wrap;
   }
 
-  .conectado{
+  .conectado {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -369,5 +369,4 @@
   .subject_input {
     width: 100%;
   }
-  
 }

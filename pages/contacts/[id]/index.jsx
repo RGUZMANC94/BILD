@@ -76,7 +76,8 @@ const BuyerProfile = ({ contacts, user }) => {
 
   return (
     <>
-      <div className={`${styles['top-content']} bg-sub-header topContentMobile`}>
+      <div
+        className={`${styles['top-content']} bg-sub-header topContentMobile`}>
         <div className="container flex j-s a-c">
           <Link
             href={'/contacts'}

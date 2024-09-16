@@ -152,31 +152,41 @@ const SideInfoProfile = ({ contactInfo, typeViewer, setShowEditContact }) => {
                     <Link
                       href={`/opportunities/${router.query.id}`}
                       className={`${styles.opcion} bg-card`}>
-                      <img className={`${!isDark && 'black-filter'}`} src="/images/key-white.png" />
+                      <img
+                        className={`${!isDark && 'black-filter'}`}
+                        src="/images/key-white.png"
+                      />
                       <span className={`${styles.badge} ${styles.red}`}>2</span>
                       Oportunidades
                     </Link>
                     <Link
                       href={`/contacts/${router.query.id}/quotes`}
                       className={`${styles.opcion} bg-card`}>
-                      <img className={`${!isDark && 'black-filter'}`} src="/images/cotizaciones-white.png" />
+                      <img
+                        className={`${!isDark && 'black-filter'}`}
+                        src="/images/cotizaciones-white.png"
+                      />
                       <span className={`${styles.badge} ${styles.red}`}>5</span>
                       Cotizaciones
                     </Link>
                     <Link
                       href={`/documentation/${router.query.id}`}
                       className={`${styles.opcion} bg-card`}>
-                      <img className={`${!isDark && 'black-filter'}`} src="/images/docs-white.png" />
+                      <img
+                        className={`${!isDark && 'black-filter'}`}
+                        src="/images/docs-white.png"
+                      />
                       <span className={`${styles.badge} ${styles.red}`}>3</span>
                       Documentación
                     </Link>
                     <Link
                       href={`/contacts/${router.query.id}/payments`}
                       className={`${styles.opcion} bg-card`}>
-                      <img className={`${!isDark && 'black-filter'}`} src="/images/payments-white.png" />
-                      <span className={`${styles.badge} ${styles.red}`}>
-                        5
-                      </span>
+                      <img
+                        className={`${!isDark && 'black-filter'}`}
+                        src="/images/payments-white.png"
+                      />
+                      <span className={`${styles.badge} ${styles.red}`}>5</span>
                       Pagos
                     </Link>
                   </div>

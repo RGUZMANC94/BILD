@@ -3,7 +3,7 @@ import styles from './SquareInput.module.css';
 
 const SquareInput = ({ onChangeFunct, selectCheckboxes, isDisable }) => {
   useEffect(() => {
-    console.log('selectCheckboxes',selectCheckboxes);
+    console.log('selectCheckboxes', selectCheckboxes);
   }, [selectCheckboxes]);
 
   const handleCheckboxChange = () => {

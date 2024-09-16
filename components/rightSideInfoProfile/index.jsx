@@ -20,67 +20,81 @@ const RightSideProfile = ({ contactInfo, typeViewer }) => {
         <div className={styles['opc-pendiente']}>
           <Link
             href={`/opportunities/${router.query.id}`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/10 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
               isDark
                 ? 'bg-[url(/images/profile1a.jpg)]'
                 : 'bg-[url(/images/profile1.jpg)] transition-all '
             }  ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain relative"
+              className={`w-12 h-12 object-contain relative ${
+                isDark && 'invert-filter'
+              }`}
               src={'/images/light/key.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               2
             </span>
-            <p className={`${styles.blackText} relative`}>Oportunidades</p>
+            <p className={'text-dark-4 dark:text-light-2 relative'}>
+              Oportunidades
+            </p>
           </Link>
           <Link
             href={`/contacts/${router.query.id}/quotes`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/10  before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
               isDark
                 ? 'bg-[url(/images/profile2a.jpg)]'
                 : 'bg-[url(/images/profile2.jpg)] transition-all '
             }  ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain relative"
+              className={`w-12 h-12 object-contain relative ${
+                isDark && 'invert-filter'
+              }`}
               src={'/images/light/dashboard.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               5
             </span>
-            <p className={`${styles.blackText} relative`}>Cotizaciones</p>
+            <p className={'text-dark-4 dark:text-light-2  relative'}>
+              Cotizaciones
+            </p>
           </Link>
           <Link
             href={`/documentation/${router.query.id}`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/10  before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
               isDark
                 ? 'bg-[url(/images/profile3a.jpg)]'
                 : 'bg-[url(/images/profile3.jpg)] transition-all '
             } ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain relative"
+              className={`w-12 h-12 object-contain relative ${
+                isDark && 'invert-filter'
+              }`}
               src={'/images/light/documentos.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               3
             </span>
-            <p className={`${styles.blackText} relative`}>Documentación</p>
+            <p className={'text-dark-4 dark:text-light-2  relative'}>
+              Documentación
+            </p>
           </Link>
           <Link
             href={`/contacts/${router.query.id}/payments`}
-            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/20 before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
+            className={`before:content-[''] before:absolute before:w-full before:h-full before:bg-light-1/10  before:rounded-[20px] font-black z-0 relative bg-card bg-cover bg-no-repeat bg-center ${
               isDark
                 ? 'bg-[url(/images/profile4a.jpg)]'
                 : 'bg-[url(/images/profile4.jpg)] transition-all '
             }  ${styles.opcion}`}>
             <img
-              className="w-12 h-12 object-contain relative"
+              className={`w-12 h-12 object-contain relative ${
+                isDark && 'invert-filter'
+              }`}
               src={'/images/light/money.png'}
             />
             <span className={`${styles.badge} ${styles.red} font-black`}>
               7
             </span>
-            <p className={`${styles.blackText} relative`}>Pagos</p>
+            <p className={'text-dark-4 dark:text-light-2  relative'}>Pagos</p>
           </Link>
         </div>
       )}

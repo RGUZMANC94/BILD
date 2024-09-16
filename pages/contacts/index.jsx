@@ -114,9 +114,7 @@ const Contacts = () => {
                         />
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
-                      <p>
-                        {`${recent.name} ${recent.lastname}`}
-                      </p>
+                      <p>{`${recent.name} ${recent.lastname}`}</p>
                     </div>
                     <div className={styles['reciente-col']}>{recent.email}</div>
                   </Link>
@@ -140,17 +138,16 @@ const Contacts = () => {
                     )}
                   </div>
                   <div className={styles['iconos-movil']}>
-                  <div className={styles['phone-movil']}>
-                    <Link
-                            href={`tel:+57${recent.phoneNumber}`}
-                            target="_blank">
-                          </Link>
+                    <div className={styles['phone-movil']}>
+                      <Link
+                        href={`tel:+57${recent.phoneNumber}`}
+                        target="_blank"></Link>
                     </div>
                     <div className={styles['wa-movil']}>
                       <Link
-                            href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
-                            target="_blank"
-                            className={styles['whatsapp-container']}></Link>
+                        href={`https://wa.me/${recent.phoneNumber}?subject=BILD`}
+                        target="_blank"
+                        className={styles['whatsapp-container']}></Link>
                     </div>
                   </div>
                 </div>
@@ -190,9 +187,7 @@ const Contacts = () => {
                         />
                       </div>
                       <span className={`${styles.badge} ${styles.red}`}>1</span>
-                      <p>
-                        {`${contact.name} ${contact.lastname}`}
-                      </p>
+                      <p>{`${contact.name} ${contact.lastname}`}</p>
                     </div>
                     <div className={styles['reciente-col']}>
                       {contact.email}
@@ -219,16 +214,15 @@ const Contacts = () => {
                   </div>
                   <div className={styles['iconos-movil']}>
                     <div className={styles['phone-movil']}>
-                    <Link
-                            href={`tel:+57${contact.phoneNumber}`}
-                            target="_blank">
-                          </Link>
+                      <Link
+                        href={`tel:+57${contact.phoneNumber}`}
+                        target="_blank"></Link>
                     </div>
                     <div className={styles['wa-movil']}>
                       <Link
-                            href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
-                            target="_blank"
-                            className={styles['whatsapp-container']}></Link>
+                        href={`https://wa.me/${contact.phoneNumber}?subject=BILD`}
+                        target="_blank"
+                        className={styles['whatsapp-container']}></Link>
                     </div>
                   </div>
                 </div>
