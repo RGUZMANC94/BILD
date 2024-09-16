@@ -319,16 +319,15 @@ const OportunitiesAll = ({
             })
           ) : (
             <span className={styles['no-content-message']}>
-              {isContact
-                ? (
-                    <Redirect
-                      href={' '}
-                      
-                      anchorText="Crea una oportunidad"
-                      message="No se han encontrado oportunidades en el sistema"
-                    />
-                )
-                : 'No se han encontrado oportunidades en el sistema'}
+              {isContact ? (
+                <Redirect
+                  href={' '}
+                  anchorText="Crea una oportunidad"
+                  message="No se han encontrado oportunidades en el sistema"
+                />
+              ) : (
+                'No se han encontrado oportunidades en el sistema'
+              )}
             </span>
           )}
         </div>
