@@ -1,0 +1,43 @@
+.redirectOverlay {
+  position: absolute;
+  top: 190px;
+  left: 25%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.redirectOverlay.activeRedirect {
+    opacity: 0;
+  }
+  
+.redirectContaine {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 200px;
+    width: 550px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.redirectText {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+.anchorText {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}

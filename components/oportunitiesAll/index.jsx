@@ -9,6 +9,7 @@ import { changeOpportunitySelected } from '../../redux/opportunitySelectedSlice'
 import { changeUnitSelected } from '../../redux/unitSelectedSlice';
 import { useRouter } from 'next/router';
 import EditContactPop from '../../components/editContactPop';
+import Redirect from '../../components/redirect';
 
 const OportunitiesAll = ({
   oppList,
@@ -319,7 +320,14 @@ const OportunitiesAll = ({
           ) : (
             <span className={styles['no-content-message']}>
               {isContact
-                ? 'No se han encontrado oportunidades para este usuario'
+                ? (
+                    <Redirect
+                      href={' '}
+                      
+                      anchorText="Crea una oportunidad"
+                      message="No se han encontrado oportunidades en el sistema"
+                    />
+                )
                 : 'No se han encontrado oportunidades en el sistema'}
             </span>
           )}
